@@ -441,7 +441,9 @@
     }
 
     /* ─── USP Cards ─── */
-    .usp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .usp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 900px) { .usp-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .usp-grid { grid-template-columns: 1fr; } }
 
     .usp-card {
       background: var(--bg);
@@ -842,7 +844,8 @@
     .contact-inner   { max-width: 720px; margin: 0 auto; }
     .contact-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 700; letter-spacing: -.5px; margin-bottom: .75rem; }
     .contact-desc  { font-size: 15px; color: var(--text-sub); margin-bottom: 2.5rem; line-height: 1.85; }
-    .contact-grid  { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+    .contact-grid  { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
     .contact-card {
       background: var(--bg);
       border: 1px solid var(--border);
@@ -864,7 +867,7 @@
       margin-bottom: .5rem;
     }
     .c-label { font-size: 12px; color: var(--text-sub); font-weight: 500; }
-    .c-value { font-size: 14.5px; font-weight: 700; color: var(--text); letter-spacing: -.2px; }
+    .c-value { font-size: 14.5px; font-weight: 700; color: var(--text); letter-spacing: -.2px; word-break: break-all; }
     .c-desc  { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
 
     /* ─── Footer ─── */
@@ -1078,7 +1081,7 @@
       <div class="sec-eyebrow">핵심 차별점</div>
       <div class="sec-title">왜 아비컴퍼니인가</div>
       <div class="sec-desc">
-        타 대행사와 근본적으로 다른 3가지 이유.<br>
+        타 대행사와 근본적으로 다른 4가지 이유.<br>
         비용 구조부터 기술 전략까지, 처음부터 다르게 설계되어 있습니다.
       </div>
       <div class="usp-grid">
@@ -1087,17 +1090,27 @@
           <div class="usp-icon"><i class="ti ti-receipt-off"></i></div>
           <h3>대행 수수료 0원</h3>
           <p>
-            타 대행사처럼 불투명한 수수료로 마케팅 본질을 흐리지 않습니다.
+            타 대행사처럼 불투명한 수수료로 마케팅 본질을 흐리지 않습니다.<br>
             클라이언트의 광고비는 <strong>100% 온전히 매체 집행에만 투입</strong>됩니다.
           </p>
           <div class="usp-pill">리스크 제로 구조</div>
+        </div>
+        <div class="usp-card hot">
+          <div class="hot-badge">업계 유일</div>
+          <div class="usp-icon"><i class="ti ti-shield-check"></i></div>
+          <h3>효과 없으면 100% 환불</h3>
+          <p>
+            집행 후 성과가 없다면 광고비 전액을 돌려드립니다.<br>
+            결과에 확신이 있기에 가능한 <strong>업계 유일 완전 환불 보장</strong>입니다.
+          </p>
+          <div class="usp-pill">환불 보장제</div>
         </div>
         <div class="usp-card">
           <div class="usp-icon"><i class="ti ti-robot"></i></div>
           <h3>SEO → GEO 시대</h3>
           <p>
-            챗GPT, 퍼플렉시티, 네이버 Cue 등 AI 검색에서
-            우리 브랜드가 최우선으로 노출되도록 하는
+            챗GPT, 퍼플렉시티, 네이버 Cue 등 AI 검색에서<br>
+            우리 브랜드가 최우선으로 노출되도록<br>
             GEO 전략을 선제적으로 실행합니다.
           </p>
           <div class="usp-pill">AI 검색 최적화</div>
@@ -1106,8 +1119,9 @@
           <div class="usp-icon"><i class="ti ti-player-play"></i></div>
           <h3>숏폼 · 전 매체 대응</h3>
           <p>
-            유튜브 쇼츠, 릴스, 틱톡부터 네이버·당근·구글·메타까지.
-            효율이 나오는 모든 매체를 데이터 기반으로 자유자재로 믹스합니다.
+            유튜브 쇼츠, 릴스, 틱톡부터<br>
+            네이버·당근·구글·메타까지.<br>
+            효율 매체를 데이터 기반으로 믹스합니다.
           </p>
           <div class="usp-pill">올인원 마케팅</div>
         </div>
@@ -1121,8 +1135,8 @@
       <div class="sec-eyebrow">상위 노출 전략</div>
       <div class="sec-title">검색되는 곳이라면 <em>어디든</em> 1위로</div>
       <div class="sec-desc">
-        네이버 지식인·블로그·카페·스마트플레이스부터<br>
-        당근마켓, 구글 검색까지 — 고객이 있는 모든 곳에서 노출됩니다.
+        네이버 지식인·블로그·카페·스마트플레이스부터 당근마켓, 구글 검색까지 —<br>
+        고객이 있는 모든 곳에서 빠짐없이 노출됩니다.
       </div>
 
       <div class="exposure-grid">
@@ -1201,7 +1215,8 @@
       <div class="sec-title">AI가 <em>당신의 브랜드</em>를 추천합니다</div>
       <div class="sec-desc">
         단순한 키워드 상위 노출의 시대는 끝났습니다.<br>
-        잠재 고객이 AI에게 물어볼 때, 그 답변 안에 우리 브랜드가 있어야 합니다.
+        잠재 고객이 AI에게 물어볼 때, 그 답변 안에 우리 브랜드가 있어야 합니다.<br>
+        아비컴퍼니는 경쟁사보다 먼저 AI 검색 길목을 선점합니다.
       </div>
       <div class="geo-wrap">
         <div class="geo-left">
@@ -1258,7 +1273,8 @@
       <div class="sec-title">광고만큼 중요한 건 <em>랜딩 페이지</em>입니다</div>
       <div class="sec-desc">
         아무리 광고를 잘 해도 홈페이지가 약하면 전환이 되지 않습니다.<br>
-        아비컴퍼니는 마케팅 성과를 극대화하는 홈페이지 제작도 함께 제공합니다.
+        아비컴퍼니는 광고 → 랜딩 → 전환까지 하나의 전략으로 설계하여<br>
+        마케팅 성과를 극대화하는 홈페이지 제작도 함께 제공합니다.
       </div>
       <div class="web-grid">
         <div class="web-card">
@@ -1319,7 +1335,7 @@
       <div class="sec-title">22개 전문직 법인의 선택</div>
       <div class="sec-desc">
         업종별 쿼터제로 운영되어 동종 업계 경쟁사 수주가 제한됩니다.<br>
-        자리가 남아있을 때 먼저 문의하세요.
+        현재 일부 지역·업종은 마감 임박 상태입니다. 자리가 남아있을 때 먼저 문의하세요.
       </div>
       <div class="client-grid">
         <div class="client-card">
