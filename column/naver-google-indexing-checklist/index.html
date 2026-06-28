@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>구글·네이버에 칼럼을 노출시키는 기본 세팅 | 아비컴퍼니 칼럼</title>
+  <meta name="description" content="칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 방법입니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aubcompany.com/column/naver-google-indexing-checklist/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aubcompany.com/column/naver-google-indexing-checklist/" />
+  <meta property="og:title" content="구글·네이버에 칼럼을 노출시키는 기본 세팅" />
+  <meta property="og:description" content="칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 방법입니다." />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"구글·네이버에 칼럼을 노출시키는 기본 세팅","description":"칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 방법입니다.","author":{"@type":"Organization","name":"아비컴퍼니"},"publisher":{"@type":"Organization","name":"아비컴퍼니","url":"https://aubcompany.com"},"datePublished":"2026-06-01","dateModified":"2026-06-01","mainEntityOfPage":{"@type":"WebPage","@id":"https://aubcompany.com/column/naver-google-indexing-checklist/"},"keywords":"robots.txt, sitemap.xml, 구글 서치콘솔, 네이버 서치어드바이저, 검색엔진 수집"}</script>
+  <style>
+    body{margin:0;font-family:Arial,'Noto Sans KR',sans-serif;color:#0D1117;line-height:1.85;background:#fff}
+    .wrap{max-width:820px;margin:0 auto;padding:48px 22px 80px}
+    a{color:#0047CC;text-decoration:none;font-weight:700}
+    .brand{display:inline-flex;margin-bottom:34px;color:#0047CC}
+    .tag{display:inline-block;margin-bottom:18px;padding:6px 12px;border-radius:999px;background:#E8F0FE;color:#0047CC;font-size:12px;font-weight:800}
+    h1{font-size:clamp(28px,5vw,44px);line-height:1.3;letter-spacing:-.8px;margin:0 0 16px}
+    .desc{font-size:17px;color:#5A6577;margin:0 0 24px}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #e8ecf2;border-bottom:1px solid #e8ecf2;color:#7a8594;font-size:13px}
+    article{padding-top:32px}
+    p{font-size:17px;margin:0 0 22px}
+    .cta{margin-top:44px;padding:28px;border-radius:18px;background:#050E20;color:#fff}
+    .cta p{font-size:15px;color:rgba(255,255,255,.78)}
+    .cta a{display:inline-flex;margin-top:4px;padding:12px 18px;border-radius:10px;background:#FEE500;color:#191919}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="brand" href="../../">← 아비컴퍼니 홈</a>
+    <span class="tag">SEO 체크리스트</span>
+    <h1>구글·네이버에 칼럼을 노출시키는 기본 세팅</h1>
+    <p class="desc">칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 방법입니다.</p>
+    <div class="meta">
+      <span>작성자 아비컴퍼니</span>
+      <span>발행일 2026-06-01</span>
+      <span>수정일 2026-06-01</span>
+    </div>
+    <article>
+      <p>칼럼을 작성했다고 해서 바로 구글과 네이버에 노출되는 것은 아닙니다. 검색엔진이 페이지를 발견하고, 읽고, 색인할 수 있는 기술적 조건이 필요합니다.</p>
+      <p>먼저 robots.txt에서 검색 로봇 접근을 허용하고 sitemap.xml 위치를 알려야 합니다. 현재 사이트처럼 User-agent 전체 허용과 Sitemap 경로를 넣는 방식이 기본입니다.</p>
+      <p>다음으로 sitemap.xml에 칼럼 상세 URL을 추가해야 합니다. 검색엔진은 사이트맵을 참고해 어떤 페이지가 중요한지, 언제 수정되었는지 파악합니다.</p>
+      <p>각 칼럼에는 title, description, canonical, Open Graph 태그가 필요합니다. 중복 URL이 생기지 않도록 대표 주소를 명확히 지정해야 합니다.</p>
+      <p>마지막으로 Article 또는 BlogPosting 구조화 데이터를 넣으면 검색엔진이 글의 제목, 작성자, 발행일, 수정일을 더 잘 이해할 수 있습니다.</p>
+      <p>네이버는 서치어드바이저 수집 요청 API를 통해 새 URL 제출 자동화가 가능합니다. 구글은 Search Console에 사이트맵을 제출하고 색인 상태를 확인하는 흐름을 권장합니다.</p>
+    </article>
+    <section class="cta">
+      <h2>우리 업종에도 검색 노출형 칼럼이 필요하다면</h2>
+      <p>아비컴퍼니가 홈페이지, 칼럼 구조, 사이트맵, 광고 운영까지 함께 진단해드립니다.</p>
+      <a href="https://open.kakao.com/o/s96tWi4f" target="_blank" rel="noopener">무료 상담 신청</a>
+    </section>
+  </main>
+</body>
+</html>
