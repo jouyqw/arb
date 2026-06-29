@@ -15,8 +15,30 @@ const esc = (value = '') => String(value)
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#39;');
 
+const renderInline = (value = '') => esc(value)
+  .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+  .replace(/__(.+?)__/g, '<u>$1</u>');
+
 const renderBlock = (block) => {
-  if (typeof block === 'string') return `<p>${esc(block)}</p>`;
+  if (typeof block === 'string') return `<p>${renderInline(block)}</p>`;
+
+  if (block?.type === 'heading') {
+    return `<h2>${renderInline(block.text)}</h2>`;
+  }
+
+  if (block?.type === 'summary') {
+    return `<section class="summary-box">
+        <strong>${esc(block.title || '핵심 요약')}</strong>
+        <ul>${block.items.map((item) => `<li>${renderInline(item)}</li>`).join('')}</ul>
+      </section>`;
+  }
+
+  if (block?.type === 'image') {
+    return `<figure class="hero-figure">
+        <img src="${esc(block.src)}" alt="${esc(block.alt || '')}" loading="lazy" />
+        ${block.caption ? `<figcaption>${renderInline(block.caption)}</figcaption>` : ''}
+      </figure>`;
+  }
 
   if (block?.type === 'table') {
     return `<div class="table-wrap">
@@ -32,7 +54,7 @@ const renderBlock = (block) => {
   }
 
   if (block?.type === 'list') {
-    return `<ul>${block.items.map((item) => `<li>${esc(item)}</li>`).join('')}</ul>`;
+    return `<ul>${block.items.map((item) => `<li>${renderInline(item)}</li>`).join('')}</ul>`;
   }
 
   return '';
@@ -52,6 +74,7 @@ const articleTemplate = (post) => {
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     keywords: post.keywords.join(', ')
   };
+  if (post.image) schema.image = `${siteUrl}${post.image}`;
 
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -66,6 +89,7 @@ const articleTemplate = (post) => {
   <meta property="og:url" content="${url}" />
   <meta property="og:title" content="${esc(post.title)}" />
   <meta property="og:description" content="${esc(post.description)}" />
+  ${post.image ? `<meta property="og:image" content="${siteUrl}${esc(post.image)}" />` : ''}
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
   <style>
     *{box-sizing:border-box}
@@ -80,8 +104,17 @@ const articleTemplate = (post) => {
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
     p{font-size:17px;margin:0 0 22px}
+    strong{font-weight:900;color:#0B55D9}
+    u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     ul{margin:0 0 24px;padding-left:20px}
     li{font-size:17px;margin:0 0 9px}
+    .hero-figure{margin:30px 0 34px;border-radius:18px;overflow:hidden;border:1px solid #EAECF0;box-shadow:0 16px 38px rgba(16,24,40,.1);background:#F7F9FC}
+    .hero-figure img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+    .hero-figure figcaption{padding:12px 16px;color:#667085;font-size:13px;background:#fff}
+    .summary-box{margin:28px 0 34px;padding:22px 24px;border:1px solid #D8E5FF;border-radius:16px;background:#F3F7FF}
+    .summary-box strong{display:block;margin-bottom:10px;color:#0B55D9;font-size:16px}
+    .summary-box ul{margin:0;padding-left:20px}
+    .summary-box li{font-size:15px;margin-bottom:6px;color:#344054}
     .table-wrap{overflow-x:auto;margin:30px 0;border:1px solid #EAECF0;border-radius:14px;box-shadow:0 12px 30px rgba(16,24,40,.06)}
     table{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
     th{background:#F3F7FF;color:#0B55D9;text-align:left;font-size:14px;font-weight:900;padding:15px 16px;border-bottom:1px solid #D8E5FF}
