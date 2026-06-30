@@ -25,11 +25,13 @@ const topics = [
   ['광고 후 홈페이지 점검', '광고비를 쓰기 전 홈페이지의 문의 버튼, 모바일 속도, 신뢰 문구를 먼저 점검해야 합니다.', '광고 전환'],
   ['지역 서비스업 문의 전환', '지역 서비스업은 가까운 위치와 실제 해결 사례를 함께 보여줄 때 문의 가능성이 높아집니다.', '지역 마케팅']
 ];
+const angles = ['신뢰 구조', '검색 노출', '문의 전환'];
+const phases = ['기본편', '운영편', '점검편'];
 
 const slugify = (text, slot) => `scheduled-${slot + 1}-${publishDate}-${text.toLowerCase().replaceAll(' ', '-').replace(/[^a-z0-9가-힣-]/g, '')}`;
 
 const buildPost = ([topic, description, category], slot) => {
-  const title = `${topic}, 홈페이지에서 어떻게 보여줘야 할까요?`;
+  const title = `${topic} ${phases[Math.floor(dayIndex / topics.length)] || '실무편'} ${angles[slot]}, 홈페이지에서 어떻게 보여줘야 할까요?`;
   const slug = slugify(topic, slot);
   return {
     slug,
@@ -74,7 +76,7 @@ const buildPost = ([topic, description, category], slot) => {
 
 let created = 0;
 for (let slot = 0; slot < 3; slot += 1) {
-  const topic = topics[(dayIndex * 3 + slot) % topics.length];
+  const topic = topics[dayIndex % topics.length];
   const post = buildPost(topic, slot);
   if (columns.some((item) => item.slug === post.slug)) continue;
   columns.unshift(post);
