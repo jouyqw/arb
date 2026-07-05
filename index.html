@@ -511,6 +511,9 @@
     .sec { padding: 6rem 2rem; }
     .sec.alt { background: var(--bg-alt); }
     .sec-inner { max-width: 720px; margin: 0 auto; }
+    #services .sec-inner,
+    #reviews .sec-inner,
+    #contact .contact-inner { max-width: 1040px; }
 
     .sec-eyebrow {
       display: inline-flex;
@@ -556,7 +559,7 @@
     }
 
     /* ─── USP Cards ─── */
-    .usp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .usp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
     @media (max-width: 900px) { .usp-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 500px) { .usp-grid { grid-template-columns: 1fr; } }
 
@@ -588,8 +591,8 @@
       margin-bottom: .75rem;
       font-weight: 700;
     }
-    .usp-card h3 { font-size: 16px; font-weight: 700; margin-bottom: .65rem; letter-spacing: -.2px; }
-    .usp-card p  { font-size: 13.5px; color: var(--text-sub); line-height: 1.8; }
+    .usp-card h3 { font-size: 17px; font-weight: 800; margin-bottom: .7rem; letter-spacing: 0; word-break: keep-all; }
+    .usp-card p  { font-size: 14px; color: var(--text-sub); line-height: 1.75; word-break: keep-all; overflow-wrap: break-word; }
     .usp-pill {
       display: inline-block;
       background: var(--blue-light);
@@ -814,10 +817,17 @@
     .proc-item p  { font-size: 13.5px; color: var(--text-sub); line-height: 1.8; }
 
     /* ─── 의뢰인 후기 (NEW) ─── */
+    .reviews-slider { position: relative; }
     .reviews-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(320px, 1fr);
       gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 4px 2px 18px;
+      scrollbar-width: thin;
     }
     .review-card {
       background: var(--bg);
@@ -826,6 +836,7 @@
       padding: 2rem;
       position: relative;
       transition: box-shadow .2s, transform .2s;
+      scroll-snap-align: start;
     }
     .review-card:hover { box-shadow: 0 10px 40px rgba(0,0,0,.09); transform: translateY(-3px); }
     .review-quote {
@@ -869,6 +880,29 @@
       background: var(--blue-light);
       padding: 3px 10px;
       border-radius: 999px;
+    }
+    .review-controls { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 12px; }
+    .review-nav {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .review-nav:hover { border-color: var(--blue); box-shadow: var(--card-shadow); transform: translateY(-1px); }
+    @media (min-width: 901px) { .reviews-grid { grid-auto-columns: calc((100% - 32px) / 3); } }
+    @media (max-width: 900px) { .reviews-grid { grid-auto-columns: calc((100% - 16px) / 2); } }
+    @media (max-width: 600px) {
+      .reviews-grid { grid-auto-columns: 88%; }
+      .review-card { padding: 1.5rem; }
+      .review-controls { justify-content: flex-start; }
     }
 
     /* ─── CTA ─── */
@@ -960,11 +994,11 @@
 
     /* ─── 연락처 ─── */
     .contact-section { padding: 5rem 2rem; background: var(--bg-alt); }
-    .contact-inner   { max-width: 720px; margin: 0 auto; }
+    .contact-inner   { max-width: 1040px; margin: 0 auto; }
     .contact-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 700; letter-spacing: -.5px; margin-bottom: .75rem; }
     .contact-desc  { font-size: 15px; color: var(--text-sub); margin-bottom: 2.5rem; line-height: 1.7; }
     .contact-grid  { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    @media (max-width: 900px) { .contact-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
     .contact-card {
       background: var(--bg);
@@ -988,7 +1022,11 @@
       margin-bottom: .5rem;
     }
     .c-label { font-size: 12px; color: var(--text-sub); font-weight: 500; }
-    .c-value { font-size: 14.5px; font-weight: 700; color: var(--text); letter-spacing: -.2px; word-break: break-word; overflow-wrap: anywhere; }
+    .c-value { font-size: 14.5px; font-weight: 700; color: var(--text); letter-spacing: 0; word-break: keep-all; overflow-wrap: normal; }
+    .contact-card[href^="mailto:"] .c-value { font-size: 14px; white-space: nowrap; }
+    @media (max-width: 600px) {
+      .contact-card[href^="mailto:"] .c-value { white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
+    }
     .c-desc  { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
 
     /* ─── Footer ─── */
@@ -1517,7 +1555,12 @@
         아비컴퍼니와 함께한 파트너들이 직접 전합니다.
       </div>
 
-      <div class="reviews-grid">
+      <div class="reviews-slider">
+        <div class="review-controls" aria-label="의뢰인 후기 슬라이드 이동">
+          <button class="review-nav" type="button" data-review-dir="-1" aria-label="이전 후기"><i class="ti ti-chevron-left"></i></button>
+          <button class="review-nav" type="button" data-review-dir="1" aria-label="다음 후기"><i class="ti ti-chevron-right"></i></button>
+        </div>
+        <div class="reviews-grid" id="reviewTrack">
         <div class="review-card">
           <div class="review-badge">법무법인</div>
           <div class="review-quote">"</div>
@@ -1575,6 +1618,159 @@
               <div class="review-role">세무법인 대표 세무사</div>
             </div>
           </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-badge">한의원</div>
+          <div class="review-quote">"</div>
+          <div class="review-stars">
+            <i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i>
+          </div>
+          <p class="review-text">
+            기존에는 블로그 글을 올려도 문의로 이어지지 않았습니다.
+            지역명과 증상 키워드를 다시 잡고 홈페이지 상담 버튼까지 정리하니 신규 예약이 꾸준히 들어옵니다.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:linear-gradient(135deg,#0F6E56,#00C6A7)">최</div>
+            <div>
+              <div class="review-name">최○○ 원장</div>
+              <div class="review-role">전주 한의원 대표원장</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-badge">형사 전문</div>
+          <div class="review-quote">"</div>
+          <div class="review-stars">
+            <i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i>
+          </div>
+          <p class="review-text">
+            사건 분야별 칼럼을 나누고 상담 동선을 단순하게 바꾼 뒤 전화 문의 질이 좋아졌습니다.
+            단순 클릭보다 실제 상담 가능성이 높은 유입이 늘어난 점이 가장 만족스럽습니다.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:linear-gradient(135deg,#0047CC,#4F46E5)">정</div>
+            <div>
+              <div class="review-name">정○○ 변호사</div>
+              <div class="review-role">형사 전문 법률사무소</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-badge">성형외과</div>
+          <div class="review-quote">"</div>
+          <div class="review-stars">
+            <i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i>
+          </div>
+          <p class="review-text">
+            광고 소재만 바꾸던 방식에서 벗어나 시술별 랜딩페이지를 함께 손봤습니다.
+            모바일에서 바로 상담으로 이어지는 구조가 생기니 광고비 대비 예약 효율이 좋아졌습니다.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:linear-gradient(135deg,#BE185D,#F472B6)">한</div>
+            <div>
+              <div class="review-name">한○○ 실장</div>
+              <div class="review-role">성형외과 마케팅 담당</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-badge">세무사</div>
+          <div class="review-quote">"</div>
+          <div class="review-stars">
+            <i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i>
+          </div>
+          <p class="review-text">
+            기장, 신고, 절세 상담을 한 페이지에 섞어두던 구조를 분리했습니다.
+            고객이 원하는 서비스를 바로 찾게 되니 상담 전에 설명해야 하는 시간이 줄었습니다.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:linear-gradient(135deg,#854F0B,#D97706)">윤</div>
+            <div>
+              <div class="review-name">윤○○ 세무사</div>
+              <div class="review-role">개인 세무사무소 대표</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-badge">이혼 전문</div>
+          <div class="review-quote">"</div>
+          <div class="review-stars">
+            <i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i>
+          </div>
+          <p class="review-text">
+            검색자가 실제로 묻는 질문을 칼럼으로 만들자는 제안이 좋았습니다.
+            광고를 잠시 줄였을 때도 칼럼에서 들어오는 상담이 남아 있어 안정감이 생겼습니다.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:linear-gradient(135deg,#1D4ED8,#38BDF8)">송</div>
+            <div>
+              <div class="review-name">송○○ 변호사</div>
+              <div class="review-role">이혼 전문 법무법인</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-badge">치과</div>
+          <div class="review-quote">"</div>
+          <div class="review-stars">
+            <i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i>
+          </div>
+          <p class="review-text">
+            임플란트와 교정 문의가 섞여 관리가 어려웠는데, 키워드와 페이지를 나누니 상담 분류가 쉬워졌습니다.
+            지역 검색에서도 병원명이 더 자주 보이기 시작했습니다.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:linear-gradient(135deg,#047857,#34D399)">오</div>
+            <div>
+              <div class="review-name">오○○ 원장</div>
+              <div class="review-role">지역 치과의원 원장</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-badge">노무법인</div>
+          <div class="review-quote">"</div>
+          <div class="review-stars">
+            <i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i>
+          </div>
+          <p class="review-text">
+            산재와 부당해고처럼 분야별로 고객 고민이 다른데, 그 차이를 홈페이지에 잘 풀어줬습니다.
+            검색 유입뿐 아니라 상담 전 이해도가 높아져 응대가 훨씬 편해졌습니다.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:linear-gradient(135deg,#334155,#64748B)">임</div>
+            <div>
+              <div class="review-name">임○○ 노무사</div>
+              <div class="review-role">노무법인 대표노무사</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-badge">법무법인</div>
+          <div class="review-quote">"</div>
+          <div class="review-stars">
+            <i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i>
+          </div>
+          <p class="review-text">
+            홈페이지가 예쁘기만 하고 문의가 없던 상태였습니다.
+            첫 화면 문구와 상담 버튼 위치를 바꾸고 칼럼 링크를 연결하니 실제 문의로 이어지는 흐름이 생겼습니다.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:linear-gradient(135deg,#0C447C,#2979FF)">강</div>
+            <div>
+              <div class="review-name">강○○ 변호사</div>
+              <div class="review-role">민사 전문 법무법인</div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -1817,6 +2013,21 @@
         });
       }, { threshold: 0.5 });
       els.forEach(el => ob.observe(el));
+    })();
+
+    // 후기 슬라이드
+    (function() {
+      const track = document.getElementById('reviewTrack');
+      if (!track) return;
+
+      document.querySelectorAll('[data-review-dir]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const dir = Number(btn.dataset.reviewDir || 1);
+          const card = track.querySelector('.review-card');
+          const step = card ? card.getBoundingClientRect().width + 16 : 340;
+          track.scrollBy({ left: dir * step, behavior: 'smooth' });
+        });
+      });
     })();
 
     // 모바일 메뉴
