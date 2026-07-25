@@ -162,7 +162,7 @@
     .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);padding-top:50px;padding-bottom:50px;gap:24px}
     .stat{position:relative;padding-left:22px}
     .stat::before{content:"";position:absolute;left:0;top:6px;bottom:8px;width:3px;border-radius:3px;background:var(--grad)}
-    .stat b{display:block;font-size:clamp(32px,3.8vw,46px);font-weight:900;letter-spacing:-.03em;color:var(--ink);line-height:1.12}
+    .stat b i{font-style:normal}.stat b{display:block;font-size:clamp(32px,3.8vw,46px);font-weight:900;letter-spacing:-.03em;color:var(--ink);line-height:1.12}
     .stat b span{font-size:.5em;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-left:2px}
     .stat p{margin-top:7px;font-size:13.5px;color:var(--muted)}
 
@@ -396,6 +396,25 @@
       .stat b{font-size:34px}
       .stat p{font-size:14px}
     }
+
+    /* ---------- motion ---------- */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.2,.6,.2,1),transform .6s cubic-bezier(.2,.6,.2,1)}
+    .reveal.in{opacity:1;transform:none}
+    .hero::after{animation:orb 14s ease-in-out infinite alternate}
+    @keyframes orb{from{transform:translate(0,0)}to{transform:translate(-46px,34px)}}
+    .ai-demo .ai-q,.ai-demo .ai-a{opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease}
+    .ai-demo .ai-q.show,.ai-demo .ai-a.show{opacity:1;transform:none}
+    .ai-typing{display:inline-flex;gap:5px;padding:6px 2px 0}
+    .ai-typing i{width:6px;height:6px;border-radius:50%;background:#7A93BC;animation:tdot 1s infinite}
+    .ai-typing i:nth-child(2){animation-delay:.15s}
+    .ai-typing i:nth-child(3){animation-delay:.3s}
+    @keyframes tdot{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1;transform:none;transition:none}
+      .hero::after{animation:none}
+      .ticker-track{animation:none}
+      .ai-demo .ai-q,.ai-demo .ai-a{opacity:1;transform:none}
+    }
   </style>
 </head>
 <body>
@@ -457,10 +476,10 @@
   <!-- STATS -->
   <div class="stats">
     <div class="wrap">
-      <div class="stat"><b>22<span>개</span></b><p>파트너 전문직 법인</p></div>
-      <div class="stat"><b>0<span>원</span></b><p>대행 수수료</p></div>
-      <div class="stat"><b>100<span>%</span></b><p>광고비 전액 직접 집행</p></div>
-      <div class="stat"><b>12<span>개+</span></b><p>채널 동시 운영</p></div>
+      <div class="stat"><b><i data-n="22">22</i><span>개</span></b><p>파트너 전문직 법인</p></div>
+      <div class="stat"><b><i data-n="0">0</i><span>원</span></b><p>대행 수수료</p></div>
+      <div class="stat"><b><i data-n="100">100</i><span>%</span></b><p>광고비 전액 직접 집행</p></div>
+      <div class="stat"><b><i data-n="12">12</i><span>개+</span></b><p>채널 동시 운영</p></div>
     </div>
   </div>
 
@@ -762,6 +781,78 @@
 
 <script>
 function mclose(){document.getElementById('mnav').classList.remove('open')}
+(function(){
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 스크롤 등장 */
+  var targets = document.querySelectorAll('.why,.svc,.ch,.web,.pt,.rv,.step,.colcard,.ct,.faq-list details,.sec-label,h2,.sec-desc,.svc-note,.philo blockquote,.philo-body,.geo-point,.ai-demo');
+  targets.forEach(function(el){ el.classList.add('reveal'); });
+  if(reduced){ targets.forEach(function(el){ el.classList.add('in'); }); }
+  else{
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          var el = e.target, sib = el.parentElement ? [].slice.call(el.parentElement.children).filter(function(c){return c.classList.contains('reveal')}) : [];
+          var idx = Math.max(0, sib.indexOf(el));
+          el.style.transitionDelay = Math.min(idx * 70, 350) + 'ms';
+          el.classList.add('in');
+          io.unobserve(el);
+        }
+      });
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(el){ io.observe(el); });
+  }
+
+  /* 숫자 카운트업 */
+  var counted = false;
+  function countUp(){
+    if(counted) return; counted = true;
+    document.querySelectorAll('.stat i[data-n]').forEach(function(el){
+      var end = parseInt(el.getAttribute('data-n'),10), t0 = null;
+      if(reduced || end === 0){ el.textContent = end; return; }
+      function frame(t){
+        if(!t0) t0 = t;
+        var p = Math.min((t - t0)/1100, 1);
+        el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+        if(p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
+  }
+  var statEl = document.querySelector('.stats');
+  if(statEl){
+    new IntersectionObserver(function(es,o){ es.forEach(function(e){ if(e.isIntersecting){ countUp(); o.disconnect(); } }); },{threshold:.4}).observe(statEl);
+  }
+
+  /* AI 검색 시뮬레이션: 채팅처럼 순차 재생 (시그니처) */
+  var demo = document.querySelector('.ai-demo');
+  if(demo && !reduced){
+    var items = [].slice.call(demo.querySelectorAll('.ai-q, .ai-a'));
+    var typing = document.createElement('span');
+    typing.className = 'ai-typing';
+    typing.innerHTML = '<i></i><i></i><i></i>';
+    function play(){
+      items.forEach(function(el){ el.classList.remove('show'); });
+      var k = 0;
+      (function next(){
+        if(k >= items.length){ setTimeout(play, 5200); return; }
+        var el = items[k];
+        if(el.classList.contains('ai-a')){
+          el.parentNode.insertBefore(typing, el);
+          setTimeout(function(){
+            if(typing.parentNode) typing.parentNode.removeChild(typing);
+            el.classList.add('show'); k++; setTimeout(next, 950);
+          }, 850);
+        } else {
+          el.classList.add('show'); k++; setTimeout(next, 600);
+        }
+      })();
+    }
+    new IntersectionObserver(function(es,o){ es.forEach(function(e){ if(e.isIntersecting){ play(); o.disconnect(); } }); },{threshold:.35}).observe(demo);
+  } else if(demo){
+    [].slice.call(demo.querySelectorAll('.ai-q, .ai-a')).forEach(function(el){ el.classList.add('show'); });
+  }
+})();
 </script>
 </body>
 </html>
