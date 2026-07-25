@@ -1,8 +1,10 @@
 name: Scheduled publish
 
 on:
-  schedule:
-    - cron: "0 19 * * *"
+  # 자동 스케줄 비활성화: 동일 본문이 반복 생성되는 문제로 껐습니다.
+  # 매일 칼럼 발행은 Claude(클라우드 예약 세션)가 서로 다른 주제로 담당합니다.
+  # schedule:
+  #   - cron: "0 19 * * *"
   workflow_dispatch:
 
 permissions:

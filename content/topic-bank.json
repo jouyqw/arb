@@ -1,0 +1,26 @@
+{
+  "note": "아비컴퍼니 일일 발행 주제 후보입니다. data/columns.json에 이미 있는 slug는 건너뛰고 새 주제를 씁니다. 타깃 키워드: 전문직마케팅, 홈페이지제작, 병원마케팅, 법무법인마케팅, GEO/AI 검색. 매일 서로 다른 카테고리 3개를 섞으세요.",
+  "categories": ["전문직 마케팅", "홈페이지 제작·전환", "SEO·상위노출", "AI 검색(GEO)", "업종별 마케팅"],
+  "topics": [
+    { "slug": "professional-marketing-agency-selection", "category": "전문직 마케팅", "title": "전문직 마케팅 대행사 고르는 기준" },
+    { "slug": "hospital-marketing-medical-law-guide", "category": "전문직 마케팅", "title": "병원 마케팅과 의료광고법 준수" },
+    { "slug": "law-firm-marketing-compliance", "category": "전문직 마케팅", "title": "법무법인 마케팅과 변호사법 광고 규정" },
+    { "slug": "tax-accountant-marketing-guide", "category": "전문직 마케팅", "title": "세무사 마케팅 시작 가이드" },
+    { "slug": "professional-branding-trust-signals", "category": "전문직 마케팅", "title": "전문직 신뢰 브랜딩 요소" },
+    { "slug": "homepage-cost-breakdown-guide", "category": "홈페이지 제작·전환", "title": "홈페이지 제작 비용 구조 이해하기" },
+    { "slug": "homepage-mobile-first-checklist", "category": "홈페이지 제작·전환", "title": "모바일 우선 홈페이지 체크리스트" },
+    { "slug": "landing-page-inquiry-conversion", "category": "홈페이지 제작·전환", "title": "문의 전환율 높이는 랜딩 구조" },
+    { "slug": "homepage-renewal-timing-signs", "category": "홈페이지 제작·전환", "title": "홈페이지 리뉴얼이 필요한 신호" },
+    { "slug": "naver-place-ranking-factors", "category": "SEO·상위노출", "title": "네이버 플레이스 상위노출 요인" },
+    { "slug": "naver-blog-vs-homepage-seo", "category": "SEO·상위노출", "title": "네이버 블로그와 홈페이지 SEO 역할 분담" },
+    { "slug": "google-seo-basics-korean-business", "category": "SEO·상위노출", "title": "한국 사업자를 위한 구글 SEO 기본" },
+    { "slug": "keyword-research-local-business", "category": "SEO·상위노출", "title": "지역 업체 키워드 조사 방법" },
+    { "slug": "geo-ai-search-optimization-guide", "category": "AI 검색(GEO)", "title": "GEO(AI 검색 최적화) 실전 가이드" },
+    { "slug": "ai-citation-content-structure", "category": "AI 검색(GEO)", "title": "AI가 인용하는 콘텐츠 구조" },
+    { "slug": "llms-txt-schema-for-business", "category": "AI 검색(GEO)", "title": "llms.txt와 구조화 데이터 적용법" },
+    { "slug": "dental-clinic-local-marketing", "category": "업종별 마케팅", "title": "치과 지역 마케팅 전략" },
+    { "slug": "academy-marketing-parent-trust", "category": "업종별 마케팅", "title": "학원 마케팅과 학부모 신뢰" },
+    { "slug": "restaurant-naver-marketing", "category": "업종별 마케팅", "title": "음식점 네이버 마케팅" },
+    { "slug": "beauty-clinic-content-marketing", "category": "업종별 마케팅", "title": "피부과·성형외과 콘텐츠 마케팅" }
+  ]
+}

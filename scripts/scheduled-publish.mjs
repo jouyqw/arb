@@ -1,5 +1,11 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 
+// [비활성화] 동일 본문이 반복 생성되는 템플릿 발행은 중단했습니다.
+// 매일 칼럼은 Claude 예약 세션이 data/columns.json에 서로 다른 주제로 추가합니다.
+console.log('Template scheduled publishing is disabled. Columns are now authored daily via the Claude cloud session.');
+process.exit(0);
+
+
 const startDate = '2026-07-01';
 const kstNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
 const publishDate = process.env.PUBLISH_DATE || kstNow.toISOString().slice(0, 10);
