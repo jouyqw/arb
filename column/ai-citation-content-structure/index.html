@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI가 인용하는 콘텐츠는 어떤 구조로 써야 할까요? | 아비컴퍼니 칼럼</title>
+  <meta name="description" content="AI 검색(GEO)에서 인용되는 콘텐츠는 질문에 먼저 답하고 근거를 정리한 구조를 갖습니다. 실무에서 적용하는 글쓰기 방식을 정리했습니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aubcompany.com/column/ai-citation-content-structure/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aubcompany.com/column/ai-citation-content-structure/" />
+  <meta property="og:title" content="AI가 인용하는 콘텐츠는 어떤 구조로 써야 할까요?" />
+  <meta property="og:description" content="AI 검색(GEO)에서 인용되는 콘텐츠는 질문에 먼저 답하고 근거를 정리한 구조를 갖습니다. 실무에서 적용하는 글쓰기 방식을 정리했습니다." />
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI가 인용하는 콘텐츠는 어떤 구조로 써야 할까요?","description":"AI 검색(GEO)에서 인용되는 콘텐츠는 질문에 먼저 답하고 근거를 정리한 구조를 갖습니다. 실무에서 적용하는 글쓰기 방식을 정리했습니다.","author":{"@type":"Organization","name":"아비컴퍼니"},"publisher":{"@type":"Organization","name":"아비컴퍼니","url":"https://aubcompany.com"},"datePublished":"2026-07-27","dateModified":"2026-07-27","mainEntityOfPage":{"@type":"WebPage","@id":"https://aubcompany.com/column/ai-citation-content-structure/"},"keywords":"GEO, AI 검색, 전문직마케팅, 콘텐츠 구조"}</script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,'Noto Sans KR',sans-serif;color:#101828;line-height:1.85;background:#fff}
+    .wrap{max-width:860px;margin:0 auto;padding:52px 22px 86px}
+    a{color:#0B55D9;text-decoration:none;font-weight:800}
+    .brand{display:inline-flex;margin-bottom:34px;color:#0B55D9}
+    .tag{display:inline-block;margin-bottom:18px;padding:7px 13px;border-radius:999px;background:#EEF4FF;color:#0B55D9;font-size:12px;font-weight:900}
+    h1{font-size:clamp(29px,5vw,46px);line-height:1.28;letter-spacing:-.4px;margin:0 0 16px}
+    h2{font-size:24px;line-height:1.35;margin:0 0 12px}
+    .desc{font-size:17px;color:#667085;margin:0 0 24px}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
+    article{padding-top:34px}
+    p{font-size:17px;margin:0 0 22px}
+    strong{font-weight:900;color:#0B55D9}
+    u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
+    ul{margin:0 0 24px;padding-left:20px}
+    li{font-size:17px;margin:0 0 9px}
+    .hero-figure{margin:30px 0 34px;border-radius:18px;overflow:hidden;border:1px solid #EAECF0;box-shadow:0 16px 38px rgba(16,24,40,.1);background:#F7F9FC}
+    .hero-figure img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+    .hero-figure figcaption{padding:12px 16px;color:#667085;font-size:13px;background:#fff}
+    .summary-box{margin:28px 0 34px;padding:22px 24px;border:1px solid #D8E5FF;border-radius:16px;background:#F3F7FF}
+    .summary-box strong{display:block;margin-bottom:10px;color:#0B55D9;font-size:16px}
+    .summary-box ul{margin:0;padding-left:20px}
+    .summary-box li{font-size:15px;margin-bottom:6px;color:#344054}
+    .table-wrap{overflow-x:auto;margin:30px 0;border:1px solid #EAECF0;border-radius:14px;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    table{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
+    th{background:#F3F7FF;color:#0B55D9;text-align:left;font-size:14px;font-weight:900;padding:15px 16px;border-bottom:1px solid #D8E5FF}
+    td{padding:16px;border-bottom:1px solid #EAECF0;color:#344054;font-size:15px;vertical-align:top}
+    tr:last-child td{border-bottom:0}
+    .infographic{margin:30px 0;border:1px solid #EAECF0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    .infographic-h{background:#08111F;color:#fff;padding:15px 22px;font-weight:900;font-size:15px}
+    .ig-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#EAECF0}
+    .ig-item{background:#fff;padding:20px;display:flex;gap:13px;align-items:flex-start}
+    .ig-ic{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:#EEF4FF;border:1px solid #D8E5FF;display:flex;align-items:center;justify-content:center;color:#0B55D9}
+    .ig-item b{display:block;color:#101828;font-size:15px;margin-bottom:4px}
+    .ig-item .t{font-size:13.5px;color:#4b5563;line-height:1.6;display:block}
+    .figure-note{color:#8A95A3;font-size:12.5px;margin:-18px 0 26px;text-align:center}
+    .callout-box,.warning-box{border-radius:14px;padding:20px 22px;margin:26px 0}
+    .callout-box{background:#F3F7FF;border:1px solid #D8E5FF}
+    .warning-box{background:#FFF4F1;border:1px solid #F6CFC5}
+    .callout-box .label,.warning-box .label{display:inline-block;font-size:12px;font-weight:900;color:#0B55D9;margin-bottom:7px}
+    .warning-box .label{color:#B42318}
+    .callout-box p,.warning-box p{margin:0;font-size:15.5px}
+    .cta{margin-top:46px;padding:30px;border-radius:16px;background:#08111F;color:#fff}
+    .cta h2{color:#fff}
+    .cta p{font-size:15px;color:rgba(255,255,255,.78)}
+    .cta-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .cta a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border-radius:10px;background:#FEE500;color:#191919}
+    .cta .phone{background:#fff;color:#08111F}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="brand" href="../../">← 아비컴퍼니 홈</a>
+    <span class="tag">AI 검색(GEO)</span>
+    <h1>AI가 인용하는 콘텐츠는 어떤 구조로 써야 할까요?</h1>
+    <p class="desc">AI 검색(GEO)에서 인용되는 콘텐츠는 질문에 먼저 답하고 근거를 정리한 구조를 갖습니다. 실무에서 적용하는 글쓰기 방식을 정리했습니다.</p>
+    <div class="meta">
+      <span>작성자 아비컴퍼니</span>
+      <span>발행일 2026-07-27</span>
+      <span>수정일 2026-07-27</span>
+    </div>
+    <article>
+      <section class="summary-box">
+        <strong>핵심 요약</strong>
+        <ul><li>AI가 인용하는 글은 소제목에서 질문을 던지고, 첫 문장에서 곧바로 답하는 구조를 갖습니다.</li><li>긴 서론보다 결론을 먼저 제시하고 근거를 뒤에 배치하는 편이 인용에 유리합니다.</li><li>표·목록·정의처럼 기계가 이해하기 쉬운 형식이 GEO에서 힘을 발휘합니다.</li></ul>
+      </section>
+      <p>요즘 마케팅 상담에서 가장 많이 받는 질문 중 하나입니다.</p>
+      <p>&quot;AI 검색에 우리 글이 인용되게 하려면 어떻게 써야 하나요?&quot;</p>
+      <p>결론부터 말씀드리면, AI는 <strong>질문에 곧바로 답하는 글</strong>을 좋아합니다.</p>
+      <p>빙빙 돌려 서론을 길게 쓰는 글보다, 답을 먼저 주는 글이 인용되기 쉽습니다.</p>
+      <h2>AI 검색(GEO)은 기존 SEO와 무엇이 다를까요?</h2>
+      <p>기존 검색은 링크 목록을 보여주고, 클릭은 사용자의 몫이었습니다.</p>
+      <p>반면 AI 검색은 여러 글을 읽고 <strong>하나의 답으로 요약</strong>해 제시합니다.</p>
+      <p>그래서 중요한 것은 &#39;순위&#39;보다 &#39;요약에 인용될 만한가&#39;입니다.</p>
+      <p>실제 운영해 보면, 같은 정보라도 구조를 어떻게 짜느냐에 따라 인용 여부가 갈립니다.</p>
+      <div class="infographic"><div class="infographic-h">AI가 인용하기 좋은 글의 조건</div><div class="ig-grid"><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M12 3a9 9 0 100 18 9 9 0 000-18z'/><path d='M9.5 9.5a2.5 2.5 0 013.8-1.6c1 .7 1 2 .2 2.8-.8.7-1.5.9-1.5 2M12 17h.01'/></svg></span><div><b>질문형 소제목</b><span class="t">사람들이 실제로 검색하는 질문을 소제목으로 사용합니다.</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M5 12l4 4 10-10'/></svg></span><div><b>결론 먼저</b><span class="t">첫 문장에서 핵심 답을 제시하고 근거를 뒤에 둡니다.</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M4 6h16M4 12h16M4 18h10'/></svg></span><div><b>구조화된 형식</b><span class="t">표·목록·정의처럼 기계가 파싱하기 쉬운 형식을 씁니다.</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M4 4h16v16H4z'/><path d='M8 8h8M8 12h8M8 16h5'/></svg></span><div><b>근거 명시</b><span class="t">수치와 출처를 함께 밝혀 신뢰할 수 있는 정보로 만듭니다.</span></div></div></div></div><p class="figure-note">▲ GEO를 고려한 콘텐츠 구조</p>
+      <h2>첫 문단은 어떻게 써야 인용될까요?</h2>
+      <p>가장 효과적인 방법은 소제목에서 던진 질문에 <strong>첫 문장으로 답하는 것</strong>입니다.</p>
+      <p>예를 들어 &quot;비용은 얼마인가요?&quot;라는 소제목이라면, 바로 다음 문장에서 대략의 답을 줍니다.</p>
+      <p>그런 다음 왜 그런지, 어떤 경우에 달라지는지를 이어서 설명합니다.</p>
+      <p>AI는 이 첫 문장을 인용 후보로 삼는 경우가 많습니다.</p>
+      <h2>어떤 형식이 AI에게 잘 읽힐까요?</h2>
+      <p>긴 문단보다 표와 목록이 유리합니다.</p>
+      <p>비교, 단계, 조건처럼 정리할 수 있는 내용은 표로 만드는 편이 좋습니다.</p>
+      <p>기계가 구조를 이해하기 쉬워, 요약에 그대로 반영되기 때문입니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>요소</th><th>일반 글</th><th>AI 인용에 유리한 글</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>소제목</td><td>명사형 제목</td><td>실제 검색 질문형</td></tr>
+            <tr><td>첫 문장</td><td>배경 설명</td><td>질문에 대한 직접 답변</td></tr>
+            <tr><td>근거</td><td>본문에 흩어짐</td><td>표·목록으로 구조화</td></tr>
+            <tr><td>신뢰</td><td>주장 위주</td><td>수치·출처 명시</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout-box"><span class="label">실무 팁</span><p>글을 다 쓴 뒤, 각 소제목 아래 첫 문장만 이어 읽어 보세요. 그것만으로 질문들의 답이 되면, AI가 인용하기 좋은 구조입니다.</p></div>
+      <h2>GEO는 무엇부터 시작하면 좋을까요?</h2>
+      <p>거창한 도구보다, <strong>글의 구조를 바꾸는 것</strong>이 먼저입니다.</p>
+      <p>소제목을 질문형으로 바꾸고, 첫 문장에서 답을 주는 습관만 들여도 차이가 납니다.</p>
+      <p>여기에 표와 목록, 명확한 근거를 더하면 전문직마케팅 콘텐츠의 인용 가능성이 높아집니다.</p>
+      <h2>AI 인용이 실제 마케팅에 어떤 도움이 될까요?</h2>
+      <p>AI 검색에 인용되면, 광고비를 들이지 않고도 브랜드가 답변 속에 노출됩니다.</p>
+      <p>사용자가 질문했을 때 우리 콘텐츠가 근거로 언급되면, 그 자체가 신뢰의 신호가 됩니다.</p>
+      <p>특히 전문직처럼 신뢰가 중요한 분야일수록, AI가 인용하는 출처에 이름이 오르는 것은 의미가 큽니다.</p>
+      <p>실제 운영해 보면, 잘 구조화된 칼럼 하나가 여러 질문의 답변에 반복적으로 활용되기도 합니다.</p>
+      <p>결국 GEO는 새로운 광고가 아니라, 정확한 정보를 잘 정리해 두는 일에 가깝습니다.</p>
+      <p>덧붙이자면, AI가 참고하기 쉽도록 용어를 처음 쓸 때 짧게 정의해 주는 것도 좋은 습관입니다.</p>
+      <p>예를 들어 GEO라는 단어를 쓸 때, 괄호로 그 뜻을 함께 밝혀 두면 문맥이 분명해집니다.</p>
+      <p>이런 작은 배려가 쌓이면, 사람에게도 기계에게도 읽기 편한 글이 됩니다.</p>
+      <p>AI 검색은 아직 자리를 잡아가는 중이므로, 지금 구조를 정비해 두면 앞으로의 노출에 유리한 위치를 만들 수 있습니다.</p>
+    </article>
+    <section class="cta">
+      <h2>우리 업종에도 검색 노출형 홈페이지가 필요하다면</h2>
+      <p>아비컴퍼니가 홈페이지 제작, 업종별 칼럼, 검색 노출 구조, 광고 운영까지 함께 진단해드립니다.</p>
+      <div class="cta-actions">
+        <a href="tel:01055010152" class="phone">전화 상담 010-5501-0152</a>
+        <a href="https://open.kakao.com/o/s96tWi4f" target="_blank" rel="noopener">카카오톡 상담</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
