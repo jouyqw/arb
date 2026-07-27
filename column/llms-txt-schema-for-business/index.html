@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>llms.txt와 구조화 데이터, 어떻게 적용할까요? | 아비컴퍼니 칼럼</title>
+  <meta name="description" content="llms.txt와 구조화 데이터는 AI 검색(GEO)이 홈페이지를 정확히 이해하도록 돕는 장치입니다. 사업자 홈페이지에 적용하는 순서를 실무 관점에서 정리했습니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aubcompany.com/column/llms-txt-schema-for-business/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aubcompany.com/column/llms-txt-schema-for-business/" />
+  <meta property="og:title" content="llms.txt와 구조화 데이터, 어떻게 적용할까요?" />
+  <meta property="og:description" content="llms.txt와 구조화 데이터는 AI 검색(GEO)이 홈페이지를 정확히 이해하도록 돕는 장치입니다. 사업자 홈페이지에 적용하는 순서를 실무 관점에서 정리했습니다." />
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"llms.txt와 구조화 데이터, 어떻게 적용할까요?","description":"llms.txt와 구조화 데이터는 AI 검색(GEO)이 홈페이지를 정확히 이해하도록 돕는 장치입니다. 사업자 홈페이지에 적용하는 순서를 실무 관점에서 정리했습니다.","author":{"@type":"Organization","name":"아비컴퍼니"},"publisher":{"@type":"Organization","name":"아비컴퍼니","url":"https://aubcompany.com"},"datePublished":"2026-07-28","dateModified":"2026-07-28","mainEntityOfPage":{"@type":"WebPage","@id":"https://aubcompany.com/column/llms-txt-schema-for-business/"},"keywords":"llms.txt, 구조화 데이터, GEO, AI 검색, 홈페이지제작"}</script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,'Noto Sans KR',sans-serif;color:#101828;line-height:1.85;background:#fff}
+    .wrap{max-width:860px;margin:0 auto;padding:52px 22px 86px}
+    a{color:#0B55D9;text-decoration:none;font-weight:800}
+    .brand{display:inline-flex;margin-bottom:34px;color:#0B55D9}
+    .tag{display:inline-block;margin-bottom:18px;padding:7px 13px;border-radius:999px;background:#EEF4FF;color:#0B55D9;font-size:12px;font-weight:900}
+    h1{font-size:clamp(29px,5vw,46px);line-height:1.28;letter-spacing:-.4px;margin:0 0 16px}
+    h2{font-size:24px;line-height:1.35;margin:0 0 12px}
+    .desc{font-size:17px;color:#667085;margin:0 0 24px}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
+    article{padding-top:34px}
+    p{font-size:17px;margin:0 0 22px}
+    strong{font-weight:900;color:#0B55D9}
+    u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
+    ul{margin:0 0 24px;padding-left:20px}
+    li{font-size:17px;margin:0 0 9px}
+    .hero-figure{margin:30px 0 34px;border-radius:18px;overflow:hidden;border:1px solid #EAECF0;box-shadow:0 16px 38px rgba(16,24,40,.1);background:#F7F9FC}
+    .hero-figure img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+    .hero-figure figcaption{padding:12px 16px;color:#667085;font-size:13px;background:#fff}
+    .summary-box{margin:28px 0 34px;padding:22px 24px;border:1px solid #D8E5FF;border-radius:16px;background:#F3F7FF}
+    .summary-box strong{display:block;margin-bottom:10px;color:#0B55D9;font-size:16px}
+    .summary-box ul{margin:0;padding-left:20px}
+    .summary-box li{font-size:15px;margin-bottom:6px;color:#344054}
+    .table-wrap{overflow-x:auto;margin:30px 0;border:1px solid #EAECF0;border-radius:14px;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    table{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
+    th{background:#F3F7FF;color:#0B55D9;text-align:left;font-size:14px;font-weight:900;padding:15px 16px;border-bottom:1px solid #D8E5FF}
+    td{padding:16px;border-bottom:1px solid #EAECF0;color:#344054;font-size:15px;vertical-align:top}
+    tr:last-child td{border-bottom:0}
+    .infographic{margin:30px 0;border:1px solid #EAECF0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    .infographic-h{background:#08111F;color:#fff;padding:15px 22px;font-weight:900;font-size:15px}
+    .ig-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#EAECF0}
+    .ig-item{background:#fff;padding:20px;display:flex;gap:13px;align-items:flex-start}
+    .ig-ic{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:#EEF4FF;border:1px solid #D8E5FF;display:flex;align-items:center;justify-content:center;color:#0B55D9}
+    .ig-item b{display:block;color:#101828;font-size:15px;margin-bottom:4px}
+    .ig-item .t{font-size:13.5px;color:#4b5563;line-height:1.6;display:block}
+    .figure-note{color:#8A95A3;font-size:12.5px;margin:-18px 0 26px;text-align:center}
+    .callout-box,.warning-box{border-radius:14px;padding:20px 22px;margin:26px 0}
+    .callout-box{background:#F3F7FF;border:1px solid #D8E5FF}
+    .warning-box{background:#FFF4F1;border:1px solid #F6CFC5}
+    .callout-box .label,.warning-box .label{display:inline-block;font-size:12px;font-weight:900;color:#0B55D9;margin-bottom:7px}
+    .warning-box .label{color:#B42318}
+    .callout-box p,.warning-box p{margin:0;font-size:15.5px}
+    .cta{margin-top:46px;padding:30px;border-radius:16px;background:#08111F;color:#fff}
+    .cta h2{color:#fff}
+    .cta p{font-size:15px;color:rgba(255,255,255,.78)}
+    .cta-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .cta a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border-radius:10px;background:#FEE500;color:#191919}
+    .cta .phone{background:#fff;color:#08111F}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="brand" href="../../">← 아비컴퍼니 홈</a>
+    <span class="tag">AI 검색(GEO)</span>
+    <h1>llms.txt와 구조화 데이터, 어떻게 적용할까요?</h1>
+    <p class="desc">llms.txt와 구조화 데이터는 AI 검색(GEO)이 홈페이지를 정확히 이해하도록 돕는 장치입니다. 사업자 홈페이지에 적용하는 순서를 실무 관점에서 정리했습니다.</p>
+    <div class="meta">
+      <span>작성자 아비컴퍼니</span>
+      <span>발행일 2026-07-28</span>
+      <span>수정일 2026-07-28</span>
+    </div>
+    <article>
+      <section class="summary-box">
+        <strong>핵심 요약</strong>
+        <ul><li>llms.txt는 <strong>AI에게 내 홈페이지의 핵심을 안내</strong>하는 간단한 문서입니다.</li><li>구조화 데이터는 <strong>검색과 AI가 내용을 정확히 이해</strong>하도록 돕는 표식입니다.</li><li>둘 다 화려한 기능이 아니라, <strong>정확한 이해를 돕는 기초 정비</strong>에 가깝습니다.</li></ul>
+      </section>
+      <p>llms.txt와 구조화 데이터는, AI 검색이 내 홈페이지를 오해 없이 이해하도록 돕는 장치입니다.</p>
+      <p>어렵게 들리지만, 핵심은 &quot;내 사이트가 무엇을 다루는지 기계가 알기 쉽게 정리한다&quot;는 데 있습니다.</p>
+      <p>실제 프로젝트를 운영해 보면, 같은 내용이라도 이런 정비가 되어 있는 사이트를 AI가 더 정확히 인용합니다.</p>
+      <p>GEO에서 콘텐츠 자체가 본문이라면, 이 두 가지는 그 본문에 붙이는 안내표에 가깝습니다.</p>
+      <h2>llms.txt는 무엇이고 왜 필요할까요?</h2>
+      <p>llms.txt는 홈페이지 최상위에 두는 간단한 텍스트 문서로, AI에게 이 사이트의 핵심과 중요한 페이지를 안내하는 역할을 합니다.</p>
+      <p>사람이 보는 화면과 달리, AI가 사이트 구조를 빠르게 파악하도록 요점을 정리해 주는 셈입니다.</p>
+      <p>아직 모든 AI가 이 파일을 똑같이 활용하는 것은 아니지만, 준비해 두면 손해 볼 것은 없는 기초 정비입니다.</p>
+      <p>무엇을 다루는 사이트인지, 어떤 페이지가 중요한지를 간결하게 적는 것에서 출발합니다.</p>
+      <h2>구조화 데이터는 어떤 역할을 할까요?</h2>
+      <p>구조화 데이터는 페이지 내용에 &quot;이건 회사 정보, 이건 자주 묻는 질문&quot;처럼 의미를 붙이는 표식입니다.</p>
+      <p>검색엔진과 AI가 내용을 추측하지 않고 정확히 이해하도록 돕습니다.</p>
+      <p>사업자 홈페이지라면 회사 정보, 서비스, FAQ 정도만 잘 표시해도 기본은 갖춰집니다.</p>
+      <p>처음부터 모든 항목을 완벽히 표시하려 애쓰기보다, 자주 검색되는 정보부터 정확히 담는 것이 우선입니다.</p>
+      <p>표식은 눈에 보이지 않지만, 검색과 AI가 내용을 읽는 방식에 조용히 영향을 줍니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>장치</th><th>역할</th><th>적용 대상</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>llms.txt</td><td>사이트 요점·핵심 페이지 안내</td><td>홈페이지 전체</td></tr>
+            <tr><td>회사 정보 표식</td><td>업체명·연락처·위치 명확화</td><td>소개·연락 페이지</td></tr>
+            <tr><td>FAQ 표식</td><td>질문·답변 구조 명시</td><td>자주 묻는 질문</td></tr>
+            <tr><td>칼럼 표식</td><td>글 제목·작성자·날짜 명시</td><td>칼럼·블로그 글</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2>어떤 순서로 적용하면 좋을까요?</h2>
+      <p>한꺼번에 모든 것을 갖추기보다, 우선순위를 두고 단계적으로 적용하는 편이 현실적입니다.</p>
+      <p>먼저 회사 정보와 FAQ처럼 기본 표식을 정리하고, 그다음 칼럼 글에 구조화 데이터를 붙입니다.</p>
+      <p>마지막으로 llms.txt로 사이트 전체의 요점을 정리하면 자연스럽게 이어집니다.</p>
+      <div class="infographic"><div class="infographic-h">적용 4단계</div><div class="ig-grid"><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><circle cx='12' cy='8' r='3.6'/><path d='M4.5 20c0-3.6 3.6-5.6 7.5-5.6s7.5 2 7.5 5.6'/></svg></span><div><b>회사 정보</b><span class="t">업체명·연락처·위치를 구조화 데이터로 명시</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M4 6h16v10H7l-3 3z'/></svg></span><div><b>FAQ 정비</b><span class="t">자주 묻는 질문을 질문·답변 구조로 정리</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M4 4h16v16H4z'/><path d='M8 8h8M8 12h6'/></svg></span><div><b>칼럼 표식</b><span class="t">글 제목·작성자·날짜를 표식으로 추가</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M4 6h16M4 12h10M4 18h7'/></svg></span><div><b>llms.txt</b><span class="t">사이트 요점과 핵심 페이지를 정리해 배치</span></div></div></div></div><p class="figure-note">▲ 기초부터 순서대로</p>
+      <h2>적용할 때 흔히 하는 실수는 무엇일까요?</h2>
+      <p>가장 흔한 실수는, 표식만 붙이고 정작 본문 콘텐츠가 부실한 경우입니다.</p>
+      <p>구조화 데이터는 좋은 콘텐츠를 정확히 전달하는 도구이지, 빈약한 내용을 채워 주는 마법이 아닙니다.</p>
+      <p>표시한 정보와 실제 화면의 내용이 다르면 오히려 신뢰를 떨어뜨릴 수 있습니다.</p>
+      <div class="warning-box"><span class="label">주의</span><p>화면에 없는 정보를 구조화 데이터에만 넣거나, FAQ 표식을 광고 문구로 채우는 방식은 피해야 합니다. 표시와 실제 내용은 항상 일치해야 합니다.</p></div>
+      <h2>효과는 어떻게 확인할 수 있을까요?</h2>
+      <p>llms.txt와 구조화 데이터는 광고처럼 즉각적인 숫자로 드러나지 않아, 효과를 확인하기 어렵게 느껴집니다.</p>
+      <p>그래서 순위 하나를 보기보다, AI 검색이나 검색 결과에서 우리 브랜드가 어떻게 언급되는지를 주기적으로 살피는 편이 낫습니다.</p>
+      <p>실제로 이름을 검색했을 때 회사 정보가 정확히 표시되는지, 자주 묻는 질문이 제대로 드러나는지부터 점검할 수 있습니다.</p>
+      <p>표식이 실제 화면과 일치하는지 확인하는 것도, 눈에 보이는 점검 방법 중 하나입니다.</p>
+      <p>작은 정비가 쌓여 AI가 내 사이트를 더 정확히 이해하게 되는 것이, 이 작업의 목표입니다.</p>
+      <h2>아비컴퍼니는 어떻게 접근하나요?</h2>
+      <p>아비컴퍼니는 llms.txt와 구조화 데이터를 화려한 기능이 아니라, AI 검색이 홈페이지를 정확히 이해하도록 돕는 기초 정비로 다룹니다.</p>
+      <p>홈페이지제작 단계에서 콘텐츠 구조와 함께 이 장치들을 설계하면, GEO 대응이 한결 수월해집니다.</p>
+      <p>지금 홈페이지 구조를 함께 살펴보면, 어디부터 정비하면 좋을지 순서를 잡아 드릴 수 있습니다.</p>
+    </article>
+    <section class="cta">
+      <h2>우리 업종에도 검색 노출형 홈페이지가 필요하다면</h2>
+      <p>아비컴퍼니가 홈페이지 제작, 업종별 칼럼, 검색 노출 구조, 광고 운영까지 함께 진단해드립니다.</p>
+      <div class="cta-actions">
+        <a href="tel:01055010152" class="phone">전화 상담 010-5501-0152</a>
+        <a href="https://open.kakao.com/o/s96tWi4f" target="_blank" rel="noopener">카카오톡 상담</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
