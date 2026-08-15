@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>글은 쌓이는데 검색 순위가 안 오르는 이유는? | 아비컴퍼니 칼럼</title>
+  <meta name="description" content="글 수만 늘린다고 상위노출이 되지는 않습니다. 주제 클러스터로 전문성을 쌓는 SEO 방식과, 흩어진 글을 하나의 축으로 묶는 내부링크 설계를 실무 경험으로 정리했습니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aubcompany.com/column/seo-topic-cluster-authority/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aubcompany.com/column/seo-topic-cluster-authority/" />
+  <meta property="og:title" content="글은 쌓이는데 검색 순위가 안 오르는 이유는?" />
+  <meta property="og:description" content="글 수만 늘린다고 상위노출이 되지는 않습니다. 주제 클러스터로 전문성을 쌓는 SEO 방식과, 흩어진 글을 하나의 축으로 묶는 내부링크 설계를 실무 경험으로 정리했습니다." />
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"글은 쌓이는데 검색 순위가 안 오르는 이유는?","description":"글 수만 늘린다고 상위노출이 되지는 않습니다. 주제 클러스터로 전문성을 쌓는 SEO 방식과, 흩어진 글을 하나의 축으로 묶는 내부링크 설계를 실무 경험으로 정리했습니다.","author":{"@type":"Organization","name":"아비컴퍼니"},"publisher":{"@type":"Organization","name":"아비컴퍼니","url":"https://aubcompany.com"},"datePublished":"2026-08-14","dateModified":"2026-08-14","mainEntityOfPage":{"@type":"WebPage","@id":"https://aubcompany.com/column/seo-topic-cluster-authority/"},"keywords":"SEO, 상위노출, 주제 클러스터, 내부링크"}</script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,'Noto Sans KR',sans-serif;color:#101828;line-height:1.85;background:#fff}
+    .wrap{max-width:860px;margin:0 auto;padding:52px 22px 86px}
+    a{color:#0B55D9;text-decoration:none;font-weight:800}
+    .brand{display:inline-flex;margin-bottom:34px;color:#0B55D9}
+    .tag{display:inline-block;margin-bottom:18px;padding:7px 13px;border-radius:999px;background:#EEF4FF;color:#0B55D9;font-size:12px;font-weight:900}
+    h1{font-size:clamp(29px,5vw,46px);line-height:1.28;letter-spacing:-.4px;margin:0 0 16px}
+    h2{font-size:24px;line-height:1.35;margin:0 0 12px}
+    .desc{font-size:17px;color:#667085;margin:0 0 24px}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
+    article{padding-top:34px}
+    p{font-size:17px;margin:0 0 22px}
+    strong{font-weight:900;color:#0B55D9}
+    u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
+    ul{margin:0 0 24px;padding-left:20px}
+    li{font-size:17px;margin:0 0 9px}
+    .hero-figure{margin:30px 0 34px;border-radius:18px;overflow:hidden;border:1px solid #EAECF0;box-shadow:0 16px 38px rgba(16,24,40,.1);background:#F7F9FC}
+    .hero-figure img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+    .hero-figure figcaption{padding:12px 16px;color:#667085;font-size:13px;background:#fff}
+    .summary-box{margin:28px 0 34px;padding:22px 24px;border:1px solid #D8E5FF;border-radius:16px;background:#F3F7FF}
+    .summary-box strong{display:block;margin-bottom:10px;color:#0B55D9;font-size:16px}
+    .summary-box ul{margin:0;padding-left:20px}
+    .summary-box li{font-size:15px;margin-bottom:6px;color:#344054}
+    .table-wrap{overflow-x:auto;margin:30px 0;border:1px solid #EAECF0;border-radius:14px;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    table{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
+    th{background:#F3F7FF;color:#0B55D9;text-align:left;font-size:14px;font-weight:900;padding:15px 16px;border-bottom:1px solid #D8E5FF}
+    td{padding:16px;border-bottom:1px solid #EAECF0;color:#344054;font-size:15px;vertical-align:top}
+    tr:last-child td{border-bottom:0}
+    .infographic{margin:30px 0;border:1px solid #EAECF0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    .infographic-h{background:#08111F;color:#fff;padding:15px 22px;font-weight:900;font-size:15px}
+    .ig-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#EAECF0}
+    .ig-item{background:#fff;padding:20px;display:flex;gap:13px;align-items:flex-start}
+    .ig-ic{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:#EEF4FF;border:1px solid #D8E5FF;display:flex;align-items:center;justify-content:center;color:#0B55D9}
+    .ig-item b{display:block;color:#101828;font-size:15px;margin-bottom:4px}
+    .ig-item .t{font-size:13.5px;color:#4b5563;line-height:1.6;display:block}
+    .figure-note{color:#8A95A3;font-size:12.5px;margin:-18px 0 26px;text-align:center}
+    .callout-box,.warning-box{border-radius:14px;padding:20px 22px;margin:26px 0}
+    .callout-box{background:#F3F7FF;border:1px solid #D8E5FF}
+    .warning-box{background:#FFF4F1;border:1px solid #F6CFC5}
+    .callout-box .label,.warning-box .label{display:inline-block;font-size:12px;font-weight:900;color:#0B55D9;margin-bottom:7px}
+    .warning-box .label{color:#B42318}
+    .callout-box p,.warning-box p{margin:0;font-size:15.5px}
+    .cta{margin-top:46px;padding:30px;border-radius:16px;background:#08111F;color:#fff}
+    .cta h2{color:#fff}
+    .cta p{font-size:15px;color:rgba(255,255,255,.78)}
+    .cta-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .cta a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border-radius:10px;background:#FEE500;color:#191919}
+    .cta .phone{background:#fff;color:#08111F}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="brand" href="../../">← 아비컴퍼니 홈</a>
+    <span class="tag">SEO·상위노출</span>
+    <h1>글은 쌓이는데 검색 순위가 안 오르는 이유는?</h1>
+    <p class="desc">글 수만 늘린다고 상위노출이 되지는 않습니다. 주제 클러스터로 전문성을 쌓는 SEO 방식과, 흩어진 글을 하나의 축으로 묶는 내부링크 설계를 실무 경험으로 정리했습니다.</p>
+    <div class="meta">
+      <span>작성자 아비컴퍼니</span>
+      <span>발행일 2026-08-14</span>
+      <span>수정일 2026-08-14</span>
+    </div>
+    <article>
+      <section class="summary-box">
+        <strong>핵심 요약</strong>
+        <ul><li>글 수를 늘리는 것만으로는 상위노출로 이어지지 않습니다.</li><li>하나의 핵심 주제를 중심으로 관련 글을 묶는 주제 클러스터가 전문성을 쌓습니다.</li><li>기둥이 되는 글과 세부 글을 내부링크로 연결해 하나의 축으로 만드는 것이 핵심입니다.</li></ul>
+      </section>
+      <p>SEO 상담을 하다 보면, &quot;글을 이렇게 많이 썼는데 왜 순위가 안 오르냐&quot;는 질문을 자주 받습니다.</p>
+      <p>결론부터 말씀드리면, 검색 상위노출은 글의 개수가 아니라 <strong>하나의 주제를 얼마나 깊고 촘촘하게 다뤘는가</strong>로 갈립니다.</p>
+      <p>서로 연결되지 않은 글이 흩어져 있으면, 아무리 많아도 전문성으로 인정받기 어렵습니다.</p>
+      <h2>주제 클러스터란 무엇일까요?</h2>
+      <p>주제 클러스터는 하나의 핵심 주제를 가운데 두고, 관련된 세부 주제 글을 그 둘레에 배치하는 방식입니다.</p>
+      <p>가운데에는 주제 전체를 아우르는 기둥 글이 있습니다.</p>
+      <p>그 둘레에는 세부 질문을 하나씩 다루는 글이 자리합니다.</p>
+      <p>실제 운영해 보면, 이렇게 묶인 글 무리는 검색 엔진에 &quot;이곳은 이 주제에 전문성이 있다&quot;는 신호를 함께 보냅니다.</p>
+      <div class="infographic"><div class="infographic-h">주제 클러스터의 구조</div><div class="ig-grid"><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><circle cx='12' cy='12' r='4'/><path d='M12 2v4M12 18v4M2 12h4M18 12h4'/></svg></span><div><b>기둥 글</b><span class="t">핵심 주제 전체를 개괄하는 중심 글을 둡니다.</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><circle cx='6' cy='7' r='2.5'/><circle cx='18' cy='7' r='2.5'/><circle cx='12' cy='18' r='2.5'/></svg></span><div><b>세부 글</b><span class="t">구체적 질문을 하나씩 깊게 다루는 글들입니다.</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M7 12h10M7 12l3-3M7 12l3 3'/><path d='M17 8v8'/></svg></span><div><b>내부링크</b><span class="t">기둥과 세부 글을 서로 오가도록 연결합니다.</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9-2.6.9-5.5-4-3.9 5.5-.8z'/></svg></span><div><b>전문성 신호</b><span class="t">묶인 글 무리가 주제 권위를 함께 키웁니다.</span></div></div></div></div><p class="figure-note">▲ 흩어진 글을 하나의 축으로</p>
+      <h2>왜 글을 서로 연결해야 할까요?</h2>
+      <p>흩어진 글은 각자 외롭게 경쟁합니다.</p>
+      <p>반면 내부링크로 묶인 글은 서로의 맥락을 보태 줍니다.</p>
+      <p>기둥 글에서 세부 글로, 세부 글에서 다시 기둥 글로 오가도록 연결하면, 이용자도 검색 엔진도 주제의 전체 그림을 파악하기 쉬워집니다.</p>
+      <p>이것이 같은 노력으로 더 나은 상위노출을 만드는 지점입니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>방식</th><th>흩어진 글</th><th>주제 클러스터</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>전문성 신호</td><td>약함</td><td>무리 전체가 함께 강화</td></tr>
+            <tr><td>이용자 동선</td><td>끊김</td><td>관련 글로 자연스럽게 이동</td></tr>
+            <tr><td>상위노출</td><td>개별 경쟁</td><td>축이 되는 주제로 축적</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2>어떤 주제부터 묶어야 할까요?</h2>
+      <p>가장 먼저 묶어야 할 것은 사업의 핵심 분야입니다.</p>
+      <p>내가 가장 잘하고, 문의로 이어지길 바라는 주제를 하나 정합니다.</p>
+      <p>그 주제로 기둥 글을 쓰고, 상담에서 자주 나오는 질문들을 세부 글로 하나씩 풀어 갑니다.</p>
+      <div class="callout-box"><span class="label">실무 팁</span><p>새 글을 쓸 때마다 &quot;이 글은 어느 기둥에 속하는가&quot;를 먼저 정하세요. 소속 없는 글을 계속 쌓기보다, 하나의 축을 두껍게 만드는 편이 상위노출에 유리합니다.</p></div>
+      <h2>얼마나 오래 걸릴까요?</h2>
+      <p>주제 클러스터는 하루아침에 완성되지 않습니다.</p>
+      <p>한 주제를 꾸준히 채워 가는 과정이라, 시간이 필요합니다.</p>
+      <div class="warning-box"><span class="label">주의</span><p>단기간에 순위를 보장한다는 약속은 경계하는 편이 좋습니다. SEO는 축적의 영역이라, 무리하게 글을 쏟아내기보다 하나의 주제를 꾸준히 두껍게 하는 접근이 결국 안전합니다.</p></div>
+      <p>글은 많은데 순위가 오르지 않는다면, 개수를 더 늘리기 전에 흩어진 글을 하나의 축으로 묶는 일부터 점검해 보시길 권합니다.</p>
+      <p>SEO 상위노출은 결국 &quot;이 주제라면 이곳&quot;이라는 인상을 쌓아 가는 일입니다.</p>
+      <h2>오래된 글은 어떻게 관리해야 할까요?</h2>
+      <p>주제 클러스터는 새 글만 쌓는 것으로 끝나지 않습니다.</p>
+      <p>이미 쓴 글도 주기적으로 손봐야 합니다.</p>
+      <p>내용이 바뀐 부분을 갱신하고, 새로 쓴 세부 글을 기둥 글에서 링크로 이어 주는 작업입니다.</p>
+      <p>실제 운영해 보면, 오래된 기둥 글을 최신 상태로 유지하는 것만으로 무리 전체의 상위노출이 안정되는 경우가 많습니다.</p>
+      <p>SEO는 한 번 쓰고 방치하는 콘텐츠가 아니라, 축을 꾸준히 다듬어 가는 살아 있는 자산에 가깝습니다.</p>
+      <p>글의 수를 세기 전에, 내 사업의 핵심 주제 하나가 얼마나 촘촘히 연결돼 있는지를 먼저 돌아보시길 권합니다.</p>
+    </article>
+    <section class="cta">
+      <h2>우리 업종에도 검색 노출형 홈페이지가 필요하다면</h2>
+      <p>아비컴퍼니가 홈페이지 제작, 업종별 칼럼, 검색 노출 구조, 광고 운영까지 함께 진단해드립니다.</p>
+      <div class="cta-actions">
+        <a href="tel:01055010152" class="phone">전화 상담 010-5501-0152</a>
+        <a href="https://open.kakao.com/o/s96tWi4f" target="_blank" rel="noopener">카카오톡 상담</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
