@@ -436,9 +436,17 @@ export async function onRequestPost(context) {
  */
 async function diagnose(env) {
   const auth = naverAuth(env);
+  // Client ID 는 요청 헤더로 나가는 값이라 비밀이 아니다. 어느 값이 실렸는지 확인용으로만 앞 4자리를 보여준다.
+  // Secret 은 길이만 본다 — 공백이 섞였거나 잘린 경우를 잡기 위해서다.
+  const peek = v => v ? `${String(v).slice(0, 4)}…(${String(v).length}자)` : null;
+  const id = env && env.NAVER_CLIENT_ID, sec = env && env.NAVER_CLIENT_SECRET;
   const out = {
-    NAVER_CLIENT_ID: !!(env && env.NAVER_CLIENT_ID),
-    NAVER_CLIENT_SECRET: !!(env && env.NAVER_CLIENT_SECRET),
+    NAVER_CLIENT_ID: id ? peek(id) : false,
+    NAVER_CLIENT_SECRET: sec ? `${String(sec).length}자` : false,
+    공백섞임: {
+      id: id ? id !== String(id).trim() : null,
+      secret: sec ? sec !== String(sec).trim() : null
+    },
     NCP_API_KEY_ID: !!(env && env.NCP_API_KEY_ID),
     NCP_API_KEY: !!(env && env.NCP_API_KEY),
     mode: auth ? (auth.base.includes('ntruss') ? 'apihub' : 'developers') : null,
