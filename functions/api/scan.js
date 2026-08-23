@@ -430,9 +430,44 @@ export async function onRequestPost(context) {
   return new Response(JSON.stringify(out), { status: out.ok ? 200 : 400, headers: JSON_HEADERS });
 }
 
+/**
+ * 설정 점검용. 키 값은 절대 내보내지 않고, 들어 있는지 여부와
+ * 네이버가 돌려준 응답 코드만 알려준다. (401 = 키 오류, 403/429 = 권한·한도)
+ */
+async function diagnose(env) {
+  const auth = naverAuth(env);
+  const out = {
+    NAVER_CLIENT_ID: !!(env && env.NAVER_CLIENT_ID),
+    NAVER_CLIENT_SECRET: !!(env && env.NAVER_CLIENT_SECRET),
+    NCP_API_KEY_ID: !!(env && env.NCP_API_KEY_ID),
+    NCP_API_KEY: !!(env && env.NCP_API_KEY),
+    mode: auth ? (auth.base.includes('ntruss') ? 'apihub' : 'developers') : null,
+    calls: {}
+  };
+  if (!auth) { out.hint = '키가 하나라도 비어 있으면 호출하지 않습니다. 두 개 다 필요합니다.'; return out; }
+  for (const path of ['local', 'blog', 'webkr']) {
+    try {
+      const res = await fetch(`${auth.base}${path}${auth.suffix}?query=%ED%85%8C%EC%8A%A4%ED%8A%B8&display=1`,
+        { headers: auth.headers });
+      let note = '';
+      if (!res.ok) {
+        const body = await res.text();
+        note = body.slice(0, 160);
+      }
+      out.calls[path] = { status: res.status, note };
+    } catch (e) {
+      out.calls[path] = { status: 0, note: String(e && e.message || e).slice(0, 120) };
+    }
+  }
+  return out;
+}
+
 export async function onRequestGet(context) {
-  const input = new URL(context.request.url).searchParams.get('input');
-  const out = await handle(input, context.env);
+  const params = new URL(context.request.url).searchParams;
+  if (params.get('diag') === '1') {
+    return new Response(JSON.stringify(await diagnose(context.env), null, 2), { status: 200, headers: JSON_HEADERS });
+  }
+  const out = await handle(params.get('input'), context.env);
   return new Response(JSON.stringify(out), { status: out.ok ? 200 : 400, headers: JSON_HEADERS });
 }
 
