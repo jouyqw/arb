@@ -311,23 +311,46 @@ function analyze(page, extra) {
 
 /* ─── 상호명으로 들어온 경우 ─── */
 
-async function byName(name, env) {
-  const id = env && env.NAVER_CLIENT_ID, secret = env && env.NAVER_CLIENT_SECRET;
-  // 키가 없으면 자동 조회를 시도하지 않고 사람이 확인하는 쪽으로 보낸다
-  if (!id || !secret) return { kind: 'name', name, supported: false };
+/**
+ * 검색 API는 2026년에 NAVER API HUB(네이버 클라우드)로 이관됐다.
+ * 신규 발급은 HUB 키만 가능하고, 기존 Developers Center 키는 2027년 6월까지만 쓸 수 있다.
+ * 둘 중 있는 쪽으로 호출한다.
+ */
+function naverAuth(env) {
+  if (!env) return null;
+  if (env.NCP_API_KEY_ID && env.NCP_API_KEY) {
+    return {
+      base: 'https://naverapihub.apigw.ntruss.com/search/v1/',
+      suffix: '',
+      headers: { 'X-NCP-APIGW-API-KEY-ID': env.NCP_API_KEY_ID, 'X-NCP-APIGW-API-KEY': env.NCP_API_KEY }
+    };
+  }
+  if (env.NAVER_CLIENT_ID && env.NAVER_CLIENT_SECRET) {
+    return {
+      base: 'https://openapi.naver.com/v1/search/',
+      suffix: '.json',
+      headers: { 'X-Naver-Client-Id': env.NAVER_CLIENT_ID, 'X-Naver-Client-Secret': env.NAVER_CLIENT_SECRET }
+    };
+  }
+  return null;
+}
 
-  const headers = { 'X-Naver-Client-Id': id, 'X-Naver-Client-Secret': secret };
+async function byName(name, env) {
+  const auth = naverAuth(env);
+  // 키가 없으면 자동 조회를 시도하지 않고 사람이 확인하는 쪽으로 보낸다
+  if (!auth) return { kind: 'name', name, supported: false };
+
   const q = encodeURIComponent(name);
 
   async function ask(path, display) {
     const ctl = new AbortController();
     const timer = setTimeout(() => ctl.abort(), 6000);
     try {
-      const res = await fetch(`https://openapi.naver.com/v1/search/${path}.json?query=${q}&display=${display}`,
-        { headers, signal: ctl.signal });
+      const res = await fetch(`${auth.base}${path}${auth.suffix}?query=${q}&display=${display}`,
+        { headers: auth.headers, signal: ctl.signal });
       if (!res.ok) return null;                    // 키 오류·한도 초과 등
       const data = await res.json();
-      return data && data.errorCode ? null : data; // 네이버가 본문으로 오류를 주는 경우
+      return data && data.errorCode ? null : data; // 오류를 본문으로 주는 경우
     } catch (e) {
       return null;
     } finally {
