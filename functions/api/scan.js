@@ -313,16 +313,34 @@ function analyze(page, extra) {
 
 async function byName(name, env) {
   const id = env && env.NAVER_CLIENT_ID, secret = env && env.NAVER_CLIENT_SECRET;
-  if (!id || !secret) {
-    return { kind: 'name', name, supported: false };
-  }
+  // 키가 없으면 자동 조회를 시도하지 않고 사람이 확인하는 쪽으로 보낸다
+  if (!id || !secret) return { kind: 'name', name, supported: false };
+
   const headers = { 'X-Naver-Client-Id': id, 'X-Naver-Client-Secret': secret };
   const q = encodeURIComponent(name);
-  const [local, blog, web] = await Promise.all([
-    fetch(`https://openapi.naver.com/v1/search/local.json?query=${q}&display=5`, { headers }).then(r => r.json()).catch(() => null),
-    fetch(`https://openapi.naver.com/v1/search/blog.json?query=${q}&display=1`, { headers }).then(r => r.json()).catch(() => null),
-    fetch(`https://openapi.naver.com/v1/search/webkr.json?query=${q}&display=5`, { headers }).then(r => r.json()).catch(() => null)
-  ]);
+
+  async function ask(path, display) {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 6000);
+    try {
+      const res = await fetch(`https://openapi.naver.com/v1/search/${path}.json?query=${q}&display=${display}`,
+        { headers, signal: ctl.signal });
+      if (!res.ok) return null;                    // 키 오류·한도 초과 등
+      const data = await res.json();
+      return data && data.errorCode ? null : data; // 네이버가 본문으로 오류를 주는 경우
+    } catch (e) {
+      return null;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  const [local, blog, web] = await Promise.all([ask('local', 5), ask('blog', 1), ask('webkr', 5)]);
+
+  // 세 곳 모두 실패했다면 키가 잘못됐거나 한도를 넘긴 것이다.
+  // 반쯤 빈 결과를 보여주느니 사람이 확인하는 쪽으로 넘긴다.
+  if (!local && !blog && !web) return { kind: 'name', name, supported: false };
+
   const place = local && local.items && local.items[0];
   return {
     kind: 'name',
