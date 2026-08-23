@@ -177,7 +177,7 @@ const articleTemplate = (post) => {
       <p>아비컴퍼니가 홈페이지 제작, 업종별 칼럼, 검색 노출 구조, 광고 운영까지 함께 진단해드립니다.</p>
       <div class="cta-actions">
         <a href="tel:${contactPhone.replaceAll('-', '')}" class="phone">전화 상담 ${contactPhone}</a>
-        <a href="https://open.kakao.com/o/s96tWi4f" target="_blank" rel="noopener">카카오톡 상담</a>
+        <a href="https://pf.kakao.com/_wxjxiSX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
       </div>
     </section>
   </main>
