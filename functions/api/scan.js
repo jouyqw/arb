@@ -212,18 +212,21 @@ function analyze(page, extra) {
   /* AI 검색 대응 */
   const ldBlocks = html.match(/<script\b[^>]*application\/ld\+json[^>]*>[\s\S]*?<\/script>/gi) || [];
   const ldTypes = [];
+  const pushType = t => { if (t && !ldTypes.includes(t)) ldTypes.push(t); };
   ldBlocks.forEach(b => {
     const body = b.replace(/^[\s\S]*?>/, '').replace(/<\/script>$/i, '');
-    (body.match(/"@type"\s*:\s*"([^"]+)"/g) || []).forEach(m => {
-      const t = m.split('"')[3];
-      if (t && !ldTypes.includes(t)) ldTypes.push(t);
+    // @type 은 "Organization" 처럼 하나일 수도, ["Organization","ProfessionalService"] 처럼
+    // 배열일 수도 있다. 배열을 놓치면 스키마가 있는데도 없다고 판정한다.
+    (body.match(/"@type"\s*:\s*(\[[^\]]*\]|"[^"]+")/g) || []).forEach(m => {
+      const val = m.slice(m.indexOf(':') + 1).trim();
+      (val.match(/"([^"]+)"/g) || []).forEach(q => pushType(q.slice(1, -1)));
     });
   });
   add('geo', 3, ldBlocks.length > 0, '구조화 데이터',
     ldBlocks.length ? `${ldBlocks.length}개 · ${ldTypes.slice(0, 5).join(', ') || '형식 확인 필요'}`
                     : 'JSON-LD가 없습니다. AI와 검색엔진이 업종·주소·연락처를 구조로 읽지 못합니다.');
 
-  const bizType = ldTypes.some(t => /LocalBusiness|Organization|LegalService|MedicalBusiness|Dentist|Attorney|AccountingService/i.test(t));
+  const bizType = ldTypes.some(t => /LocalBusiness|Organization|ProfessionalService|LegalService|MedicalBusiness|MedicalClinic|Dentist|Attorney|AccountingService|HomeAndConstructionBusiness|RealEstateAgent|FuneralHome|Store/i.test(t));
   add('geo', 2, bizType, '사업체 정보 스키마',
     bizType ? '업체 정보가 구조화되어 있습니다.'
             : 'LocalBusiness 또는 Organization 스키마가 없어 지역·업종 인식이 약합니다.');
