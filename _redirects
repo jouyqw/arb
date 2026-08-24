@@ -1,3 +1,7 @@
+# 구글 서치콘솔 인증 파일은 그 주소에서 바로 200 이어야 한다.
+# Cloudflare Pages 가 .html 을 떼고 308 로 튕기면 재확인 때 인증이 깨질 수 있다.
+/google09591bd6075c61a9.html /google09591bd6075c61a9 200
+
 # 반복 생성되던 예약 칼럼을 주제별 정규 칼럼으로 통합 (301)
 /column/scheduled-1-2026-07-01-전문직-홈페이지-신뢰-구조/ /column/professional-service-marketing-trust-structure/ 301
 /column/scheduled-1-2026-07-01-전문직-홈페이지-신뢰-구조 /column/professional-service-marketing-trust-structure/ 301
