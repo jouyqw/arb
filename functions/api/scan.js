@@ -457,12 +457,16 @@ async function diagnose(env) {
     try {
       const res = await fetch(`${auth.base}${path}${auth.suffix}?query=%ED%85%8C%EC%8A%A4%ED%8A%B8&display=1`,
         { headers: auth.headers });
-      let note = '';
-      if (!res.ok) {
-        const body = await res.text();
-        note = body.slice(0, 160);
+      const body = await res.text();
+      let shape = body.slice(0, 200);
+      if (res.ok) {
+        try {
+          const j = JSON.parse(body);
+          shape = { keys: Object.keys(j), total: j.total, items: Array.isArray(j.items) ? j.items.length : null,
+                    firstKeys: Array.isArray(j.items) && j.items[0] ? Object.keys(j.items[0]) : null };
+        } catch (e) { /* 그대로 앞부분만 본다 */ }
       }
-      out.calls[path] = { status: res.status, note };
+      out.calls[path] = { status: res.status, shape };
     } catch (e) {
       out.calls[path] = { status: 0, note: String(e && e.message || e).slice(0, 120) };
     }
