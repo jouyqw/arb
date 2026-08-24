@@ -67,6 +67,7 @@
           "병원 마케팅",
           "세무사 마케팅",
           "전문직 SEO",
+      "부정클릭 방지",
           "홈페이지 제작"
         ]
       },
@@ -353,6 +354,30 @@
       .cta-band{border-radius:20px;padding:58px 26px;margin:0 18px}
       .rail{right:12px;bottom:14px}
       .rail a,.rail button{width:48px;height:48px}
+    }
+
+    /* ---------- 부정클릭 방지 ---------- */
+    .fraud{margin-top:26px;display:grid;grid-template-columns:1.25fr .75fr;gap:0;border-radius:var(--radius);overflow:hidden;background:radial-gradient(620px 320px at 88% -30%,rgba(61,139,255,.34),transparent 60%),linear-gradient(150deg,var(--navy) 30%,#12264a 100%);box-shadow:var(--shadow-md)}
+    .fraud-main{padding:44px 44px 40px}
+    .fraud-label{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.1em;color:#8FC0FF;background:rgba(77,163,255,.13);border:1px solid rgba(77,163,255,.35);border-radius:999px;padding:7px 15px;margin-bottom:20px}
+    .fraud h3{font-size:clamp(22px,2.6vw,29px);line-height:1.35;letter-spacing:-.035em;font-weight:900;color:#fff;margin-bottom:20px}
+    .fraud p{font-size:15px;color:#A9B7CF;margin:0 0 12px;max-width:560px}
+    .fraud p:last-child{margin-bottom:0}
+    .fraud .fraud-note{margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:14px;color:#7E8FAD}
+    .fraud-steps{list-style:none;margin:0;padding:40px 40px 40px 34px;border-left:1px solid rgba(255,255,255,.1);background:rgba(10,17,32,.32);counter-reset:fs;display:flex;flex-direction:column;justify-content:center;gap:26px}
+    .fraud-steps li{counter-increment:fs;position:relative;padding-left:44px}
+    .fraud-steps li::before{content:"0" counter(fs);position:absolute;left:0;top:2px;font-size:12.5px;font-weight:900;letter-spacing:.06em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .fraud-steps b{display:block;font-size:16.5px;font-weight:800;color:#EAF1FC;letter-spacing:-.02em;margin-bottom:6px}
+    .fraud-steps span{font-size:13.5px;color:#8B9BB8;line-height:1.75}
+    @media(max-width:1020px){
+      .fraud{grid-template-columns:1fr}
+      .fraud-steps{border-left:0;border-top:1px solid rgba(255,255,255,.1);padding:34px 34px 36px;gap:22px}
+    }
+    @media(max-width:680px){
+      .fraud-main{padding:32px 24px 28px}
+      .fraud p{font-size:15.5px;line-height:1.85}
+      .fraud-steps{padding:28px 24px 30px}
+      .fraud-steps li{padding-left:38px}
     }
 
     /* ---------- readability ---------- */
@@ -1022,6 +1047,21 @@
         <div class="web"><i>SEO · GEO</i><h3>검색 · AI 노출 최적화</h3><p>검색 상위 노출과 AI 검색 인용을 동시에 잡는 구조로 처음부터 설계합니다.</p></div>
         <div class="web"><i>CARE</i><h3>유지보수 & 관리</h3><p>제작 후에도 지속적인 콘텐츠 업데이트와 성능 관리를 지원합니다.</p></div>
       </div>
+      <div class="fraud">
+        <div class="fraud-main">
+          <span class="fraud-label">부정클릭 방지</span>
+          <h3>광고비가 새는 곳은<br />홈페이지 밖에도 있습니다</h3>
+          <p>클릭 한 번에 수천 원이 나가는 키워드에서 같은 사람이 반복해서 누르면, 그건 그대로 광고비가 됩니다. 경쟁사일 수도 있고 자동 프로그램일 수도 있습니다.</p>
+          <p>아비컴퍼니가 만든 홈페이지에는 방문 기록을 남기는 스크립트가 함께 들어갑니다. 어떤 주소에서 몇 번 눌렀고 얼마나 머물렀는지가 쌓이고, 반복 클릭이 확인되면 네이버와 구글 광고 관리자의 제외 목록에 올립니다.</p>
+          <p class="fraud-note">부정클릭을 100% 막을 수는 없습니다. 다만 새고 있는 예산이 눈에 보이게 되고, 반복되는 것은 끊어낼 수 있습니다.</p>
+        </div>
+        <ol class="fraud-steps">
+          <li><b>기록</b><span>방문한 주소, 클릭 횟수, 머문 시간을 남깁니다</span></li>
+          <li><b>판별</b><span>같은 대상이 짧은 시간에 반복해 누른 기록을 걸러냅니다</span></li>
+          <li><b>제외</b><span>광고 관리자에 등록해 그 대상에게는 노출되지 않게 합니다</span></li>
+        </ol>
+      </div>
+
       <div class="svc-note"><p>마케팅 집행과 홈페이지 제작을 함께 맡기면 광고 → 랜딩 → 전환까지 하나의 전략으로 운영됩니다.</p><p>시너지가 탁월합니다.</p></div>
     </div>
   </section>
