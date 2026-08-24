@@ -364,15 +364,33 @@ async function byName(name, env) {
   // 반쯤 빈 결과를 보여주느니 사람이 확인하는 쪽으로 넘긴다.
   if (!local && !blog && !web) return { kind: 'name', name, supported: false };
 
-  const place = local && local.items && local.items[0];
+  // 지역검색은 상호에 그 단어가 들어간 업체를 아무거나 준다.
+  // ("전주시청" → "현대옥 전주시청점") 이름이 사실상 일치할 때만 우리 업체로 본다.
+  const norm = s => stripToText(String(s || '')).replace(/[\s()·・.,-]/g, '').toLowerCase();
+  const want = norm(name);
+  const match = (local && local.items || []).find(it => {
+    const got = norm(it.title);
+    return got === want || got.startsWith(want) || want.startsWith(got);
+  });
+
   return {
     kind: 'name',
     name,
     supported: true,
-    place: place ? { title: stripToText(place.title), category: place.category, address: place.roadAddress || place.address, link: place.link } : null,
+    place: match ? {
+      title: stripToText(match.title),
+      category: match.category,
+      address: match.roadAddress || match.address,
+      phone: match.telephone || null,
+      link: match.link || null
+    } : null,
+    // 이름이 비슷한 다른 업체까지 잡혔다면 참고로만 알려준다
+    similar: !match && local && local.items && local.items.length
+      ? stripToText(local.items[0].title) : null,
     blogCount: blog && typeof blog.total === 'number' ? blog.total : null,
     webCount: web && typeof web.total === 'number' ? web.total : null,
-    site: place && place.link ? place.link : (web && web.items && web.items[0] ? web.items[0].link : null)
+    // 지도에 등록된 업체의 공식 링크만 쓴다. 웹문서 1위는 남의 사이트인 경우가 많다.
+    site: match && match.link ? match.link : null
   };
 }
 
@@ -430,56 +448,8 @@ export async function onRequestPost(context) {
   return new Response(JSON.stringify(out), { status: out.ok ? 200 : 400, headers: JSON_HEADERS });
 }
 
-/**
- * 설정 점검용. 키 값은 절대 내보내지 않고, 들어 있는지 여부와
- * 네이버가 돌려준 응답 코드만 알려준다. (401 = 키 오류, 403/429 = 권한·한도)
- */
-async function diagnose(env) {
-  const auth = naverAuth(env);
-  // Client ID 는 요청 헤더로 나가는 값이라 비밀이 아니다. 어느 값이 실렸는지 확인용으로만 앞 4자리를 보여준다.
-  // Secret 은 길이만 본다 — 공백이 섞였거나 잘린 경우를 잡기 위해서다.
-  const peek = v => v ? `${String(v).slice(0, 4)}…(${String(v).length}자)` : null;
-  const id = env && env.NAVER_CLIENT_ID, sec = env && env.NAVER_CLIENT_SECRET;
-  const out = {
-    NAVER_CLIENT_ID: id ? peek(id) : false,
-    NAVER_CLIENT_SECRET: sec ? `${String(sec).length}자` : false,
-    공백섞임: {
-      id: id ? id !== String(id).trim() : null,
-      secret: sec ? sec !== String(sec).trim() : null
-    },
-    NCP_API_KEY_ID: !!(env && env.NCP_API_KEY_ID),
-    NCP_API_KEY: !!(env && env.NCP_API_KEY),
-    mode: auth ? (auth.base.includes('ntruss') ? 'apihub' : 'developers') : null,
-    calls: {}
-  };
-  if (!auth) { out.hint = '키가 하나라도 비어 있으면 호출하지 않습니다. 두 개 다 필요합니다.'; return out; }
-  for (const path of ['local', 'blog', 'webkr']) {
-    try {
-      const res = await fetch(`${auth.base}${path}${auth.suffix}?query=%ED%85%8C%EC%8A%A4%ED%8A%B8&display=1`,
-        { headers: auth.headers });
-      const body = await res.text();
-      let shape = body.slice(0, 200);
-      if (res.ok) {
-        try {
-          const j = JSON.parse(body);
-          shape = { keys: Object.keys(j), total: j.total, items: Array.isArray(j.items) ? j.items.length : null,
-                    firstKeys: Array.isArray(j.items) && j.items[0] ? Object.keys(j.items[0]) : null };
-        } catch (e) { /* 그대로 앞부분만 본다 */ }
-      }
-      out.calls[path] = { status: res.status, shape };
-    } catch (e) {
-      out.calls[path] = { status: 0, note: String(e && e.message || e).slice(0, 120) };
-    }
-  }
-  return out;
-}
-
 export async function onRequestGet(context) {
-  const params = new URL(context.request.url).searchParams;
-  if (params.get('diag') === '1') {
-    return new Response(JSON.stringify(await diagnose(context.env), null, 2), { status: 200, headers: JSON_HEADERS });
-  }
-  const out = await handle(params.get('input'), context.env);
+  const out = await handle(new URL(context.request.url).searchParams.get('input'), context.env);
   return new Response(JSON.stringify(out), { status: out.ok ? 200 : 400, headers: JSON_HEADERS });
 }
 
