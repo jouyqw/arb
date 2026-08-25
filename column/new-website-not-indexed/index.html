@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>홈페이지를 새로 만들었는데 검색에 안 나옵니다 | 아비컴퍼니 칼럼</title>
+  <meta name="description" content="새 홈페이지가 구글·네이버에 안 잡히는 이유는 대부분 정해져 있습니다. 색인을 막는 설정부터 순서대로 확인하는 방법을 실무 경험으로 정리했습니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aubcompany.com/column/new-website-not-indexed/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aubcompany.com/column/new-website-not-indexed/" />
+  <meta property="og:title" content="홈페이지를 새로 만들었는데 검색에 안 나옵니다" />
+  <meta property="og:description" content="새 홈페이지가 구글·네이버에 안 잡히는 이유는 대부분 정해져 있습니다. 색인을 막는 설정부터 순서대로 확인하는 방법을 실무 경험으로 정리했습니다." />
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"홈페이지를 새로 만들었는데 검색에 안 나옵니다","description":"새 홈페이지가 구글·네이버에 안 잡히는 이유는 대부분 정해져 있습니다. 색인을 막는 설정부터 순서대로 확인하는 방법을 실무 경험으로 정리했습니다.","author":{"@type":"Organization","name":"아비컴퍼니"},"publisher":{"@type":"Organization","name":"아비컴퍼니","url":"https://aubcompany.com"},"datePublished":"2026-08-25","dateModified":"2026-08-25","mainEntityOfPage":{"@type":"WebPage","@id":"https://aubcompany.com/column/new-website-not-indexed/"},"keywords":"홈페이지제작, 색인, 검색등록, 상위노출, 서치콘솔"}</script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,'Noto Sans KR',sans-serif;color:#101828;line-height:1.85;background:#fff}
+    .wrap{max-width:860px;margin:0 auto;padding:52px 22px 86px}
+    a{color:#0B55D9;text-decoration:none;font-weight:800}
+    .brand{display:inline-flex;margin-bottom:34px;color:#0B55D9}
+    .tag{display:inline-block;margin-bottom:18px;padding:7px 13px;border-radius:999px;background:#EEF4FF;color:#0B55D9;font-size:12px;font-weight:900}
+    h1{font-size:clamp(29px,5vw,46px);line-height:1.28;letter-spacing:-.4px;margin:0 0 16px}
+    h2{font-size:24px;line-height:1.35;margin:0 0 12px}
+    .desc{font-size:17px;color:#667085;margin:0 0 24px}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
+    article{padding-top:34px}
+    p{font-size:17px;margin:0 0 22px}
+    strong{font-weight:900;color:#0B55D9}
+    u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
+    ul{margin:0 0 24px;padding-left:20px}
+    li{font-size:17px;margin:0 0 9px}
+    .hero-figure{margin:30px 0 34px;border-radius:18px;overflow:hidden;border:1px solid #EAECF0;box-shadow:0 16px 38px rgba(16,24,40,.1);background:#F7F9FC}
+    .hero-figure img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+    .hero-figure figcaption{padding:12px 16px;color:#667085;font-size:13px;background:#fff}
+    .summary-box{margin:28px 0 34px;padding:22px 24px;border:1px solid #D8E5FF;border-radius:16px;background:#F3F7FF}
+    .summary-box strong{display:block;margin-bottom:10px;color:#0B55D9;font-size:16px}
+    .summary-box ul{margin:0;padding-left:20px}
+    .summary-box li{font-size:15px;margin-bottom:6px;color:#344054}
+    .table-wrap{overflow-x:auto;margin:30px 0;border:1px solid #EAECF0;border-radius:14px;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    table{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
+    th{background:#F3F7FF;color:#0B55D9;text-align:left;font-size:14px;font-weight:900;padding:15px 16px;border-bottom:1px solid #D8E5FF}
+    td{padding:16px;border-bottom:1px solid #EAECF0;color:#344054;font-size:15px;vertical-align:top}
+    tr:last-child td{border-bottom:0}
+    .infographic{margin:30px 0;border:1px solid #EAECF0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    .infographic-h{background:#08111F;color:#fff;padding:15px 22px;font-weight:900;font-size:15px}
+    .ig-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#EAECF0}
+    .ig-item{background:#fff;padding:20px;display:flex;gap:13px;align-items:flex-start}
+    .ig-ic{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:#EEF4FF;border:1px solid #D8E5FF;display:flex;align-items:center;justify-content:center;color:#0B55D9}
+    .ig-item b{display:block;color:#101828;font-size:15px;margin-bottom:4px}
+    .ig-item .t{font-size:13.5px;color:#4b5563;line-height:1.6;display:block}
+    .figure-note{color:#8A95A3;font-size:12.5px;margin:-18px 0 26px;text-align:center}
+    .callout-box,.warning-box{border-radius:14px;padding:20px 22px;margin:26px 0}
+    .callout-box{background:#F3F7FF;border:1px solid #D8E5FF}
+    .warning-box{background:#FFF4F1;border:1px solid #F6CFC5}
+    .callout-box .label,.warning-box .label{display:inline-block;font-size:12px;font-weight:900;color:#0B55D9;margin-bottom:7px}
+    .warning-box .label{color:#B42318}
+    .callout-box p,.warning-box p{margin:0;font-size:15.5px}
+    .cta{margin-top:46px;padding:30px;border-radius:16px;background:#08111F;color:#fff}
+    .cta h2{color:#fff}
+    .cta p{font-size:15px;color:rgba(255,255,255,.78)}
+    .cta-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .cta a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border-radius:10px;background:#FEE500;color:#191919}
+    .cta .phone{background:#fff;color:#08111F}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="brand" href="../../">← 아비컴퍼니 홈</a>
+    <span class="tag">SEO·상위노출</span>
+    <h1>홈페이지를 새로 만들었는데 검색에 안 나옵니다</h1>
+    <p class="desc">새 홈페이지가 구글·네이버에 안 잡히는 이유는 대부분 정해져 있습니다. 색인을 막는 설정부터 순서대로 확인하는 방법을 실무 경험으로 정리했습니다.</p>
+    <div class="meta">
+      <span>작성자 아비컴퍼니</span>
+      <span>발행일 2026-08-25</span>
+      <span>수정일 2026-08-25</span>
+    </div>
+    <article>
+      <section class="summary-box">
+        <strong>핵심 요약</strong>
+        <ul><li>새 사이트가 안 나오는 이유는 순위 문제가 아니라 대개 색인 문제입니다.</li><li>noindex 태그와 robots.txt 차단이 가장 흔한 원인이고, 둘 다 한 줄로 전체를 막습니다.</li><li>사이트맵에 리디렉션되는 주소를 실으면 구글이 그 페이지를 색인에서 뺍니다.</li><li>제출은 서치콘솔·서치어드바이저에서 하고, 반영에는 시간이 걸립니다.</li></ul>
+      </section>
+      <p>홈페이지를 새로 열고 2주쯤 지나면 거의 같은 연락을 받습니다.</p>
+      <p>&quot;회사 이름으로 검색해도 안 나오는데요.&quot;</p>
+      <p>실제 운영해 보면 이때 순위를 손보는 것은 거의 의미가 없습니다.</p>
+      <p><strong>아직 순위 경쟁에 들어가지도 못한 상태</strong>, 즉 검색엔진이 페이지를 목록에 넣지 않은 상태이기 때문입니다.</p>
+      <p>그래서 확인 순서가 중요합니다. 위에서부터 하나씩 짚어야 시간을 낭비하지 않습니다.</p>
+      <h2>먼저 색인이 됐는지 어떻게 확인하나요?</h2>
+      <p>검색창에 `site:` 를 붙여 도메인을 넣어 보는 것이 가장 빠릅니다.</p>
+      <p>결과가 하나도 안 나오면 순위가 낮은 것이 아니라 아예 등록되지 않은 것입니다.</p>
+      <p>정확히 보려면 구글 서치콘솔의 URL 검사 기능을 씁니다. 해당 주소가 색인됐는지, 안 됐다면 이유가 무엇인지 알려 줍니다.</p>
+      <p>여기서 나오는 사유 문구가 다음에 무엇을 고쳐야 하는지 그대로 알려 줍니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>서치콘솔에 뜨는 사유</th><th>실제 원인</th><th>조치</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>&#39;noindex&#39; 태그에 의해 제외됨</td><td>페이지가 색인 거부를 스스로 선언</td><td>meta robots 와 X-Robots-Tag 헤더 확인</td></tr>
+            <tr><td>robots.txt에 의해 차단됨</td><td>크롤러 접근 자체를 막음</td><td>Disallow 규칙 수정</td></tr>
+            <tr><td>리디렉션이 포함된 페이지</td><td>제출한 주소가 다른 주소로 넘어감</td><td>사이트맵·canonical 을 최종 주소로</td></tr>
+            <tr><td>크롤링됨 - 현재 색인 생성 안 됨</td><td>내용이 얕거나 중복으로 판단</td><td>본문 보강, 중복 페이지 정리</td></tr>
+            <tr><td>발견됨 - 현재 색인 생성 안 됨</td><td>대기 중이거나 우선순위 낮음</td><td>내부링크 보강 후 기다림</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2>가장 흔한 원인은 무엇인가요?</h2>
+      <p>제작 중에 걸어 둔 색인 차단을 그대로 두고 오픈한 경우입니다.</p>
+      <p>작업 중인 사이트가 검색에 노출되면 곤란하니 막아 두는 것은 정상입니다. 문제는 여는 날 푸는 것을 잊는 것입니다.</p>
+      <p>특히 워드프레스는 설정 안에 체크박스 하나로 전체 색인을 막는 기능이 있어서, 이것 하나로 몇 달을 날리는 경우를 봤습니다.</p>
+      <p>직접 만든 사이트라면 두 군데를 봐야 합니다.</p>
+      <ul><li>HTML 안의 meta robots 태그에 noindex 가 들어 있는지</li><li>서버가 X-Robots-Tag 헤더로 noindex 를 내보내는지</li><li>robots.txt 에 Disallow: / 가 남아 있는지</li><li>스테이징 도메인용 설정이 운영 도메인에 그대로 배포됐는지</li></ul>
+      <div class="warning-box"><span class="label">놓치기 쉬운 지점</span><p>meta 태그에는 index 라고 적혀 있어도 서버가 헤더로 noindex 를 보내면 헤더가 이깁니다. 브라우저에서 소스만 봐서는 보이지 않기 때문에, 응답 헤더까지 확인해야 원인을 찾을 수 있습니다.</p></div>
+      <h2>사이트맵만 내면 되는 것 아닌가요?</h2>
+      <p>사이트맵은 목록일 뿐이고, 그 목록이 정확해야 효과가 있습니다.</p>
+      <p>실제 운영해 보면 사이트맵 자체가 문제를 만드는 경우가 적지 않습니다.</p>
+      <p>대표적인 것이 최종 주소가 아닌 주소를 싣는 경우입니다.</p>
+      <p>예를 들어 서버가 `/page.html` 을 `/page` 로 넘기는데 사이트맵에는 `.html` 주소가 들어 있으면, 구글은 제출받은 주소마다 리디렉션을 만나고 그 페이지를 색인에서 뺍니다.</p>
+      <div class="infographic"><div class="infographic-h">사이트맵에 실으면 안 되는 주소</div><div class="ig-grid"><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span><div><b>리디렉션되는 주소</b><span class="t">301·308 로 넘어가는 주소는 최종 주소로 바꿔 싣습니다.</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><circle cx='12' cy='12' r='9'/><path d='M9 9l6 6M15 9l-6 6'/></svg></span><div><b>noindex 페이지</b><span class="t">색인을 막아 둔 페이지를 사이트맵에 넣으면 신호가 어긋납니다.</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M4 6h16v13H4z'/><path d='M4 10h16'/></svg></span><div><b>검색·페이지 목록</b><span class="t">검색 결과나 2페이지 이후는 색인 대상이 아닙니다.</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z'/></svg></span><div><b>canonical 이 다른 페이지</b><span class="t">대표 주소가 따로 있는 페이지는 그 주소만 싣습니다.</span></div></div></div></div><p class="figure-note">▲ 제출한 주소와 실제로 열리는 주소가 같아야 합니다</p>
+      <h2>제출은 어디서 하고 얼마나 걸리나요?</h2>
+      <p>구글은 서치콘솔, 네이버는 서치어드바이저에 사이트를 등록하고 사이트맵을 제출합니다.</p>
+      <p>등록 자체는 십 분이면 끝나지만, 실제로 목록에 오르는 데는 시간이 걸립니다.</p>
+      <p>새 도메인은 특히 그렇습니다. 며칠에서 몇 주까지도 걸리며, 이 구간에서 초조해져 설정을 이것저것 바꾸다 오히려 꼬이는 경우가 많습니다.</p>
+      <p>제출한 뒤에는 서치콘솔의 색인 현황만 주기적으로 보면서 기다리는 편이 낫습니다.</p>
+      <div class="callout-box"><span class="label">실무 팁</span><p>새 사이트일수록 내부링크가 중요합니다. 메인에서 모든 주요 페이지로 한 번에 닿을 수 있으면 크롤러가 훨씬 빨리 전체를 훑습니다. 어디서도 링크되지 않은 페이지는 사이트맵에만 있어도 뒤로 밀립니다.</p></div>
+      <h2>그래도 안 나오면 무엇을 봐야 하나요?</h2>
+      <p>색인은 됐는데 검색 결과에서 안 보이는 경우라면, 그때부터가 순위 이야기입니다.</p>
+      <p>회사 이름으로도 안 나온다면 상호가 본문에 제대로 적혀 있는지, 사업자 정보와 연락처가 일관되게 들어가 있는지부터 봅니다.</p>
+      <p>지역 업종이라면 지도 등록 정보와 홈페이지의 상호·주소·전화번호가 같은 값인지도 확인해야 합니다.</p>
+      <p>값이 서로 다르면 검색엔진이 같은 업체로 묶지 못합니다.</p>
+      <p>여기까지 정리하고 나서 콘텐츠를 쌓아야 시간이 헛되지 않습니다.</p>
+      <div class="callout-box"><span class="label">함께 보면 좋은 글</span><p><a href="../naver-google-indexing-checklist/">네이버·구글 색인 점검 체크리스트 →</a><br><a href="../search-ranking-drop-diagnosis/">검색 순위가 갑자기 떨어졌다면 →</a><br><a href="../local-business-seo-strategy/">지역 사업자를 위한 검색 전략 →</a></p></div>
+    </article>
+    <section class="cta">
+      <h2>우리 업종에도 검색 노출형 홈페이지가 필요하다면</h2>
+      <p>아비컴퍼니가 홈페이지 제작, 업종별 칼럼, 검색 노출 구조, 광고 운영까지 함께 진단해드립니다.</p>
+      <div class="cta-actions">
+        <a href="tel:01055010152" class="phone">전화 상담 010-5501-0152</a>
+        <a href="https://pf.kakao.com/_wxjxiSX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
