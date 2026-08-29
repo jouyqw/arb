@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aubcompany.com/</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/column/</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/column/small-business-blog-automation-system/</loc>
@@ -319,5 +319,9 @@
   <url>
     <loc>https://aubcompany.com/column/new-website-not-indexed/</loc>
     <lastmod>2026-08-25</lastmod>
+  </url>
+  <url>
+    <loc>https://aubcompany.com/column/seo-content-refresh-old-posts/</loc>
+    <lastmod>2026-08-30</lastmod>
   </url>
 </urlset>
