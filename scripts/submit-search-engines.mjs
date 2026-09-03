@@ -12,21 +12,43 @@ function base64url(value) {
     .replace(/\//g, '_');
 }
 
-async function submitIndexNow() {
-  const response = await fetch('https://api.indexnow.org/indexnow', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({
-      host: new URL(siteUrl).host,
-      key: indexNowKey,
-      keyLocation: `${siteUrl}${indexNowKey}.txt`,
-      urlList: [sitemapUrl],
-    }),
-  });
+// IndexNow 는 사이트맵 주소가 아니라 개별 페이지 주소를 받아야 그 페이지를 가지러 온다.
+// 사이트맵 URL 하나만 던지던 동안은 사실상 아무 것도 알리지 않은 것과 같았다.
+async function readSitemapUrls() {
+  const response = await fetch(sitemapUrl, { headers: { 'cache-control': 'no-cache' } });
+  if (!response.ok) {
+    throw new Error(`사이트맵을 읽지 못했습니다: ${response.status} ${response.statusText}`);
+  }
+  const xml = await response.text();
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
+  if (!urls.length) {
+    throw new Error('사이트맵에 <loc> 가 하나도 없습니다.');
+  }
+  return urls;
+}
 
-  console.log(`IndexNow ${new URL(siteUrl).host}: ${response.status} ${response.statusText}`);
-  if (!response.ok && response.status !== 202) {
-    throw new Error(await response.text());
+async function submitIndexNow(urls) {
+  const host = new URL(siteUrl).host;
+  // IndexNow 는 한 번에 1만 건까지 받지만, 여유를 두고 나눠 보낸다.
+  const chunks = [];
+  for (let i = 0; i < urls.length; i += 1000) chunks.push(urls.slice(i, i + 1000));
+
+  for (const [index, chunk] of chunks.entries()) {
+    const response = await fetch('https://api.indexnow.org/indexnow', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        host,
+        key: indexNowKey,
+        keyLocation: `${siteUrl}${indexNowKey}.txt`,
+        urlList: chunk,
+      }),
+    });
+
+    console.log(`IndexNow ${host} (${index + 1}/${chunks.length}, ${chunk.length}건): ${response.status} ${response.statusText}`);
+    if (!response.ok && response.status !== 202) {
+      throw new Error(await response.text());
+    }
   }
 }
 
@@ -83,5 +105,7 @@ async function submitGoogleSitemap() {
   }
 }
 
-await submitIndexNow();
+const urls = await readSitemapUrls();
+console.log(`사이트맵 URL ${urls.length}건`);
+await submitIndexNow(urls);
 await submitGoogleSitemap();
