@@ -315,6 +315,13 @@
     .footer p{margin:4px 0}
     .footer .legal{margin-top:24px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;color:#5F6E8C;font-size:12.5px}
     .footer .legal a:hover{color:#fff}
+    .fnav{margin:0 0 30px;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.1)}
+    .fnav b{display:block;color:#C4CEDF;font-size:12px;font-weight:800;letter-spacing:.1em;margin-bottom:14px}
+    .fnav ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:11px 22px}
+    .fnav a{color:#8A97AF;font-size:13.5px}
+    .fnav a:hover{color:#fff}
+    @media(max-width:760px){.fnav ul{grid-template-columns:1fr 1fr}}
+    @media(max-width:480px){.fnav ul{grid-template-columns:1fr}}
 
     /* ---------- floating contact rail ---------- */
     .rail{position:fixed;right:18px;bottom:22px;z-index:95;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
@@ -882,6 +889,7 @@
       <a href="#reference">제작 사례</a>
       <a href="#scan">무료 진단</a>
       <a href="#reviews">후기</a>
+      <a href="/service/">서비스</a>
       <a href="/column/">칼럼</a>
       <a class="cta" href="#contact">무료 상담 신청</a>
     </nav>
@@ -897,6 +905,7 @@
   <a href="#web" onclick="mclose()">홈페이지 제작</a>
   <a href="#partners" onclick="mclose()">파트너</a>
   <a href="#reviews" onclick="mclose()">후기</a>
+  <a href="/service/" onclick="mclose()">서비스</a>
   <a href="/column/" onclick="mclose()">칼럼</a>
   <a class="cta" href="#contact" onclick="mclose()">무료 상담 신청</a>
 </nav>
@@ -1988,6 +1997,17 @@
       <svg viewBox="0 0 32 32" aria-hidden="true" style="width:28px;height:28px"><rect width="32" height="32" rx="7" fill="#101828"/><path d="M6 24L13 8L20 24" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M9 18H17" stroke="white" stroke-width="2.4" stroke-linecap="round"/><circle cx="25" cy="13" r="3.5" fill="white" opacity=".9"/><path d="M25 16.5V24" stroke="white" stroke-width="2.8" stroke-linecap="round"/></svg>
       <span style="color:var(--ink)">아비컴퍼니<small>ARB COMPANY</small></span>
     </div>
+    <nav class="fnav" aria-label="서비스 안내">
+      <b>서비스</b>
+      <ul>
+        <li><a href="/service/homepage-production/">홈페이지 제작</a></li>
+        <li><a href="/service/professional-marketing/">전문직 마케팅 (병원·법무법인·세무법인)</a></li>
+        <li><a href="/service/interior-marketing/">인테리어 마케팅</a></li>
+        <li><a href="/service/naver-place-ranking/">네이버 플레이스 상위노출</a></li>
+        <li><a href="/service/jeonju-homepage-production/">전주 홈페이지 제작</a></li>
+        <li><a href="/service/jeonju-marketing-agency/">전주 마케팅 업체</a></li>
+      </ul>
+    </nav>
     <p>아비컴퍼니 (Arb Company) · 대표 오경록 · 사업자등록번호 844-22-01736</p>
     <p>본사 — 전북특별자치도 전주시 완산구 아중로 33, 전주정보문화산업진흥원 C동 302호</p>
     <p>서울사무소 — 서울특별시 송파구 가락로 114 신우빌딩 6층 627호</p>

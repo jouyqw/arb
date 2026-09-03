@@ -17,6 +17,15 @@
 - 광고 운영: 네이버, 구글, 메타, 당근, 유튜브 숏폼
 - 콘텐츠 자동화: 업종별 칼럼 기획·발행·검색엔진 제출 자동화
 
+## 서비스별 안내 페이지
+- 서비스 전체: https://aubcompany.com/service/
+- 홈페이지 제작: https://aubcompany.com/service/homepage-production/
+- 전문직 마케팅(병원·법무법인·세무법인): https://aubcompany.com/service/professional-marketing/
+- 인테리어 마케팅: https://aubcompany.com/service/interior-marketing/
+- 네이버 플레이스 상위노출: https://aubcompany.com/service/naver-place-ranking/
+- 전주 홈페이지 제작: https://aubcompany.com/service/jeonju-homepage-production/
+- 전주 마케팅 업체: https://aubcompany.com/service/jeonju-marketing-agency/
+
 ## 주요 링크
 - 홈페이지: https://aubcompany.com/
 - 마케팅 칼럼(검색·분야별 필터): https://aubcompany.com/column/
