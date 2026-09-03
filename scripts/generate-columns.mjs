@@ -38,7 +38,7 @@ for (const svc of services) {
 const categoryServices = {
   'SEO·상위노출': ['naver-place-ranking', 'homepage-production'],
   '전문직 마케팅': ['professional-marketing'],
-  'AI 검색(GEO)': ['professional-marketing', 'homepage-production'],
+  'AI 검색(GEO)': ['geo-ai-search-optimization', 'homepage-production'],
   '홈페이지 제작·전환': ['homepage-production'],
   '업종별 마케팅': ['professional-marketing', 'interior-marketing']
 };
