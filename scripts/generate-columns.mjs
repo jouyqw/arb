@@ -63,6 +63,19 @@ const relatedColumnsFor = (post, limit = 4) => [...columns]
   .sort((a, b) => b.datePublished.localeCompare(a.datePublished) || a.slug.localeCompare(b.slug))
   .slice(0, limit);
 
+// 카카오톡 채널과 당근 비즈프로필이 홈 푸터에서만 링크되고 있었다.
+// 그 두 프로필로 가는 경로가 사이트 전체에 하나뿐이면 크롤러가 잘 안 간다.
+// 브랜드명으로 검색했을 때 이 채널들도 같이 뜨게 하려면 링크가 여러 곳에서 나와야 한다.
+const CHANNELS = [
+  { label: '카카오톡 채널', url: 'https://pf.kakao.com/_wxjxiSX' },
+  { label: '당근 비즈프로필', url: 'https://www.daangn.com/kr/local-profile/%EC%95%84%EB%B9%84%EC%BB%B4%ED%8D%BC%EB%8B%88-%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%EC%A0%84%EB%AC%B8%EC%A0%9C%EC%9E%91-%EB%A7%88%EC%BC%80%ED%8C%85%ED%9A%8C%EC%82%AC-nq6jjkk9t8z3/' },
+];
+
+const channelRow = () => `<nav class="channels" aria-label="아비컴퍼니 공식 채널">
+      <span>아비컴퍼니 공식 채널</span>
+      ${CHANNELS.map((c) => `<a href="${c.url}" target="_blank" rel="noopener">${c.label}</a>`).join('')}
+    </nav>`;
+
 const esc = (value = '') => String(value)
   .replaceAll('&', '&amp;')
   .replaceAll('<', '&lt;')
@@ -255,6 +268,9 @@ const articleTemplate = (post) => {
     .related-list a{display:block;font-size:16px;line-height:1.5;margin-bottom:4px}
     .related-list span{display:block;color:#8A95A3;font-size:13.5px;font-weight:400;line-height:1.6}
     .more{display:inline-block;font-size:14px}
+    .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
+    .channels span{font-weight:800;color:#667085}
+    .channels a{font-size:13.5px;font-weight:700}
     @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
   </style>
 </head>
@@ -284,6 +300,7 @@ const articleTemplate = (post) => {
         <a href="https://pf.kakao.com/_wxjxiSX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
       </div>
     </section>
+    ${channelRow()}
   </main>
 </body>
 </html>`;
@@ -481,6 +498,9 @@ const serviceStyle = `
     .cta-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
     .cta a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 19px;border-radius:10px;background:#FEE500;color:#191919}
     .cta .phone{background:#fff;color:#08111F}
+    .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
+    .channels span{font-weight:800;color:#667085}
+    .channels a{font-size:13.5px;font-weight:700}
     @media(max-width:560px){.top{padding:26px 0 42px;margin-bottom:34px}p,li{font-size:16px}h2{font-size:22px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.cta{padding:24px}}
 `;
 
@@ -583,6 +603,7 @@ const serviceTemplate = (svc) => {
         <a href="https://pf.kakao.com/_wxjxiSX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
       </div>
     </section>
+    ${channelRow()}
   </main>
 </body>
 </html>`;
