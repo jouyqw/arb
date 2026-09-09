@@ -184,7 +184,7 @@
     .ad-reel{position:relative;width:100%;min-width:0;min-height:560px;border:1px solid rgba(122,168,255,.24);border-radius:24px;background:linear-gradient(150deg,rgba(255,255,255,.13),rgba(255,255,255,.035));box-shadow:0 34px 86px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.11);overflow:hidden;isolation:isolate}
     .ad-reel::before{content:"";position:absolute;inset:-18%;background:conic-gradient(from 210deg,rgba(77,163,255,.08),rgba(102,208,255,.32),rgba(255,255,255,.08),rgba(77,163,255,.08));animation:reelGlow 10s linear infinite;filter:blur(18px)}
     .ad-reel::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.18),transparent 28%,transparent 72%,rgba(255,255,255,.08));pointer-events:none;mix-blend-mode:screen}
-    .ad-gif{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);object-fit:cover;border-radius:20px;filter:saturate(1.12) contrast(1.05);opacity:.98}
+    .ad-gif{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);object-fit:cover;border-radius:20px;filter:saturate(1.12) contrast(1.05);opacity:.98;box-shadow:0 24px 70px rgba(0,0,0,.32)}
     .ad-device{position:absolute;left:50%;top:38px;width:230px;height:390px;margin-left:-115px;border-radius:28px;background:#060A12;border:7px solid #1C2638;box-shadow:0 28px 70px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.1);overflow:hidden;display:none}
     .ad-device::before{content:"";position:absolute;left:50%;top:9px;z-index:8;width:58px;height:5px;margin-left:-29px;border-radius:999px;background:rgba(255,255,255,.18)}
     .ad-screen{position:absolute;inset:0;background:radial-gradient(260px 210px at 72% 12%,rgba(97,211,255,.72),transparent 58%),linear-gradient(160deg,#08111F 0%,#163567 45%,#07101C 100%);overflow:hidden}
@@ -430,7 +430,7 @@
       .hero-sub{word-break:normal;overflow-wrap:anywhere}
       .hero-grid{gap:36px}
       .ad-reel{order:-1;width:100%;max-width:338px;min-height:430px;border-radius:20px}
-      .ad-gif{inset:12px;width:calc(100% - 24px);height:300px;border-radius:16px}
+      .ad-gif{inset:12px;width:calc(100% - 24px);height:calc(100% - 24px);border-radius:16px}
       .ad-device{top:34px;width:190px;height:338px;margin-left:-95px;border-radius:24px}
       .ad-float.one{left:14px;top:70px;width:132px}
       .ad-float.two{display:block;right:14px;top:214px;width:122px}
@@ -1079,7 +1079,7 @@
         <div class="hero-copy">
           <span class="hero-badge">22개 전문직 법인이 선택한 파트너 — 전문직 마케팅 · 홈페이지 제작</span>
           <h1>전문직 마케팅의<br class="only-mobile" /> 정답은<br /><em>계속 변합니다</em></h1>
-          <div class="hero-sub"><p><strong>법무법인 10곳 · 병원 8곳 · 세무법인 4곳</strong> — 22개 전문직 법인이 아비컴퍼니와 함께 시장을 선점하고 있습니다.</p><p>홈페이지 제작부터 네이버·구글·메타·당근 광고, AI 검색(GEO)까지 하나의 파트너십으로 운영합니다.</p><p class="hero-local">전주 본사(전주정보문화산업진흥원)와 서울사무소에서 진행합니다. 전주 홈페이지제작·전주 마케팅업체를 찾고 계시면 <a href="/service/jeonju-homepage-production/">전주 홈페이지 제작</a>, <a href="/service/jeonju-marketing-agency/">전주 마케팅 업체</a> 안내를 먼저 보셔도 됩니다.</p></div>
+          <div class="hero-sub"><p><strong>법무법인 10곳 · 병원 8곳 · 세무법인 4곳</strong> — 22개 전문직 법인이 아비컴퍼니와 함께 시장을 선점하고 있습니다.</p><p>홈페이지 제작부터 네이버·구글·메타·당근 광고, AI 검색(GEO)까지 하나의 파트너십으로 운영합니다.</p></div>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">무료 마케팅 진단 신청</a>
             <a class="btn btn-ghost" href="https://pf.kakao.com/_wxjxiSX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
@@ -1088,23 +1088,6 @@
         </div>
         <div class="ad-reel" aria-label="숏폼 광고 모션그래픽 샘플">
           <img class="ad-gif" src="/assets/hero/ad-showreel.gif" alt="" loading="eager" decoding="async" />
-          <div class="ad-float one"><small>SHORTS VIEW</small><strong>2.18M</strong><em>sample signal</em></div>
-          <div class="ad-float two"><small>CTR LIFT</small><strong>+48%</strong><em>creative test</em></div>
-          <div class="ad-device">
-            <div class="ad-screen">
-              <div class="ad-scene"><i></i><i></i><i></i><i></i></div>
-              <div class="ad-hud">
-                <span class="ad-chip">AD CREATIVE</span>
-                <div class="ad-title">검색에서<br>상담까지<br>한 번에</div>
-                <div class="ad-bar"><span></span></div>
-              </div>
-            </div>
-          </div>
-          <div class="ad-timeline"><span></span><span></span><span></span><span></span><b class="ad-playhead"></b></div>
-          <div class="ad-metrics">
-            <div class="ad-metric"><b>6채널</b><span>네이버 · 구글 · 메타</span></div>
-            <div class="ad-metric"><b>실험형</b><span>소재 제작 · 전환 분석</span></div>
-          </div>
         </div>
       </div>
     </div>
