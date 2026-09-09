@@ -184,7 +184,8 @@
     .ad-reel{position:relative;width:100%;min-width:0;min-height:560px;border:1px solid rgba(122,168,255,.24);border-radius:24px;background:linear-gradient(150deg,rgba(255,255,255,.13),rgba(255,255,255,.035));box-shadow:0 34px 86px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.11);overflow:hidden;isolation:isolate}
     .ad-reel::before{content:"";position:absolute;inset:-18%;background:conic-gradient(from 210deg,rgba(77,163,255,.08),rgba(102,208,255,.32),rgba(255,255,255,.08),rgba(77,163,255,.08));animation:reelGlow 10s linear infinite;filter:blur(18px)}
     .ad-reel::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.18),transparent 28%,transparent 72%,rgba(255,255,255,.08));pointer-events:none;mix-blend-mode:screen}
-    .ad-device{position:absolute;left:50%;top:38px;width:230px;height:390px;margin-left:-115px;border-radius:28px;background:#060A12;border:7px solid #1C2638;box-shadow:0 28px 70px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.1);overflow:hidden}
+    .ad-gif{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);object-fit:cover;border-radius:20px;filter:saturate(1.12) contrast(1.05);opacity:.98}
+    .ad-device{position:absolute;left:50%;top:38px;width:230px;height:390px;margin-left:-115px;border-radius:28px;background:#060A12;border:7px solid #1C2638;box-shadow:0 28px 70px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.1);overflow:hidden;display:none}
     .ad-device::before{content:"";position:absolute;left:50%;top:9px;z-index:8;width:58px;height:5px;margin-left:-29px;border-radius:999px;background:rgba(255,255,255,.18)}
     .ad-screen{position:absolute;inset:0;background:radial-gradient(260px 210px at 72% 12%,rgba(97,211,255,.72),transparent 58%),linear-gradient(160deg,#08111F 0%,#163567 45%,#07101C 100%);overflow:hidden}
     .ad-scene{position:absolute;inset:0;animation:scenePan 7.5s ease-in-out infinite alternate;transform:scale(1.05)}
@@ -204,8 +205,8 @@
     .ad-metric b{display:block;font-size:22px;line-height:1;font-weight:900;color:#fff;letter-spacing:-.035em}
     .ad-metric span{display:block;margin-top:7px;font-size:11px;color:#8FA6CC;font-weight:700}
     .ad-float{position:absolute;z-index:4;border:1px solid rgba(255,255,255,.16);border-radius:16px;background:rgba(10,18,34,.62);backdrop-filter:blur(16px);box-shadow:0 18px 44px rgba(0,0,0,.3)}
-    .ad-float.one{left:22px;top:84px;width:150px;padding:14px;animation:floatOne 5.8s ease-in-out infinite}
-    .ad-float.two{right:22px;top:196px;width:140px;padding:14px;animation:floatTwo 6.4s ease-in-out infinite}
+    .ad-float.one{left:24px;top:34px;width:158px;padding:14px;animation:floatOne 5.8s ease-in-out infinite}
+    .ad-float.two{right:24px;top:34px;width:148px;padding:14px;animation:floatTwo 6.4s ease-in-out infinite}
     .ad-float small{display:block;font-size:10px;font-weight:900;color:#7591BD;letter-spacing:.1em}
     .ad-float strong{display:block;margin-top:6px;font-size:22px;line-height:1;font-weight:900;color:#fff;letter-spacing:-.04em}
     .ad-float em{display:block;margin-top:6px;font-style:normal;font-size:11px;font-weight:800;color:#62D6A6}
@@ -428,12 +429,13 @@
       h1{font-size:31px;line-height:1.24;letter-spacing:-.035em}
       .hero-sub{word-break:normal;overflow-wrap:anywhere}
       .hero-grid{gap:36px}
-      .ad-reel{width:100%;max-width:338px;min-height:460px;border-radius:20px}
+      .ad-reel{order:-1;width:100%;max-width:338px;min-height:430px;border-radius:20px}
+      .ad-gif{inset:12px;width:calc(100% - 24px);height:300px;border-radius:16px}
       .ad-device{top:34px;width:190px;height:338px;margin-left:-95px;border-radius:24px}
       .ad-float.one{left:14px;top:70px;width:132px}
-      .ad-float.two{display:none}
+      .ad-float.two{display:block;right:14px;top:214px;width:122px}
       .ad-float strong{font-size:19px}
-      .ad-metrics{left:16px;right:16px;bottom:20px}
+      .ad-metrics{left:16px;right:16px;bottom:18px}
       .ad-metric b{font-size:19px}
       .ad-metric span{font-size:10px}
       .ad-timeline{display:none}
@@ -1085,6 +1087,7 @@
           <p class="hero-note">진단 비용 없음 · 1영업일 이내 회신</p>
         </div>
         <div class="ad-reel" aria-label="숏폼 광고 모션그래픽 샘플">
+          <img class="ad-gif" src="/assets/hero/ad-showreel.gif" alt="" loading="eager" decoding="async" />
           <div class="ad-float one"><small>SHORTS VIEW</small><strong>2.18M</strong><em>sample signal</em></div>
           <div class="ad-float two"><small>CTR LIFT</small><strong>+48%</strong><em>creative test</em></div>
           <div class="ad-device">
