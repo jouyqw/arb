@@ -1,111 +1,184 @@
 import { createSign } from 'node:crypto';
+import { mkdir, writeFile } from 'node:fs/promises';
 
-const siteUrl = 'https://aubcompany.com/';
-const sitemapUrl = 'https://aubcompany.com/sitemap.xml';
-const indexNowKey = '91a7460f8c9b4e8db4f2a13d67a0c5e2';
+// 새 사이트는 siteUrl/sitemapUrl을 추가합니다. IndexNow 키는 도메인 루트에
+// 같은 이름의 txt 파일이 실제 공개된 경우에만 적습니다.
+const sites = [
+  ['AUB컴퍼니', 'https://aubcompany.com/', 'https://aubcompany.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
+  ['AUB 법률', 'https://law.aubcompany.com/', 'https://law.aubcompany.com/sitemap.xml'],
+  ['AUB 생활', 'https://life.aubcompany.com/', 'https://life.aubcompany.com/sitemap.xml'],
+  ['새로고침 인테리어', 'https://interior-f5.com/', 'https://interior-f5.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
+  ['키자드 칼럼', 'https://jung30h.keyzard.org/', 'https://jung30h.keyzard.org/sitemap.xml'],
+  ['예율 칼럼', 'https://column.lawfirmyeyul.com/', 'https://column.lawfirmyeyul.com/sitemap.xml', 'd5534fd395b25c998ea43d165535551a'],
+  ['태앤규 칼럼', 'https://column.taeandkyu.com/', 'https://column.taeandkyu.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
+  ['태앤규', 'https://taeandkyu.com/', 'https://taeandkyu.com/sitemap.xml', '1c271ef7c79c4a3abc5b43a40dc1e3b8'],
+  ['태앤규 전주', 'https://taeandkyujeonju.com/', 'https://taeandkyujeonju.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
+  ['울산 변호사', 'https://ulsanlawyer.kr/', 'https://ulsanlawyer.kr/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
+  ['위드윤', 'https://with-yoon-law.com/', 'https://with-yoon-law.com/sitemap.xml', 'eee764b31941bb288655b49d490b1005'],
+  ['우리인법무사', 'https://woorinlaw.com/', 'https://woorinlaw.com/sitemap.xml'],
+  ['바나나퀵', 'https://xn--910ba239f8iu.com/', 'https://xn--910ba239f8iu.com/sitemap.xml'],
+  ['새출발양형자료분석센터', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/sitemap.php'],
+  ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml'],
+  ['예율 법률칼럼', 'https://columns.yeyul-law.com/', 'https://columns.yeyul-law.com/sitemap.xml', '628977ad229e859371ca6577bf876d14'],
+  ['법무법인 예율', 'https://yeyul-law.com/', 'https://yeyul-law.com/sitemap.xml'],
+].map(([name, siteUrl, sitemapUrl, indexNowKey]) => ({ name, siteUrl, sitemapUrl, indexNowKey }));
 
-function base64url(value) {
-  return Buffer.from(value)
-    .toString('base64')
-    .replace(/=/g, '')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_');
+const recentDays = Number(process.env.RECENT_DAYS || 7);
+const forceAll = process.env.FORCE_ALL === '1';
+const dryRun = process.env.DRY_RUN === '1';
+const report = { runAt: new Date().toISOString(), dryRun, googleAccount: null, sites: [] };
+
+const base64url = (value) => Buffer.from(value).toString('base64')
+  .replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+
+function xmlText(value = '') {
+  return value.replace(/^<!\[CDATA\[|\]\]>$/g, '')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").trim();
 }
 
-// IndexNow 는 사이트맵 주소가 아니라 개별 페이지 주소를 받아야 그 페이지를 가지러 온다.
-// 사이트맵 URL 하나만 던지던 동안은 사실상 아무 것도 알리지 않은 것과 같았다.
-async function readSitemapUrls() {
-  const response = await fetch(sitemapUrl, { headers: { 'cache-control': 'no-cache' } });
-  if (!response.ok) {
-    throw new Error(`사이트맵을 읽지 못했습니다: ${response.status} ${response.statusText}`);
-  }
-  const xml = await response.text();
-  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
-  if (!urls.length) {
-    throw new Error('사이트맵에 <loc> 가 하나도 없습니다.');
-  }
-  return urls;
+async function getText(url) {
+  const response = await fetch(url, {
+    redirect: 'follow',
+    headers: { 'cache-control': 'no-cache', 'user-agent': 'AUB-Search-Index-Automation/2.0' },
+    signal: AbortSignal.timeout(30000),
+  });
+  if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
+  return response.text();
 }
 
-async function submitIndexNow(urls) {
-  const host = new URL(siteUrl).host;
-  // IndexNow 는 한 번에 1만 건까지 받지만, 여유를 두고 나눠 보낸다.
-  const chunks = [];
-  for (let i = 0; i < urls.length; i += 1000) chunks.push(urls.slice(i, i + 1000));
-
-  for (const [index, chunk] of chunks.entries()) {
-    const response = await fetch('https://api.indexnow.org/indexnow', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({
-        host,
-        key: indexNowKey,
-        keyLocation: `${siteUrl}${indexNowKey}.txt`,
-        urlList: chunk,
-      }),
-    });
-
-    console.log(`IndexNow ${host} (${index + 1}/${chunks.length}, ${chunk.length}건): ${response.status} ${response.statusText}`);
-    if (!response.ok && response.status !== 202) {
-      throw new Error(await response.text());
-    }
-  }
+const blocks = (xml, tag) => [...xml.matchAll(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'gi'))].map((m) => m[1]);
+function value(block, tag) {
+  const match = block.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i'));
+  return match ? xmlText(match[1]) : '';
 }
 
-async function createGoogleAccessToken() {
-  const rawJson = process.env.GSC_SERVICE_ACCOUNT_JSON;
-  if (!rawJson) {
-    console.log('Google Search Console: GSC_SERVICE_ACCOUNT_JSON secret is missing, skipped.');
-    return null;
-  }
+async function readSitemap(sitemapUrl, seen = new Set()) {
+  if (seen.has(sitemapUrl)) return [];
+  if (seen.size > 100) throw new Error('하위 사이트맵이 100개를 넘었습니다.');
+  seen.add(sitemapUrl);
+  const xml = await getText(sitemapUrl);
+  const children = blocks(xml, 'sitemap').map((block) => value(block, 'loc')).filter(Boolean);
+  if (children.length) return (await Promise.all(children.map((url) => readSitemap(url, seen)))).flat();
+  const entries = blocks(xml, 'url').map((block) => ({ loc: value(block, 'loc'), lastmod: value(block, 'lastmod') }))
+    .filter((entry) => /^https?:\/\//.test(entry.loc));
+  if (!entries.length) throw new Error('사이트맵에서 페이지 주소를 찾지 못했습니다.');
+  return entries;
+}
 
-  const credentials = JSON.parse(rawJson);
+function selectRecent(entries) {
+  if (forceAll) return entries;
+  const cutoff = Date.now() - recentDays * 86400000;
+  return entries.filter(({ lastmod }) => {
+    const time = Date.parse(lastmod);
+    return lastmod && Number.isFinite(time) && time >= cutoff && time <= Date.now() + 86400000;
+  });
+}
+
+async function keyIsLive(site) {
+  if (!site.indexNowKey) return false;
+  try {
+    return (await getText(new URL(`${site.indexNowKey}.txt`, site.siteUrl).href)).trim() === site.indexNowKey;
+  } catch { return false; }
+}
+
+async function submitIndexNow(site, urls) {
+  if (!urls.length) return [{ name: 'IndexNow', status: 'no-recent-url', ok: true }];
+  if (dryRun) return [{ name: '네이버', status: 'dry-run', ok: true }, { name: 'IndexNow', status: 'dry-run', ok: true }];
+  const payload = JSON.stringify({
+    host: new URL(site.siteUrl).host,
+    key: site.indexNowKey,
+    keyLocation: new URL(`${site.indexNowKey}.txt`, site.siteUrl).href,
+    urlList: urls.slice(0, 10000),
+  });
+  return Promise.all([
+    ['네이버', 'https://searchadvisor.naver.com/indexnow'],
+    ['IndexNow', 'https://api.indexnow.org/indexnow'],
+  ].map(async ([name, endpoint]) => {
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST', headers: { 'content-type': 'application/json; charset=utf-8' }, body: payload,
+        signal: AbortSignal.timeout(30000),
+      });
+      return { name, status: response.status, ok: response.ok || response.status === 202 };
+    } catch (error) { return { name, status: 'error', ok: false, error: error.message }; }
+  }));
+}
+
+async function googleContext() {
+  const raw = process.env.GSC_SERVICE_ACCOUNT_JSON;
+  if (!raw) return null;
+  const credentials = JSON.parse(raw);
+  report.googleAccount = credentials.client_email;
   const now = Math.floor(Date.now() / 1000);
-  const header = { alg: 'RS256', typ: 'JWT' };
-  const claim = {
-    iss: credentials.client_email,
-    scope: 'https://www.googleapis.com/auth/webmasters',
-    aud: credentials.token_uri || 'https://oauth2.googleapis.com/token',
-    iat: now,
-    exp: now + 3600,
-  };
-  const unsigned = `${base64url(JSON.stringify(header))}.${base64url(JSON.stringify(claim))}`;
-  const signature = createSign('RSA-SHA256').update(unsigned).sign(credentials.private_key);
-  const jwt = `${unsigned}.${base64url(signature)}`;
-
-  const response = await fetch(claim.aud, {
-    method: 'POST',
-    headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-      assertion: jwt,
-    }),
+  const tokenUrl = credentials.token_uri || 'https://oauth2.googleapis.com/token';
+  const claim = { iss: credentials.client_email, scope: 'https://www.googleapis.com/auth/webmasters', aud: tokenUrl, iat: now, exp: now + 3600 };
+  const unsigned = `${base64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }))}.${base64url(JSON.stringify(claim))}`;
+  const jwt = `${unsigned}.${base64url(createSign('RSA-SHA256').update(unsigned).sign(credentials.private_key))}`;
+  const tokenResponse = await fetch(tokenUrl, {
+    method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer', assertion: jwt }),
   });
-
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(`Google token error: ${JSON.stringify(data)}`);
-  }
-  return data.access_token;
+  const tokenData = await tokenResponse.json();
+  if (!tokenResponse.ok) throw new Error(`Google 인증 실패: ${JSON.stringify(tokenData)}`);
+  const listResponse = await fetch('https://www.googleapis.com/webmasters/v3/sites', { headers: { authorization: `Bearer ${tokenData.access_token}` } });
+  const listData = await listResponse.json();
+  if (!listResponse.ok) throw new Error(`Google 속성 목록 실패: ${JSON.stringify(listData)}`);
+  return { token: tokenData.access_token, properties: (listData.siteEntry || []).map((item) => item.siteUrl) };
 }
 
-async function submitGoogleSitemap() {
-  const token = await createGoogleAccessToken();
-  if (!token) return;
-
-  const endpoint = `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(siteUrl)}/sitemaps/${encodeURIComponent(sitemapUrl)}`;
-  const response = await fetch(endpoint, {
-    method: 'PUT',
-    headers: { authorization: `Bearer ${token}` },
-  });
-
-  console.log(`Google sitemap ${sitemapUrl}: ${response.status} ${response.statusText}`);
-  if (!response.ok && response.status !== 204) {
-    throw new Error(await response.text());
-  }
+function propertyFor(siteUrl, properties) {
+  if (properties.includes(siteUrl)) return siteUrl;
+  const host = new URL(siteUrl).hostname.replace(/^www\./, '');
+  return properties.find((property) => property === `sc-domain:${host}`) || null;
 }
 
-const urls = await readSitemapUrls();
-console.log(`사이트맵 URL ${urls.length}건`);
-await submitIndexNow(urls);
-await submitGoogleSitemap();
+async function submitGoogle(site, google) {
+  if (!google) return { status: 'secret-missing', ok: false };
+  const property = propertyFor(site.siteUrl, google.properties);
+  if (!property) return { status: 'permission-missing', ok: false };
+  if (dryRun) return { status: 'dry-run', ok: true, property };
+  const endpoint = `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(property)}/sitemaps/${encodeURIComponent(site.sitemapUrl)}`;
+  const response = await fetch(endpoint, { method: 'PUT', headers: { authorization: `Bearer ${google.token}` } });
+  return { status: response.status, ok: response.ok || response.status === 204, property };
+}
+
+let google = null;
+try { google = await googleContext(); } catch (error) { console.error(error.message); }
+
+for (const site of sites) {
+  const item = { name: site.name, siteUrl: site.siteUrl, sitemapUrl: site.sitemapUrl };
+  try {
+    const entries = [...new Map((await readSitemap(site.sitemapUrl)).map((entry) => [entry.loc, entry])).values()];
+    const recent = selectRecent(entries).filter((entry) => new URL(entry.loc).hostname === new URL(site.siteUrl).hostname);
+    item.urlCount = entries.length;
+    item.recentCount = recent.length;
+    item.sitemapStatus = 'ok';
+    item.indexNowKeyVerified = await keyIsLive(site);
+    item.indexNow = item.indexNowKeyVerified
+      ? await submitIndexNow(site, recent.map((entry) => entry.loc))
+      : [{ name: 'IndexNow', status: site.indexNowKey ? 'key-not-live' : 'key-not-configured', ok: false }];
+    item.google = await submitGoogle(site, google);
+    console.log(`${site.name}: URL ${entries.length} / 최근 ${recent.length} / Google ${item.google.status} / IndexNow ${item.indexNow.map((r) => r.status).join(',')}`);
+  } catch (error) {
+    item.sitemapStatus = 'error';
+    item.error = error.message;
+    item.google = await submitGoogle(site, google).catch((googleError) => ({ status: 'error', ok: false, error: googleError.message }));
+    console.error(`${site.name}: ${error.message}`);
+  }
+  report.sites.push(item);
+}
+
+await mkdir('reports', { recursive: true });
+await writeFile('reports/search-index-latest.json', JSON.stringify(report, null, 2) + '\n');
+const summary = [
+  '# 검색 색인 자동화 결과', '', `- 실행: ${report.runAt}`,
+  `- Google 자동화 계정: ${report.googleAccount || '설정 안 됨'}`,
+  `- 전체 사이트: ${report.sites.length}개`, '',
+  '| 사이트 | 사이트맵 URL | 최근 제출 | Google | 네이버·IndexNow |',
+  '|---|---:|---:|---|---|',
+  ...report.sites.map((item) => `| ${item.name} | ${item.urlCount ?? '-'} | ${item.recentCount ?? '-'} | ${item.google?.status ?? '-'} | ${item.indexNow?.map((r) => r.status).join('/') ?? '-'} |`),
+  '', '> 제출은 검색로봇에게 알리는 절차이며 색인이나 검색 순위를 보장하지 않습니다.',
+].join('\n');
+await writeFile('reports/search-index-latest.md', summary + '\n');
+if (process.env.GITHUB_STEP_SUMMARY) await writeFile(process.env.GITHUB_STEP_SUMMARY, summary + '\n', { flag: 'a' });

@@ -1,27 +1,49 @@
-name: Submit search engines
+name: 전체 사이트 검색 색인 자동화
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
       - "column/**/*.html"
       - "sitemap.xml"
       - ".github/workflows/submit-search-engines.yml"
       - "scripts/submit-search-engines.mjs"
+  schedule:
+    # 2시간마다 전체 사이트의 새 칼럼을 확인한다.
+    - cron: "17 */2 * * *"
   workflow_dispatch:
+    inputs:
+      force_all:
+        description: "사이트맵 전체를 IndexNow에 제출"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: all-sites-search-index
+  cancel-in-progress: false
 
 jobs:
   submit-search-engines:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Wait for deployment
-        run: sleep 60
-
-      - name: Submit sitemap to search engines
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: 구글·네이버 자동 제출
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          FORCE_ALL: ${{ inputs.force_all && '1' || '0' }}
+          RECENT_DAYS: "7"
         run: node scripts/submit-search-engines.mjs
+      - name: 실행 보고서 보관
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: search-index-report-${{ github.run_id }}
+          path: reports/search-index-latest.*
+          retention-days: 30
