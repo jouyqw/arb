@@ -181,45 +181,6 @@
     .btn-ghost{border:1px solid rgba(255,255,255,.3);color:#fff;background:rgba(255,255,255,.04)}
     .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.09)}
     .hero-note{margin:20px 0 0;font-size:13px;color:#6E7E9C}
-    .ad-reel{position:relative;width:100%;min-width:0;min-height:560px;border:1px solid rgba(122,168,255,.24);border-radius:24px;background:linear-gradient(150deg,rgba(255,255,255,.13),rgba(255,255,255,.035));box-shadow:0 34px 86px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.11);overflow:hidden;isolation:isolate}
-    .ad-reel::before{content:"";position:absolute;inset:-18%;background:conic-gradient(from 210deg,rgba(77,163,255,.08),rgba(102,208,255,.32),rgba(255,255,255,.08),rgba(77,163,255,.08));animation:reelGlow 10s linear infinite;filter:blur(18px)}
-    .ad-reel::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.18),transparent 28%,transparent 72%,rgba(255,255,255,.08));pointer-events:none;mix-blend-mode:screen}
-    .ad-gif{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);object-fit:cover;border-radius:20px;filter:saturate(1.12) contrast(1.05);opacity:.98;box-shadow:0 24px 70px rgba(0,0,0,.32)}
-    .ad-device{position:absolute;left:50%;top:38px;width:230px;height:390px;margin-left:-115px;border-radius:28px;background:#060A12;border:7px solid #1C2638;box-shadow:0 28px 70px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.1);overflow:hidden;display:none}
-    .ad-device::before{content:"";position:absolute;left:50%;top:9px;z-index:8;width:58px;height:5px;margin-left:-29px;border-radius:999px;background:rgba(255,255,255,.18)}
-    .ad-screen{position:absolute;inset:0;background:radial-gradient(260px 210px at 72% 12%,rgba(97,211,255,.72),transparent 58%),linear-gradient(160deg,#08111F 0%,#163567 45%,#07101C 100%);overflow:hidden}
-    .ad-scene{position:absolute;inset:0;animation:scenePan 7.5s ease-in-out infinite alternate;transform:scale(1.05)}
-    .ad-scene i{position:absolute;display:block}
-    .ad-scene i:nth-child(1){left:22px;bottom:104px;width:188px;height:150px;border-radius:16px;background:linear-gradient(160deg,#DBE8F6,#6F8CB4 58%,#25395E);box-shadow:0 20px 40px rgba(0,0,0,.34)}
-    .ad-scene i:nth-child(2){left:36px;bottom:122px;width:72px;height:96px;border-radius:36px 36px 16px 16px;background:linear-gradient(180deg,#F6D1BA,#6C7891 52%,#172136);filter:blur(.2px)}
-    .ad-scene i:nth-child(3){right:18px;top:70px;width:92px;height:150px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.13));transform:skewY(-8deg);box-shadow:0 22px 38px rgba(0,0,0,.22)}
-    .ad-scene i:nth-child(4){left:-38px;top:28px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(77,163,255,.82),transparent 64%);filter:blur(16px)}
-    .ad-hud{position:absolute;left:16px;right:16px;bottom:18px;z-index:5;color:#fff}
-    .ad-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:rgba(0,0,0,.34);backdrop-filter:blur(10px);font-size:10px;font-weight:900;letter-spacing:.08em}
-    .ad-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:#FF335F;box-shadow:0 0 12px #FF335F}
-    .ad-title{margin-top:12px;font-size:21px;font-weight:900;line-height:1.16;letter-spacing:-.04em;text-shadow:0 4px 20px rgba(0,0,0,.42)}
-    .ad-bar{position:relative;margin-top:16px;height:7px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden}
-    .ad-bar span{position:absolute;inset:0 auto 0 0;width:44%;border-radius:99px;background:linear-gradient(90deg,#FF335F,#66D0FF);animation:barFill 3.8s ease-in-out infinite}
-    .ad-metrics{position:absolute;left:24px;right:24px;bottom:28px;z-index:5;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .ad-metric{padding:14px 13px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:rgba(5,10,20,.48);backdrop-filter:blur(14px);box-shadow:0 14px 28px rgba(0,0,0,.22)}
-    .ad-metric b{display:block;font-size:22px;line-height:1;font-weight:900;color:#fff;letter-spacing:-.035em}
-    .ad-metric span{display:block;margin-top:7px;font-size:11px;color:#8FA6CC;font-weight:700}
-    .ad-float{position:absolute;z-index:4;border:1px solid rgba(255,255,255,.16);border-radius:16px;background:rgba(10,18,34,.62);backdrop-filter:blur(16px);box-shadow:0 18px 44px rgba(0,0,0,.3)}
-    .ad-float.one{left:24px;top:34px;width:158px;padding:14px;animation:floatOne 5.8s ease-in-out infinite}
-    .ad-float.two{right:24px;top:34px;width:148px;padding:14px;animation:floatTwo 6.4s ease-in-out infinite}
-    .ad-float small{display:block;font-size:10px;font-weight:900;color:#7591BD;letter-spacing:.1em}
-    .ad-float strong{display:block;margin-top:6px;font-size:22px;line-height:1;font-weight:900;color:#fff;letter-spacing:-.04em}
-    .ad-float em{display:block;margin-top:6px;font-style:normal;font-size:11px;font-weight:800;color:#62D6A6}
-    .ad-timeline{display:none;position:absolute;left:28px;right:28px;bottom:126px;z-index:5;height:34px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);overflow:hidden}
-    .ad-timeline span{position:absolute;top:8px;bottom:8px;border-radius:5px;background:rgba(255,255,255,.2)}
-    .ad-timeline span:nth-child(1){left:10px;width:66px;background:#FF335F}.ad-timeline span:nth-child(2){left:84px;width:96px;background:#4DA3FF}.ad-timeline span:nth-child(3){left:188px;width:58px;background:#45D483}.ad-timeline span:nth-child(4){left:254px;width:118px;background:#A7DBFF}
-    .ad-playhead{position:absolute;top:5px;bottom:5px;width:2px;background:#fff;box-shadow:0 0 12px rgba(255,255,255,.9);animation:playhead 4.2s linear infinite}
-    @keyframes reelGlow{to{transform:rotate(360deg)}}
-    @keyframes scenePan{from{transform:scale(1.05) translate3d(-3px,2px,0)}to{transform:scale(1.12) translate3d(7px,-8px,0)}}
-    @keyframes barFill{0%{width:18%}58%{width:92%}100%{width:44%}}
-    @keyframes floatOne{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-    @keyframes floatTwo{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
-    @keyframes playhead{from{left:10px}to{left:calc(100% - 10px)}}
     .ticker{margin-top:76px;border-top:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);overflow:hidden;padding:19px 0;white-space:nowrap;position:relative}
     .ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:1;pointer-events:none}
     .ticker::before{left:0;background:linear-gradient(90deg,#0B1428,transparent)}
@@ -407,7 +368,6 @@
     /* ---------- responsive ---------- */
     @media(max-width:1020px){
       .hero-grid{grid-template-columns:1fr;gap:44px}
-      .ad-reel{max-width:520px;min-height:500px}
       .why-grid{grid-template-columns:1fr 1fr}
       .ch-grid{grid-template-columns:repeat(3,1fr)}
       .rv-grid,.col-grid,.pt-grid,.ct-grid{grid-template-columns:1fr 1fr}
@@ -429,16 +389,6 @@
       h1{font-size:31px;line-height:1.24;letter-spacing:-.035em}
       .hero-sub{word-break:normal;overflow-wrap:anywhere}
       .hero-grid{gap:36px}
-      .ad-reel{order:-1;width:100%;max-width:338px;min-height:430px;border-radius:20px}
-      .ad-gif{inset:12px;width:calc(100% - 24px);height:calc(100% - 24px);border-radius:16px}
-      .ad-device{top:34px;width:190px;height:338px;margin-left:-95px;border-radius:24px}
-      .ad-float.one{left:14px;top:70px;width:132px}
-      .ad-float.two{display:block;right:14px;top:214px;width:122px}
-      .ad-float strong{font-size:19px}
-      .ad-metrics{left:16px;right:16px;bottom:18px}
-      .ad-metric b{font-size:19px}
-      .ad-metric span{font-size:10px}
-      .ad-timeline{display:none}
       .hero-actions{flex-direction:column;align-items:stretch}
       .ticker-track{font-size:13.5px}
       .stats .wrap{grid-template-columns:1fr 1fr;gap:26px 14px;padding-top:38px;padding-bottom:38px}
@@ -535,7 +485,6 @@
       .hero::after{animation:none}
       .ticker-track{animation:none}
       .ai-demo .ai-q,.ai-demo .ai-a{opacity:1;transform:none}
-      .ad-reel::before,.ad-scene,.ad-bar span,.ad-float,.ad-playhead{animation:none}
     }
     /* ─── 목업 내부: 1000px 실제 크기로 작성 후 축소 ─── */
     .wp {
@@ -1032,6 +981,8 @@
     }
 
   </style>
+  <link rel="stylesheet" href="/assets/hero/city-hero.css" />
+  <script src="/assets/hero/city-hero.js" defer></script>
 </head>
 <body>
 
@@ -1073,12 +1024,19 @@
 <main>
 
   <!-- HERO -->
-  <section class="hero" style="padding-bottom:0">
+  <section class="hero hero-city" aria-labelledby="hero-heading">
+    <div class="hero-city-media" aria-hidden="true">
+      <picture>
+        <source media="(max-width:680px)" srcset="/assets/hero/city-poster-mobile.webp" />
+        <img class="hero-city-poster" src="/assets/hero/city-poster.webp" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" />
+      </picture>
+      <video class="hero-city-video" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1"></video>
+    </div>
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
           <span class="hero-badge">22개 전문직 법인이 선택한 파트너 — 전문직 마케팅 · 홈페이지 제작</span>
-          <h1>전문직 마케팅의<br class="only-mobile" /> 정답은<br /><em>계속 변합니다</em></h1>
+          <h1 id="hero-heading">전문직 마케팅의<br />정답은 <em>계속 변합니다</em></h1>
           <div class="hero-sub"><p><strong>법무법인 10곳 · 병원 8곳 · 세무법인 4곳</strong> — 22개 전문직 법인이 아비컴퍼니와 함께 시장을 선점하고 있습니다.</p><p>홈페이지 제작부터 네이버·구글·메타·당근 광고, AI 검색(GEO)까지 하나의 파트너십으로 운영합니다.</p></div>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">무료 마케팅 진단 신청</a>
@@ -1086,9 +1044,13 @@
           </div>
           <p class="hero-note">진단 비용 없음 · 1영업일 이내 회신</p>
         </div>
-        <div class="ad-reel" aria-label="숏폼 광고 모션그래픽 샘플">
-          <img class="ad-gif" src="/assets/hero/ad-showreel.gif" alt="" loading="eager" decoding="async" />
-        </div>
+      </div>
+      <div class="hero-city-controls">
+        <button class="hero-motion-toggle" type="button" aria-label="배경 영상 재생" aria-pressed="false" hidden>
+          <svg class="motion-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 3v8M9.5 3v8" stroke="currentColor" stroke-width="2" /></svg>
+          <svg class="motion-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="m4 2 8 5-8 5Z" fill="currentColor" /></svg>
+          <span>배경 재생</span>
+        </button>
       </div>
     </div>
     <div class="ticker" aria-hidden="true">
