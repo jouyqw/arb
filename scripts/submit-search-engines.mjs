@@ -8,20 +8,20 @@ const sites = [
   ['AUB 법률', 'https://law.aubcompany.com/', 'https://law.aubcompany.com/sitemap.xml'],
   ['AUB 생활', 'https://life.aubcompany.com/', 'https://life.aubcompany.com/sitemap.xml'],
   ['새로고침 인테리어', 'https://interior-f5.com/', 'https://interior-f5.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
-  ['키자드 칼럼', 'https://jung30h.keyzard.org/', 'https://jung30h.keyzard.org/sitemap.xml'],
+  ['키자드 칼럼', 'https://jung30h.keyzard.org/', 'https://jung30h.keyzard.org/sitemap.xml', undefined, undefined, true],
   ['예율 칼럼', 'https://column.lawfirmyeyul.com/', 'https://column.lawfirmyeyul.com/sitemap.xml', 'd5534fd395b25c998ea43d165535551a'],
   ['태앤규 칼럼', 'https://column.taeandkyu.com/', 'https://column.taeandkyu.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
-  ['태앤규', 'https://taeandkyu.com/', 'https://taeandkyu.com/sitemap.xml', '1c271ef7c79c4a3abc5b43a40dc1e3b8'],
+  ['태앤규', 'https://taeandkyu.com/', 'https://taeandkyu.com/sitemap.xml', '1c271ef7c79c4a3abc5b43a40dc1e3b8', undefined, true],
   ['태앤규 전주', 'https://taeandkyujeonju.com/', 'https://taeandkyujeonju.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
   ['울산 변호사', 'https://ulsanlawyer.kr/', 'https://ulsanlawyer.kr/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
   ['위드윤', 'https://with-yoon-law.com/', 'https://with-yoon-law.com/sitemap.xml', 'eee764b31941bb288655b49d490b1005'],
   ['우리인법무사', 'https://woorinlaw.com/', 'https://woorinlaw.com/sitemap.xml'],
   ['바나나퀵', 'https://xn--910ba239f8iu.com/', 'https://xn--910ba239f8iu.com/sitemap.xml'],
   ['새출발양형자료분석센터', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/sitemap.php'],
-  ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml'],
+  ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml', undefined, 'https://www.xn--vk1bq2ko7hvupcze.com/'],
   ['예율 법률칼럼', 'https://columns.yeyul-law.com/', 'https://columns.yeyul-law.com/sitemap.xml', '628977ad229e859371ca6577bf876d14'],
   ['법무법인 예율', 'https://yeyul-law.com/', 'https://yeyul-law.com/sitemap.xml'],
-].map(([name, siteUrl, sitemapUrl, indexNowKey]) => ({ name, siteUrl, sitemapUrl, indexNowKey }));
+].map(([name, siteUrl, sitemapUrl, indexNowKey, googleProperty, skipScan]) => ({ name, siteUrl, sitemapUrl, indexNowKey, googleProperty, skipScan }));
 
 const recentDays = Number(process.env.RECENT_DAYS || 7);
 const forceAll = process.env.FORCE_ALL === '1';
@@ -130,15 +130,16 @@ async function googleContext() {
   return { token: tokenData.access_token, properties: (listData.siteEntry || []).map((item) => item.siteUrl) };
 }
 
-function propertyFor(siteUrl, properties) {
-  if (properties.includes(siteUrl)) return siteUrl;
-  const host = new URL(siteUrl).hostname.replace(/^www\./, '');
+function propertyFor(site, properties) {
+  if (site.googleProperty && properties.includes(site.googleProperty)) return site.googleProperty;
+  if (properties.includes(site.siteUrl)) return site.siteUrl;
+  const host = new URL(site.siteUrl).hostname.replace(/^www\./, '');
   return properties.find((property) => property === `sc-domain:${host}`) || null;
 }
 
 async function submitGoogle(site, google) {
   if (!google) return { status: 'secret-missing', ok: false };
-  const property = propertyFor(site.siteUrl, google.properties);
+  const property = propertyFor(site, google.properties);
   if (!property) return { status: 'permission-missing', ok: false };
   if (dryRun) return { status: 'dry-run', ok: true, property };
   const endpoint = `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(property)}/sitemaps/${encodeURIComponent(site.sitemapUrl)}`;
@@ -151,6 +152,15 @@ try { google = await googleContext(); } catch (error) { console.error(error.mess
 
 for (const site of sites) {
   const item = { name: site.name, siteUrl: site.siteUrl, sitemapUrl: site.sitemapUrl };
+  if (site.skipScan) {
+    item.sitemapStatus = 'external-scan-skipped';
+    item.recentCount = 0;
+    item.indexNow = [{ name: 'IndexNow', status: 'site-specific-automation', ok: true }];
+    item.google = await submitGoogle(site, google).catch((error) => ({ status: 'error', ok: false, error: error.message }));
+    console.log(`${site.name}: 외부 차단으로 사이트맵 점검 생략 / Google ${item.google.status}`);
+    report.sites.push(item);
+    continue;
+  }
   try {
     const entries = [...new Map((await readSitemap(site.sitemapUrl)).map((entry) => [entry.loc, entry])).values()];
     const recent = selectRecent(entries).filter((entry) => new URL(entry.loc).hostname === new URL(site.siteUrl).hostname);
