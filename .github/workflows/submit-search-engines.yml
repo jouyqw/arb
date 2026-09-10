@@ -9,8 +9,8 @@ on:
       - ".github/workflows/submit-search-engines.yml"
       - "scripts/submit-search-engines.mjs"
   schedule:
-    # 2시간마다 전체 사이트의 새 칼럼을 확인한다.
-    - cron: "17 */2 * * *"
+    # 매시간 전체 사이트의 새 칼럼을 확인한다.
+    - cron: "17 * * * *"
   workflow_dispatch:
     inputs:
       force_all:
