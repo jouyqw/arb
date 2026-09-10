@@ -28,8 +28,8 @@
     video.muted = true;
     video.defaultMuted = true;
     video.src = matchMedia('(max-width:680px)').matches
-      ? '/assets/hero/city-flight-mobile.mp4'
-      : '/assets/hero/city-flight.mp4';
+      ? '/assets/hero/city-flight-mobile.mp4?v=night-20260910'
+      : '/assets/hero/city-flight.mp4?v=night-20260910';
   }
   async function syncPlayback() {
     const request = ++playRequest;

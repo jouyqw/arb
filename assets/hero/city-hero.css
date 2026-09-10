@@ -12,11 +12,11 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(7,14,25,.26), transparent 30%, rgba(7,14,25,.24) 68%, #080f1c 100%),
-    linear-gradient(90deg, rgba(7,14,25,.95) 0%, rgba(7,14,25,.88) 25%, rgba(7,14,25,.67) 46%, rgba(7,14,25,.16) 75%, rgba(7,14,25,.12) 100%);
+    linear-gradient(180deg, rgba(7,14,25,.16), transparent 30%, rgba(7,14,25,.12) 70%, #080f1c 100%),
+    linear-gradient(90deg, rgba(7,14,25,.62) 0%, rgba(7,14,25,.52) 28%, rgba(7,14,25,.3) 48%, rgba(7,14,25,.04) 76%, rgba(7,14,25,.06) 100%);
 }
 .hero-city-poster,
-.hero-city-video { position: absolute; width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: 58% 48%; }
+.hero-city-video { position: absolute; width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: 62% 46%; }
 .hero-city-video { opacity: 0; transition: opacity .7s ease; }
 .hero-city.has-city-video .hero-city-video { opacity: 1; }
 .hero-city .wrap { max-width: 1280px; }
@@ -79,10 +79,10 @@
   .hero-city .hero-actions { margin-top: 28px; }
   .hero-city .hero-note { font-size: .875rem; }
   .hero-city-media::after {
-    background: linear-gradient(180deg, rgba(7,14,25,.28), rgba(7,14,25,.58) 23%, rgba(7,14,25,.86) 55%, #080f1c 100%),
-      linear-gradient(90deg, rgba(7,14,25,.64), rgba(7,14,25,.16));
+    background: linear-gradient(180deg, rgba(7,14,25,.18), rgba(7,14,25,.5) 23%, rgba(7,14,25,.8) 55%, #080f1c 100%),
+      linear-gradient(90deg, rgba(7,14,25,.48), rgba(7,14,25,.12));
   }
-  .hero-city-poster,.hero-city-video { object-position: 64% top; }
+  .hero-city-poster,.hero-city-video { object-position: 67% top; }
   .hero-city-controls { min-height: 52px; }
 }
 @media (prefers-reduced-motion:reduce) {
