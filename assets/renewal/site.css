@@ -37,7 +37,6 @@ strong{font-weight:650}
 .hero-scroll{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.2em;color:#bccae0}
 .hero-scroll span{font-size:18px;color:#edf3ff}
 .hero-motion-toggle{border:0;background:#0a182960;padding:8px 12px;font-size:12px;color:#c6d4e6}
-.hero-city .ticker{display:none}
 .stats{background:#0b1525;color:#fff;border-top:1px solid #e2edff21;border-bottom:0}
 .stats .wrap{max-width:1280px;padding-block:38px;gap:0}
 .stat{padding:0 34px;border-right:1px solid #ffffff1c}.stat:last-child{border:0}.stat::before{content:none}
