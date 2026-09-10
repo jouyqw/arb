@@ -40,7 +40,7 @@ function xmlText(value = '') {
 async function getText(url) {
   const response = await fetch(url, {
     redirect: 'follow',
-    headers: { 'cache-control': 'no-cache', 'user-agent': 'AUB-Search-Index-Automation/2.0' },
+    headers: { 'cache-control': 'no-cache', 'user-agent': 'Mozilla/5.0 (compatible; AUBSearchMonitor/2.0; +https://aubcompany.com/)' },
     signal: AbortSignal.timeout(30000),
   });
   if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
@@ -57,7 +57,10 @@ async function readSitemap(sitemapUrl, seen = new Set()) {
   if (seen.has(sitemapUrl)) return [];
   if (seen.size > 100) throw new Error('하위 사이트맵이 100개를 넘었습니다.');
   seen.add(sitemapUrl);
-  const xml = await getText(sitemapUrl);
+  // 일부 CDN은 GitHub Actions 요청에 오래된 응답을 주므로 점검용 쿼리로 우회합니다.
+  const fetchUrl = new URL(sitemapUrl);
+  fetchUrl.searchParams.set('_index_check', Date.now().toString());
+  const xml = await getText(fetchUrl.href);
   const children = blocks(xml, 'sitemap').map((block) => value(block, 'loc')).filter(Boolean);
   if (children.length) return (await Promise.all(children.map((url) => readSitemap(url, seen)))).flat();
   const entries = blocks(xml, 'url').map((block) => ({ loc: value(block, 'loc'), lastmod: value(block, 'lastmod') }))
