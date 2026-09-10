@@ -2630,6 +2630,7 @@ function mclose(){document.getElementById('mnav').classList.remove('open')}
         cards.forEach(c => {
           c.hidden = cat !== 'all' && c.dataset.cat !== cat;
           c.classList.remove('peek');
+          c.querySelector('.ref-shot').setAttribute('aria-pressed', 'false');
         });
         fit();
       }));
