@@ -117,6 +117,13 @@ h2 em{background:none;color:var(--accent)}
 @media(max-width:360px){.wrap,.ref-inner{padding-inline:20px}.hero-city .wrap{padding-inline:20px}.hero-city .btn{font-size:13px;padding-inline:10px}.hero-city h1{font-size:26px}.hero-city .hero-badge{font-size:9px}h2,.ref-title{font-size:29px}.svc{padding:20px}.svc h3{font-size:17px}.hero-scroll{font-size:8px}}
 .hero-city .hero-sub{word-break:keep-all;overflow-wrap:break-word}.hero-city .hero-sub p+p{margin-top:3px}
 .dcard{padding:0}.scan-inner,.diag-inner{padding-inline:28px}.rv q p,.sec-desc p,.svc-note p{font-size:inherit;line-height:inherit}
+/* Explicit areas prevent older responsive grid rules from moving the description. */
+#process .steps{width:100%;min-width:0;margin-top:40px;overflow:visible}
+#process .step{display:grid;grid-template-columns:56px minmax(190px,.72fr) minmax(0,1.6fr);grid-template-areas:"number title description";gap:28px;padding:30px 24px;align-items:start;min-width:0}
+#process .step i{grid-area:number;justify-self:start;line-height:1.5;min-width:0}
+#process .step h3{grid-area:title;min-width:0;font-size:21px;line-height:1.5;margin:0}
+#process .step p{grid-area:description;min-width:0;max-width:none;font-size:17px;line-height:1.85;margin:0;word-break:keep-all;overflow-wrap:break-word}
+@media(max-width:800px){#process .step{grid-template-columns:36px minmax(0,1fr);grid-template-areas:"number title" ". description";gap:10px 18px;padding:26px 8px}#process .step p{font-size:16px}#process .step h3{font-size:21px}}
 .steps{border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;box-shadow:none}.step i{background:none;color:#607fa7;width:auto;height:auto;justify-content:flex-start;font-size:24px;font-weight:400}
 .ct i{font-size:12px;background:none;color:#52739c;font-weight:550}.ct b{font-size:22px;font-weight:600}.ct[href^="mailto:"] b{font-size:20px;overflow-wrap:anywhere}
 .rv-text,.rv-text p{font-size:16px;line-height:1.9}.rv footer b{font-weight:600}.rv footer span{font-size:13px;color:#64758c}

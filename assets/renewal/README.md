@@ -1,16 +1,15 @@
-# September 2026 visual renewal
+# Visual renewal and industry comparison examples
 
-The supplied city media remains the home page background. This revision updates typography, spacing, navigation, responsive layout, and the portfolio presentation without changing the Cloudflare Pages deployment model.
+The supplied city media remains the main home page background. Shared font and page styles are loaded after the original styles. Service and article typography is included by the content generator.
 
-- `site.css`: home page presentation; loaded after the original styles and city media styles.
-- `content.css`: shared service/article typography; included by the content generator as well as existing pages.
-- `site.js`: accessible mobile menu state and dismissal.
-- `comparison.*`: keyboard-accessible before/after range control, with desktop/mobile views.
-- `before-*.webp`: screenshots of the actual AUB home page at commit `a9e2d5a`.
-- `after-*.webp`: screenshots of this visual renewal. These depict the AUB site, not an unverified client redesign.
+The Before & After section uses three fictional industry concepts: law office, clinic, and interior studio. Both the before and after websites were created to illustrate design direction; they are not client performance or completed-project claims. The section contains an explicit disclosure.
 
-Screenshots were captured with matching viewport settings for each device. The browser's scrollbar is excluded from the captured image width. The city movement is represented by a still frame in this comparison.
+- Responsive source pages: examples/ (noindex).
+- Screenshots: reference-{law,medical,interior}-{before,after}-{desktop,mobile}.webp.
+- Background images reuse existing assets/portfolio images.
+- comparison.js supports industry selection, device selection, and keyboard range controls.
+- case-toast.js restores the original question → solution notifications, including dismissal and diagnosis navigation.
 
-Font: Pretendard Variable 1.3.9, self-hosted in `assets/fonts/`. The SIL Open Font License is included in `assets/fonts/OFL.txt`.
+The process, philosophy, FAQ and adjacent section boundaries were corrected. Process rows use explicit grid areas so desktop and mobile descriptions retain the full available width.
 
-The existing scan API, consultation links, portfolio categories, and local diagnostic remain available. Automatic lead popups were removed to keep reading uninterrupted. Existing portfolio claims/disclosures are retained.
+Font: Pretendard Variable 1.3.9, SIL Open Font License in assets/fonts/OFL.txt.
