@@ -18,7 +18,7 @@ const sites = [
   ['우리인법무사', 'https://woorinlaw.com/', 'https://woorinlaw.com/sitemap.xml'],
   ['바나나퀵', 'https://xn--910ba239f8iu.com/', 'https://xn--910ba239f8iu.com/sitemap.xml'],
   ['새출발양형자료분석센터', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/sitemap.php'],
-  ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml', undefined, 'https://www.xn--vk1bq2ko7hvupcze.com/'],
+  ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml'],
   ['예율 법률칼럼', 'https://columns.yeyul-law.com/', 'https://columns.yeyul-law.com/sitemap.xml', '628977ad229e859371ca6577bf876d14'],
   ['법무법인 예율', 'https://yeyul-law.com/', 'https://yeyul-law.com/sitemap.xml'],
 ].map(([name, siteUrl, sitemapUrl, indexNowKey, googleProperty, skipScan]) => ({ name, siteUrl, sitemapUrl, indexNowKey, googleProperty, skipScan }));
