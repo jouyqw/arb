@@ -273,6 +273,7 @@ const articleTemplate = (post) => {
     .channels a{font-size:13.5px;font-weight:700}
     @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
   </style>
+<link rel="stylesheet" href="/assets/renewal/content.css?v=20260910-1">
 </head>
 <body>
   <main class="wrap">
@@ -369,6 +370,7 @@ const listingTemplate = () => {
     .empty{display:none;text-align:center;color:#8A95A3;padding:44px 0;font-size:15px}
     @media(max-width:860px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:580px){.grid{grid-template-columns:1fr}.card{min-height:auto}.wrap{padding-top:36px}}
   </style>
+<link rel="stylesheet" href="/assets/renewal/content.css?v=20260910-1">
 </head>
 <body>
   <main class="wrap">
@@ -560,6 +562,7 @@ const serviceTemplate = (svc) => {
   ${(svc.faq || []).length ? `<script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ''}
   <script type="application/ld+json">${JSON.stringify(breadcrumbLd)}</script>
   <style>${serviceStyle}</style>
+<link rel="stylesheet" href="/assets/renewal/content.css?v=20260910-1">
 </head>
 <body>
   <header class="top">
@@ -657,6 +660,7 @@ const serviceHubTemplate = () => {
     .foot a{color:#0B55D9;font-weight:800}
     @media(max-width:760px){.grid{grid-template-columns:1fr}}
   </style>
+<link rel="stylesheet" href="/assets/renewal/content.css?v=20260910-1">
 </head>
 <body>
   <main class="wrap">
