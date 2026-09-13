@@ -1,3 +1,7 @@
 .wrangler/
 node_modules/
 reports/
+
+# 칼럼 자동 보충의 로컬 상태. 추적하면 ff-only 병합을 막는다.
+refill.log
+.refill.lock
