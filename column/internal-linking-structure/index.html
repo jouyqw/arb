@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>칼럼이 쌓였는데 내부링크는 어떻게 걸어야 할까요? | 아비컴퍼니 칼럼</title>
+  <meta name="description" content="글이 늘어날수록 내부링크는 개수보다 구조가 중요해집니다. 기둥 글을 축으로 묶는 내부링크 설계 방법과 적정 링크 개수, 앵커 문구 기준, 분기 점검 순서를 실제 운영 기준으로 정리했습니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aubcompany.com/column/internal-linking-structure/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aubcompany.com/column/internal-linking-structure/" />
+  <meta property="og:title" content="칼럼이 쌓였는데 내부링크는 어떻게 걸어야 할까요?" />
+  <meta property="og:description" content="글이 늘어날수록 내부링크는 개수보다 구조가 중요해집니다. 기둥 글을 축으로 묶는 내부링크 설계 방법과 적정 링크 개수, 앵커 문구 기준, 분기 점검 순서를 실제 운영 기준으로 정리했습니다." />
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"칼럼이 쌓였는데 내부링크는 어떻게 걸어야 할까요?","description":"글이 늘어날수록 내부링크는 개수보다 구조가 중요해집니다. 기둥 글을 축으로 묶는 내부링크 설계 방법과 적정 링크 개수, 앵커 문구 기준, 분기 점검 순서를 실제 운영 기준으로 정리했습니다.","author":{"@type":"Organization","name":"아비컴퍼니"},"publisher":{"@type":"Organization","name":"아비컴퍼니","url":"https://aubcompany.com"},"datePublished":"2026-09-16","dateModified":"2026-09-16","mainEntityOfPage":{"@type":"WebPage","@id":"https://aubcompany.com/column/internal-linking-structure/"},"keywords":"내부링크 설계, SEO 상위노출, 토픽 클러스터, 홈페이지 칼럼, 검색 유입"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://aubcompany.com/"},{"@type":"ListItem","position":2,"name":"마케팅 칼럼","item":"https://aubcompany.com/column/"},{"@type":"ListItem","position":3,"name":"칼럼이 쌓였는데 내부링크는 어떻게 걸어야 할까요?","item":"https://aubcompany.com/column/internal-linking-structure/"}]}</script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,'Noto Sans KR',sans-serif;color:#101828;line-height:1.85;background:#fff}
+    .wrap{max-width:860px;margin:0 auto;padding:52px 22px 86px}
+    a{color:#0B55D9;text-decoration:none;font-weight:800}
+    .brand{display:inline-flex;margin-bottom:34px;color:#0B55D9}
+    .tag{display:inline-block;margin-bottom:18px;padding:7px 13px;border-radius:999px;background:#EEF4FF;color:#0B55D9;font-size:12px;font-weight:900}
+    h1{font-size:clamp(29px,5vw,46px);line-height:1.28;letter-spacing:-.4px;margin:0 0 16px}
+    h2{font-size:24px;line-height:1.35;margin:0 0 12px}
+    .desc{font-size:17px;color:#667085;margin:0 0 24px}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
+    article{padding-top:34px}
+    p{font-size:17px;margin:0 0 22px}
+    strong{font-weight:900;color:#0B55D9}
+    u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
+    ul{margin:0 0 24px;padding-left:20px}
+    li{font-size:17px;margin:0 0 9px}
+    .hero-figure{margin:30px 0 34px;border-radius:18px;overflow:hidden;border:1px solid #EAECF0;box-shadow:0 16px 38px rgba(16,24,40,.1);background:#F7F9FC}
+    .hero-figure img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+    .hero-figure figcaption{padding:12px 16px;color:#667085;font-size:13px;background:#fff}
+    .summary-box{margin:28px 0 34px;padding:22px 24px;border:1px solid #D8E5FF;border-radius:16px;background:#F3F7FF}
+    .summary-box strong{display:block;margin-bottom:10px;color:#0B55D9;font-size:16px}
+    .summary-box ul{margin:0;padding-left:20px}
+    .summary-box li{font-size:15px;margin-bottom:6px;color:#344054}
+    .table-wrap{overflow-x:auto;margin:30px 0;border:1px solid #EAECF0;border-radius:14px;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    table{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
+    th{background:#F3F7FF;color:#0B55D9;text-align:left;font-size:14px;font-weight:900;padding:15px 16px;border-bottom:1px solid #D8E5FF}
+    td{padding:16px;border-bottom:1px solid #EAECF0;color:#344054;font-size:15px;vertical-align:top}
+    tr:last-child td{border-bottom:0}
+    .infographic{margin:30px 0;border:1px solid #EAECF0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    .infographic-h{background:#08111F;color:#fff;padding:15px 22px;font-weight:900;font-size:15px}
+    .ig-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#EAECF0}
+    .ig-item{background:#fff;padding:20px;display:flex;gap:13px;align-items:flex-start}
+    .ig-ic{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:#EEF4FF;border:1px solid #D8E5FF;display:flex;align-items:center;justify-content:center;color:#0B55D9}
+    .ig-item b{display:block;color:#101828;font-size:15px;margin-bottom:4px}
+    .ig-item .t{font-size:13.5px;color:#4b5563;line-height:1.6;display:block}
+    .figure-note{color:#8A95A3;font-size:12.5px;margin:-18px 0 26px;text-align:center}
+    .callout-box,.warning-box{border-radius:14px;padding:20px 22px;margin:26px 0}
+    .callout-box{background:#F3F7FF;border:1px solid #D8E5FF}
+    .warning-box{background:#FFF4F1;border:1px solid #F6CFC5}
+    .callout-box .label,.warning-box .label{display:inline-block;font-size:12px;font-weight:900;color:#0B55D9;margin-bottom:7px}
+    .warning-box .label{color:#B42318}
+    .callout-box p,.warning-box p{margin:0;font-size:15.5px}
+    .cta{margin-top:46px;padding:30px;border-radius:16px;background:#08111F;color:#fff}
+    .cta h2{color:#fff}
+    .cta p{font-size:15px;color:rgba(255,255,255,.78)}
+    .cta-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .cta a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border-radius:10px;background:#FEE500;color:#191919}
+    .cta .phone{background:#fff;color:#08111F}
+    .crumb{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:26px;font-size:13px;color:#8A95A3}
+    .crumb a{font-weight:700;color:#0B55D9}
+    .crumb span{color:#C3CAD4}
+    .hub{margin:44px 0 0;padding:22px 24px;border:1px solid #D8E5FF;border-radius:16px;background:#F3F7FF}
+    .hub-label{display:block;font-size:12.5px;font-weight:900;color:#0B55D9;margin-bottom:12px}
+    .hub-links{display:flex;flex-wrap:wrap;gap:9px}
+    .hub-links a{display:inline-flex;align-items:center;padding:9px 15px;border-radius:999px;background:#fff;border:1px solid #D8E5FF;font-size:14px}
+    .hub-links a:hover{border-color:#0B55D9}
+    .related{margin:40px 0 0;padding-top:32px;border-top:1px solid #EAECF0}
+    .related h2{font-size:19px;margin:0 0 18px}
+    .related-list{list-style:none;margin:0 0 18px;padding:0}
+    .related-list li{margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid #F2F4F7}
+    .related-list li:last-child{border-bottom:0}
+    .related-list a{display:block;font-size:16px;line-height:1.5;margin-bottom:4px}
+    .related-list span{display:block;color:#8A95A3;font-size:13.5px;font-weight:400;line-height:1.6}
+    .more{display:inline-block;font-size:14px}
+    .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
+    .channels span{font-weight:800;color:#667085}
+    .channels a{font-size:13.5px;font-weight:700}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+  </style>
+<link rel="stylesheet" href="/assets/renewal/content.css?v=20260910-1">
+</head>
+<body>
+  <main class="wrap">
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="../../">아비컴퍼니</a><span>›</span><a href="../">마케팅 칼럼</a><span>›</span>SEO·상위노출
+    </nav>
+    <span class="tag">SEO·상위노출</span>
+    <h1>칼럼이 쌓였는데 내부링크는 어떻게 걸어야 할까요?</h1>
+    <p class="desc">글이 늘어날수록 내부링크는 개수보다 구조가 중요해집니다. 기둥 글을 축으로 묶는 내부링크 설계 방법과 적정 링크 개수, 앵커 문구 기준, 분기 점검 순서를 실제 운영 기준으로 정리했습니다.</p>
+    <div class="meta">
+      <span>작성자 아비컴퍼니</span>
+      <span>발행일 2026-09-16</span>
+      <span>수정일 2026-09-16</span>
+    </div>
+    <article>
+      <section class="summary-box">
+        <strong>핵심 요약</strong>
+        <ul><li>칼럼이 30편을 넘어가면 글마다 즉흥적으로 링크를 거는 방식은 한계에 부딪힙니다.</li><li>주제마다 기둥 글 하나를 정하고 세부 글을 붙이는 허브 구조가 관리하기 쉽습니다.</li><li>본문 링크는 한 편당 3~5개면 충분하고, 문구에는 대상 글의 주제어를 넣습니다.</li><li>새 글에서 옛 글로만 걸면 한쪽으로 쏠리므로, 옛 글에도 돌아가서 걸어야 합니다.</li><li>링크를 하나도 받지 못한 글이 몇 편인지 세어 보는 것이 점검의 출발점입니다.</li></ul>
+      </section>
+      <p>칼럼이 50편쯤 쌓인 고객사에서 이런 질문을 받았습니다.</p>
+      <p>&quot;글끼리 링크는 걸고 있는데, 이게 맞게 하고 있는 건지 모르겠습니다.&quot;</p>
+      <p>열어 보니 링크는 분명히 있었습니다. 다만 대부분 최근에 쓴 글에서 바로 직전 글로 가는 링크였습니다.</p>
+      <p>그 결과 최근 다섯 편은 서로 촘촘히 연결돼 있고, 반년 전에 쓴 글 서른 편은 어디에서도 링크를 받지 못한 상태였습니다.</p>
+      <p>이런 상태에서는 링크 수가 늘어도 검색에 큰 도움이 되지 않습니다. <strong>내부링크 설계는 개수가 아니라 방향과 구조</strong>의 문제이기 때문입니다.</p>
+      <h2>내부링크가 검색에 도움이 되는 이유는 무엇인가요?</h2>
+      <p>검색엔진에게 &quot;이 사이트에서 무엇이 중심 글인지&quot;를 알려 주는 신호이기 때문입니다.</p>
+      <p>검색엔진의 크롤러는 링크를 따라 페이지를 발견하고, 링크가 모이는 페이지를 더 중요하게 판단합니다.</p>
+      <p>그래서 사이트맵에는 올라가 있지만 어느 글에서도 링크를 받지 못한 글은 색인이 늦어지거나, 색인은 되어도 순위가 잘 오르지 않습니다.</p>
+      <p>반대로 같은 주제의 글 여러 편에서 링크를 받는 글은 그 주제의 대표 페이지로 인식될 가능성이 커집니다.</p>
+      <p>방문자 쪽 효과도 있습니다. 한 편만 읽고 나가던 사람이 두세 편을 이어 보면 체류시간과 재방문이 함께 올라갑니다.</p>
+      <h2>어떤 구조로 묶어야 하나요?</h2>
+      <p>주제마다 기둥 글을 하나 정하고, 그 아래에 세부 글을 붙이는 허브 구조를 권합니다.</p>
+      <p>예를 들어 &quot;지역 검색 노출&quot;이라는 주제가 있다면, 전체를 개괄하는 글 한 편을 기둥으로 정합니다.</p>
+      <p>그다음 플레이스 관리, 리뷰 대응, 지역 키워드 조사처럼 세부 주제를 다룬 글들이 기둥 글로 링크를 보내고, 기둥 글도 각 세부 글로 링크를 내려보냅니다.</p>
+      <p>이렇게 하면 새 글이 늘어도 &quot;이 글은 어느 기둥에 붙일까&quot;만 정하면 되므로 판단이 단순해집니다.</p>
+      <p>기둥은 보통 서너 개면 충분합니다. 처음부터 열 개를 만들면 각 기둥에 붙는 글이 두세 편밖에 안 되어 구조가 힘을 받지 못합니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>구조</th><th>링크 방향</th><th>적합한 시점</th><th>생기는 문제</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>시간순 나열</td><td>새 글 → 직전 글</td><td>글 10편 이하</td><td>오래된 글이 고립됨</td></tr>
+            <tr><td>허브-세부 구조</td><td>기둥 글 ↔ 세부 글</td><td>글 30편 이상</td><td>기둥 선정에 초기 시간 필요</td></tr>
+            <tr><td>전부 서로 연결</td><td>모든 글끼리</td><td>권하지 않음</td><td>중요도 신호가 흐려짐</td></tr>
+            <tr><td>자동 관련글만</td><td>시스템이 하단 배치</td><td>보조 수단으로만</td><td>본문 문맥과 어긋남</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2>한 편에 링크를 몇 개나 걸어야 하나요?</h2>
+      <p>본문 안에 3~5개, 많아도 7개를 넘기지 않는 선을 기준으로 잡습니다.</p>
+      <p>링크가 스무 개쯤 달린 글은 읽는 사람 입장에서 어디로 가야 할지 판단이 어렵습니다.</p>
+      <p>검색엔진 쪽에서도 링크 하나에 실리는 신호가 그만큼 나뉩니다. 중요한 글로 보내려던 힘이 흩어지는 셈입니다.</p>
+      <p>그래서 개수를 채우기보다, 이 문단을 읽은 사람이 다음으로 궁금해할 글이 무엇인지를 기준으로 고르는 편이 낫습니다.</p>
+      <p>글 길이가 길다면 조금 늘려도 되지만, 문단 하나에 링크를 두 개 이상 넣는 것은 피합니다.</p>
+      <div class="warning-box"><span class="label">주의</span><p>링크 개수를 맞추려고 관련 없는 글로 억지로 연결하면 오히려 손해입니다. 클릭한 사람이 바로 돌아 나가는 패턴이 쌓이면 두 글 모두 평가가 나빠집니다. 연결할 글이 마땅치 않으면 그 글은 링크 없이 두는 편이 낫습니다.</p></div>
+      <h2>링크에 쓰는 문구는 어떻게 정하나요?</h2>
+      <p>문구만 보고도 어떤 글로 이동하는지 알 수 있어야 합니다.</p>
+      <p>&quot;여기를 클릭&quot;, &quot;자세히 보기&quot; 같은 문구는 사람에게도 검색엔진에도 아무 정보를 주지 않습니다.</p>
+      <p>대상 글의 핵심 주제어가 문구 안에 들어가도록 문장을 씁니다. &quot;지역 키워드를 고르는 기준은 따로 정리해 두었습니다&quot; 같은 형태입니다.</p>
+      <p>같은 글로 여러 곳에서 링크를 걸 때는 문구를 조금씩 다르게 쓰는 편이 자연스럽습니다.</p>
+      <p>다만 순위를 노리고 똑같은 키워드만 반복해 링크 문구로 쓰는 것은 권하지 않습니다. 부자연스러운 패턴은 신호로 남습니다.</p>
+      <ul><li>권하지 않는 형태 — &quot;자세한 내용은 여기를 클릭하세요&quot;</li><li>권하지 않는 형태 — 같은 키워드를 모든 링크에 그대로 반복</li><li>권하는 형태 — &quot;플레이스 순위를 좌우하는 항목은 따로 정리했습니다&quot;</li><li>권하는 형태 — 문장 안에서 주제어가 자연스럽게 링크가 되는 형태</li></ul>
+      <h2>새 글과 옛 글, 어느 쪽에서 걸어야 하나요?</h2>
+      <p>양쪽 다 필요하지만, 실무에서 빠지는 쪽은 거의 항상 옛 글입니다.</p>
+      <p>새 글을 쓰면서 관련된 기존 글로 링크를 다는 일은 글 쓰는 흐름 안에서 자연스럽게 됩니다.</p>
+      <p>반대로 이미 발행한 글을 다시 열어 새 글로 링크를 추가하는 작업은 따로 시간을 내야 하기 때문에 계속 미뤄집니다.</p>
+      <p>그런데 검색 관점에서는 이쪽이 더 중요합니다. 오래된 글은 이미 검색 평가가 쌓여 있어서, 그 글에서 받는 링크가 새 글의 색인과 초기 순위에 도움이 됩니다.</p>
+      <p>그래서 글을 발행할 때 &quot;기존 글 2~3편을 열어 링크를 추가한다&quot;를 발행 절차의 마지막 단계로 넣어 두시길 권합니다. 한 편당 10분 정도면 끝나는 작업입니다.</p>
+      <div class="infographic"><div class="infographic-h">새 글 한 편을 발행할 때의 링크 작업 순서</div><div class="ig-grid"><div class="ig-item"><span class="ig-ic">1</span><div><b>1. 기둥 확인</b><span class="t">이 글이 어느 주제 기둥에 속하는지 먼저 정합니다.</span></div></div><div class="ig-item"><span class="ig-ic">2</span><div><b>2. 위로 걸기</b><span class="t">새 글 본문에서 기둥 글로 링크를 답니다.</span></div></div><div class="ig-item"><span class="ig-ic">3</span><div><b>3. 아래로 걸기</b><span class="t">기둥 글을 열어 새 글로 가는 링크를 추가합니다.</span></div></div><div class="ig-item"><span class="ig-ic">4</span><div><b>4. 옆으로 걸기</b><span class="t">같은 기둥의 관련 글 두 편에서도 새 글로 연결합니다.</span></div></div></div></div><p class="figure-note">▲ ▲ 네 단계까지 마쳐야 한 편의 발행이 끝난 것으로 봅니다</p>
+      <h2>하단 자동 관련글 목록으로는 부족한가요?</h2>
+      <p>보조는 되지만 본문 링크를 대체하지는 못합니다.</p>
+      <p>글 아래에 자동으로 붙는 관련글 목록은 모든 페이지에 같은 형태로 들어가기 때문에, 본문 안의 링크만큼 문맥 신호를 주지 못합니다.</p>
+      <p>태그가 같다는 이유로 묶이는 방식이라 실제 관련성과 어긋나는 경우도 자주 생깁니다.</p>
+      <p>실제 운영해 보면 본문 중간에서 문맥에 맞게 걸린 링크의 클릭률이 하단 목록보다 눈에 띄게 높습니다.</p>
+      <p>자동 목록은 그대로 두되, 어느 글과 연결할지는 사람이 판단해 본문에 넣는 이중 구조로 가는 편이 낫습니다.</p>
+      <h2>잘 되고 있는지 어떻게 확인하나요?</h2>
+      <p>링크를 하나도 받지 못한 글이 몇 편인지 세어 보는 것으로 시작합니다.</p>
+      <p>사이트맵의 URL 목록을 놓고, 각 주소가 다른 글의 본문에서 몇 번 언급되는지 확인하면 고립된 글이 드러납니다.</p>
+      <p>글이 100편이 넘어 수작업이 어렵다면, 주력 주제 세 개만 골라 그 기둥 아래 글부터 점검하는 방식도 괜찮습니다.</p>
+      <p>서치콘솔의 페이지 색인 보고서에서 &quot;검색됨, 현재 색인 생성되지 않음&quot; 항목에 잡힌 주소들도 함께 봅니다. 링크를 받지 못한 글이 여기에 섞여 있는 경우가 많습니다.</p>
+      <p>점검 주기는 분기에 한 번이면 충분합니다. 그보다 자주 손대면 변화를 판단할 데이터가 쌓이지 않습니다.</p>
+      <p>효과는 보통 4~8주 사이에 나타나기 시작합니다. 색인 속도가 먼저 빨라지고, 기둥 글의 노출수가 그다음에 움직이는 순서인 경우가 많습니다.</p>
+      <div class="callout-box"><span class="label">먼저 해 볼 것</span><p>지금 발행한 글 중 가장 오래된 열 편을 열어 보세요. 그중 다른 글에서 링크를 받고 있는 글이 몇 편인지 세어 보면, 내부링크 설계를 어디부터 손대야 하는지가 바로 보입니다.</p></div>
+    </article>
+    <section class="hub">
+      <span class="hub-label">이 주제와 연결된 서비스</span>
+      <div class="hub-links">
+        <a href="../../service/naver-place-ranking/">네이버 플레이스 상위노출</a>
+        <a href="../../service/homepage-production/">홈페이지 제작</a>
+      </div>
+    </section>
+    <section class="related">
+      <h2>같은 분야의 다른 칼럼</h2>
+      <ul class="related-list">
+        <li><a href="../search-console-first-week/">서치콘솔을 막 연결했습니다, 첫 주엔 무엇을 봐야 하나요?</a><span>서치콘솔을 연결한 첫 주에는 순위보다 색인 상태를 먼저 봐야 합니다. 데이터가 비어 있는 이유, 노출수와 평균 게재순위를 읽는 기준, 이 시기에 손대면 안 되는 것을 정리했습니다.</span></li>
+        <li><a href="../gbp-optimization-guide/">구글 비즈니스 프로필, 어떤 항목부터 채워야 할까요?</a><span>등록만 해 두면 지도 노출은 거의 움직이지 않습니다. 관련성·거리·인지도 중 우리가 손댈 수 있는 곳이 어디인지, 카테고리부터 리뷰까지 무엇을 먼저 채워야 하는지 항목별 영향도와 함께 정리했습니다.</span></li>
+        <li><a href="../seo-keyword-cannibalization/">비슷한 글을 여러 개 썼는데 왜 순위가 더 떨어졌나요?</a><span>같은 키워드를 노린 글이 여러 개면 서로 순위를 갉아먹습니다. 카니발라이제이션을 어떻게 확인하고 통합·정리해야 하는지 실제 점검 순서로 설명합니다.</span></li>
+        <li><a href="../seo-content-refresh-old-posts/">글을 더 쓰는 것보다 옛 글을 고치는 게 나을 때는 언제인가요?</a><span>새 글만 쌓는데 유입이 안 늘고 있다면 기존 글의 리프레시가 먼저입니다. 어떤 글을 고르고 무엇을 고쳐야 순위가 회복되는지 실제 운영 기준으로 정리했습니다.</span></li>
+      </ul>
+      <a class="more" href="../">SEO·상위노출 칼럼 더 보기 →</a>
+    </section>
+    <section class="cta">
+      <h2>우리 업종에도 검색 노출형 홈페이지가 필요하다면</h2>
+      <p>아비컴퍼니가 홈페이지 제작, 업종별 칼럼, 검색 노출 구조, 광고 운영까지 함께 진단해드립니다.</p>
+      <div class="cta-actions">
+        <a href="tel:01055010152" class="phone">전화 상담 010-5501-0152</a>
+        <a href="https://pf.kakao.com/_wxjxiSX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
+      </div>
+    </section>
+    <nav class="channels" aria-label="아비컴퍼니 공식 채널">
+      <span>아비컴퍼니 공식 채널</span>
+      <a href="https://pf.kakao.com/_wxjxiSX" target="_blank" rel="noopener">카카오톡 채널</a><a href="https://www.daangn.com/kr/local-profile/%EC%95%84%EB%B9%84%EC%BB%B4%ED%8D%BC%EB%8B%88-%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%EC%A0%84%EB%AC%B8%EC%A0%9C%EC%9E%91-%EB%A7%88%EC%BC%80%ED%8C%85%ED%9A%8C%EC%82%AC-nq6jjkk9t8z3/" target="_blank" rel="noopener">당근 비즈프로필</a>
+    </nav>
+  </main>
+</body>
+</html>
