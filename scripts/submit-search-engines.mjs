@@ -7,6 +7,8 @@ const sites = [
   ['AUB컴퍼니', 'https://aubcompany.com/', 'https://aubcompany.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
   ['AUB 법률', 'https://law.aubcompany.com/', 'https://law.aubcompany.com/sitemap.xml'],
   ['AUB 생활', 'https://life.aubcompany.com/', 'https://life.aubcompany.com/sitemap.xml'],
+  // 수산도가(선물 쇼핑몰). 키 파일은 giftmall 저장소의 public/ 에 있다.
+  ['수산도가', 'https://gift.aubcompany.com/', 'https://gift.aubcompany.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
   ['새로고침 인테리어', 'https://interior-f5.com/', 'https://interior-f5.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
   ['키자드 칼럼', 'https://jung30h.keyzard.org/', 'https://jung30h.keyzard.org/sitemap.xml', undefined, undefined, true],
   ['예율 칼럼', 'https://column.lawfirmyeyul.com/', 'https://column.lawfirmyeyul.com/sitemap.xml', 'd5534fd395b25c998ea43d165535551a'],
