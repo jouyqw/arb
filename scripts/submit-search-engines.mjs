@@ -5,6 +5,11 @@ import { mkdir, writeFile } from 'node:fs/promises';
 // 같은 이름의 txt 파일이 실제 공개된 경우에만 적습니다.
 const sites = [
   ['AUB컴퍼니', 'https://aubcompany.com/', 'https://aubcompany.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
+  // AUB 법률·생활은 구글만 한다. IndexNow 키를 일부러 비워 둔 것이니 채우지 말 것.
+  // 주소가 /b/<블로그ID>/<글번호>/ 라서 네이버가 블로그 복제 사이트로 읽기 쉽다.
+  // 본문은 원문과 거의 겹치지 않지만(20자 단위 대조 4.6%), 잘못 걸리면 사이트가 아니라
+  // 블로그 본체가 저품질로 묶인다. 블로그가 더 큰 자산이라 그 위험을 지지 않는다.
+  // 네이버까지 노리려면 주소 구조를 먼저 바꿔야 한다.
   ['AUB 법률', 'https://law.aubcompany.com/', 'https://law.aubcompany.com/sitemap.xml'],
   ['AUB 생활', 'https://life.aubcompany.com/', 'https://life.aubcompany.com/sitemap.xml'],
   // 수산도가(선물 쇼핑몰). 키 파일은 giftmall 저장소의 public/ 에 있다.
@@ -21,9 +26,9 @@ const sites = [
   ['울산 변호사', 'https://ulsanlawyer.kr/', 'https://ulsanlawyer.kr/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
   ['위드윤', 'https://with-yoon-law.com/', 'https://with-yoon-law.com/sitemap.xml', 'eee764b31941bb288655b49d490b1005'],
   ['우리인법무사', 'https://woorinlaw.com/', 'https://woorinlaw.com/sitemap.xml'],
-  ['바나나퀵', 'https://xn--910ba239f8iu.com/', 'https://xn--910ba239f8iu.com/sitemap.xml'],
-  ['새출발양형자료분석센터', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/sitemap.php'],
-  ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml'],
+  ['바나나퀵', 'https://xn--910ba239f8iu.com/', 'https://xn--910ba239f8iu.com/sitemap.xml', '0b324317ebbf4fd2a3811d3c9a3c08d8'],
+  ['새출발양형자료분석센터', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/sitemap.php', '441594a838ae4c429d316502ae090d39'],
+  ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml', '418d6647da04482596f98cc63ba7da1c'],
   ['예율 법률칼럼', 'https://columns.yeyul-law.com/', 'https://columns.yeyul-law.com/sitemap.xml', '628977ad229e859371ca6577bf876d14'],
   ['법무법인 예율', 'https://yeyul-law.com/', 'https://yeyul-law.com/sitemap.xml'],
 ].map(([name, siteUrl, sitemapUrl, indexNowKey, googleProperty, skipScan]) => ({ name, siteUrl, sitemapUrl, indexNowKey, googleProperty, skipScan }));
