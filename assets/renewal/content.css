@@ -2,4 +2,50 @@
 html{scroll-padding-top:32px}body{font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;background:#f6f8fb;color:#415167;font-size:17px;line-height:1.9;letter-spacing:-.018em;word-break:keep-all;overflow-wrap:break-word}
 .wrap{padding:48px 28px 80px}h1{color:#142338;font-weight:660;font-size:clamp(30px,4.3vw,46px);line-height:1.35;letter-spacing:-.045em;text-wrap:balance;margin-top:26px}h2{font-weight:650;line-height:1.45;color:#172b45;letter-spacing:-.03em}h3{font-weight:650;line-height:1.5;color:#172b45}strong,b{font-weight:650}.lead,.desc{font-size:18px;line-height:1.9;color:#617086;max-width:800px}.crumb{font-size:14px;gap:14px;color:#647995}.crumb a{color:#254d81;font-weight:600}.tag,.meta,.pill,.badge{font-size:13px}.meta{color:#63758d}.card,.post,.item{border-radius:10px;border-color:#e0e7ef;box-shadow:none;background:white;padding:30px}.grid{gap:22px}.card h2{font-size:25px;line-height:1.4}.card p{font-size:17px;line-height:1.85}.card .go{font-size:14px;font-weight:600}.card:hover{box-shadow:0 18px 35px -25px #12274450;border-color:#9eb6d4}article{background:#fff;border:1px solid #e2e7ee;box-shadow:none;border-radius:12px;padding:40px;margin-top:32px}article p,article li{font-size:17px;line-height:1.95}article p+p{margin-top:16px}article h2{font-size:29px;margin:36px 0 16px}article h3{font-size:22px;margin-top:28px}.summary-box,.cta,.hub{border-radius:10px;box-shadow:none}.summary-box{background:#f1f5fa;border-color:#dde6f2;color:#334d70}.table-wrap{border-radius:8px}th,td{font-size:15px;line-height:1.8;padding:16px}a:focus-visible,summary:focus-visible{outline:3px solid #497dcc;outline-offset:5px}.foot{font-size:14px;color:#61728a}.related a{font-size:16px}
 .summary-box li b,.summary-box li strong{display:inline;margin:0}
+/* --- 서비스 페이지 가독성 보정 (2026-09-17) ---
+   이 파일이 인라인 <style> 뒤에 로드돼 h1/.lead 색을 어두운 히어로 위에 덮어쓰고 있었다.
+   히어로 안쪽은 header.top 으로 스코프를 올려 되돌린다. 칼럼 페이지에는 header.top 이 없어 영향 없음. */
+header.top{padding-block:40px 60px}
+header.top h1{color:#fff;font-weight:700;letter-spacing:-.04em;margin-top:0;text-shadow:0 1px 2px rgba(5,12,26,.35)}
+header.top .lead{color:#cddcf2;font-size:clamp(16px,2vw,18.5px);line-height:1.85;max-width:660px}
+header.top .crumb{color:#93a8c8;margin-bottom:26px}
+header.top .crumb a{color:#b8d2ff;font-weight:600}
+header.top .crumb span{color:#5b7098}
+header.top .eyebrow{color:#cfe0fb;font-weight:650;letter-spacing:-.01em}
+header.top .top-actions a{font-weight:650;letter-spacing:-.01em}
+header.top .top-actions .ghost{border-color:rgba(255,255,255,.34);color:#eaf1fb;background:rgba(255,255,255,.06)}
+header.top .top-actions .ghost:hover{background:rgba(255,255,255,.12)}
+/* 본문 대비 보정: 흐린 회색 계열을 한 단계 진하게 */
+.figure-note,.related-list span,.channels{color:#5d6e85}
+.channels span{color:#41526a;font-weight:650}
+.summary-box li,td{color:#33455c}
+.ig-item .t,.faq .a,.callout-box p,.warning-box p{color:#415167;font-size:15.5px;line-height:1.8}
+.ig-item b,.faq summary{font-weight:650}
+.faq summary{padding:18px 20px;font-size:16px;line-height:1.55}
+.faq .a{padding:0 20px 20px}
+strong,.summary-box strong,th,.callout-box .label{font-weight:650}
+.cta{color:#fff}.cta h2{color:#fff;font-weight:680}.cta p{color:rgba(255,255,255,.86);font-size:16px;line-height:1.8}
+.cta a,.top-actions a{font-weight:650}
+.infographic-h{font-weight:650;letter-spacing:-.01em}
+a{font-weight:600}
+.table-wrap{-webkit-overflow-scrolling:touch}
+@media(max-width:640px){
+  header.top{padding-block:26px 40px;margin-bottom:28px}
+  header.top h1{font-size:28px;line-height:1.38}
+  header.top .lead{font-size:16px;line-height:1.8}
+  header.top .top-actions{flex-direction:column;align-items:stretch;gap:9px}
+  header.top .top-actions a{width:100%;min-height:52px;font-size:15.5px}
+  .ig-grid{grid-template-columns:1fr}
+  .ig-item{padding:18px}
+  .table-wrap{margin-inline:-4px}
+  table{min-width:0}
+  th,td{padding:12px 12px;font-size:14.5px;line-height:1.7}
+  .faq summary{font-size:15.5px;padding:16px 17px}
+  .faq .a{padding:0 17px 18px;font-size:15px}
+  .cta{padding:24px 20px}
+  .cta-actions{flex-direction:column;align-items:stretch}
+  .cta a{width:100%;min-height:52px}
+  .related-list a{font-size:15.5px}
+  .sib a{font-size:13.5px}
+}
 @media(max-width:640px){.wrap{padding:26px 22px 60px}h1{font-size:31px;margin-top:25px;line-height:1.4}.lead,.desc{font-size:17px}.grid{grid-template-columns:1fr;gap:16px}.card{padding:25px}.card h2{font-size:24px}.card p{font-size:16px}article{padding:26px 22px;margin-inline:-8px}article p,article li{font-size:16px;line-height:1.95}article h2{font-size:25px;margin-top:30px}article h3{font-size:21px}.crumb{font-size:13px}.meta{font-size:13px}th,td{font-size:14px;padding:12px}.cta,.summary-box,.hub{padding:22px}}
