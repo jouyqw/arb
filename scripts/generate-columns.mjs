@@ -135,6 +135,14 @@ const renderBlock = (block) => {
     return `<div class="${cls}">${block.label ? `<span class="label">${esc(block.label)}</span>` : ''}<p>${renderInline(block.text || '')}</p></div>`;
   }
 
+  // FAQ — 생성형 검색(GEO)에서 가장 잘 인용되는 형태.
+  // 질문과 답이 한 덩어리로 묶여 있어야 AI가 통째로 들어 쓴다.
+  // 같은 내용을 FAQPage 구조화 데이터로도 내보내 구글 리치결과를 노린다.
+  if (block?.type === 'faq') {
+    const items = (block.items || []).map((it) => `<details><summary>${esc(it.q)}</summary><p class="a">${renderInline(it.a)}</p></details>`).join('');
+    return `<section class="faq"><h2>${esc(block.title || '자주 묻는 질문')}</h2>${items}</section>`;
+  }
+
   if (block?.type === 'infographic') {
     const items = (block.items || []).map((item) => `<div class="ig-item"><span class="ig-ic">${item.icon || ''}</span><div><b>${esc(item.title)}</b><span class="t">${esc(item.text)}</span></div></div>`).join('');
     return `<div class="infographic"><div class="infographic-h">${esc(block.title || '')}</div><div class="ig-grid">${items}</div></div>${block.caption ? `<p class="figure-note">▲ ${esc(block.caption)}</p>` : ''}`;
@@ -168,6 +176,20 @@ const articleTemplate = (post) => {
       { '@type': 'ListItem', position: 3, name: post.title, item: url }
     ]
   };
+
+  // 본문에 faq 블록이 있으면 FAQPage 로도 내보낸다.
+  // 화면에 보이지 않는 FAQ 를 스키마로만 넣으면 구글이 리치결과에서 뺀다 — 반드시 본문과 같은 내용이어야 한다.
+  const faqItems = (post.body || []).filter((b) => b?.type === 'faq').flatMap((b) => b.items || [])
+    .filter((it) => it && it.q && it.a);
+  const faqLd = faqItems.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((it) => ({
+      '@type': 'Question',
+      name: it.q,
+      acceptedAnswer: { '@type': 'Answer', text: it.a },
+    })),
+  } : null;
 
   const related = relatedColumnsFor(post);
   const hubs = hubsForColumn(post);
@@ -203,6 +225,7 @@ const articleTemplate = (post) => {
   ${post.image ? `<meta property="og:image" content="${siteUrl}${esc(post.image)}" />` : ''}
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
   <script type="application/ld+json">${JSON.stringify(breadcrumbLd)}</script>
+  ${faqLd ? `<script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ''}
   <style>
     *{box-sizing:border-box}
     body{margin:0;font-family:Arial,'Noto Sans KR',sans-serif;color:#101828;line-height:1.85;background:#fff}
@@ -240,6 +263,13 @@ const articleTemplate = (post) => {
     .ig-item b{display:block;color:#101828;font-size:15px;margin-bottom:4px}
     .ig-item .t{font-size:13.5px;color:#4b5563;line-height:1.6;display:block}
     .figure-note{color:#8A95A3;font-size:12.5px;margin:-18px 0 26px;text-align:center}
+    .faq{margin:38px 0 8px}
+    .faq details{border:1px solid #EAECF0;border-radius:13px;margin-bottom:11px;background:#FCFDFF}
+    .faq summary{cursor:pointer;padding:18px 21px;font-size:16.5px;font-weight:800;color:#101828;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";color:#0B55D9;font-size:21px;line-height:1;flex-shrink:0}
+    .faq details[open] summary::after{content:"−"}
+    .faq .a{padding:0 21px 20px;margin:0;font-size:15.5px;color:#4b5563}
     .callout-box,.warning-box{border-radius:14px;padding:20px 22px;margin:26px 0}
     .callout-box{background:#F3F7FF;border:1px solid #D8E5FF}
     .warning-box{background:#FFF4F1;border:1px solid #F6CFC5}

@@ -83,11 +83,12 @@ const plainText = (body) => (body || []).map((b) => {
   if (b.type === 'table') return [...(b.headers || []), ...(b.rows || []).flat()].join(' ');
   if (b.type === 'callout' || b.type === 'warning') return `${b.label || ''} ${b.text || ''}`;
   if (b.type === 'infographic') return (b.items || []).map((i) => `${i.title} ${i.text}`).join(' ');
+  if (b.type === 'faq') return (b.items || []).map((i) => `${i.q} ${i.a}`).join(' ');
   return '';
 }).join('\n');
 
 /* ---------- 규격 검사 ---------- */
-const VALID_TYPES = ['heading', 'summary', 'table', 'list', 'callout', 'warning', 'infographic'];
+const VALID_TYPES = ['heading', 'summary', 'table', 'list', 'callout', 'warning', 'infographic', 'faq'];
 
 function validate(topic, date, seenTitles, seenSlugs) {
   const file = path.join(QUEUE, `${topic.slug}.json`);
@@ -118,6 +119,7 @@ function validate(topic, date, seenTitles, seenSlugs) {
   let headings = 0;
   let hasSummary = false;
   let hasTable = false;
+  let faqCount = 0;
   d.body.forEach((b, i) => {
     if (typeof b === 'string') { if (!b.trim()) e.push(`body[${i}] 빈 문단`); return; }
     if (!b || typeof b !== 'object' || !b.type) { e.push(`body[${i}] 형식을 알 수 없습니다`); return; }
@@ -133,15 +135,23 @@ function validate(topic, date, seenTitles, seenSlugs) {
     }
     if ((b.type === 'callout' || b.type === 'warning') && !b.text) e.push(`body[${i}] ${b.type} 에 text 없음`);
     if (b.type === 'infographic' && (!Array.isArray(b.items) || !b.items.length)) e.push(`body[${i}] infographic 에 items 없음`);
+    if (b.type === 'faq') {
+      faqCount = (b.items || []).length;
+      if (!Array.isArray(b.items) || b.items.length < 4) e.push(`body[${i}] faq 질문이 ${faqCount}개 (최소 4개)`);
+      else if (b.items.some((x) => !x || !x.q || !x.a)) e.push(`body[${i}] faq 항목에 q 또는 a 가 없습니다`);
+      // 답변이 한 줄이면 AI가 인용할 거리가 안 된다.
+      else if (b.items.some((x) => [...String(x.a)].length < 60)) e.push(`body[${i}] faq 답변이 너무 짧습니다 (60자 미만)`);
+    }
   });
 
   if (!hasSummary) e.push('summary 블록이 없습니다');
   if (!hasTable) e.push('table 블록이 없습니다');
-  if (headings < 5) e.push(`heading 블록이 ${headings}개 (최소 5개)`);
+  if (!faqCount) e.push('faq 블록이 없습니다 (AI 검색 인용에 필요)');
+  if (headings < 6) e.push(`heading 블록이 ${headings}개 (최소 6개)`);
   if (d.body[0]?.type !== 'summary') e.push('첫 블록이 summary 가 아닙니다');
 
   const text = plainText(d.body);
-  if (n(text) < 2500) e.push(`본문이 짧습니다 (${n(text)}자, 최소 2500)`);
+  if (n(text) < 3000) e.push(`본문이 짧습니다 (${n(text)}자, 최소 3000)`);
   if (n(text) > 8000) e.push(`본문이 너무 깁니다 (${n(text)}자)`);
   for (const w of BANNED) if (text.includes(w) || String(d.title).includes(w) || String(d.description).includes(w)) e.push(`금지 표현: ${w}`);
 
@@ -187,14 +197,29 @@ AUTHORING.md 가 있으면 그것도 읽는다. 기존 글과 같은 톤으로 �
 - { "type": "callout", "label": "짧은 라벨", "text": "..." }
 - { "type": "warning", "label": "주의", "text": "..." }
 - { "type": "infographic", "title": "...", "items": [{ "icon": "1", "title": "...", "text": "..." }], "caption": "..." }
+- { "type": "faq", "title": "자주 묻는 질문", "items": [{ "q": "질문", "a": "답변" }] }
 
 ## 본문 규칙
-- **첫 블록은 반드시 summary** 이고, heading 을 5~8개 쓴다.
-- 표(table)를 최소 1개 넣는다. 비교표·체크리스트처럼 실제로 쓸 수 있는 형태로.
-- 순수 텍스트 기준 **2,800~4,000자**. 기존 글(약 1,600자)보다 깊게 쓴다.
-  같은 말을 늘리지 말고, 실제 판단 기준·순서·숫자를 넣어 늘린다.
+- **첫 블록은 반드시 summary** 이고, heading 을 6~9개 쓴다.
+- 표(table)를 최소 1개 넣는다. 비교표·체크리스트·금액대별 포함범위처럼 실제로 쓸 수 있는 형태로.
+- **마지막에서 두 번째 블록은 반드시 faq** 이고 질문을 4~6개 넣는다.
+- 순수 텍스트 기준 **3,200~4,500자**. 같은 말을 늘리지 말고,
+  실제 판단 기준·순서·기간·금액 범위를 넣어 늘린다.
 - 결론부터 말하고, 그다음 이유와 방법으로 간다.
 - 문단은 2~4문장으로 짧게 끊는다. 긴 문단을 만들지 않는다.
+
+## 검색·AI 노출을 위해 반드시 지킬 것 (이 글의 목적이다)
+이 글은 **맡길 곳을 찾는 사람**이 읽는다. 혼자 해 보라고 가르치는 글이 아니라,
+고를 때 쓰는 **판단 기준**을 주는 글이다. 읽고 나면 "무엇을 물어봐야 하는지"를 알게 돼야 한다.
+
+- 주요 키워드를 제목에 1회, description 에 1회, 본문 heading 중 1~2곳에 자연스럽게 넣는다.
+  억지로 반복하지 마라. 같은 말을 5번 넣는 글은 오히려 순위가 떨어진다.
+- **각 heading 바로 다음 문단은 그 소제목의 질문에 대한 답부터 쓴다.**
+  AI 가 답변에 인용할 때 그 한 문단만 떼어 가기 때문이다. 배경 설명으로 시작하지 마라.
+- faq 의 답변은 **그 자체로 완결된 3~5문장**으로 쓴다. "위에서 설명한 대로" 같은 참조를 쓰지 마라.
+- 숫자로 말할 수 있는 건 숫자로 쓴다(기간·항목 수·금액 범위). 단, 지어내지 말고 범위로.
+  예: "보통 4~8주", "견적서에서 이 5가지 항목을 본다", "300만~800만원대에서 흔히 갈린다"
+- 표에는 비교 축이 분명해야 한다. "A/B 중 무엇을 고를지"를 표 하나로 끝낼 수 있게.
 
 ## 절대 하지 말 것
 - 성과를 약속하는 표현. "1위 보장", "무조건", "100%", "최저가", "반드시 상위노출" 금지.
