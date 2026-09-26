@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>구글·네이버에 칼럼을 노출시키는 기본 세팅 | 아비컴퍼니 칼럼</title>
-  <meta name="description" content="칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 방법입니다." />
+  <meta name="description" content="칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 순서와 점검 기준을 정리했습니다." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://aubcompany.com/column/naver-google-indexing-checklist/" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://aubcompany.com/column/naver-google-indexing-checklist/" />
   <meta property="og:title" content="구글·네이버에 칼럼을 노출시키는 기본 세팅" />
-  <meta property="og:description" content="칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 방법입니다." />
+  <meta property="og:description" content="칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 순서와 점검 기준을 정리했습니다." />
   
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"구글·네이버에 칼럼을 노출시키는 기본 세팅","description":"칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 방법입니다.","author":{"@type":"Organization","name":"아비컴퍼니"},"publisher":{"@type":"Organization","name":"아비컴퍼니","url":"https://aubcompany.com"},"datePublished":"2026-06-01","dateModified":"2026-06-01","mainEntityOfPage":{"@type":"WebPage","@id":"https://aubcompany.com/column/naver-google-indexing-checklist/"},"keywords":"robots.txt, sitemap.xml, 구글 서치콘솔, 네이버 서치어드바이저, 검색엔진 수집"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"구글·네이버에 칼럼을 노출시키는 기본 세팅","description":"칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 순서와 점검 기준을 정리했습니다.","author":{"@type":"Organization","name":"아비컴퍼니"},"publisher":{"@type":"Organization","name":"아비컴퍼니","url":"https://aubcompany.com"},"datePublished":"2026-06-01","dateModified":"2026-09-27","mainEntityOfPage":{"@type":"WebPage","@id":"https://aubcompany.com/column/naver-google-indexing-checklist/"},"keywords":"robots.txt, sitemap.xml, 구글 서치콘솔, 네이버 서치어드바이저, 검색엔진 수집"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://aubcompany.com/"},{"@type":"ListItem","position":2,"name":"마케팅 칼럼","item":"https://aubcompany.com/column/"},{"@type":"ListItem","position":3,"name":"구글·네이버에 칼럼을 노출시키는 기본 세팅","item":"https://aubcompany.com/column/naver-google-indexing-checklist/"}]}</script>
-  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"robots.txt와 sitemap.xml 중 무엇을 먼저 손봐야 하나요?","acceptedAnswer":{"@type":"Answer","text":"robots.txt가 먼저입니다. robots.txt에서 검색 로봇 접근이 막혀 있으면 사이트맵을 아무리 잘 만들어도 검색엔진이 페이지를 읽지 못합니다. 도메인 뒤에 /robots.txt를 붙여 열어 보고 Disallow: / 가 없는지 확인한 다음, 같은 파일 안에 Sitemap 경로를 한 줄 넣으면 됩니다. 그다음에 사이트맵에 칼럼 상세 URL을 채우는 순서가 맞습니다."}},{"@type":"Question","name":"칼럼을 올렸는데 2주가 지나도 검색에 안 나옵니다. 무엇을 봐야 하나요?","acceptedAnswer":{"@type":"Answer","text":"먼저 색인이 안 된 것인지, 색인은 됐는데 순위가 낮은 것인지 구분해야 합니다. 검색창에 site:도메인/글주소 형태로 조회해서 결과가 나오면 색인은 된 상태이고, 이때는 내용과 키워드 문제로 넘어갑니다. 결과가 전혀 없다면 noindex 메타 잔존, robots.txt 차단, canonical 오기입, 사이트맵 누락 네 가지를 차례로 확인합니다. 신규 도메인은 여기에 2~4주가 더 걸리는 점도 감안해야 합니다."}},{"@type":"Question","name":"구조화 데이터를 넣으면 순위가 올라가나요?","acceptedAnswer":{"@type":"Answer","text":"구조화 데이터 자체가 순위를 올려 주는 요소는 아닙니다. 다만 검색엔진이 제목, 작성자, 발행일, 수정일을 정확히 인식하게 해 주기 때문에 검색 결과 표시가 풍부해지고 클릭률이 개선되는 경우가 많습니다. 칼럼에는 Article 또는 BlogPosting을, FAQ 블록이 있으면 FAQPage를 함께 넣습니다. 작성 후 구글 리치 결과 테스트에서 오류가 0건인지 반드시 확인하세요."}},{"@type":"Question","name":"네이버 수집 요청은 글을 올릴 때마다 직접 넣어야 하나요?","acceptedAnswer":{"@type":"Answer","text":"수동으로 넣어도 되지만, 발행이 잦다면 자동화하는 편이 낫습니다. 네이버 서치어드바이저는 수집 요청 API를 제공하므로 칼럼 발행 시점에 새 URL을 자동 제출하도록 연결할 수 있습니다. 수동 요청은 계정 상황에 따라 하루 제출 건수 제한이 있어 대량 등록에는 맞지 않습니다. 월 5편 이하라면 수동으로도 충분합니다."}},{"@type":"Question","name":"글을 보강해서 내용을 늘렸습니다. 다시 수집 요청을 해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"내용이 크게 바뀌었다면 다시 요청하는 편이 좋습니다. 먼저 sitemap.xml의 해당 URL lastmod 값을 수정일로 갱신하고, 구글은 URL 검사에서 색인 요청, 네이버는 수집 요청을 한 번 더 넣습니다. 보통 며칠 안에 검색 결과의 요약문과 노출 내용이 새 버전으로 바뀝니다. 오탈자 수정 같은 작은 변경이라면 별도 요청 없이 두어도 무방합니다."}},{"@type":"Question","name":"구글과 네이버 중 한 곳만 세팅한다면 어디가 먼저인가요?","acceptedAnswer":{"@type":"Answer","text":"국내 서비스업이나 지역 기반 업종이라면 네이버 서치어드바이저를 먼저 등록하는 편이 체감이 빠릅니다. 개별 URL 수집 요청을 직접 넣을 수 있어 반영 속도를 통제하기 쉽기 때문입니다. 반대로 정보성 검색 유입이 크거나 해외 노출이 필요한 분야라면 구글 서치콘솔이 우선입니다. 다만 robots.txt와 사이트맵, 메타 태그는 양쪽이 공유하는 기반이라 한 번만 제대로 잡으면 둘 다에 적용됩니다."}}]}</script>
   <style>
     *{box-sizing:border-box}
     body{margin:0;font-family:Arial,'Noto Sans KR',sans-serif;color:#101828;line-height:1.85;background:#fff}
@@ -101,19 +101,76 @@
     </nav>
     <span class="tag">SEO·상위노출</span>
     <h1>구글·네이버에 칼럼을 노출시키는 기본 세팅</h1>
-    <p class="desc">칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 방법입니다.</p>
+    <p class="desc">칼럼 페이지를 구글과 네이버가 발견하고 수집할 수 있도록 robots.txt, sitemap.xml, 메타 태그, 구조화 데이터, 수집 요청을 세팅하는 순서와 점검 기준을 정리했습니다.</p>
     <div class="meta">
       <span>작성자 아비컴퍼니</span>
       <span>발행일 2026-06-01</span>
-      <span>수정일 2026-06-01</span>
+      <span>수정일 2026-09-27</span>
     </div>
     <article>
+      <section class="summary-box">
+        <strong>핵심 요약</strong>
+        <ul><li>칼럼을 올렸다고 바로 노출되지 않습니다. 발견·수집·색인 3단계를 통과해야 검색 결과에 나타납니다.</li><li>순서는 robots.txt 허용 → sitemap.xml 등록 → 메타 태그(title·description·canonical·OG) → 구조화 데이터 → 수집 요청입니다.</li><li>구글은 Search Console에 사이트맵을 제출하고, 네이버는 서치어드바이저 수집 요청 API로 새 URL 제출을 자동화할 수 있습니다.</li><li>색인까지는 구글이 보통 1~7일, 네이버가 3~14일 정도 걸리며 신규 도메인은 더 늦어집니다.</li><li>한 번 세팅하면 끝이 아니라, 발행할 때마다 5분 점검 루틴을 돌리는 편이 안전합니다.</li></ul>
+      </section>
       <p>칼럼을 작성했다고 해서 바로 구글과 네이버에 노출되는 것은 아닙니다. 검색엔진이 페이지를 발견하고, 읽고, 색인할 수 있는 기술적 조건이 필요합니다.</p>
+      <p>이 글은 그 기술적 조건을 순서대로 정리한 점검표입니다. 앞 단계가 막혀 있으면 뒤 단계는 의미가 없기 때문에, 반드시 위에서 아래로 확인해야 합니다.</p>
+      <h2>robots.txt는 무엇부터 확인해야 하나요?</h2>
       <p>먼저 robots.txt에서 검색 로봇 접근을 허용하고 sitemap.xml 위치를 알려야 합니다. 현재 사이트처럼 User-agent 전체 허용과 Sitemap 경로를 넣는 방식이 기본입니다.</p>
-      <p>다음으로 sitemap.xml에 칼럼 상세 URL을 추가해야 합니다. 검색엔진은 사이트맵을 참고해 어떤 페이지가 중요한지, 언제 수정되었는지 파악합니다.</p>
+      <p>확인 방법은 간단합니다. 브라우저 주소창에 도메인 뒤 /robots.txt를 붙여 열었을 때 파일이 보이고, Disallow: / 한 줄이 없으면 정상입니다.</p>
+      <p>개발 단계에서 전체 차단을 걸어 두고 오픈 때 풀지 않는 실수가 가장 흔합니다. 이 한 줄 때문에 몇 달간 한 건도 색인되지 않는 경우가 실제로 생깁니다.</p>
+      <h2>sitemap.xml에는 무엇을 넣어야 하나요?</h2>
+      <p>sitemap.xml에는 칼럼 상세 URL을 개별 주소 단위로 모두 넣어야 합니다. 검색엔진은 사이트맵을 참고해 어떤 페이지가 중요한지, 언제 수정되었는지 파악합니다.</p>
+      <p>목록 페이지 하나만 넣고 상세 글을 빼면, 검색엔진이 개별 칼럼을 늦게 발견하거나 아예 놓칩니다. 글이 늘어날수록 자동 생성 방식으로 바꾸는 편이 관리가 쉽습니다.</p>
+      <ul><li>loc: 칼럼 상세 URL 전체 주소(http/https, www 유무까지 실제 주소와 동일하게)</li><li>lastmod: 마지막 수정일. 글을 보강하면 이 값을 갱신해야 재수집이 걸립니다.</li><li>URL 개수: 사이트맵 1개당 5만 개, 파일 크기 50MB가 상한선입니다.</li><li>404·리다이렉트·noindex 페이지는 빼야 합니다. 오류 URL이 섞이면 사이트맵 신뢰도가 떨어집니다.</li><li>사이트맵 주소는 robots.txt의 Sitemap: 줄과 반드시 일치해야 합니다.</li></ul>
+      <h2>칼럼 한 편에 필요한 메타 태그는 무엇인가요?</h2>
       <p>각 칼럼에는 title, description, canonical, Open Graph 태그가 필요합니다. 중복 URL이 생기지 않도록 대표 주소를 명확히 지정해야 합니다.</p>
-      <p>마지막으로 Article 또는 BlogPosting 구조화 데이터를 넣으면 검색엔진이 글의 제목, 작성자, 발행일, 수정일을 더 잘 이해할 수 있습니다.</p>
+      <p>특히 canonical은 같은 글이 여러 주소로 열릴 때 어떤 주소를 원본으로 볼지 알려 주는 태그입니다. 파라미터가 붙은 주소, www 유무가 다른 주소가 섞이면 평가가 분산됩니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>태그</th><th>권장 길이·형식</th><th>빠졌을 때 생기는 일</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>title</td><td>18~48자, 핵심 키워드 앞쪽 배치</td><td>검색 결과 제목이 본문에서 임의로 잘려 나옵니다</td></tr>
+            <tr><td>description</td><td>70~160자, 글의 답을 요약</td><td>설명문이 자동 발췌돼 클릭률이 떨어집니다</td></tr>
+            <tr><td>canonical</td><td>절대경로 1개만</td><td>중복 URL로 평가가 나뉩니다</td></tr>
+            <tr><td>Open Graph</td><td>og:title·og:description·og:image</td><td>카카오톡·블로그 공유 시 미리보기가 비어 보입니다</td></tr>
+            <tr><td>robots 메타</td><td>index, follow</td><td>noindex가 남아 있으면 색인 자체가 막힙니다</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2>구조화 데이터는 꼭 넣어야 하나요?</h2>
+      <p>필수는 아니지만 넣는 편이 유리합니다. Article 또는 BlogPosting 구조화 데이터를 넣으면 검색엔진이 글의 제목, 작성자, 발행일, 수정일을 더 잘 이해할 수 있습니다.</p>
+      <p>FAQ 블록이 있는 칼럼이라면 FAQPage 스키마를 함께 넣습니다. AI 검색과 생성형 답변이 질문-답변 쌍을 그대로 인용하기 쉬운 형태이기 때문입니다.</p>
+      <p>작성 후에는 구글 리치 결과 테스트에서 오류 0건인지 확인합니다. 문법 오류가 있으면 구조화 데이터 전체가 무시됩니다.</p>
+      <h2>구글과 네이버, 어디부터 등록해야 하나요?</h2>
+      <p>두 곳 모두 등록하되, 글 수가 적은 초기에는 네이버 서치어드바이저부터 처리하는 편이 체감이 빠릅니다. 국내 검색 비중이 높고 개별 URL 수집 요청을 직접 넣을 수 있기 때문입니다.</p>
       <p>네이버는 서치어드바이저 수집 요청 API를 통해 새 URL 제출 자동화가 가능합니다. 구글은 Search Console에 사이트맵을 제출하고 색인 상태를 확인하는 흐름을 권장합니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>비교 축</th><th>구글 서치콘솔</th><th>네이버 서치어드바이저</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>주력 제출 방식</td><td>사이트맵 제출 + URL 검사</td><td>사이트맵 제출 + 웹페이지 수집 요청</td></tr>
+            <tr><td>개별 URL 요청</td><td>URL 검사 도구에서 건별 요청</td><td>수집 요청 하루 50건 한도(계정 상황에 따라 다름)</td></tr>
+            <tr><td>자동화</td><td>Indexing API는 채용·라이브 콘텐츠 위주</td><td>수집 요청 API로 발행 직후 자동 제출 가능</td></tr>
+            <tr><td>평균 색인 기간</td><td>보통 1~7일</td><td>보통 3~14일</td></tr>
+            <tr><td>먼저 할 일</td><td>소유권 확인 → 사이트맵 제출</td><td>사이트 등록 → 웹마스터 도구 진단 통과</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>정리하면, 발행 직후 빠른 반영이 필요하면 네이버 수집 요청을, 장기 누적 노출이 목표면 구글 사이트맵 관리를 중심에 둡니다. 둘 중 하나만 고른다면 국내 서비스업은 네이버, 정보성 검색 유입이 큰 분야는 구글이 우선입니다.</p>
+      <h2>색인까지 얼마나 걸리고 무엇으로 확인하나요?</h2>
+      <p>운영 이력이 있는 도메인이면 구글은 보통 1~7일, 네이버는 3~14일 안에 색인되는 경우가 많습니다. 개설 3개월 미만의 신규 도메인은 여기에 2~4주가 더 붙는 것이 일반적입니다.</p>
+      <p>확인은 검색창에 site:도메인/경로 형태로 조회하거나, 서치콘솔 URL 검사·서치어드바이저 웹페이지 최적화 화면에서 상태를 봅니다. 색인은 되었는데 순위가 낮은 것과, 아예 색인이 안 된 것은 원인도 대응도 완전히 다릅니다.</p>
+      <div class="warning-box"><span class="label">주의</span><p>3주가 지나도 색인이 되지 않는다면 순위를 걱정하기 전에 기술 설정부터 다시 봅니다. 원인의 대부분은 noindex 잔존, robots.txt 차단, canonical 오기입, 사이트맵 미등록 네 가지 안에 있습니다.</p></div>
+      <h2>발행할 때마다 돌릴 5분 점검 순서</h2>
+      <p>발행 직후에는 아래 순서로 5분만 확인하면 대부분의 누락을 막을 수 있습니다. 위에서부터 하나씩 통과시키는 방식으로 진행합니다.</p>
+      <div class="infographic"><div class="infographic-h">칼럼 발행 후 점검 5단계</div><div class="ig-grid"><div class="ig-item"><span class="ig-ic">1</span><div><b>주소 확인</b><span class="t">상세 URL이 열리고 canonical 주소와 실제 주소가 같은지 봅니다.</span></div></div><div class="ig-item"><span class="ig-ic">2</span><div><b>메타 확인</b><span class="t">title 18~48자, description 70~160자, OG 이미지 표시 여부를 봅니다.</span></div></div><div class="ig-item"><span class="ig-ic">3</span><div><b>사이트맵 반영</b><span class="t">새 URL이 sitemap.xml에 들어갔고 lastmod가 오늘 날짜인지 봅니다.</span></div></div><div class="ig-item"><span class="ig-ic">4</span><div><b>수집 요청</b><span class="t">네이버 수집 요청 제출, 구글 URL 검사에서 색인 요청을 넣습니다.</span></div></div><div class="ig-item"><span class="ig-ic">5</span><div><b>3일 뒤 재확인</b><span class="t">site: 검색으로 색인 여부를 확인하고 안 되면 원인 4가지를 점검합니다.</span></div></div></div></div><p class="figure-note">▲ 한 편당 5분, 월 8편 기준으로 40분 정도면 유지되는 루틴입니다.</p>
+      <div class="callout-box"><span class="label">정리</span><p>기술 세팅은 순위를 올려 주는 장치가 아니라, 좋은 글이 평가받을 기회를 여는 최소 조건입니다. 세팅이 끝난 뒤에야 내용과 키워드 전략이 결과로 이어집니다.</p></div>
+      <section class="faq"><h2>자주 묻는 질문</h2><details><summary>robots.txt와 sitemap.xml 중 무엇을 먼저 손봐야 하나요?</summary><p class="a">robots.txt가 먼저입니다. robots.txt에서 검색 로봇 접근이 막혀 있으면 사이트맵을 아무리 잘 만들어도 검색엔진이 페이지를 읽지 못합니다. 도메인 뒤에 /robots.txt를 붙여 열어 보고 Disallow: / 가 없는지 확인한 다음, 같은 파일 안에 Sitemap 경로를 한 줄 넣으면 됩니다. 그다음에 사이트맵에 칼럼 상세 URL을 채우는 순서가 맞습니다.</p></details><details><summary>칼럼을 올렸는데 2주가 지나도 검색에 안 나옵니다. 무엇을 봐야 하나요?</summary><p class="a">먼저 색인이 안 된 것인지, 색인은 됐는데 순위가 낮은 것인지 구분해야 합니다. 검색창에 site:도메인/글주소 형태로 조회해서 결과가 나오면 색인은 된 상태이고, 이때는 내용과 키워드 문제로 넘어갑니다. 결과가 전혀 없다면 noindex 메타 잔존, robots.txt 차단, canonical 오기입, 사이트맵 누락 네 가지를 차례로 확인합니다. 신규 도메인은 여기에 2~4주가 더 걸리는 점도 감안해야 합니다.</p></details><details><summary>구조화 데이터를 넣으면 순위가 올라가나요?</summary><p class="a">구조화 데이터 자체가 순위를 올려 주는 요소는 아닙니다. 다만 검색엔진이 제목, 작성자, 발행일, 수정일을 정확히 인식하게 해 주기 때문에 검색 결과 표시가 풍부해지고 클릭률이 개선되는 경우가 많습니다. 칼럼에는 Article 또는 BlogPosting을, FAQ 블록이 있으면 FAQPage를 함께 넣습니다. 작성 후 구글 리치 결과 테스트에서 오류가 0건인지 반드시 확인하세요.</p></details><details><summary>네이버 수집 요청은 글을 올릴 때마다 직접 넣어야 하나요?</summary><p class="a">수동으로 넣어도 되지만, 발행이 잦다면 자동화하는 편이 낫습니다. 네이버 서치어드바이저는 수집 요청 API를 제공하므로 칼럼 발행 시점에 새 URL을 자동 제출하도록 연결할 수 있습니다. 수동 요청은 계정 상황에 따라 하루 제출 건수 제한이 있어 대량 등록에는 맞지 않습니다. 월 5편 이하라면 수동으로도 충분합니다.</p></details><details><summary>글을 보강해서 내용을 늘렸습니다. 다시 수집 요청을 해야 하나요?</summary><p class="a">내용이 크게 바뀌었다면 다시 요청하는 편이 좋습니다. 먼저 sitemap.xml의 해당 URL lastmod 값을 수정일로 갱신하고, 구글은 URL 검사에서 색인 요청, 네이버는 수집 요청을 한 번 더 넣습니다. 보통 며칠 안에 검색 결과의 요약문과 노출 내용이 새 버전으로 바뀝니다. 오탈자 수정 같은 작은 변경이라면 별도 요청 없이 두어도 무방합니다.</p></details><details><summary>구글과 네이버 중 한 곳만 세팅한다면 어디가 먼저인가요?</summary><p class="a">국내 서비스업이나 지역 기반 업종이라면 네이버 서치어드바이저를 먼저 등록하는 편이 체감이 빠릅니다. 개별 URL 수집 요청을 직접 넣을 수 있어 반영 속도를 통제하기 쉽기 때문입니다. 반대로 정보성 검색 유입이 크거나 해외 노출이 필요한 분야라면 구글 서치콘솔이 우선입니다. 다만 robots.txt와 사이트맵, 메타 태그는 양쪽이 공유하는 기반이라 한 번만 제대로 잡으면 둘 다에 적용됩니다.</p></details></section>
+      <p>정리하면 발견·수집·색인의 기술 조건을 먼저 맞추고, 그다음에 내용과 키워드를 다듬는 순서입니다. 이 점검표를 발행 루틴에 붙여 두면 공들여 쓴 칼럼이 검색에서 사라지는 일은 크게 줄어듭니다.</p>
     </article>
     <section class="hub">
       <span class="hub-label">이 주제와 연결된 서비스</span>
@@ -124,10 +181,10 @@
     <section class="related">
       <h2>같은 분야의 다른 칼럼</h2>
       <ul class="related-list">
-        <li><a href="../keyword-volume-vs-intent/">키워드를 검색량만 보고 고르면 왜 실패할까요?</a><span>검색량 상위 키워드를 잡았는데 문의가 늘지 않는 이유는 검색의도가 다르기 때문입니다. 의도를 네 가지로 구분하는 법, 검색 결과 화면으로 직접 확인하는 순서, 검색량과 검색의도를 함께 보고 키워드를 고르는 기준을 정리했습니다.</span></li>
-        <li><a href="../duplicate-content-canonical/">같은 글이 여러 주소로 뜹니다, canonical로 어떻게 정리하나요?</a><span>www 유무나 추적 파라미터만으로도 같은 글이 여러 주소로 색인됩니다. 중복이 생기는 지점과 canonical·301 리디렉션의 구분 기준, 서치콘솔로 확인하는 순서를 실제 점검 방식으로 정리했습니다.</span></li>
-        <li><a href="../naver-searchadvisor-setup/">네이버 서치어드바이저에 등록했는데 왜 수집이 안 될까요?</a><span>사이트를 등록해도 네이버 수집이 안 되는 원인은 대부분 소유확인, robots.txt, 사이트맵, 주소 통일 네 가지 안에 있습니다. 어느 화면부터 어떤 순서로 확인해야 하는지 정리했습니다.</span></li>
-        <li><a href="../internal-linking-structure/">칼럼이 쌓였는데 내부링크는 어떻게 걸어야 할까요?</a><span>글이 늘어날수록 내부링크는 개수보다 구조가 중요해집니다. 기둥 글을 축으로 묶는 내부링크 설계 방법과 적정 링크 개수, 앵커 문구 기준, 분기 점검 순서를 실제 운영 기준으로 정리했습니다.</span></li>
+        <li><a href="../keyword-volume-vs-intent/">키워드를 검색량만 보고 고르면 왜 실패할까요?</a><span>검색량 상위 키워드를 잡았는데 문의가 늘지 않는 이유는 검색의도가 다르기 때문입니다. 의도를 네 가지로 구분하는 법, 검색 결과 화면으로 직접 확인하는 순서, 대표 키워드와 작은 키워드를 항목별로 비교하는 표, 검색량과 검색의도를 함께 보고 키워드를 고르는 기준을 정리했습니다.</span></li>
+        <li><a href="../duplicate-content-canonical/">같은 글이 여러 주소로 뜹니다, canonical로 어떻게 정리하나요?</a><span>www 유무나 추적 파라미터만으로도 같은 글이 여러 주소로 색인됩니다. 중복이 생기는 지점과 canonical·301 리디렉션·색인 제외의 구분 기준, 서치콘솔로 확인하는 순서와 기간을 실제 점검 방식으로 정리했습니다.</span></li>
+        <li><a href="../naver-searchadvisor-setup/">네이버 서치어드바이저에 등록했는데 왜 수집이 안 될까요?</a><span>사이트를 등록해도 네이버 수집이 안 되는 원인은 대부분 소유확인, robots.txt, 사이트맵, 주소 통일 네 가지 안에 있습니다. 어느 화면부터 어떤 순서로 확인해야 하는지, 얼마나 기다려야 하는지 정리했습니다.</span></li>
+        <li><a href="../internal-linking-structure/">칼럼이 쌓였는데 내부링크는 어떻게 걸어야 할까요?</a><span>글이 늘어날수록 내부링크는 개수보다 구조가 중요해집니다. 기둥 글을 축으로 묶는 내부링크 설계 방법과 적정 링크 개수, 앵커 문구 기준, 기둥 글 선정 방식, 분기 점검 항목과 작업 시간·비용 범위까지 실제 운영 기준으로 정리했습니다.</span></li>
       </ul>
       <a class="more" href="../">SEO·상위노출 칼럼 더 보기 →</a>
     </section>
