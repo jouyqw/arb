@@ -7,3 +7,8 @@
 [2026-09-26 20:49:24]   재사용 law-firm-homepage-column-marketing — 415자 → 5318자
 [2026-09-26 20:49:24]   재사용 medical-clinic-local-search-content — 429자 → 6633자
 [2026-09-26 20:49:25] ─── 반영 완료 · 2편 (원본 columns.backup-2026-09-26.json) ───
+[2026-09-27 07:30:48] ─── 보강 대상 1편 중 1편 처리 ───
+[2026-09-27 07:36:16]   !! 검사 불통과 pharmacist-marketing-start: 본문이 너무 깁니다 (11239자)
+[2026-09-27 07:36:16]   재시도 1 — pharmacist-marketing-start
+[2026-09-27 07:43:17]   통과 pharmacist-marketing-start — 4467자 → 7546자 · FAQ 6문항
+[2026-09-27 07:43:17] ─── 반영 완료 · 1편 (원본 columns.backup-2026-09-27.json) ───
