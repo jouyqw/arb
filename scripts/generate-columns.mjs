@@ -158,7 +158,15 @@ const articleTemplate = (post) => {
     '@type': 'Article',
     headline: post.title,
     description: post.description,
-    author: { '@type': 'Organization', name: post.author },
+    // 글쓴이를 사람으로 밝힌다.
+    // 조직 이름만 적힌 글보다 실명·직함이 있는 글이 검색과 AI 답변 모두에서 신뢰를 얻는다
+    // (E-E-A-T). 글 자체도 대표가 상담에서 겪은 이야기로 쓰므로 표기를 맞춘다.
+    author: {
+      '@type': 'Person',
+      name: '오경록',
+      jobTitle: '아비컴퍼니 대표',
+      worksFor: { '@type': 'Organization', name: '아비컴퍼니', url: siteUrl },
+    },
     publisher: { '@type': 'Organization', name: '아비컴퍼니', url: siteUrl },
     datePublished: post.datePublished,
     dateModified: post.dateModified,
@@ -314,7 +322,7 @@ const articleTemplate = (post) => {
     <h1>${esc(post.title)}</h1>
     <p class="desc">${esc(post.description)}</p>
     <div class="meta">
-      <span>작성자 ${esc(post.author)}</span>
+      <span>작성자 ${esc(post.author === '아비컴퍼니' ? '오경록 · 아비컴퍼니 대표' : post.author)}</span>
       <span>발행일 ${esc(post.datePublished)}</span>
       <span>수정일 ${esc(post.dateModified)}</span>
     </div>
