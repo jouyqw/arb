@@ -25,7 +25,6 @@ const sites = [
   ['태앤규 전주', 'https://taeandkyujeonju.com/', 'https://taeandkyujeonju.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
   ['울산 변호사', 'https://ulsanlawyer.kr/', 'https://ulsanlawyer.kr/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
   ['위드윤', 'https://with-yoon-law.com/', 'https://with-yoon-law.com/sitemap.xml', 'eee764b31941bb288655b49d490b1005'],
-  ['우리인법무사', 'https://woorinlaw.com/', 'https://woorinlaw.com/sitemap.xml'],
   ['바나나퀵', 'https://xn--910ba239f8iu.com/', 'https://xn--910ba239f8iu.com/sitemap.xml', '0b324317ebbf4fd2a3811d3c9a3c08d8'],
   ['새출발양형자료분석센터', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/sitemap.php', '441594a838ae4c429d316502ae090d39'],
   ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml', '418d6647da04482596f98cc63ba7da1c'],
@@ -98,22 +97,35 @@ async function keyIsLive(site) {
 async function submitIndexNow(site, urls) {
   if (!urls.length) return [{ name: 'IndexNow', status: 'no-recent-url', ok: true }];
   if (dryRun) return [{ name: '네이버', status: 'dry-run', ok: true }, { name: 'IndexNow', status: 'dry-run', ok: true }];
-  const payload = JSON.stringify({
+  const payloadData = {
     host: new URL(site.siteUrl).host,
     key: site.indexNowKey,
     keyLocation: new URL(`${site.indexNowKey}.txt`, site.siteUrl).href,
     urlList: urls.slice(0, 10000),
+  };
+  const postIndexNow = async (endpoint, data) => fetch(endpoint, {
+    method: 'POST', headers: { 'content-type': 'application/json; charset=utf-8' }, body: JSON.stringify(data),
+    signal: AbortSignal.timeout(30000),
   });
   return Promise.all([
     ['네이버', 'https://searchadvisor.naver.com/indexnow'],
     ['IndexNow', 'https://api.indexnow.org/indexnow'],
   ].map(async ([name, endpoint]) => {
     try {
-      const response = await fetch(endpoint, {
-        method: 'POST', headers: { 'content-type': 'application/json; charset=utf-8' }, body: payload,
-        signal: AbortSignal.timeout(30000),
-      });
-      return { name, status: response.status, ok: response.ok || response.status === 202 };
+      let response = await postIndexNow(endpoint, payloadData);
+      let retriedWithoutKeyLocation = false;
+      // 루트 키 파일을 쓰는 사이트는 keyLocation을 생략한 기본 검증도 한 번 시도한다.
+      if (name === '네이버' && response.status === 403) {
+        const { keyLocation, ...fallbackPayload } = payloadData;
+        response = await postIndexNow(endpoint, fallbackPayload);
+        retriedWithoutKeyLocation = true;
+      }
+      return {
+        name,
+        status: response.status,
+        ok: response.ok || response.status === 202,
+        ...(retriedWithoutKeyLocation ? { retriedWithoutKeyLocation } : {}),
+      };
     } catch (error) { return { name, status: 'error', ok: false, error: error.message }; }
   }));
 }
@@ -148,6 +160,7 @@ function propertyFor(site, properties) {
 }
 
 async function submitGoogle(site, google) {
+  if (dryRun && !google) return { status: 'dry-run', ok: true };
   if (!google) return { status: 'secret-missing', ok: false };
   const property = propertyFor(site, google.properties);
   if (!property) return { status: 'permission-missing', ok: false };
@@ -205,3 +218,12 @@ const summary = [
 ].join('\n');
 await writeFile('reports/search-index-latest.md', summary + '\n');
 if (process.env.GITHUB_STEP_SUMMARY) await writeFile(process.env.GITHUB_STEP_SUMMARY, summary + '\n', { flag: 'a' });
+
+const failedSites = report.sites.filter((item) =>
+  item.sitemapStatus === 'error'
+  || item.google?.ok === false
+  || item.indexNow?.some((result) => result.ok === false && result.status !== 'key-not-configured'));
+if (failedSites.length) {
+  console.error(`색인 자동화 실패: ${failedSites.map((item) => item.name).join(', ')}`);
+  process.exitCode = 1;
+}
