@@ -187,3 +187,183 @@
 [2026-09-27 21:37:29]   !! claude 실패 (1) — Failed to authenticate: OAuth session expired and could not be refreshed
 [2026-09-27 21:37:29]   건너뜀 — marketing-agency-contract-checklist
 [2026-09-27 21:37:30] ─── 반영 완료 · 10편 ───
+[2026-09-30 21:24:59] ─── 목소리 전환 대상 85편 중 85편 ───
+[2026-09-30 21:24:59]   재사용 funeral-home-marketing-website
+[2026-09-30 21:29:51]   !! 검사 불통과 interior-blog-seo-portfolio-strategy: 본문이 너무 깁니다 (12356자)
+[2026-09-30 21:29:51]   재시도 1 — interior-blog-seo-portfolio-strategy
+[2026-09-30 21:39:49]   통과 interior-blog-seo-portfolio-strategy — 7475자 → 8643자 · 1인칭 23곳
+[2026-09-30 21:42:50]   !! 검사 불통과 apartment-landing-page-conversion: 본문이 너무 깁니다 (10798자)
+[2026-09-30 21:42:50]   재시도 1 — apartment-landing-page-conversion
+[2026-09-30 21:48:41]   통과 apartment-landing-page-conversion — 6118자 → 7648자 · 1인칭 21곳
+[2026-09-30 21:52:35]   !! 검사 불통과 funeral-home-naver-place-marketing: 본문이 너무 깁니다 (9528자)
+[2026-09-30 21:52:35]   재시도 1 — funeral-home-naver-place-marketing
+[2026-09-30 21:55:20]   통과 funeral-home-naver-place-marketing — 6747자 → 9130자 · 1인칭 13곳
+[2026-09-30 21:59:55]   통과 professional-homepage-marketing-guide — 6316자 → 9478자 · 1인칭 23곳
+[2026-09-30 22:03:09]   !! 검사 불통과 geo-ai-search-optimization-guide: description 170자 (80~160)
+[2026-09-30 22:03:09]   재시도 1 — geo-ai-search-optimization-guide
+[2026-09-30 22:07:48]   !! 검사 불통과 geo-ai-search-optimization-guide: 본문이 너무 깁니다 (9854자)
+[2026-09-30 22:07:48]   재시도 2 — geo-ai-search-optimization-guide
+[2026-09-30 22:12:11]   통과 geo-ai-search-optimization-guide — 6569자 → 8771자 · 1인칭 22곳
+[2026-09-30 22:15:56]   통과 homepage-cost-breakdown-guide — 7261자 → 9210자 · 1인칭 17곳
+[2026-09-30 22:19:43]   !! 검사 불통과 hospital-marketing-medical-law-guide: 본문이 너무 깁니다 (11890자)
+[2026-09-30 22:19:43]   재시도 1 — hospital-marketing-medical-law-guide
+[2026-09-30 22:23:56]   통과 hospital-marketing-medical-law-guide — 7891자 → 9037자 · 1인칭 20곳
+[2026-09-30 22:27:36]   !! 검사 불통과 law-firm-marketing-compliance: 본문이 너무 깁니다 (12238자)
+[2026-09-30 22:27:36]   재시도 1 — law-firm-marketing-compliance
+[2026-09-30 22:30:59]   통과 law-firm-marketing-compliance — 7436자 → 8700자 · 1인칭 15곳
+[2026-09-30 22:34:50]   !! 검사 불통과 ai-citation-content-structure: 본문이 너무 깁니다 (10604자)
+[2026-09-30 22:34:50]   재시도 1 — ai-citation-content-structure
+[2026-09-30 22:38:49]   통과 ai-citation-content-structure — 6177자 → 7741자 · 1인칭 19곳
+[2026-09-30 22:43:29]   !! 검사 불통과 landing-page-inquiry-conversion: 본문이 너무 깁니다 (12414자)
+[2026-09-30 22:43:29]   재시도 1 — landing-page-inquiry-conversion
+[2026-09-30 22:43:43]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:43:43]   건너뜀 — landing-page-inquiry-conversion
+[2026-09-30 22:43:45]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:43:45]   건너뜀 — professional-marketing-agency-selection
+[2026-09-30 22:43:48]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:43:48]   건너뜀 — naver-place-ranking-factors
+[2026-09-30 22:43:50]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:43:50]   건너뜀 — llms-txt-schema-for-business
+[2026-09-30 22:43:53]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:43:53]   건너뜀 — homepage-renewal-timing-signs
+[2026-09-30 22:43:56]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:43:56]   건너뜀 — naver-blog-vs-homepage-seo
+[2026-09-30 22:43:58]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:43:58]   건너뜀 — professional-branding-trust-signals
+[2026-09-30 22:44:01]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:01]   건너뜀 — homepage-mobile-first-checklist
+[2026-09-30 22:44:04]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:04]   건너뜀 — dental-clinic-local-marketing
+[2026-09-30 22:44:06]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:06]   건너뜀 — google-seo-basics-korean-business
+[2026-09-30 22:44:09]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:09]   건너뜀 — geo-content-maintenance-freshness
+[2026-09-30 22:44:11]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:11]   건너뜀 — academy-marketing-parent-trust
+[2026-09-30 22:44:14]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:14]   건너뜀 — homepage-inquiry-form-optimization
+[2026-09-30 22:44:17]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:17]   건너뜀 — restaurant-naver-marketing
+[2026-09-30 22:44:20]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:20]   건너뜀 — homepage-loading-speed-conversion
+[2026-09-30 22:44:23]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:23]   건너뜀 — geo-vs-seo-difference-strategy
+[2026-09-30 22:44:25]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:25]   건너뜀 — beauty-clinic-content-marketing
+[2026-09-30 22:44:28]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:28]   건너뜀 — homepage-about-page-conversion
+[2026-09-30 22:44:30]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:30]   건너뜀 — brand-visibility-ai-search-audit
+[2026-09-30 22:44:33]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:33]   건너뜀 — professional-marketing-referral-to-online
+[2026-09-30 22:44:35]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:35]   건너뜀 — homepage-maintenance-after-launch
+[2026-09-30 22:44:38]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:38]   건너뜀 — search-ranking-drop-diagnosis
+[2026-09-30 22:44:41]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:41]   건너뜀 — labor-attorney-online-marketing-guide
+[2026-09-30 22:44:43]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:43]   건너뜀 — ai-assistant-recommendation-exposure
+[2026-09-30 22:44:46]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:46]   건너뜀 — search-traffic-without-inquiry
+[2026-09-30 22:44:48]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:48]   건너뜀 — homepage-review-case-page-design
+[2026-09-30 22:44:51]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:51]   건너뜀 — geo-faq-content-design
+[2026-09-30 22:44:54]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:54]   건너뜀 — fitness-center-local-marketing
+[2026-09-30 22:44:56]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:56]   건너뜀 — professional-marketing-budget-allocation
+[2026-09-30 22:44:59]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:44:59]   건너뜀 — geo-answer-first-content-format
+[2026-09-30 22:45:02]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:02]   건너뜀 — veterinary-clinic-local-marketing
+[2026-09-30 22:45:05]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:05]   건너뜀 — ai-search-performance-measurement
+[2026-09-30 22:45:07]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:07]   건너뜀 — homepage-copywriting-inquiry
+[2026-09-30 22:45:10]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:10]   건너뜀 — real-estate-agency-online-marketing
+[2026-09-30 22:45:13]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:13]   건너뜀 — professional-marketing-content-vs-ads-balance
+[2026-09-30 22:45:15]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:15]   건너뜀 — homepage-first-impression-trust
+[2026-09-30 22:45:18]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:18]   건너뜀 — geo-brand-mention-off-site
+[2026-09-30 22:45:21]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:21]   건너뜀 — professional-marketing-video-content-guide
+[2026-09-30 22:45:23]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:23]   건너뜀 — homepage-consultation-booking-flow
+[2026-09-30 22:45:26]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:26]   건너뜀 — seo-click-through-rate-title-meta
+[2026-09-30 22:45:28]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:28]   건너뜀 — professional-marketing-first-90-days
+[2026-09-30 22:45:31]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:31]   건너뜀 — homepage-single-vs-multi-page
+[2026-09-30 22:45:33]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:33]   건너뜀 — professional-solo-practice-marketing-priority
+[2026-09-30 22:45:36]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:36]   건너뜀 — homepage-inquiry-followup-flow
+[2026-09-30 22:45:38]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:38]   건너뜀 — seo-topic-cluster-authority
+[2026-09-30 22:45:41]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:41]   건너뜀 — geo-wrong-brand-answer-correction
+[2026-09-30 22:45:43]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:43]   건너뜀 — auto-repair-shop-local-marketing
+[2026-09-30 22:45:46]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:46]   건너뜀 — professional-marketing-call-handling-conversion
+[2026-09-30 22:45:48]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:48]   건너뜀 — seoul-professional-local-marketing
+[2026-09-30 22:45:51]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:51]   건너뜀 — seoul-tax-accountant-marketing
+[2026-09-30 22:45:53]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:53]   건너뜀 — seoul-appraiser-marketing
+[2026-09-30 22:45:56]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:56]   건너뜀 — seoul-homepage-production-company
+[2026-09-30 22:45:59]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:45:59]   건너뜀 — new-website-not-indexed
+[2026-09-30 22:46:02]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:02]   건너뜀 — seo-content-refresh-old-posts
+[2026-09-30 22:46:04]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:04]   건너뜀 — homepage-credentials-trust-display
+[2026-09-30 22:46:07]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:07]   건너뜀 — professional-marketing-seasonality
+[2026-09-30 22:46:09]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:09]   건너뜀 — moving-company-local-marketing
+[2026-09-30 22:46:12]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:12]   건너뜀 — seo-keyword-cannibalization
+[2026-09-30 22:46:15]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:15]   건너뜀 — homepage-column-vs-external-blog
+[2026-09-30 22:46:18]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:18]   건너뜀 — marketing-agency-change-timing
+[2026-09-30 22:46:20]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:20]   건너뜀 — gbp-optimization-guide
+[2026-09-30 22:46:23]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:23]   건너뜀 — search-console-first-week
+[2026-09-30 22:46:26]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:26]   건너뜀 — internal-linking-structure
+[2026-09-30 22:46:29]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:29]   건너뜀 — duplicate-content-canonical
+[2026-09-30 22:46:31]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:31]   건너뜀 — keyword-volume-vs-intent
+[2026-09-30 22:46:34]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:34]   건너뜀 — consult-call-script
+[2026-09-30 22:46:37]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:37]   건너뜀 — mobile-call-button-placement
+[2026-09-30 22:46:39]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:39]   건너뜀 — professional-profile-page
+[2026-09-30 22:46:42]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:42]   건너뜀 — ad-vs-organic-balance
+[2026-09-30 22:46:44]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:44]   건너뜀 — homepage-agency-selection-criteria
+[2026-09-30 22:46:47]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:47]   건너뜀 — homepage-cost-breakdown
+[2026-09-30 22:46:50]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:50]   건너뜀 — marketing-agency-contract-checklist
+[2026-09-30 22:46:52]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:52]   건너뜀 — architect-marketing-start
+[2026-09-30 22:46:55]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:55]   건너뜀 — referral-to-search-transition
+[2026-09-30 22:46:57]   !! claude 실패 (1) — You've hit your session limit · resets 11:20pm (Asia/Seoul)
+[2026-09-30 22:46:57]   건너뜀 — seasonal-content-calendar
+[2026-09-30 22:46:58] ─── 반영 완료 · 10편 ───
