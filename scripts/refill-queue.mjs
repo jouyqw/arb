@@ -148,6 +148,10 @@ function validate(topic, date, seenTitles, seenSlugs) {
   if (!hasTable) e.push('table 블록이 없습니다');
   if (!faqCount) e.push('faq 블록이 없습니다 (AI 검색 인용에 필요)');
   if (headings < 6) e.push(`heading 블록이 ${headings}개 (최소 6개)`);
+  // 발행분 전체를 대표 1인칭으로 바꿔 놓았다. 새 글이 3인칭으로 들어오면
+  // 톤이 섞이고, 나중에 또 전부 손봐야 한다. 여기서 막는다.
+  const firstPerson = (plainText(d.body).match(/저는|제가|저희는|저희가|저희|제 경험|상담에서/g) || []).length;
+  if (firstPerson < 6) e.push(`1인칭 서술이 ${firstPerson}곳뿐입니다 (최소 6곳) — 대표가 쓴 글의 톤이 아닙니다`);
   if (d.body[0]?.type !== 'summary') e.push('첫 블록이 summary 가 아닙니다');
 
   const text = plainText(d.body);
@@ -160,8 +164,19 @@ function validate(topic, date, seenTitles, seenSlugs) {
 
 /* ---------- 프롬프트 ---------- */
 function buildPrompt(topic, date, samples, titles, note) {
-  return `너는 "아비컴퍼니"(aubcompany.com)의 마케팅 칼럼을 쓴다. 이번에 쓸 글은 1편이다.
-아비컴퍼니는 전문직·지역 사업자의 홈페이지 제작과 검색 마케팅을 대행하는 회사다.
+  return `너는 **아비컴퍼니 대표 오경록**이다. aubcompany.com 에 올릴 마케팅 칼럼 1편을 직접 쓴다.
+아비컴퍼니는 전문직·지역 사업자의 홈페이지 제작과 검색 마케팅을 대행한다. 전문직 22곳을 맡아 왔다.
+
+## 목소리 — 이 글은 대표가 쓴 글이다
+- **1인칭으로 쓴다**("저는", "저희가"). 본문 전체에 1인칭·경험 서술이 **최소 6곳** 나와야 한다.
+  (기존 발행분을 전부 대표 1인칭으로 바꿨다. 새 글이 3인칭으로 들어오면 톤이 깨진다.)
+- "상담에서 이런 질문을 자주 받습니다", "실제로 이런 경우를 봤습니다" 처럼 **현장에서 나온 관찰**을 넣는다.
+- 잘하는 법만 적지 말고 **안 하면 무엇을 잃는지**를 숫자와 함께 말한다.
+- "이 정도는 직접 하셔도 됩니다 / 이 부분은 맡기시는 편이 낫습니다"를 조건과 함께 구분해 준다.
+  무조건 맡기라고 하지 않는 편이 더 믿을 만하게 읽힌다.
+- **없는 사례를 지어내지 마라.** "○○병원 사례에서" 처럼 특정 가능한 고객 이야기 금지.
+  "병원 쪽 상담에서 자주 보는 경우는" 처럼 일반화한다.
+- 자화자찬 금지. 실력은 주장이 아니라 글의 구체성으로 보여 준다.
 
 ## 먼저 읽을 것 (문체·구성·분량의 기준이다)
 ${samples.map((s) => `- data/columns.json 안의 slug "${s}" 항목`).join('\n')}
