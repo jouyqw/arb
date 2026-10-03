@@ -11,112 +11,10 @@
   ],
   "topics": [
     {
-      "slug": "homepage-agency-selection-criteria",
-      "category": "업체 선택·비용",
-      "keyword": "홈페이지제작업체 (월 3,060회)",
-      "angle": "홈페이지 제작업체를 고를 때 실제로 확인해야 하는 7가지. 포트폴리오에서 봐야 할 것, 계약서에서 빠지면 안 되는 조항, 제작 후 소유권과 유지보수 범위. \"추천\"을 검색한 사람이 바로 기준으로 쓸 수 있게 체크리스트 형태로."
-    },
-    {
-      "slug": "homepage-cost-breakdown",
-      "category": "업체 선택·비용",
-      "keyword": "홈페이지제작비용 (월 830회)",
-      "angle": "같은 홈페이지인데 견적이 200만원과 2,000만원으로 갈리는 이유. 디자인·퍼블리싱·기능개발·콘텐츠·유지보수로 항목을 나눠 무엇이 값을 올리는지. 금액대별로 무엇이 포함되고 무엇이 빠지는지 표로."
-    },
-    {
-      "slug": "marketing-agency-contract-checklist",
-      "category": "업체 선택·비용",
-      "keyword": "마케팅대행사 (월 1,290회)",
-      "angle": "마케팅 대행사와 계약하기 전 확인할 것. 보고서에서 봐야 할 지표, 광고비와 수수료 구분, 계정 소유권, 해지 조건. 성과를 약속하는 제안서가 왜 위험한지도 조건과 함께."
-    },
-    {
-      "slug": "ad-agency-ranking-truth",
-      "category": "업체 선택·비용",
-      "keyword": "광고대행사순위 (월 710회)",
-      "angle": "광고대행사 순위표를 어디까지 믿어도 되는지. 순위 기사가 만들어지는 구조와, 순위 대신 봐야 할 판단 기준(담당자 이직률, 업종 경험, 보고 주기)."
-    },
-    {
-      "slug": "agency-quote-reading-guide",
-      "category": "업체 선택·비용",
-      "keyword": "마케팅업체 (월 410회)",
-      "angle": "마케팅 업체 견적서 읽는 법. 항목이 뭉뚱그려져 있을 때 되물어야 할 질문과, 같은 금액이라도 결과가 달라지는 지점."
-    },
-    {
-      "slug": "free-homepage-what-is-missing",
-      "category": "업체 선택·비용",
-      "keyword": "무료홈페이지제작 (월 1,120회)",
-      "angle": "무료로 홈페이지를 만들면 실제로 무엇이 빠지는지. 도메인·검색 색인·속도·데이터 소유권 기준으로 비교하고, 무료로 시작해도 되는 경우와 안 되는 경우를 나눈다."
-    },
-    {
-      "slug": "agency-switch-migration-checklist",
-      "category": "업체 선택·비용",
-      "keyword": "홈페이지 이전 (관련)",
-      "angle": "대행사를 바꿀 때 넘겨받아야 하는 것 목록. 도메인 관리권, 서버·호스팅, 소스코드, 광고 계정, 서치콘솔·애널리틱스 권한. 못 받으면 생기는 일."
-    },
-    {
       "slug": "homepage-production-preparation",
       "category": "홈페이지 제작·전환",
       "keyword": "홈페이지제작 (월 12,160회)",
       "angle": "홈페이지 제작을 맡기기 전에 준비해 두면 기간이 절반으로 주는 것들. 원고·사진·사업자 정보·레퍼런스. 준비가 없을 때 프로젝트가 늘어지는 실제 경로."
-    },
-    {
-      "slug": "corporate-homepage-structure",
-      "category": "홈페이지 제작·전환",
-      "keyword": "기업홈페이지제작 (월 1,270회)",
-      "angle": "기업 홈페이지에 꼭 있어야 하는 페이지 구성과 순서. 회사소개·사업영역·실적·채용·문의. 매출로 이어지는 배치와 그냥 있는 배치의 차이."
-    },
-    {
-      "slug": "medical-homepage-compliance",
-      "category": "홈페이지 제작·전환",
-      "keyword": "병원홈페이지제작 (월 1,540회)",
-      "angle": "병원 홈페이지에서 의료광고 심의에 걸리는 표현과 안전한 대체 표현. 치료 전후 사진, 후기, 비급여 가격 표시 기준."
-    },
-    {
-      "slug": "responsive-homepage-real-meaning",
-      "category": "홈페이지 제작·전환",
-      "keyword": "반응형홈페이지제작 (월 480회)",
-      "angle": "반응형이라는 말이 실제로 보장하는 것과 아닌 것. 모바일에서 깨지는 흔한 지점과, 계약 전 요구해야 할 확인 항목."
-    },
-    {
-      "slug": "landing-page-vs-homepage",
-      "category": "홈페이지 제작·전환",
-      "keyword": "랜딩페이지제작 (월 810회)",
-      "angle": "랜딩페이지와 홈페이지 중 무엇이 먼저인지. 광고를 돌릴 계획이 있다면 달라지는 구조와, 한 장으로 끝내도 되는 조건."
-    },
-    {
-      "slug": "shopping-mall-build-options",
-      "category": "홈페이지 제작·전환",
-      "keyword": "쇼핑몰제작 (월 1,240회)",
-      "angle": "쇼핑몰을 카페24·독립몰·스마트스토어 중 어디에 만들지 고르는 기준. 수수료·확장성·이전 가능성으로 비교."
-    },
-    {
-      "slug": "homepage-style-blog-truth",
-      "category": "홈페이지 제작·전환",
-      "keyword": "홈페이지형블로그 (월 1,170회)",
-      "angle": "홈페이지형 블로그가 홈페이지를 대신할 수 있는 경우와 없는 경우. 네이버 안에서만 도는 유입과 검색 색인의 차이."
-    },
-    {
-      "slug": "detail-page-conversion-design",
-      "category": "홈페이지 제작·전환",
-      "keyword": "상세페이지제작 (월 4,790회)",
-      "angle": "팔리는 상세페이지의 정보 순서. 첫 화면에서 답해야 할 3가지와, 표시광고법상 쓰면 안 되는 표현."
-    },
-    {
-      "slug": "website-vs-app-decision",
-      "category": "홈페이지 제작·전환",
-      "keyword": "앱제작 (월 680회)",
-      "angle": "앱을 만들지 웹으로 갈지 고르는 기준. 앱이 꼭 필요한 조건과, 웹으로 충분한데 앱을 만들어 비용만 늘어나는 경우."
-    },
-    {
-      "slug": "viral-marketing-risk-and-rules",
-      "category": "전문직 마케팅",
-      "keyword": "바이럴마케팅 (월 3,870회)",
-      "angle": "바이럴 마케팅의 실체와 법적 위험. 대가성 표시 의무, 후기 조작 제재 사례, 안전하게 쓰는 범위."
-    },
-    {
-      "slug": "blog-marketing-that-works",
-      "category": "전문직 마케팅",
-      "keyword": "블로그마케팅 (월 2,250회)",
-      "angle": "블로그 마케팅이 통하는 업종과 안 통하는 업종. 대행을 맡길 때 원고 품질을 확인하는 방법과 계정 위험."
     },
     {
       "slug": "naver-place-ad-practical",
@@ -131,10 +29,94 @@
       "angle": "병원 마케팅 채널을 예산 규모별로 어떻게 배분하는지. 의료광고 심의를 통과하는 범위 안에서."
     },
     {
+      "slug": "detail-page-conversion-design",
+      "category": "홈페이지 제작·전환",
+      "keyword": "상세페이지제작 (월 4,790회)",
+      "angle": "팔리는 상세페이지의 정보 순서. 첫 화면에서 답해야 할 3가지와, 표시광고법상 쓰면 안 되는 표현."
+    },
+    {
+      "slug": "viral-marketing-risk-and-rules",
+      "category": "전문직 마케팅",
+      "keyword": "바이럴마케팅 (월 3,870회)",
+      "angle": "바이럴 마케팅의 실체와 법적 위험. 대가성 표시 의무, 후기 조작 제재 사례, 안전하게 쓰는 범위."
+    },
+    {
+      "slug": "homepage-agency-selection-criteria",
+      "category": "업체 선택·비용",
+      "keyword": "홈페이지제작업체 (월 3,060회)",
+      "angle": "홈페이지 제작업체를 고를 때 실제로 확인해야 하는 7가지. 포트폴리오에서 봐야 할 것, 계약서에서 빠지면 안 되는 조항, 제작 후 소유권과 유지보수 범위. \"추천\"을 검색한 사람이 바로 기준으로 쓸 수 있게 체크리스트 형태로."
+    },
+    {
       "slug": "dental-clinic-marketing-start",
       "category": "업종별 마케팅",
       "keyword": "치과마케팅 (월 2,800회)",
       "angle": "치과 마케팅에서 먼저 손대야 할 순서. 진료과목별로 검색 행동이 다른 점과 지역 반경 설정."
+    },
+    {
+      "slug": "blog-marketing-that-works",
+      "category": "전문직 마케팅",
+      "keyword": "블로그마케팅 (월 2,250회)",
+      "angle": "블로그 마케팅이 통하는 업종과 안 통하는 업종. 대행을 맡길 때 원고 품질을 확인하는 방법과 계정 위험."
+    },
+    {
+      "slug": "medical-homepage-compliance",
+      "category": "홈페이지 제작·전환",
+      "keyword": "병원홈페이지제작 (월 1,540회)",
+      "angle": "병원 홈페이지에서 의료광고 심의에 걸리는 표현과 안전한 대체 표현. 치료 전후 사진, 후기, 비급여 가격 표시 기준."
+    },
+    {
+      "slug": "marketing-agency-contract-checklist",
+      "category": "업체 선택·비용",
+      "keyword": "마케팅대행사 (월 1,290회)",
+      "angle": "마케팅 대행사와 계약하기 전 확인할 것. 보고서에서 봐야 할 지표, 광고비와 수수료 구분, 계정 소유권, 해지 조건. 성과를 약속하는 제안서가 왜 위험한지도 조건과 함께."
+    },
+    {
+      "slug": "corporate-homepage-structure",
+      "category": "홈페이지 제작·전환",
+      "keyword": "기업홈페이지제작 (월 1,270회)",
+      "angle": "기업 홈페이지에 꼭 있어야 하는 페이지 구성과 순서. 회사소개·사업영역·실적·채용·문의. 매출로 이어지는 배치와 그냥 있는 배치의 차이."
+    },
+    {
+      "slug": "shopping-mall-build-options",
+      "category": "홈페이지 제작·전환",
+      "keyword": "쇼핑몰제작 (월 1,240회)",
+      "angle": "쇼핑몰을 카페24·독립몰·스마트스토어 중 어디에 만들지 고르는 기준. 수수료·확장성·이전 가능성으로 비교."
+    },
+    {
+      "slug": "homepage-style-blog-truth",
+      "category": "홈페이지 제작·전환",
+      "keyword": "홈페이지형블로그 (월 1,170회)",
+      "angle": "홈페이지형 블로그가 홈페이지를 대신할 수 있는 경우와 없는 경우. 네이버 안에서만 도는 유입과 검색 색인의 차이."
+    },
+    {
+      "slug": "free-homepage-what-is-missing",
+      "category": "업체 선택·비용",
+      "keyword": "무료홈페이지제작 (월 1,120회)",
+      "angle": "무료로 홈페이지를 만들면 실제로 무엇이 빠지는지. 도메인·검색 색인·속도·데이터 소유권 기준으로 비교하고, 무료로 시작해도 되는 경우와 안 되는 경우를 나눈다."
+    },
+    {
+      "slug": "homepage-cost-breakdown",
+      "category": "업체 선택·비용",
+      "keyword": "홈페이지제작비용 (월 830회)",
+      "angle": "같은 홈페이지인데 견적이 200만원과 2,000만원으로 갈리는 이유. 디자인·퍼블리싱·기능개발·콘텐츠·유지보수로 항목을 나눠 무엇이 값을 올리는지. 금액대별로 무엇이 포함되고 무엇이 빠지는지 표로."
+    },
+    {
+      "slug": "landing-page-vs-homepage",
+      "category": "홈페이지 제작·전환",
+      "keyword": "랜딩페이지제작 (월 810회)",
+      "angle": "랜딩페이지와 홈페이지 중 무엇이 먼저인지. 광고를 돌릴 계획이 있다면 달라지는 구조와, 한 장으로 끝내도 되는 조건."
+    },
+    {
+      "slug": "ad-agency-ranking-truth",
+      "category": "업체 선택·비용",
+      "keyword": "광고대행사순위 (월 710회)",
+      "angle": "광고대행사 순위표를 어디까지 믿어도 되는지. 순위 기사가 만들어지는 구조와, 순위 대신 봐야 할 판단 기준(담당자 이직률, 업종 경험, 보고 주기)."
+    },
+    {
+      "slug": "website-vs-app-decision",
+      "category": "홈페이지 제작·전환",
+      "keyword": "앱제작 (월 680회)",
+      "angle": "앱을 만들지 웹으로 갈지 고르는 기준. 앱이 꼭 필요한 조건과, 웹으로 충분한데 앱을 만들어 비용만 늘어나는 경우."
     },
     {
       "slug": "academy-marketing-season",
@@ -143,10 +125,28 @@
       "angle": "학원 마케팅의 계절성. 등록 시기 역산해 언제 무엇을 준비하는지와, 학부모가 실제로 검색하는 말."
     },
     {
+      "slug": "responsive-homepage-real-meaning",
+      "category": "홈페이지 제작·전환",
+      "keyword": "반응형홈페이지제작 (월 480회)",
+      "angle": "반응형이라는 말이 실제로 보장하는 것과 아닌 것. 모바일에서 깨지는 흔한 지점과, 계약 전 요구해야 할 확인 항목."
+    },
+    {
+      "slug": "agency-quote-reading-guide",
+      "category": "업체 선택·비용",
+      "keyword": "마케팅업체 (월 410회)",
+      "angle": "마케팅 업체 견적서 읽는 법. 항목이 뭉뚱그려져 있을 때 되물어야 할 질문과, 같은 금액이라도 결과가 달라지는 지점."
+    },
+    {
       "slug": "seo-optimization-what-to-do-first",
       "category": "SEO·상위노출",
       "keyword": "SEO최적화 (월 410회)",
       "angle": "SEO 최적화를 맡길 때 실제로 무슨 작업이 이뤄지는지. 기술 점검·콘텐츠·외부링크로 나눠 순서와 소요 기간."
+    },
+    {
+      "slug": "agency-switch-migration-checklist",
+      "category": "업체 선택·비용",
+      "keyword": "홈페이지 이전 (관련)",
+      "angle": "대행사를 바꿀 때 넘겨받아야 하는 것 목록. 도메인 관리권, 서버·호스팅, 소스코드, 광고 계정, 서치콘솔·애널리틱스 권한. 못 받으면 생기는 일."
     },
     {
       "slug": "how-ai-recommends-agencies",
