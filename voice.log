@@ -632,3 +632,75 @@
 [2026-10-01 14:24:15]   !! claude 실패 (1) — You've hit your session limit · resets 3pm (Asia/Seoul)
 [2026-10-01 14:24:15]   건너뜀 — search-console-first-week
 [2026-10-01 14:24:16] ─── 반영 완료 · 9편 ───
+[2026-10-01 14:51:51] ─── 목소리 전환 대상 55편 중 30편 ───
+[2026-10-01 14:51:51]   재사용 search-ranking-drop-diagnosis
+[2026-10-01 14:58:18]   !! 검사 불통과 labor-attorney-online-marketing-guide: description 196자 (80~160) / 본문이 너무 깁니다 (13436자)
+[2026-10-01 14:58:18]   재시도 1 — labor-attorney-online-marketing-guide
+[2026-10-01 15:03:44]   !! 검사 불통과 labor-attorney-online-marketing-guide: 본문이 너무 깁니다 (9998자)
+[2026-10-01 15:03:44]   재시도 2 — labor-attorney-online-marketing-guide
+[2026-10-01 15:09:06]   통과 labor-attorney-online-marketing-guide — 7846자 → 8809자 · 1인칭 16곳
+[2026-10-01 15:11:57]   !! 검사 불통과 ai-assistant-recommendation-exposure: 본문이 너무 깁니다 (9911자)
+[2026-10-01 15:11:57]   재시도 1 — ai-assistant-recommendation-exposure
+[2026-10-01 15:19:18]   통과 ai-assistant-recommendation-exposure — 6277자 → 8289자 · 1인칭 19곳
+[2026-10-01 15:22:17]   !! 검사 불통과 search-traffic-without-inquiry: 본문이 너무 깁니다 (9909자)
+[2026-10-01 15:22:17]   재시도 1 — search-traffic-without-inquiry
+[2026-10-01 15:30:19]   통과 search-traffic-without-inquiry — 7369자 → 8552자 · 1인칭 14곳
+[2026-10-01 15:34:18]   !! 검사 불통과 homepage-review-case-page-design: 본문이 너무 깁니다 (10227자)
+[2026-10-01 15:34:18]   재시도 1 — homepage-review-case-page-design
+[2026-10-01 15:37:37]   통과 homepage-review-case-page-design — 6249자 → 8007자 · 1인칭 14곳
+[2026-10-01 15:41:52]   !! 검사 불통과 geo-faq-content-design: 본문이 너무 깁니다 (12222자)
+[2026-10-01 15:41:52]   재시도 1 — geo-faq-content-design
+[2026-10-01 15:46:37]   통과 geo-faq-content-design — 7120자 → 8512자 · 1인칭 21곳
+[2026-10-01 15:50:05]   !! 검사 불통과 fitness-center-local-marketing: 본문이 너무 깁니다 (10334자)
+[2026-10-01 15:50:05]   재시도 1 — fitness-center-local-marketing
+[2026-10-01 15:56:18]   통과 fitness-center-local-marketing — 6873자 → 8181자 · 1인칭 18곳
+[2026-10-01 16:00:25]   !! 검사 불통과 professional-marketing-budget-allocation: 본문이 너무 깁니다 (11682자) / 금지 표현: 무조건
+[2026-10-01 16:00:25]   재시도 1 — professional-marketing-budget-allocation
+[2026-10-01 16:04:51]   통과 professional-marketing-budget-allocation — 6796자 → 7786자 · 1인칭 17곳
+[2026-10-01 16:07:35]   통과 geo-answer-first-content-format — 6223자 → 9272자 · 1인칭 23곳
+[2026-10-01 16:10:18]   !! 검사 불통과 veterinary-clinic-local-marketing: 본문이 너무 깁니다 (9869자)
+[2026-10-01 16:10:18]   재시도 1 — veterinary-clinic-local-marketing
+[2026-10-01 16:15:09]   통과 veterinary-clinic-local-marketing — 6612자 → 8013자 · 1인칭 17곳
+[2026-10-01 16:18:06]   !! 검사 불통과 ai-search-performance-measurement: 본문이 너무 깁니다 (10025자)
+[2026-10-01 16:18:06]   재시도 1 — ai-search-performance-measurement
+[2026-10-01 16:21:46]   통과 ai-search-performance-measurement — 6392자 → 7603자 · 1인칭 15곳
+[2026-10-01 16:25:15]   !! 검사 불통과 homepage-copywriting-inquiry: 본문이 너무 깁니다 (11267자) / 금지 표현: 무조건
+[2026-10-01 16:25:15]   재시도 1 — homepage-copywriting-inquiry
+[2026-10-01 16:32:21]   통과 homepage-copywriting-inquiry — 7318자 → 8748자 · 1인칭 22곳
+[2026-10-01 16:35:08]   !! 검사 불통과 real-estate-agency-online-marketing: 본문이 너무 깁니다 (10240자) / 금지 표현: 무조건
+[2026-10-01 16:35:08]   재시도 1 — real-estate-agency-online-marketing
+[2026-10-01 16:41:26]   통과 real-estate-agency-online-marketing — 7009자 → 8455자 · 1인칭 13곳
+[2026-10-01 16:44:02]   통과 professional-marketing-content-vs-ads-balance — 6570자 → 9426자 · 1인칭 30곳
+[2026-10-01 16:47:15]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:15]   건너뜀 — homepage-first-impression-trust
+[2026-10-01 16:47:18]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:18]   건너뜀 — geo-brand-mention-off-site
+[2026-10-01 16:47:21]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:21]   건너뜀 — professional-marketing-video-content-guide
+[2026-10-01 16:47:23]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:23]   건너뜀 — homepage-consultation-booking-flow
+[2026-10-01 16:47:26]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:26]   건너뜀 — seo-click-through-rate-title-meta
+[2026-10-01 16:47:28]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:28]   건너뜀 — professional-marketing-first-90-days
+[2026-10-01 16:47:31]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:31]   건너뜀 — homepage-single-vs-multi-page
+[2026-10-01 16:47:34]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:34]   건너뜀 — professional-solo-practice-marketing-priority
+[2026-10-01 16:47:37]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:37]   건너뜀 — homepage-inquiry-followup-flow
+[2026-10-01 16:47:39]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:39]   건너뜀 — seo-topic-cluster-authority
+[2026-10-01 16:47:42]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:42]   건너뜀 — geo-wrong-brand-answer-correction
+[2026-10-01 16:47:45]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:45]   건너뜀 — auto-repair-shop-local-marketing
+[2026-10-01 16:47:47]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:47]   건너뜀 — professional-marketing-call-handling-conversion
+[2026-10-01 16:47:50]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:50]   건너뜀 — seoul-professional-local-marketing
+[2026-10-01 16:47:52]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:52]   건너뜀 — seoul-tax-accountant-marketing
+[2026-10-01 16:47:55]   !! claude 실패 (1) — You've hit your session limit · resets 7:40pm (Asia/Seoul)
+[2026-10-01 16:47:55]   건너뜀 — seoul-appraiser-marketing
+[2026-10-01 16:47:55] ─── 반영 완료 · 14편 ───
