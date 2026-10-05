@@ -65,6 +65,12 @@
       "angle": "병원 홈페이지에서 의료광고 심의에 걸리는 표현과 안전한 대체 표현. 치료 전후 사진, 후기, 비급여 가격 표시 기준."
     },
     {
+      "slug": "changwon-homepage-production",
+      "category": "업체 선택·비용",
+      "keyword": "창원홈페이지제작 (월 1,450회)",
+      "angle": "창원에서 홈페이지를 맡길 때 지역 업체와 수도권 업체 중 무엇을 기준으로 고르는지. 기계·제조 업종이 많은 지역 특성상 필요한 페이지 구성(제품 카탈로그·기술 자료·거래처 문의 동선)과 제작 후 관리 문제."
+    },
+    {
       "slug": "marketing-agency-contract-checklist",
       "category": "업체 선택·비용",
       "keyword": "마케팅대행사 (월 1,290회)",
@@ -75,6 +81,12 @@
       "category": "홈페이지 제작·전환",
       "keyword": "기업홈페이지제작 (월 1,270회)",
       "angle": "기업 홈페이지에 꼭 있어야 하는 페이지 구성과 순서. 회사소개·사업영역·실적·채용·문의. 매출로 이어지는 배치와 그냥 있는 배치의 차이."
+    },
+    {
+      "slug": "busan-homepage-production",
+      "category": "업체 선택·비용",
+      "keyword": "부산홈페이지제작 (월 1,250회)",
+      "angle": "부산에서 홈페이지 제작 견적이 갈리는 지점. 업종별(병원·법률·물류·관광) 필요 기능 차이와, 지역 업체에 맡길 때 확인해야 할 유지보수 범위."
     },
     {
       "slug": "shopping-mall-build-options",
@@ -125,6 +137,12 @@
       "angle": "학원 마케팅의 계절성. 등록 시기 역산해 언제 무엇을 준비하는지와, 학부모가 실제로 검색하는 말."
     },
     {
+      "slug": "daegu-hospital-marketing",
+      "category": "업종별 마케팅",
+      "keyword": "대구병원마케팅 (월 590회)",
+      "angle": "대구 병원 마케팅에서 먼저 손대야 할 순서. 의료광고 심의 범위 안에서 할 수 있는 것과, 지역 경쟁이 심한 진료과에서 차이를 만드는 지점."
+    },
+    {
       "slug": "responsive-homepage-real-meaning",
       "category": "홈페이지 제작·전환",
       "keyword": "반응형홈페이지제작 (월 480회)",
@@ -141,6 +159,36 @@
       "category": "SEO·상위노출",
       "keyword": "SEO최적화 (월 410회)",
       "angle": "SEO 최적화를 맡길 때 실제로 무슨 작업이 이뤄지는지. 기술 점검·콘텐츠·외부링크로 나눠 순서와 소요 기간."
+    },
+    {
+      "slug": "daegu-homepage-production",
+      "category": "업체 선택·비용",
+      "keyword": "대구홈페이지제작 (월 400회)",
+      "angle": "대구에서 홈페이지를 새로 만들거나 리뉴얼할 때 판단 순서. 기존 사이트를 살릴지 새로 할지 가르는 기준과 비용 차이."
+    },
+    {
+      "slug": "busan-hospital-marketing",
+      "category": "업종별 마케팅",
+      "keyword": "부산병원마케팅 (월 400회)",
+      "angle": "부산 병원 마케팅의 채널 배분. 플레이스·블로그·홈페이지 중 어디에 먼저 쓰는지와 진료과별 차이."
+    },
+    {
+      "slug": "incheon-homepage-production",
+      "category": "업체 선택·비용",
+      "keyword": "인천홈페이지제작 (월 360회)",
+      "angle": "인천에서 홈페이지 제작을 의뢰할 때의 체크리스트. 소상공인·전문직·제조업으로 나눠 필요한 페이지와 예산 범위."
+    },
+    {
+      "slug": "busan-online-marketing",
+      "category": "업종별 마케팅",
+      "keyword": "부산온라인마케팅 (월 360회)",
+      "angle": "부산 지역 사업자가 온라인 마케팅을 시작할 때의 순서. 지역 검색에서 먼저 잡아야 할 것과 광고를 붙일 시점."
+    },
+    {
+      "slug": "jeonju-homepage-production-column",
+      "category": "업체 선택·비용",
+      "keyword": "전주홈페이지제작 (월 320회)",
+      "angle": "전주에서 홈페이지를 맡길 때 지역 업체의 장단점. 직접 만나 상담할 수 있는 점과, 제작 후 검색 노출까지 이어지는지를 어떻게 확인하는지. 아비컴퍼니 본사가 전주에 있다는 점을 과장 없이."
     },
     {
       "slug": "agency-switch-migration-checklist",

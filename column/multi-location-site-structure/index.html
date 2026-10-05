@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>지점이 여러 곳일 때 페이지는 어떻게 나눠야 할까요? | 아비컴퍼니 칼럼</title>
+  <meta name="description" content="지점별 페이지를 따로 만들지 한 페이지에 모을지 가르는 기준과 주소 구조, 템플릿에 지역명만 바꿔 넣었을 때 색인에서 빠지는 이유, 지점이 늘거나 문을 닫을 때 처리하는 순서를 정리했습니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aubcompany.com/column/multi-location-site-structure/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aubcompany.com/column/multi-location-site-structure/" />
+  <meta property="og:title" content="지점이 여러 곳일 때 페이지는 어떻게 나눠야 할까요?" />
+  <meta property="og:description" content="지점별 페이지를 따로 만들지 한 페이지에 모을지 가르는 기준과 주소 구조, 템플릿에 지역명만 바꿔 넣었을 때 색인에서 빠지는 이유, 지점이 늘거나 문을 닫을 때 처리하는 순서를 정리했습니다." />
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"지점이 여러 곳일 때 페이지는 어떻게 나눠야 할까요?","description":"지점별 페이지를 따로 만들지 한 페이지에 모을지 가르는 기준과 주소 구조, 템플릿에 지역명만 바꿔 넣었을 때 색인에서 빠지는 이유, 지점이 늘거나 문을 닫을 때 처리하는 순서를 정리했습니다.","author":{"@type":"Person","name":"오경록","jobTitle":"아비컴퍼니 대표","worksFor":{"@type":"Organization","name":"아비컴퍼니","url":"https://aubcompany.com"}},"publisher":{"@type":"Organization","name":"아비컴퍼니","url":"https://aubcompany.com"},"datePublished":"2026-10-04","dateModified":"2026-10-04","mainEntityOfPage":{"@type":"WebPage","@id":"https://aubcompany.com/column/multi-location-site-structure/"},"keywords":"지점별 페이지, 다지점 홈페이지, 지역 검색, 중복 콘텐츠, 홈페이지제작"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://aubcompany.com/"},{"@type":"ListItem","position":2,"name":"마케팅 칼럼","item":"https://aubcompany.com/column/"},{"@type":"ListItem","position":3,"name":"지점이 여러 곳일 때 페이지는 어떻게 나눠야 할까요?","item":"https://aubcompany.com/column/multi-location-site-structure/"}]}</script>
+  
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,'Noto Sans KR',sans-serif;color:#101828;line-height:1.85;background:#fff}
+    .wrap{max-width:860px;margin:0 auto;padding:52px 22px 86px}
+    a{color:#0B55D9;text-decoration:none;font-weight:800}
+    .brand{display:inline-flex;margin-bottom:34px;color:#0B55D9}
+    .tag{display:inline-block;margin-bottom:18px;padding:7px 13px;border-radius:999px;background:#EEF4FF;color:#0B55D9;font-size:12px;font-weight:900}
+    h1{font-size:clamp(29px,5vw,46px);line-height:1.28;letter-spacing:-.4px;margin:0 0 16px}
+    h2{font-size:24px;line-height:1.35;margin:0 0 12px}
+    .desc{font-size:17px;color:#667085;margin:0 0 24px}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
+    article{padding-top:34px}
+    p{font-size:17px;margin:0 0 22px}
+    strong{font-weight:900;color:#0B55D9}
+    u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
+    ul{margin:0 0 24px;padding-left:20px}
+    li{font-size:17px;margin:0 0 9px}
+    .hero-figure{margin:30px 0 34px;border-radius:18px;overflow:hidden;border:1px solid #EAECF0;box-shadow:0 16px 38px rgba(16,24,40,.1);background:#F7F9FC}
+    .hero-figure img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+    .hero-figure figcaption{padding:12px 16px;color:#667085;font-size:13px;background:#fff}
+    .summary-box{margin:28px 0 34px;padding:22px 24px;border:1px solid #D8E5FF;border-radius:16px;background:#F3F7FF}
+    .summary-box strong{display:block;margin-bottom:10px;color:#0B55D9;font-size:16px}
+    .summary-box ul{margin:0;padding-left:20px}
+    .summary-box li{font-size:15px;margin-bottom:6px;color:#344054}
+    .table-wrap{overflow-x:auto;margin:30px 0;border:1px solid #EAECF0;border-radius:14px;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    table{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
+    th{background:#F3F7FF;color:#0B55D9;text-align:left;font-size:14px;font-weight:900;padding:15px 16px;border-bottom:1px solid #D8E5FF}
+    td{padding:16px;border-bottom:1px solid #EAECF0;color:#344054;font-size:15px;vertical-align:top}
+    tr:last-child td{border-bottom:0}
+    .infographic{margin:30px 0;border:1px solid #EAECF0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    .infographic-h{background:#08111F;color:#fff;padding:15px 22px;font-weight:900;font-size:15px}
+    .ig-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#EAECF0}
+    .ig-item{background:#fff;padding:20px;display:flex;gap:13px;align-items:flex-start}
+    .ig-ic{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:#EEF4FF;border:1px solid #D8E5FF;display:flex;align-items:center;justify-content:center;color:#0B55D9}
+    .ig-item b{display:block;color:#101828;font-size:15px;margin-bottom:4px}
+    .ig-item .t{font-size:13.5px;color:#4b5563;line-height:1.6;display:block}
+    .figure-note{color:#8A95A3;font-size:12.5px;margin:-18px 0 26px;text-align:center}
+    .faq{margin:38px 0 8px}
+    .faq details{border:1px solid #EAECF0;border-radius:13px;margin-bottom:11px;background:#FCFDFF}
+    .faq summary{cursor:pointer;padding:18px 21px;font-size:16.5px;font-weight:800;color:#101828;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";color:#0B55D9;font-size:21px;line-height:1;flex-shrink:0}
+    .faq details[open] summary::after{content:"−"}
+    .faq .a{padding:0 21px 20px;margin:0;font-size:15.5px;color:#4b5563}
+    .callout-box,.warning-box{border-radius:14px;padding:20px 22px;margin:26px 0}
+    .callout-box{background:#F3F7FF;border:1px solid #D8E5FF}
+    .warning-box{background:#FFF4F1;border:1px solid #F6CFC5}
+    .callout-box .label,.warning-box .label{display:inline-block;font-size:12px;font-weight:900;color:#0B55D9;margin-bottom:7px}
+    .warning-box .label{color:#B42318}
+    .callout-box p,.warning-box p{margin:0;font-size:15.5px}
+    .cta{margin-top:46px;padding:30px;border-radius:16px;background:#08111F;color:#fff}
+    .cta h2{color:#fff}
+    .cta p{font-size:15px;color:rgba(255,255,255,.78)}
+    .cta-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .cta a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border-radius:10px;background:#FEE500;color:#191919}
+    .cta .phone{background:#fff;color:#08111F}
+    .crumb{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:26px;font-size:13px;color:#8A95A3}
+    .crumb a{font-weight:700;color:#0B55D9}
+    .crumb span{color:#C3CAD4}
+    .hub{margin:44px 0 0;padding:22px 24px;border:1px solid #D8E5FF;border-radius:16px;background:#F3F7FF}
+    .hub-label{display:block;font-size:12.5px;font-weight:900;color:#0B55D9;margin-bottom:12px}
+    .hub-links{display:flex;flex-wrap:wrap;gap:9px}
+    .hub-links a{display:inline-flex;align-items:center;padding:9px 15px;border-radius:999px;background:#fff;border:1px solid #D8E5FF;font-size:14px}
+    .hub-links a:hover{border-color:#0B55D9}
+    .related{margin:40px 0 0;padding-top:32px;border-top:1px solid #EAECF0}
+    .related h2{font-size:19px;margin:0 0 18px}
+    .related-list{list-style:none;margin:0 0 18px;padding:0}
+    .related-list li{margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid #F2F4F7}
+    .related-list li:last-child{border-bottom:0}
+    .related-list a{display:block;font-size:16px;line-height:1.5;margin-bottom:4px}
+    .related-list span{display:block;color:#8A95A3;font-size:13.5px;font-weight:400;line-height:1.6}
+    .more{display:inline-block;font-size:14px}
+    .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
+    .channels span{font-weight:800;color:#667085}
+    .channels a{font-size:13.5px;font-weight:700}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+  </style>
+<link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
+</head>
+<body>
+  <main class="wrap">
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="../../">아비컴퍼니</a><span>›</span><a href="../">마케팅 칼럼</a><span>›</span>홈페이지 제작·전환
+    </nav>
+    <span class="tag">홈페이지 제작·전환</span>
+    <h1>지점이 여러 곳일 때 페이지는 어떻게 나눠야 할까요?</h1>
+    <p class="desc">지점별 페이지를 따로 만들지 한 페이지에 모을지 가르는 기준과 주소 구조, 템플릿에 지역명만 바꿔 넣었을 때 색인에서 빠지는 이유, 지점이 늘거나 문을 닫을 때 처리하는 순서를 정리했습니다.</p>
+    <div class="meta">
+      <span>작성자 오경록 · 아비컴퍼니 대표</span>
+      <span>발행일 2026-10-04</span>
+      <span>수정일 2026-10-04</span>
+    </div>
+    <article>
+      <section class="summary-box">
+        <strong>핵심 요약</strong>
+        <ul><li>그 지점에서만 나올 수 있는 내용을 300~500자 정도 채울 수 있으면 나누고, 아니면 한 페이지에 모아 두는 편이 낫습니다.</li><li>지점별 페이지의 힘은 지역명이 들어가서가 아니라 주소·시간·오시는 길·담당자가 실제로 다르기 때문에 생깁니다.</li><li>템플릿에 지역명만 바꿔 넣으면 여러 장 중 하나만 검색에 남고 나머지는 색인에서 빠지는 경우가 많습니다.</li><li>서비스 설명과 비용 기준처럼 모든 지점이 같은 내용은 본사 페이지 하나에 두고 지점 페이지에서 링크합니다.</li><li>지점끼리 canonical을 한쪽으로 몰면 안 됩니다. 서로 다른 페이지이므로 각자 자기 주소를 가리켜야 합니다.</li></ul>
+      </section>
+      <p>두 번째 지점을 열 무렵이면 거의 빠짐없이 나오는 질문입니다.</p>
+      <p>&quot;지점이 세 곳인데 페이지를 따로 만드는 게 맞나요, 한 페이지에 다 넣는 게 맞나요?&quot;</p>
+      <p>답부터 말씀드리면, 지점마다 다르게 쓸 내용이 얼마나 되느냐로 갈립니다.</p>
+      <p>지역명만 바꾼 페이지를 여러 장 만드는 방식은 도움이 되지 않고, 있던 페이지의 노출까지 흔들리게 만드는 경우가 있습니다.</p>
+      <p>실제 작업해 보면 지점이 두세 곳일 때와 열 곳일 때의 답도 달라집니다. 순서대로 정리해 보겠습니다.</p>
+      <h2>지점마다 페이지를 따로 만드는 게 맞을까요?</h2>
+      <p>그 지점에서만 나올 수 있는 내용을 300~500자 정도 채울 수 있다면 나눕니다.</p>
+      <p>지점별 페이지가 지역 검색에서 힘을 갖는 이유는 제목에 &#39;강남&#39;이 들어가서가 아닙니다. 그 지점의 주소와 시간, 주차 사정, 담당자 정보가 거기에만 있기 때문입니다.</p>
+      <p>반대로 전화번호와 주소 두 줄만 다르고 나머지가 같다면, 페이지 수를 늘리는 의미가 거의 없습니다.</p>
+      <p>운영 여력도 함께 봐야 합니다. 지점 페이지는 한 번 만들고 끝나지 않고, 시간표와 담당자와 사진이 바뀔 때마다 같이 고쳐야 합니다.</p>
+      <p>작년 영업시간이 그대로 걸려 있는 지점 페이지는 없는 편이 낫습니다. 방문자가 직접 확인하러 왔다가 틀린 정보를 보고 나가기 때문입니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>내용</th><th>어디에 두나요</th><th>이유</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>주소·전화·영업시간</td><td>지점 페이지</td><td>지점마다 값이 다르고 방문 전에 꼭 확인하는 정보입니다</td></tr>
+            <tr><td>오시는 길·주차 안내</td><td>지점 페이지</td><td>같은 브랜드라도 길과 주차 사정은 전혀 다릅니다</td></tr>
+            <tr><td>담당자·원장 소개</td><td>지점 페이지</td><td>누구에게 상담받는지가 지점을 고르는 이유가 됩니다</td></tr>
+            <tr><td>서비스 상세 설명</td><td>본사 페이지 한 곳</td><td>지점마다 같은 내용이라 나누면 서로 경쟁합니다</td></tr>
+            <tr><td>비용·절차 안내</td><td>본사 페이지 한 곳</td><td>기준이 같다면 한 곳에서 관리해야 서로 어긋나지 않습니다</td></tr>
+            <tr><td>칼럼·사례</td><td>본사 페이지 한 곳</td><td>한곳에 쌓아야 주제 평가가 흩어지지 않습니다</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2>지점 페이지를 만들었는데 왜 하나만 검색에 뜰까요?</h2>
+      <p>페이지들이 서로 너무 닮아서 검색엔진이 그중 하나만 대표로 남기기 때문입니다.</p>
+      <p>템플릿 한 장에 지역명만 바꿔 넣으면 본문 열 줄 중 아홉 줄이 같습니다. 이런 페이지가 여러 장 있으면 수집은 되어도 색인에서 빠지는 페이지가 생깁니다.</p>
+      <p>서치콘솔 페이지 보고서에서 &#39;중복, 사용자가 표준 페이지로 선택하지 않음&#39; 항목에 지점 페이지들이 몰려 있다면 이 상황으로 보시면 됩니다.</p>
+      <p>해결은 태그를 손보는 게 아니라 내용을 다르게 만드는 것입니다. 지점 페이지에서 본사와 겹치는 서비스 설명을 덜어내고, 그 자리에 그 지점의 정보를 넣으면 겹치는 비율이 내려갑니다.</p>
+      <div class="warning-box"><span class="label">주의</span><p>중복이 걱정된다고 지점 페이지의 canonical을 본사 페이지나 대표 지점으로 몰아 두면, 나머지 지점은 검색 결과에서 사라집니다. 지점 페이지는 각자 자기 주소를 canonical로 가리켜야 합니다.</p></div>
+      <h2>지점 페이지에는 무엇을 넣어야 다르게 보일까요?</h2>
+      <p>방문 전에 확인하는 정보와, 그 지점에서만 찍을 수 있는 사진입니다.</p>
+      <ul><li>정확한 도로명 주소와 지도, 그리고 그 지점에서 받는 전화번호</li><li>영업(진료) 시간, 휴무일, 점심시간, 야간·주말 운영 여부</li><li>지하철 몇 번 출구에서 도보 몇 분인지, 근처 버스 정류장 이름</li><li>주차 가능 대수와 무료 여부, 건물 이름과 몇 층인지</li><li>그 지점에서 실제로 찍은 사진 3~5장(외관, 입구, 내부)</li><li>그 지점 담당자 소개와 상담 가능한 분야</li><li>그 지점에서 자주 받는 질문 3~5개</li></ul>
+      <p>이 항목만 제대로 채워도 지점마다 500자 안팎의 고유한 내용이 만들어집니다.</p>
+      <p>사진이 특히 차이를 만듭니다. 외관 사진은 검색에서 차별화되는 요소이면서, 동시에 실제로 찾아오는 사람에게 표지판 역할을 합니다.</p>
+      <p>본사에서 쓰던 사진이나 구매한 이미지를 모든 지점에 똑같이 넣으면, 애써 나눈 페이지가 다시 비슷해집니다.</p>
+      <h2>주소는 어떤 구조로 잡아야 할까요?</h2>
+      <p>지금 쓰는 도메인 아래 한 단계 하위 폴더로 두는 방식이 가장 무난합니다.</p>
+      <p>&#39;/branch/gangnam/&#39;처럼 규칙을 하나 정해 두면 지점이 늘어도 같은 방식으로 이어 붙일 수 있습니다. 주소에 쓰는 지역명은 영문 소문자로 통일하고, 한 번 정한 뒤에는 바꾸지 않는 편이 좋습니다.</p>
+      <p>지점마다 도메인이나 서브도메인을 따로 두는 방식은 권하지 않습니다. 평가가 나뉘어 각 주소가 처음부터 다시 쌓아야 하고, 관리 비용도 지점 수만큼 늘어납니다.</p>
+      <p>지점이 여덟 곳을 넘어가면 지점 목록 페이지를 하나 두고 거기서 각 지점으로 연결합니다. 방문자도 검색엔진도 지점 페이지까지 가는 길이 짧아집니다.</p>
+      <div class="infographic"><div class="infographic-h">지점별 페이지를 만드는 순서</div><div class="ig-grid"><div class="ig-item"><span class="ig-ic">1</span><div><b>쓸 내용 점검</b><span class="t">지점마다 다르게 쓸 수 있는 항목을 먼저 적어 봅니다.</span></div></div><div class="ig-item"><span class="ig-ic">2</span><div><b>주소 규칙 확정</b><span class="t">&#39;/branch/지역명/&#39; 형태로 정하고 지점이 늘어도 유지합니다.</span></div></div><div class="ig-item"><span class="ig-ic">3</span><div><b>고유 정보 채우기</b><span class="t">시간·오시는 길·주차·사진·담당자를 지점별로 씁니다.</span></div></div><div class="ig-item"><span class="ig-ic">4</span><div><b>지도 정보 연결</b><span class="t">네이버·구글의 상호·주소·전화 표기를 똑같이 맞춥니다.</span></div></div></div></div><p class="figure-note">▲ 순서를 지키면 지점이 늘어날 때 같은 방식으로 이어 붙일 수 있습니다</p>
+      <h2>네이버 플레이스나 구글 지도와는 어떻게 연결하나요?</h2>
+      <p>지점마다 등록을 따로 하고, 상호·주소·전화번호 표기를 홈페이지와 한 글자도 다르지 않게 맞춥니다.</p>
+      <p>지역 검색에서는 여러 곳에 흩어진 업체 정보가 서로 같은 곳을 가리키는지를 봅니다. &#39;3층&#39;과 &#39;B동 3층&#39;처럼 사소해 보이는 차이도 다른 정보로 읽힐 수 있습니다.</p>
+      <p>각 지도 정보에 적는 홈페이지 주소는 대표 페이지가 아니라 그 지점 페이지로 연결합니다. 강남점을 찾아본 사람이 본사 첫 화면으로 떨어지면 다시 찾아 들어가야 합니다.</p>
+      <p>지점 페이지에서도 해당 지점의 지도 정보로 링크를 걸어 두면, 방문자가 길찾기와 리뷰를 한 번에 확인할 수 있습니다.</p>
+      <div class="callout-box"><span class="label">팁</span><p>지점이 이전하면 홈페이지와 지도 정보, 블로그 소개란까지 같은 날 바꾸십시오. 한 곳이라도 옛 주소가 남아 있으면 그 정보가 한동안 검색 결과에 함께 노출됩니다.</p></div>
+      <h2>지점이 늘거나 문을 닫으면 어떻게 하나요?</h2>
+      <p>늘 때는 정해 둔 규칙을 그대로 이어 붙이고, 닫을 때는 페이지를 지우지 말고 가까운 지점으로 넘깁니다.</p>
+      <p>지점 페이지를 그냥 삭제하면 그 주소로 들어오던 검색 유입과 지도·블로그에 걸려 있던 링크가 전부 오류 페이지로 떨어집니다.</p>
+      <p>문을 닫은 지점은 해당 페이지에 안내 문구를 먼저 올리고, 보통 2~3개월 정도 둔 다음 가장 가까운 지점 페이지로 301 이동시키는 순서가 안전합니다.</p>
+      <p>이전이나 통합도 마찬가지입니다. 새 지점 페이지를 먼저 만들어 두고, 옛 주소를 새 주소로 넘긴 다음 지도 정보를 정리하는 순서로 진행합니다.</p>
+      <h2>만들고 나서 무엇을 확인해야 하나요?</h2>
+      <p>지점 페이지가 색인에 들어갔는지, 그리고 지점별로 유입이 갈리는지 두 가지입니다.</p>
+      <p>먼저 서치콘솔 페이지 보고서에서 지점 페이지가 모두 &#39;색인 생성됨&#39; 상태인지 봅니다. 새로 만든 페이지는 보통 1~3주 정도 걸립니다.</p>
+      <p>그다음 검색 실적에서 페이지별로 필터를 걸어, 지점마다 다른 지역명 검색어로 유입이 잡히는지 확인합니다.</p>
+      <p>한 지점에만 유입이 몰리고 나머지가 0에 가깝다면 아직 내용이 충분히 갈리지 않은 것입니다. 태그를 손보기보다 그 지점에서만 쓸 수 있는 내용을 더 채우는 쪽이 빠릅니다.</p>
+      <p>이 작업은 보통 2~3개월 정도 지켜봐야 흐름이 보입니다. 지점 수가 많을수록 시간이 더 걸립니다.</p>
+      <p>정리하면 지점별 페이지는 숫자를 늘리는 작업이 아니라, 지점마다 다른 정보를 제자리에 놓는 작업입니다.</p>
+      <p>쓸 내용이 있는 지점부터 하나씩 제대로 만들고, 모든 지점이 공유하는 내용은 본사 페이지에 모아 두십시오.</p>
+      <p>지점이 두 곳뿐이라면 서두르지 않아도 됩니다. 지점마다 다른 이야기가 쌓였을 때 나누는 편이 결과가 낫습니다.</p>
+    </article>
+    <section class="hub">
+      <span class="hub-label">이 주제와 연결된 서비스</span>
+      <div class="hub-links">
+        <a href="../../service/homepage-production/">홈페이지 제작</a>
+      </div>
+    </section>
+    <section class="related">
+      <h2>같은 분야의 다른 칼럼</h2>
+      <ul class="related-list">
+        <li><a href="../core-web-vitals-practical/">코어 웹 바이탈, 점수부터 올리면 왜 체감이 안 달라질까요?</a><span>실험실 점수와 실제 방문자의 LCP·CLS·INP가 어떻게 다른지, 서치콘솔에서 어느 숫자를 봐야 하는지, 첫 화면 이미지와 웹폰트부터 손보는 순서와 3~4주 뒤 효과를 확인하는 방법을 정리했습니다.</span></li>
+        <li><a href="../trust-signals-checklist/">처음 방문한 사람은 무엇을 보고 신뢰를 판단할까요?</a><span>방문자가 홈페이지에서 신뢰를 판단하는 네 가지 신뢰 요소와, 그것을 화면 어느 위치에 어떤 순서로 배치해야 하는지를 업종별 차이와 점검 체크리스트까지 정리했습니다.</span></li>
+        <li><a href="../form-abandonment-fix/">문의 폼에서 이탈이 생기는 지점, 어떻게 찾아서 고치나요?</a><span>폼 앞에서 나가는지, 쓰다가 멈추는지, 제출에서 막히는지를 구간별로 나눠 확인하는 순서와 측정 방법, 고치는 우선순위, 효과를 판단하는 기준까지 정리했습니다.</span></li>
+        <li><a href="../mobile-call-button-placement/">모바일 홈페이지, 전화 버튼은 어디에 둬야 문의로 이어질까요?</a><span>모바일 전화 버튼이 있어도 클릭으로 이어지지 않는 이유와, 하단 고정바·버튼 크기 기준 숫자, 문구, 병원·법무법인 등 업종별 순서, GA4 확인 절차와 작업 기간·비용 범위까지 정리했습니다.</span></li>
+      </ul>
+      <a class="more" href="../">홈페이지 제작·전환 칼럼 더 보기 →</a>
+    </section>
+    <section class="cta">
+      <h2>우리 업종에도 검색 노출형 홈페이지가 필요하다면</h2>
+      <p>아비컴퍼니가 홈페이지 제작, 업종별 칼럼, 검색 노출 구조, 광고 운영까지 함께 진단해드립니다.</p>
+      <div class="cta-actions">
+        <a href="tel:01055010152" class="phone">전화 상담 010-5501-0152</a>
+        <a href="https://pf.kakao.com/_wxjxiSX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
+      </div>
+    </section>
+    <nav class="channels" aria-label="아비컴퍼니 공식 채널">
+      <span>아비컴퍼니 공식 채널</span>
+      <a href="https://pf.kakao.com/_wxjxiSX" target="_blank" rel="noopener">카카오톡 채널</a><a href="https://www.daangn.com/kr/local-profile/%EC%95%84%EB%B9%84%EC%BB%B4%ED%8D%BC%EB%8B%88-%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%EC%A0%84%EB%AC%B8%EC%A0%9C%EC%9E%91-%EB%A7%88%EC%BC%80%ED%8C%85%ED%9A%8C%EC%82%AC-nq6jjkk9t8z3/" target="_blank" rel="noopener">당근 비즈프로필</a>
+    </nav>
+  </main>
+</body>
+</html>
