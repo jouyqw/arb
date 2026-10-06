@@ -881,3 +881,61 @@
 [2026-10-05 19:41:27]   !! claude 실패 (1) — You've hit your session limit · resets 10pm (Asia/Seoul)
 [2026-10-05 19:41:27]   건너뜀 — consult-booking-vs-call
 [2026-10-05 19:41:28] ─── 반영 완료 · 16편 ───
+[2026-10-05 22:48:50] ─── 목소리 전환 대상 22편 중 22편 ───
+[2026-10-05 22:53:37]   !! 검사 불통과 homepage-column-vs-external-blog: description 164자 (80~160) / 본문이 너무 깁니다 (9671자)
+[2026-10-05 22:53:37]   재시도 1 — homepage-column-vs-external-blog
+[2026-10-05 22:58:21]   통과 homepage-column-vs-external-blog — 5935자 → 7575자 · 1인칭 19곳
+[2026-10-05 23:02:24]   !! 검사 불통과 marketing-agency-change-timing: 본문이 너무 깁니다 (10847자)
+[2026-10-05 23:02:24]   재시도 1 — marketing-agency-change-timing
+[2026-10-05 23:09:34]   통과 marketing-agency-change-timing — 6688자 → 7787자 · 1인칭 11곳
+[2026-10-05 23:13:24]   !! 검사 불통과 gbp-optimization-guide: 본문이 너무 깁니다 (12615자)
+[2026-10-05 23:13:24]   재시도 1 — gbp-optimization-guide
+[2026-10-05 23:17:47]   통과 gbp-optimization-guide — 7340자 → 8377자 · 1인칭 16곳
+[2026-10-05 23:21:32]   !! 검사 불통과 search-console-first-week: 본문이 너무 깁니다 (11962자)
+[2026-10-05 23:21:32]   재시도 1 — search-console-first-week
+[2026-10-05 23:26:14]   통과 search-console-first-week — 7500자 → 8691자 · 1인칭 12곳
+[2026-10-05 23:30:14]   !! 검사 불통과 internal-linking-structure: 본문이 너무 깁니다 (11372자)
+[2026-10-05 23:30:14]   재시도 1 — internal-linking-structure
+[2026-10-05 23:37:23]   통과 internal-linking-structure — 7536자 → 8275자 · 1인칭 15곳
+[2026-10-05 23:41:25]   !! 검사 불통과 duplicate-content-canonical: 본문이 너무 깁니다 (11651자)
+[2026-10-05 23:41:25]   재시도 1 — duplicate-content-canonical
+[2026-10-05 23:45:47]   통과 duplicate-content-canonical — 7345자 → 8547자 · 1인칭 16곳
+[2026-10-05 23:49:21]   !! 검사 불통과 keyword-volume-vs-intent: description 180자 (80~160) / 본문이 너무 깁니다 (12708자)
+[2026-10-05 23:49:21]   재시도 1 — keyword-volume-vs-intent
+[2026-10-05 23:55:04]   !! 검사 불통과 keyword-volume-vs-intent: 본문이 너무 깁니다 (10128자)
+[2026-10-05 23:55:04]   재시도 2 — keyword-volume-vs-intent
+[2026-10-06 00:12:40]   통과 keyword-volume-vs-intent — 8957자 → 8554자 · 1인칭 14곳
+[2026-10-06 00:15:52]   !! 검사 불통과 consult-call-script: 본문이 너무 깁니다 (10115자)
+[2026-10-06 00:15:52]   재시도 1 — consult-call-script
+[2026-10-06 00:20:38]   통과 consult-call-script — 6743자 → 7991자 · 1인칭 17곳
+[2026-10-06 00:24:03]   !! 검사 불통과 mobile-call-button-placement: 본문이 너무 깁니다 (10896자)
+[2026-10-06 00:24:03]   재시도 1 — mobile-call-button-placement
+[2026-10-06 00:28:55]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:28:55]   건너뜀 — mobile-call-button-placement
+[2026-10-06 00:28:58]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:28:58]   건너뜀 — professional-profile-page
+[2026-10-06 00:29:00]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:00]   건너뜀 — ad-vs-organic-balance
+[2026-10-06 00:29:03]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:03]   건너뜀 — homepage-agency-selection-criteria
+[2026-10-06 00:29:05]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:05]   건너뜀 — homepage-cost-breakdown
+[2026-10-06 00:29:08]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:08]   건너뜀 — marketing-agency-contract-checklist
+[2026-10-06 00:29:10]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:10]   건너뜀 — architect-marketing-start
+[2026-10-06 00:29:12]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:12]   건너뜀 — referral-to-search-transition
+[2026-10-06 00:29:15]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:15]   건너뜀 — seasonal-content-calendar
+[2026-10-06 00:29:17]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:17]   건너뜀 — form-abandonment-fix
+[2026-10-06 00:29:20]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:20]   건너뜀 — trust-signals-checklist
+[2026-10-06 00:29:22]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:22]   건너뜀 — core-web-vitals-practical
+[2026-10-06 00:29:24]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:24]   건너뜀 — multi-location-site-structure
+[2026-10-06 00:29:27]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
+[2026-10-06 00:29:27]   건너뜀 — consult-booking-vs-call
+[2026-10-06 00:29:28] ─── 반영 완료 · 8편 ───
