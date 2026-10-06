@@ -939,3 +939,33 @@
 [2026-10-06 00:29:27]   !! claude 실패 (1) — You've hit your session limit · resets 3:40am (Asia/Seoul)
 [2026-10-06 00:29:27]   건너뜀 — consult-booking-vs-call
 [2026-10-06 00:29:28] ─── 반영 완료 · 8편 ───
+[2026-10-06 12:44:46] ─── 목소리 전환 대상 15편 중 14편 ───
+[2026-10-06 12:44:46]   재사용 mobile-call-button-placement
+[2026-10-06 12:48:34]   !! 검사 불통과 professional-profile-page: 본문이 너무 깁니다 (12465자)
+[2026-10-06 12:48:34]   재시도 1 — professional-profile-page
+[2026-10-06 13:03:24]   통과 professional-profile-page — 8114자 → 9167자 · 1인칭 12곳
+[2026-10-06 13:06:50]   !! 검사 불통과 ad-vs-organic-balance: 본문이 너무 깁니다 (10970자)
+[2026-10-06 13:06:50]   재시도 1 — ad-vs-organic-balance
+[2026-10-06 13:13:56]   통과 ad-vs-organic-balance — 7605자 → 8481자 · 1인칭 10곳
+[2026-10-06 13:16:59]   !! 검사 불통과 homepage-agency-selection-criteria: description 162자 (80~160) / 본문이 너무 깁니다 (10392자)
+[2026-10-06 13:16:59]   재시도 1 — homepage-agency-selection-criteria
+[2026-10-06 13:23:24]   통과 homepage-agency-selection-criteria — 6375자 → 7927자 · 1인칭 21곳
+[2026-10-06 13:26:21]   !! 검사 불통과 homepage-cost-breakdown: 본문이 너무 깁니다 (10518자)
+[2026-10-06 13:26:21]   재시도 1 — homepage-cost-breakdown
+[2026-10-06 13:34:26]   통과 homepage-cost-breakdown — 6781자 → 8343자 · 1인칭 27곳
+[2026-10-06 13:37:02]   통과 marketing-agency-contract-checklist — 5268자 → 8814자 · 1인칭 32곳
+[2026-10-06 13:39:48]   통과 architect-marketing-start — 3828자 → 8466자 · 1인칭 29곳
+[2026-10-06 13:42:44]   통과 referral-to-search-transition — 3553자 → 9349자 · 1인칭 40곳
+[2026-10-06 13:48:08]   통과 seasonal-content-calendar — 4091자 → 8423자 · 1인칭 23곳
+[2026-10-06 13:51:15]   !! 검사 불통과 form-abandonment-fix: description 166자 (80~160)
+[2026-10-06 13:51:15]   재시도 1 — form-abandonment-fix
+[2026-10-06 13:54:15]   !! 검사 불통과 form-abandonment-fix: 금지 표현: 무조건
+[2026-10-06 13:54:15]   재시도 2 — form-abandonment-fix
+[2026-10-06 13:57:09]   통과 form-abandonment-fix — 4090자 → 8505자 · 1인칭 27곳
+[2026-10-06 13:59:52]   통과 trust-signals-checklist — 4103자 → 8427자 · 1인칭 27곳
+[2026-10-06 14:03:04]   !! 검사 불통과 core-web-vitals-practical: 본문이 너무 깁니다 (10147자)
+[2026-10-06 14:03:04]   재시도 1 — core-web-vitals-practical
+[2026-10-06 14:07:12]   통과 core-web-vitals-practical — 4531자 → 7510자 · 1인칭 18곳
+[2026-10-06 14:09:58]   통과 multi-location-site-structure — 3950자 → 9112자 · 1인칭 22곳
+[2026-10-06 14:12:55]   통과 consult-booking-vs-call — 3816자 → 9488자 · 1인칭 27곳
+[2026-10-06 14:12:56] ─── 반영 완료 · 14편 ───
