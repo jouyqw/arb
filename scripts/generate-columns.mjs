@@ -83,9 +83,21 @@ const esc = (value = '') => String(value)
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#39;');
 
+/**
+ * 본문 강조 표기.
+ *
+ * 굵게 하나로는 긴 문단에서 눈이 쉴 곳이 안 생긴다(2026-10-10 표기 추가).
+ *   **굵게**     결론·판단 기준
+ *   __밑줄__     글에서 한두 번, 가장 중요한 한 줄
+ *   ::형광펜::   놓치면 안 되는 기간·금액
+ *   ;;강조색;;   주의가 필요한 말
+ * 많이 쓰면 아무것도 강조되지 않는다. 개수는 프롬프트에서 제한한다.
+ */
 const renderInline = (value = '') => esc(value)
   .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-  .replace(/__(.+?)__/g, '<u>$1</u>');
+  .replace(/__(.+?)__/g, '<u>$1</u>')
+  .replace(/::(.+?)::/g, '<mark class="hl-mark">$1</mark>')
+  .replace(/;;(.+?);;/g, '<span class="hl-accent">$1</span>');
 
 const renderBlock = (block) => {
   if (typeof block === 'string') return `<p>${renderInline(block)}</p>`;
@@ -249,6 +261,11 @@ const articleTemplate = (post) => {
     p{font-size:17px;margin:0 0 22px}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
+    /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
+       굵게 하나로는 긴 문단에서 눈이 쉴 자리가 안 생긴다.
+       형광펜은 기간·금액처럼 놓치면 안 되는 것, 강조색은 주의가 필요한 말에 쓴다. */
+    .hl-mark{background:linear-gradient(transparent 58%,rgba(245,196,0,.45) 58%);padding:0 2px;color:inherit;font-weight:700}
+    .hl-accent{color:#C2410C;font-weight:800}
     ul{margin:0 0 24px;padding-left:20px}
     li{font-size:17px;margin:0 0 9px}
     .hero-figure{margin:30px 0 34px;border-radius:18px;overflow:hidden;border:1px solid #EAECF0;box-shadow:0 16px 38px rgba(16,24,40,.1);background:#F7F9FC}
@@ -490,6 +507,11 @@ const serviceStyle = `
     p{font-size:17px;margin:0 0 22px}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
+    /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
+       굵게 하나로는 긴 문단에서 눈이 쉴 자리가 안 생긴다.
+       형광펜은 기간·금액처럼 놓치면 안 되는 것, 강조색은 주의가 필요한 말에 쓴다. */
+    .hl-mark{background:linear-gradient(transparent 58%,rgba(245,196,0,.45) 58%);padding:0 2px;color:inherit;font-weight:700}
+    .hl-accent{color:#C2410C;font-weight:800}
     ul{margin:0 0 24px;padding-left:20px}
     li{font-size:17px;margin:0 0 11px}
     .summary-box{margin:0 0 34px;padding:24px 26px;border:1px solid #D8E5FF;border-radius:16px;background:#F3F7FF}

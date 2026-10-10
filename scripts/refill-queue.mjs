@@ -223,6 +223,15 @@ AUTHORING.md 가 있으면 그것도 읽는다. 기존 글과 같은 톤으로 �
 - 결론부터 말하고, 그다음 이유와 방법으로 간다.
 - 문단은 2~4문장으로 짧게 끊는다. 긴 문단을 만들지 않는다.
 
+## 강조 표기 (모바일 가독성)
+문단·목록·표가 아닌 **본문 글자**에 아래 표기를 쓸 수 있다. 렌더러가 알아서 바꿔 준다.
+- \`**굵게**\` — 결론·판단 기준. 지금처럼 자유롭게.
+- \`__밑줄__\` — 글 전체에서 **한두 번만**. 가장 중요한 한 줄에만.
+- \`::형광펜::\` — 놓치면 안 되는 기간·금액·개수. **3~5곳**.
+- \`;;강조색;;\` — 주의가 필요한 말(위험·손해). **2~3곳**.
+많이 쓰면 아무것도 강조되지 않는다. 위 개수를 넘기지 마라.
+heading(소제목)과 표 안에는 쓰지 않는다. 표기가 글자 그대로 보인다.
+
 ## 검색·AI 노출을 위해 반드시 지킬 것 (이 글의 목적이다)
 이 글은 **맡길 곳을 찾는 사람**이 읽는다. 혼자 해 보라고 가르치는 글이 아니라,
 고를 때 쓰는 **판단 기준**을 주는 글이다. 읽고 나면 "무엇을 물어봐야 하는지"를 알게 돼야 한다.
@@ -349,7 +358,20 @@ fs.writeFileSync(LOCK, stamp());
 
 const targets = free.slice(0, Math.min(need, free.length));
 const base = lastAt > TODAY ? lastAt : TODAY;
-const plan = targets.map((t, i) => ({ topic: t, date: addDays(base, i + 1) }));
+
+// 평일에만 하루 2편. 주말 발행은 사람이 안 보는데 소비만 된다.
+const PER_DAY = 2;
+const isWeekend = (iso) => [0, 6].includes(new Date(`${iso}T00:00:00Z`).getUTCDay());
+const nextWeekday = (iso) => { let d = addDays(iso, 1); while (isWeekend(d)) d = addDays(d, 1); return d; };
+
+const plan = [];
+let day = base;
+let slotsToday = 0;
+for (const t of targets) {
+  if (slotsToday === 0 || slotsToday >= PER_DAY) { day = nextWeekday(day); slotsToday = 0; }
+  slotsToday += 1;
+  plan.push({ topic: t, date: day });
+}
 log(`${plan.length}건 보충 시작 → ${plan[0].date} ~ ${plan[plan.length - 1].date}`);
 
 const seenTitles = new Set([...live.map((c) => c.title), ...q.map((c) => c.title)]);
