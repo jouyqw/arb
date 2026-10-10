@@ -1,0 +1,14 @@
+.service-ribbon{background:var(--brand-light,#c3bbef);color:#17171c;max-width:100%;overflow:hidden;contain:inline-size;border-bottom:1px solid #17171c25}
+.ribbon-controls{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px max(20px,5.6vw) 0;font-size:10px;font-weight:650;letter-spacing:1.3px}
+.ribbon-subtitle{font-weight:400;letter-spacing:0;opacity:.65;margin-left:10px}
+.ribbon-toggle{border:1px solid #17171c50;border-radius:100px;padding:8px 14px;min-height:36px;background:transparent;color:inherit;font-size:11px;letter-spacing:0;white-space:nowrap}
+.ribbon-toggle:hover{background:#ffffff40}.ribbon-toggle:focus-visible{outline:2px solid #17171c;outline-offset:3px}
+.ribbon-window{overflow:hidden;padding:23px 0 30px;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.ribbon-track{display:flex;width:max-content;animation:ribbon-drift 42s linear infinite}
+.ribbon-group{display:flex;align-items:center;justify-content:space-around;gap:46px;flex-shrink:0;min-width:100vw;width:max-content;list-style:none;padding:0 46px 0 0;margin:0}
+.ribbon-group li{display:flex;align-items:center;gap:46px;white-space:nowrap;font-size:clamp(20px,2.2vw,32px);font-weight:550;letter-spacing:-.055em;line-height:1.35}
+.ribbon-group li>span{font-size:22px;font-weight:400;opacity:.55}
+.ribbon-paused .ribbon-track,.ribbon-hidden .ribbon-track,.ribbon-offscreen .ribbon-track{animation-play-state:paused}
+@keyframes ribbon-drift{to{transform:translateX(-50%)}}
+@media(max-width:800px){.ribbon-controls{font-size:9px;padding-top:10px}.ribbon-subtitle{display:none}.ribbon-window{padding:20px 0 24px}.ribbon-group{gap:28px;padding-right:28px}.ribbon-group li{font-size:21px;gap:28px}.ribbon-group li>span{font-size:17px}.ribbon-track{animation-duration:36s}}
+@media(prefers-reduced-motion:reduce){.ribbon-track{animation:none;width:100%}.ribbon-group{width:100%;min-width:0;flex-wrap:wrap;justify-content:center;gap:16px 28px;padding:0 20px}.ribbon-group[aria-hidden=true]{display:none}.ribbon-group li{font-size:16px;gap:12px}.ribbon-toggle{display:none}.ribbon-window{mask-image:none}.ribbon-controls{padding-top:20px}}
