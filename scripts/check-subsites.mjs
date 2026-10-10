@@ -20,7 +20,7 @@ for(const k of Object.keys(sites)){
 }
 for(const k of Object.keys(sites)){
  const html=renderSite(k);
- for(const marker of ['class="contact-dock"','tel:01055010152','https://pf.kakao.com/_wxjxiSX/chat','agency.css?v=20261010b','data-demo-view="mobile"','실제 고객사 작업물이나 성과 자료가 아닙니다.'])assert.ok(html.includes(marker),k+': '+marker);
+ for(const marker of ['class="contact-dock"','tel:01055010152','https://pf.kakao.com/_wxjxiSX/chat','agency.css?v=20261010d','data-demo-view="mobile"','실제 고객사 작업물이나 성과 자료가 아닙니다.'])assert.ok(html.includes(marker),k+': '+marker);
  checks++;
 }
 console.log('PASS: '+checks+' routing/content checks; main, gift, law, life and www untouched.');
