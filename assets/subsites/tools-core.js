@@ -139,6 +139,11 @@
 
       const STAGES = ['발견', '유입', '도착', '신뢰', '전환', '측정'];
 
+      const profile=window.ARB_INDUSTRY;
+      if(profile){
+        QUESTIONS.splice(0,QUESTIONS.length,{stage:null,q:profile.name+' 분야 중 주로 어떤 서비스를 운영하시나요?',why:'현재 홈페이지의 업종에 맞는 서비스만 선택합니다. 이후 질문과 개선 안내도 이 업종을 기준으로 구성합니다.',opts:profile.types.map(t=>({t,name:profile.name+' · '+t}))},...profile.questions.map((item,i)=>({stage:STAGES[i],q:item[0],why:item[2],opts:item[1].map((t,j)=>({t,s:j*50})),fix:item[1].map((_,j)=>({b:j===2?STAGES[i]+' 단계의 운영 상태를 유지·점검하세요':STAGES[i]+' 단계부터 보완하세요',p:item[2]}))})));
+        GRADES.splice(0,GRADES.length,{min:80,g:'운영 점검 단계',h:'갖춘 항목을 실제 운영에서 확인하세요',s:'선택하신 답변에서는 갖춘 항목이 많습니다. 실제 화면과 유입 기록을 함께 확인하세요.'},{min:60,g:'보완 단계',h:'낮게 나온 항목부터 보완하세요',s:'답변에서 부족하게 표시한 항목을 중심으로 개선 순서를 검토하세요.'},{min:40,g:'구조 정리 단계',h:'고객이 문의하는 흐름을 정리하세요',s:'정보를 찾는 단계부터 상담 연결까지 이어지는지 점검하세요.'},{min:0,g:'기초 점검 단계',h:'안내 정보와 상담 경로부터 점검하세요',s:'현재 답변 기준으로 기본 안내와 연결 경로를 먼저 정리하는 것이 좋겠습니다.'});
+      }
       const el = id => document.getElementById(id);
       const intro   = el('diagIntro'),  quiz   = el('diagQuiz'),
             loading = el('diagLoading'), result = el('diagResult'),
@@ -286,13 +291,7 @@
         // 점수 카운트업 + 게이지
         const num = el('diagScore');
         setTimeout(() => { el('diagMeter').style.width = score + '%'; }, 80);
-        let c = 0;
-        const step = Math.max(1, Math.round(score / 34));
-        const ti = setInterval(() => {
-          c = Math.min(c + step, score);
-          num.textContent = c;
-          if (c >= score) clearInterval(ti);
-        }, 26);
+        num.textContent = score;
       }
 
       function start(scroll) {
