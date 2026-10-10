@@ -1,0 +1,179 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>아비컴퍼니 진단</title><link rel="stylesheet" href="tools-core.css"><link rel="stylesheet" href="tools-frame.css"></head><body><p class="tool-disclosure">마케팅 진단은 답변 기반 자체 점검이며 생성형 AI 분석이 아닙니다. URL 검사는 공개 주소를 서버에 보내 HTML 응답을 확인합니다. 점수는 자체 기준이며 검색 순위·매출을 보장하지 않습니다. 로그인 주소나 비밀 정보가 포함된 URL은 입력하지 마세요.</p>  <section class="alt" id="scan">
+    <div class="scan-inner">
+      <div class="scan-head">
+        <span class="sec-label">홈페이지 검사</span>
+        <h2>주소만 넣으면 <em>지금 바로 검사</em>합니다</h2>
+        <div class="sec-desc">
+          <p>입력하신 주소를 실제로 열어 제목과 색인 설정, 사이트맵, 구조화 데이터, 모바일 대응, 전환 동선을 항목별로 확인합니다.</p>
+          <p>추정하지 않고 응답에서 확인된 내용만 보여드립니다. 10초쯤 걸립니다.</p>
+        </div>
+      </div>
+
+      <form class="scan-form" id="scanForm" autocomplete="off">
+        <input type="text" id="scanInput" placeholder="example.com 또는 상호명" aria-label="홈페이지 주소 또는 상호명" />
+        <button type="submit" id="scanBtn">무료로 검사하기</button>
+      </form>
+      <p class="scan-note">주소를 모르시면 상호명만 적으셔도 됩니다 · 개인정보는 받지 않습니다</p>
+
+      <div class="scan-error" id="scanError"></div>
+
+      <div class="scan-loading" id="scanLoading">
+        <div class="dcard"><div class="dbody">
+          <div class="dloadbar"></div>
+          <ul class="dsteps" id="scanSteps">
+            <li>페이지를 내려받는 중</li>
+            <li>robots.txt · sitemap.xml 확인하는 중</li>
+            <li>구조화 데이터와 본문을 읽는 중</li>
+            <li>항목별로 점수를 매기는 중</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="scan-result" id="scanResult">
+        <div class="dcard"><div class="dbody">
+          <div class="scan-top">
+            <div>
+              <div class="dnum"><span id="scanScore">0</span><i>／100</i></div>
+              <div class="scan-target" id="scanTarget"></div>
+            </div>
+            <dl class="dbars" id="scanCats"></dl>
+          </div>
+
+          <div class="dfixhead">먼저 고쳐야 할 것</div>
+          <div class="scan-fix" id="scanFix"></div>
+
+          <div class="dfixhead">항목별 결과</div>
+<!-- chunk 0 -->
+          <div class="scan-checks" id="scanChecks"></div>
+
+          <div class="dcta">
+            <b>이 결과를 그대로 들고 상담하셔도 됩니다</b>
+            <p>걸린 항목을 어떤 순서로, 얼마나 걸려 고칠 수 있는지 정리해 드립니다.</p>
+            <p>이미 만들어진 홈페이지도 전체 재제작 없이 손볼 수 있는 부분이 많습니다.</p>
+            <div class="dcta-btns">
+              <button class="dbtn-kakao" id="scanCopyKakao">결과 복사하고 카카오톡 상담</button>
+              <a class="dbtn-line" href="tel:010-5501-0152">전화 상담 010-5501-0152</a>
+            </div>
+            <div class="dcopied" id="scanCopied">검사 결과를 복사했습니다. 카카오톡 채팅창에 붙여넣기 해주세요.</div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="scan-name" id="scanName">
+        <div class="dcard"><div class="dbody">
+          <h3 id="scanNameTitle"></h3>
+          <div id="scanNameBody"></div>
+          <div class="dcta-btns" style="margin-top:26px">
+            <button class="dbtn-kakao" id="scanNameKakao">상호명 남기고 진단 받기</button>
+            <a class="dbtn-line dark" href="#diagnosis">홈페이지가 없다면 1분 진단</a>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI 1분 진단 -->
+  <section id="diagnosis">
+    <div class="diag-inner">
+      <div class="diag-head">
+        <span class="sec-label">AI 1분 진단</span>
+        <h2>홈페이지가 없어도 <em>어디가 막혔는지</em> 알 수 있습니다</h2>
+        <div class="sec-desc">
+          <p>문의가 만들어지는 여섯 단계를 하나씩 짚어 어디서 끊겼는지 찾아냅니다.</p>
+          <p>개인정보 입력 없이 약 1분, 단계별 점수와 손댈 순서를 바로 확인하실 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="dcard">
+        <div class="dtrack"><span id="diagProgress"></span></div>
+        <div class="dbody">
+          <div class="dhead-line">
+            <span class="dstep" id="diagStep">무료 진단</span>
+<!-- chunk 45 -->
+            <span>홈페이지 제작 &amp; 마케팅</span>
+          </div>
+
+          <!-- 인트로 -->
+          <div class="diag-intro" id="diagIntro">
+            <h3>문의는 여섯 단계를 거쳐 만들어집니다</h3>
+            <p>앞 단계가 막혀 있으면 뒤 단계를 아무리 손봐도 소용이 없습니다.</p>
+            <p>그래서 점수를 하나로 뭉뚱그리지 않고 단계마다 따로 매긴 뒤, 가장 앞에서 막힌 곳부터 알려드립니다.</p>
+            <ol class="diag-steps-map">
+              <li><b>발견</b><span>고객이 검색했을 때 우리가 보이는가</span></li>
+              <li><b>유입</b><span>몇 개의 경로에서 들어오는가</span></li>
+              <li><b>도착</b><span>눌렀을 때 도착하는 화면이 제 역할을 하는가</span></li>
+              <li><b>신뢰</b><span>처음 본 사람이 확인할 근거가 있는가</span></li>
+              <li><b>전환</b><span>문의까지 몇 번 만에 닿는가</span></li>
+              <li><b>측정</b><span>어디서 왔는지 알고 있는가</span></li>
+            </ol>
+            <button class="diag-start" id="diagStartBtn">1분 무료 진단 시작하기</button>
+            <div class="diag-meta">개인정보 입력 없음 · 문항 7개 · 결과 즉시 확인</div>
+          </div>
+
+          <!-- 질문 -->
+          <div class="diag-quiz" id="diagQuiz" style="display:none">
+            <div class="diag-flow" id="diagFlow"></div>
+            <div class="diag-stagetag" id="diagStage"></div>
+            <div class="diag-q" id="diagQ"></div>
+            <div class="diag-why" id="diagWhy"></div>
+            <div class="diag-opts" id="diagOpts"></div>
+            <div class="diag-nav">
+              <button class="diag-back" id="diagBackBtn">← 이전 질문</button>
+              <span class="diag-secure">고르신 답은 이 브라우저 안에서만 계산되고<br />서버로 전송되지 않습니다</span>
+            </div>
+          </div>
+
+          <!-- 분석 중 -->
+          <div class="diag-loading" id="diagLoading" style="display:none">
+            <div class="dloadbar"></div>
+            <ul class="dsteps" id="diagSteps">
+              <li>여섯 단계 점수를 매기는 중</li>
+              <li>업종별 기준값과 대조하는 중</li>
+              <li>가장 앞에서 막힌 단계를 찾는 중</li>
+              <li>손대야 할 순서를 정리하는 중</li>
+            </ul>
+          </div>
+
+          <!-- 결과 -->
+<!-- chunk 90 -->
+          <div class="diag-result" id="diagResult">
+            <div class="diag-score">
+              <div class="dnum"><span id="diagScore">0</span><i>／100</i></div>
+              <div class="diag-meter">
+                <div class="diag-meter-track"><span class="diag-meter-fill" id="diagMeter"></span></div>
+                <div class="diag-meter-scale"><span>기초</span><span>성장 준비</span><span>최적화</span><span>상위권</span></div>
+              </div>
+            </div>
+
+            <div class="diag-grade" id="diagGrade"></div>
+            <h3 id="diagHeadline"></h3>
+            <p class="dsum" id="diagSummary"></p>
+
+            <div class="dfixhead">단계별 점수</div>
+            <dl class="dbars" id="diagStages"></dl>
+
+            <div class="dfixhead">먼저 손대야 할 순서</div>
+            <p class="diag-ordernote" id="diagOrderNote"></p>
+            <div class="diag-fix" id="diagFix"></div>
+
+            <div class="dcta">
+              <b>진단 결과를 바탕으로 실행안까지 받아보세요</b>
+              <p>결과를 복사해 카카오톡으로 보내주시면, 업종과 지역 경쟁 상황을 확인해 어디부터 손대야 하는지 순서대로 정리해 드립니다.</p>
+              <p>상담은 무료입니다.</p>
+              <div class="dcta-btns">
+                <button class="dbtn-kakao" id="diagCopyKakao">결과 복사하고 카카오톡 상담</button>
+                <a class="dbtn-line" href="tel:010-5501-0152">전화 상담 010-5501-0152</a>
+              </div>
+              <div class="dcopied" id="diagCopied">진단 결과를 복사했습니다. 카카오톡 채팅창에 붙여넣기 해주세요.</div>
+            </div>
+
+            <button class="dretry" id="diagRetryBtn">다시 진단하기</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script src="tools-core.js"></script><script src="tools-frame.js"></script></body></html>
+<!-- chunk 135 -->

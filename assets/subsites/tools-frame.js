@@ -1,0 +1,1 @@
+function selectTool(){const scan=location.hash==='#scan';document.querySelector('#scan').hidden=!scan;document.querySelector('#diagnosis').hidden=scan;window.scrollTo(0,0);}addEventListener('hashchange',selectTool);selectTool();document.addEventListener('keydown',e=>{if(e.key==='Escape')parent.postMessage({type:'arb-tool-close'},'*')});
