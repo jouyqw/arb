@@ -1,0 +1,61 @@
+/* Full-bleed visual introduction, shared across the six industry sites. */
+body:has(.cinema-hero):not(.cinema-past) .tools-launcher{visibility:hidden;pointer-events:none}
+body[data-site]:has(.cinema-hero) .nav{background:#fafaf8;color:#17191b;border-bottom:1px solid #19191914}
+body[data-site]:has(.cinema-hero) .nav-inner{min-height:78px}
+body[data-site]:has(.cinema-hero) .brand-text{color:#27292a;border-color:#25252530}
+body[data-site]:has(.cinema-hero) .brand-text small{color:#646667}
+body[data-site]:has(.cinema-hero) .nav-links .nav-cta{background:#202423;color:white}
+body[data-site]:has(.cinema-hero) .menu-button{color:#202423;border-color:#20242360}
+.cinema-hero{position:relative;isolation:isolate;background:#1c2425;min-height:620px;height:calc(100svh - 78px);max-height:1040px;color:#fff;overflow:hidden}
+.cinema-media,.cinema-shade{position:absolute;inset:0}
+.cinema-media .cinema-poster,.cinema-media .interior-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cinema-shade{pointer-events:none;background:linear-gradient(90deg,#081112b3,transparent 85%),linear-gradient(0deg,#091213a6,transparent 75%)}
+.cinema-content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;height:100%;padding:65px 0 115px;pointer-events:none}
+.cinema-content a{pointer-events:auto}
+.cinema-eyebrow{font-size:14px;line-height:1.7;letter-spacing:.02em;margin:0 0 28px;color:#fff}
+body[data-site] .cinema-content h1{font-size:clamp(44px,5.3vw,82px);font-weight:500;line-height:1.2;letter-spacing:-.065em;color:#fff;margin:0;text-shadow:0 2px 24px #0002}
+.cinema-content h1 span{display:block}
+.cinema-lead{max-width:440px;font-size:17px;line-height:1.9;color:#f2f3f1;margin:28px 0 32px;word-break:keep-all;overflow-wrap:anywhere}
+.cinema-link{display:flex;align-items:center;gap:50px;width:fit-content;border-bottom:1px solid #fff9;padding:10px 0;font-size:14px;color:#fff;min-height:44px}
+.cinema-link span{font-size:24px}.cinema-link:hover{border-color:white}
+.cinema-bottom{position:absolute;z-index:2;bottom:30px;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:15px;font-size:11px;color:#fff}
+.cinema-bottom>a{display:flex;gap:30px;align-items:center;min-height:44px;font-size:13px}
+.cinema-bottom>span{color:#e4e6e5;font-size:10px}
+body[data-site] .cinema-media .film-toggle,.cinema-motion-toggle{position:absolute;z-index:5;top:24px;right:28px;min-height:44px;padding:11px 17px;background:#142025ad;border:1px solid #ffffff70;border-radius:30px;color:#fff;cursor:pointer;font:inherit;font-size:11px}
+body[data-site=insurance] .cinema-media .interior-film{left:auto;right:0;width:48%;object-fit:contain;background:#263039}
+body[data-site=insurance] .cinema-media .cinema-poster{filter:blur(24px);opacity:.25;transform:scale(1.05)}
+body[data-site=insurance] .cinema-shade{background:linear-gradient(90deg,#132330 35%,#132330aa 58%,transparent 80%),linear-gradient(0deg,#13233066,transparent 50%)}
+.has-still .cinema-poster{animation:cinema-pan 18s ease-in-out infinite alternate}
+.has-still.is-paused .cinema-poster{animation-play-state:paused}
+@keyframes cinema-pan{from{transform:scale(1)}to{transform:scale(1.07)}}
+.brand-intro{padding:110px 0 72px;background:#fafaf8;color:#202523;scroll-margin-top:90px}
+.brand-intro-top{display:flex;justify-content:space-between;gap:30px;padding-bottom:44px;border-bottom:1px solid #20252328}
+.brand-intro-top .overline,.brand-index{font-size:10px;letter-spacing:.12em;color:#626a64;line-height:1.7}
+.brand-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:9%;padding:54px 0 60px}
+body[data-site] .brand-intro-grid h2{font-size:clamp(30px,3.4vw,48px);line-height:1.4;letter-spacing:-.055em;font-weight:500;margin:0;max-width:540px;word-break:keep-all}
+.brand-intro-grid p{font-size:17px;line-height:1.95;margin:0 0 25px;color:#505853;word-break:keep-all;overflow-wrap:anywhere}
+.brand-intro-grid .brand-disclosure{font-size:12px;line-height:1.8;color:#626a64}
+.brand-service-line{display:grid;grid-template-columns:repeat(3,1fr);list-style:none;margin:0;padding:0;border-top:1px solid #20252328}
+.brand-service-line li{display:flex;align-items:center;gap:25px;padding:25px 0;font-size:16px}.brand-service-line span{font-size:11px;color:#687269}
+body[data-site]:has(.cinema-hero) .design-section{background:#eeeFEB;padding:100px 0}
+body[data-site]:has(.cinema-hero) .design-heading h2{font-weight:500}
+body[data-site]:has(.cinema-hero) .showcase-stage{background:#dfe3dc;border-radius:2px;padding:65px}
+body[data-site]:has(.cinema-hero) .site-concept{border-radius:4px;box-shadow:0 22px 70px #17241c17}
+body[data-site]:has(.cinema-hero) .service-item h3{font-weight:500}
+@media(max-width:1100px){body[data-site]:has(.cinema-hero) .nav-links{top:78px;background:#fafaf8;border-color:#20242325}body[data-site]:has(.cinema-hero) .nav-links a{color:#202423}body[data-site]:has(.cinema-hero) .nav-links .nav-cta{color:white}.brand-intro-grid{gap:40px}}
+@media(max-width:800px){
+body[data-site]:has(.cinema-hero) .nav-inner{min-height:70px}body[data-site]:has(.cinema-hero) .nav-links{top:70px}
+.cinema-hero{height:calc(100svh - 70px);min-height:610px;max-height:920px}
+.cinema-content{justify-content:flex-end;padding:90px 0 155px}.cinema-eyebrow{font-size:12px;margin-bottom:19px}
+body[data-site] .cinema-content h1{font-size:clamp(32px,6.8vw,55px);line-height:1.3}
+.cinema-lead{font-size:15px;line-height:1.85;max-width:360px;margin:21px 0 18px}
+.cinema-bottom{bottom:83px}.cinema-bottom>a{font-size:12px}.cinema-bottom>span{font-size:9px}
+.cinema-shade{background:linear-gradient(0deg,#0a1516ed, #0a151666 75%,#0a151622)}
+body[data-site=insurance] .cinema-media .interior-film{width:100%;object-fit:cover}body[data-site=insurance] .cinema-shade{background:linear-gradient(0deg,#0a1825f5,#0a182560 80%,#0a182522)}
+.brand-intro{padding:65px 0 35px}.brand-intro-top{padding-bottom:25px}.brand-index{display:none}.brand-intro-grid{grid-template-columns:1fr;gap:28px;padding:35px 0}
+.brand-intro-grid p{font-size:16px;line-height:1.9}.brand-service-line{grid-template-columns:1fr}.brand-service-line li{border-bottom:1px solid #2025231c;padding:19px 0;font-size:15px}
+body[data-site]:has(.cinema-hero) .design-section{padding:65px 0}body[data-site]:has(.cinema-hero) .showcase-stage{padding:25px 15px}
+body[data-site] .cinema-media .film-toggle,.cinema-motion-toggle{top:18px;right:20px}
+}
+@media(max-width:380px){body[data-site] .cinema-content h1{font-size:28px}.cinema-lead{font-size:14px}.cinema-bottom{gap:8px}.cinema-bottom>span{font-size:8px}.cinema-bottom>a{gap:10px}}
+@media(prefers-reduced-motion:reduce){.has-still .cinema-poster{animation:none}}

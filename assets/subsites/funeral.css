@@ -1,0 +1,38 @@
+/* Quiet, editorial direction for the memorial marketing site only. */
+body[data-site=funeral]{--brand-light:#d8dfcd}
+body[data-site=funeral] .agency-eyebrow{color:#e0e7d7;letter-spacing:.06em}
+body[data-site=funeral] .agency-heading h1{font-weight:500;letter-spacing:-.055em;line-height:1.28}
+body[data-site=funeral] .agency-heading h1 span:last-child{color:#d8dfcd}
+body[data-site=funeral] .hero-canvas{border-radius:2px;outline:1px solid #ffffff24;outline-offset:8px;margin-top:10px}
+body[data-site=funeral] .hero-canvas .canvas-shade{background:linear-gradient(180deg,#10191333,transparent 35%,#101913a8)}
+body[data-site=funeral] .hero-canvas .canvas-label{top:32px;left:34px}
+body[data-site=funeral] .hero-canvas .canvas-label>span{display:none}
+body[data-site=funeral] .hero-canvas .canvas-label strong{font-size:21px;letter-spacing:.2em;font-weight:400;margin:0;text-shadow:0 2px 12px #000}
+body[data-site=funeral] .hero-canvas .canvas-label i{font-size:12px;letter-spacing:0}
+body[data-site=funeral] .canvas-bottom{font-size:16px;line-height:1.7;max-width:80%}
+body[data-site=funeral] .agency-statement{background:#e9eade;color:#26372c}
+body[data-site=funeral] .agency-statement p,body[data-site=funeral] .agency-statement .overline{color:#47584c}
+.funeral-paths{padding:88px 0;background:#f7f6f0;color:#27382e;border-bottom:1px solid #d8ded4}
+.funeral-paths .overline{color:#536750}
+.funeral-paths h2{font-size:clamp(28px,3.5vw,46px);font-weight:500;line-height:1.4;letter-spacing:-.05em;margin:18px 0 38px}
+.funeral-path-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.funeral-path-grid article{border-top:1px solid #9cab97;padding-top:24px}
+.funeral-path-grid small{color:#536750;font-size:12px;letter-spacing:.08em}
+.funeral-path-grid h3{font-size:23px;line-height:1.5;margin:20px 0 14px;letter-spacing:-.035em}
+.funeral-path-grid p{font-size:16px;line-height:1.9;color:#4e5b52;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.funeral-path-grid ul{list-style:none;padding:18px 0 0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.funeral-path-grid li{padding:7px 10px;background:#e7ebdf;color:#30482f;font-size:12px;border-radius:2px}
+body[data-site=funeral] .design-section{background:#f7f6f0}
+body[data-site=funeral] .showcase-stage{background:#e0e5da}
+@media(max-width:600px){
+body[data-site=funeral] .agency-heading{padding-top:30px}
+body[data-site=funeral] .agency-heading h1{font-size:clamp(27px,7.8vw,43px)}
+body[data-site=funeral] .agency-intro p{font-size:16px;line-height:1.85}
+body[data-site=funeral] .hero-canvas .canvas-label{top:30px;left:20px}
+body[data-site=funeral] .hero-canvas .canvas-label strong{font-size:16px;letter-spacing:.1em}
+body[data-site=funeral] .hero-canvas .canvas-label i{display:none}
+body[data-site=funeral] .film-toggle{top:20px;right:12px;font-size:11px;padding:10px 12px}
+body[data-site=funeral] .canvas-bottom{font-size:16px;left:20px;bottom:26px;max-width:220px;right:48px;word-break:keep-all}
+body[data-site=funeral] .canvas-bottom span:last-child{font-size:10px;margin-top:12px}
+.funeral-paths{padding:56px 0}.funeral-paths h2{margin-bottom:28px}.funeral-path-grid{grid-template-columns:1fr;gap:28px}.funeral-path-grid article{padding-top:20px}.funeral-path-grid h3{font-size:22px;margin:14px 0 10px}
+}

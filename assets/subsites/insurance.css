@@ -1,0 +1,35 @@
+body[data-site=insurance]{--brand-light:#c4d9ea}
+body[data-site=insurance] .insurance-copy h1{color:#f4f7fa}
+.insurance-intro{padding:64px 0 48px;background:radial-gradient(ellipse at 80% 30%,#243444 0,transparent 62%),#10151b}
+.insurance-split{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.8fr);gap:clamp(36px,6vw,100px);align-items:center}
+.insurance-copy .overline{color:#b0c4d5;font-size:11px;letter-spacing:.15em}
+.insurance-eyebrow{font-size:15px;color:#d7e7f4;margin:45px 0 22px;line-height:1.7}
+.insurance-copy h1{font-size:clamp(36px,4.2vw,66px);line-height:1.35;letter-spacing:-.06em;font-weight:500;margin:0;word-break:keep-all}
+.insurance-copy h1 em{font-style:normal;color:#bcd6ec}
+.insurance-lead{font-size:17px;line-height:1.9;color:#c5ced6;max-width:470px;margin:28px 0;word-break:keep-all}
+.insurance-actions{display:flex;align-items:center;flex-wrap:wrap;gap:24px}
+.insurance-actions .agency-cta{padding:17px 24px;min-height:54px;background:#d4e5f2;color:#142737;min-width:220px;justify-content:center}
+.insurance-actions .text-link{font-size:13px;color:#d4e5f2}
+.insurance-disclosure{font-size:12px;color:#adbcc9;line-height:1.8;margin:26px 0 0}
+.insurance-film-frame{margin:0;width:100%;max-width:350px;justify-self:end}
+body[data-site=insurance] .insurance-film-frame .hero-canvas{aspect-ratio:9/16;height:auto;margin:0;border-radius:120px 120px 4px 4px;overflow:hidden;outline:1px solid #bcd6ec44;outline-offset:8px}
+body[data-site=insurance] .insurance-film-frame .canvas-shade{background:linear-gradient(180deg,transparent 50%,#081420c9)}
+.insurance-film-caption{position:absolute;bottom:28px;left:24px;right:24px;color:white;z-index:2}
+.insurance-film-caption span{font-size:9px;letter-spacing:.14em}.insurance-film-caption strong{display:block;font-size:24px;line-height:1.6;letter-spacing:-.04em;font-weight:500;margin-top:10px}
+body[data-site=insurance] .film-toggle{top:110px;right:14px;font-size:11px}
+.insurance-film-frame figcaption{font-size:10px;color:#b2bfcc;line-height:1.8;margin-top:22px;text-align:center}
+.insurance-strategy{padding:92px 0;background:#edf2f5;color:#192e3f}
+.insurance-section-heading .overline{color:#536979}
+.insurance-section-heading h2{font-size:clamp(28px,3.6vw,48px);line-height:1.45;letter-spacing:-.045em;margin:20px 0}
+.insurance-section-heading mark{background:#d3e2ed;color:#193c55;padding:0 .08em}
+.insurance-section-heading>p{font-size:16px;line-height:1.9;color:#4b606f}
+.insurance-pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:45px}
+.insurance-pillars article{border-top:1px solid #92aaba;padding-top:24px}
+.insurance-pillars small{font-size:10px;letter-spacing:.1em;color:#496274}
+.insurance-pillars h3{font-size:25px;line-height:1.5;letter-spacing:-.035em;margin:22px 0 16px}
+.insurance-pillars p{font-size:16px;line-height:1.9;word-break:keep-all;color:#405969}
+.insurance-pillars article>span{display:block;font-size:12px;line-height:1.8;color:#34526a;margin-top:22px}
+.insurance-check{display:grid;grid-template-columns:1fr 2fr;gap:32px;margin-top:48px;padding:25px 28px;background:#dfe8ee;border-left:3px solid #496a84;align-items:start}
+.insurance-check strong{font-size:17px;line-height:1.8}.insurance-check p{margin:0;font-size:14px;line-height:1.9;color:#405969;word-break:keep-all}
+@media(max-width:800px){.insurance-intro{padding-top:38px}.insurance-split{grid-template-columns:1fr;gap:42px}.insurance-eyebrow{margin-top:30px}.insurance-copy h1{font-size:clamp(32px,6vw,48px)}.insurance-film-frame{justify-self:center;max-width:350px;width:calc(100% - 16px)}.insurance-pillars{grid-template-columns:1fr;gap:30px}.insurance-pillars h3 br{display:none}.insurance-check{grid-template-columns:1fr;gap:12px}.insurance-strategy{padding:60px 0}}
+@media(max-width:400px){.insurance-copy h1{font-size:30px}.insurance-eyebrow{font-size:13px}.insurance-lead{font-size:16px}.insurance-actions{gap:20px}.insurance-actions .agency-cta{width:100%}.insurance-copy .overline{font-size:9px}.insurance-check{padding:22px 18px}.insurance-pillars h3{font-size:23px}}
