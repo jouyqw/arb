@@ -59,3 +59,34 @@ body[data-site] .cinema-media .film-toggle,.cinema-motion-toggle{top:18px;right:
 }
 @media(max-width:380px){body[data-site] .cinema-content h1{font-size:28px}.cinema-lead{font-size:14px}.cinema-bottom{gap:8px}.cinema-bottom>span{font-size:8px}.cinema-bottom>a{gap:10px}}
 @media(prefers-reduced-motion:reduce){.has-still .cinema-poster{animation:none}}
+/* Consistent editorial rhythm below the film; touch and keyboard polish. */
+body:has(.cinema-hero) main section[id]{scroll-margin-top:95px}
+body:has(.cinema-hero) :is(a,button,summary):focus-visible{outline:3px solid #467b9b;outline-offset:5px}
+body:has(.cinema-hero) .cinema-hero :is(a,button):focus-visible{outline-color:white}
+body:has(.cinema-hero) .marketing-catalog{background:#f7f8f5}
+body:has(.cinema-hero) .marketing-grid{gap:18px;align-items:stretch}
+body:has(.cinema-hero) .marketing-grid article{padding:30px;border:1px solid #28372c20;background:#fff;border-radius:3px}
+body:has(.cinema-hero) .marketing-grid article>span{display:inline-flex;align-items:center;justify-content:center;min-width:32px;min-height:32px;border:1px solid #28372c30;border-radius:50%;font-size:11px;color:#4d5a50}
+body:has(.cinema-hero) .marketing-grid h3{font-size:22px;line-height:1.5;margin:24px 0 16px;font-weight:600;text-decoration:none;letter-spacing:-.04em}
+body:has(.cinema-hero) .marketing-grid p{font-size:16px;line-height:1.9;margin-bottom:0}
+body:has(.cinema-hero) .marketing-note{border-top:1px solid #28372c26;padding-top:24px}
+body:has(.cinema-hero) .process-list li{border-color:#28372c2b}
+body:has(.cinema-hero) .process-list h3{font-weight:500;letter-spacing:-.03em}
+body:has(.cinema-hero) .tool-entry-grid article{background:#fff;border-color:#28372c25;padding:36px;border-radius:3px}
+body:has(.cinema-hero) .tool-entry-grid h3{font-size:25px;font-weight:500;letter-spacing:-.04em}
+body:has(.cinema-hero) .faq-list summary{padding-top:24px;padding-bottom:24px;min-height:52px;line-height:1.6}
+body:has(.cinema-hero) .showcase-toolbar button{min-height:44px}
+@media(min-width:801px) and (max-width:1150px){body:has(.cinema-hero) .marketing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){
+body:has(.cinema-hero) main section[id]{scroll-margin-top:85px}
+body:has(.cinema-hero) .marketing-grid{gap:14px}
+body:has(.cinema-hero) .marketing-grid article{padding:25px 22px}
+body:has(.cinema-hero) .marketing-grid h3{font-size:21px;margin-top:18px}
+body:has(.cinema-hero) .tool-entry-grid article{padding:26px 22px}
+body:has(.cinema-hero) .tool-entry-grid h3{font-size:23px}
+body:has(.cinema-hero) .menu-button{min-width:48px;min-height:44px}
+body:has(.cinema-hero) .nav-links a{min-height:48px;display:flex;align-items:center}
+body:has(.cinema-hero) .nav-links .nav-cta{justify-content:center}
+.cinema-bottom{bottom:calc(92px + env(safe-area-inset-bottom))}
+.cinema-content{padding-bottom:calc(180px + env(safe-area-inset-bottom))}
+}
