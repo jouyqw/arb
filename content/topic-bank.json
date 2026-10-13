@@ -399,6 +399,66 @@
       "category": "업종별 마케팅",
       "keyword": "건설업체 마케팅",
       "angle": "시공 실적을 검색 자산으로 바꾸는 방법"
+    },
+    {
+      "slug": "daegu-hospital-marketing-guide",
+      "category": "업종별 마케팅",
+      "keyword": "대구병원마케팅 (420회/월)",
+      "angle": "대구에서 병원·의원이 온라인으로 환자를 받을 때 의료광고 사전심의를 통과하는 표현과 걸리는 표현을 가른다. 제목에 \"대구병원마케팅\" 을 쓴다."
+    },
+    {
+      "slug": "busan-hospital-marketing-guide",
+      "category": "업종별 마케팅",
+      "keyword": "부산병원마케팅 (350회/월)",
+      "angle": "부산 병원 마케팅에서 채널(네이버 플레이스·블로그·검색광고)을 어떤 순서로 붙이는지. 제목에 \"부산병원마케팅\" 을 쓴다."
+    },
+    {
+      "slug": "busan-online-marketing-start",
+      "category": "업종별 마케팅",
+      "keyword": "부산온라인마케팅 (360회/월) · 부산마케팅 (130회/월)",
+      "angle": "부산 지역 업체가 온라인 마케팅을 처음 맡길 때 보는 판단 기준. 제목에 \"부산온라인마케팅\" 또는 \"부산마케팅\" 을 쓴다."
+    },
+    {
+      "slug": "daegu-marketing-agency-criteria",
+      "category": "업종별 마케팅",
+      "keyword": "대구마케팅 (130회/월)",
+      "angle": "대구에서 마케팅 대행을 고를 때 계약서·보고서·소유권에서 확인할 것. 제목에 \"대구마케팅\" 을 쓴다."
+    },
+    {
+      "slug": "suwon-homepage-production-guide",
+      "category": "업체 선택·비용",
+      "keyword": "수원홈페이지제작 (220회/월)",
+      "angle": "수원·성남 업체가 홈페이지를 맡길 때 견적 항목과 유지보수 범위를 가른다. 제목에 \"수원홈페이지제작\" 을 쓴다."
+    },
+    {
+      "slug": "daejeon-homepage-production-guide",
+      "category": "업체 선택·비용",
+      "keyword": "대전홈페이지제작 (190회/월) · 대전병원마케팅 (110회/월)",
+      "angle": "대전 지역 홈페이지 제작 비용대별 포함 범위. 제목에 \"대전홈페이지제작\" 을 쓴다."
+    },
+    {
+      "slug": "gwangju-homepage-production-guide",
+      "category": "업체 선택·비용",
+      "keyword": "광주홈페이지제작 (160회/월) · 광주병원마케팅 (60회/월)",
+      "angle": "광주에서 홈페이지를 새로 만들지 고칠지 가르는 기준. 제목에 \"광주홈페이지제작\" 을 쓴다."
+    },
+    {
+      "slug": "cheongju-homepage-production-guide",
+      "category": "업체 선택·비용",
+      "keyword": "청주홈페이지제작 (120회/월) · 청주병원마케팅 (80회/월)",
+      "angle": "청주 지역 업체의 홈페이지 제작·운영 비용 구조. 제목에 \"청주홈페이지제작\" 을 쓴다."
+    },
+    {
+      "slug": "jeonju-marketing-agency-choice",
+      "category": "업종별 마케팅",
+      "keyword": "전주마케팅 (40회/월) · 전주광고대행사 (35회/월)",
+      "angle": "전주에서 광고대행사를 고를 때 지역 업체와 수도권 업체가 갈리는 지점. 서비스 페이지와 겹치지 않게 판단 기준만 다룬다. 제목에 \"전주마케팅\" 을 쓴다."
+    },
+    {
+      "slug": "seongnam-homepage-production-guide",
+      "category": "업체 선택·비용",
+      "keyword": "성남홈페이지제작 (205회/월)",
+      "angle": "성남·판교 업체가 홈페이지를 맡길 때 기술 요구사항을 정리하는 법. 제목에 \"성남홈페이지제작\" 을 쓴다."
     }
   ]
 }
