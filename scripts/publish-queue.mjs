@@ -47,33 +47,47 @@ if (!due.length) {
   process.exit(0);
 }
 
-// 밀린 날짜가 여러 개여도 하루 한 편만 낸다. 한꺼번에 쏟으면 대량생성 신호가 된다.
-due.sort((a, b) => a.at.localeCompare(b.at));
-const [{ f, item, at }] = due;
-
-if (known.has(item.slug)) {
-  console.warn(`건너뜀 ${item.slug} — 이미 발행된 글입니다. 큐에서만 제거합니다.`);
-  if (!DRY) fs.rmSync(path.join(QUEUE, f));
-  emit('published=0');
-  process.exit(0);
+// 같은 날짜로 예약된 글은 함께 낸다(2026-10-15 부터 평일 2편).
+// 다만 밀린 날짜까지 한꺼번에 쏟지는 않는다 — 대량생성 신호가 된다.
+// 그래서 "가장 오래된 하루치" 만 내고 나머지 날짜는 다음 실행으로 넘긴다.
+due.sort((a, b) => a.at.localeCompare(b.at) || a.f.localeCompare(b.f));
+const batch = due.filter((x) => x.at === due[0].at);
+if (due.length > batch.length) {
+  console.log(`발행일이 지난 글이 ${due.length}편입니다. 오늘은 ${due[0].at} 자 ${batch.length}편만 냅니다.`);
 }
 
-const { publishAt, ...rest } = item;
-const entry = {
-  ...rest,
-  datePublished: rest.datePublished || at,
-  dateModified: rest.dateModified || at,
-};
+const titles = [];
+for (const { f, item, at } of batch) {
+  if (known.has(item.slug)) {
+    console.warn(`건너뜀 ${item.slug} — 이미 발행된 글입니다. 큐에서만 제거합니다.`);
+    if (!DRY) fs.rmSync(path.join(QUEUE, f));
+    continue;
+  }
 
-if (DRY) {
-  console.log(`[dry] ${entry.slug} (${at}) — ${entry.title}`);
-  process.exit(0);
+  const { publishAt, ...rest } = item;
+  // 날짜는 예약일(at)을 따른다. rest 쪽을 우선하면 예약일을 옮겼을 때
+  // 새 글이 초안 쓴 날짜로 올라가, 검색엔진이 새 글로 보지 않는다
+  // (2026-10-13 전주개인회생에서 실제로 그렇게 됐다).
+  const entry = { ...rest, datePublished: at || rest.datePublished, dateModified: at || rest.dateModified };
+
+  if (DRY) {
+    console.log(`[dry] ${entry.slug} (${at}) — ${entry.title}`);
+    titles.push(entry.title);
+    continue;
+  }
+
+  columns.push(entry);
+  fs.rmSync(path.join(QUEUE, f));
+  titles.push(entry.title);
+  console.log(`발행 ${entry.slug} (${at})`);
 }
 
-columns.push(entry);
-fs.writeFileSync(COLUMNS, `${JSON.stringify(columns, null, 2)}\n`, 'utf8');
-fs.rmSync(path.join(QUEUE, f));
+if (!DRY && titles.length) {
+  fs.writeFileSync(COLUMNS, `${JSON.stringify(columns, null, 2)}
+`, 'utf8');
+}
 
-emit('published=1');
-emit(`summary=${entry.title.slice(0, 180)}`);
-console.log(`\n발행 ${entry.slug} (${at}), 큐 잔량 ${files.length - 1}편`);
+emit(`published=${titles.length}`);
+if (titles.length) emit(`summary=${titles.join(' / ').slice(0, 180)}`);
+console.log(`
+발행 ${titles.length}편, 큐 잔량 ${files.length - titles.length}편`);

@@ -111,6 +111,17 @@ function validate(topic, date, seenTitles, seenSlugs) {
 
   const n = (s) => [...String(s || '')].length;
   if (n(d.title) < 18 || n(d.title) > 48) e.push(`title 길이 ${n(d.title)}자 (18~48)`);
+
+  // 지역 키워드는 제목에 붙어 있어야 한다.
+  // "대구 병원 마케팅" 처럼 띄우면 "대구병원마케팅" 으로 검색한 사람에게 안 걸린다.
+  // 배정표의 keyword 에서 괄호(검색량 메모)를 떼고, 공백 없는 지역 키워드만 본다.
+  const want = String(topic.keyword || '')
+    .split('·')
+    .map((s) => s.replace(/\([^)]*\)/g, '').trim())
+    .filter((s) => s && !s.includes(' ') && /^(서울|부산|대구|인천|광주|대전|울산|세종|수원|성남|용인|창원|청주|천안|전주|제주|김해|포항|파주|고양|안산|안양|영천|경산|경주)/.test(s));
+  if (want.length && !want.some((w) => String(d.title).includes(w))) {
+    e.push(`제목에 지역 키워드가 없습니다 (${want.join(' / ')} 중 하나를 붙여 쓰기로)`);
+  }
   if (n(d.description) < 80 || n(d.description) > 160) e.push(`description 길이 ${n(d.description)}자 (80~160)`);
   if (!Array.isArray(d.keywords) || d.keywords.length < 3) e.push('keywords 3개 미만');
   if (!Array.isArray(d.body)) return [...e, `${topic.slug}: body 가 배열이 아닙니다`].map((x) => x);
@@ -190,6 +201,14 @@ AUTHORING.md 가 있으면 그것도 읽는다. 기존 글과 같은 톤으로 �
 - publishAt: "${date}"
 - 주요 키워드: ${topic.keyword}
 - 다룰 내용: ${topic.angle}
+
+## 제목 규칙 (검색 유입이 여기서 갈린다)
+- 위 "주요 키워드" 에 **지역명이 붙은 말**(예: 대구병원마케팅, 부산홈페이지제작)이 있으면
+  그 말을 **제목에 띄어쓰기 없이 그대로** 넣는다. "대구 병원 마케팅" 처럼 띄우면 다른 검색어가 된다.
+- 키워드 뒤에 사람이 실제로 궁금해하는 말을 붙인다.
+  예: "대구병원마케팅, 의료광고 심의에서 걸리는 표현부터 정리합니다"
+- 괄호 안의 검색량 숫자(420회/월 같은 것)는 제목·본문에 쓰지 않는다. 내부 메모다.
+- 키워드가 여러 개면 **검색량이 가장 큰 하나만** 제목에 쓰고, 나머지는 본문 heading 에 한 번씩 흩는다.
 
 ## JSON 형식
 {
