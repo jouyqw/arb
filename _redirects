@@ -153,3 +153,7 @@
 /column/scheduled-3-2026-07-24-법무법인-칼럼-마케팅 /column/law-firm-homepage-column-marketing/ 301
 /column/scheduled-3-2026-07-25-인테리어-포트폴리오-seo/ /column/interior-blog-seo-portfolio-strategy/ 301
 /column/scheduled-3-2026-07-25-인테리어-포트폴리오-seo /column/interior-blog-seo-portfolio-strategy/ 301
+
+# Legacy homepage uses current service descriptions
+/index-backup-old-design.html / 301
+/index-backup-old-design / 301

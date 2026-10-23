@@ -692,7 +692,7 @@ const serviceHubTemplate = () => {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>서비스 안내 | 홈페이지 제작·전문직 마케팅 | 아비컴퍼니</title>
-  <meta name="description" content="아비컴퍼니의 홈페이지 제작, 전문직 마케팅, 인테리어 마케팅, 네이버 플레이스 상위노출 등 서비스별 안내입니다." />
+  <meta name="description" content="아비컴퍼니의 홈페이지 제작, 전문직 마케팅, 인테리어 마케팅, 스마트플레이스 정보 관리 등 서비스별 안내입니다." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="${siteUrl}/service/" />
   <meta property="og:type" content="website" />
