@@ -49,11 +49,20 @@ if (!due.length) {
 
 // 같은 날짜로 예약된 글은 함께 낸다(2026-10-15 부터 평일 2편).
 // 다만 밀린 날짜까지 한꺼번에 쏟지는 않는다 — 대량생성 신호가 된다.
-// 그래서 "가장 오래된 하루치" 만 내고 나머지 날짜는 다음 실행으로 넘긴다.
+// 그래서 한 번에 최대 "이틀치" 까지만 낸다.
+//
+// 하루치만 내면 밀린 날을 영영 못 따라잡는다. 예약은 평일마다 2편씩 쌓이는데
+// 소화는 하루치씩이라, 주말이나 실행이 걸러진 날 생긴 공백이 그대로 남는다.
+// 2026-10-25 에 세 사이트가 똑같이 10/23 자 2편씩 밀려 있었다.
+// 이틀치까지 허용하면 밀린 분이 한 번에 한 칸씩 당겨지고, 한꺼번에 쏟지도 않는다.
 due.sort((a, b) => a.at.localeCompare(b.at) || a.f.localeCompare(b.f));
-const batch = due.filter((x) => x.at === due[0].at);
+const dueDays = [...new Set(due.map((x) => x.at))];
+const takeDays = dueDays.slice(0, 2);
+const batch = due.filter((x) => takeDays.includes(x.at));
 if (due.length > batch.length) {
-  console.log(`발행일이 지난 글이 ${due.length}편입니다. 오늘은 ${due[0].at} 자 ${batch.length}편만 냅니다.`);
+  console.log(`발행일이 지난 글이 ${due.length}편입니다. 오늘은 ${takeDays.join(', ')} 자 ${batch.length}편만 냅니다.`);
+} else if (takeDays.length > 1) {
+  console.log(`밀린 분을 따라잡습니다 — ${takeDays.join(', ')} 자 ${batch.length}편.`);
 }
 
 const titles = [];
