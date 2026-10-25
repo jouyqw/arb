@@ -361,7 +361,18 @@ if (CHECK) {
 
 const bank = JSON.parse(fs.readFileSync(BANK, 'utf8')).topics;
 const usedSlugs = new Set([...live.map((c) => c.slug), ...q.map((c) => c.slug)]);
-const free = bank.filter((t) => !usedSlugs.has(t.slug));
+// 배정표 순서대로 꺼내되, 검색량이 큰 주제를 앞으로 당긴다.
+//
+// keyword 앞머리 괄호 안에 적힌 월 검색수를 읽어 큰 것부터 쓴다.
+// 그냥 순서대로 쓰면 뒤에 추가한 주제가 몇 주 뒤에나 나간다.
+// 2026-10-25 에 치과·세무사·홈페이지제작 주제를 넣었는데, 그대로 두면
+// 앞에 쌓인 지역 주제 32편을 다 쓴 뒤에야 차례가 왔다.
+const volumeOf = (t) => {
+  const nums = [...String(t.keyword || '').matchAll(/([\d,]+)\s*회/g)].map((m) => Number(m[1].replace(/,/g, '')));
+  return nums.length ? Math.max(...nums) : 0;
+};
+const free = bank.filter((t) => !usedSlugs.has(t.slug))
+  .sort((a, b) => volumeOf(b) - volumeOf(a));
 
 const need = FORCE || (q.length < THRESHOLD ? Math.min(MAX_ADD, TARGET - q.length) : 0);
 if (need <= 0) { log(`큐 ${q.length}편 — 보충 불필요(기준 ${THRESHOLD})`); process.exit(0); }
