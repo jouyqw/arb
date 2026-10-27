@@ -1,3 +1,4 @@
+import { assertServiceCopy } from './check-service-copy.mjs';
 /**
  * 예약 칼럼 발행기 — node scripts/publish-queue.mjs [--dry]
  *
@@ -64,6 +65,9 @@ if (due.length > batch.length) {
 } else if (takeDays.length > 1) {
   console.log(`밀린 분을 따라잡습니다 — ${takeDays.join(', ')} 자 ${batch.length}편.`);
 }
+
+// Validate the entire batch before writing or removing any queued files.
+for (const { item } of batch) assertServiceCopy(item);
 
 const titles = [];
 for (const { f, item, at } of batch) {

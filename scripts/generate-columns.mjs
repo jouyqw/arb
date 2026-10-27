@@ -1,3 +1,4 @@
+import { assertServiceCopy } from './check-service-copy.mjs';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,6 +9,8 @@ const siteUrl = 'https://aubcompany.com';
 const contactPhone = '010-5501-0152';
 const columns = JSON.parse(await readFile(path.join(root, 'data', 'columns.json'), 'utf8'));
 const services = JSON.parse(await readFile(path.join(root, 'data', 'services.json'), 'utf8'));
+
+for (const item of [...columns, ...services]) assertServiceCopy(item);
 
 const columnBySlug = new Map(columns.map((post) => [post.slug, post]));
 const serviceBySlug = new Map(services.map((svc) => [svc.slug, svc]));
@@ -36,7 +39,7 @@ for (const svc of services) {
 // services.json 이 직접 지목하지 않은 칼럼도 허브로 이어야 클러스터가 닫힌다.
 // 분야별 기본 연결이 없으면 81편 중 절반이 서비스 페이지와 끊긴 채 남는다.
 const categoryServices = {
-  'SEO·상위노출': ['naver-place-ranking', 'homepage-production'],
+  '홈페이지 검색 진단': ['naver-place-ranking', 'homepage-production'],
   '전문직 마케팅': ['professional-marketing'],
   'AI 검색(GEO)': ['geo-ai-search-optimization', 'homepage-production'],
   '홈페이지 제작·전환': ['homepage-production'],
