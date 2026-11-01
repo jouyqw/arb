@@ -26,7 +26,7 @@ const sites = [
   ['울산 변호사', 'https://ulsanlawyer.kr/', 'https://ulsanlawyer.kr/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
   ['위드윤', 'https://with-yoon-law.com/', 'https://with-yoon-law.com/sitemap.xml', 'eee764b31941bb288655b49d490b1005'],
   ['바나나퀵', 'https://xn--910ba239f8iu.com/', 'https://xn--910ba239f8iu.com/sitemap.xml', '0b324317ebbf4fd2a3811d3c9a3c08d8'],
-  ['새출발양형자료분석센터', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/sitemap.php', '441594a838ae4c429d316502ae090d39'],
+  ['새출발양형자료분석센터', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/sitemap.xml', '441594a838ae4c429d316502ae090d39'],
   ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml', '418d6647da04482596f98cc63ba7da1c'],
   ['예율 법률칼럼', 'https://columns.yeyul-law.com/', 'https://columns.yeyul-law.com/sitemap.xml', '628977ad229e859371ca6577bf876d14'],
   ['법무법인 예율', 'https://yeyul-law.com/', 'https://yeyul-law.com/sitemap.xml'],
