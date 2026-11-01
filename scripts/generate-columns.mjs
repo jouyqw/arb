@@ -767,6 +767,7 @@ const latestColumnDate = columns.reduce((latest, post) => (
 ), '2026-06-01');
 
 const urls = [
+  { loc: `${siteUrl}/check/`, lastmod: '2026-10-30' },
   { loc: `${siteUrl}/`, lastmod: latestColumnDate },
   { loc: `${siteUrl}/service/`, lastmod: latestColumnDate },
   ...services.map((svc) => ({ loc: `${siteUrl}/service/${svc.slug}/`, lastmod: latestColumnDate })),

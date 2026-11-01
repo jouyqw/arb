@@ -1,44 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://aubcompany.com/check/</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
     <loc>https://aubcompany.com/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/service/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/service/jeonju-homepage-production/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/service/jeonju-marketing-agency/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/service/homepage-production/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/service/interior-marketing/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/service/professional-marketing/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/service/geo-ai-search-optimization/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/service/naver-place-ranking/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/column/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/column/small-business-blog-automation-system/</loc>
@@ -74,7 +78,7 @@
   </url>
   <url>
     <loc>https://aubcompany.com/column/naver-google-indexing-checklist/</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/column/interior-company-homepage-marketing/</loc>
@@ -286,7 +290,7 @@
   </url>
   <url>
     <loc>https://aubcompany.com/column/professional-marketing-video-content-guide/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/column/homepage-consultation-booking-flow/</loc>
@@ -418,7 +422,7 @@
   </url>
   <url>
     <loc>https://aubcompany.com/column/professional-profile-page/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/column/ad-vs-organic-balance/</loc>
@@ -486,7 +490,7 @@
   </url>
   <url>
     <loc>https://aubcompany.com/column/agency-switch-migration-checklist/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/column/homepage-production-preparation/</loc>
@@ -514,11 +518,11 @@
   </url>
   <url>
     <loc>https://aubcompany.com/column/dental-clinic-marketing-start/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/column/blog-marketing-that-works/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://aubcompany.com/column/jeonju-professional-marketing/</loc>
@@ -579,5 +583,9 @@
   <url>
     <loc>https://aubcompany.com/column/incheon-homepage-production/</loc>
     <lastmod>2026-10-27</lastmod>
+  </url>
+  <url>
+    <loc>https://aubcompany.com/column/medical-ad-checker-before-publishing/</loc>
+    <lastmod>2026-10-30</lastmod>
   </url>
 </urlset>

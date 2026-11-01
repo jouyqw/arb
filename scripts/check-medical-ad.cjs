@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const {scan,rules}=require('../assets/medical-check/check-rules.js');
+assert.equal(rules.length,28);
+assert.equal(scan('').length,0);
+assert.equal(scan('진료 시간은 평일 오전 9시부터 오후 6시까지입니다.').length,0);
+for(const text of ['100% 완치','부작용 없는 수술','타 병원보다 우수','100 ％ 완치','부작용이 없습니다'])assert.ok(scan(text).length,text);
+const sample='최고의 시술로 100% 완치를 약속드립니다. 부작용 없는 안전한 수술입니다.';
+const hits=scan(sample);
+assert.ok(hits.length>=6);
+for(const h of hits)assert.equal(sample.slice(h.start,h.end),h.text);
+assert.equal(scan('100% 100%').filter(x=>x.title==='확정 수치').length,2);
+assert.ok(scan('완치를 보장하지 않습니다.').length);
+assert.equal(scan('일반 진료 안내입니다. '.repeat(1500).slice(0,20000)).length,0);
+assert.equal(scan('<img src=x onerror=alert(1)>').length,0);
+console.log('PASS: 28 rules, sample, offsets, Unicode, repeated matches, negation, long input');

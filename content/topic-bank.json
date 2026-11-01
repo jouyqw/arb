@@ -507,6 +507,78 @@
       "category": "업체 선택·비용",
       "keyword": "워드프레스 (5,420회)",
       "angle": "워드프레스와 국내 빌더(카페24·아임웹 등)를 비교한다. 소유권, 이전 가능성, 유지보수 비용, 검색엔진 노출에서 실제로 갈리는 지점. 어떤 사업에 어느 쪽이 맞는지."
+    },
+    {
+      "slug": "dental-opening-ad-copy-review",
+      "category": "업종별 마케팅",
+      "keyword": "치과 개원 홍보, 의료광고 문구",
+      "angle": "개원 안내와 효과 홍보를 구분하고 매체별 최종 문구 검토표를 만든다. 법령 최신 확인."
+    },
+    {
+      "slug": "clinic-shortform-script-review",
+      "category": "업종별 마케팅",
+      "keyword": "병원 쇼츠, 의료광고 대본",
+      "angle": "대본·자막·썸네일을 한 세트로 검토하는 순서와 /check/의 한계를 설명한다."
+    },
+    {
+      "slug": "shortform-blog-consultation-path",
+      "category": "전문직 마케팅",
+      "keyword": "숏폼 블로그 연계, 상담 동선",
+      "angle": "영상의 한 질문을 블로그 상세 설명과 홈페이지 상담으로 연결하는 URL·측정 설계."
+    },
+    {
+      "slug": "local-video-business-profile",
+      "category": "업종별 마케팅",
+      "keyword": "당근 영상 홍보, 비즈프로필",
+      "angle": "지역 업체의 길 안내·시설·업무 과정 영상 기획. 플랫폼 현재 기능은 공식 문서 확인."
+    },
+    {
+      "slug": "multi-platform-shortform-checklist",
+      "category": "전문직 마케팅",
+      "keyword": "쇼츠 릴스 틱톡, 영상 재활용",
+      "angle": "채널별 제목·자막·음원 권리·광고 표시를 점검하는 표. 규격과 정책 최신 확인."
+    },
+    {
+      "slug": "opening-brand-search-audit",
+      "category": "홈페이지 검색 진단",
+      "keyword": "개업 상호 검색, 병원 이름 검색",
+      "angle": "동일 상호 혼동·업체 정보 불일치·색인 누락을 구별하는 점검 순서."
+    },
+    {
+      "slug": "dental-explainer-video-plan",
+      "category": "업종별 마케팅",
+      "keyword": "치과 릴스, 설명형 영상",
+      "angle": "치료 결과 사례 대신 검사와 진료 절차를 설명하는 스토리보드."
+    },
+    {
+      "slug": "tax-shortform-to-column",
+      "category": "업종별 마케팅",
+      "keyword": "세무사 쇼츠, 상속 증여 콘텐츠",
+      "angle": "영상에서 범위를 정하고 예외와 기준일은 본문에서 설명하는 연결 구조. 세법 최신 확인."
+    },
+    {
+      "slug": "clinic-opening-content-calendar",
+      "category": "업종별 마케팅",
+      "keyword": "병원 개원 마케팅, 콘텐츠 일정",
+      "angle": "개원 전 위치·진료시간·진료 범위 콘텐츠를 준비하고 변경 정보를 관리하는 일정."
+    },
+    {
+      "slug": "blog-agency-handover-assets",
+      "category": "업체 선택·비용",
+      "keyword": "블로그 대행 해지, 계정 소유권",
+      "angle": "홈페이지 이전 글과 구분해 블로그 관리자 권한·원고·사진 사용권·발행 기록 인계에 집중."
+    },
+    {
+      "slug": "professional-opening-first-post",
+      "category": "전문직 마케팅",
+      "keyword": "개업 인사 블로그, 전문직 첫 글",
+      "angle": "실제 제공 업무와 대상 고객·방문 절차 중심 첫 글 구성. 허위 경력·성과 배제."
+    },
+    {
+      "slug": "clinic-homepage-review-free-trust",
+      "category": "업종별 마케팅",
+      "keyword": "병원 홈페이지 신뢰, 후기 없는 콘텐츠",
+      "angle": "전문가 약력 글과 구분하여 시설·비용 안내·진료 절차·주의사항 문서의 증빙 관리."
     }
   ]
 }
