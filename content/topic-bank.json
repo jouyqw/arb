@@ -579,6 +579,114 @@
       "category": "업종별 마케팅",
       "keyword": "병원 홈페이지 신뢰, 후기 없는 콘텐츠",
       "angle": "전문가 약력 글과 구분하여 시설·비용 안내·진료 절차·주의사항 문서의 증빙 관리."
+    },
+    {
+      "slug": "dental-marketing-jeonju",
+      "category": "업종별 마케팅",
+      "keyword": "전주치과마케팅 (치과마케팅 6,030회)",
+      "angle": "치과마케팅에서 전주 같은 중소 도시가 서울과 다른 점 — 상권이 좁아 입소문과 검색이 겹친다"
+    },
+    {
+      "slug": "dental-marketing-iksan-gunsan",
+      "category": "업종별 마케팅",
+      "keyword": "익산치과마케팅, 군산치과마케팅 (치과마케팅 6,030회)",
+      "angle": "두 시는 생활권이 갈려 같은 광고를 돌리면 한쪽이 샌다. 시 단위로 노출 범위를 끊는 방법"
+    },
+    {
+      "slug": "dental-ad-review-rules",
+      "category": "업종별 마케팅",
+      "keyword": "치과마케팅 의료광고 심의 (치과마케팅 6,030회 · 병원광고 940회)",
+      "angle": "전후 사진, 가격 표기, 환자 후기 — 심의에서 반복해 지적되는 세 가지. 고쳐 쓴 문장 예시"
+    },
+    {
+      "slug": "dental-homepage-production",
+      "category": "홈페이지 제작·전환",
+      "keyword": "치과홈페이지제작 (120회 · 병원홈페이지제작 1,910회)",
+      "angle": "진료과목 페이지를 몇 장으로 나누느냐가 노출을 가른다. 한 장에 몰면 어느 말로도 안 걸린다"
+    },
+    {
+      "slug": "dental-opening-marketing-order",
+      "category": "업종별 마케팅",
+      "keyword": "치과개원 (170회 · 병원개원 1,790회)",
+      "angle": "개원 전·직후·석 달 뒤에 할 일이 다르다. 한꺼번에 다 하면 돈만 나간다"
+    },
+    {
+      "slug": "dental-blog-vs-place",
+      "category": "업종별 마케팅",
+      "keyword": "치과마케팅 (6,030회 · 병원블로그마케팅 260회)",
+      "angle": "동네 치과는 플레이스가 먼저다. 블로그가 먼저 효과를 내는 경우와 아닌 경우"
+    },
+    {
+      "slug": "dental-marketing-gimje-jeongeup",
+      "category": "업종별 마케팅",
+      "keyword": "김제치과마케팅, 정읍치과마케팅 (치과마케팅 6,030회)",
+      "angle": "검색량이 월 10회도 안 되는 지역에서 노출을 만드는 방법 — 시군 이름이 아니라 읍·동 이름으로"
+    },
+    {
+      "slug": "clinic-marketing-agency-choose",
+      "category": "업체 선택·비용",
+      "keyword": "병원마케팅대행사 계약서에서 볼 항목 (병원마케팅대행사 440회 · 병원마케팅 6,920회)",
+      "angle": "대행 계약서에서 분쟁이 나는 네 항목 — 기간과 자동 갱신, 산출물 소유권(홈페이지·계정·원고), 보고 주기, 중도 해지. 다른 업체를 평가하거나 광고 효과를 단정하지 않는다"
+    },
+    {
+      "slug": "dermatology-oriental-clinic-marketing",
+      "category": "업종별 마케팅",
+      "keyword": "피부과마케팅 (1,920회 · 한의원마케팅 180회)",
+      "angle": "같은 심의를 받는데 환자가 찾는 말이 다르다. 과목별로 갈리는 지점"
+    },
+    {
+      "slug": "animal-hospital-marketing",
+      "category": "업종별 마케팅",
+      "keyword": "동물병원마케팅 (290회)",
+      "angle": "의료광고 심의를 안 받아 쓸 수 있는 표현이 넓은데, 넓은 만큼 표시광고법을 따로 봐야 한다"
+    },
+    {
+      "slug": "tax-free-consult-inflow",
+      "category": "전문직 마케팅",
+      "keyword": "무료세무상담 (1,890회 · 세무상담 1,680회)",
+      "angle": "세무사마케팅은 월 100회뿐인데 무료세무상담은 1,890회다. 사장님이 찾는 말로 페이지를 짜야 한다"
+    },
+    {
+      "slug": "tax-fee-page-write",
+      "category": "업체 선택·비용",
+      "keyword": "세무사상담비용 (1,520회 · 세무사비용 450회 · 세무기장료 380회)",
+      "angle": "금액을 안 적으면 안 걸리고, 잘못 적으면 문의가 엉킨다. 범위로 적는 방식"
+    },
+    {
+      "slug": "tax-office-jeonju-iksan",
+      "category": "전문직 마케팅",
+      "keyword": "전주세무사, 익산세무사 (세무사사무소 620회 · 세무사무소 530회)",
+      "angle": "지역+세무사는 사무소를 찾는 검색이다. 플레이스와 홈페이지가 같이 걸려야 한다"
+    },
+    {
+      "slug": "tax-accountant-blog-what",
+      "category": "전문직 마케팅",
+      "keyword": "세무사블로그 (190회 · 세무상담 1,680회)",
+      "angle": "세법 해설은 안 읽힌다. 실제로 문의로 이어진 글의 공통점"
+    },
+    {
+      "slug": "tax-accountant-sales-without-ads",
+      "category": "전문직 마케팅",
+      "keyword": "세무사영업 (110회 · 세무사블로그 190회)",
+      "angle": "소개가 끊길 때 홈페이지가 하는 몫. 돈을 쓰기 전에 되는 것부터"
+    },
+    {
+      "slug": "tax-startup-region-small",
+      "category": "전문직 마케팅",
+      "keyword": "김제세무사, 정읍세무사 (세무사사무소 620회)",
+      "angle": "경쟁이 거의 없어 한 페이지로도 자리가 잡힌다. 대신 읍·면 이름까지 적어야 걸린다"
+    },
+    {
+      "slug": "tax-vs-bookkeeping-service",
+      "category": "전문직 마케팅",
+      "keyword": "세무기장료 (380회 · 세무회계 2,800회)",
+      "angle": "용어를 그대로 쓰면 검색은 걸리는데 전화가 안 온다. 풀어 쓰는 선"
+    },
+    {
+      "slug": "professional-site-common-mistake",
+      "category": "홈페이지 제작·전환",
+      "keyword": "병원홈페이지제작 (1,910회 · 홈페이지만들기 2,610회)",
+      "angle": "소개 페이지에 공들이고 정작 찾는 말이 들어간 페이지가 없다. 전문직 22곳에서 반복해 본 것"
     }
   ]
 }
