@@ -6,6 +6,8 @@
   let sampleIndex=0, report='', timer;
   function render() {
     const value=input.value, matches=AubMedicalCheck.scan(value);
+    q('#results').classList.toggle('is-empty', !value.trim());
+    q('#copy-state').textContent='';
     q('#count').textContent=`${value.length.toLocaleString()} / 20,000자`;
     const urgent=matches.filter(m=>m.level==='우선 검토').length;
     q('#urgent').textContent=urgent; q('#caution').textContent=matches.length-urgent;
