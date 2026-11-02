@@ -5,3 +5,6 @@ reports/
 # 칼럼 자동 보충의 로컬 상태. 추적하면 ff-only 병합을 막는다.
 refill.log
 .refill.lock
+
+# 손으로 돌려 본 임시 점검 스크립트
+tmp_*.ps1

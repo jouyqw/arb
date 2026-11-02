@@ -141,9 +141,16 @@ function validate(topic, date, seenTitles, seenSlugs) {
   // 지역 키워드는 제목에 붙어 있어야 한다.
   // "대구 병원 마케팅" 처럼 띄우면 "대구병원마케팅" 으로 검색한 사람에게 안 걸린다.
   // 배정표의 keyword 에서 괄호(검색량 메모)를 떼고, 공백 없는 지역 키워드만 본다.
+  //
+  // 2026-11-02 순서를 바꿨다. 전에는 '·' 로 먼저 자른 다음 괄호를 뗐는데,
+  // 괄호 안에 '·' 가 들어간 메모를 쓰면 괄호 짝이 쪼개져 떼지지 않는다.
+  // "전주치과마케팅 (치과마케팅 6,030회 · 전주치과)" 가 '전주치과)' 를 요구하게 되어
+  // 제목에 절대 들어갈 수 없는 말을 찾느라 세 번 다 반려됐다.
+  // 괄호를 먼저 떼면 메모 안에 무엇이 들어가도 안전하다.
   const want = String(topic.keyword || '')
-    .split('·')
-    .map((s) => s.replace(/\([^)]*\)/g, '').trim())
+    .replace(/\([^)]*\)/g, '')
+    .split(/[·,]/)
+    .map((s) => s.trim())
     .filter((s) => s && !s.includes(' ') && REGION_RE.test(s));
   if (want.length && !want.some((w) => String(d.title).includes(w))) {
     e.push(`제목에 지역 키워드가 없습니다 (${want.join(' / ')} 중 하나를 붙여 쓰기로)`);
