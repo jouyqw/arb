@@ -26,11 +26,19 @@ const sites = [
   ['울산 변호사', 'https://ulsanlawyer.kr/', 'https://ulsanlawyer.kr/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
   ['위드윤', 'https://with-yoon-law.com/', 'https://with-yoon-law.com/sitemap.xml', 'eee764b31941bb288655b49d490b1005'],
   ['바나나퀵', 'https://xn--910ba239f8iu.com/', 'https://xn--910ba239f8iu.com/sitemap.xml', '0b324317ebbf4fd2a3811d3c9a3c08d8'],
-  ['새출발양형자료분석센터', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/sitemap.xml', '441594a838ae4c429d316502ae090d39'],
+  ['새출발양형자료분석센터', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/', 'https://xn--9r2bp4d54aq9fim5fl21a29d8xr6viw3n.com/sitemap.xml', '441594a838ae4c429d316502ae090d39', undefined, false, [
+    '/sentencing-materials/',
+    '/education/',
+    '/reflection-letter-guide/',
+    '/petition-writing-guide/',
+    '/strict-punishment-petition/',
+  ]],
   ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml', '418d6647da04482596f98cc63ba7da1c'],
   ['예율 법률칼럼', 'https://columns.yeyul-law.com/', 'https://columns.yeyul-law.com/sitemap.xml', '628977ad229e859371ca6577bf876d14'],
   ['법무법인 예율', 'https://yeyul-law.com/', 'https://yeyul-law.com/sitemap.xml'],
-].map(([name, siteUrl, sitemapUrl, indexNowKey, googleProperty, skipScan]) => ({ name, siteUrl, sitemapUrl, indexNowKey, googleProperty, skipScan }));
+].map(([name, siteUrl, sitemapUrl, indexNowKey, googleProperty, skipScan, priorityPaths = []]) => ({
+  name, siteUrl, sitemapUrl, indexNowKey, googleProperty, skipScan, priorityPaths,
+}));
 
 const recentDays = Number(process.env.RECENT_DAYS || 7);
 const forceAll = process.env.FORCE_ALL === '1';
@@ -186,13 +194,18 @@ for (const site of sites) {
   }
   try {
     const entries = [...new Map((await readSitemap(site.sitemapUrl)).map((entry) => [entry.loc, entry])).values()];
-    const recent = selectRecent(entries).filter((entry) => new URL(entry.loc).hostname === new URL(site.siteUrl).hostname);
+    const sameHost = (entry) => new URL(entry.loc).hostname === new URL(site.siteUrl).hostname;
+    const recent = selectRecent(entries).filter(sameHost);
+    const priorityUrls = new Set(site.priorityPaths.map((path) => new URL(path, site.siteUrl).href));
+    const priority = entries.filter((entry) => sameHost(entry) && priorityUrls.has(entry.loc));
+    const submissionEntries = [...new Map([...recent, ...priority].map((entry) => [entry.loc, entry])).values()];
     item.urlCount = entries.length;
     item.recentCount = recent.length;
+    item.priorityCount = priority.length;
     item.sitemapStatus = 'ok';
     item.indexNowKeyVerified = await keyIsLive(site);
     item.indexNow = item.indexNowKeyVerified
-      ? await submitIndexNow(site, recent.map((entry) => entry.loc))
+      ? await submitIndexNow(site, submissionEntries.map((entry) => entry.loc))
       : [{ name: 'IndexNow', status: site.indexNowKey ? 'key-not-live' : 'key-not-configured', ok: false }];
     item.google = await submitGoogle(site, google);
     console.log(`${site.name}: URL ${entries.length} / 최근 ${recent.length} / Google ${item.google.status} / IndexNow ${item.indexNow.map((r) => r.status).join(',')}`);
