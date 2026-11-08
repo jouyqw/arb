@@ -198,6 +198,10 @@ function validate(topic, date, seenTitles, seenSlugs) {
   if (firstPerson < 6) e.push(`1인칭 서술이 ${firstPerson}곳뿐입니다 (최소 6곳) — 대표가 쓴 글의 톤이 아닙니다`);
   if (d.body[0]?.type !== 'summary') e.push('첫 블록이 summary 가 아닙니다');
 
+  // 아래 검사들이 본문 평문을 쓴다. 선언을 여기로 올려 뒀다 —
+  // 전환 검사를 넣을 때 선언보다 위에서 참조해 ReferenceError 로 전부 반려됐다.
+  const text = plainText(d.body);
+
   /* 전환 검사 — 2026-11-08 추가.
    *
    * 규칙을 프롬프트에만 적어 두면 지켜지는 글과 안 지켜지는 글이 섞인다.
@@ -222,7 +226,6 @@ function validate(topic, date, seenTitles, seenSlugs) {
   const bangs = (text.match(/!/g) || []).length;
   if (bangs > 1) e.push(`느낌표가 ${bangs}개입니다 (0~1개) — 영업 글처럼 읽힙니다`);
 
-  const text = plainText(d.body);
   if (n(text) < 3000) e.push(`본문이 짧습니다 (${n(text)}자, 최소 3000)`);
   if (n(text) > 8000) e.push(`본문이 너무 깁니다 (${n(text)}자)`);
   for (const w of BANNED) if (text.includes(w) || String(d.title).includes(w) || String(d.description).includes(w)) e.push(`금지 표현: ${w}`);
