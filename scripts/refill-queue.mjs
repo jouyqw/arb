@@ -404,8 +404,33 @@ const volumeOf = (t) => {
   const nums = [...String(t.keyword || '').matchAll(/([\d,]+)\s*회/g)].map((m) => Number(m[1].replace(/,/g, '')));
   return nums.length ? Math.max(...nums) : 0;
 };
-const free = bank.filter((t) => !usedSlugs.has(t.slug))
-  .sort((a, b) => volumeOf(b) - volumeOf(a));
+/**
+ * 2026-11-08 slug 만 보고 걸러서는 안 된다.
+ *
+ * 배정표에 "창원홈페이지제작 (월 1,450회)" 가 slug 가 다른 채로 두 벌 남아 있었다.
+ * 이미 그 키워드로 쓴 글이 있는데도 "안 쓴 주제" 로 잡혀, 다음 보충이 같은 말로
+ * 한 편을 더 쓸 참이었다. 그러면 두 글이 서로 순위를 깎는다 — 오늘 울산에서
+ * '사무소 찾기' 일곱 개가 홈 하나에 묶여 있던 것과 같은 계열의 손해다.
+ *
+ * 그래서 발행·예약된 제목에 그 지역 키워드가 이미 들어가 있으면 건너뛴다.
+ * 지역이 붙지 않은 일반 주제는 이 검사를 받지 않는다(여러 각도로 쓸 수 있다).
+ */
+const titlesSoFar = [...live.map((c) => c.title || ''), ...q.map((c) => c.title || '')].join('\n');
+const regionWords = (t) => String(t.keyword || '')
+  .replace(/\([^)]*\)/g, '')
+  .split(/[·,]/)
+  .map((s) => s.trim())
+  .filter((s) => s && !s.includes(' ') && REGION_RE.test(s));
+
+const dupes = [];
+const free = bank.filter((t) => {
+  if (usedSlugs.has(t.slug)) return false;
+  const words = regionWords(t);
+  if (words.length && words.every((w) => titlesSoFar.includes(w))) { dupes.push(words.join('/')); return false; }
+  return true;
+}).sort((a, b) => volumeOf(b) - volumeOf(a));
+
+if (dupes.length) log(`이미 쓴 지역 키워드라 건너뜀 ${dupes.length}편: ${dupes.slice(0, 8).join(' · ')}`);
 
 const need = FORCE || (q.length < THRESHOLD ? Math.min(MAX_ADD, TARGET - q.length) : 0);
 if (need <= 0) { log(`큐 ${q.length}편 — 보충 불필요(기준 ${THRESHOLD})`); process.exit(0); }
