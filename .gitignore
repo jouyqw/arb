@@ -8,3 +8,7 @@ refill.log
 
 # 손으로 돌려 본 임시 점검 스크립트
 tmp_*.ps1
+
+# 보완 작업용 임시 산출물
+content/retrofit/
+notindexed.txt
