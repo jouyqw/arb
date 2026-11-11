@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -167,12 +175,12 @@
             <tr><th>비교 항목</th><th>홈페이지 정비를 먼저</th><th>칼럼 발행을 먼저</th></tr>
           </thead>
           <tbody>
-            <tr><td>이런 상황일 때</td><td>방문자는 있는데 문의가 거의 없을 때</td><td>홈페이지는 있는데 방문자 자체가 적을 때</td></tr>
-            <tr><td>해결하는 문제</td><td>들어온 사람을 문의로 바꾸지 못하는 문제</td><td>검색에서 발견되지 않는 문제</td></tr>
-            <tr><td>초기 작업 기간</td><td>구조 점검과 페이지 정비에 2주~2개월</td><td>주 1편 기준 초기 5~10편에 1~3개월</td></tr>
-            <tr><td>효과가 보이는 시점</td><td>정비 직후~1개월</td><td>보통 3~6개월</td></tr>
-            <tr><td>초기 비용 성격</td><td>제작·개선비로 한 번에 발생</td><td>매월 작성 시간 또는 외주비로 분산</td></tr>
-            <tr><td>이 방법만으로는 부족한 점</td><td>찾아오는 사람 수는 늘지 않음</td><td>유입이 늘어도 문의로 바뀌지 않을 수 있음</td></tr>
+            <tr><td data-label="비교 항목">이런 상황일 때</td><td data-label="홈페이지 정비를 먼저">방문자는 있는데 문의가 거의 없을 때</td><td data-label="칼럼 발행을 먼저">홈페이지는 있는데 방문자 자체가 적을 때</td></tr>
+            <tr><td data-label="비교 항목">해결하는 문제</td><td data-label="홈페이지 정비를 먼저">들어온 사람을 문의로 바꾸지 못하는 문제</td><td data-label="칼럼 발행을 먼저">검색에서 발견되지 않는 문제</td></tr>
+            <tr><td data-label="비교 항목">초기 작업 기간</td><td data-label="홈페이지 정비를 먼저">구조 점검과 페이지 정비에 2주~2개월</td><td data-label="칼럼 발행을 먼저">주 1편 기준 초기 5~10편에 1~3개월</td></tr>
+            <tr><td data-label="비교 항목">효과가 보이는 시점</td><td data-label="홈페이지 정비를 먼저">정비 직후~1개월</td><td data-label="칼럼 발행을 먼저">보통 3~6개월</td></tr>
+            <tr><td data-label="비교 항목">초기 비용 성격</td><td data-label="홈페이지 정비를 먼저">제작·개선비로 한 번에 발생</td><td data-label="칼럼 발행을 먼저">매월 작성 시간 또는 외주비로 분산</td></tr>
+            <tr><td data-label="비교 항목">이 방법만으로는 부족한 점</td><td data-label="홈페이지 정비를 먼저">찾아오는 사람 수는 늘지 않음</td><td data-label="칼럼 발행을 먼저">유입이 늘어도 문의로 바뀌지 않을 수 있음</td></tr>
           </tbody>
         </table>
       </div>
@@ -191,16 +199,16 @@
       <p>받아 줄 홈페이지와 칼럼이 자리를 잡기 전이라면, 광고비 상당 부분이 그냥 흘러가기 때문입니다.</p>
       <p>실제 운영해 보면, 홈페이지 전환 구조와 기본 칼럼이 갖춰진 뒤 광고를 얹었을 때 같은 예산에서 문의가 눈에 띄게 늘어납니다.</p>
       <p>그래서 초반에는 신뢰 구조와 콘텐츠에 무게를 두고, 그 위에 광고를 조금씩 더해 가는 순서가 안정적입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>단계</th><th>지금 상태</th><th>예산 배분(콘텐츠 : 광고)</th><th>이 단계에서 확인할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>0~3개월</td><td>전문 분야 페이지와 칼럼이 아직 없음</td><td>9 : 1 또는 10 : 0</td><td>페이지 3개·칼럼 5~10편 발행 여부, 색인 여부</td></tr>
-            <tr><td>3~6개월</td><td>칼럼이 쌓이고 검색 유입이 생김</td><td>7 : 3</td><td>검색 유입 방문자 수, 첫 문의가 들어온 경로</td></tr>
-            <tr><td>6~12개월</td><td>문의가 매달 꾸준히 들어옴</td><td>5 : 5</td><td>문의당 비용, 문의에서 상담으로 넘어간 비율</td></tr>
-            <tr><td>12개월 이후</td><td>수임까지 이어지는 경로가 파악됨</td><td>4 : 6 까지 조정 가능</td><td>분야별 수임 건수, 재계약·소개 비중</td></tr>
+            <tr><td data-label="단계">0~3개월</td><td data-label="지금 상태">전문 분야 페이지와 칼럼이 아직 없음</td><td data-label="예산 배분(콘텐츠 : 광고)">9 : 1 또는 10 : 0</td><td data-label="이 단계에서 확인할 것">페이지 3개·칼럼 5~10편 발행 여부, 색인 여부</td></tr>
+            <tr><td data-label="단계">3~6개월</td><td data-label="지금 상태">칼럼이 쌓이고 검색 유입이 생김</td><td data-label="예산 배분(콘텐츠 : 광고)">7 : 3</td><td data-label="이 단계에서 확인할 것">검색 유입 방문자 수, 첫 문의가 들어온 경로</td></tr>
+            <tr><td data-label="단계">6~12개월</td><td data-label="지금 상태">문의가 매달 꾸준히 들어옴</td><td data-label="예산 배분(콘텐츠 : 광고)">5 : 5</td><td data-label="이 단계에서 확인할 것">문의당 비용, 문의에서 상담으로 넘어간 비율</td></tr>
+            <tr><td data-label="단계">12개월 이후</td><td data-label="지금 상태">수임까지 이어지는 경로가 파악됨</td><td data-label="예산 배분(콘텐츠 : 광고)">4 : 6 까지 조정 가능</td><td data-label="이 단계에서 확인할 것">분야별 수임 건수, 재계약·소개 비중</td></tr>
           </tbody>
         </table>
       </div>
@@ -219,10 +227,10 @@
             <tr><th>시점</th><th>확인할 숫자</th><th>이 시점에 판단하지 말아야 할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>1개월</td><td>발행 글 수, 검색 색인 여부, 플레이스 정보 일치 여부</td><td>순위와 문의 건수 (아직 판단 불가)</td></tr>
-            <tr><td>3개월</td><td>검색 유입 방문자 수, 첫 문의가 들어온 경로</td><td>매출 기여도</td></tr>
-            <tr><td>6개월</td><td>월 문의 건수, 문의에서 상담으로 넘어간 비율</td><td>채널 전면 교체</td></tr>
-            <tr><td>12개월</td><td>분야별 수임 건수, 문의당 비용, 재계약 비중</td><td>—</td></tr>
+            <tr><td data-label="시점">1개월</td><td data-label="확인할 숫자">발행 글 수, 검색 색인 여부, 플레이스 정보 일치 여부</td><td data-label="이 시점에 판단하지 말아야 할 것">순위와 문의 건수 (아직 판단 불가)</td></tr>
+            <tr><td data-label="시점">3개월</td><td data-label="확인할 숫자">검색 유입 방문자 수, 첫 문의가 들어온 경로</td><td data-label="이 시점에 판단하지 말아야 할 것">매출 기여도</td></tr>
+            <tr><td data-label="시점">6개월</td><td data-label="확인할 숫자">월 문의 건수, 문의에서 상담으로 넘어간 비율</td><td data-label="이 시점에 판단하지 말아야 할 것">채널 전면 교체</td></tr>
+            <tr><td data-label="시점">12개월</td><td data-label="확인할 숫자">분야별 수임 건수, 문의당 비용, 재계약 비중</td><td data-label="이 시점에 판단하지 말아야 할 것">—</td></tr>
           </tbody>
         </table>
       </div>

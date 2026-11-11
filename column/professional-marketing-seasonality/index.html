@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -129,16 +137,16 @@
       <p>확인할 것은 문의 건수만이 아닙니다. 검색 노출수와 클릭수도 함께 봐야 합니다. 문의는 적은데 노출이 늘고 있다면 수요가 형성되는 중이라는 신호이고, 노출은 그대로인데 문의만 줄었다면 계절성이 아니라 다른 원인이 있습니다.</p>
       <p>제가 쓰는 기준은 이렇습니다. 같은 달이 2년 연속으로 연평균 대비 30% 이상 높거나 낮게 나오면 계절성으로 보고 계획에 반영합니다.</p>
       <p>한 해만 튀었다면 그 달에 무슨 일이 있었는지부터 확인합니다. 광고 예산 변동, 제도 변경, 대형 뉴스, 홈페이지 개편 같은 사건이 겹쳐 있으면 계절성이 아닙니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>신호</th><th>노출</th><th>문의</th><th>해석</th></tr>
           </thead>
           <tbody>
-            <tr><td>수요 형성기</td><td>증가</td><td>정체</td><td>곧 문의가 따라올 가능성</td></tr>
-            <tr><td>성수기</td><td>증가</td><td>증가</td><td>광고 비중을 늘릴 시기</td></tr>
-            <tr><td>비수기</td><td>감소</td><td>감소</td><td>콘텐츠·정비에 쓸 시기</td></tr>
-            <tr><td>문제 신호</td><td>유지</td><td>감소</td><td>계절성 아님. 동선·경쟁 점검</td></tr>
+            <tr><td data-label="신호">수요 형성기</td><td data-label="노출">증가</td><td data-label="문의">정체</td><td data-label="해석">곧 문의가 따라올 가능성</td></tr>
+            <tr><td data-label="신호">성수기</td><td data-label="노출">증가</td><td data-label="문의">증가</td><td data-label="해석">광고 비중을 늘릴 시기</td></tr>
+            <tr><td data-label="신호">비수기</td><td data-label="노출">감소</td><td data-label="문의">감소</td><td data-label="해석">콘텐츠·정비에 쓸 시기</td></tr>
+            <tr><td data-label="신호">문제 신호</td><td data-label="노출">유지</td><td data-label="문의">감소</td><td data-label="해석">계절성 아님. 동선·경쟁 점검</td></tr>
           </tbody>
         </table>
       </div>
@@ -151,17 +159,17 @@
       <p>전문직은 대부분 법·제도 일정에 문의가 붙습니다. 신고 기한, 정산 시기, 계약이 몰리는 철이 곧 성수기입니다.</p>
       <p>그래서 다른 업종의 유행을 참고할 필요 없이, 우리 일이 걸려 있는 공식 일정표를 먼저 펼쳐 보는 것이 빠릅니다.</p>
       <p>아래는 일정이 비교적 분명한 분야의 예시입니다. 지역·고객층·사무소 규모에 따라 실제 편차는 달라지므로, 반드시 본인 데이터로 확인하셔야 합니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>분야 예시</th><th>문의가 몰리는 시기</th><th>콘텐츠 착수 권장</th><th>비수기 활용</th></tr>
           </thead>
           <tbody>
-            <tr><td>세무 (종합소득세)</td><td>5월 전후</td><td>2~3월</td><td>6~8월 기존 글 정비</td></tr>
-            <tr><td>세무 (부가세)</td><td>1월·7월 전후</td><td>11월·5월</td><td>2~4월 신규 주제 확장</td></tr>
-            <tr><td>노무 (연말정산·임금)</td><td>12~1월</td><td>9~10월</td><td>3~5월 상담 동선 손질</td></tr>
-            <tr><td>부동산·중개</td><td>봄·가을 이사철</td><td>1~2월·7~8월</td><td>6월·12월 매물 페이지 개편</td></tr>
-            <tr><td>학원·교습</td><td>2~3월·12~1월</td><td>11~12월·9~10월</td><td>5~7월 후기·성과 페이지 보강</td></tr>
+            <tr><td data-label="분야 예시">세무 (종합소득세)</td><td data-label="문의가 몰리는 시기">5월 전후</td><td data-label="콘텐츠 착수 권장">2~3월</td><td data-label="비수기 활용">6~8월 기존 글 정비</td></tr>
+            <tr><td data-label="분야 예시">세무 (부가세)</td><td data-label="문의가 몰리는 시기">1월·7월 전후</td><td data-label="콘텐츠 착수 권장">11월·5월</td><td data-label="비수기 활용">2~4월 신규 주제 확장</td></tr>
+            <tr><td data-label="분야 예시">노무 (연말정산·임금)</td><td data-label="문의가 몰리는 시기">12~1월</td><td data-label="콘텐츠 착수 권장">9~10월</td><td data-label="비수기 활용">3~5월 상담 동선 손질</td></tr>
+            <tr><td data-label="분야 예시">부동산·중개</td><td data-label="문의가 몰리는 시기">봄·가을 이사철</td><td data-label="콘텐츠 착수 권장">1~2월·7~8월</td><td data-label="비수기 활용">6월·12월 매물 페이지 개편</td></tr>
+            <tr><td data-label="분야 예시">학원·교습</td><td data-label="문의가 몰리는 시기">2~3월·12~1월</td><td data-label="콘텐츠 착수 권장">11~12월·9~10월</td><td data-label="비수기 활용">5~7월 후기·성과 페이지 보강</td></tr>
           </tbody>
         </table>
       </div>
@@ -194,13 +202,13 @@
             <tr><th>비교 항목</th><th>광고</th><th>콘텐츠</th></tr>
           </thead>
           <tbody>
-            <tr><td>효과가 나오는 시점</td><td>집행 당일~수일</td><td>보통 8~16주 뒤</td></tr>
-            <tr><td>중단했을 때</td><td>노출이 즉시 끊김</td><td>기존 글은 남지만 순위가 서서히 밀림</td></tr>
-            <tr><td>성수기 운용</td><td>예산을 올리는 쪽</td><td>신규 발행보다 기존 글 점검</td></tr>
-            <tr><td>비수기 운용</td><td>최소만 유지하거나 축소</td><td>발행량을 유지하거나 늘림</td></tr>
-            <tr><td>예산 성격</td><td>변동비 (조절 가능)</td><td>고정비에 가깝게 (조절 비권장)</td></tr>
-            <tr><td>판단 지표</td><td>문의 단가, 성사율</td><td>노출수, 순위 구간, 유입 문의 수</td></tr>
-            <tr><td>먼저 줄인다면</td><td>여기부터 줄입니다</td><td>최소 편수는 지킵니다</td></tr>
+            <tr><td data-label="비교 항목">효과가 나오는 시점</td><td data-label="광고">집행 당일~수일</td><td data-label="콘텐츠">보통 8~16주 뒤</td></tr>
+            <tr><td data-label="비교 항목">중단했을 때</td><td data-label="광고">노출이 즉시 끊김</td><td data-label="콘텐츠">기존 글은 남지만 순위가 서서히 밀림</td></tr>
+            <tr><td data-label="비교 항목">성수기 운용</td><td data-label="광고">예산을 올리는 쪽</td><td data-label="콘텐츠">신규 발행보다 기존 글 점검</td></tr>
+            <tr><td data-label="비교 항목">비수기 운용</td><td data-label="광고">최소만 유지하거나 축소</td><td data-label="콘텐츠">발행량을 유지하거나 늘림</td></tr>
+            <tr><td data-label="비교 항목">예산 성격</td><td data-label="광고">변동비 (조절 가능)</td><td data-label="콘텐츠">고정비에 가깝게 (조절 비권장)</td></tr>
+            <tr><td data-label="비교 항목">판단 지표</td><td data-label="광고">문의 단가, 성사율</td><td data-label="콘텐츠">노출수, 순위 구간, 유입 문의 수</td></tr>
+            <tr><td data-label="비교 항목">먼저 줄인다면</td><td data-label="광고">여기부터 줄입니다</td><td data-label="콘텐츠">최소 편수는 지킵니다</td></tr>
           </tbody>
         </table>
       </div>

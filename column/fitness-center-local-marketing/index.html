@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -139,17 +147,17 @@
       <p>반대로 순서를 건너뛰고 광고부터 크게 돌리면, 정작 도착한 방문자가 볼 정보가 부실해 이탈합니다. 저희 쪽에서 보면 이때 쓴 광고비는 대부분 다시 써야 하는 돈이 됩니다.</p>
       <p>기본 정보와 신뢰가 갖춰진 다음에 노출을 늘리는 것이 돈이 새지 않는 방법입니다.</p>
       <p>네 단계를 기간과 비용 감각으로 옮기면 아래 표와 같습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>단계</th><th>걸리는 기간</th><th>무엇을 하나요</th><th>비용 감각</th></tr>
           </thead>
           <tbody>
-            <tr><td>1단계 · 지역 정보</td><td>1~3일</td><td>위치·운영시간·전화번호·가격표를 실제와 맞추고 대표 사진을 교체합니다</td><td>직접 하면 추가 비용 없음</td></tr>
-            <tr><td>2단계 · 사진 정리</td><td>1~2주</td><td>외관·기구별 내부·샤워실·PT룸을 시간대 나눠 12장 이상 촬영합니다</td><td>직접 촬영 0원 / 촬영 의뢰 시 20~60만원선</td></tr>
-            <tr><td>3단계 · 후기 흐름</td><td>1~3개월</td><td>등록 1개월차 회원에게 자연스럽게 요청하는 안내 동선을 만듭니다</td><td>추가 비용 없음(운영 시간 투입)</td></tr>
-            <tr><td>4단계 · 홈페이지</td><td>3~6주</td><td>트레이너 이력·프로그램·가격 체계·상담 신청 폼을 정리합니다</td><td>규모에 따라 150~800만원 범위가 일반적</td></tr>
-            <tr><td>5단계 · 콘텐츠·광고</td><td>3개월 이상 지속</td><td>운동 정보 글을 쌓고, 검증된 상권에만 소액 광고를 겁니다</td><td>월 20~50만원부터 시작 권장</td></tr>
+            <tr><td data-label="단계">1단계 · 지역 정보</td><td data-label="걸리는 기간">1~3일</td><td data-label="무엇을 하나요">위치·운영시간·전화번호·가격표를 실제와 맞추고 대표 사진을 교체합니다</td><td data-label="비용 감각">직접 하면 추가 비용 없음</td></tr>
+            <tr><td data-label="단계">2단계 · 사진 정리</td><td data-label="걸리는 기간">1~2주</td><td data-label="무엇을 하나요">외관·기구별 내부·샤워실·PT룸을 시간대 나눠 12장 이상 촬영합니다</td><td data-label="비용 감각">직접 촬영 0원 / 촬영 의뢰 시 20~60만원선</td></tr>
+            <tr><td data-label="단계">3단계 · 후기 흐름</td><td data-label="걸리는 기간">1~3개월</td><td data-label="무엇을 하나요">등록 1개월차 회원에게 자연스럽게 요청하는 안내 동선을 만듭니다</td><td data-label="비용 감각">추가 비용 없음(운영 시간 투입)</td></tr>
+            <tr><td data-label="단계">4단계 · 홈페이지</td><td data-label="걸리는 기간">3~6주</td><td data-label="무엇을 하나요">트레이너 이력·프로그램·가격 체계·상담 신청 폼을 정리합니다</td><td data-label="비용 감각">규모에 따라 150~800만원 범위가 일반적</td></tr>
+            <tr><td data-label="단계">5단계 · 콘텐츠·광고</td><td data-label="걸리는 기간">3개월 이상 지속</td><td data-label="무엇을 하나요">운동 정보 글을 쌓고, 검증된 상권에만 소액 광고를 겁니다</td><td data-label="비용 감각">월 20~50만원부터 시작 권장</td></tr>
           </tbody>
         </table>
       </div>
@@ -182,12 +190,12 @@
             <tr><th>비교 축</th><th>플레이스만 운영</th><th>플레이스 + 홈페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>초기 비용</td><td>0원에 가깝게 시작 가능</td><td>150~800만원 초기 투입</td></tr>
-            <tr><td>성과가 나는 시점</td><td>2주~2개월</td><td>2~4개월(콘텐츠가 쌓인 뒤)</td></tr>
-            <tr><td>담을 수 있는 정보량</td><td>사진·후기·기본 정보 중심</td><td>트레이너 이력·프로그램 설계·환불 기준까지</td></tr>
-            <tr><td>PT 상담 전환</td><td>가격 문의 위주, 비교 이탈 잦음</td><td>기준을 먼저 보고 오므로 상담 질이 높음</td></tr>
-            <tr><td>검색 접점</td><td>지역 검색에 한정</td><td>지역 검색 + 운동 정보 검색까지 확장</td></tr>
-            <tr><td>이런 경우에 적합</td><td>월 회원권 중심, 1인 운영, 예산이 빠듯할 때</td><td>PT·그룹 수업 비중이 높거나 지점을 늘릴 계획일 때</td></tr>
+            <tr><td data-label="비교 축">초기 비용</td><td data-label="플레이스만 운영">0원에 가깝게 시작 가능</td><td data-label="플레이스 + 홈페이지">150~800만원 초기 투입</td></tr>
+            <tr><td data-label="비교 축">성과가 나는 시점</td><td data-label="플레이스만 운영">2주~2개월</td><td data-label="플레이스 + 홈페이지">2~4개월(콘텐츠가 쌓인 뒤)</td></tr>
+            <tr><td data-label="비교 축">담을 수 있는 정보량</td><td data-label="플레이스만 운영">사진·후기·기본 정보 중심</td><td data-label="플레이스 + 홈페이지">트레이너 이력·프로그램 설계·환불 기준까지</td></tr>
+            <tr><td data-label="비교 축">PT 상담 전환</td><td data-label="플레이스만 운영">가격 문의 위주, 비교 이탈 잦음</td><td data-label="플레이스 + 홈페이지">기준을 먼저 보고 오므로 상담 질이 높음</td></tr>
+            <tr><td data-label="비교 축">검색 접점</td><td data-label="플레이스만 운영">지역 검색에 한정</td><td data-label="플레이스 + 홈페이지">지역 검색 + 운동 정보 검색까지 확장</td></tr>
+            <tr><td data-label="비교 축">이런 경우에 적합</td><td data-label="플레이스만 운영">월 회원권 중심, 1인 운영, 예산이 빠듯할 때</td><td data-label="플레이스 + 홈페이지">PT·그룹 수업 비중이 높거나 지점을 늘릴 계획일 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -214,10 +222,10 @@
             <tr><th>증상</th><th>짚어 볼 원인</th><th>먼저 할 조치</th></tr>
           </thead>
           <tbody>
-            <tr><td>조회수도 문의도 적음</td><td>지역 정보 미비 또는 상권 키워드 누락</td><td>플레이스 기본 정보와 지역명 표기를 1차 정비</td></tr>
-            <tr><td>조회수는 느는데 문의가 없음</td><td>사진 부족, 가격 미표기, 후기 최신성 부족</td><td>사진 12장 이상 보강 후 가격대 공개</td></tr>
-            <tr><td>문의는 오는데 등록이 적음</td><td>상담 동선과 가격 기준의 불일치</td><td>프로그램·환불 기준을 홈페이지에 명시</td></tr>
-            <tr><td>등록 후 이탈이 잦음</td><td>기대와 실제 운영의 차이</td><td>운영시간·혼잡 시간대 안내를 사실대로 수정</td></tr>
+            <tr><td data-label="증상">조회수도 문의도 적음</td><td data-label="짚어 볼 원인">지역 정보 미비 또는 상권 키워드 누락</td><td data-label="먼저 할 조치">플레이스 기본 정보와 지역명 표기를 1차 정비</td></tr>
+            <tr><td data-label="증상">조회수는 느는데 문의가 없음</td><td data-label="짚어 볼 원인">사진 부족, 가격 미표기, 후기 최신성 부족</td><td data-label="먼저 할 조치">사진 12장 이상 보강 후 가격대 공개</td></tr>
+            <tr><td data-label="증상">문의는 오는데 등록이 적음</td><td data-label="짚어 볼 원인">상담 동선과 가격 기준의 불일치</td><td data-label="먼저 할 조치">프로그램·환불 기준을 홈페이지에 명시</td></tr>
+            <tr><td data-label="증상">등록 후 이탈이 잦음</td><td data-label="짚어 볼 원인">기대와 실제 운영의 차이</td><td data-label="먼저 할 조치">운영시간·혼잡 시간대 안내를 사실대로 수정</td></tr>
           </tbody>
         </table>
       </div>

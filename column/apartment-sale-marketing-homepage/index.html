@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -128,11 +136,11 @@
             <tr><th>구성 요소</th><th>역할</th></tr>
           </thead>
           <tbody>
-            <tr><td>입지 정보</td><td>교통, 학군, 생활 편의시설을 한눈에 보여줍니다</td></tr>
-            <tr><td>세대 정보</td><td>평형, 타입, 구조, 분양가 정보를 쉽게 확인하게 합니다</td></tr>
-            <tr><td>방문 예약</td><td>모델하우스 예약 버튼을 눈에 잘 보이게 배치합니다</td></tr>
-            <tr><td>문의 동선</td><td>전화, 문자, 카카오톡 상담을 바로 연결합니다</td></tr>
-            <tr><td>신뢰 자료</td><td>시행사, 시공사, 일정, 공급 정보를 명확히 보여줍니다</td></tr>
+            <tr><td data-label="구성 요소">입지 정보</td><td data-label="역할">교통, 학군, 생활 편의시설을 한눈에 보여줍니다</td></tr>
+            <tr><td data-label="구성 요소">세대 정보</td><td data-label="역할">평형, 타입, 구조, 분양가 정보를 쉽게 확인하게 합니다</td></tr>
+            <tr><td data-label="구성 요소">방문 예약</td><td data-label="역할">모델하우스 예약 버튼을 눈에 잘 보이게 배치합니다</td></tr>
+            <tr><td data-label="구성 요소">문의 동선</td><td data-label="역할">전화, 문자, 카카오톡 상담을 바로 연결합니다</td></tr>
+            <tr><td data-label="구성 요소">신뢰 자료</td><td data-label="역할">시행사, 시공사, 일정, 공급 정보를 명확히 보여줍니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -156,15 +164,15 @@
             <tr><th>비교 항목</th><th>단독 랜딩페이지</th><th>정식 분양 홈페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>적합한 상황</td><td>개관 전후 집중 홍보, 단기 이벤트, 잔여 세대 소진</td><td>장기 분양, 정보량이 많은 대단지, 지속 운영</td></tr>
-            <tr><td>권장 기간</td><td>4~8주 단위 운영</td><td>6개월~입주 시점까지</td></tr>
-            <tr><td>페이지 수</td><td>1~3페이지</td><td>8~20페이지 내외</td></tr>
-            <tr><td>제작 기간</td><td>보통 5~10영업일</td><td>보통 3~6주</td></tr>
-            <tr><td>비용 범위</td><td>대략 300~800만원</td><td>대략 800~2,500만원</td></tr>
-            <tr><td>정보 깊이</td><td>핵심 3~5가지만 전달</td><td>입지·평면·옵션·일정·FAQ까지 전달</td></tr>
-            <tr><td>수정 난이도</td><td>한 페이지라 당일 수정도 가능</td><td>구조가 있어 수정에 1~3일 필요</td></tr>
-            <tr><td>검색 노출</td><td>단기 광고 유입 중심, 축적이 어려움</td><td>단지명·지역 키워드로 검색 유입 축적 가능</td></tr>
-            <tr><td>이런 경우 선택</td><td>예산이 한정적이고 예약 수집이 유일한 목표일 때</td><td>문의 유형이 다양하고 상담팀이 상주할 때</td></tr>
+            <tr><td data-label="비교 항목">적합한 상황</td><td data-label="단독 랜딩페이지">개관 전후 집중 홍보, 단기 이벤트, 잔여 세대 소진</td><td data-label="정식 분양 홈페이지">장기 분양, 정보량이 많은 대단지, 지속 운영</td></tr>
+            <tr><td data-label="비교 항목">권장 기간</td><td data-label="단독 랜딩페이지">4~8주 단위 운영</td><td data-label="정식 분양 홈페이지">6개월~입주 시점까지</td></tr>
+            <tr><td data-label="비교 항목">페이지 수</td><td data-label="단독 랜딩페이지">1~3페이지</td><td data-label="정식 분양 홈페이지">8~20페이지 내외</td></tr>
+            <tr><td data-label="비교 항목">제작 기간</td><td data-label="단독 랜딩페이지">보통 5~10영업일</td><td data-label="정식 분양 홈페이지">보통 3~6주</td></tr>
+            <tr><td data-label="비교 항목">비용 범위</td><td data-label="단독 랜딩페이지">대략 300~800만원</td><td data-label="정식 분양 홈페이지">대략 800~2,500만원</td></tr>
+            <tr><td data-label="비교 항목">정보 깊이</td><td data-label="단독 랜딩페이지">핵심 3~5가지만 전달</td><td data-label="정식 분양 홈페이지">입지·평면·옵션·일정·FAQ까지 전달</td></tr>
+            <tr><td data-label="비교 항목">수정 난이도</td><td data-label="단독 랜딩페이지">한 페이지라 당일 수정도 가능</td><td data-label="정식 분양 홈페이지">구조가 있어 수정에 1~3일 필요</td></tr>
+            <tr><td data-label="비교 항목">검색 노출</td><td data-label="단독 랜딩페이지">단기 광고 유입 중심, 축적이 어려움</td><td data-label="정식 분양 홈페이지">단지명·지역 키워드로 검색 유입 축적 가능</td></tr>
+            <tr><td data-label="비교 항목">이런 경우 선택</td><td data-label="단독 랜딩페이지">예산이 한정적이고 예약 수집이 유일한 목표일 때</td><td data-label="정식 분양 홈페이지">문의 유형이 다양하고 상담팀이 상주할 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -186,10 +194,10 @@
             <tr><th>항목 수</th><th>예상되는 상황</th><th>권장 여부</th></tr>
           </thead>
           <tbody>
-            <tr><td>2개 (이름·연락처)</td><td>완료율은 가장 높지만 상담 전 정보가 부족합니다</td><td>광고 테스트 초기에 적합</td></tr>
-            <tr><td>3~4개</td><td>완료율과 상담 준비도가 균형을 이룹니다</td><td>대부분의 분양 현장에 권장</td></tr>
-            <tr><td>5~6개</td><td>입력 중 이탈이 생기기 시작합니다</td><td>상담 인력이 부족할 때만 제한적으로</td></tr>
-            <tr><td>7개 이상</td><td>완료율 하락이 뚜렷하게 나타나는 구간입니다</td><td>권장하지 않음</td></tr>
+            <tr><td data-label="항목 수">2개 (이름·연락처)</td><td data-label="예상되는 상황">완료율은 가장 높지만 상담 전 정보가 부족합니다</td><td data-label="권장 여부">광고 테스트 초기에 적합</td></tr>
+            <tr><td data-label="항목 수">3~4개</td><td data-label="예상되는 상황">완료율과 상담 준비도가 균형을 이룹니다</td><td data-label="권장 여부">대부분의 분양 현장에 권장</td></tr>
+            <tr><td data-label="항목 수">5~6개</td><td data-label="예상되는 상황">입력 중 이탈이 생기기 시작합니다</td><td data-label="권장 여부">상담 인력이 부족할 때만 제한적으로</td></tr>
+            <tr><td data-label="항목 수">7개 이상</td><td data-label="예상되는 상황">완료율 하락이 뚜렷하게 나타나는 구간입니다</td><td data-label="권장 여부">권장하지 않음</td></tr>
           </tbody>
         </table>
       </div>
@@ -204,11 +212,11 @@
             <tr><th>유입 채널</th><th>방문자가 이미 아는 것</th><th>첫 화면에서 강조할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>네이버 검색(단지명)</td><td>단지명을 알고 찾아온 상태</td><td>분양 일정, 잔여 세대, 예약 버튼</td></tr>
-            <tr><td>네이버 검색(지역+분양)</td><td>지역만 정하고 비교 중</td><td>입지 지도, 평형별 분양가대, 경쟁 대비 장점</td></tr>
-            <tr><td>인스타·페이스북</td><td>아무 정보 없이 이미지로 유입</td><td>단지명·위치·평형 기본 정보부터</td></tr>
-            <tr><td>카카오 비즈보드</td><td>짧은 문구 하나만 보고 클릭</td><td>핵심 혜택 1가지와 예약 버튼</td></tr>
-            <tr><td>부동산 커뮤니티·카페</td><td>이미 비교·검증 중인 관심층</td><td>시행사·시공사 정보, 입주 일정, 상세 평면</td></tr>
+            <tr><td data-label="유입 채널">네이버 검색(단지명)</td><td data-label="방문자가 이미 아는 것">단지명을 알고 찾아온 상태</td><td data-label="첫 화면에서 강조할 것">분양 일정, 잔여 세대, 예약 버튼</td></tr>
+            <tr><td data-label="유입 채널">네이버 검색(지역+분양)</td><td data-label="방문자가 이미 아는 것">지역만 정하고 비교 중</td><td data-label="첫 화면에서 강조할 것">입지 지도, 평형별 분양가대, 경쟁 대비 장점</td></tr>
+            <tr><td data-label="유입 채널">인스타·페이스북</td><td data-label="방문자가 이미 아는 것">아무 정보 없이 이미지로 유입</td><td data-label="첫 화면에서 강조할 것">단지명·위치·평형 기본 정보부터</td></tr>
+            <tr><td data-label="유입 채널">카카오 비즈보드</td><td data-label="방문자가 이미 아는 것">짧은 문구 하나만 보고 클릭</td><td data-label="첫 화면에서 강조할 것">핵심 혜택 1가지와 예약 버튼</td></tr>
+            <tr><td data-label="유입 채널">부동산 커뮤니티·카페</td><td data-label="방문자가 이미 아는 것">이미 비교·검증 중인 관심층</td><td data-label="첫 화면에서 강조할 것">시행사·시공사 정보, 입주 일정, 상세 평면</td></tr>
           </tbody>
         </table>
       </div>
@@ -228,10 +236,10 @@
             <tr><th>구간</th><th>보는 지표</th><th>나쁠 때 의심할 곳</th></tr>
           </thead>
           <tbody>
-            <tr><td>광고</td><td>노출 대비 클릭률, 채널별 유입 수</td><td>타깃 설정, 광고 소재 문구, 키워드 선정</td></tr>
-            <tr><td>페이지</td><td>방문 대비 예약 전환율, 첫 화면 이탈률, 체류 시간</td><td>첫 화면 정보 배치, 로딩 속도, 버튼 위치</td></tr>
-            <tr><td>폼</td><td>폼 시작 대비 제출 완료율</td><td>입력 항목 수, 키패드 설정, 동의 문구 길이</td></tr>
-            <tr><td>상담</td><td>예약 대비 실제 방문율, 회신까지 걸린 시간</td><td>회신 속도, 안내 문자 유무, 상담 스크립트</td></tr>
+            <tr><td data-label="구간">광고</td><td data-label="보는 지표">노출 대비 클릭률, 채널별 유입 수</td><td data-label="나쁠 때 의심할 곳">타깃 설정, 광고 소재 문구, 키워드 선정</td></tr>
+            <tr><td data-label="구간">페이지</td><td data-label="보는 지표">방문 대비 예약 전환율, 첫 화면 이탈률, 체류 시간</td><td data-label="나쁠 때 의심할 곳">첫 화면 정보 배치, 로딩 속도, 버튼 위치</td></tr>
+            <tr><td data-label="구간">폼</td><td data-label="보는 지표">폼 시작 대비 제출 완료율</td><td data-label="나쁠 때 의심할 곳">입력 항목 수, 키패드 설정, 동의 문구 길이</td></tr>
+            <tr><td data-label="구간">상담</td><td data-label="보는 지표">예약 대비 실제 방문율, 회신까지 걸린 시간</td><td data-label="나쁠 때 의심할 곳">회신 속도, 안내 문자 유무, 상담 스크립트</td></tr>
           </tbody>
         </table>
       </div>

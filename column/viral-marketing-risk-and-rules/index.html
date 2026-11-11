@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -137,10 +145,10 @@
             <tr><th>매체</th><th>표시 문구를 두는 위치</th><th>제가 자주 보는 실수</th></tr>
           </thead>
           <tbody>
-            <tr><td>블로그·카페</td><td>본문 시작 또는 끝, 본문과 구분되는 형태로</td><td>글 중간 사진 사이에 작은 글씨로 넣어 둠</td></tr>
-            <tr><td>인스타그램</td><td>설명 첫 부분, 더보기로 접히기 전 영역</td><td>해시태그 뒤쪽에 영문 약어로 붙임</td></tr>
-            <tr><td>유튜브</td><td>제목 또는 영상 시작 부분, 중간에도 반복</td><td>설명란 맨 아래에만 한 줄 적어 둠</td></tr>
-            <tr><td>실시간 방송·숏폼</td><td>방송 중 자막으로 반복 노출</td><td>시작할 때 한 번 말하고 넘어감</td></tr>
+            <tr><td data-label="매체">블로그·카페</td><td data-label="표시 문구를 두는 위치">본문 시작 또는 끝, 본문과 구분되는 형태로</td><td data-label="제가 자주 보는 실수">글 중간 사진 사이에 작은 글씨로 넣어 둠</td></tr>
+            <tr><td data-label="매체">인스타그램</td><td data-label="표시 문구를 두는 위치">설명 첫 부분, 더보기로 접히기 전 영역</td><td data-label="제가 자주 보는 실수">해시태그 뒤쪽에 영문 약어로 붙임</td></tr>
+            <tr><td data-label="매체">유튜브</td><td data-label="표시 문구를 두는 위치">제목 또는 영상 시작 부분, 중간에도 반복</td><td data-label="제가 자주 보는 실수">설명란 맨 아래에만 한 줄 적어 둠</td></tr>
+            <tr><td data-label="매체">실시간 방송·숏폼</td><td data-label="표시 문구를 두는 위치">방송 중 자막으로 반복 노출</td><td data-label="제가 자주 보는 실수">시작할 때 한 번 말하고 넘어감</td></tr>
           </tbody>
         </table>
       </div>
@@ -173,12 +181,12 @@
             <tr><th>유형</th><th>제 판단</th><th>조건과 이유</th></tr>
           </thead>
           <tbody>
-            <tr><td>실제 이용 후 작성한 체험단 글</td><td>쓸 수 있습니다</td><td>표시 문구가 본문 앞뒤에 들어가고 쓰지 않은 내용을 적지 않는 조건입니다</td></tr>
-            <tr><td>인플루언서 협업 콘텐츠</td><td>조건부로 씁니다</td><td>매체별 표시 위치를 계약서에 적고 발행 전 원고를 확인하는 조건입니다</td></tr>
-            <tr><td>원고를 업체가 써 주는 후기</td><td>권하지 않습니다</td><td>같은 문장 구조가 남아 패턴으로 드러나고 체험 사실과도 어긋납니다</td></tr>
-            <tr><td>계정을 사서 쓰는 후기</td><td>하지 않습니다</td><td>기만 광고에 해당하고 플랫폼 제재까지 겹칩니다</td></tr>
-            <tr><td>검색 순위를 올려 주는 작업</td><td>하지 않습니다</td><td>효과가 유지되지 않고 적발되면 기존 노출까지 내려갑니다</td></tr>
-            <tr><td>부정 후기 선택적 삭제</td><td>하지 않습니다</td><td>허위 글 대응과 구분되며 선별 삭제는 오인 유발로 읽힙니다</td></tr>
+            <tr><td data-label="유형">실제 이용 후 작성한 체험단 글</td><td data-label="제 판단">쓸 수 있습니다</td><td data-label="조건과 이유">표시 문구가 본문 앞뒤에 들어가고 쓰지 않은 내용을 적지 않는 조건입니다</td></tr>
+            <tr><td data-label="유형">인플루언서 협업 콘텐츠</td><td data-label="제 판단">조건부로 씁니다</td><td data-label="조건과 이유">매체별 표시 위치를 계약서에 적고 발행 전 원고를 확인하는 조건입니다</td></tr>
+            <tr><td data-label="유형">원고를 업체가 써 주는 후기</td><td data-label="제 판단">권하지 않습니다</td><td data-label="조건과 이유">같은 문장 구조가 남아 패턴으로 드러나고 체험 사실과도 어긋납니다</td></tr>
+            <tr><td data-label="유형">계정을 사서 쓰는 후기</td><td data-label="제 판단">하지 않습니다</td><td data-label="조건과 이유">기만 광고에 해당하고 플랫폼 제재까지 겹칩니다</td></tr>
+            <tr><td data-label="유형">검색 순위를 올려 주는 작업</td><td data-label="제 판단">하지 않습니다</td><td data-label="조건과 이유">효과가 유지되지 않고 적발되면 기존 노출까지 내려갑니다</td></tr>
+            <tr><td data-label="유형">부정 후기 선택적 삭제</td><td data-label="제 판단">하지 않습니다</td><td data-label="조건과 이유">허위 글 대응과 구분되며 선별 삭제는 오인 유발로 읽힙니다</td></tr>
           </tbody>
         </table>
       </div>

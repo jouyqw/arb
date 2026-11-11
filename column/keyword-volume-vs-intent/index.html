@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -126,16 +134,16 @@
       <p>업종 대표어에 가까운 큰 키워드는 대부분 이런 사람이 씁니다. 단어의 뜻을 확인하려는 검색, 절차가 궁금한 검색, 취업이나 자격증을 알아보는 검색까지 섞여 있습니다. 상위에 떠도 궁금한 것만 확인하고 나갑니다.</p>
       <p>게다가 큰 키워드는 경쟁이 가장 심한 구간입니다. 포털이 자체 서비스나 대형 매체를 위쪽에 배치해 개별 사업자 홈페이지가 들어갈 자리 자체가 좁습니다. 들이는 힘은 가장 크고 전환은 가장 낮은 셈입니다.</p>
       <p>다만 &#39;유입은 늘었는데 문의가 없다&#39;는 증상의 원인이 늘 검색의도인 것은 아닙니다. 저는 상담에서 아래 네 가지를 먼저 갈라놓고 봅니다. 이 단계를 건너뛰면 멀쩡한 키워드를 버리고 원고를 두 번 쓰게 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>증상</th><th>의심할 원인</th><th>확인 방법</th><th>먼저 할 조치</th></tr>
           </thead>
           <tbody>
-            <tr><td>노출은 많은데 클릭이 거의 없다</td><td>검색의도와 페이지 형태가 다름</td><td>서치콘솔 검색어별 클릭률이 1% 아래인지 확인</td><td>그 검색어를 직접 검색해 상위 10개 형태와 비교</td></tr>
-            <tr><td>클릭은 있는데 30초 안에 나간다</td><td>검색어가 기대한 내용이 페이지 첫 화면에 없음</td><td>유입 검색어와 페이지 첫 두 문단을 나란히 읽어 보기</td><td>첫 문단을 그 질문의 답으로 바꾸기</td></tr>
-            <tr><td>체류는 하는데 문의가 없다</td><td>상담으로 가는 다음 단계가 안 보임</td><td>페이지 안에서 문의 버튼까지 스크롤 몇 번인지 세기</td><td>가격 안내·상담 폼을 본문 중간에 한 번 더 배치</td></tr>
-            <tr><td>문의는 오는데 우리 일이 아니다</td><td>키워드가 다른 뜻·다른 대상과 섞임</td><td>문의 내용 20건을 유입 검색어별로 분류</td><td>해당 키워드를 목록에서 빼고 조건어 붙인 키워드로 교체</td></tr>
+            <tr><td data-label="증상">노출은 많은데 클릭이 거의 없다</td><td data-label="의심할 원인">검색의도와 페이지 형태가 다름</td><td data-label="확인 방법">서치콘솔 검색어별 클릭률이 1% 아래인지 확인</td><td data-label="먼저 할 조치">그 검색어를 직접 검색해 상위 10개 형태와 비교</td></tr>
+            <tr><td data-label="증상">클릭은 있는데 30초 안에 나간다</td><td data-label="의심할 원인">검색어가 기대한 내용이 페이지 첫 화면에 없음</td><td data-label="확인 방법">유입 검색어와 페이지 첫 두 문단을 나란히 읽어 보기</td><td data-label="먼저 할 조치">첫 문단을 그 질문의 답으로 바꾸기</td></tr>
+            <tr><td data-label="증상">체류는 하는데 문의가 없다</td><td data-label="의심할 원인">상담으로 가는 다음 단계가 안 보임</td><td data-label="확인 방법">페이지 안에서 문의 버튼까지 스크롤 몇 번인지 세기</td><td data-label="먼저 할 조치">가격 안내·상담 폼을 본문 중간에 한 번 더 배치</td></tr>
+            <tr><td data-label="증상">문의는 오는데 우리 일이 아니다</td><td data-label="의심할 원인">키워드가 다른 뜻·다른 대상과 섞임</td><td data-label="확인 방법">문의 내용 20건을 유입 검색어별로 분류</td><td data-label="먼저 할 조치">해당 키워드를 목록에서 빼고 조건어 붙인 키워드로 교체</td></tr>
           </tbody>
         </table>
       </div>
@@ -143,16 +151,16 @@
       <h2>검색의도는 어떻게 나뉘나요?</h2>
       <p>실무에서는 정보형, 비교형, 상담·거래형, 특정 업체를 찾는 탐색형 네 가지로 나눠 보면 충분합니다. 같은 업종 안에서도 네 가지는 필요한 페이지가 다릅니다.</p>
       <p>저희가 가장 많이 고치는 실패는 상담형 키워드에 긴 설명 칼럼을 붙여 둔 경우입니다. 정보형 키워드에 상담 유도만 있는 페이지를 붙이는 것도 같은 실수입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>검색 의도</th><th>검색어 형태</th><th>필요한 페이지</th><th>문의로 이어지는 정도</th></tr>
           </thead>
           <tbody>
-            <tr><td>정보형</td><td>종합소득세 신고 기간</td><td>설명 칼럼, FAQ</td><td>바로는 어렵고 재방문으로 이어짐</td></tr>
-            <tr><td>비교형</td><td>세무 기장료 비교</td><td>비교표, 판단 기준 정리</td><td>조건이 맞으면 이어짐</td></tr>
-            <tr><td>상담·거래형</td><td>○○동 세무사 상담</td><td>서비스 소개, 상담 폼</td><td>가장 직접적으로 이어짐</td></tr>
-            <tr><td>탐색형</td><td>특정 업체 이름 + 후기</td><td>업체 소개, 사례 페이지</td><td>이미 정해 놓고 확인하는 단계</td></tr>
+            <tr><td data-label="검색 의도">정보형</td><td data-label="검색어 형태">종합소득세 신고 기간</td><td data-label="필요한 페이지">설명 칼럼, FAQ</td><td data-label="문의로 이어지는 정도">바로는 어렵고 재방문으로 이어짐</td></tr>
+            <tr><td data-label="검색 의도">비교형</td><td data-label="검색어 형태">세무 기장료 비교</td><td data-label="필요한 페이지">비교표, 판단 기준 정리</td><td data-label="문의로 이어지는 정도">조건이 맞으면 이어짐</td></tr>
+            <tr><td data-label="검색 의도">상담·거래형</td><td data-label="검색어 형태">○○동 세무사 상담</td><td data-label="필요한 페이지">서비스 소개, 상담 폼</td><td data-label="문의로 이어지는 정도">가장 직접적으로 이어짐</td></tr>
+            <tr><td data-label="검색 의도">탐색형</td><td data-label="검색어 형태">특정 업체 이름 + 후기</td><td data-label="필요한 페이지">업체 소개, 사례 페이지</td><td data-label="문의로 이어지는 정도">이미 정해 놓고 확인하는 단계</td></tr>
           </tbody>
         </table>
       </div>
@@ -182,10 +190,10 @@
             <tr><th>월 검색량 구간</th><th>보통 어떤 검색어인가</th><th>어떻게 쓰는 것이 좋은가</th></tr>
           </thead>
           <tbody>
-            <tr><td>1만 이상</td><td>업종 대표어, 일반 명사</td><td>순위 경쟁보다 브랜드 인지·광고 쪽으로 검토</td></tr>
-            <tr><td>1,000~1만</td><td>지역+업종, 주제 대표어</td><td>핵심 서비스 페이지로 중장기 공략</td></tr>
-            <tr><td>100~1,000</td><td>상황이 붙은 질문형</td><td>칼럼으로 답하기 좋은 구간</td></tr>
-            <tr><td>100 미만</td><td>아주 구체적인 상황·조건</td><td>수는 적지만 상담 전환이 높은 편</td></tr>
+            <tr><td data-label="월 검색량 구간">1만 이상</td><td data-label="보통 어떤 검색어인가">업종 대표어, 일반 명사</td><td data-label="어떻게 쓰는 것이 좋은가">순위 경쟁보다 브랜드 인지·광고 쪽으로 검토</td></tr>
+            <tr><td data-label="월 검색량 구간">1,000~1만</td><td data-label="보통 어떤 검색어인가">지역+업종, 주제 대표어</td><td data-label="어떻게 쓰는 것이 좋은가">핵심 서비스 페이지로 중장기 공략</td></tr>
+            <tr><td data-label="월 검색량 구간">100~1,000</td><td data-label="보통 어떤 검색어인가">상황이 붙은 질문형</td><td data-label="어떻게 쓰는 것이 좋은가">칼럼으로 답하기 좋은 구간</td></tr>
+            <tr><td data-label="월 검색량 구간">100 미만</td><td data-label="보통 어떤 검색어인가">아주 구체적인 상황·조건</td><td data-label="어떻게 쓰는 것이 좋은가">수는 적지만 상담 전환이 높은 편</td></tr>
           </tbody>
         </table>
       </div>
@@ -198,14 +206,14 @@
             <tr><th>판단 항목</th><th>대표 키워드 (월 1만 이상)</th><th>상황이 붙은 작은 키워드 (월 100~500)</th></tr>
           </thead>
           <tbody>
-            <tr><td>상위권 진입까지 걸리는 기간</td><td>보통 6개월 이상, 안 되는 경우도 많음</td><td>보통 6주~3개월</td></tr>
-            <tr><td>경쟁 상대</td><td>포털 자체 서비스, 대형 매체, 광고 예산 있는 업체</td><td>개인 블로그, 오래된 글 몇 건</td></tr>
-            <tr><td>필요한 글의 무게</td><td>6,000자 이상 + 내부 링크·사례 다수</td><td>2,000~4,000자 한 편으로 가능</td></tr>
-            <tr><td>한 편으로 끝나는가</td><td>관련 글 5~10편을 묶어야 힘이 붙음</td><td>한 편으로 순위가 나는 경우가 있음</td></tr>
-            <tr><td>유입 규모</td><td>성공하면 크게 늘어남</td><td>한 키워드당 월 수십 회 수준</td></tr>
-            <tr><td>상담 전환</td><td>낮은 편 — 알아보는 단계가 섞여 있음</td><td>높은 편 — 조건이 이미 정해진 사람</td></tr>
-            <tr><td>실패했을 때 손실</td><td>몇 달치 작업이 한 번에 묻힘</td><td>글 한 편, 며칠치 작업</td></tr>
-            <tr><td>권하는 사용법</td><td>여유가 생긴 뒤 장기 과제로</td><td>지금 바로, 분기당 6~12편씩</td></tr>
+            <tr><td data-label="판단 항목">상위권 진입까지 걸리는 기간</td><td data-label="대표 키워드 (월 1만 이상)">보통 6개월 이상, 안 되는 경우도 많음</td><td data-label="상황이 붙은 작은 키워드 (월 100~500)">보통 6주~3개월</td></tr>
+            <tr><td data-label="판단 항목">경쟁 상대</td><td data-label="대표 키워드 (월 1만 이상)">포털 자체 서비스, 대형 매체, 광고 예산 있는 업체</td><td data-label="상황이 붙은 작은 키워드 (월 100~500)">개인 블로그, 오래된 글 몇 건</td></tr>
+            <tr><td data-label="판단 항목">필요한 글의 무게</td><td data-label="대표 키워드 (월 1만 이상)">6,000자 이상 + 내부 링크·사례 다수</td><td data-label="상황이 붙은 작은 키워드 (월 100~500)">2,000~4,000자 한 편으로 가능</td></tr>
+            <tr><td data-label="판단 항목">한 편으로 끝나는가</td><td data-label="대표 키워드 (월 1만 이상)">관련 글 5~10편을 묶어야 힘이 붙음</td><td data-label="상황이 붙은 작은 키워드 (월 100~500)">한 편으로 순위가 나는 경우가 있음</td></tr>
+            <tr><td data-label="판단 항목">유입 규모</td><td data-label="대표 키워드 (월 1만 이상)">성공하면 크게 늘어남</td><td data-label="상황이 붙은 작은 키워드 (월 100~500)">한 키워드당 월 수십 회 수준</td></tr>
+            <tr><td data-label="판단 항목">상담 전환</td><td data-label="대표 키워드 (월 1만 이상)">낮은 편 — 알아보는 단계가 섞여 있음</td><td data-label="상황이 붙은 작은 키워드 (월 100~500)">높은 편 — 조건이 이미 정해진 사람</td></tr>
+            <tr><td data-label="판단 항목">실패했을 때 손실</td><td data-label="대표 키워드 (월 1만 이상)">몇 달치 작업이 한 번에 묻힘</td><td data-label="상황이 붙은 작은 키워드 (월 100~500)">글 한 편, 며칠치 작업</td></tr>
+            <tr><td data-label="판단 항목">권하는 사용법</td><td data-label="대표 키워드 (월 1만 이상)">여유가 생긴 뒤 장기 과제로</td><td data-label="상황이 붙은 작은 키워드 (월 100~500)">지금 바로, 분기당 6~12편씩</td></tr>
           </tbody>
         </table>
       </div>

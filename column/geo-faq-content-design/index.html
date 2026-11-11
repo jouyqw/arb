@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -140,10 +148,10 @@
             <tr><th>질문 유형</th><th>예시 성격</th><th>GEO 활용도</th></tr>
           </thead>
           <tbody>
-            <tr><td>비용·기간</td><td>&quot;얼마나, 며칠이 걸리나요?&quot;</td><td>높음</td></tr>
-            <tr><td>자격·조건</td><td>&quot;이런 경우도 가능한가요?&quot;</td><td>높음</td></tr>
-            <tr><td>비교</td><td>&quot;A와 B 중 무엇이 낫나요?&quot;</td><td>중간</td></tr>
-            <tr><td>홍보성</td><td>&quot;왜 우리가 최고인가요?&quot;</td><td>낮음</td></tr>
+            <tr><td data-label="질문 유형">비용·기간</td><td data-label="예시 성격">&quot;얼마나, 며칠이 걸리나요?&quot;</td><td data-label="GEO 활용도">높음</td></tr>
+            <tr><td data-label="질문 유형">자격·조건</td><td data-label="예시 성격">&quot;이런 경우도 가능한가요?&quot;</td><td data-label="GEO 활용도">높음</td></tr>
+            <tr><td data-label="질문 유형">비교</td><td data-label="예시 성격">&quot;A와 B 중 무엇이 낫나요?&quot;</td><td data-label="GEO 활용도">중간</td></tr>
+            <tr><td data-label="질문 유형">홍보성</td><td data-label="예시 성격">&quot;왜 우리가 최고인가요?&quot;</td><td data-label="GEO 활용도">낮음</td></tr>
           </tbody>
         </table>
       </div>
@@ -178,10 +186,10 @@
             <tr><th>답변 분량</th><th>읽는 사람 입장</th><th>AI 인용 관점</th></tr>
           </thead>
           <tbody>
-            <tr><td>100자 미만</td><td>답은 알겠는데 근거가 없어 다시 묻게 됨</td><td>인용해도 정보가 얕아 밀리기 쉬움</td></tr>
-            <tr><td>150~400자</td><td>한 번에 읽히고 판단에 필요한 조건이 들어 있음</td><td>문단 통째로 인용하기 가장 적합</td></tr>
-            <tr><td>400~600자</td><td>읽을 만하지만 스크롤이 길어짐</td><td>앞 2~3문장만 잘려 인용되는 경우가 많음</td></tr>
-            <tr><td>600자 초과</td><td>핵심을 찾기 어려워 이탈이 늘어남</td><td>자를 지점이 애매해 통째로 지나칠 수 있음</td></tr>
+            <tr><td data-label="답변 분량">100자 미만</td><td data-label="읽는 사람 입장">답은 알겠는데 근거가 없어 다시 묻게 됨</td><td data-label="AI 인용 관점">인용해도 정보가 얕아 밀리기 쉬움</td></tr>
+            <tr><td data-label="답변 분량">150~400자</td><td data-label="읽는 사람 입장">한 번에 읽히고 판단에 필요한 조건이 들어 있음</td><td data-label="AI 인용 관점">문단 통째로 인용하기 가장 적합</td></tr>
+            <tr><td data-label="답변 분량">400~600자</td><td data-label="읽는 사람 입장">읽을 만하지만 스크롤이 길어짐</td><td data-label="AI 인용 관점">앞 2~3문장만 잘려 인용되는 경우가 많음</td></tr>
+            <tr><td data-label="답변 분량">600자 초과</td><td data-label="읽는 사람 입장">핵심을 찾기 어려워 이탈이 늘어남</td><td data-label="AI 인용 관점">자를 지점이 애매해 통째로 지나칠 수 있음</td></tr>
           </tbody>
         </table>
       </div>
@@ -195,11 +203,11 @@
             <tr><th>구분</th><th>전용 FAQ 페이지</th><th>칼럼·상세페이지 안 FAQ</th></tr>
           </thead>
           <tbody>
-            <tr><td>적합한 상황</td><td>질문이 10개 이상이고 서비스 전반을 다룰 때</td><td>글 하나의 주제에 딸린 질문이 3~5개일 때</td></tr>
-            <tr><td>인용되는 모습</td><td>질문 단위로 통째로 인용되기 쉬움</td><td>글 맥락과 함께 인용되기 쉬움</td></tr>
-            <tr><td>구조화 데이터</td><td>FAQPage 스키마를 페이지 전체에 적용</td><td>해당 글 스키마 안에 질문 항목만 추가</td></tr>
-            <tr><td>관리 부담</td><td>한 곳만 고치면 되어 낮음</td><td>글마다 흩어져 있어 높음</td></tr>
-            <tr><td>착수 순서</td><td>1단계 — 먼저 만든다</td><td>2단계 — 글이 쌓인 뒤 붙인다</td></tr>
+            <tr><td data-label="구분">적합한 상황</td><td data-label="전용 FAQ 페이지">질문이 10개 이상이고 서비스 전반을 다룰 때</td><td data-label="칼럼·상세페이지 안 FAQ">글 하나의 주제에 딸린 질문이 3~5개일 때</td></tr>
+            <tr><td data-label="구분">인용되는 모습</td><td data-label="전용 FAQ 페이지">질문 단위로 통째로 인용되기 쉬움</td><td data-label="칼럼·상세페이지 안 FAQ">글 맥락과 함께 인용되기 쉬움</td></tr>
+            <tr><td data-label="구분">구조화 데이터</td><td data-label="전용 FAQ 페이지">FAQPage 스키마를 페이지 전체에 적용</td><td data-label="칼럼·상세페이지 안 FAQ">해당 글 스키마 안에 질문 항목만 추가</td></tr>
+            <tr><td data-label="구분">관리 부담</td><td data-label="전용 FAQ 페이지">한 곳만 고치면 되어 낮음</td><td data-label="칼럼·상세페이지 안 FAQ">글마다 흩어져 있어 높음</td></tr>
+            <tr><td data-label="구분">착수 순서</td><td data-label="전용 FAQ 페이지">1단계 — 먼저 만든다</td><td data-label="칼럼·상세페이지 안 FAQ">2단계 — 글이 쌓인 뒤 붙인다</td></tr>
           </tbody>
         </table>
       </div>
@@ -226,11 +234,11 @@
             <tr><th>점검 항목</th><th>주기</th><th>고쳐야 하는 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>가격·기간 수치</td><td>분기 1회</td><td>실제 견적과 한 번이라도 어긋나면 즉시 수정</td></tr>
-            <tr><td>새로 들어온 질문</td><td>분기 1회</td><td>3개월 안에 2번 이상 받은 질문이면 추가</td></tr>
-            <tr><td>법·제도 관련 답변</td><td>개정 시점마다</td><td>관련 규정이 바뀌면 그달 안에 수정</td></tr>
-            <tr><td>스키마 오류</td><td>반기 1회</td><td>리치 결과 테스트에서 오류가 1건이라도 뜨면 수정</td></tr>
-            <tr><td>한 번도 안 쓰인 질문</td><td>연 1회</td><td>1년간 유입·인용이 없으면 문장을 다시 쓰거나 삭제</td></tr>
+            <tr><td data-label="점검 항목">가격·기간 수치</td><td data-label="주기">분기 1회</td><td data-label="고쳐야 하는 기준">실제 견적과 한 번이라도 어긋나면 즉시 수정</td></tr>
+            <tr><td data-label="점검 항목">새로 들어온 질문</td><td data-label="주기">분기 1회</td><td data-label="고쳐야 하는 기준">3개월 안에 2번 이상 받은 질문이면 추가</td></tr>
+            <tr><td data-label="점검 항목">법·제도 관련 답변</td><td data-label="주기">개정 시점마다</td><td data-label="고쳐야 하는 기준">관련 규정이 바뀌면 그달 안에 수정</td></tr>
+            <tr><td data-label="점검 항목">스키마 오류</td><td data-label="주기">반기 1회</td><td data-label="고쳐야 하는 기준">리치 결과 테스트에서 오류가 1건이라도 뜨면 수정</td></tr>
+            <tr><td data-label="점검 항목">한 번도 안 쓰인 질문</td><td data-label="주기">연 1회</td><td data-label="고쳐야 하는 기준">1년간 유입·인용이 없으면 문장을 다시 쓰거나 삭제</td></tr>
           </tbody>
         </table>
       </div>

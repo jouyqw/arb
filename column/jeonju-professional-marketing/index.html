@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -139,17 +147,17 @@
       <p>세무사에는 전문의나 전문분야 등록에 해당하는 자격 구분이 없어, &#39;전문&#39;보다 &#39;주요 업무&#39;로 적는 쪽이 안전합니다. 저는 세무사 원고에서 수치를 쓸 때 근거를 함께 남기게 합니다. 사후 심사에서 묻는 것은 결국 그 숫자의 출처입니다.</p>
       <h2>같은 문구가 업종에 따라 어떻게 갈리나요?</h2>
       <p>같은 문장을 네 업종에 넣어 보면 차이가 한 번에 보입니다. 아래 표는 제가 상담에서 펼쳐 놓고 쓰는 비교표입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>쓰고 싶어 하는 표현</th><th>병원·치과</th><th>변호사</th><th>세무사</th></tr>
           </thead>
           <tbody>
-            <tr><td>&quot;○○ 전문&quot;</td><td>해당 과목 전문의만 표기 가능</td><td>변협 전문분야 등록 시 가능</td><td>자격 구분 없음, &#39;주요 업무&#39;로</td></tr>
-            <tr><td>고객 경험담</td><td>환자 치료경험담은 금지</td><td>사실 범위 가능, 결과 암시 금지</td><td>사실 범위 가능, 과장 금지</td></tr>
-            <tr><td>&quot;지역 1위&quot;, &quot;최고&quot;</td><td>근거 없는 최상급 금지</td><td>최상급·우열 비교 제한</td><td>다른 세무사와 비교 제한</td></tr>
-            <tr><td>할인·이벤트</td><td>비급여 할인은 유인 소지</td><td>수임료 표현은 유인 소지</td><td>금액 표시 가능, 최저 강조 금지</td></tr>
-            <tr><td>게재 전 절차</td><td>일정 매체는 사전심의·심의번호</td><td>사전심의 없음, 사후 협회 절차</td><td>사전심의 없음, 사후 심사</td></tr>
+            <tr><td data-label="쓰고 싶어 하는 표현">&quot;○○ 전문&quot;</td><td data-label="병원·치과">해당 과목 전문의만 표기 가능</td><td data-label="변호사">변협 전문분야 등록 시 가능</td><td data-label="세무사">자격 구분 없음, &#39;주요 업무&#39;로</td></tr>
+            <tr><td data-label="쓰고 싶어 하는 표현">고객 경험담</td><td data-label="병원·치과">환자 치료경험담은 금지</td><td data-label="변호사">사실 범위 가능, 결과 암시 금지</td><td data-label="세무사">사실 범위 가능, 과장 금지</td></tr>
+            <tr><td data-label="쓰고 싶어 하는 표현">&quot;지역 1위&quot;, &quot;최고&quot;</td><td data-label="병원·치과">근거 없는 최상급 금지</td><td data-label="변호사">최상급·우열 비교 제한</td><td data-label="세무사">다른 세무사와 비교 제한</td></tr>
+            <tr><td data-label="쓰고 싶어 하는 표현">할인·이벤트</td><td data-label="병원·치과">비급여 할인은 유인 소지</td><td data-label="변호사">수임료 표현은 유인 소지</td><td data-label="세무사">금액 표시 가능, 최저 강조 금지</td></tr>
+            <tr><td data-label="쓰고 싶어 하는 표현">게재 전 절차</td><td data-label="병원·치과">일정 매체는 사전심의·심의번호</td><td data-label="변호사">사전심의 없음, 사후 협회 절차</td><td data-label="세무사">사전심의 없음, 사후 심사</td></tr>
           </tbody>
         </table>
       </div>
@@ -167,10 +175,10 @@
             <tr><th>업종</th><th>0~30일: 규정 정리</th><th>31~90일: 원고</th></tr>
           </thead>
           <tbody>
-            <tr><td>병원</td><td>금지 표현 점검, 전문의 표기 확인</td><td>증상·검사 절차 안내 8~12편</td></tr>
-            <tr><td>치과</td><td>전후 사진·이벤트 문구, 비급여 안내 정리</td><td>진료 항목별 과정·기간·비용 범위 8~12편</td></tr>
-            <tr><td>세무사</td><td>금액·실적 표현의 근거 정리</td><td>신고 유형별 준비 서류와 일정 6~10편</td></tr>
-            <tr><td>변호사</td><td>전문분야 등록 확인, 승소율 표현 삭제</td><td>사건 유형별 절차·기간·서류 6~10편</td></tr>
+            <tr><td data-label="업종">병원</td><td data-label="0~30일: 규정 정리">금지 표현 점검, 전문의 표기 확인</td><td data-label="31~90일: 원고">증상·검사 절차 안내 8~12편</td></tr>
+            <tr><td data-label="업종">치과</td><td data-label="0~30일: 규정 정리">전후 사진·이벤트 문구, 비급여 안내 정리</td><td data-label="31~90일: 원고">진료 항목별 과정·기간·비용 범위 8~12편</td></tr>
+            <tr><td data-label="업종">세무사</td><td data-label="0~30일: 규정 정리">금액·실적 표현의 근거 정리</td><td data-label="31~90일: 원고">신고 유형별 준비 서류와 일정 6~10편</td></tr>
+            <tr><td data-label="업종">변호사</td><td data-label="0~30일: 규정 정리">전문분야 등록 확인, 승소율 표현 삭제</td><td data-label="31~90일: 원고">사건 유형별 절차·기간·서류 6~10편</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -132,12 +140,12 @@
             <tr><th>점검 항목</th><th>좋은 상태</th><th>문제 신호</th></tr>
           </thead>
           <tbody>
-            <tr><td>첫 화면</td><td>무엇을 하는 곳인지 바로 보임</td><td>멋진 문구만 있고 업종이 불명확함</td></tr>
-            <tr><td>상담 버튼</td><td>전화, 카카오톡, 예약 버튼이 잘 보임</td><td>문의 버튼을 찾기 어려움</td></tr>
-            <tr><td>신뢰 요소</td><td>전문 분야, 사례, 후기, 위치가 정리됨</td><td>근거 없는 홍보 문구만 많음</td></tr>
-            <tr><td>모바일 화면</td><td>글자와 표가 편하게 읽힘</td><td>글자가 작거나 버튼이 겹침</td></tr>
-            <tr><td>광고와 페이지의 일치</td><td>광고에서 약속한 내용이 첫 화면에 그대로 있음</td><td>광고 문구와 도착 페이지 내용이 서로 다름</td></tr>
-            <tr><td>로딩 속도</td><td>모바일에서 3초 안에 첫 화면이 뜸</td><td>큰 이미지·영상 때문에 5초 이상 흰 화면</td></tr>
+            <tr><td data-label="점검 항목">첫 화면</td><td data-label="좋은 상태">무엇을 하는 곳인지 바로 보임</td><td data-label="문제 신호">멋진 문구만 있고 업종이 불명확함</td></tr>
+            <tr><td data-label="점검 항목">상담 버튼</td><td data-label="좋은 상태">전화, 카카오톡, 예약 버튼이 잘 보임</td><td data-label="문제 신호">문의 버튼을 찾기 어려움</td></tr>
+            <tr><td data-label="점검 항목">신뢰 요소</td><td data-label="좋은 상태">전문 분야, 사례, 후기, 위치가 정리됨</td><td data-label="문제 신호">근거 없는 홍보 문구만 많음</td></tr>
+            <tr><td data-label="점검 항목">모바일 화면</td><td data-label="좋은 상태">글자와 표가 편하게 읽힘</td><td data-label="문제 신호">글자가 작거나 버튼이 겹침</td></tr>
+            <tr><td data-label="점검 항목">광고와 페이지의 일치</td><td data-label="좋은 상태">광고에서 약속한 내용이 첫 화면에 그대로 있음</td><td data-label="문제 신호">광고 문구와 도착 페이지 내용이 서로 다름</td></tr>
+            <tr><td data-label="점검 항목">로딩 속도</td><td data-label="좋은 상태">모바일에서 3초 안에 첫 화면이 뜸</td><td data-label="문제 신호">큰 이미지·영상 때문에 5초 이상 흰 화면</td></tr>
           </tbody>
         </table>
       </div>
@@ -181,13 +189,13 @@
             <tr><th>판단 기준</th><th>기존 홈페이지 부분 수정</th><th>랜딩페이지 신규 제작</th></tr>
           </thead>
           <tbody>
-            <tr><td>적합한 상황</td><td>구성은 괜찮은데 첫 화면·버튼·신뢰 요소가 약함</td><td>광고 키워드마다 필요한 설명이 서로 다름</td></tr>
-            <tr><td>광고 키워드 수</td><td>1~3개, 성격이 비슷함</td><td>5개 이상이거나 대상이 뚜렷하게 나뉨</td></tr>
-            <tr><td>기간</td><td>보통 1~2주</td><td>보통 2~4주</td></tr>
-            <tr><td>비용 범위</td><td>대략 50만~300만원</td><td>대략 150만~500만원</td></tr>
-            <tr><td>장점</td><td>빠르고 비용 부담이 적음</td><td>메시지를 광고에 정확히 맞출 수 있음</td></tr>
-            <tr><td>한계</td><td>구조 자체가 낡았으면 효과가 제한적</td><td>페이지가 늘어나 관리 부담이 생김</td></tr>
-            <tr><td>먼저 해 볼 것</td><td>첫 화면 문구와 상담 버튼만 2주 테스트</td><td>가장 문의가 필요한 키워드 1개로 먼저 제작</td></tr>
+            <tr><td data-label="판단 기준">적합한 상황</td><td data-label="기존 홈페이지 부분 수정">구성은 괜찮은데 첫 화면·버튼·신뢰 요소가 약함</td><td data-label="랜딩페이지 신규 제작">광고 키워드마다 필요한 설명이 서로 다름</td></tr>
+            <tr><td data-label="판단 기준">광고 키워드 수</td><td data-label="기존 홈페이지 부분 수정">1~3개, 성격이 비슷함</td><td data-label="랜딩페이지 신규 제작">5개 이상이거나 대상이 뚜렷하게 나뉨</td></tr>
+            <tr><td data-label="판단 기준">기간</td><td data-label="기존 홈페이지 부분 수정">보통 1~2주</td><td data-label="랜딩페이지 신규 제작">보통 2~4주</td></tr>
+            <tr><td data-label="판단 기준">비용 범위</td><td data-label="기존 홈페이지 부분 수정">대략 50만~300만원</td><td data-label="랜딩페이지 신규 제작">대략 150만~500만원</td></tr>
+            <tr><td data-label="판단 기준">장점</td><td data-label="기존 홈페이지 부분 수정">빠르고 비용 부담이 적음</td><td data-label="랜딩페이지 신규 제작">메시지를 광고에 정확히 맞출 수 있음</td></tr>
+            <tr><td data-label="판단 기준">한계</td><td data-label="기존 홈페이지 부분 수정">구조 자체가 낡았으면 효과가 제한적</td><td data-label="랜딩페이지 신규 제작">페이지가 늘어나 관리 부담이 생김</td></tr>
+            <tr><td data-label="판단 기준">먼저 해 볼 것</td><td data-label="기존 홈페이지 부분 수정">첫 화면 문구와 상담 버튼만 2주 테스트</td><td data-label="랜딩페이지 신규 제작">가장 문의가 필요한 키워드 1개로 먼저 제작</td></tr>
           </tbody>
         </table>
       </div>

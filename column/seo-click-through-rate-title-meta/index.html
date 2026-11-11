@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -134,10 +142,10 @@
             <tr><th>평균 게재순위</th><th>흔히 관찰되는 클릭률</th><th>이 구간에서 볼 지점</th></tr>
           </thead>
           <tbody>
-            <tr><td>1~2위</td><td>대략 15~30%</td><td>이보다 낮다면 제목이 검색어와 어긋났을 가능성</td></tr>
-            <tr><td>3~5위</td><td>대략 5~12%</td><td>상위 결과와 각도가 겹쳐 차별점이 없을 가능성</td></tr>
-            <tr><td>6~10위</td><td>대략 1~4%</td><td>제목 개선과 함께 본문 보강도 같이 볼 구간</td></tr>
-            <tr><td>11위 이하</td><td>1% 미만인 경우가 흔함</td><td>제목만으로는 한계, 순위 개선이 먼저</td></tr>
+            <tr><td data-label="평균 게재순위">1~2위</td><td data-label="흔히 관찰되는 클릭률">대략 15~30%</td><td data-label="이 구간에서 볼 지점">이보다 낮다면 제목이 검색어와 어긋났을 가능성</td></tr>
+            <tr><td data-label="평균 게재순위">3~5위</td><td data-label="흔히 관찰되는 클릭률">대략 5~12%</td><td data-label="이 구간에서 볼 지점">상위 결과와 각도가 겹쳐 차별점이 없을 가능성</td></tr>
+            <tr><td data-label="평균 게재순위">6~10위</td><td data-label="흔히 관찰되는 클릭률">대략 1~4%</td><td data-label="이 구간에서 볼 지점">제목 개선과 함께 본문 보강도 같이 볼 구간</td></tr>
+            <tr><td data-label="평균 게재순위">11위 이하</td><td data-label="흔히 관찰되는 클릭률">1% 미만인 경우가 흔함</td><td data-label="이 구간에서 볼 지점">제목만으로는 한계, 순위 개선이 먼저</td></tr>
           </tbody>
         </table>
       </div>
@@ -174,13 +182,13 @@
             <tr><th>비교 기준</th><th>제목·설명만 수정</th><th>콘텐츠 전면 보강</th></tr>
           </thead>
           <tbody>
-            <tr><td>글당 작업 시간</td><td>20~40분</td><td>4~8시간</td></tr>
-            <tr><td>효과 확인 시점</td><td>재색인 후 2~4주</td><td>보통 2~3개월</td></tr>
-            <tr><td>기대하는 변화</td><td>클릭률 개선</td><td>순위·체류시간·문의까지</td></tr>
-            <tr><td>적합한 상황</td><td>노출 많고 순위 10위 안인데 클릭이 없을 때</td><td>노출이 적거나 평균 20위 밖일 때</td></tr>
-            <tr><td>실패 신호</td><td>클릭은 늘었는데 바로 이탈</td><td>3개월 넘게 순위 변화 없음</td></tr>
-            <tr><td>한계</td><td>본문이 약하면 효과가 오래가지 않음</td><td>시간과 인력이 많이 듦</td></tr>
-            <tr><td>권하는 순서</td><td>1순위 — 여기서 시작</td><td>제목 수정 후에도 유입이 아쉬울 때</td></tr>
+            <tr><td data-label="비교 기준">글당 작업 시간</td><td data-label="제목·설명만 수정">20~40분</td><td data-label="콘텐츠 전면 보강">4~8시간</td></tr>
+            <tr><td data-label="비교 기준">효과 확인 시점</td><td data-label="제목·설명만 수정">재색인 후 2~4주</td><td data-label="콘텐츠 전면 보강">보통 2~3개월</td></tr>
+            <tr><td data-label="비교 기준">기대하는 변화</td><td data-label="제목·설명만 수정">클릭률 개선</td><td data-label="콘텐츠 전면 보강">순위·체류시간·문의까지</td></tr>
+            <tr><td data-label="비교 기준">적합한 상황</td><td data-label="제목·설명만 수정">노출 많고 순위 10위 안인데 클릭이 없을 때</td><td data-label="콘텐츠 전면 보강">노출이 적거나 평균 20위 밖일 때</td></tr>
+            <tr><td data-label="비교 기준">실패 신호</td><td data-label="제목·설명만 수정">클릭은 늘었는데 바로 이탈</td><td data-label="콘텐츠 전면 보강">3개월 넘게 순위 변화 없음</td></tr>
+            <tr><td data-label="비교 기준">한계</td><td data-label="제목·설명만 수정">본문이 약하면 효과가 오래가지 않음</td><td data-label="콘텐츠 전면 보강">시간과 인력이 많이 듦</td></tr>
+            <tr><td data-label="비교 기준">권하는 순서</td><td data-label="제목·설명만 수정">1순위 — 여기서 시작</td><td data-label="콘텐츠 전면 보강">제목 수정 후에도 유입이 아쉬울 때</td></tr>
           </tbody>
         </table>
       </div>

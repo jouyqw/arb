@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -130,12 +138,12 @@
             <tr><th>비교 축</th><th>검색광고</th><th>칼럼 콘텐츠</th></tr>
           </thead>
           <tbody>
-            <tr><td>유입이 시작되는 시점</td><td>집행 당일</td><td>발행 후 1~3개월</td></tr>
-            <tr><td>예산을 멈췄을 때</td><td>며칠 안에 유입이 끊김</td><td>이미 쌓인 글의 유입은 유지</td></tr>
-            <tr><td>1년 뒤 누적 효과</td><td>집행분 소진 후 남지 않음</td><td>발행한 글 수만큼 누적</td></tr>
-            <tr><td>비용 흐름</td><td>매달 반복되는 고정 지출</td><td>초기 제작비 후 유지·개선비 위주</td></tr>
-            <tr><td>효과가 큰 상황</td><td>신규 개원, 기간이 정해진 모집</td><td>6개월 이상 운영할 여력이 있을 때</td></tr>
-            <tr><td>AI 검색 인용 가능성</td><td>거의 없음</td><td>질문형 구조와 근거가 있을 때 인용 여지</td></tr>
+            <tr><td data-label="비교 축">유입이 시작되는 시점</td><td data-label="검색광고">집행 당일</td><td data-label="칼럼 콘텐츠">발행 후 1~3개월</td></tr>
+            <tr><td data-label="비교 축">예산을 멈췄을 때</td><td data-label="검색광고">며칠 안에 유입이 끊김</td><td data-label="칼럼 콘텐츠">이미 쌓인 글의 유입은 유지</td></tr>
+            <tr><td data-label="비교 축">1년 뒤 누적 효과</td><td data-label="검색광고">집행분 소진 후 남지 않음</td><td data-label="칼럼 콘텐츠">발행한 글 수만큼 누적</td></tr>
+            <tr><td data-label="비교 축">비용 흐름</td><td data-label="검색광고">매달 반복되는 고정 지출</td><td data-label="칼럼 콘텐츠">초기 제작비 후 유지·개선비 위주</td></tr>
+            <tr><td data-label="비교 축">효과가 큰 상황</td><td data-label="검색광고">신규 개원, 기간이 정해진 모집</td><td data-label="칼럼 콘텐츠">6개월 이상 운영할 여력이 있을 때</td></tr>
+            <tr><td data-label="비교 축">AI 검색 인용 가능성</td><td data-label="검색광고">거의 없음</td><td data-label="칼럼 콘텐츠">질문형 구조와 근거가 있을 때 인용 여지</td></tr>
           </tbody>
         </table>
       </div>
@@ -154,15 +162,15 @@
       <h2>주제를 고를 때 무엇을 기준으로 판단하나요?</h2>
       <p>중요한 것은 AI로 글을 많이 만드는 것보다, 실제 상담으로 이어지는 검색 의도를 고르는 것입니다. 문의 가능성이 낮은 정보성 키워드만 쌓으면 방문자는 늘어도 매출은 늘지 않습니다.</p>
       <p>판단 기준은 검색량이 아니라, 그 검색을 한 사람이 지금 상담을 필요로 하는 상태인지입니다. 같은 100회 유입이라도 의도에 따라 문의 건수는 크게 갈립니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>검색 의도</th><th>검색어 형태</th><th>문의로 이어질 가능성</th><th>발행 비중</th></tr>
           </thead>
           <tbody>
-            <tr><td>정보 확인형</td><td>&#39;○○ 증상&#39;, &#39;○○ 뜻&#39;, &#39;○○ 원인&#39;</td><td>낮음 — 방문자와 신뢰 확보용</td><td>20~30%</td></tr>
-            <tr><td>비교·판단형</td><td>&#39;○○ 비용&#39;, &#39;○○ 기간&#39;, &#39;○○ 차이&#39;</td><td>중간 — 후보군에 들어감</td><td>30~40%</td></tr>
-            <tr><td>상담 직전형</td><td>&#39;○○ 지역 병원&#39;, &#39;○○ 초기 대응&#39;, &#39;○○ 상담&#39;</td><td>높음 — 바로 연락으로 이어짐</td><td>40~50%</td></tr>
+            <tr><td data-label="검색 의도">정보 확인형</td><td data-label="검색어 형태">&#39;○○ 증상&#39;, &#39;○○ 뜻&#39;, &#39;○○ 원인&#39;</td><td data-label="문의로 이어질 가능성">낮음 — 방문자와 신뢰 확보용</td><td data-label="발행 비중">20~30%</td></tr>
+            <tr><td data-label="검색 의도">비교·판단형</td><td data-label="검색어 형태">&#39;○○ 비용&#39;, &#39;○○ 기간&#39;, &#39;○○ 차이&#39;</td><td data-label="문의로 이어질 가능성">중간 — 후보군에 들어감</td><td data-label="발행 비중">30~40%</td></tr>
+            <tr><td data-label="검색 의도">상담 직전형</td><td data-label="검색어 형태">&#39;○○ 지역 병원&#39;, &#39;○○ 초기 대응&#39;, &#39;○○ 상담&#39;</td><td data-label="문의로 이어질 가능성">높음 — 바로 연락으로 이어짐</td><td data-label="발행 비중">40~50%</td></tr>
           </tbody>
         </table>
       </div>
@@ -183,10 +191,10 @@
             <tr><th>운영 기간</th><th>이 시점에 확인할 것</th><th>기대할 수 있는 상태</th></tr>
           </thead>
           <tbody>
-            <tr><td>1개월</td><td>색인 여부, 제목·설명 오류, 모바일 속도</td><td>발행분 대부분이 검색에 잡힘</td></tr>
-            <tr><td>3개월</td><td>어떤 키워드로 들어오는지</td><td>정보 확인형 키워드에서 유입 시작</td></tr>
-            <tr><td>6개월</td><td>문의 경로 비중, 상담 직전형 글의 유입</td><td>검색으로 들어온 문의가 눈에 보이기 시작</td></tr>
-            <tr><td>12개월</td><td>광고비 대비 문의 단가, 글별 누적 유입</td><td>광고 비중을 조정할 판단 근거 확보</td></tr>
+            <tr><td data-label="운영 기간">1개월</td><td data-label="이 시점에 확인할 것">색인 여부, 제목·설명 오류, 모바일 속도</td><td data-label="기대할 수 있는 상태">발행분 대부분이 검색에 잡힘</td></tr>
+            <tr><td data-label="운영 기간">3개월</td><td data-label="이 시점에 확인할 것">어떤 키워드로 들어오는지</td><td data-label="기대할 수 있는 상태">정보 확인형 키워드에서 유입 시작</td></tr>
+            <tr><td data-label="운영 기간">6개월</td><td data-label="이 시점에 확인할 것">문의 경로 비중, 상담 직전형 글의 유입</td><td data-label="기대할 수 있는 상태">검색으로 들어온 문의가 눈에 보이기 시작</td></tr>
+            <tr><td data-label="운영 기간">12개월</td><td data-label="이 시점에 확인할 것">광고비 대비 문의 단가, 글별 누적 유입</td><td data-label="기대할 수 있는 상태">광고 비중을 조정할 판단 근거 확보</td></tr>
           </tbody>
         </table>
       </div>

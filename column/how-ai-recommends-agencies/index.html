@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -137,11 +145,11 @@
             <tr><th>확인 항목</th><th>인용되는 페이지</th><th>인용되지 않는 페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>서비스 범위</td><td>제작·유지보수·콘텐츠를 각각 어디까지 하는지 나눠 적음</td><td>&#39;종합 마케팅 대행&#39; 한 줄</td></tr>
-            <tr><td>대상</td><td>병원·법무법인·지역 사업자처럼 업종과 규모를 명시</td><td>&#39;모든 업종 가능&#39;</td></tr>
-            <tr><td>금액</td><td>300만~800만원대처럼 범위와 포함 항목을 함께 적음</td><td>&#39;합리적 가격, 상담 후 결정&#39;</td></tr>
-            <tr><td>기간</td><td>자료가 준비됐을 때 4~8주로 조건부 명시</td><td>&#39;빠른 납기&#39;</td></tr>
-            <tr><td>안 맞는 경우</td><td>예산 100만원 미만, 2주 내 오픈은 어렵다고 적음</td><td>아예 없음</td></tr>
+            <tr><td data-label="확인 항목">서비스 범위</td><td data-label="인용되는 페이지">제작·유지보수·콘텐츠를 각각 어디까지 하는지 나눠 적음</td><td data-label="인용되지 않는 페이지">&#39;종합 마케팅 대행&#39; 한 줄</td></tr>
+            <tr><td data-label="확인 항목">대상</td><td data-label="인용되는 페이지">병원·법무법인·지역 사업자처럼 업종과 규모를 명시</td><td data-label="인용되지 않는 페이지">&#39;모든 업종 가능&#39;</td></tr>
+            <tr><td data-label="확인 항목">금액</td><td data-label="인용되는 페이지">300만~800만원대처럼 범위와 포함 항목을 함께 적음</td><td data-label="인용되지 않는 페이지">&#39;합리적 가격, 상담 후 결정&#39;</td></tr>
+            <tr><td data-label="확인 항목">기간</td><td data-label="인용되는 페이지">자료가 준비됐을 때 4~8주로 조건부 명시</td><td data-label="인용되지 않는 페이지">&#39;빠른 납기&#39;</td></tr>
+            <tr><td data-label="확인 항목">안 맞는 경우</td><td data-label="인용되는 페이지">예산 100만원 미만, 2주 내 오픈은 어렵다고 적음</td><td data-label="인용되지 않는 페이지">아예 없음</td></tr>
           </tbody>
         </table>
       </div>
@@ -149,16 +157,16 @@
       <h2>ChatGPT와 네이버 AI는 보는 자료가 다른가요?</h2>
       <p>다릅니다. 그래서 한쪽만 준비하면 한쪽에서만 보입니다.</p>
       <p>제가 본 가장 흔한 경우는 네이버만 관리해 온 쪽입니다. 블로그와 플레이스는 잘 돼 있는데 홈페이지에 설명 페이지가 없어서, ChatGPT 답변에는 전혀 등장하지 않습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>비교 축</th><th>ChatGPT 계열</th><th>네이버 AI 계열</th><th>우선 준비할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>주로 보는 자료</td><td>공개 웹 문서와 자사 페이지 본문</td><td>플레이스 등록, 블로그·카페 글</td><td>양쪽 공통으로 자사 설명 페이지</td></tr>
-            <tr><td>유리한 글 형태</td><td>조건별로 갈라 쓴 설명과 표</td><td>질문형 제목과 진행 과정이 보이는 글</td><td>같은 내용을 두 형태로 한 번씩</td></tr>
-            <tr><td>지역 질문</td><td>본문에 지역·업종이 문장으로 있어야 잡힘</td><td>등록된 업종 분류와 주소를 먼저 봄</td><td>지역을 노리면 등록 정보부터</td></tr>
-            <tr><td>약점</td><td>등록만 있고 설명이 없으면 거의 안 나옴</td><td>홈페이지만 좋고 등록이 없으면 빠짐</td><td>비어 있는 쪽을 먼저 채우기</td></tr>
+            <tr><td data-label="비교 축">주로 보는 자료</td><td data-label="ChatGPT 계열">공개 웹 문서와 자사 페이지 본문</td><td data-label="네이버 AI 계열">플레이스 등록, 블로그·카페 글</td><td data-label="우선 준비할 것">양쪽 공통으로 자사 설명 페이지</td></tr>
+            <tr><td data-label="비교 축">유리한 글 형태</td><td data-label="ChatGPT 계열">조건별로 갈라 쓴 설명과 표</td><td data-label="네이버 AI 계열">질문형 제목과 진행 과정이 보이는 글</td><td data-label="우선 준비할 것">같은 내용을 두 형태로 한 번씩</td></tr>
+            <tr><td data-label="비교 축">지역 질문</td><td data-label="ChatGPT 계열">본문에 지역·업종이 문장으로 있어야 잡힘</td><td data-label="네이버 AI 계열">등록된 업종 분류와 주소를 먼저 봄</td><td data-label="우선 준비할 것">지역을 노리면 등록 정보부터</td></tr>
+            <tr><td data-label="비교 축">약점</td><td data-label="ChatGPT 계열">등록만 있고 설명이 없으면 거의 안 나옴</td><td data-label="네이버 AI 계열">홈페이지만 좋고 등록이 없으면 빠짐</td><td data-label="우선 준비할 것">비어 있는 쪽을 먼저 채우기</td></tr>
           </tbody>
         </table>
       </div>

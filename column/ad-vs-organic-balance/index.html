@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -137,16 +145,16 @@
       <p>분리 작업은 처음 한 번이 30~60분 정도 걸리고, 그다음부터는 월 10분이면 갱신됩니다. 검색어 목록을 내려받아 상호·대표명·지점명이 들어간 행에 표시만 해 두면 됩니다.</p>
       <p>이 정도는 직접 하셔도 됩니다. 다만 지점이 여러 곳이거나 대표명 표기가 여러 가지로 섞여 있으면 분류 기준부터 어긋나기 쉬워서, 그때는 맡기시는 편이 낫습니다.</p>
       <p>상담에서 열어 보면 전체 자연유입의 절반 이상이 브랜드 검색인 경우가 꽤 있습니다. 이 경우는 아직 감축 시점이 아닙니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>구분</th><th>검색어 예</th><th>광고를 줄이면</th><th>판단에서의 역할</th></tr>
           </thead>
           <tbody>
-            <tr><td>브랜드 검색</td><td>○○세무회계, ○○법률사무소 ○○변호사</td><td>몇 주 뒤부터 서서히 감소</td><td>감축 근거로 쓰지 않습니다</td></tr>
-            <tr><td>비브랜드 검색</td><td>강남 상속 상담, 부당해고 대응 절차</td><td>대체로 유지</td><td>감축 여력의 실제 크기입니다</td></tr>
-            <tr><td>지도·플레이스</td><td>근처 세무사, 지역명 + 업종</td><td>위치 영향이 커서 변동 작음</td><td>보조 지표로 봅니다</td></tr>
-            <tr><td>추천·소개 유입</td><td>직접 주소 입력, 외부 링크</td><td>무관</td><td>분모에서 빼고 계산합니다</td></tr>
+            <tr><td data-label="구분">브랜드 검색</td><td data-label="검색어 예">○○세무회계, ○○법률사무소 ○○변호사</td><td data-label="광고를 줄이면">몇 주 뒤부터 서서히 감소</td><td data-label="판단에서의 역할">감축 근거로 쓰지 않습니다</td></tr>
+            <tr><td data-label="구분">비브랜드 검색</td><td data-label="검색어 예">강남 상속 상담, 부당해고 대응 절차</td><td data-label="광고를 줄이면">대체로 유지</td><td data-label="판단에서의 역할">감축 여력의 실제 크기입니다</td></tr>
+            <tr><td data-label="구분">지도·플레이스</td><td data-label="검색어 예">근처 세무사, 지역명 + 업종</td><td data-label="광고를 줄이면">위치 영향이 커서 변동 작음</td><td data-label="판단에서의 역할">보조 지표로 봅니다</td></tr>
+            <tr><td data-label="구분">추천·소개 유입</td><td data-label="검색어 예">직접 주소 입력, 외부 링크</td><td data-label="광고를 줄이면">무관</td><td data-label="판단에서의 역할">분모에서 빼고 계산합니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -167,17 +175,17 @@
       <div class="callout-box"><span class="label">기준선</span><p>감축 전 4주 동안의 주간 문의 수 평균이 기준선입니다. 이 숫자를 표 한 곳에 적어 두고, 이후 모든 판단은 이 숫자와 비교해서 합니다.</p></div>
       <h2>광고를 줄일지 그대로 둘지, 무엇으로 고르나요?</h2>
       <p>비브랜드 자연유입 비중, 키워드 위치, 경로별 성사율, 콘텐츠 분량 네 항목 중 세 개 이상이 감축 쪽이면 시작하고, 두 개 이하면 6개월 더 유지하는 편이 안전합니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>판단 항목</th><th>지금 감축 착수</th><th>유지하며 콘텐츠 보강</th><th>가늠하는 방법</th></tr>
           </thead>
           <tbody>
-            <tr><td>비브랜드 문의 비중</td><td>40% 이상이 3개월 유지</td><td>30% 미만이거나 오르내림이 큼</td><td>경로 기록 3개월치 집계</td></tr>
-            <tr><td>주요 키워드 위치</td><td>목표 10~20개 중 절반 이상 첫 페이지</td><td>3분의 1 미만</td><td>월 1회 순위 확인</td></tr>
-            <tr><td>광고 문의 성사율</td><td>자연유입과 비슷하거나 낮음</td><td>자연유입보다 뚜렷하게 높음</td><td>경로별 성사 건수 비교</td></tr>
-            <tr><td>발행한 콘텐츠 분량</td><td>주요 업무별 글이 갖춰진 상태</td><td>업무 소개 외에는 거의 없음</td><td>색인된 페이지 수 확인</td></tr>
-            <tr><td>운영 기간</td><td>개원·개소 2년 이상</td><td>1년 미만</td><td>개업 시점 기준</td></tr>
+            <tr><td data-label="판단 항목">비브랜드 문의 비중</td><td data-label="지금 감축 착수">40% 이상이 3개월 유지</td><td data-label="유지하며 콘텐츠 보강">30% 미만이거나 오르내림이 큼</td><td data-label="가늠하는 방법">경로 기록 3개월치 집계</td></tr>
+            <tr><td data-label="판단 항목">주요 키워드 위치</td><td data-label="지금 감축 착수">목표 10~20개 중 절반 이상 첫 페이지</td><td data-label="유지하며 콘텐츠 보강">3분의 1 미만</td><td data-label="가늠하는 방법">월 1회 순위 확인</td></tr>
+            <tr><td data-label="판단 항목">광고 문의 성사율</td><td data-label="지금 감축 착수">자연유입과 비슷하거나 낮음</td><td data-label="유지하며 콘텐츠 보강">자연유입보다 뚜렷하게 높음</td><td data-label="가늠하는 방법">경로별 성사 건수 비교</td></tr>
+            <tr><td data-label="판단 항목">발행한 콘텐츠 분량</td><td data-label="지금 감축 착수">주요 업무별 글이 갖춰진 상태</td><td data-label="유지하며 콘텐츠 보강">업무 소개 외에는 거의 없음</td><td data-label="가늠하는 방법">색인된 페이지 수 확인</td></tr>
+            <tr><td data-label="판단 항목">운영 기간</td><td data-label="지금 감축 착수">개원·개소 2년 이상</td><td data-label="유지하며 콘텐츠 보강">1년 미만</td><td data-label="가늠하는 방법">개업 시점 기준</td></tr>
           </tbody>
         </table>
       </div>
@@ -202,17 +210,17 @@
       <p>그다음 후보는 경로별 문의 단가가 높은 묶음입니다. 같은 예산으로 문의가 적게 들어오던 지역이나 시간대가 여기에 해당합니다.</p>
       <p>반대로 마지막까지 남겨야 할 것은 상호 검색 방어용 광고와, 경쟁이 심해 자연 검색으로는 자리를 못 잡은 키워드입니다.</p>
       <p>순서를 뒤집어 방어용 광고부터 끄는 경우를 더러 봅니다. 아끼는 금액은 작은데 상호를 검색한 화면을 내주게 되어, 줄인 것보다 잃는 쪽이 큽니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>단계</th><th>기간</th><th>하는 일</th><th>확인할 숫자</th></tr>
           </thead>
           <tbody>
-            <tr><td>0단계</td><td>감축 전 4주</td><td>경로별 문의 수 기준선 기록</td><td>주간 문의 수, 경로별 비중</td></tr>
-            <tr><td>1단계</td><td>1~4주차</td><td>자연 검색 첫 페이지 키워드 광고 20~30% 감축</td><td>총 문의 수, 비브랜드 유입 변화</td></tr>
-            <tr><td>2단계</td><td>5~8주차</td><td>이상 없으면 같은 폭으로 한 번 더 감축</td><td>문의 단가, 성사율</td></tr>
-            <tr><td>3단계</td><td>9~12주차</td><td>남은 예산을 콘텐츠·홈페이지 정비로 이동</td><td>색인 수, 신규 노출 검색어</td></tr>
-            <tr><td>되돌림</td><td>언제든</td><td>기준선 대비 15% 이상 감소가 2주 연속이면 원복</td><td>총 문의 수</td></tr>
+            <tr><td data-label="단계">0단계</td><td data-label="기간">감축 전 4주</td><td data-label="하는 일">경로별 문의 수 기준선 기록</td><td data-label="확인할 숫자">주간 문의 수, 경로별 비중</td></tr>
+            <tr><td data-label="단계">1단계</td><td data-label="기간">1~4주차</td><td data-label="하는 일">자연 검색 첫 페이지 키워드 광고 20~30% 감축</td><td data-label="확인할 숫자">총 문의 수, 비브랜드 유입 변화</td></tr>
+            <tr><td data-label="단계">2단계</td><td data-label="기간">5~8주차</td><td data-label="하는 일">이상 없으면 같은 폭으로 한 번 더 감축</td><td data-label="확인할 숫자">문의 단가, 성사율</td></tr>
+            <tr><td data-label="단계">3단계</td><td data-label="기간">9~12주차</td><td data-label="하는 일">남은 예산을 콘텐츠·홈페이지 정비로 이동</td><td data-label="확인할 숫자">색인 수, 신규 노출 검색어</td></tr>
+            <tr><td data-label="단계">되돌림</td><td data-label="기간">언제든</td><td data-label="하는 일">기준선 대비 15% 이상 감소가 2주 연속이면 원복</td><td data-label="확인할 숫자">총 문의 수</td></tr>
           </tbody>
         </table>
       </div>

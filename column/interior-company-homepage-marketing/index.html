@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -130,14 +138,14 @@
             <tr><th>점검 항목</th><th>홈페이지에 필요한 내용</th></tr>
           </thead>
           <tbody>
-            <tr><td>첫 화면</td><td>어떤 인테리어를 잘하는 업체인지 바로 보여줘야 합니다</td></tr>
-            <tr><td>시공 사례</td><td>아파트, 상가, 사무실 등 유형별로 나눠 보여주는 것이 좋습니다</td></tr>
-            <tr><td>상담 버튼</td><td>전화, 카카오톡, 견적 문의 버튼이 눈에 잘 보여야 합니다</td></tr>
-            <tr><td>지역 정보</td><td>서울, 경기, 인천 등 실제 대응 가능한 지역을 적어야 합니다</td></tr>
-            <tr><td>후기</td><td>실제 고객 후기와 전후 사진이 신뢰를 만듭니다</td></tr>
-            <tr><td>공사 범위</td><td>전체 리모델링, 부분 시공, 샤시·도배만 등 가능한 범위를 구분합니다</td></tr>
-            <tr><td>가격 안내</td><td>평형별 대략적인 범위나 &#39;평당 ○○만원부터&#39; 형태로 기준을 제시합니다</td></tr>
-            <tr><td>회사 정보</td><td>사업자등록번호, 실내건축공사업 면허, A/S 기간을 명시합니다</td></tr>
+            <tr><td data-label="점검 항목">첫 화면</td><td data-label="홈페이지에 필요한 내용">어떤 인테리어를 잘하는 업체인지 바로 보여줘야 합니다</td></tr>
+            <tr><td data-label="점검 항목">시공 사례</td><td data-label="홈페이지에 필요한 내용">아파트, 상가, 사무실 등 유형별로 나눠 보여주는 것이 좋습니다</td></tr>
+            <tr><td data-label="점검 항목">상담 버튼</td><td data-label="홈페이지에 필요한 내용">전화, 카카오톡, 견적 문의 버튼이 눈에 잘 보여야 합니다</td></tr>
+            <tr><td data-label="점검 항목">지역 정보</td><td data-label="홈페이지에 필요한 내용">서울, 경기, 인천 등 실제 대응 가능한 지역을 적어야 합니다</td></tr>
+            <tr><td data-label="점검 항목">후기</td><td data-label="홈페이지에 필요한 내용">실제 고객 후기와 전후 사진이 신뢰를 만듭니다</td></tr>
+            <tr><td data-label="점검 항목">공사 범위</td><td data-label="홈페이지에 필요한 내용">전체 리모델링, 부분 시공, 샤시·도배만 등 가능한 범위를 구분합니다</td></tr>
+            <tr><td data-label="점검 항목">가격 안내</td><td data-label="홈페이지에 필요한 내용">평형별 대략적인 범위나 &#39;평당 ○○만원부터&#39; 형태로 기준을 제시합니다</td></tr>
+            <tr><td data-label="점검 항목">회사 정보</td><td data-label="홈페이지에 필요한 내용">사업자등록번호, 실내건축공사업 면허, A/S 기간을 명시합니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -160,10 +168,10 @@
             <tr><th>사례 수</th><th>방문자가 받는 인상</th><th>권장 대응</th></tr>
           </thead>
           <tbody>
-            <tr><td>1~5건</td><td>판단 근거가 부족해 비교 대상에서 빠지기 쉽습니다</td><td>과거 시공 사진을 정리해 우선 10건까지 확보</td></tr>
-            <tr><td>6~11건</td><td>유형이 섞여 있어 원하는 사례를 찾기 어렵습니다</td><td>아파트·상가·사무실 등 유형별 분류 먼저 적용</td></tr>
-            <tr><td>12~20건</td><td>유형별로 비교가 가능해 문의로 이어지기 시작합니다</td><td>주 1건 페이스 유지, 상세 설명 보강</td></tr>
-            <tr><td>21건 이상</td><td>목록이 길어 오히려 찾기가 불편해집니다</td><td>지역·평형·예산 필터와 대표 사례 고정 배치</td></tr>
+            <tr><td data-label="사례 수">1~5건</td><td data-label="방문자가 받는 인상">판단 근거가 부족해 비교 대상에서 빠지기 쉽습니다</td><td data-label="권장 대응">과거 시공 사진을 정리해 우선 10건까지 확보</td></tr>
+            <tr><td data-label="사례 수">6~11건</td><td data-label="방문자가 받는 인상">유형이 섞여 있어 원하는 사례를 찾기 어렵습니다</td><td data-label="권장 대응">아파트·상가·사무실 등 유형별 분류 먼저 적용</td></tr>
+            <tr><td data-label="사례 수">12~20건</td><td data-label="방문자가 받는 인상">유형별로 비교가 가능해 문의로 이어지기 시작합니다</td><td data-label="권장 대응">주 1건 페이스 유지, 상세 설명 보강</td></tr>
+            <tr><td data-label="사례 수">21건 이상</td><td data-label="방문자가 받는 인상">목록이 길어 오히려 찾기가 불편해집니다</td><td data-label="권장 대응">지역·평형·예산 필터와 대표 사례 고정 배치</td></tr>
           </tbody>
         </table>
       </div>
@@ -178,15 +186,15 @@
             <tr><th>비교 항목</th><th>임대형(템플릿)</th><th>제작형</th></tr>
           </thead>
           <tbody>
-            <tr><td>적합한 상황</td><td>창업 초기, 사례 10건 이하, 우선 명함 대용</td><td>사례 20건 이상, 지역 검색 유입을 쌓으려는 경우</td></tr>
-            <tr><td>초기 비용</td><td>대략 0~50만원</td><td>대략 250~800만원</td></tr>
-            <tr><td>유지 비용</td><td>월 3~15만원 수준</td><td>도메인·호스팅 연 10~30만원 수준</td></tr>
-            <tr><td>3년 총비용</td><td>대략 150~600만원</td><td>대략 280~900만원</td></tr>
-            <tr><td>제작 기간</td><td>보통 3~7일</td><td>보통 3~6주</td></tr>
-            <tr><td>사례 등록</td><td>정해진 틀 안에서만 입력</td><td>항목과 분류를 업종에 맞게 설계 가능</td></tr>
-            <tr><td>검색 노출</td><td>기본 구조는 되지만 세부 조정이 제한적</td><td>제목·주소·이미지 설명까지 조정 가능</td></tr>
-            <tr><td>이전 난이도</td><td>데이터를 통째로 옮기기 어려운 경우가 많음</td><td>자체 소유라 이전·확장이 자유로움</td></tr>
-            <tr><td>이런 경우 선택</td><td>3개월 안에 문의 채널만 급히 열어야 할 때</td><td>1년 이상 운영하며 광고비를 줄이려 할 때</td></tr>
+            <tr><td data-label="비교 항목">적합한 상황</td><td data-label="임대형(템플릿)">창업 초기, 사례 10건 이하, 우선 명함 대용</td><td data-label="제작형">사례 20건 이상, 지역 검색 유입을 쌓으려는 경우</td></tr>
+            <tr><td data-label="비교 항목">초기 비용</td><td data-label="임대형(템플릿)">대략 0~50만원</td><td data-label="제작형">대략 250~800만원</td></tr>
+            <tr><td data-label="비교 항목">유지 비용</td><td data-label="임대형(템플릿)">월 3~15만원 수준</td><td data-label="제작형">도메인·호스팅 연 10~30만원 수준</td></tr>
+            <tr><td data-label="비교 항목">3년 총비용</td><td data-label="임대형(템플릿)">대략 150~600만원</td><td data-label="제작형">대략 280~900만원</td></tr>
+            <tr><td data-label="비교 항목">제작 기간</td><td data-label="임대형(템플릿)">보통 3~7일</td><td data-label="제작형">보통 3~6주</td></tr>
+            <tr><td data-label="비교 항목">사례 등록</td><td data-label="임대형(템플릿)">정해진 틀 안에서만 입력</td><td data-label="제작형">항목과 분류를 업종에 맞게 설계 가능</td></tr>
+            <tr><td data-label="비교 항목">검색 노출</td><td data-label="임대형(템플릿)">기본 구조는 되지만 세부 조정이 제한적</td><td data-label="제작형">제목·주소·이미지 설명까지 조정 가능</td></tr>
+            <tr><td data-label="비교 항목">이전 난이도</td><td data-label="임대형(템플릿)">데이터를 통째로 옮기기 어려운 경우가 많음</td><td data-label="제작형">자체 소유라 이전·확장이 자유로움</td></tr>
+            <tr><td data-label="비교 항목">이런 경우 선택</td><td data-label="임대형(템플릿)">3개월 안에 문의 채널만 급히 열어야 할 때</td><td data-label="제작형">1년 이상 운영하며 광고비를 줄이려 할 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -200,10 +208,10 @@
             <tr><th>폼 항목 수</th><th>예상되는 상황</th><th>권장 여부</th></tr>
           </thead>
           <tbody>
-            <tr><td>2개 (연락처·평형)</td><td>제출은 많지만 상담 전 정보가 거의 없습니다</td><td>광고 테스트 초기에 적합</td></tr>
-            <tr><td>3~4개</td><td>제출률과 상담 준비도가 균형을 이룹니다</td><td>대부분의 인테리어 업체에 권장</td></tr>
-            <tr><td>5~6개</td><td>입력 도중 이탈이 생기기 시작합니다</td><td>상담 인력이 부족할 때만 제한적으로</td></tr>
-            <tr><td>7개 이상</td><td>제출률 하락이 뚜렷해지는 구간입니다</td><td>권장하지 않음</td></tr>
+            <tr><td data-label="폼 항목 수">2개 (연락처·평형)</td><td data-label="예상되는 상황">제출은 많지만 상담 전 정보가 거의 없습니다</td><td data-label="권장 여부">광고 테스트 초기에 적합</td></tr>
+            <tr><td data-label="폼 항목 수">3~4개</td><td data-label="예상되는 상황">제출률과 상담 준비도가 균형을 이룹니다</td><td data-label="권장 여부">대부분의 인테리어 업체에 권장</td></tr>
+            <tr><td data-label="폼 항목 수">5~6개</td><td data-label="예상되는 상황">입력 도중 이탈이 생기기 시작합니다</td><td data-label="권장 여부">상담 인력이 부족할 때만 제한적으로</td></tr>
+            <tr><td data-label="폼 항목 수">7개 이상</td><td data-label="예상되는 상황">제출률 하락이 뚜렷해지는 구간입니다</td><td data-label="권장 여부">권장하지 않음</td></tr>
           </tbody>
         </table>
       </div>
@@ -220,11 +228,11 @@
             <tr><th>채널</th><th>맡기는 역할</th><th>우선 손볼 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>홈페이지</td><td>시공 사례 상세, 공사 범위, 회사 신뢰 정보</td><td>사례 제목과 상세 설명, 사진 대체텍스트</td></tr>
-            <tr><td>네이버 플레이스</td><td>&#39;지역 + 인테리어&#39; 검색과 방문자 후기</td><td>업체 정보 정확도, 사진 20장 이상, 후기 응답</td></tr>
-            <tr><td>네이버 블로그</td><td>공사 진행 과정과 자재 선택 기록</td><td>주 1~2회 발행, 홈페이지 사례로 연결</td></tr>
-            <tr><td>구글 검색</td><td>&#39;평형 + 리모델링&#39; 등 정보형 검색 유입</td><td>사이트맵 등록, 모바일 속도, 제목 태그</td></tr>
-            <tr><td>인스타그램</td><td>완공 사진 노출과 브랜드 인지</td><td>프로필 링크를 사례 목록으로 연결</td></tr>
+            <tr><td data-label="채널">홈페이지</td><td data-label="맡기는 역할">시공 사례 상세, 공사 범위, 회사 신뢰 정보</td><td data-label="우선 손볼 것">사례 제목과 상세 설명, 사진 대체텍스트</td></tr>
+            <tr><td data-label="채널">네이버 플레이스</td><td data-label="맡기는 역할">&#39;지역 + 인테리어&#39; 검색과 방문자 후기</td><td data-label="우선 손볼 것">업체 정보 정확도, 사진 20장 이상, 후기 응답</td></tr>
+            <tr><td data-label="채널">네이버 블로그</td><td data-label="맡기는 역할">공사 진행 과정과 자재 선택 기록</td><td data-label="우선 손볼 것">주 1~2회 발행, 홈페이지 사례로 연결</td></tr>
+            <tr><td data-label="채널">구글 검색</td><td data-label="맡기는 역할">&#39;평형 + 리모델링&#39; 등 정보형 검색 유입</td><td data-label="우선 손볼 것">사이트맵 등록, 모바일 속도, 제목 태그</td></tr>
+            <tr><td data-label="채널">인스타그램</td><td data-label="맡기는 역할">완공 사진 노출과 브랜드 인지</td><td data-label="우선 손볼 것">프로필 링크를 사례 목록으로 연결</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -136,15 +144,15 @@
       <p>LCP는 화면에서 가장 큰 요소가 그려지는 시점입니다. 방문자가 &quot;이제 보인다&quot;고 느끼는 순간에 가깝습니다.</p>
       <p>CLS는 읽는 중에 화면이 위아래로 밀리는 정도입니다. 버튼을 누르려는 순간 레이아웃이 움직여 엉뚱한 곳을 누르게 되는 그 현상입니다.</p>
       <p>INP는 버튼이나 메뉴를 눌렀을 때 화면이 반응하기까지의 지연입니다. 눌렀는데 아무 일도 일어나지 않아 한 번 더 누르게 되는 경우가 여기에 해당합니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>지표</th><th>무엇을 재는가</th><th>좋음 기준</th><th>흔한 원인</th></tr>
           </thead>
           <tbody>
-            <tr><td>LCP</td><td>첫 화면의 가장 큰 요소가 뜨는 시점</td><td>2.5초 이하</td><td>원본 크기 이미지, 첫 화면 슬라이더, 무거운 웹폰트</td></tr>
-            <tr><td>CLS</td><td>읽는 중 화면이 밀리는 정도</td><td>0.1 이하</td><td>크기를 지정하지 않은 이미지, 상단 공지바, 늦게 뜨는 배너</td></tr>
-            <tr><td>INP</td><td>눌렀을 때 반응하기까지의 지연</td><td>200ms 이하</td><td>채팅 위젯, 과한 효과 스크립트, 쌓인 추적 태그</td></tr>
+            <tr><td data-label="지표">LCP</td><td data-label="무엇을 재는가">첫 화면의 가장 큰 요소가 뜨는 시점</td><td data-label="좋음 기준">2.5초 이하</td><td data-label="흔한 원인">원본 크기 이미지, 첫 화면 슬라이더, 무거운 웹폰트</td></tr>
+            <tr><td data-label="지표">CLS</td><td data-label="무엇을 재는가">읽는 중 화면이 밀리는 정도</td><td data-label="좋음 기준">0.1 이하</td><td data-label="흔한 원인">크기를 지정하지 않은 이미지, 상단 공지바, 늦게 뜨는 배너</td></tr>
+            <tr><td data-label="지표">INP</td><td data-label="무엇을 재는가">눌렀을 때 반응하기까지의 지연</td><td data-label="좋음 기준">200ms 이하</td><td data-label="흔한 원인">채팅 위젯, 과한 효과 스크립트, 쌓인 추적 태그</td></tr>
           </tbody>
         </table>
       </div>
@@ -192,13 +200,13 @@
             <tr><th>순서</th><th>점검 항목</th><th>확인 방법</th></tr>
           </thead>
           <tbody>
-            <tr><td>1</td><td>첫 화면 이미지 용량과 크기</td><td>실제 표시 크기보다 파일이 훨씬 큰지</td></tr>
-            <tr><td>2</td><td>첫 화면 이미지 지연 로딩 해제</td><td>히어로 이미지에 지연 로딩이 걸려 있는지</td></tr>
-            <tr><td>3</td><td>이미지에 가로·세로 값 지정</td><td>로드 중 아래 내용이 밀리는지</td></tr>
-            <tr><td>4</td><td>웹폰트 종류·굵기 정리</td><td>불러오는 폰트 파일이 몇 개인지</td></tr>
-            <tr><td>5</td><td>쓰지 않는 추적 태그 제거</td><td>태그 매니저에 안 쓰는 항목이 남았는지</td></tr>
-            <tr><td>6</td><td>채팅·지도·영상 호출 시점 미루기</td><td>첫 화면보다 먼저 실행되는지</td></tr>
-            <tr><td>7</td><td>서버 응답 시간과 호스팅</td><td>위 항목을 다 했는데도 LCP가 높은지</td></tr>
+            <tr><td data-label="순서">1</td><td data-label="점검 항목">첫 화면 이미지 용량과 크기</td><td data-label="확인 방법">실제 표시 크기보다 파일이 훨씬 큰지</td></tr>
+            <tr><td data-label="순서">2</td><td data-label="점검 항목">첫 화면 이미지 지연 로딩 해제</td><td data-label="확인 방법">히어로 이미지에 지연 로딩이 걸려 있는지</td></tr>
+            <tr><td data-label="순서">3</td><td data-label="점검 항목">이미지에 가로·세로 값 지정</td><td data-label="확인 방법">로드 중 아래 내용이 밀리는지</td></tr>
+            <tr><td data-label="순서">4</td><td data-label="점검 항목">웹폰트 종류·굵기 정리</td><td data-label="확인 방법">불러오는 폰트 파일이 몇 개인지</td></tr>
+            <tr><td data-label="순서">5</td><td data-label="점검 항목">쓰지 않는 추적 태그 제거</td><td data-label="확인 방법">태그 매니저에 안 쓰는 항목이 남았는지</td></tr>
+            <tr><td data-label="순서">6</td><td data-label="점검 항목">채팅·지도·영상 호출 시점 미루기</td><td data-label="확인 방법">첫 화면보다 먼저 실행되는지</td></tr>
+            <tr><td data-label="순서">7</td><td data-label="점검 항목">서버 응답 시간과 호스팅</td><td data-label="확인 방법">위 항목을 다 했는데도 LCP가 높은지</td></tr>
           </tbody>
         </table>
       </div>

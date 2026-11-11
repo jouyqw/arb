@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -136,11 +144,11 @@
             <tr><th>문의자의 속마음</th><th>닫히는 응대</th><th>열리는 응대</th></tr>
           </thead>
           <tbody>
-            <tr><td>내 상황이 심각한가</td><td>일단 방문하셔야 압니다</td><td>지금 어떤 상황인지 먼저 여쭤봐도 될까요</td></tr>
-            <tr><td>비용이 얼마나 들까</td><td>케이스마다 다릅니다</td><td>보통 이런 경우는 이 정도 범위입니다</td></tr>
-            <tr><td>여기가 맞는 곳인가</td><td>저희가 잘합니다</td><td>비슷한 사안을 자주 다뤄 왔습니다</td></tr>
-            <tr><td>지금 뭘 해야 하나</td><td>오시면 설명드리겠습니다</td><td>오시기 전에 이것만 챙겨 두세요</td></tr>
-            <tr><td>메모가 전달되기는 할까</td><td>담당자에게 전달드리겠습니다</td><td>지금 메모했고 오후에 연락드리겠습니다</td></tr>
+            <tr><td data-label="문의자의 속마음">내 상황이 심각한가</td><td data-label="닫히는 응대">일단 방문하셔야 압니다</td><td data-label="열리는 응대">지금 어떤 상황인지 먼저 여쭤봐도 될까요</td></tr>
+            <tr><td data-label="문의자의 속마음">비용이 얼마나 들까</td><td data-label="닫히는 응대">케이스마다 다릅니다</td><td data-label="열리는 응대">보통 이런 경우는 이 정도 범위입니다</td></tr>
+            <tr><td data-label="문의자의 속마음">여기가 맞는 곳인가</td><td data-label="닫히는 응대">저희가 잘합니다</td><td data-label="열리는 응대">비슷한 사안을 자주 다뤄 왔습니다</td></tr>
+            <tr><td data-label="문의자의 속마음">지금 뭘 해야 하나</td><td data-label="닫히는 응대">오시면 설명드리겠습니다</td><td data-label="열리는 응대">오시기 전에 이것만 챙겨 두세요</td></tr>
+            <tr><td data-label="문의자의 속마음">메모가 전달되기는 할까</td><td data-label="닫히는 응대">담당자에게 전달드리겠습니다</td><td data-label="열리는 응대">지금 메모했고 오후에 연락드리겠습니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -170,10 +178,10 @@
             <tr><th>단계</th><th>여기서 새고 있다는 신호</th><th>먼저 해볼 조치</th></tr>
           </thead>
           <tbody>
-            <tr><td>1. 연결</td><td>부재중이 하루 2~3통씩 쌓입니다</td><td>점심시간과 상담 중에 전화를 받을 사람을 미리 지정합니다</td></tr>
-            <tr><td>2. 상황 청취</td><td>통화가 대부분 1분 안에 끝납니다</td><td>반드시 물을 5가지를 적어 전화기 옆에 붙여 둡니다</td></tr>
-            <tr><td>3. 방문 약속</td><td>듣기는 했는데 날짜가 잡히지 않습니다</td><td>통화 끝에 가능한 시간대 두 개를 먼저 제시합니다</td></tr>
-            <tr><td>4. 계약</td><td>방문은 하는데 진행으로 이어지지 않습니다</td><td>상담 자료와 비용 설명 방식, 설명 순서를 점검합니다</td></tr>
+            <tr><td data-label="단계">1. 연결</td><td data-label="여기서 새고 있다는 신호">부재중이 하루 2~3통씩 쌓입니다</td><td data-label="먼저 해볼 조치">점심시간과 상담 중에 전화를 받을 사람을 미리 지정합니다</td></tr>
+            <tr><td data-label="단계">2. 상황 청취</td><td data-label="여기서 새고 있다는 신호">통화가 대부분 1분 안에 끝납니다</td><td data-label="먼저 해볼 조치">반드시 물을 5가지를 적어 전화기 옆에 붙여 둡니다</td></tr>
+            <tr><td data-label="단계">3. 방문 약속</td><td data-label="여기서 새고 있다는 신호">듣기는 했는데 날짜가 잡히지 않습니다</td><td data-label="먼저 해볼 조치">통화 끝에 가능한 시간대 두 개를 먼저 제시합니다</td></tr>
+            <tr><td data-label="단계">4. 계약</td><td data-label="여기서 새고 있다는 신호">방문은 하는데 진행으로 이어지지 않습니다</td><td data-label="먼저 해볼 조치">상담 자료와 비용 설명 방식, 설명 순서를 점검합니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -190,15 +198,15 @@
       <h2>응대 기록은 어떤 방식으로 남기는 게 좋을까요?</h2>
       <p>응대 인원이 두세 명이면 공유 스프레드시트 한 장으로 충분합니다. 응대 인원이 더 늘거나 광고 채널이 세 개를 넘어가면 그때 도구를 늘리는 편이 낫습니다.</p>
       <p>처음부터 큰 시스템을 도입하면 입력이 밀리고, 밀린 기록은 없는 기록과 같습니다. 정착까지 2~4주와 월 이용료를 쓰고도 판단 근거는 그대로 없는 상태가 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>기록 방식</th><th>준비에 드는 시간</th><th>이럴 때 맞습니다</th><th>한계</th></tr>
           </thead>
           <tbody>
-            <tr><td>수기 노트</td><td>당일 바로 시작</td><td>전화가 하루 5통 이하이고 받는 사람이 1명일 때</td><td>집계가 안 되어 한 달 추이를 보기 어렵습니다</td></tr>
-            <tr><td>공유 스프레드시트</td><td>반나절 정도</td><td>응대 인원이 2~3명이고 주 1회 함께 점검할 때</td><td>입력을 빠뜨리면 숫자가 어긋납니다</td></tr>
-            <tr><td>통화 기록 연동·CRM 도구</td><td>정착까지 2~4주</td><td>문의가 월 100건을 넘고 채널이 여러 개일 때</td><td>월 운영비와 관리 담당자 지정이 필요합니다</td></tr>
+            <tr><td data-label="기록 방식">수기 노트</td><td data-label="준비에 드는 시간">당일 바로 시작</td><td data-label="이럴 때 맞습니다">전화가 하루 5통 이하이고 받는 사람이 1명일 때</td><td data-label="한계">집계가 안 되어 한 달 추이를 보기 어렵습니다</td></tr>
+            <tr><td data-label="기록 방식">공유 스프레드시트</td><td data-label="준비에 드는 시간">반나절 정도</td><td data-label="이럴 때 맞습니다">응대 인원이 2~3명이고 주 1회 함께 점검할 때</td><td data-label="한계">입력을 빠뜨리면 숫자가 어긋납니다</td></tr>
+            <tr><td data-label="기록 방식">통화 기록 연동·CRM 도구</td><td data-label="준비에 드는 시간">정착까지 2~4주</td><td data-label="이럴 때 맞습니다">문의가 월 100건을 넘고 채널이 여러 개일 때</td><td data-label="한계">월 운영비와 관리 담당자 지정이 필요합니다</td></tr>
           </tbody>
         </table>
       </div>

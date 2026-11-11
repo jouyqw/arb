@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -131,12 +139,12 @@
             <tr><th>구분</th><th>플레이스 광고 (클릭당 과금)</th><th>지역소상공인광고 (노출당 과금)</th></tr>
           </thead>
           <tbody>
-            <tr><td>과금 기준</td><td>광고를 눌러 들어올 때</td><td>유효노출 1회당 1원 미만</td></tr>
-            <tr><td>주로 뜨는 자리</td><td>지역+업종 검색의 플레이스 영역, 지도</td><td>블로그·카페 같은 콘텐츠 지면</td></tr>
-            <tr><td>보는 사람</td><td>이미 그 업종을 찾고 있는 사람</td><td>근처에 있지만 아직 찾고 있지 않은 사람</td></tr>
-            <tr><td>바로 기대할 것</td><td>전화·길찾기·예약</td><td>업체 이름을 눈에 익히는 정도</td></tr>
-            <tr><td>적은 예산에서</td><td>금액을 쪼개 쓰기 쉬움</td><td>노출 수가 적으면 체감이 거의 없음</td></tr>
-            <tr><td>권하는 쓰임</td><td>문의가 지금 당장 필요할 때</td><td>상권 안 인지도를 길게 쌓을 때</td></tr>
+            <tr><td data-label="구분">과금 기준</td><td data-label="플레이스 광고 (클릭당 과금)">광고를 눌러 들어올 때</td><td data-label="지역소상공인광고 (노출당 과금)">유효노출 1회당 1원 미만</td></tr>
+            <tr><td data-label="구분">주로 뜨는 자리</td><td data-label="플레이스 광고 (클릭당 과금)">지역+업종 검색의 플레이스 영역, 지도</td><td data-label="지역소상공인광고 (노출당 과금)">블로그·카페 같은 콘텐츠 지면</td></tr>
+            <tr><td data-label="구분">보는 사람</td><td data-label="플레이스 광고 (클릭당 과금)">이미 그 업종을 찾고 있는 사람</td><td data-label="지역소상공인광고 (노출당 과금)">근처에 있지만 아직 찾고 있지 않은 사람</td></tr>
+            <tr><td data-label="구분">바로 기대할 것</td><td data-label="플레이스 광고 (클릭당 과금)">전화·길찾기·예약</td><td data-label="지역소상공인광고 (노출당 과금)">업체 이름을 눈에 익히는 정도</td></tr>
+            <tr><td data-label="구분">적은 예산에서</td><td data-label="플레이스 광고 (클릭당 과금)">금액을 쪼개 쓰기 쉬움</td><td data-label="지역소상공인광고 (노출당 과금)">노출 수가 적으면 체감이 거의 없음</td></tr>
+            <tr><td data-label="구분">권하는 쓰임</td><td data-label="플레이스 광고 (클릭당 과금)">문의가 지금 당장 필요할 때</td><td data-label="지역소상공인광고 (노출당 과금)">상권 안 인지도를 길게 쌓을 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -149,18 +157,18 @@
       <h2>어떤 업종에서 광고비가 남나요?</h2>
       <p>결정이 당일에 끝나는 업종입니다. 지금 가야 하고, 이동 반경이 좁고, 한 건의 가치가 클릭 단가보다 충분히 큰 쪽에서 효과가 나타납니다.</p>
       <p>반대로 결정까지 2주 넘게 걸리는 업종은 플레이스에서 결론이 나지 않습니다. 비교하고 알아보는 단계가 중간에 들어가기 때문입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>업종</th><th>결정까지 걸리는 시간</th><th>플레이스 광고 단독으로</th><th>먼저 해야 할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>음식점·카페·미용</td><td>몇 시간~당일</td><td>잘 맞는 편</td><td>사진 수, 메뉴·가격, 영업시간 채우기</td></tr>
-            <tr><td>정비소·수리·열쇠·이사</td><td>즉시</td><td>잘 맞는 편</td><td>전화 연결 상태와 통화 응대 정비</td></tr>
-            <tr><td>병원·치과·한의원</td><td>하루~일주일</td><td>지역어에서는 맞는 편</td><td>진료 안내와 예약 흐름 정리</td></tr>
-            <tr><td>학원·필라테스·헬스장</td><td>1~4주</td><td>상담 신청 기준으로 맞는 편</td><td>체험·상담 안내 페이지</td></tr>
-            <tr><td>법률·세무·노무</td><td>2주~2개월</td><td>단독으로는 약한 편</td><td>칼럼과 홈페이지 먼저</td></tr>
-            <tr><td>인테리어·분양</td><td>1~6개월</td><td>단독으로는 약한 편</td><td>사례 페이지와 상담 폼 먼저</td></tr>
+            <tr><td data-label="업종">음식점·카페·미용</td><td data-label="결정까지 걸리는 시간">몇 시간~당일</td><td data-label="플레이스 광고 단독으로">잘 맞는 편</td><td data-label="먼저 해야 할 것">사진 수, 메뉴·가격, 영업시간 채우기</td></tr>
+            <tr><td data-label="업종">정비소·수리·열쇠·이사</td><td data-label="결정까지 걸리는 시간">즉시</td><td data-label="플레이스 광고 단독으로">잘 맞는 편</td><td data-label="먼저 해야 할 것">전화 연결 상태와 통화 응대 정비</td></tr>
+            <tr><td data-label="업종">병원·치과·한의원</td><td data-label="결정까지 걸리는 시간">하루~일주일</td><td data-label="플레이스 광고 단독으로">지역어에서는 맞는 편</td><td data-label="먼저 해야 할 것">진료 안내와 예약 흐름 정리</td></tr>
+            <tr><td data-label="업종">학원·필라테스·헬스장</td><td data-label="결정까지 걸리는 시간">1~4주</td><td data-label="플레이스 광고 단독으로">상담 신청 기준으로 맞는 편</td><td data-label="먼저 해야 할 것">체험·상담 안내 페이지</td></tr>
+            <tr><td data-label="업종">법률·세무·노무</td><td data-label="결정까지 걸리는 시간">2주~2개월</td><td data-label="플레이스 광고 단독으로">단독으로는 약한 편</td><td data-label="먼저 해야 할 것">칼럼과 홈페이지 먼저</td></tr>
+            <tr><td data-label="업종">인테리어·분양</td><td data-label="결정까지 걸리는 시간">1~6개월</td><td data-label="플레이스 광고 단독으로">단독으로는 약한 편</td><td data-label="먼저 해야 할 것">사례 페이지와 상담 폼 먼저</td></tr>
           </tbody>
         </table>
       </div>
@@ -195,12 +203,12 @@
             <tr><th>확인 항목</th><th>이렇게 답하면 괜찮음</th><th>이러면 되물어야 함</th></tr>
           </thead>
           <tbody>
-            <tr><td>광고비와 수수료 구분</td><td>실집행 광고비와 수수료를 따로 적어 줌</td><td>월 총액 한 줄만 적혀 있음</td></tr>
-            <tr><td>계정 명의</td><td>광고주 명의 계정, 로그인 공유 가능</td><td>대행사 계정으로 집행하고 공유 없음</td></tr>
-            <tr><td>보고 항목</td><td>클릭 외에 전화·길찾기 건수까지 포함</td><td>노출 수와 화면 캡처만</td></tr>
-            <tr><td>플레이스 정보 작업</td><td>사진·소개·메뉴 정비 범위를 명시</td><td>광고 집행만 하고 정보는 광고주 몫</td></tr>
-            <tr><td>조정·중단 기준</td><td>몇 개월 뒤 어떤 숫자를 보고 정할지 적음</td><td>기간 약정만 적혀 있음</td></tr>
-            <tr><td>순위 설명 방식</td><td>경매 구조라 변동한다고 설명</td><td>특정 순위를 숫자로 적어 줌</td></tr>
+            <tr><td data-label="확인 항목">광고비와 수수료 구분</td><td data-label="이렇게 답하면 괜찮음">실집행 광고비와 수수료를 따로 적어 줌</td><td data-label="이러면 되물어야 함">월 총액 한 줄만 적혀 있음</td></tr>
+            <tr><td data-label="확인 항목">계정 명의</td><td data-label="이렇게 답하면 괜찮음">광고주 명의 계정, 로그인 공유 가능</td><td data-label="이러면 되물어야 함">대행사 계정으로 집행하고 공유 없음</td></tr>
+            <tr><td data-label="확인 항목">보고 항목</td><td data-label="이렇게 답하면 괜찮음">클릭 외에 전화·길찾기 건수까지 포함</td><td data-label="이러면 되물어야 함">노출 수와 화면 캡처만</td></tr>
+            <tr><td data-label="확인 항목">플레이스 정보 작업</td><td data-label="이렇게 답하면 괜찮음">사진·소개·메뉴 정비 범위를 명시</td><td data-label="이러면 되물어야 함">광고 집행만 하고 정보는 광고주 몫</td></tr>
+            <tr><td data-label="확인 항목">조정·중단 기준</td><td data-label="이렇게 답하면 괜찮음">몇 개월 뒤 어떤 숫자를 보고 정할지 적음</td><td data-label="이러면 되물어야 함">기간 약정만 적혀 있음</td></tr>
+            <tr><td data-label="확인 항목">순위 설명 방식</td><td data-label="이렇게 답하면 괜찮음">경매 구조라 변동한다고 설명</td><td data-label="이러면 되물어야 함">특정 순위를 숫자로 적어 줌</td></tr>
           </tbody>
         </table>
       </div>

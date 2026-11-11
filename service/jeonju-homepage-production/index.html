@@ -36,7 +36,7 @@
     .top-actions .primary{background:linear-gradient(100deg,#3D8BFF 0%,#66D0FF 100%);color:#fff;box-shadow:0 8px 22px rgba(61,139,255,.34)}
     .top-actions .ghost{border:1px solid rgba(255,255,255,.24);color:#DCE4F0}
     h2{font-size:25px;line-height:1.34;margin:44px 0 14px;letter-spacing:-.02em}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,13 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.top{padding:26px 0 42px;margin-bottom:34px}p,li{font-size:16px}h2{font-size:22px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.cta{padding:24px}}
+    @media(max-width:560px){.top{padding:26px 0 42px;margin-bottom:34px}p,li{font-size:16px}h2{font-size:22px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.cta{padding:24px}
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
 </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -130,10 +136,10 @@
             <tr><th>증상</th><th>실제 원인</th><th>확인 방법</th></tr>
           </thead>
           <tbody>
-            <tr><td>회사 이름으로도 안 나온다</td><td>색인 자체가 안 됨. 사이트맵 미제출이거나 검색엔진 등록을 안 한 경우</td><td>구글에 site:도메인 검색 시 0건</td></tr>
-            <tr><td>회사 이름으로는 나오는데 업종 키워드로는 안 나온다</td><td>해당 키워드를 담은 페이지가 없음. 메인 한 장으로 모든 키워드를 노리는 구조</td><td>서치콘솔 검색어 보고서에 해당 키워드 노출 0</td></tr>
-            <tr><td>노출은 되는데 클릭이 없다</td><td>순위가 2페이지 밖. 또는 제목이 검색 의도와 안 맞음</td><td>서치콘솔 평균 게재순위 11위 이상</td></tr>
-            <tr><td>모바일에서만 이상하다</td><td>반응형 미적용 또는 모바일 로딩 속도 문제</td><td>모바일 실적이 PC보다 현저히 낮음</td></tr>
+            <tr><td data-label="증상">회사 이름으로도 안 나온다</td><td data-label="실제 원인">색인 자체가 안 됨. 사이트맵 미제출이거나 검색엔진 등록을 안 한 경우</td><td data-label="확인 방법">구글에 site:도메인 검색 시 0건</td></tr>
+            <tr><td data-label="증상">회사 이름으로는 나오는데 업종 키워드로는 안 나온다</td><td data-label="실제 원인">해당 키워드를 담은 페이지가 없음. 메인 한 장으로 모든 키워드를 노리는 구조</td><td data-label="확인 방법">서치콘솔 검색어 보고서에 해당 키워드 노출 0</td></tr>
+            <tr><td data-label="증상">노출은 되는데 클릭이 없다</td><td data-label="실제 원인">순위가 2페이지 밖. 또는 제목이 검색 의도와 안 맞음</td><td data-label="확인 방법">서치콘솔 평균 게재순위 11위 이상</td></tr>
+            <tr><td data-label="증상">모바일에서만 이상하다</td><td data-label="실제 원인">반응형 미적용 또는 모바일 로딩 속도 문제</td><td data-label="확인 방법">모바일 실적이 PC보다 현저히 낮음</td></tr>
           </tbody>
         </table>
       </div>
@@ -148,15 +154,15 @@
       <p>네 번째 항목을 특히 강조하는 이유가 있습니다. 검색 실적 계정을 대행사만 보고 있으면, 광고비가 효과가 있는지 사장님이 확인할 방법이 없습니다. 아비컴퍼니는 계정 소유권을 고객사 명의로 두고 권한만 받습니다. 계약이 끝나도 데이터는 고객사에 남습니다.</p>
       <h2>비용은 어떻게 잡아야 하나</h2>
       <p>홈페이지 제작비만 보고 결정하면 대부분 두 번 씁니다. 제작비는 한 번이지만 검색 노출은 시간이 쌓여야 나오는 결과라, 만들고 방치하면 6개월 뒤에 다시 만들자는 이야기가 나옵니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>구분</th><th>1회성 비용</th><th>지속 작업</th><th>결과가 나오는 시점</th></tr>
           </thead>
           <tbody>
-            <tr><td>제작만</td><td>있음</td><td>없음</td><td>검색 노출은 기대하기 어려움</td></tr>
-            <tr><td>제작 + 검색 구조</td><td>있음</td><td>없음</td><td>색인은 되지만 순위는 정체</td></tr>
-            <tr><td>제작 + 검색 구조 + 콘텐츠 운영</td><td>있음</td><td>월 단위</td><td>통상 3~6개월부터 검색어 노출 증가</td></tr>
+            <tr><td data-label="구분">제작만</td><td data-label="1회성 비용">있음</td><td data-label="지속 작업">없음</td><td data-label="결과가 나오는 시점">검색 노출은 기대하기 어려움</td></tr>
+            <tr><td data-label="구분">제작 + 검색 구조</td><td data-label="1회성 비용">있음</td><td data-label="지속 작업">없음</td><td data-label="결과가 나오는 시점">색인은 되지만 순위는 정체</td></tr>
+            <tr><td data-label="구분">제작 + 검색 구조 + 콘텐츠 운영</td><td data-label="1회성 비용">있음</td><td data-label="지속 작업">월 단위</td><td data-label="결과가 나오는 시점">통상 3~6개월부터 검색어 노출 증가</td></tr>
           </tbody>
         </table>
       </div>

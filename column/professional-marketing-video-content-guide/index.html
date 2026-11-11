@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -147,12 +155,12 @@
             <tr><th>비교 항목</th><th>직접 촬영</th><th>외주 제작</th></tr>
           </thead>
           <tbody>
-            <tr><td>초기·편당 비용</td><td>삼각대·마이크·조명 합쳐 20만~60만원, 이후 추가 비용은 거의 없음</td><td>기획·편집 포함 편당 30만~150만원 선</td></tr>
-            <tr><td>한 편에 걸리는 기간</td><td>촬영·편집 합쳐 반나절~2일</td><td>기획·일정 조율 포함 2~4주</td></tr>
-            <tr><td>결과물 수준</td><td>자막과 컷 편집 정도</td><td>자막·그래픽·색보정·음향까지</td></tr>
-            <tr><td>확보 가능한 편수</td><td>월 2~4편도 무리 없음</td><td>예산에 따라 보통 월 1~2편</td></tr>
-            <tr><td>수정과 재촬영</td><td>당일 다시 찍으면 끝</td><td>계약서상 수정 1~2회로 제한되는 경우가 많음</td></tr>
-            <tr><td>이런 경우에 맞습니다</td><td>질문 답변형 영상을 꾸준히 쌓는 것이 목표일 때</td><td>홈페이지 대표 영상·브랜드 소개가 목표일 때</td></tr>
+            <tr><td data-label="비교 항목">초기·편당 비용</td><td data-label="직접 촬영">삼각대·마이크·조명 합쳐 20만~60만원, 이후 추가 비용은 거의 없음</td><td data-label="외주 제작">기획·편집 포함 편당 30만~150만원 선</td></tr>
+            <tr><td data-label="비교 항목">한 편에 걸리는 기간</td><td data-label="직접 촬영">촬영·편집 합쳐 반나절~2일</td><td data-label="외주 제작">기획·일정 조율 포함 2~4주</td></tr>
+            <tr><td data-label="비교 항목">결과물 수준</td><td data-label="직접 촬영">자막과 컷 편집 정도</td><td data-label="외주 제작">자막·그래픽·색보정·음향까지</td></tr>
+            <tr><td data-label="비교 항목">확보 가능한 편수</td><td data-label="직접 촬영">월 2~4편도 무리 없음</td><td data-label="외주 제작">예산에 따라 보통 월 1~2편</td></tr>
+            <tr><td data-label="비교 항목">수정과 재촬영</td><td data-label="직접 촬영">당일 다시 찍으면 끝</td><td data-label="외주 제작">계약서상 수정 1~2회로 제한되는 경우가 많음</td></tr>
+            <tr><td data-label="비교 항목">이런 경우에 맞습니다</td><td data-label="직접 촬영">질문 답변형 영상을 꾸준히 쌓는 것이 목표일 때</td><td data-label="외주 제작">홈페이지 대표 영상·브랜드 소개가 목표일 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -170,12 +178,12 @@
             <tr><th>비교 항목</th><th>짧은 영상 (45~90초)</th><th>긴 영상 (3~8분)</th></tr>
           </thead>
           <tbody>
-            <tr><td>맡는 역할</td><td>발견과 유입</td><td>이해와 상담 전환</td></tr>
-            <tr><td>주로 두는 위치</td><td>검색·소셜 피드, 칼럼 상단</td><td>홈페이지 상담 페이지, 칼럼 본문</td></tr>
-            <tr><td>담는 내용</td><td>질문 하나의 결론만</td><td>결론 + 판단 기준 + 예외 상황</td></tr>
-            <tr><td>자막</td><td>소리 없이 봐도 이해되도록 전체 자막</td><td>핵심 구간과 용어 설명만</td></tr>
-            <tr><td>한 편당 작업 시간</td><td>긴 영상에서 잘라내면 30분~1시간</td><td>촬영·편집 합쳐 2~4시간</td></tr>
-            <tr><td>먼저 할 일</td><td>긴 영상 촬영분에서 인상적인 구간 표시</td><td>질문 목록 상위 5개 대본 정리</td></tr>
+            <tr><td data-label="비교 항목">맡는 역할</td><td data-label="짧은 영상 (45~90초)">발견과 유입</td><td data-label="긴 영상 (3~8분)">이해와 상담 전환</td></tr>
+            <tr><td data-label="비교 항목">주로 두는 위치</td><td data-label="짧은 영상 (45~90초)">검색·소셜 피드, 칼럼 상단</td><td data-label="긴 영상 (3~8분)">홈페이지 상담 페이지, 칼럼 본문</td></tr>
+            <tr><td data-label="비교 항목">담는 내용</td><td data-label="짧은 영상 (45~90초)">질문 하나의 결론만</td><td data-label="긴 영상 (3~8분)">결론 + 판단 기준 + 예외 상황</td></tr>
+            <tr><td data-label="비교 항목">자막</td><td data-label="짧은 영상 (45~90초)">소리 없이 봐도 이해되도록 전체 자막</td><td data-label="긴 영상 (3~8분)">핵심 구간과 용어 설명만</td></tr>
+            <tr><td data-label="비교 항목">한 편당 작업 시간</td><td data-label="짧은 영상 (45~90초)">긴 영상에서 잘라내면 30분~1시간</td><td data-label="긴 영상 (3~8분)">촬영·편집 합쳐 2~4시간</td></tr>
+            <tr><td data-label="비교 항목">먼저 할 일</td><td data-label="짧은 영상 (45~90초)">긴 영상 촬영분에서 인상적인 구간 표시</td><td data-label="긴 영상 (3~8분)">질문 목록 상위 5개 대본 정리</td></tr>
           </tbody>
         </table>
       </div>
@@ -211,9 +219,9 @@
             <tr><th>확인 시점</th><th>볼 지표</th><th>이 정도면 괜찮은 신호</th></tr>
           </thead>
           <tbody>
-            <tr><td>1~2개월</td><td>촬영·발행이 계획대로 이어지는지</td><td>월 2편 이상 밀리지 않고 발행</td></tr>
-            <tr><td>3~6개월</td><td>영상 페이지 체류 시간, 상담 페이지 이동</td><td>영상 없는 페이지보다 체류가 길어짐</td></tr>
-            <tr><td>6~12개월</td><td>상담 중 영상 언급, 문의 경로 구성</td><td>&quot;영상 보고 왔다&quot;는 상담이 월 단위로 나옴</td></tr>
+            <tr><td data-label="확인 시점">1~2개월</td><td data-label="볼 지표">촬영·발행이 계획대로 이어지는지</td><td data-label="이 정도면 괜찮은 신호">월 2편 이상 밀리지 않고 발행</td></tr>
+            <tr><td data-label="확인 시점">3~6개월</td><td data-label="볼 지표">영상 페이지 체류 시간, 상담 페이지 이동</td><td data-label="이 정도면 괜찮은 신호">영상 없는 페이지보다 체류가 길어짐</td></tr>
+            <tr><td data-label="확인 시점">6~12개월</td><td data-label="볼 지표">상담 중 영상 언급, 문의 경로 구성</td><td data-label="이 정도면 괜찮은 신호">&quot;영상 보고 왔다&quot;는 상담이 월 단위로 나옴</td></tr>
           </tbody>
         </table>
       </div>

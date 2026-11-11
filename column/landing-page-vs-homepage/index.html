@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -134,12 +142,12 @@
             <tr><th>판단 기준</th><th>랜딩 먼저가 맞을 때</th><th>홈페이지 먼저가 맞을 때</th></tr>
           </thead>
           <tbody>
-            <tr><td>광고 시점</td><td>90일 안에 켤 계획이 있다</td><td>당분간 광고 계획이 없다</td></tr>
-            <tr><td>알릴 서비스 수</td><td>1~2개로 좁혀져 있다</td><td>3개 이상이고 각각 문의가 다르다</td></tr>
-            <tr><td>검색 질문 수</td><td>떠오르는 질문이 5개 미만</td><td>방문자가 칠 질문이 10개 넘는다</td></tr>
-            <tr><td>글 쓸 사람</td><td>사실상 대표 한 명뿐</td><td>월 1~2회 글 올릴 담당이 있다</td></tr>
-            <tr><td>문의 방식</td><td>전화나 폼 하나로 끝난다</td><td>서류·예약·견적을 나눠 받아야 한다</td></tr>
-            <tr><td>확인하려는 것</td><td>이 메시지가 먹히는지 빠르게</td><td>오래 쌓이는 유입 경로</td></tr>
+            <tr><td data-label="판단 기준">광고 시점</td><td data-label="랜딩 먼저가 맞을 때">90일 안에 켤 계획이 있다</td><td data-label="홈페이지 먼저가 맞을 때">당분간 광고 계획이 없다</td></tr>
+            <tr><td data-label="판단 기준">알릴 서비스 수</td><td data-label="랜딩 먼저가 맞을 때">1~2개로 좁혀져 있다</td><td data-label="홈페이지 먼저가 맞을 때">3개 이상이고 각각 문의가 다르다</td></tr>
+            <tr><td data-label="판단 기준">검색 질문 수</td><td data-label="랜딩 먼저가 맞을 때">떠오르는 질문이 5개 미만</td><td data-label="홈페이지 먼저가 맞을 때">방문자가 칠 질문이 10개 넘는다</td></tr>
+            <tr><td data-label="판단 기준">글 쓸 사람</td><td data-label="랜딩 먼저가 맞을 때">사실상 대표 한 명뿐</td><td data-label="홈페이지 먼저가 맞을 때">월 1~2회 글 올릴 담당이 있다</td></tr>
+            <tr><td data-label="판단 기준">문의 방식</td><td data-label="랜딩 먼저가 맞을 때">전화나 폼 하나로 끝난다</td><td data-label="홈페이지 먼저가 맞을 때">서류·예약·견적을 나눠 받아야 한다</td></tr>
+            <tr><td data-label="판단 기준">확인하려는 것</td><td data-label="랜딩 먼저가 맞을 때">이 메시지가 먹히는지 빠르게</td><td data-label="홈페이지 먼저가 맞을 때">오래 쌓이는 유입 경로</td></tr>
           </tbody>
         </table>
       </div>
@@ -178,11 +186,11 @@
             <tr><th>구분</th><th>랜딩 한 장</th><th>홈페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>기간</td><td>1~3주</td><td>4~8주</td></tr>
-            <tr><td>비용 범위</td><td>150만~400만원대</td><td>300만~1,000만원대</td></tr>
-            <tr><td>반응 확인 시점</td><td>광고 켠 뒤 2~4주</td><td>검색 유입 3~6개월</td></tr>
-            <tr><td>유지 품</td><td>거의 없음</td><td>월 1~2회 글 등록 필요</td></tr>
-            <tr><td>광고 끄면</td><td>문의가 함께 멈춤</td><td>쌓인 유입이 일부 남음</td></tr>
+            <tr><td data-label="구분">기간</td><td data-label="랜딩 한 장">1~3주</td><td data-label="홈페이지">4~8주</td></tr>
+            <tr><td data-label="구분">비용 범위</td><td data-label="랜딩 한 장">150만~400만원대</td><td data-label="홈페이지">300만~1,000만원대</td></tr>
+            <tr><td data-label="구분">반응 확인 시점</td><td data-label="랜딩 한 장">광고 켠 뒤 2~4주</td><td data-label="홈페이지">검색 유입 3~6개월</td></tr>
+            <tr><td data-label="구분">유지 품</td><td data-label="랜딩 한 장">거의 없음</td><td data-label="홈페이지">월 1~2회 글 등록 필요</td></tr>
+            <tr><td data-label="구분">광고 끄면</td><td data-label="랜딩 한 장">문의가 함께 멈춤</td><td data-label="홈페이지">쌓인 유입이 일부 남음</td></tr>
           </tbody>
         </table>
       </div>

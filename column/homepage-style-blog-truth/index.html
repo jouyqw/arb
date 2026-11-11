@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -133,15 +141,15 @@
             <tr><th>구분</th><th>홈페이지형 블로그</th><th>자체 홈페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>주소 소유</td><td>blog.naver.com 아래의 계정 주소</td><td>우리 도메인(회사명.com)</td></tr>
-            <tr><td>네이버 검색 노출</td><td>블로그·VIEW 영역에서 잘 잡힘</td><td>웹사이트 영역으로 별도 수집 필요</td></tr>
-            <tr><td>구글·AI 검색</td><td>외부 수집이 제한돼 찾기 어려움</td><td>색인되면 인용 대상이 됨</td></tr>
-            <tr><td>모바일 화면</td><td>상단 메뉴 이미지가 보이지 않음</td><td>전용 레이아웃으로 그대로 보임</td></tr>
-            <tr><td>예약·견적·결제 폼</td><td>외부 폼 링크로 내보내야 함</td><td>페이지 안에서 바로 처리</td></tr>
-            <tr><td>광고 랜딩</td><td>검색광고 연결에 제약이 있음</td><td>페이지별로 랜딩 운용 가능</td></tr>
-            <tr><td>유입·전환 측정</td><td>블로그 통계가 주는 범위까지</td><td>유입 경로별 문의 수까지 추적</td></tr>
-            <tr><td>초기 비용</td><td>20만~80만원대</td><td>300만~1,000만원대</td></tr>
-            <tr><td>제작 기간</td><td>1~2주</td><td>4~8주</td></tr>
+            <tr><td data-label="구분">주소 소유</td><td data-label="홈페이지형 블로그">blog.naver.com 아래의 계정 주소</td><td data-label="자체 홈페이지">우리 도메인(회사명.com)</td></tr>
+            <tr><td data-label="구분">네이버 검색 노출</td><td data-label="홈페이지형 블로그">블로그·VIEW 영역에서 잘 잡힘</td><td data-label="자체 홈페이지">웹사이트 영역으로 별도 수집 필요</td></tr>
+            <tr><td data-label="구분">구글·AI 검색</td><td data-label="홈페이지형 블로그">외부 수집이 제한돼 찾기 어려움</td><td data-label="자체 홈페이지">색인되면 인용 대상이 됨</td></tr>
+            <tr><td data-label="구분">모바일 화면</td><td data-label="홈페이지형 블로그">상단 메뉴 이미지가 보이지 않음</td><td data-label="자체 홈페이지">전용 레이아웃으로 그대로 보임</td></tr>
+            <tr><td data-label="구분">예약·견적·결제 폼</td><td data-label="홈페이지형 블로그">외부 폼 링크로 내보내야 함</td><td data-label="자체 홈페이지">페이지 안에서 바로 처리</td></tr>
+            <tr><td data-label="구분">광고 랜딩</td><td data-label="홈페이지형 블로그">검색광고 연결에 제약이 있음</td><td data-label="자체 홈페이지">페이지별로 랜딩 운용 가능</td></tr>
+            <tr><td data-label="구분">유입·전환 측정</td><td data-label="홈페이지형 블로그">블로그 통계가 주는 범위까지</td><td data-label="자체 홈페이지">유입 경로별 문의 수까지 추적</td></tr>
+            <tr><td data-label="구분">초기 비용</td><td data-label="홈페이지형 블로그">20만~80만원대</td><td data-label="자체 홈페이지">300만~1,000만원대</td></tr>
+            <tr><td data-label="구분">제작 기간</td><td data-label="홈페이지형 블로그">1~2주</td><td data-label="자체 홈페이지">4~8주</td></tr>
           </tbody>
         </table>
       </div>
@@ -181,11 +189,11 @@
             <tr><th>이런 상황이면</th><th>먼저 만들 것</th><th>이유</th></tr>
           </thead>
           <tbody>
-            <tr><td>문의가 전화·메신저로 끝난다</td><td>블로그형 정비 + 플레이스</td><td>들어오는 길이 네이버 안에 있다</td></tr>
-            <tr><td>예약·견적·서류를 받아야 한다</td><td>홈페이지(한 페이지라도)</td><td>폼과 안내가 블로그에서 끊긴다</td></tr>
-            <tr><td>표현 규정이 있는 업종이다</td><td>홈페이지</td><td>문구 수정과 근거 관리가 필요하다</td></tr>
-            <tr><td>검색광고를 돌릴 계획이다</td><td>홈페이지</td><td>랜딩과 전환 측정이 필요하다</td></tr>
-            <tr><td>구글·AI 검색 유입을 원한다</td><td>홈페이지</td><td>블로그 글은 외부 색인이 어렵다</td></tr>
+            <tr><td data-label="이런 상황이면">문의가 전화·메신저로 끝난다</td><td data-label="먼저 만들 것">블로그형 정비 + 플레이스</td><td data-label="이유">들어오는 길이 네이버 안에 있다</td></tr>
+            <tr><td data-label="이런 상황이면">예약·견적·서류를 받아야 한다</td><td data-label="먼저 만들 것">홈페이지(한 페이지라도)</td><td data-label="이유">폼과 안내가 블로그에서 끊긴다</td></tr>
+            <tr><td data-label="이런 상황이면">표현 규정이 있는 업종이다</td><td data-label="먼저 만들 것">홈페이지</td><td data-label="이유">문구 수정과 근거 관리가 필요하다</td></tr>
+            <tr><td data-label="이런 상황이면">검색광고를 돌릴 계획이다</td><td data-label="먼저 만들 것">홈페이지</td><td data-label="이유">랜딩과 전환 측정이 필요하다</td></tr>
+            <tr><td data-label="이런 상황이면">구글·AI 검색 유입을 원한다</td><td data-label="먼저 만들 것">홈페이지</td><td data-label="이유">블로그 글은 외부 색인이 어렵다</td></tr>
           </tbody>
         </table>
       </div>

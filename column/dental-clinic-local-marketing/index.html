@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -147,16 +155,16 @@
       <p>정보 수정 자체는 보통 1~3일, 사진 촬영과 교체까지 함께 하면 1~2주 안에 마무리됩니다.</p>
       <p>이 단계는 직접 하셔도 충분합니다. 원장님이나 실장님이 반나절만 쓰면 되는 일이고, 내부 사정을 아는 쪽이 더 정확하게 씁니다.</p>
       <p>다만 사진은 맡기시는 편이 낫습니다. 조명과 각도가 신뢰에 바로 걸리는데, 휴대폰으로 찍으면 같은 공간도 좁고 어둡게 보여 촬영을 두 번 하게 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>채널</th><th>역할</th><th>관리 포인트</th><th>직접 할지 맡길지</th></tr>
           </thead>
           <tbody>
-            <tr><td>네이버 플레이스</td><td>지역 검색 노출</td><td>정보 최신화·사진·후기 응대</td><td>정보는 직접, 사진은 맡기는 편이 낫습니다</td></tr>
-            <tr><td>홈페이지</td><td>신뢰·진료 안내</td><td>진료 소개·의료진·상담 동선</td><td>제작은 맡기고 원고 방향은 직접 정합니다</td></tr>
-            <tr><td>후기</td><td>간접 경험</td><td>자연스러운 실제 후기 유도</td><td>응대는 직접 — 원내 습관으로 만드는 일입니다</td></tr>
-            <tr><td>칼럼</td><td>검색 접점 확대</td><td>진료·지역 주제 정보 제공</td><td>월 2편을 이어 갈 여력이 없으면 맡깁니다</td></tr>
+            <tr><td data-label="채널">네이버 플레이스</td><td data-label="역할">지역 검색 노출</td><td data-label="관리 포인트">정보 최신화·사진·후기 응대</td><td data-label="직접 할지 맡길지">정보는 직접, 사진은 맡기는 편이 낫습니다</td></tr>
+            <tr><td data-label="채널">홈페이지</td><td data-label="역할">신뢰·진료 안내</td><td data-label="관리 포인트">진료 소개·의료진·상담 동선</td><td data-label="직접 할지 맡길지">제작은 맡기고 원고 방향은 직접 정합니다</td></tr>
+            <tr><td data-label="채널">후기</td><td data-label="역할">간접 경험</td><td data-label="관리 포인트">자연스러운 실제 후기 유도</td><td data-label="직접 할지 맡길지">응대는 직접 — 원내 습관으로 만드는 일입니다</td></tr>
+            <tr><td data-label="채널">칼럼</td><td data-label="역할">검색 접점 확대</td><td data-label="관리 포인트">진료·지역 주제 정보 제공</td><td data-label="직접 할지 맡길지">월 2편을 이어 갈 여력이 없으면 맡깁니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -203,12 +211,12 @@
             <tr><th>비교 항목</th><th>유료 광고 먼저</th><th>정보 정비·콘텐츠 먼저</th></tr>
           </thead>
           <tbody>
-            <tr><td>노출 시작 시점</td><td>집행 후 보통 1~3일</td><td>보통 4주~3개월</td></tr>
-            <tr><td>집행을 멈추면</td><td>노출이 함께 사라집니다</td><td>검색에 남아 유입이 이어집니다</td></tr>
-            <tr><td>비용 성격</td><td>매달 반복 지출, 월 30~100만원 선에서 시작</td><td>초기 제작·정비 비용 이후 유지 비용 위주</td></tr>
-            <tr><td>이런 상황에 맞습니다</td><td>개원 직후, 신규 진료 항목 알림처럼 급한 유입이 필요할 때</td><td>예약 전환이 이미 나오고 장기 기반을 쌓을 때</td></tr>
-            <tr><td>주의점</td><td>플레이스·홈페이지가 비어 있으면 클릭이 예약으로 이어지지 않습니다</td><td>즉각 효과를 기대하면 중간에 포기하기 쉽습니다</td></tr>
-            <tr><td>초기 3개월 권장 비중</td><td>예산의 30~50%</td><td>예산의 50~70%</td></tr>
+            <tr><td data-label="비교 항목">노출 시작 시점</td><td data-label="유료 광고 먼저">집행 후 보통 1~3일</td><td data-label="정보 정비·콘텐츠 먼저">보통 4주~3개월</td></tr>
+            <tr><td data-label="비교 항목">집행을 멈추면</td><td data-label="유료 광고 먼저">노출이 함께 사라집니다</td><td data-label="정보 정비·콘텐츠 먼저">검색에 남아 유입이 이어집니다</td></tr>
+            <tr><td data-label="비교 항목">비용 성격</td><td data-label="유료 광고 먼저">매달 반복 지출, 월 30~100만원 선에서 시작</td><td data-label="정보 정비·콘텐츠 먼저">초기 제작·정비 비용 이후 유지 비용 위주</td></tr>
+            <tr><td data-label="비교 항목">이런 상황에 맞습니다</td><td data-label="유료 광고 먼저">개원 직후, 신규 진료 항목 알림처럼 급한 유입이 필요할 때</td><td data-label="정보 정비·콘텐츠 먼저">예약 전환이 이미 나오고 장기 기반을 쌓을 때</td></tr>
+            <tr><td data-label="비교 항목">주의점</td><td data-label="유료 광고 먼저">플레이스·홈페이지가 비어 있으면 클릭이 예약으로 이어지지 않습니다</td><td data-label="정보 정비·콘텐츠 먼저">즉각 효과를 기대하면 중간에 포기하기 쉽습니다</td></tr>
+            <tr><td data-label="비교 항목">초기 3개월 권장 비중</td><td data-label="유료 광고 먼저">예산의 30~50%</td><td data-label="정보 정비·콘텐츠 먼저">예산의 50~70%</td></tr>
           </tbody>
         </table>
       </div>

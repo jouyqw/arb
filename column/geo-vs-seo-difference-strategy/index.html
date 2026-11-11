@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -146,12 +154,12 @@
             <tr><th>구분</th><th>SEO</th><th>GEO</th></tr>
           </thead>
           <tbody>
-            <tr><td>목표</td><td>검색 순위 상승</td><td>AI 답변에 인용</td></tr>
-            <tr><td>핵심</td><td>키워드·링크·구조</td><td>질문형 구성·명확한 답·근거</td></tr>
-            <tr><td>성과</td><td>클릭·방문 증가</td><td>브랜드 언급·신뢰 노출</td></tr>
-            <tr><td>평가 단위</td><td>페이지 한 장</td><td>문단 하나</td></tr>
-            <tr><td>측정 방법</td><td>순위·유입 검색어·방문 수</td><td>대표 질문 5~10개 월 1회 직접 확인</td></tr>
-            <tr><td>결과가 보이는 시점</td><td>보통 2주~3개월</td><td>보통 3~6개월</td></tr>
+            <tr><td data-label="구분">목표</td><td data-label="SEO">검색 순위 상승</td><td data-label="GEO">AI 답변에 인용</td></tr>
+            <tr><td data-label="구분">핵심</td><td data-label="SEO">키워드·링크·구조</td><td data-label="GEO">질문형 구성·명확한 답·근거</td></tr>
+            <tr><td data-label="구분">성과</td><td data-label="SEO">클릭·방문 증가</td><td data-label="GEO">브랜드 언급·신뢰 노출</td></tr>
+            <tr><td data-label="구분">평가 단위</td><td data-label="SEO">페이지 한 장</td><td data-label="GEO">문단 하나</td></tr>
+            <tr><td data-label="구분">측정 방법</td><td data-label="SEO">순위·유입 검색어·방문 수</td><td data-label="GEO">대표 질문 5~10개 월 1회 직접 확인</td></tr>
+            <tr><td data-label="구분">결과가 보이는 시점</td><td data-label="SEO">보통 2주~3개월</td><td data-label="GEO">보통 3~6개월</td></tr>
           </tbody>
         </table>
       </div>
@@ -166,12 +174,12 @@
             <tr><th>비교 기준</th><th>SEO 기본 정비 먼저</th><th>GEO 콘텐츠 정비 먼저</th></tr>
           </thead>
           <tbody>
-            <tr><td>이런 상황에 맞음</td><td>주소가 하나뿐, 색인된 페이지가 10개 미만</td><td>글마다 주소가 이미 분리되어 있음</td></tr>
-            <tr><td>먼저 하는 일</td><td>주소 구조·제목 태그·사이트맵·속도 점검</td><td>소제목 질문형 전환, 첫 문단에 답 배치, 표·FAQ 추가</td></tr>
-            <tr><td>초기 투입</td><td>개편 범위에 따라 보통 100~500만원</td><td>1편당 1~2시간(직접), 외주 시 보통 5~30만원</td></tr>
-            <tr><td>첫 변화가 보이는 시점</td><td>정비 후 1~3개월</td><td>보강 후 2주~3개월</td></tr>
-            <tr><td>주된 위험</td><td>구조만 고치고 콘텐츠가 없으면 노출 재료가 없음</td><td>구조가 나쁘면 좋은 글도 색인되지 않음</td></tr>
-            <tr><td>다음 단계</td><td>정비 후 월 2~4편 발행으로 전환</td><td>분기마다 구조·색인 상태 재점검</td></tr>
+            <tr><td data-label="비교 기준">이런 상황에 맞음</td><td data-label="SEO 기본 정비 먼저">주소가 하나뿐, 색인된 페이지가 10개 미만</td><td data-label="GEO 콘텐츠 정비 먼저">글마다 주소가 이미 분리되어 있음</td></tr>
+            <tr><td data-label="비교 기준">먼저 하는 일</td><td data-label="SEO 기본 정비 먼저">주소 구조·제목 태그·사이트맵·속도 점검</td><td data-label="GEO 콘텐츠 정비 먼저">소제목 질문형 전환, 첫 문단에 답 배치, 표·FAQ 추가</td></tr>
+            <tr><td data-label="비교 기준">초기 투입</td><td data-label="SEO 기본 정비 먼저">개편 범위에 따라 보통 100~500만원</td><td data-label="GEO 콘텐츠 정비 먼저">1편당 1~2시간(직접), 외주 시 보통 5~30만원</td></tr>
+            <tr><td data-label="비교 기준">첫 변화가 보이는 시점</td><td data-label="SEO 기본 정비 먼저">정비 후 1~3개월</td><td data-label="GEO 콘텐츠 정비 먼저">보강 후 2주~3개월</td></tr>
+            <tr><td data-label="비교 기준">주된 위험</td><td data-label="SEO 기본 정비 먼저">구조만 고치고 콘텐츠가 없으면 노출 재료가 없음</td><td data-label="GEO 콘텐츠 정비 먼저">구조가 나쁘면 좋은 글도 색인되지 않음</td></tr>
+            <tr><td data-label="비교 기준">다음 단계</td><td data-label="SEO 기본 정비 먼저">정비 후 월 2~4편 발행으로 전환</td><td data-label="GEO 콘텐츠 정비 먼저">분기마다 구조·색인 상태 재점검</td></tr>
           </tbody>
         </table>
       </div>

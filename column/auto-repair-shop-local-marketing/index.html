@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -146,10 +154,10 @@
             <tr><th>손님의 상황</th><th>실제로 검색하는 말</th><th>필요한 페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>경고등이 켜졌다</td><td>노란 엔진 경고등 켜짐 원인</td><td>증상별 원인과 점검 안내</td></tr>
-            <tr><td>소음이 난다</td><td>브레이크 밟을 때 끼익 소리</td><td>증상별 점검 항목과 비용대</td></tr>
-            <tr><td>정기 점검 시기</td><td>차량 소모품 교체 주기</td><td>차종·주행거리별 안내</td></tr>
-            <tr><td>사고가 났다</td><td>보험 수리 절차</td><td>입고부터 출고까지의 진행 안내</td></tr>
+            <tr><td data-label="손님의 상황">경고등이 켜졌다</td><td data-label="실제로 검색하는 말">노란 엔진 경고등 켜짐 원인</td><td data-label="필요한 페이지">증상별 원인과 점검 안내</td></tr>
+            <tr><td data-label="손님의 상황">소음이 난다</td><td data-label="실제로 검색하는 말">브레이크 밟을 때 끼익 소리</td><td data-label="필요한 페이지">증상별 점검 항목과 비용대</td></tr>
+            <tr><td data-label="손님의 상황">정기 점검 시기</td><td data-label="실제로 검색하는 말">차량 소모품 교체 주기</td><td data-label="필요한 페이지">차종·주행거리별 안내</td></tr>
+            <tr><td data-label="손님의 상황">사고가 났다</td><td data-label="실제로 검색하는 말">보험 수리 절차</td><td data-label="필요한 페이지">입고부터 출고까지의 진행 안내</td></tr>
           </tbody>
         </table>
       </div>
@@ -169,12 +177,12 @@
             <tr><th>비교 기준</th><th>지도·플레이스</th><th>홈페이지 증상 페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>닿는 손님</td><td>지금 근처에서 정비소를 찾는 사람</td><td>증상과 비용을 먼저 알아보는 사람</td></tr>
-            <tr><td>준비 기간</td><td>정보 채우기 하루~이틀</td><td>한 편 30~60분, 10편까지 2~3개월</td></tr>
-            <tr><td>반응이 오는 시점</td><td>등록·정비 직후부터</td><td>보통 3~6개월 차부터</td></tr>
-            <tr><td>담을 수 있는 분량</td><td>영업시간·사진 등 정해진 칸 안에서</td><td>증상·원인·시간·비용까지 제한 없음</td></tr>
-            <tr><td>규칙이 바뀔 때</td><td>노출 기준이 바뀌면 한 번에 흔들림</td><td>우리 자산이라 변화에 덜 흔들림</td></tr>
-            <tr><td>먼저 할 일</td><td>기본 정보가 비어 있다면 여기부터</td><td>기본 정보가 채워져 있다면 여기부터</td></tr>
+            <tr><td data-label="비교 기준">닿는 손님</td><td data-label="지도·플레이스">지금 근처에서 정비소를 찾는 사람</td><td data-label="홈페이지 증상 페이지">증상과 비용을 먼저 알아보는 사람</td></tr>
+            <tr><td data-label="비교 기준">준비 기간</td><td data-label="지도·플레이스">정보 채우기 하루~이틀</td><td data-label="홈페이지 증상 페이지">한 편 30~60분, 10편까지 2~3개월</td></tr>
+            <tr><td data-label="비교 기준">반응이 오는 시점</td><td data-label="지도·플레이스">등록·정비 직후부터</td><td data-label="홈페이지 증상 페이지">보통 3~6개월 차부터</td></tr>
+            <tr><td data-label="비교 기준">담을 수 있는 분량</td><td data-label="지도·플레이스">영업시간·사진 등 정해진 칸 안에서</td><td data-label="홈페이지 증상 페이지">증상·원인·시간·비용까지 제한 없음</td></tr>
+            <tr><td data-label="비교 기준">규칙이 바뀔 때</td><td data-label="지도·플레이스">노출 기준이 바뀌면 한 번에 흔들림</td><td data-label="홈페이지 증상 페이지">우리 자산이라 변화에 덜 흔들림</td></tr>
+            <tr><td data-label="비교 기준">먼저 할 일</td><td data-label="지도·플레이스">기본 정보가 비어 있다면 여기부터</td><td data-label="홈페이지 증상 페이지">기본 정보가 채워져 있다면 여기부터</td></tr>
           </tbody>
         </table>
       </div>
@@ -197,12 +205,12 @@
             <tr><th>구성 순서</th><th>적는 내용</th><th>분량 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>1. 증상 그대로</td><td>손님이 쓰는 표현을 그대로 제목에 씁니다</td><td>제목 한 줄</td></tr>
-            <tr><td>2. 원인 후보</td><td>가능성이 높은 순서로 2~4가지</td><td>3~5문장</td></tr>
-            <tr><td>3. 점검 방법</td><td>무엇을 어떤 순서로 확인하는지</td><td>3~5문장</td></tr>
-            <tr><td>4. 소요 시간</td><td>당일 가능 여부, 입고 필요 여부, 대차 가능 여부</td><td>2~3문장</td></tr>
-            <tr><td>5. 비용 범위</td><td>부품 등급별 상한과 하한, 포함 항목</td><td>짧은 표 또는 3문장</td></tr>
-            <tr><td>6. 미루면 생기는 일</td><td>안전과 추가 비용 관점에서 담담하게</td><td>2~3문장</td></tr>
+            <tr><td data-label="구성 순서">1. 증상 그대로</td><td data-label="적는 내용">손님이 쓰는 표현을 그대로 제목에 씁니다</td><td data-label="분량 기준">제목 한 줄</td></tr>
+            <tr><td data-label="구성 순서">2. 원인 후보</td><td data-label="적는 내용">가능성이 높은 순서로 2~4가지</td><td data-label="분량 기준">3~5문장</td></tr>
+            <tr><td data-label="구성 순서">3. 점검 방법</td><td data-label="적는 내용">무엇을 어떤 순서로 확인하는지</td><td data-label="분량 기준">3~5문장</td></tr>
+            <tr><td data-label="구성 순서">4. 소요 시간</td><td data-label="적는 내용">당일 가능 여부, 입고 필요 여부, 대차 가능 여부</td><td data-label="분량 기준">2~3문장</td></tr>
+            <tr><td data-label="구성 순서">5. 비용 범위</td><td data-label="적는 내용">부품 등급별 상한과 하한, 포함 항목</td><td data-label="분량 기준">짧은 표 또는 3문장</td></tr>
+            <tr><td data-label="구성 순서">6. 미루면 생기는 일</td><td data-label="적는 내용">안전과 추가 비용 관점에서 담담하게</td><td data-label="분량 기준">2~3문장</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -132,16 +140,16 @@
       <h2>첫 1분은 어떤 순서로 흘러가야 하나요?</h2>
       <p>받기, 상황 확인, 핵심 질문, 다음 단계 네 구간으로 나눠 두시길 권합니다.</p>
       <p>구간을 나누는 이유는 말솜씨를 키우기 위해서가 아닙니다. 통화 중에 무엇을 빠뜨렸는지 스스로 알아차리기 위해서입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>구간</th><th>대략의 시간</th><th>이 구간의 목표</th><th>실제로 쓰는 말</th></tr>
           </thead>
           <tbody>
-            <tr><td>받기</td><td>0~10초</td><td>어디에 걸었는지 확인시키기</td><td>사무소 이름과 받는 사람 이름을 붙여 인사</td></tr>
-            <tr><td>상황 확인</td><td>10~30초</td><td>상대가 먼저 말하게 하기</td><td>어떤 일로 연락 주셨는지 여쭤봐도 될까요</td></tr>
-            <tr><td>핵심 질문</td><td>30~50초</td><td>판단에 필요한 두세 가지만 묻기</td><td>언제부터인지, 서류는 받으셨는지</td></tr>
-            <tr><td>다음 단계</td><td>50~60초</td><td>일정이나 회신 시점 정하기</td><td>이번 주 목요일 오후는 어떠신가요</td></tr>
+            <tr><td data-label="구간">받기</td><td data-label="대략의 시간">0~10초</td><td data-label="이 구간의 목표">어디에 걸었는지 확인시키기</td><td data-label="실제로 쓰는 말">사무소 이름과 받는 사람 이름을 붙여 인사</td></tr>
+            <tr><td data-label="구간">상황 확인</td><td data-label="대략의 시간">10~30초</td><td data-label="이 구간의 목표">상대가 먼저 말하게 하기</td><td data-label="실제로 쓰는 말">어떤 일로 연락 주셨는지 여쭤봐도 될까요</td></tr>
+            <tr><td data-label="구간">핵심 질문</td><td data-label="대략의 시간">30~50초</td><td data-label="이 구간의 목표">판단에 필요한 두세 가지만 묻기</td><td data-label="실제로 쓰는 말">언제부터인지, 서류는 받으셨는지</td></tr>
+            <tr><td data-label="구간">다음 단계</td><td data-label="대략의 시간">50~60초</td><td data-label="이 구간의 목표">일정이나 회신 시점 정하기</td><td data-label="실제로 쓰는 말">이번 주 목요일 오후는 어떠신가요</td></tr>
           </tbody>
         </table>
       </div>
@@ -175,11 +183,11 @@
             <tr><th>판단 기준</th><th>바로 예약을 잡는 경우</th><th>회신을 약속하는 경우</th></tr>
           </thead>
           <tbody>
-            <tr><td>문의 내용</td><td>우리 업무 범위 안이고 유형이 분명함</td><td>범위 경계에 있거나 내부 확인이 필요함</td></tr>
-            <tr><td>상대의 기한</td><td>며칠 안에 처리해야 하는 사안</td><td>당장 기한이 없는 검토성 문의</td></tr>
-            <tr><td>받는 사람의 권한</td><td>정해진 시간대 안에서 확정할 수 있음</td><td>대표 확인이 필요한 조건이 걸림</td></tr>
-            <tr><td>그 자리에서 할 말</td><td>이번 주 목요일 오후 3시 어떠신가요</td><td>오늘 6시 전까지 다시 전화드리겠습니다</td></tr>
-            <tr><td>끊은 뒤 할 일</td><td>확인 문자와 준비 서류 안내 발송</td><td>약속한 시각을 알림으로 등록</td></tr>
+            <tr><td data-label="판단 기준">문의 내용</td><td data-label="바로 예약을 잡는 경우">우리 업무 범위 안이고 유형이 분명함</td><td data-label="회신을 약속하는 경우">범위 경계에 있거나 내부 확인이 필요함</td></tr>
+            <tr><td data-label="판단 기준">상대의 기한</td><td data-label="바로 예약을 잡는 경우">며칠 안에 처리해야 하는 사안</td><td data-label="회신을 약속하는 경우">당장 기한이 없는 검토성 문의</td></tr>
+            <tr><td data-label="판단 기준">받는 사람의 권한</td><td data-label="바로 예약을 잡는 경우">정해진 시간대 안에서 확정할 수 있음</td><td data-label="회신을 약속하는 경우">대표 확인이 필요한 조건이 걸림</td></tr>
+            <tr><td data-label="판단 기준">그 자리에서 할 말</td><td data-label="바로 예약을 잡는 경우">이번 주 목요일 오후 3시 어떠신가요</td><td data-label="회신을 약속하는 경우">오늘 6시 전까지 다시 전화드리겠습니다</td></tr>
+            <tr><td data-label="판단 기준">끊은 뒤 할 일</td><td data-label="바로 예약을 잡는 경우">확인 문자와 준비 서류 안내 발송</td><td data-label="회신을 약속하는 경우">약속한 시각을 알림으로 등록</td></tr>
           </tbody>
         </table>
       </div>
@@ -221,11 +229,11 @@
             <tr><th>자주 보이는 증상</th><th>대개의 원인</th><th>먼저 손볼 곳</th></tr>
           </thead>
           <tbody>
-            <tr><td>첫 마디 뒤에 바로 끊긴다</td><td>안내 문구로 통화를 시작함</td><td>받기·상황 확인 구간</td></tr>
-            <tr><td>통화는 길었는데 예약이 없다</td><td>다음 단계를 제안하지 않고 끝냄</td><td>마지막 20초 정리 문장</td></tr>
-            <tr><td>비용 질문에서 분위기가 식는다</td><td>답을 피하는 표현을 씀</td><td>범위·조건 문장</td></tr>
-            <tr><td>예약은 잡히는데 오지 않는다</td><td>확인 문자와 준비물 안내 없음</td><td>통화 직후 문자</td></tr>
-            <tr><td>받는 사람마다 결과가 다르다</td><td>권한과 공통 대본이 없음</td><td>응대 시트, 위임 범위</td></tr>
+            <tr><td data-label="자주 보이는 증상">첫 마디 뒤에 바로 끊긴다</td><td data-label="대개의 원인">안내 문구로 통화를 시작함</td><td data-label="먼저 손볼 곳">받기·상황 확인 구간</td></tr>
+            <tr><td data-label="자주 보이는 증상">통화는 길었는데 예약이 없다</td><td data-label="대개의 원인">다음 단계를 제안하지 않고 끝냄</td><td data-label="먼저 손볼 곳">마지막 20초 정리 문장</td></tr>
+            <tr><td data-label="자주 보이는 증상">비용 질문에서 분위기가 식는다</td><td data-label="대개의 원인">답을 피하는 표현을 씀</td><td data-label="먼저 손볼 곳">범위·조건 문장</td></tr>
+            <tr><td data-label="자주 보이는 증상">예약은 잡히는데 오지 않는다</td><td data-label="대개의 원인">확인 문자와 준비물 안내 없음</td><td data-label="먼저 손볼 곳">통화 직후 문자</td></tr>
+            <tr><td data-label="자주 보이는 증상">받는 사람마다 결과가 다르다</td><td data-label="대개의 원인">권한과 공통 대본이 없음</td><td data-label="먼저 손볼 곳">응대 시트, 위임 범위</td></tr>
           </tbody>
         </table>
       </div>

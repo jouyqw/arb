@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -129,17 +137,17 @@
       <p>등록하려는 달보다 보통 2~3개월 앞섭니다. 3월 등록이면 12월 말에서 1월, 여름 특강이면 6월 중순부터 검색이 늘어나는 흐름을 자주 봤습니다.</p>
       <p>초등 저학년 학부모가 가장 빠르게 움직이고, 고등 쪽은 성적표가 나온 직후에 몰립니다. 중간·기말 성적이 나오는 주에 문의가 튀는 현상은 학원 상담에서 거의 공통으로 들었습니다.</p>
       <p>그래서 저는 &quot;검색이 시작되는 달&quot;과 &quot;등록하는 달&quot;을 따로 적게 합니다. 이 두 칸만 나눠도 광고를 켜는 시점이 바뀝니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>등록 시기</th><th>학부모 검색이 느는 때</th><th>준비 착수 권장</th><th>그때까지 끝내 둘 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>3월 신학기</td><td>12월 말~1월</td><td>11월</td><td>시간표, 반 편성 기준, 레벨테스트 안내</td></tr>
-            <tr><td>여름 특강·방학반</td><td>6월 중순~7월 초</td><td>5월 중순</td><td>특강 일정표, 보강 규정, 플레이스 사진</td></tr>
-            <tr><td>9월 2학기</td><td>7월 말~8월</td><td>6월</td><td>2학기 진도 안내, 재원생 후기 정리</td></tr>
-            <tr><td>겨울 특강·예비 학년</td><td>11월 중순~12월</td><td>10월</td><td>예비 학년 과정 소개, 상담 예약 창구</td></tr>
-            <tr><td>학기 중 수시 등록</td><td>중간·기말 성적 발표 주</td><td>상시</td><td>성적 관리 방식 설명 글, 당일 상담 응대</td></tr>
+            <tr><td data-label="등록 시기">3월 신학기</td><td data-label="학부모 검색이 느는 때">12월 말~1월</td><td data-label="준비 착수 권장">11월</td><td data-label="그때까지 끝내 둘 것">시간표, 반 편성 기준, 레벨테스트 안내</td></tr>
+            <tr><td data-label="등록 시기">여름 특강·방학반</td><td data-label="학부모 검색이 느는 때">6월 중순~7월 초</td><td data-label="준비 착수 권장">5월 중순</td><td data-label="그때까지 끝내 둘 것">특강 일정표, 보강 규정, 플레이스 사진</td></tr>
+            <tr><td data-label="등록 시기">9월 2학기</td><td data-label="학부모 검색이 느는 때">7월 말~8월</td><td data-label="준비 착수 권장">6월</td><td data-label="그때까지 끝내 둘 것">2학기 진도 안내, 재원생 후기 정리</td></tr>
+            <tr><td data-label="등록 시기">겨울 특강·예비 학년</td><td data-label="학부모 검색이 느는 때">11월 중순~12월</td><td data-label="준비 착수 권장">10월</td><td data-label="그때까지 끝내 둘 것">예비 학년 과정 소개, 상담 예약 창구</td></tr>
+            <tr><td data-label="등록 시기">학기 중 수시 등록</td><td data-label="학부모 검색이 느는 때">중간·기말 성적 발표 주</td><td data-label="준비 착수 권장">상시</td><td data-label="그때까지 끝내 둘 것">성적 관리 방식 설명 글, 당일 상담 응대</td></tr>
           </tbody>
         </table>
       </div>
@@ -155,17 +163,17 @@
       <h2>학부모가 실제로 검색하는 말은 무엇인가요?</h2>
       <p>시기에 따라 크게 세 갈래입니다. 비수기에는 지역명과 과목, 등록기에는 개강일과 시간표와 레벨테스트, 성적 발표 직후에는 내신·대비 같은 말이 늘어납니다.</p>
       <p>제가 학원 홈페이지를 열어 보면 대부분 첫 번째 갈래에만 맞춰져 있습니다. 둘째·셋째 갈래로 들어온 학부모가 답을 찾지 못하고 그대로 나갑니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>학부모가 쓰는 말</th><th>많이 나오는 시기</th><th>학부모의 상태</th><th>받을 페이지에 있어야 할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>○○동 영어학원, ○○역 수학학원</td><td>상시·비수기</td><td>후보 3~5곳을 모으는 중</td><td>위치, 과목, 대상 학년, 수업 요일</td></tr>
-            <tr><td>개강일, 시간표, 모집 학년</td><td>등록 2~6주 전</td><td>후보를 이미 좁힌 상태</td><td>개강일 명시, 잔여 자리, 상담 예약</td></tr>
-            <tr><td>레벨테스트, 반 배정 기준</td><td>등록 직전</td><td>맞는 반이 있는지 확인</td><td>테스트 절차와 소요 시간, 비용 여부</td></tr>
-            <tr><td>방학 특강, 단기 보강</td><td>방학 4~6주 전</td><td>짧게 끝낼 수업을 찾는 중</td><td>총 회차, 기간, 금액 범위</td></tr>
-            <tr><td>내신 대비, 중간고사 대비</td><td>성적 발표 직후</td><td>급하게 바꾸려는 중</td><td>학교별 진도 대응 방식, 당일 상담 가능 여부</td></tr>
+            <tr><td data-label="학부모가 쓰는 말">○○동 영어학원, ○○역 수학학원</td><td data-label="많이 나오는 시기">상시·비수기</td><td data-label="학부모의 상태">후보 3~5곳을 모으는 중</td><td data-label="받을 페이지에 있어야 할 것">위치, 과목, 대상 학년, 수업 요일</td></tr>
+            <tr><td data-label="학부모가 쓰는 말">개강일, 시간표, 모집 학년</td><td data-label="많이 나오는 시기">등록 2~6주 전</td><td data-label="학부모의 상태">후보를 이미 좁힌 상태</td><td data-label="받을 페이지에 있어야 할 것">개강일 명시, 잔여 자리, 상담 예약</td></tr>
+            <tr><td data-label="학부모가 쓰는 말">레벨테스트, 반 배정 기준</td><td data-label="많이 나오는 시기">등록 직전</td><td data-label="학부모의 상태">맞는 반이 있는지 확인</td><td data-label="받을 페이지에 있어야 할 것">테스트 절차와 소요 시간, 비용 여부</td></tr>
+            <tr><td data-label="학부모가 쓰는 말">방학 특강, 단기 보강</td><td data-label="많이 나오는 시기">방학 4~6주 전</td><td data-label="학부모의 상태">짧게 끝낼 수업을 찾는 중</td><td data-label="받을 페이지에 있어야 할 것">총 회차, 기간, 금액 범위</td></tr>
+            <tr><td data-label="학부모가 쓰는 말">내신 대비, 중간고사 대비</td><td data-label="많이 나오는 시기">성적 발표 직후</td><td data-label="학부모의 상태">급하게 바꾸려는 중</td><td data-label="받을 페이지에 있어야 할 것">학교별 진도 대응 방식, 당일 상담 가능 여부</td></tr>
           </tbody>
         </table>
       </div>
@@ -187,11 +195,11 @@
             <tr><th>물어볼 것</th><th>좋은 대답</th><th>걸러야 할 대답</th></tr>
           </thead>
           <tbody>
-            <tr><td>우리 등록 시기를 언제로 보나요</td><td>지난 2년 등록 건수를 보고 정하자고 답함</td><td>&quot;보통 3월이죠&quot;로 끝냄</td></tr>
-            <tr><td>착수부터 공개까지 몇 주인가요</td><td>4~8주 일정을 주 단위로 제시함</td><td>&quot;빨리 해 드리겠습니다&quot;</td></tr>
-            <tr><td>성수기에는 무엇을 하나요</td><td>신규 제작 없이 운영과 응대 지원만 둠</td><td>성수기에 전면 개편을 제안함</td></tr>
-            <tr><td>비수기 계획이 따로 있나요</td><td>원고와 후기 수집 일정이 들어 있음</td><td>매달 같은 작업을 반복함</td></tr>
-            <tr><td>월 보고에 무엇이 나오나요</td><td>시기별 검색어와 상담 예약 건수가 분리됨</td><td>순위 캡처와 총 방문자 수만</td></tr>
+            <tr><td data-label="물어볼 것">우리 등록 시기를 언제로 보나요</td><td data-label="좋은 대답">지난 2년 등록 건수를 보고 정하자고 답함</td><td data-label="걸러야 할 대답">&quot;보통 3월이죠&quot;로 끝냄</td></tr>
+            <tr><td data-label="물어볼 것">착수부터 공개까지 몇 주인가요</td><td data-label="좋은 대답">4~8주 일정을 주 단위로 제시함</td><td data-label="걸러야 할 대답">&quot;빨리 해 드리겠습니다&quot;</td></tr>
+            <tr><td data-label="물어볼 것">성수기에는 무엇을 하나요</td><td data-label="좋은 대답">신규 제작 없이 운영과 응대 지원만 둠</td><td data-label="걸러야 할 대답">성수기에 전면 개편을 제안함</td></tr>
+            <tr><td data-label="물어볼 것">비수기 계획이 따로 있나요</td><td data-label="좋은 대답">원고와 후기 수집 일정이 들어 있음</td><td data-label="걸러야 할 대답">매달 같은 작업을 반복함</td></tr>
+            <tr><td data-label="물어볼 것">월 보고에 무엇이 나오나요</td><td data-label="좋은 대답">시기별 검색어와 상담 예약 건수가 분리됨</td><td data-label="걸러야 할 대답">순위 캡처와 총 방문자 수만</td></tr>
           </tbody>
         </table>
       </div>

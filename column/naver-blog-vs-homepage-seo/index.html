@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -133,14 +141,14 @@
             <tr><th>구분</th><th>네이버 블로그</th><th>홈페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>주 강점</td><td>네이버 검색 유입·접점</td><td>신뢰·전환·브랜드 중심</td></tr>
-            <tr><td>콘텐츠 성격</td><td>후기·정보·일상 톤</td><td>전문 분야·상담 안내</td></tr>
-            <tr><td>검색 범위</td><td>주로 네이버</td><td>구글·네이버·AI 검색</td></tr>
-            <tr><td>소유권</td><td>플랫폼에 종속</td><td>직접 소유·관리</td></tr>
-            <tr><td>적정 발행 분량</td><td>주 1~2편</td><td>월 2~4편</td></tr>
-            <tr><td>1편 권장 분량</td><td>1,000~1,500자</td><td>2,500~4,000자</td></tr>
-            <tr><td>효과 체감 시점</td><td>보통 1~3개월</td><td>보통 3~6개월</td></tr>
-            <tr><td>초기 준비 비용</td><td>사실상 0원(직접 운영)</td><td>제작 범위에 따라 수백만원 단위</td></tr>
+            <tr><td data-label="구분">주 강점</td><td data-label="네이버 블로그">네이버 검색 유입·접점</td><td data-label="홈페이지">신뢰·전환·브랜드 중심</td></tr>
+            <tr><td data-label="구분">콘텐츠 성격</td><td data-label="네이버 블로그">후기·정보·일상 톤</td><td data-label="홈페이지">전문 분야·상담 안내</td></tr>
+            <tr><td data-label="구분">검색 범위</td><td data-label="네이버 블로그">주로 네이버</td><td data-label="홈페이지">구글·네이버·AI 검색</td></tr>
+            <tr><td data-label="구분">소유권</td><td data-label="네이버 블로그">플랫폼에 종속</td><td data-label="홈페이지">직접 소유·관리</td></tr>
+            <tr><td data-label="구분">적정 발행 분량</td><td data-label="네이버 블로그">주 1~2편</td><td data-label="홈페이지">월 2~4편</td></tr>
+            <tr><td data-label="구분">1편 권장 분량</td><td data-label="네이버 블로그">1,000~1,500자</td><td data-label="홈페이지">2,500~4,000자</td></tr>
+            <tr><td data-label="구분">효과 체감 시점</td><td data-label="네이버 블로그">보통 1~3개월</td><td data-label="홈페이지">보통 3~6개월</td></tr>
+            <tr><td data-label="구분">초기 준비 비용</td><td data-label="네이버 블로그">사실상 0원(직접 운영)</td><td data-label="홈페이지">제작 범위에 따라 수백만원 단위</td></tr>
           </tbody>
         </table>
       </div>
@@ -162,12 +170,12 @@
             <tr><th>내 상황</th><th>먼저 세울 채널</th><th>이유</th></tr>
           </thead>
           <tbody>
-            <tr><td>상담 1건 단가가 100만원 이상</td><td>홈페이지</td><td>고객이 자격·이력·사례를 확인하고 결정합니다</td></tr>
-            <tr><td>후기·가격 비교로 결정되는 업종</td><td>블로그</td><td>검색 접점 수가 문의 수를 좌우합니다</td></tr>
-            <tr><td>전문 자격·면허가 핵심인 분야</td><td>홈페이지</td><td>신뢰 근거를 한곳에 모아 보여 줘야 합니다</td></tr>
-            <tr><td>지역 손님 위주 오프라인 매장</td><td>블로그 + 플레이스</td><td>지역 검색에서 노출 빈도가 중요합니다</td></tr>
-            <tr><td>구글·AI 검색 유입을 늘리고 싶다</td><td>홈페이지</td><td>구조화된 칼럼이 인용 대상이 되기 유리합니다</td></tr>
-            <tr><td>글 쓸 사람이 나 혼자다</td><td>홈페이지 1곳 집중</td><td>분량을 나누면 양쪽 모두 얕아집니다</td></tr>
+            <tr><td data-label="내 상황">상담 1건 단가가 100만원 이상</td><td data-label="먼저 세울 채널">홈페이지</td><td data-label="이유">고객이 자격·이력·사례를 확인하고 결정합니다</td></tr>
+            <tr><td data-label="내 상황">후기·가격 비교로 결정되는 업종</td><td data-label="먼저 세울 채널">블로그</td><td data-label="이유">검색 접점 수가 문의 수를 좌우합니다</td></tr>
+            <tr><td data-label="내 상황">전문 자격·면허가 핵심인 분야</td><td data-label="먼저 세울 채널">홈페이지</td><td data-label="이유">신뢰 근거를 한곳에 모아 보여 줘야 합니다</td></tr>
+            <tr><td data-label="내 상황">지역 손님 위주 오프라인 매장</td><td data-label="먼저 세울 채널">블로그 + 플레이스</td><td data-label="이유">지역 검색에서 노출 빈도가 중요합니다</td></tr>
+            <tr><td data-label="내 상황">구글·AI 검색 유입을 늘리고 싶다</td><td data-label="먼저 세울 채널">홈페이지</td><td data-label="이유">구조화된 칼럼이 인용 대상이 되기 유리합니다</td></tr>
+            <tr><td data-label="내 상황">글 쓸 사람이 나 혼자다</td><td data-label="먼저 세울 채널">홈페이지 1곳 집중</td><td data-label="이유">분량을 나누면 양쪽 모두 얕아집니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -190,16 +198,16 @@
       <h2>비용과 기간은 어느 정도 잡아야 할까요?</h2>
       <p>직접 운영하면 블로그는 사실상 비용이 들지 않고, 홈페이지는 제작 범위에 따라 수백만원 단위에서 갈립니다. 대행을 맡기면 채널당 월 단위 고정비가 추가된다고 보는 편이 안전합니다.</p>
       <p>정확한 금액은 페이지 수, 디자인 범위, 콘텐츠 작성 포함 여부에 따라 달라집니다. 아래는 상담에서 자주 언급되는 범위이며, 견적 비교의 기준선으로만 쓰는 것이 좋습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>항목</th><th>직접 운영</th><th>대행 의뢰</th><th>걸리는 시간</th></tr>
           </thead>
           <tbody>
-            <tr><td>블로그 글 1편</td><td>2~4시간</td><td>편당 비용 발생</td><td>당일~2일</td></tr>
-            <tr><td>홈페이지 칼럼 1편</td><td>4~8시간</td><td>편당 비용 발생</td><td>2~5일</td></tr>
-            <tr><td>홈페이지 초기 제작</td><td>템플릿 활용 시 2~4주</td><td>제작 범위에 따라 견적 차이가 큼</td><td>보통 4~8주</td></tr>
-            <tr><td>월 운영 관리</td><td>주 5~10시간</td><td>채널당 월 단위 고정비</td><td>지속</td></tr>
+            <tr><td data-label="항목">블로그 글 1편</td><td data-label="직접 운영">2~4시간</td><td data-label="대행 의뢰">편당 비용 발생</td><td data-label="걸리는 시간">당일~2일</td></tr>
+            <tr><td data-label="항목">홈페이지 칼럼 1편</td><td data-label="직접 운영">4~8시간</td><td data-label="대행 의뢰">편당 비용 발생</td><td data-label="걸리는 시간">2~5일</td></tr>
+            <tr><td data-label="항목">홈페이지 초기 제작</td><td data-label="직접 운영">템플릿 활용 시 2~4주</td><td data-label="대행 의뢰">제작 범위에 따라 견적 차이가 큼</td><td data-label="걸리는 시간">보통 4~8주</td></tr>
+            <tr><td data-label="항목">월 운영 관리</td><td data-label="직접 운영">주 5~10시간</td><td data-label="대행 의뢰">채널당 월 단위 고정비</td><td data-label="걸리는 시간">지속</td></tr>
           </tbody>
         </table>
       </div>
@@ -211,16 +219,16 @@
       <h2>무엇을 보고 잘되고 있다고 판단할까요?</h2>
       <p>채널마다 봐야 할 숫자가 다릅니다. 블로그는 유입 수와 체류, 홈페이지는 문의 수와 전환율을 보고 판단하면 오판이 줄어듭니다.</p>
       <p>한 채널의 지표로 다른 채널을 평가하면 엉뚱한 결론이 납니다. 블로그를 문의 수로만 평가하면 접점 역할을 과소평가하게 됩니다. 저는 두 채널을 같은 표에 올려 두되, 각자의 숫자로 따로 읽습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>보는 지표</th><th>네이버 블로그</th><th>홈페이지</th><th>점검 주기</th></tr>
           </thead>
           <tbody>
-            <tr><td>1차 지표</td><td>검색 유입 수</td><td>문의·상담 건수</td><td>월 1회</td></tr>
-            <tr><td>2차 지표</td><td>글당 평균 조회</td><td>칼럼별 체류 시간</td><td>월 1회</td></tr>
-            <tr><td>연결 지표</td><td>홈페이지로의 클릭 수</td><td>블로그 유입 비중</td><td>월 1회</td></tr>
-            <tr><td>구조 지표</td><td>발행 주기 유지 여부</td><td>색인된 칼럼 수</td><td>분기 1회</td></tr>
+            <tr><td data-label="보는 지표">1차 지표</td><td data-label="네이버 블로그">검색 유입 수</td><td data-label="홈페이지">문의·상담 건수</td><td data-label="점검 주기">월 1회</td></tr>
+            <tr><td data-label="보는 지표">2차 지표</td><td data-label="네이버 블로그">글당 평균 조회</td><td data-label="홈페이지">칼럼별 체류 시간</td><td data-label="점검 주기">월 1회</td></tr>
+            <tr><td data-label="보는 지표">연결 지표</td><td data-label="네이버 블로그">홈페이지로의 클릭 수</td><td data-label="홈페이지">블로그 유입 비중</td><td data-label="점검 주기">월 1회</td></tr>
+            <tr><td data-label="보는 지표">구조 지표</td><td data-label="네이버 블로그">발행 주기 유지 여부</td><td data-label="홈페이지">색인된 칼럼 수</td><td data-label="점검 주기">분기 1회</td></tr>
           </tbody>
         </table>
       </div>

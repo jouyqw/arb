@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -144,10 +152,10 @@
             <tr><th>배치 위치</th><th>장점</th><th>단점</th></tr>
           </thead>
           <tbody>
-            <tr><td>첫 화면(히어로) 안</td><td>첫인상에서 눈에 잘 띔</td><td>스크롤하면 사라져 이후엔 다시 찾아야 함</td></tr>
-            <tr><td>본문 중간 삽입</td><td>내용을 읽다가 바로 반응 가능</td><td>여러 번 넣지 않으면 놓치기 쉬움</td></tr>
-            <tr><td>하단 고정바</td><td>스크롤 내내 항상 노출됨</td><td>카카오톡 버튼 등 다른 고정 요소와 겹칠 수 있음</td></tr>
-            <tr><td>우측 하단 플로팅 버튼</td><td>본문을 가리는 면적이 작음</td><td>손에 익지 않으면 존재를 못 알아챌 수 있음</td></tr>
+            <tr><td data-label="배치 위치">첫 화면(히어로) 안</td><td data-label="장점">첫인상에서 눈에 잘 띔</td><td data-label="단점">스크롤하면 사라져 이후엔 다시 찾아야 함</td></tr>
+            <tr><td data-label="배치 위치">본문 중간 삽입</td><td data-label="장점">내용을 읽다가 바로 반응 가능</td><td data-label="단점">여러 번 넣지 않으면 놓치기 쉬움</td></tr>
+            <tr><td data-label="배치 위치">하단 고정바</td><td data-label="장점">스크롤 내내 항상 노출됨</td><td data-label="단점">카카오톡 버튼 등 다른 고정 요소와 겹칠 수 있음</td></tr>
+            <tr><td data-label="배치 위치">우측 하단 플로팅 버튼</td><td data-label="장점">본문을 가리는 면적이 작음</td><td data-label="단점">손에 익지 않으면 존재를 못 알아챌 수 있음</td></tr>
           </tbody>
         </table>
       </div>
@@ -183,12 +191,12 @@
             <tr><th>판단 기준</th><th>전화 버튼을 앞에 둘 때</th><th>상담 신청을 앞에 둘 때</th></tr>
           </thead>
           <tbody>
-            <tr><td>방문자 상태</td><td>지금 당장 해결해야 하는 급한 상황</td><td>정보를 더 모으는 탐색 단계</td></tr>
-            <tr><td>대표 업종</td><td>이사·설비 수리·긴급 출동</td><td>병원·법무법인·세무사·심리상담</td></tr>
-            <tr><td>상담 시작 부담</td><td>낮음 — 통화 한 번으로 끝나는 문의</td><td>높음 — 이름과 사정을 밝히기 부담스러움</td></tr>
-            <tr><td>응대 가능 시간</td><td>전화를 받을 사람이 상시 대기할 때</td><td>야간·주말 문의 비중이 높을 때</td></tr>
-            <tr><td>버튼 구성</td><td>전화 버튼 하나를 가장 크게</td><td>신청 버튼을 크게, 전화는 그 아래 작게</td></tr>
-            <tr><td>함께 볼 지표</td><td>통화 연결률, 통화 1분 이상 비율</td><td>폼 제출 수, 24시간 내 회신율</td></tr>
+            <tr><td data-label="판단 기준">방문자 상태</td><td data-label="전화 버튼을 앞에 둘 때">지금 당장 해결해야 하는 급한 상황</td><td data-label="상담 신청을 앞에 둘 때">정보를 더 모으는 탐색 단계</td></tr>
+            <tr><td data-label="판단 기준">대표 업종</td><td data-label="전화 버튼을 앞에 둘 때">이사·설비 수리·긴급 출동</td><td data-label="상담 신청을 앞에 둘 때">병원·법무법인·세무사·심리상담</td></tr>
+            <tr><td data-label="판단 기준">상담 시작 부담</td><td data-label="전화 버튼을 앞에 둘 때">낮음 — 통화 한 번으로 끝나는 문의</td><td data-label="상담 신청을 앞에 둘 때">높음 — 이름과 사정을 밝히기 부담스러움</td></tr>
+            <tr><td data-label="판단 기준">응대 가능 시간</td><td data-label="전화 버튼을 앞에 둘 때">전화를 받을 사람이 상시 대기할 때</td><td data-label="상담 신청을 앞에 둘 때">야간·주말 문의 비중이 높을 때</td></tr>
+            <tr><td data-label="판단 기준">버튼 구성</td><td data-label="전화 버튼을 앞에 둘 때">전화 버튼 하나를 가장 크게</td><td data-label="상담 신청을 앞에 둘 때">신청 버튼을 크게, 전화는 그 아래 작게</td></tr>
+            <tr><td data-label="판단 기준">함께 볼 지표</td><td data-label="전화 버튼을 앞에 둘 때">통화 연결률, 통화 1분 이상 비율</td><td data-label="상담 신청을 앞에 둘 때">폼 제출 수, 24시간 내 회신율</td></tr>
           </tbody>
         </table>
       </div>

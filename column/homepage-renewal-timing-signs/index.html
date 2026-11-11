@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -140,17 +148,17 @@
       <p>이 중 두 개 이상이 점검 구간에 들어가면 리뉴얼을 검토할 시점으로 보는 편이 좋습니다.</p>
       <p>하나만 걸려 있다면 대개 그 항목만 손보는 부분 개선으로 해결됩니다.</p>
       <p>네 가지 모두 직접 확인하실 수 있는 숫자입니다. 저희가 상담 첫머리에 하는 일도 결국 아래 표를 함께 채우는 것입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>확인 지표</th><th>괜찮은 편</th><th>점검이 필요한 편</th><th>확인 방법</th></tr>
           </thead>
           <tbody>
-            <tr><td>최근 3개월 문의 수</td><td>작년 같은 기간과 비슷하거나 늘어남</td><td>3개월 연속 20~30% 이상 감소</td><td>전화·문의폼·메일 접수 대장을 월별로 집계</td></tr>
-            <tr><td>모바일 이탈률</td><td>PC와 비슷하거나 5%p 내 차이</td><td>PC보다 15%p 이상 높음</td><td>방문 통계의 기기별 보고서 비교</td></tr>
-            <tr><td>첫 화면 표시 시간</td><td>모바일에서 2.5초 안쪽</td><td>4초를 넘고 이미지가 늦게 뜸</td><td>속도 측정 도구를 모바일 기준으로 실행</td></tr>
-            <tr><td>검색 유입 페이지 수</td><td>메인 외 5개 이상에서 꾸준히 유입</td><td>유입이 메인 한 곳에만 몰림</td><td>검색 콘솔의 페이지별 유입 목록 확인</td></tr>
-            <tr><td>직접 수정 가능 여부</td><td>담당자가 글·사진을 바로 교체 가능</td><td>간단한 수정도 외부 요청이 필요</td><td>공지 한 줄을 직접 바꿔 보기</td></tr>
+            <tr><td data-label="확인 지표">최근 3개월 문의 수</td><td data-label="괜찮은 편">작년 같은 기간과 비슷하거나 늘어남</td><td data-label="점검이 필요한 편">3개월 연속 20~30% 이상 감소</td><td data-label="확인 방법">전화·문의폼·메일 접수 대장을 월별로 집계</td></tr>
+            <tr><td data-label="확인 지표">모바일 이탈률</td><td data-label="괜찮은 편">PC와 비슷하거나 5%p 내 차이</td><td data-label="점검이 필요한 편">PC보다 15%p 이상 높음</td><td data-label="확인 방법">방문 통계의 기기별 보고서 비교</td></tr>
+            <tr><td data-label="확인 지표">첫 화면 표시 시간</td><td data-label="괜찮은 편">모바일에서 2.5초 안쪽</td><td data-label="점검이 필요한 편">4초를 넘고 이미지가 늦게 뜸</td><td data-label="확인 방법">속도 측정 도구를 모바일 기준으로 실행</td></tr>
+            <tr><td data-label="확인 지표">검색 유입 페이지 수</td><td data-label="괜찮은 편">메인 외 5개 이상에서 꾸준히 유입</td><td data-label="점검이 필요한 편">유입이 메인 한 곳에만 몰림</td><td data-label="확인 방법">검색 콘솔의 페이지별 유입 목록 확인</td></tr>
+            <tr><td data-label="확인 지표">직접 수정 가능 여부</td><td data-label="괜찮은 편">담당자가 글·사진을 바로 교체 가능</td><td data-label="점검이 필요한 편">간단한 수정도 외부 요청이 필요</td><td data-label="확인 방법">공지 한 줄을 직접 바꿔 보기</td></tr>
           </tbody>
         </table>
       </div>
@@ -178,11 +186,11 @@
             <tr><th>상황</th><th>권장 접근</th><th>이유</th></tr>
           </thead>
           <tbody>
-            <tr><td>구조·모바일 전반이 불편</td><td>전면 리뉴얼</td><td>부분 수정으로는 근본 문제가 남습니다</td></tr>
-            <tr><td>특정 페이지만 전환 저조</td><td>부분 개선</td><td>문제 구간만 손봐 비용을 아낍니다</td></tr>
-            <tr><td>정보만 오래됨</td><td>콘텐츠 정비</td><td>구조는 두고 내용과 칼럼을 갱신합니다</td></tr>
-            <tr><td>첫 화면만 느림</td><td>속도 개선</td><td>이미지·스크립트 정리로 해결되는 경우가 많습니다</td></tr>
-            <tr><td>검색 유입은 있는데 문의가 없음</td><td>상담 동선 개선</td><td>문의폼과 연락 수단을 먼저 손보는 편이 빠릅니다</td></tr>
+            <tr><td data-label="상황">구조·모바일 전반이 불편</td><td data-label="권장 접근">전면 리뉴얼</td><td data-label="이유">부분 수정으로는 근본 문제가 남습니다</td></tr>
+            <tr><td data-label="상황">특정 페이지만 전환 저조</td><td data-label="권장 접근">부분 개선</td><td data-label="이유">문제 구간만 손봐 비용을 아낍니다</td></tr>
+            <tr><td data-label="상황">정보만 오래됨</td><td data-label="권장 접근">콘텐츠 정비</td><td data-label="이유">구조는 두고 내용과 칼럼을 갱신합니다</td></tr>
+            <tr><td data-label="상황">첫 화면만 느림</td><td data-label="권장 접근">속도 개선</td><td data-label="이유">이미지·스크립트 정리로 해결되는 경우가 많습니다</td></tr>
+            <tr><td data-label="상황">검색 유입은 있는데 문의가 없음</td><td data-label="권장 접근">상담 동선 개선</td><td data-label="이유">문의폼과 연락 수단을 먼저 손보는 편이 빠릅니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -192,16 +200,16 @@
       <p>범위에 따라 콘텐츠 정비 50만~200만원·1~2주부터, 맞춤 설계 전면 리뉴얼 1,000만~2,000만원대·8~12주까지 갈립니다.</p>
       <p>같은 &#39;리뉴얼&#39;이라는 말 안에 네 가지 다른 작업이 섞여 있어 견적 차이가 커지는 것입니다.</p>
       <p>그래서 견적을 받기 전에 어느 범위인지를 먼저 정해야 비교가 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>방식</th><th>대략 비용 범위</th><th>대략 기간</th><th>이럴 때 맞습니다</th></tr>
           </thead>
           <tbody>
-            <tr><td>콘텐츠·문구 정비</td><td>50만~200만원</td><td>1~2주</td><td>구조는 쓸 만하고 내용만 오래된 경우</td></tr>
-            <tr><td>일부 페이지 개선</td><td>100만~500만원</td><td>2~4주</td><td>메인이나 상담 페이지의 전환만 낮은 경우</td></tr>
-            <tr><td>반응형 전면 리뉴얼</td><td>300만~1,000만원</td><td>4~8주</td><td>모바일과 구조 전반이 불편한 경우</td></tr>
-            <tr><td>맞춤 설계 리뉴얼</td><td>1,000만~2,000만원대</td><td>8~12주</td><td>페이지가 많거나 예약·상담 기능이 필요한 경우</td></tr>
+            <tr><td data-label="방식">콘텐츠·문구 정비</td><td data-label="대략 비용 범위">50만~200만원</td><td data-label="대략 기간">1~2주</td><td data-label="이럴 때 맞습니다">구조는 쓸 만하고 내용만 오래된 경우</td></tr>
+            <tr><td data-label="방식">일부 페이지 개선</td><td data-label="대략 비용 범위">100만~500만원</td><td data-label="대략 기간">2~4주</td><td data-label="이럴 때 맞습니다">메인이나 상담 페이지의 전환만 낮은 경우</td></tr>
+            <tr><td data-label="방식">반응형 전면 리뉴얼</td><td data-label="대략 비용 범위">300만~1,000만원</td><td data-label="대략 기간">4~8주</td><td data-label="이럴 때 맞습니다">모바일과 구조 전반이 불편한 경우</td></tr>
+            <tr><td data-label="방식">맞춤 설계 리뉴얼</td><td data-label="대략 비용 범위">1,000만~2,000만원대</td><td data-label="대략 기간">8~12주</td><td data-label="이럴 때 맞습니다">페이지가 많거나 예약·상담 기능이 필요한 경우</td></tr>
           </tbody>
         </table>
       </div>

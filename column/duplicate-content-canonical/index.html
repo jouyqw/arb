@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -146,12 +154,12 @@
             <tr><th>중복이 생기는 곳</th><th>예시</th><th>권장 처리</th></tr>
           </thead>
           <tbody>
-            <tr><td>www 유무 / http·https</td><td>http 주소와 https 주소가 모두 열림</td><td>301로 한쪽에 통일</td></tr>
-            <tr><td>끝 슬래시 유무</td><td>/column/abc 와 /column/abc/</td><td>서버 설정에서 한 형태로 고정</td></tr>
-            <tr><td>추적 파라미터</td><td>?utm_source=naver</td><td>canonical로 원본 지정</td></tr>
-            <tr><td>정렬·필터·페이지 번호</td><td>?sort=new, ?page=2</td><td>canonical 또는 색인 제외</td></tr>
-            <tr><td>인쇄·미리보기 주소</td><td>/print/abc</td><td>색인 제외</td></tr>
-            <tr><td>대문자·소문자 혼용</td><td>/Column/ABC 와 /column/abc</td><td>소문자로 통일 후 301</td></tr>
+            <tr><td data-label="중복이 생기는 곳">www 유무 / http·https</td><td data-label="예시">http 주소와 https 주소가 모두 열림</td><td data-label="권장 처리">301로 한쪽에 통일</td></tr>
+            <tr><td data-label="중복이 생기는 곳">끝 슬래시 유무</td><td data-label="예시">/column/abc 와 /column/abc/</td><td data-label="권장 처리">서버 설정에서 한 형태로 고정</td></tr>
+            <tr><td data-label="중복이 생기는 곳">추적 파라미터</td><td data-label="예시">?utm_source=naver</td><td data-label="권장 처리">canonical로 원본 지정</td></tr>
+            <tr><td data-label="중복이 생기는 곳">정렬·필터·페이지 번호</td><td data-label="예시">?sort=new, ?page=2</td><td data-label="권장 처리">canonical 또는 색인 제외</td></tr>
+            <tr><td data-label="중복이 생기는 곳">인쇄·미리보기 주소</td><td data-label="예시">/print/abc</td><td data-label="권장 처리">색인 제외</td></tr>
+            <tr><td data-label="중복이 생기는 곳">대문자·소문자 혼용</td><td data-label="예시">/Column/ABC 와 /column/abc</td><td data-label="권장 처리">소문자로 통일 후 301</td></tr>
           </tbody>
         </table>
       </div>
@@ -178,11 +186,11 @@
             <tr><th>기준</th><th>canonical</th><th>301 리디렉션</th></tr>
           </thead>
           <tbody>
-            <tr><td>원래 주소</td><td>그대로 열립니다</td><td>대표 주소로 넘어갑니다</td></tr>
-            <tr><td>방문자가 보는 화면</td><td>해당 페이지</td><td>대표 페이지</td></tr>
-            <tr><td>검색엔진의 처리</td><td>참고해서 통합</td><td>사실상 통합</td></tr>
-            <tr><td>적합한 경우</td><td>추적 파라미터, 정렬 옵션</td><td>옛 주소, www·https 통일</td></tr>
-            <tr><td>잘못 썼을 때</td><td>중복이 그대로 남음</td><td>필요한 페이지까지 사라짐</td></tr>
+            <tr><td data-label="기준">원래 주소</td><td data-label="canonical">그대로 열립니다</td><td data-label="301 리디렉션">대표 주소로 넘어갑니다</td></tr>
+            <tr><td data-label="기준">방문자가 보는 화면</td><td data-label="canonical">해당 페이지</td><td data-label="301 리디렉션">대표 페이지</td></tr>
+            <tr><td data-label="기준">검색엔진의 처리</td><td data-label="canonical">참고해서 통합</td><td data-label="301 리디렉션">사실상 통합</td></tr>
+            <tr><td data-label="기준">적합한 경우</td><td data-label="canonical">추적 파라미터, 정렬 옵션</td><td data-label="301 리디렉션">옛 주소, www·https 통일</td></tr>
+            <tr><td data-label="기준">잘못 썼을 때</td><td data-label="canonical">중복이 그대로 남음</td><td data-label="301 리디렉션">필요한 페이지까지 사라짐</td></tr>
           </tbody>
         </table>
       </div>
@@ -191,16 +199,16 @@
       <p>세 가지는 목적이 다릅니다. 하나를 고르면 나머지는 같은 주소에 겹쳐 쓰지 않는 것이 원칙입니다.</p>
       <p>예를 들어 색인 제외를 걸어 둔 주소를 canonical로 가리키면 신호가 충돌해 둘 다 무효가 됩니다.</p>
       <p>아래 표의 네 줄 중 지금 상황에 해당하는 줄을 찾으면 처리가 결정됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>처리</th><th>이럴 때 고릅니다</th><th>원래 주소는</th><th>평가 이전</th><th>되돌리기</th></tr>
           </thead>
           <tbody>
-            <tr><td>canonical</td><td>주소를 계속 써야 함(추적 파라미터, 정렬)</td><td>그대로 열림</td><td>대체로 대표 주소로 모임</td><td>한 줄 수정</td></tr>
-            <tr><td>301 리디렉션</td><td>주소를 지워도 됨(옛 주소, www 통일)</td><td>대표로 이동</td><td>대표 주소로 모임</td><td>서버 설정 재수정</td></tr>
-            <tr><td>색인 제외</td><td>검색에는 필요 없음(인쇄·미리보기·검색결과)</td><td>그대로 열림</td><td>모이지 않음</td><td>태그 삭제</td></tr>
-            <tr><td>그냥 둠</td><td>주소가 1~2개이고 대표 선택이 우리 의도와 같음</td><td>그대로 열림</td><td>검색엔진 판단에 맡김</td><td>해당 없음</td></tr>
+            <tr><td data-label="처리">canonical</td><td data-label="이럴 때 고릅니다">주소를 계속 써야 함(추적 파라미터, 정렬)</td><td data-label="원래 주소는">그대로 열림</td><td data-label="평가 이전">대체로 대표 주소로 모임</td><td data-label="되돌리기">한 줄 수정</td></tr>
+            <tr><td data-label="처리">301 리디렉션</td><td data-label="이럴 때 고릅니다">주소를 지워도 됨(옛 주소, www 통일)</td><td data-label="원래 주소는">대표로 이동</td><td data-label="평가 이전">대표 주소로 모임</td><td data-label="되돌리기">서버 설정 재수정</td></tr>
+            <tr><td data-label="처리">색인 제외</td><td data-label="이럴 때 고릅니다">검색에는 필요 없음(인쇄·미리보기·검색결과)</td><td data-label="원래 주소는">그대로 열림</td><td data-label="평가 이전">모이지 않음</td><td data-label="되돌리기">태그 삭제</td></tr>
+            <tr><td data-label="처리">그냥 둠</td><td data-label="이럴 때 고릅니다">주소가 1~2개이고 대표 선택이 우리 의도와 같음</td><td data-label="원래 주소는">그대로 열림</td><td data-label="평가 이전">검색엔진 판단에 맡김</td><td data-label="되돌리기">해당 없음</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -138,16 +146,16 @@
       <p>포함형은 간단해 보이지만 확인이 가장 어렵습니다. 광고비를 적게 쓸수록 대행사에 남는 몫이 커지는 구조가 되기 때문입니다.</p>
       <p>어떤 방식이든 <strong>매체사에서 직접 발급되는 지출 내역</strong>을 월 1회 볼 수 있는지 물어보십시오. 저는 이 한 줄을 계약서에 넣습니다.</p>
       <p>저희가 상담에서 본 가장 비싼 착각은 월 300만원을 광고비로 알고 1년을 보냈는데, 실제 매체 집행액은 그 절반 아래였던 경우입니다. 1년이면 차액이 1,000만원을 넘어가고, 그 돈으로 무엇을 샀는지 설명할 자료가 없습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>수수료 구조</th><th>금액이 정해지는 방식</th><th>집행액 확인</th><th>어떤 경우에 맞나</th></tr>
           </thead>
           <tbody>
-            <tr><td>비율형</td><td>광고비의 10~20% 수준</td><td>광고비가 분리돼 확인하기 쉬움</td><td>광고비가 월 300만원 이상 꾸준한 경우</td></tr>
-            <tr><td>고정형</td><td>범위 기준 월 50만~200만원대</td><td>수수료가 고정이라 계산이 단순함</td><td>광고비가 적고 콘텐츠 비중이 큰 경우</td></tr>
-            <tr><td>포함형</td><td>총액 하나로 제시</td><td>지출 내역을 따로 요청해야 확인 가능</td><td>권하지 않습니다. 받는다면 내역 제공을 조항으로</td></tr>
-            <tr><td>혼합형</td><td>고정 수수료 + 광고비 비율</td><td>두 줄로 나뉘어 있으면 확인 가능</td><td>광고와 콘텐츠를 함께 맡길 때</td></tr>
+            <tr><td data-label="수수료 구조">비율형</td><td data-label="금액이 정해지는 방식">광고비의 10~20% 수준</td><td data-label="집행액 확인">광고비가 분리돼 확인하기 쉬움</td><td data-label="어떤 경우에 맞나">광고비가 월 300만원 이상 꾸준한 경우</td></tr>
+            <tr><td data-label="수수료 구조">고정형</td><td data-label="금액이 정해지는 방식">범위 기준 월 50만~200만원대</td><td data-label="집행액 확인">수수료가 고정이라 계산이 단순함</td><td data-label="어떤 경우에 맞나">광고비가 적고 콘텐츠 비중이 큰 경우</td></tr>
+            <tr><td data-label="수수료 구조">포함형</td><td data-label="금액이 정해지는 방식">총액 하나로 제시</td><td data-label="집행액 확인">지출 내역을 따로 요청해야 확인 가능</td><td data-label="어떤 경우에 맞나">권하지 않습니다. 받는다면 내역 제공을 조항으로</td></tr>
+            <tr><td data-label="수수료 구조">혼합형</td><td data-label="금액이 정해지는 방식">고정 수수료 + 광고비 비율</td><td data-label="집행액 확인">두 줄로 나뉘어 있으면 확인 가능</td><td data-label="어떤 경우에 맞나">광고와 콘텐츠를 함께 맡길 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -167,10 +175,10 @@
             <tr><th>보고서 항목</th><th>보고서에서 강조되기 쉬운 이유</th><th>우리가 대신 물어볼 질문</th></tr>
           </thead>
           <tbody>
-            <tr><td>노출수</td><td>금액과 무관하게 숫자가 커 보임</td><td>그중 우리 지역·업무 검색어는 몇 퍼센트인가요?</td></tr>
-            <tr><td>클릭수·클릭률</td><td>운영 성과로 설명하기 쉬움</td><td>클릭이 늘 때 문의도 같은 비율로 늘었나요?</td></tr>
-            <tr><td>키워드 순위</td><td>변화가 눈에 띄게 보임</td><td>그 키워드로 들어온 문의가 지난달 몇 건인가요?</td></tr>
-            <tr><td>문의 1건당 비용</td><td>올라가면 설명이 필요해짐</td><td>최근 3개월 추이는 어느 방향인가요?</td></tr>
+            <tr><td data-label="보고서 항목">노출수</td><td data-label="보고서에서 강조되기 쉬운 이유">금액과 무관하게 숫자가 커 보임</td><td data-label="우리가 대신 물어볼 질문">그중 우리 지역·업무 검색어는 몇 퍼센트인가요?</td></tr>
+            <tr><td data-label="보고서 항목">클릭수·클릭률</td><td data-label="보고서에서 강조되기 쉬운 이유">운영 성과로 설명하기 쉬움</td><td data-label="우리가 대신 물어볼 질문">클릭이 늘 때 문의도 같은 비율로 늘었나요?</td></tr>
+            <tr><td data-label="보고서 항목">키워드 순위</td><td data-label="보고서에서 강조되기 쉬운 이유">변화가 눈에 띄게 보임</td><td data-label="우리가 대신 물어볼 질문">그 키워드로 들어온 문의가 지난달 몇 건인가요?</td></tr>
+            <tr><td data-label="보고서 항목">문의 1건당 비용</td><td data-label="보고서에서 강조되기 쉬운 이유">올라가면 설명이 필요해짐</td><td data-label="우리가 대신 물어볼 질문">최근 3개월 추이는 어느 방향인가요?</td></tr>
           </tbody>
         </table>
       </div>

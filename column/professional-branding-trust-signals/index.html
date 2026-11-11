@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -162,12 +170,12 @@
             <tr><th>위치</th><th>넣을 신뢰 신호</th><th>목적</th></tr>
           </thead>
           <tbody>
-            <tr><td>첫 화면</td><td>전문 분야·핵심 강점</td><td>무엇을 잘하는지 즉시 전달</td></tr>
-            <tr><td>소개 영역</td><td>자격·경력·소속</td><td>전문성 입증</td></tr>
-            <tr><td>사례·후기</td><td>각색 사례·실제 후기</td><td>간접 경험 제공</td></tr>
-            <tr><td>상담 안내</td><td>절차·응대 방식</td><td>문의 부담 완화</td></tr>
-            <tr><td>칼럼·콘텐츠</td><td>분야별 설명 글 10편 이상</td><td>지속적 전문성 증명</td></tr>
-            <tr><td>하단 푸터</td><td>사업자 정보·연락처·위치</td><td>실체 확인 및 안심</td></tr>
+            <tr><td data-label="위치">첫 화면</td><td data-label="넣을 신뢰 신호">전문 분야·핵심 강점</td><td data-label="목적">무엇을 잘하는지 즉시 전달</td></tr>
+            <tr><td data-label="위치">소개 영역</td><td data-label="넣을 신뢰 신호">자격·경력·소속</td><td data-label="목적">전문성 입증</td></tr>
+            <tr><td data-label="위치">사례·후기</td><td data-label="넣을 신뢰 신호">각색 사례·실제 후기</td><td data-label="목적">간접 경험 제공</td></tr>
+            <tr><td data-label="위치">상담 안내</td><td data-label="넣을 신뢰 신호">절차·응대 방식</td><td data-label="목적">문의 부담 완화</td></tr>
+            <tr><td data-label="위치">칼럼·콘텐츠</td><td data-label="넣을 신뢰 신호">분야별 설명 글 10편 이상</td><td data-label="목적">지속적 전문성 증명</td></tr>
+            <tr><td data-label="위치">하단 푸터</td><td data-label="넣을 신뢰 신호">사업자 정보·연락처·위치</td><td data-label="목적">실체 확인 및 안심</td></tr>
           </tbody>
         </table>
       </div>
@@ -184,12 +192,12 @@
             <tr><th>비교 기준</th><th>소개 페이지 먼저</th><th>사례·후기 페이지 먼저</th></tr>
           </thead>
           <tbody>
-            <tr><td>적합한 상황</td><td>개업 3년 이내, 인지도가 낮을 때</td><td>상담 사례 10건 이상 축적됐을 때</td></tr>
-            <tr><td>준비할 자료</td><td>자격증, 경력 연혁, 프로필 사진</td><td>각색 사례 원고, 동의받은 후기</td></tr>
-            <tr><td>예상 작업 기간</td><td>1~2주</td><td>3~5주</td></tr>
-            <tr><td>규정 검토 부담</td><td>낮음 — 사실 기재 위주</td><td>높음 — 각색·동의 절차 필요</td></tr>
-            <tr><td>기대 효과</td><td>첫 방문자의 이탈 감소</td><td>문의에서 계약으로 가는 비율 개선</td></tr>
-            <tr><td>이럴 때 선택</td><td>&quot;누구인지 모르겠다&quot;는 반응이 많을 때</td><td>&quot;상담은 오는데 결정이 안 난다&quot;고 느낄 때</td></tr>
+            <tr><td data-label="비교 기준">적합한 상황</td><td data-label="소개 페이지 먼저">개업 3년 이내, 인지도가 낮을 때</td><td data-label="사례·후기 페이지 먼저">상담 사례 10건 이상 축적됐을 때</td></tr>
+            <tr><td data-label="비교 기준">준비할 자료</td><td data-label="소개 페이지 먼저">자격증, 경력 연혁, 프로필 사진</td><td data-label="사례·후기 페이지 먼저">각색 사례 원고, 동의받은 후기</td></tr>
+            <tr><td data-label="비교 기준">예상 작업 기간</td><td data-label="소개 페이지 먼저">1~2주</td><td data-label="사례·후기 페이지 먼저">3~5주</td></tr>
+            <tr><td data-label="비교 기준">규정 검토 부담</td><td data-label="소개 페이지 먼저">낮음 — 사실 기재 위주</td><td data-label="사례·후기 페이지 먼저">높음 — 각색·동의 절차 필요</td></tr>
+            <tr><td data-label="비교 기준">기대 효과</td><td data-label="소개 페이지 먼저">첫 방문자의 이탈 감소</td><td data-label="사례·후기 페이지 먼저">문의에서 계약으로 가는 비율 개선</td></tr>
+            <tr><td data-label="비교 기준">이럴 때 선택</td><td data-label="소개 페이지 먼저">&quot;누구인지 모르겠다&quot;는 반응이 많을 때</td><td data-label="사례·후기 페이지 먼저">&quot;상담은 오는데 결정이 안 난다&quot;고 느낄 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -211,11 +219,11 @@
             <tr><th>피해야 할 표현</th><th>바꿔 쓸 표현</th><th>바꾸는 이유</th></tr>
           </thead>
           <tbody>
-            <tr><td>결과를 장담하는 문구</td><td>&quot;이런 절차로 함께 준비합니다&quot;</td><td>결과 단정을 피하고 과정을 설명</td></tr>
-            <tr><td>업계에서 가장 뛰어나다는 식의 수식</td><td>&quot;해당 분야 상담 12년&quot;</td><td>비교 우위 대신 확인 가능한 사실</td></tr>
-            <tr><td>가격이 가장 낮다고 앞세우는 문구</td><td>&quot;사안별 비용 범위를 먼저 안내&quot;</td><td>가격 비교 문구의 규정 위험 회피</td></tr>
-            <tr><td>&quot;수많은 성공 사례&quot;</td><td>&quot;최근 3년 상담 사례 중 각색 8건&quot;</td><td>모호한 수식을 숫자로 대체</td></tr>
-            <tr><td>&quot;후회 없는 선택&quot;</td><td>&quot;상담 후 결정하셔도 됩니다&quot;</td><td>압박 문구를 부담 완화 문구로</td></tr>
+            <tr><td data-label="피해야 할 표현">결과를 장담하는 문구</td><td data-label="바꿔 쓸 표현">&quot;이런 절차로 함께 준비합니다&quot;</td><td data-label="바꾸는 이유">결과 단정을 피하고 과정을 설명</td></tr>
+            <tr><td data-label="피해야 할 표현">업계에서 가장 뛰어나다는 식의 수식</td><td data-label="바꿔 쓸 표현">&quot;해당 분야 상담 12년&quot;</td><td data-label="바꾸는 이유">비교 우위 대신 확인 가능한 사실</td></tr>
+            <tr><td data-label="피해야 할 표현">가격이 가장 낮다고 앞세우는 문구</td><td data-label="바꿔 쓸 표현">&quot;사안별 비용 범위를 먼저 안내&quot;</td><td data-label="바꾸는 이유">가격 비교 문구의 규정 위험 회피</td></tr>
+            <tr><td data-label="피해야 할 표현">&quot;수많은 성공 사례&quot;</td><td data-label="바꿔 쓸 표현">&quot;최근 3년 상담 사례 중 각색 8건&quot;</td><td data-label="바꾸는 이유">모호한 수식을 숫자로 대체</td></tr>
+            <tr><td data-label="피해야 할 표현">&quot;후회 없는 선택&quot;</td><td data-label="바꿔 쓸 표현">&quot;상담 후 결정하셔도 됩니다&quot;</td><td data-label="바꾸는 이유">압박 문구를 부담 완화 문구로</td></tr>
           </tbody>
         </table>
       </div>
@@ -233,10 +241,10 @@
             <tr><th>작업 항목</th><th>예상 기간</th><th>참고 비용 범위</th></tr>
           </thead>
           <tbody>
-            <tr><td>소개·프로필 영역 보강</td><td>1~2주</td><td>50만~200만원</td></tr>
-            <tr><td>사례·후기 페이지 신설</td><td>3~5주</td><td>150만~500만원</td></tr>
-            <tr><td>상담 안내·문의 흐름 정비</td><td>1~2주</td><td>50만~150만원</td></tr>
-            <tr><td>칼럼 콘텐츠 월 4편 운영</td><td>월 단위 지속</td><td>월 50만~200만원</td></tr>
+            <tr><td data-label="작업 항목">소개·프로필 영역 보강</td><td data-label="예상 기간">1~2주</td><td data-label="참고 비용 범위">50만~200만원</td></tr>
+            <tr><td data-label="작업 항목">사례·후기 페이지 신설</td><td data-label="예상 기간">3~5주</td><td data-label="참고 비용 범위">150만~500만원</td></tr>
+            <tr><td data-label="작업 항목">상담 안내·문의 흐름 정비</td><td data-label="예상 기간">1~2주</td><td data-label="참고 비용 범위">50만~150만원</td></tr>
+            <tr><td data-label="작업 항목">칼럼 콘텐츠 월 4편 운영</td><td data-label="예상 기간">월 단위 지속</td><td data-label="참고 비용 범위">월 50만~200만원</td></tr>
           </tbody>
         </table>
       </div>

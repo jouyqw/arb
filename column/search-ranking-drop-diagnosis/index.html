@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -143,18 +151,18 @@
       <p>가능합니다. 한 페이지만 떨어졌는지 사이트 전체가 떨어졌는지, 몇 위 밀렸는지 아니면 아예 사라졌는지만 확인해도 의심할 원인이 절반 이하로 줄어듭니다.</p>
       <p>한 페이지만 빠졌다면 그 페이지에서 일어난 변경을 보고, 사이트 전체가 빠졌다면 서버·설정·주소 체계 쪽을 봅니다. 범위가 원인의 위치를 알려주는 셈입니다.</p>
       <p>아래 표는 제가 상담에서 자주 확인하는 유형을 정리한 것입니다. 자기 상황과 가장 가까운 줄부터 확인해 보시면 시간을 크게 아낄 수 있습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>나타난 증상</th><th>가장 흔한 원인</th><th>어디서 확인하나</th><th>먼저 할 조치</th></tr>
           </thead>
           <tbody>
-            <tr><td>특정 1개 페이지만 검색 결과에서 사라짐</td><td>해당 페이지 색인 누락, 주소 변경</td><td>웹마스터 도구의 해당 URL 검사</td><td>주소 확인 후 색인 재요청</td></tr>
-            <tr><td>사이트 전체가 동시에 사라짐</td><td>검색 차단 설정, 서버 장애, 도메인·인증서 만료</td><td>robots 설정, 서버 상태, 인증서 만료일</td><td>차단 설정 해제 후 서버 로그 확인</td></tr>
-            <tr><td>순위가 5~20위권으로 서서히 밀림</td><td>콘텐츠 노후화, 경쟁 페이지 보강</td><td>상위 노출 중인 경쟁 페이지 비교</td><td>본문 보강과 최신 정보 갱신</td></tr>
-            <tr><td>개편·이전 직후 급락</td><td>주소 체계 변경, 연결 처리 누락</td><td>기존 주소 접속 시 이동 여부</td><td>기존 주소 → 새 주소 연결 정리</td></tr>
-            <tr><td>모바일만 순위가 낮음</td><td>모바일 화면 오류, 로딩 지연</td><td>모바일 기기 실제 접속, 속도 측정</td><td>레이아웃·버튼 오류와 이미지 정리</td></tr>
-            <tr><td>일부 검색어만 빠지고 나머지는 유지</td><td>제목·소제목 키워드 변경</td><td>이전 버전과 현재 제목 비교</td><td>원래 쓰던 표현 복원 후 관찰</td></tr>
+            <tr><td data-label="나타난 증상">특정 1개 페이지만 검색 결과에서 사라짐</td><td data-label="가장 흔한 원인">해당 페이지 색인 누락, 주소 변경</td><td data-label="어디서 확인하나">웹마스터 도구의 해당 URL 검사</td><td data-label="먼저 할 조치">주소 확인 후 색인 재요청</td></tr>
+            <tr><td data-label="나타난 증상">사이트 전체가 동시에 사라짐</td><td data-label="가장 흔한 원인">검색 차단 설정, 서버 장애, 도메인·인증서 만료</td><td data-label="어디서 확인하나">robots 설정, 서버 상태, 인증서 만료일</td><td data-label="먼저 할 조치">차단 설정 해제 후 서버 로그 확인</td></tr>
+            <tr><td data-label="나타난 증상">순위가 5~20위권으로 서서히 밀림</td><td data-label="가장 흔한 원인">콘텐츠 노후화, 경쟁 페이지 보강</td><td data-label="어디서 확인하나">상위 노출 중인 경쟁 페이지 비교</td><td data-label="먼저 할 조치">본문 보강과 최신 정보 갱신</td></tr>
+            <tr><td data-label="나타난 증상">개편·이전 직후 급락</td><td data-label="가장 흔한 원인">주소 체계 변경, 연결 처리 누락</td><td data-label="어디서 확인하나">기존 주소 접속 시 이동 여부</td><td data-label="먼저 할 조치">기존 주소 → 새 주소 연결 정리</td></tr>
+            <tr><td data-label="나타난 증상">모바일만 순위가 낮음</td><td data-label="가장 흔한 원인">모바일 화면 오류, 로딩 지연</td><td data-label="어디서 확인하나">모바일 기기 실제 접속, 속도 측정</td><td data-label="먼저 할 조치">레이아웃·버튼 오류와 이미지 정리</td></tr>
+            <tr><td data-label="나타난 증상">일부 검색어만 빠지고 나머지는 유지</td><td data-label="가장 흔한 원인">제목·소제목 키워드 변경</td><td data-label="어디서 확인하나">이전 버전과 현재 제목 비교</td><td data-label="먼저 할 조치">원래 쓰던 표현 복원 후 관찰</td></tr>
           </tbody>
         </table>
       </div>
@@ -198,13 +206,13 @@
             <tr><th>비교 항목</th><th>직접 점검</th><th>외부 진단 의뢰</th></tr>
           </thead>
           <tbody>
-            <tr><td>언제 고르나</td><td>하락 범위가 1~2개 페이지이고 최근 변경 이력이 남아 있을 때</td><td>사이트 전체가 빠졌거나 2주 넘게 원인을 못 찾았을 때</td></tr>
-            <tr><td>필요한 준비</td><td>웹마스터 도구 계정, 서버·관리자 접근 권한</td><td>도메인·순위 기록·최근 변경 내역 정리</td></tr>
-            <tr><td>걸리는 시간</td><td>하루 2~3시간씩 3~5일 정도</td><td>진단 보고까지 보통 3~10일</td></tr>
-            <tr><td>비용 성격</td><td>비용 없음, 사람 시간만 들어감</td><td>진단 단건 수십만 원대, 개선 포함 시 별도</td></tr>
-            <tr><td>장점</td><td>변경 이력을 아는 사람이 보므로 단순 원인은 가장 빠름</td><td>색인·기술·콘텐츠를 한 번에 훑어 놓친 원인을 찾음</td></tr>
-            <tr><td>한계</td><td>설정·서버 영역은 원인을 못 짚고 지나칠 수 있음</td><td>내부 변경 이력을 모르면 진단 정확도가 떨어짐</td></tr>
-            <tr><td>추천 조합</td><td>1~5일차까지 직접 점검</td><td>원인 미확인 시 기록을 넘기고 진단 의뢰</td></tr>
+            <tr><td data-label="비교 항목">언제 고르나</td><td data-label="직접 점검">하락 범위가 1~2개 페이지이고 최근 변경 이력이 남아 있을 때</td><td data-label="외부 진단 의뢰">사이트 전체가 빠졌거나 2주 넘게 원인을 못 찾았을 때</td></tr>
+            <tr><td data-label="비교 항목">필요한 준비</td><td data-label="직접 점검">웹마스터 도구 계정, 서버·관리자 접근 권한</td><td data-label="외부 진단 의뢰">도메인·순위 기록·최근 변경 내역 정리</td></tr>
+            <tr><td data-label="비교 항목">걸리는 시간</td><td data-label="직접 점검">하루 2~3시간씩 3~5일 정도</td><td data-label="외부 진단 의뢰">진단 보고까지 보통 3~10일</td></tr>
+            <tr><td data-label="비교 항목">비용 성격</td><td data-label="직접 점검">비용 없음, 사람 시간만 들어감</td><td data-label="외부 진단 의뢰">진단 단건 수십만 원대, 개선 포함 시 별도</td></tr>
+            <tr><td data-label="비교 항목">장점</td><td data-label="직접 점검">변경 이력을 아는 사람이 보므로 단순 원인은 가장 빠름</td><td data-label="외부 진단 의뢰">색인·기술·콘텐츠를 한 번에 훑어 놓친 원인을 찾음</td></tr>
+            <tr><td data-label="비교 항목">한계</td><td data-label="직접 점검">설정·서버 영역은 원인을 못 짚고 지나칠 수 있음</td><td data-label="외부 진단 의뢰">내부 변경 이력을 모르면 진단 정확도가 떨어짐</td></tr>
+            <tr><td data-label="비교 항목">추천 조합</td><td data-label="직접 점검">1~5일차까지 직접 점검</td><td data-label="외부 진단 의뢰">원인 미확인 시 기록을 넘기고 진단 의뢰</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -128,17 +136,17 @@
       <h2>대구는 생활권마다 환자가 움직이는 거리가 다른가요?</h2>
       <p>다릅니다. 대구는 중구·수성구·달서구·북구·동구가 생활권으로 뚜렷하게 갈려 있고, 지하철 환승 동선이 지나는 곳과 그렇지 않은 곳에서 환자가 움직이는 거리가 눈에 띄게 차이가 납니다.</p>
       <p>제가 대구 병원 상담에서 가장 먼저 그려 보는 것도 지도입니다. 반월당·동성로처럼 유동 인구가 모이는 곳은 반경이 넓어지고, 아파트가 중심인 생활권은 차로 10분 안쪽에서 결정이 끝나는 경우가 많습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>대구 생활권</th><th>환자가 움직이는 거리</th><th>자주 보이는 진료 성격</th><th>먼저 채워 둘 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>중구(동성로·반월당)</td><td>지하철로 20~40분</td><td>미용·비급여 비교가 긴 과목</td><td>진료 절차와 소요 시간, 역 출구 기준 길 안내</td></tr>
-            <tr><td>수성구</td><td>차로 10~20분</td><td>소아·가정의학·검진 등 반복 내원</td><td>진료 시간, 대기 환경, 주차 대수</td></tr>
-            <tr><td>달서구(상인·월배·성서)</td><td>차로 10~15분</td><td>일반 진료와 가까운 과목</td><td>야간·주말 운영, 당일 접수 가능 여부</td></tr>
-            <tr><td>북구(칠곡)</td><td>차로 15~25분</td><td>대형병원 전후 진료가 섞임</td><td>진료의뢰·회송 안내, 검사 장비 보유 여부</td></tr>
-            <tr><td>동구·달성군</td><td>차로 20~30분</td><td>선택지가 적어 반경이 넓음</td><td>버스 노선과 건물 층수, 예약 창구</td></tr>
+            <tr><td data-label="대구 생활권">중구(동성로·반월당)</td><td data-label="환자가 움직이는 거리">지하철로 20~40분</td><td data-label="자주 보이는 진료 성격">미용·비급여 비교가 긴 과목</td><td data-label="먼저 채워 둘 것">진료 절차와 소요 시간, 역 출구 기준 길 안내</td></tr>
+            <tr><td data-label="대구 생활권">수성구</td><td data-label="환자가 움직이는 거리">차로 10~20분</td><td data-label="자주 보이는 진료 성격">소아·가정의학·검진 등 반복 내원</td><td data-label="먼저 채워 둘 것">진료 시간, 대기 환경, 주차 대수</td></tr>
+            <tr><td data-label="대구 생활권">달서구(상인·월배·성서)</td><td data-label="환자가 움직이는 거리">차로 10~15분</td><td data-label="자주 보이는 진료 성격">일반 진료와 가까운 과목</td><td data-label="먼저 채워 둘 것">야간·주말 운영, 당일 접수 가능 여부</td></tr>
+            <tr><td data-label="대구 생활권">북구(칠곡)</td><td data-label="환자가 움직이는 거리">차로 15~25분</td><td data-label="자주 보이는 진료 성격">대형병원 전후 진료가 섞임</td><td data-label="먼저 채워 둘 것">진료의뢰·회송 안내, 검사 장비 보유 여부</td></tr>
+            <tr><td data-label="대구 생활권">동구·달성군</td><td data-label="환자가 움직이는 거리">차로 20~30분</td><td data-label="자주 보이는 진료 성격">선택지가 적어 반경이 넓음</td><td data-label="먼저 채워 둘 것">버스 노선과 건물 층수, 예약 창구</td></tr>
           </tbody>
         </table>
       </div>
@@ -154,11 +162,11 @@
             <tr><th>쓰고 싶어지는 형태</th><th>그대로 쓰기 어려운 이유</th><th>대신 쓸 수 있는 형태</th></tr>
           </thead>
           <tbody>
-            <tr><td>환자 후기·치료 경험담</td><td>치료경험담은 원칙적으로 금지</td><td>진료 절차를 단계로 설명한 안내 글</td></tr>
-            <tr><td>치료 전후 비교 사진</td><td>요건을 못 갖추면 지적이 잦음</td><td>검사 장비와 진료실 환경, 검사 과정 사진</td></tr>
-            <tr><td>&quot;대구 1등&quot;, &quot;최고 권위&quot;</td><td>근거 없는 최상급·배타적 표현</td><td>진료 건수나 장비 보유를 사실로 적은 문장</td></tr>
-            <tr><td>비급여 할인·이벤트</td><td>환자 유인으로 해석될 소지</td><td>포함 범위와 금액 범위를 밝힌 안내</td></tr>
-            <tr><td>&quot;○○과 전문&quot;</td><td>해당 과목 전문의일 때만 표기</td><td>주요 진료 항목과 의료진 약력 사실 기재</td></tr>
+            <tr><td data-label="쓰고 싶어지는 형태">환자 후기·치료 경험담</td><td data-label="그대로 쓰기 어려운 이유">치료경험담은 원칙적으로 금지</td><td data-label="대신 쓸 수 있는 형태">진료 절차를 단계로 설명한 안내 글</td></tr>
+            <tr><td data-label="쓰고 싶어지는 형태">치료 전후 비교 사진</td><td data-label="그대로 쓰기 어려운 이유">요건을 못 갖추면 지적이 잦음</td><td data-label="대신 쓸 수 있는 형태">검사 장비와 진료실 환경, 검사 과정 사진</td></tr>
+            <tr><td data-label="쓰고 싶어지는 형태">&quot;대구 1등&quot;, &quot;최고 권위&quot;</td><td data-label="그대로 쓰기 어려운 이유">근거 없는 최상급·배타적 표현</td><td data-label="대신 쓸 수 있는 형태">진료 건수나 장비 보유를 사실로 적은 문장</td></tr>
+            <tr><td data-label="쓰고 싶어지는 형태">비급여 할인·이벤트</td><td data-label="그대로 쓰기 어려운 이유">환자 유인으로 해석될 소지</td><td data-label="대신 쓸 수 있는 형태">포함 범위와 금액 범위를 밝힌 안내</td></tr>
+            <tr><td data-label="쓰고 싶어지는 형태">&quot;○○과 전문&quot;</td><td data-label="그대로 쓰기 어려운 이유">해당 과목 전문의일 때만 표기</td><td data-label="대신 쓸 수 있는 형태">주요 진료 항목과 의료진 약력 사실 기재</td></tr>
           </tbody>
         </table>
       </div>
@@ -168,17 +176,17 @@
       <p>광고비가 아니라 설명의 구체성에서 갈립니다. 경쟁이 심한 과목은 환자가 3~5곳을 비교하는데, 비교의 마지막 단계에서 보는 것이 기간과 횟수, 포함 범위처럼 숫자로 적힌 정보입니다.</p>
       <p>제가 경쟁 과목 페이지를 열어 보면 대부분 같은 말로 끝납니다. &quot;풍부한 경험&quot;, &quot;최신 장비&quot; 같은 문장은 다섯 곳이 모두 적어 두기 때문에 비교에 쓰이지 않습니다.</p>
       <p>반대로 &quot;검사는 당일 가능하고 결과 설명까지 40분, 재내원은 2주 뒤 1회&quot;처럼 적힌 문장은 다른 곳에 거의 없습니다. 심의 범위 안에서도 충분히 쓸 수 있는 형태인데 비어 있습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>진료과 성격</th><th>대구에서의 경쟁 밀도</th><th>자리 잡는 기간</th><th>원고 편수 목표</th><th>먼저 잡을 검색어 형태</th></tr>
           </thead>
           <tbody>
-            <tr><td>미용·비급여 중심</td><td>매우 높음 (중구·수성구 밀집)</td><td>6~12개월</td><td>20~30편</td><td>시술명 + 절차·기간 질문형</td></tr>
-            <tr><td>정형·통증·재활</td><td>높음</td><td>4~8개월</td><td>15~25편</td><td>증상명 + 검사 절차</td></tr>
-            <tr><td>소아·가정의학</td><td>중간</td><td>2~4개월</td><td>10~15편</td><td>동 이름 + 진료 시간·야간</td></tr>
-            <tr><td>검진·내과</td><td>중간</td><td>3~6개월</td><td>12~20편</td><td>검진 항목 + 준비물·소요 시간</td></tr>
-            <tr><td>특수 검사·장비 보유 과목</td><td>낮음</td><td>2~5개월</td><td>8~12편</td><td>장비·검사명 + 보유 여부</td></tr>
+            <tr><td data-label="진료과 성격">미용·비급여 중심</td><td data-label="대구에서의 경쟁 밀도">매우 높음 (중구·수성구 밀집)</td><td data-label="자리 잡는 기간">6~12개월</td><td data-label="원고 편수 목표">20~30편</td><td data-label="먼저 잡을 검색어 형태">시술명 + 절차·기간 질문형</td></tr>
+            <tr><td data-label="진료과 성격">정형·통증·재활</td><td data-label="대구에서의 경쟁 밀도">높음</td><td data-label="자리 잡는 기간">4~8개월</td><td data-label="원고 편수 목표">15~25편</td><td data-label="먼저 잡을 검색어 형태">증상명 + 검사 절차</td></tr>
+            <tr><td data-label="진료과 성격">소아·가정의학</td><td data-label="대구에서의 경쟁 밀도">중간</td><td data-label="자리 잡는 기간">2~4개월</td><td data-label="원고 편수 목표">10~15편</td><td data-label="먼저 잡을 검색어 형태">동 이름 + 진료 시간·야간</td></tr>
+            <tr><td data-label="진료과 성격">검진·내과</td><td data-label="대구에서의 경쟁 밀도">중간</td><td data-label="자리 잡는 기간">3~6개월</td><td data-label="원고 편수 목표">12~20편</td><td data-label="먼저 잡을 검색어 형태">검진 항목 + 준비물·소요 시간</td></tr>
+            <tr><td data-label="진료과 성격">특수 검사·장비 보유 과목</td><td data-label="대구에서의 경쟁 밀도">낮음</td><td data-label="자리 잡는 기간">2~5개월</td><td data-label="원고 편수 목표">8~12편</td><td data-label="먼저 잡을 검색어 형태">장비·검사명 + 보유 여부</td></tr>
           </tbody>
         </table>
       </div>
@@ -200,11 +208,11 @@
             <tr><th>물어볼 것</th><th>좋은 대답</th><th>걸러야 할 대답</th></tr>
           </thead>
           <tbody>
-            <tr><td>반경은 어떤 근거로 정하나요</td><td>초진 거주지나 생활권 자료를 보고 정하겠다고 답함</td><td>&quot;대구 전체로 넓게 돌려 보죠&quot;</td></tr>
-            <tr><td>의료광고 심의는 누가 판단하나요</td><td>심의 대상 매체 여부를 사전에 확인하는 절차를 설명함</td><td>&quot;문제 생기면 그때 수정하죠&quot;</td></tr>
-            <tr><td>규정 위반으로 다시 쓸 때 비용은</td><td>재작업 범위와 부담 주체를 계약서에 적어 둠</td><td>구두로 &quot;알아서 해 드린다&quot;만 반복</td></tr>
-            <tr><td>월 보고에 무엇이 나오나요</td><td>과목별 유입과 예약·전화 문의가 분리되어 나옴</td><td>순위 캡처와 총 방문자 수만</td></tr>
-            <tr><td>계약이 끝나면 무엇이 남나요</td><td>도메인·홈페이지·원고가 병원 소유로 남음</td><td>해지 시 페이지와 글이 함께 사라짐</td></tr>
+            <tr><td data-label="물어볼 것">반경은 어떤 근거로 정하나요</td><td data-label="좋은 대답">초진 거주지나 생활권 자료를 보고 정하겠다고 답함</td><td data-label="걸러야 할 대답">&quot;대구 전체로 넓게 돌려 보죠&quot;</td></tr>
+            <tr><td data-label="물어볼 것">의료광고 심의는 누가 판단하나요</td><td data-label="좋은 대답">심의 대상 매체 여부를 사전에 확인하는 절차를 설명함</td><td data-label="걸러야 할 대답">&quot;문제 생기면 그때 수정하죠&quot;</td></tr>
+            <tr><td data-label="물어볼 것">규정 위반으로 다시 쓸 때 비용은</td><td data-label="좋은 대답">재작업 범위와 부담 주체를 계약서에 적어 둠</td><td data-label="걸러야 할 대답">구두로 &quot;알아서 해 드린다&quot;만 반복</td></tr>
+            <tr><td data-label="물어볼 것">월 보고에 무엇이 나오나요</td><td data-label="좋은 대답">과목별 유입과 예약·전화 문의가 분리되어 나옴</td><td data-label="걸러야 할 대답">순위 캡처와 총 방문자 수만</td></tr>
+            <tr><td data-label="물어볼 것">계약이 끝나면 무엇이 남나요</td><td data-label="좋은 대답">도메인·홈페이지·원고가 병원 소유로 남음</td><td data-label="걸러야 할 대답">해지 시 페이지와 글이 함께 사라짐</td></tr>
           </tbody>
         </table>
       </div>

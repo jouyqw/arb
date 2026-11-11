@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -134,12 +142,12 @@
             <tr><th>비교 항목</th><th>소개로 오는 고객</th><th>검색으로 오는 고객</th></tr>
           </thead>
           <tbody>
-            <tr><td>신뢰의 출처</td><td>소개한 사람에 대한 신뢰</td><td>홈페이지·콘텐츠에 적힌 근거</td></tr>
-            <tr><td>비교 대상</td><td>대체로 우리 한 곳</td><td>보통 3~7곳을 비교</td></tr>
-            <tr><td>문의 전 준비</td><td>질문 몇 개로 바로 상담</td><td>며칠에 걸쳐 두세 번 재방문</td></tr>
-            <tr><td>계약 전환율</td><td>높은 편</td><td>낮은 편이지만 건수를 늘릴 수 있음</td></tr>
-            <tr><td>월 문의량 조절</td><td>우리가 늘리기 어려움</td><td>콘텐츠·광고로 조절 가능</td></tr>
-            <tr><td>끊길 때 위험</td><td>소개가 멈추면 대안이 없음</td><td>쌓인 콘텐츠는 남아 유입이 이어짐</td></tr>
+            <tr><td data-label="비교 항목">신뢰의 출처</td><td data-label="소개로 오는 고객">소개한 사람에 대한 신뢰</td><td data-label="검색으로 오는 고객">홈페이지·콘텐츠에 적힌 근거</td></tr>
+            <tr><td data-label="비교 항목">비교 대상</td><td data-label="소개로 오는 고객">대체로 우리 한 곳</td><td data-label="검색으로 오는 고객">보통 3~7곳을 비교</td></tr>
+            <tr><td data-label="비교 항목">문의 전 준비</td><td data-label="소개로 오는 고객">질문 몇 개로 바로 상담</td><td data-label="검색으로 오는 고객">며칠에 걸쳐 두세 번 재방문</td></tr>
+            <tr><td data-label="비교 항목">계약 전환율</td><td data-label="소개로 오는 고객">높은 편</td><td data-label="검색으로 오는 고객">낮은 편이지만 건수를 늘릴 수 있음</td></tr>
+            <tr><td data-label="비교 항목">월 문의량 조절</td><td data-label="소개로 오는 고객">우리가 늘리기 어려움</td><td data-label="검색으로 오는 고객">콘텐츠·광고로 조절 가능</td></tr>
+            <tr><td data-label="비교 항목">끊길 때 위험</td><td data-label="소개로 오는 고객">소개가 멈추면 대안이 없음</td><td data-label="검색으로 오는 고객">쌓인 콘텐츠는 남아 유입이 이어짐</td></tr>
           </tbody>
         </table>
       </div>
@@ -158,11 +166,11 @@
             <tr><th>판단 항목</th><th>홈페이지 정비를 먼저</th><th>콘텐츠를 먼저</th></tr>
           </thead>
           <tbody>
-            <tr><td>지금 문의 상황</td><td>소개 문의가 월 3건 이상 유지됨</td><td>소개가 거의 끊겨 유입 자체가 급함</td></tr>
-            <tr><td>현재 홈페이지</td><td>없거나 모바일에서 읽기 어려움</td><td>기본 정보와 모바일 화면은 정상</td></tr>
-            <tr><td>글 쓸 여력</td><td>대표가 원고 확인할 시간이 적음</td><td>자주 받는 질문을 정리해 둔 것이 있음</td></tr>
-            <tr><td>쓸 수 있는 예산</td><td>초기 제작비를 한 번에 낼 수 있음</td><td>월 단위로 나눠 쓰는 쪽이 편함</td></tr>
-            <tr><td>성과 확인 시점</td><td>4~6주 뒤 문의 전환부터 확인</td><td>8~12주 뒤 검색 유입부터 확인</td></tr>
+            <tr><td data-label="판단 항목">지금 문의 상황</td><td data-label="홈페이지 정비를 먼저">소개 문의가 월 3건 이상 유지됨</td><td data-label="콘텐츠를 먼저">소개가 거의 끊겨 유입 자체가 급함</td></tr>
+            <tr><td data-label="판단 항목">현재 홈페이지</td><td data-label="홈페이지 정비를 먼저">없거나 모바일에서 읽기 어려움</td><td data-label="콘텐츠를 먼저">기본 정보와 모바일 화면은 정상</td></tr>
+            <tr><td data-label="판단 항목">글 쓸 여력</td><td data-label="홈페이지 정비를 먼저">대표가 원고 확인할 시간이 적음</td><td data-label="콘텐츠를 먼저">자주 받는 질문을 정리해 둔 것이 있음</td></tr>
+            <tr><td data-label="판단 항목">쓸 수 있는 예산</td><td data-label="홈페이지 정비를 먼저">초기 제작비를 한 번에 낼 수 있음</td><td data-label="콘텐츠를 먼저">월 단위로 나눠 쓰는 쪽이 편함</td></tr>
+            <tr><td data-label="판단 항목">성과 확인 시점</td><td data-label="홈페이지 정비를 먼저">4~6주 뒤 문의 전환부터 확인</td><td data-label="콘텐츠를 먼저">8~12주 뒤 검색 유입부터 확인</td></tr>
           </tbody>
         </table>
       </div>
@@ -175,17 +183,17 @@
       <div class="callout-box"><span class="label">실무 팁</span><p>콘텐츠 주제는 상담에서 가장 자주 받는 질문 열 개에서 시작하면 좋습니다. 이미 답을 알고 있는 내용이라 쓰기 쉽고, 실제 고객이 검색하는 표현과도 가깝습니다.</p></div>
       <h2>첫 90일은 어떤 순서로 움직일까요?</h2>
       <p>홈페이지 정비 4~6주, 콘텐츠 축적 8~12주, 광고 검토 90일 이후의 세 구간으로 나눕니다. 세 구간은 나란히 이어지지 않고 일부 겹치며, 대표가 확인해 줄 원고가 밀리면 전체 일정이 2~4주 늘어납니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>구간</th><th>기간</th><th>이 구간에 하는 일</th><th>끝났다고 볼 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>1구간 · 정리</td><td>1~2주</td><td>전문 분야 정리, 자주 받는 질문 10개 수집</td><td>분야 2~5개와 질문 10개 목록이 문서로 남음</td></tr>
-            <tr><td>2구간 · 홈페이지</td><td>4~6주</td><td>대표 소개·분야별 페이지·상담 절차·문의 동선 정비</td><td>모바일에서 3초 안에 첫 화면, 문의 버튼 고정</td></tr>
-            <tr><td>3구간 · 콘텐츠</td><td>8~12주</td><td>주 1편씩 질문형 칼럼 발행</td><td>10~20편 축적, 검색 유입 추이 확인 가능</td></tr>
-            <tr><td>4구간 · 측정</td><td>90일차</td><td>문의 경로·건수·상담 전환율 집계</td><td>온라인 문의 20~30건으로 1건당 비용 산출</td></tr>
-            <tr><td>5구간 · 광고</td><td>90일 이후</td><td>전환이 확인된 분야 키워드에만 소액 집행</td><td>같은 예산에서 문의 1건당 비용이 개선됨</td></tr>
+            <tr><td data-label="구간">1구간 · 정리</td><td data-label="기간">1~2주</td><td data-label="이 구간에 하는 일">전문 분야 정리, 자주 받는 질문 10개 수집</td><td data-label="끝났다고 볼 기준">분야 2~5개와 질문 10개 목록이 문서로 남음</td></tr>
+            <tr><td data-label="구간">2구간 · 홈페이지</td><td data-label="기간">4~6주</td><td data-label="이 구간에 하는 일">대표 소개·분야별 페이지·상담 절차·문의 동선 정비</td><td data-label="끝났다고 볼 기준">모바일에서 3초 안에 첫 화면, 문의 버튼 고정</td></tr>
+            <tr><td data-label="구간">3구간 · 콘텐츠</td><td data-label="기간">8~12주</td><td data-label="이 구간에 하는 일">주 1편씩 질문형 칼럼 발행</td><td data-label="끝났다고 볼 기준">10~20편 축적, 검색 유입 추이 확인 가능</td></tr>
+            <tr><td data-label="구간">4구간 · 측정</td><td data-label="기간">90일차</td><td data-label="이 구간에 하는 일">문의 경로·건수·상담 전환율 집계</td><td data-label="끝났다고 볼 기준">온라인 문의 20~30건으로 1건당 비용 산출</td></tr>
+            <tr><td data-label="구간">5구간 · 광고</td><td data-label="기간">90일 이후</td><td data-label="이 구간에 하는 일">전환이 확인된 분야 키워드에만 소액 집행</td><td data-label="끝났다고 볼 기준">같은 예산에서 문의 1건당 비용이 개선됨</td></tr>
           </tbody>
         </table>
       </div>
@@ -198,10 +206,10 @@
             <tr><th>항목</th><th>비용 범위</th><th>범위가 갈리는 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>홈페이지 제작</td><td>200만~600만 원 / 600만~2,000만 원대</td><td>템플릿 기반 5~10페이지인지, 기획부터 하는 20페이지 이상인지</td></tr>
-            <tr><td>콘텐츠 운영</td><td>월 50만~200만 원대</td><td>월 2편인지 8편인지, 원고를 대표가 쓰는지 위임하는지</td></tr>
-            <tr><td>유지보수</td><td>월 5만~30만 원</td><td>보안·백업만인지, 본문 수정과 페이지 추가까지인지</td></tr>
-            <tr><td>검색 광고</td><td>월 30만 원부터 단계 인상</td><td>분야 키워드 경쟁 강도와 지역 범위</td></tr>
+            <tr><td data-label="항목">홈페이지 제작</td><td data-label="비용 범위">200만~600만 원 / 600만~2,000만 원대</td><td data-label="범위가 갈리는 기준">템플릿 기반 5~10페이지인지, 기획부터 하는 20페이지 이상인지</td></tr>
+            <tr><td data-label="항목">콘텐츠 운영</td><td data-label="비용 범위">월 50만~200만 원대</td><td data-label="범위가 갈리는 기준">월 2편인지 8편인지, 원고를 대표가 쓰는지 위임하는지</td></tr>
+            <tr><td data-label="항목">유지보수</td><td data-label="비용 범위">월 5만~30만 원</td><td data-label="범위가 갈리는 기준">보안·백업만인지, 본문 수정과 페이지 추가까지인지</td></tr>
+            <tr><td data-label="항목">검색 광고</td><td data-label="비용 범위">월 30만 원부터 단계 인상</td><td data-label="범위가 갈리는 기준">분야 키워드 경쟁 강도와 지역 범위</td></tr>
           </tbody>
         </table>
       </div>

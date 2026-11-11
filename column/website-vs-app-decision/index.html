@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -140,12 +148,12 @@
             <tr><th>판단 기준</th><th>앱이 맞을 때</th><th>웹으로 충분할 때</th></tr>
           </thead>
           <tbody>
-            <tr><td>재방문 주기</td><td>같은 사람이 주 1회 이상 다시 쓴다</td><td>1년에 1~2번, 또는 한 번 쓰고 끝난다</td></tr>
-            <tr><td>지금 필요한 것</td><td>기존 고객의 재이용과 이탈 방지</td><td>모르는 사람에게 새로 알려야 한다</td></tr>
-            <tr><td>핵심 기능</td><td>푸시·위치·기기 연결·오프라인 사용</td><td>정보 전달과 문의 접수, 단건 결제</td></tr>
-            <tr><td>로그인 비중</td><td>로그인 뒤에 쓰는 기능이 중심이다</td><td>로그인 없이 보는 내용이 대부분이다</td></tr>
-            <tr><td>지금 가진 숫자</td><td>웹 재방문자가 월 수백 명 이상 확인됨</td><td>아직 유입 자체가 월 수백 명 미만</td></tr>
-            <tr><td>유지 여력</td><td>매달 유지비와 담당자를 둘 수 있다</td><td>담당자 없이 대표가 직접 관리한다</td></tr>
+            <tr><td data-label="판단 기준">재방문 주기</td><td data-label="앱이 맞을 때">같은 사람이 주 1회 이상 다시 쓴다</td><td data-label="웹으로 충분할 때">1년에 1~2번, 또는 한 번 쓰고 끝난다</td></tr>
+            <tr><td data-label="판단 기준">지금 필요한 것</td><td data-label="앱이 맞을 때">기존 고객의 재이용과 이탈 방지</td><td data-label="웹으로 충분할 때">모르는 사람에게 새로 알려야 한다</td></tr>
+            <tr><td data-label="판단 기준">핵심 기능</td><td data-label="앱이 맞을 때">푸시·위치·기기 연결·오프라인 사용</td><td data-label="웹으로 충분할 때">정보 전달과 문의 접수, 단건 결제</td></tr>
+            <tr><td data-label="판단 기준">로그인 비중</td><td data-label="앱이 맞을 때">로그인 뒤에 쓰는 기능이 중심이다</td><td data-label="웹으로 충분할 때">로그인 없이 보는 내용이 대부분이다</td></tr>
+            <tr><td data-label="판단 기준">지금 가진 숫자</td><td data-label="앱이 맞을 때">웹 재방문자가 월 수백 명 이상 확인됨</td><td data-label="웹으로 충분할 때">아직 유입 자체가 월 수백 명 미만</td></tr>
+            <tr><td data-label="판단 기준">유지 여력</td><td data-label="앱이 맞을 때">매달 유지비와 담당자를 둘 수 있다</td><td data-label="웹으로 충분할 때">담당자 없이 대표가 직접 관리한다</td></tr>
           </tbody>
         </table>
       </div>
@@ -161,12 +169,12 @@
             <tr><th>구분</th><th>모바일 웹</th><th>앱</th></tr>
           </thead>
           <tbody>
-            <tr><td>제작 기간</td><td>4~8주</td><td>3~6개월</td></tr>
-            <tr><td>제작 비용 범위</td><td>300만~1,000만원대</td><td>1,500만~5,000만원대</td></tr>
-            <tr><td>매달 드는 비용</td><td>호스팅·도메인 월 1만~10만원대</td><td>서버·유지보수 월 30만~150만원대</td></tr>
-            <tr><td>스토어 비용</td><td>없음</td><td>애플 연 99달러, 구글 최초 25달러</td></tr>
-            <tr><td>검색 유입</td><td>글과 페이지가 검색에 쌓인다</td><td>앱 안의 내용은 거의 잡히지 않는다</td></tr>
-            <tr><td>고칠 때</td><td>고치면 바로 반영된다</td><td>수정할 때마다 심사를 다시 받는다</td></tr>
+            <tr><td data-label="구분">제작 기간</td><td data-label="모바일 웹">4~8주</td><td data-label="앱">3~6개월</td></tr>
+            <tr><td data-label="구분">제작 비용 범위</td><td data-label="모바일 웹">300만~1,000만원대</td><td data-label="앱">1,500만~5,000만원대</td></tr>
+            <tr><td data-label="구분">매달 드는 비용</td><td data-label="모바일 웹">호스팅·도메인 월 1만~10만원대</td><td data-label="앱">서버·유지보수 월 30만~150만원대</td></tr>
+            <tr><td data-label="구분">스토어 비용</td><td data-label="모바일 웹">없음</td><td data-label="앱">애플 연 99달러, 구글 최초 25달러</td></tr>
+            <tr><td data-label="구분">검색 유입</td><td data-label="모바일 웹">글과 페이지가 검색에 쌓인다</td><td data-label="앱">앱 안의 내용은 거의 잡히지 않는다</td></tr>
+            <tr><td data-label="구분">고칠 때</td><td data-label="모바일 웹">고치면 바로 반영된다</td><td data-label="앱">수정할 때마다 심사를 다시 받는다</td></tr>
           </tbody>
         </table>
       </div>

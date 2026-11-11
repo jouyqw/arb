@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -143,16 +151,16 @@
       <p>또 하나는 검색어를 알아내는 일입니다. 원고를 20~30편 쌓으면 어떤 질문으로 사람들이 들어오는지가 기록으로 남고, 그 목록이 그대로 광고 키워드 후보가 됩니다. 저는 이 순서를 바꾸지 않습니다.</p>
       <p>글감은 검색량 표에서 고르지 않습니다. 접수대와 진료실에서 세 번 이상 들은 질문을 먼저 적게 하고, 한 편에 한 질문만 끝까지 답하게 합니다. 한 편 <mark class="hl-mark">800~1,500자</mark>면 충분합니다.</p>
       <p>의료광고 표현은 원고 단계에서 걸러야 합니다. 효과를 단정하거나 근거 없는 최상급을 쓴 문장이 글 50편에 흩어지면, 나중에 전부 다시 열어 고쳐야 합니다. 저는 첫 편부터 같은 기준으로 검수합니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>단계</th><th>붙이는 조건</th><th>보통 걸리는 기간</th><th>다음으로 넘어가는 신호</th></tr>
           </thead>
           <tbody>
-            <tr><td>① 네이버 플레이스</td><td>개원했거나 지금 바로 — 조건 없음</td><td>정비 1~2주, 반응 1~2개월</td><td>정보 칸이 전부 차고, 지도에서 온 전화가 주 단위로 세어짐</td></tr>
-            <tr><td>② 블로그·칼럼 원고</td><td>플레이스 전화가 세어지기 시작했을 때</td><td>주 1~2편으로 3~6개월</td><td>20~30편 무렵 글을 읽고 걸어 온 전화가 월 단위로 잡힘</td></tr>
-            <tr><td>③ 검색광고</td><td>받을 페이지·응대·기록 세 가지가 준비됐을 때</td><td>테스트 2~4주, 판단 2개월</td><td>반응이 나온 키워드가 좁혀지고 초진 수가 움직임</td></tr>
-            <tr><td>예외 · 개원 D-30</td><td>개원일이 정해져 있고 간판이 아직 없을 때</td><td>플레이스와 광고를 같은 달에</td><td>개원 2~3개월 뒤 원고로 비중을 옮김</td></tr>
+            <tr><td data-label="단계">① 네이버 플레이스</td><td data-label="붙이는 조건">개원했거나 지금 바로 — 조건 없음</td><td data-label="보통 걸리는 기간">정비 1~2주, 반응 1~2개월</td><td data-label="다음으로 넘어가는 신호">정보 칸이 전부 차고, 지도에서 온 전화가 주 단위로 세어짐</td></tr>
+            <tr><td data-label="단계">② 블로그·칼럼 원고</td><td data-label="붙이는 조건">플레이스 전화가 세어지기 시작했을 때</td><td data-label="보통 걸리는 기간">주 1~2편으로 3~6개월</td><td data-label="다음으로 넘어가는 신호">20~30편 무렵 글을 읽고 걸어 온 전화가 월 단위로 잡힘</td></tr>
+            <tr><td data-label="단계">③ 검색광고</td><td data-label="붙이는 조건">받을 페이지·응대·기록 세 가지가 준비됐을 때</td><td data-label="보통 걸리는 기간">테스트 2~4주, 판단 2개월</td><td data-label="다음으로 넘어가는 신호">반응이 나온 키워드가 좁혀지고 초진 수가 움직임</td></tr>
+            <tr><td data-label="단계">예외 · 개원 D-30</td><td data-label="붙이는 조건">개원일이 정해져 있고 간판이 아직 없을 때</td><td data-label="보통 걸리는 기간">플레이스와 광고를 같은 달에</td><td data-label="다음으로 넘어가는 신호">개원 2~3개월 뒤 원고로 비중을 옮김</td></tr>
           </tbody>
         </table>
       </div>
@@ -166,17 +174,17 @@
       <p>네 군데입니다. 제외 키워드 미설정, 진료시간 밖 노출, 심의를 거치지 않은 소재, 그리고 모든 광고를 첫 화면 한 곳으로 보내는 구성입니다. 저는 계정을 넘겨받으면 이 네 칸부터 봅니다.</p>
       <p>가장 많이 새는 쪽은 제외 키워드입니다. 병원 계정에는 구인·채용, 부작용·소송, 실습·과제, 타 지역명처럼 환자가 아닌 검색이 섞여 들어오고, 걸러 두지 않으면 예산이 그쪽으로 빠집니다.</p>
       <p>소재는 매체 기준에 따라 사전심의 대상이 되는 경우가 있습니다. 접수부터 결과까지 <mark class="hl-mark">2~4주</mark>가 걸리니 집행 일정을 그만큼 앞에서 잡으셔야 하고, 문구나 이미지를 바꾸면 바뀐 소재로 다시 접수하는 것이 원칙입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>새는 자리</th><th>실제로 벌어지는 일</th><th>점검 주기</th><th>조치</th></tr>
           </thead>
           <tbody>
-            <tr><td>제외 키워드 미설정</td><td>구인·부작용·실습·타 지역 검색에 예산이 소진됨</td><td>첫 2주는 매주, 이후 월 1회</td><td>검색어 목록을 열어 환자가 아닌 말을 제외로 옮김</td></tr>
-            <tr><td>진료시간 밖 노출</td><td>점심·마감 후 클릭이 쌓이는데 받을 사람이 없음</td><td>설정 시 1회, 진료시간 변경 때</td><td>요일·시간대를 진료시간에 맞추고 야간은 끔</td></tr>
-            <tr><td>심의 없이 올린 소재</td><td>심의 대상 매체에서 문구만 바꿔 바로 집행</td><td>소재를 만들 때마다</td><td>매체 기준 확인 후 접수, 심의번호 표기까지 확인</td></tr>
-            <tr><td>랜딩이 첫 화면 하나</td><td>진료 항목별로 들어온 사람이 같은 자리에 도착</td><td>주력 과목이 늘 때</td><td>주력 과목 1~2개는 전용 안내 페이지로 보냄</td></tr>
-            <tr><td>키워드를 처음부터 50개</td><td>예산이 흩어져 2개월 뒤에도 결론이 없음</td><td>시작 시 1회</td><td>10~20개로 좁혀 2~4주 돌리고 반응한 말에 모음</td></tr>
+            <tr><td data-label="새는 자리">제외 키워드 미설정</td><td data-label="실제로 벌어지는 일">구인·부작용·실습·타 지역 검색에 예산이 소진됨</td><td data-label="점검 주기">첫 2주는 매주, 이후 월 1회</td><td data-label="조치">검색어 목록을 열어 환자가 아닌 말을 제외로 옮김</td></tr>
+            <tr><td data-label="새는 자리">진료시간 밖 노출</td><td data-label="실제로 벌어지는 일">점심·마감 후 클릭이 쌓이는데 받을 사람이 없음</td><td data-label="점검 주기">설정 시 1회, 진료시간 변경 때</td><td data-label="조치">요일·시간대를 진료시간에 맞추고 야간은 끔</td></tr>
+            <tr><td data-label="새는 자리">심의 없이 올린 소재</td><td data-label="실제로 벌어지는 일">심의 대상 매체에서 문구만 바꿔 바로 집행</td><td data-label="점검 주기">소재를 만들 때마다</td><td data-label="조치">매체 기준 확인 후 접수, 심의번호 표기까지 확인</td></tr>
+            <tr><td data-label="새는 자리">랜딩이 첫 화면 하나</td><td data-label="실제로 벌어지는 일">진료 항목별로 들어온 사람이 같은 자리에 도착</td><td data-label="점검 주기">주력 과목이 늘 때</td><td data-label="조치">주력 과목 1~2개는 전용 안내 페이지로 보냄</td></tr>
+            <tr><td data-label="새는 자리">키워드를 처음부터 50개</td><td data-label="실제로 벌어지는 일">예산이 흩어져 2개월 뒤에도 결론이 없음</td><td data-label="점검 주기">시작 시 1회</td><td data-label="조치">10~20개로 좁혀 2~4주 돌리고 반응한 말에 모음</td></tr>
           </tbody>
         </table>
       </div>

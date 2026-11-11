@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -127,17 +135,17 @@
       <h2>시술 항목마다 순서가 달라지는 이유는 무엇인가요?</h2>
       <p>환자가 검색하는 말과 비교하는 기간이 항목마다 다르기 때문입니다. 저는 주력 시술을 2~3개로 좁히고 항목별로 채널을 따로 정합니다.</p>
       <p>제가 피부과 쪽 상담에서 자주 보는 경우는 시술 열 몇 개를 한 페이지에 다 올려 둔 것입니다. 검색어가 흩어지고, 어느 항목으로 들어왔는지 기록도 남지 않습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>시술 유형</th><th>환자가 검색하는 말</th><th>먼저 세울 채널</th><th>광고를 붙이는 시점</th></tr>
           </thead>
           <tbody>
-            <tr><td>당일 결정형 (색소 레이저, 보톡스)</td><td>시술명 + 동·역 이름</td><td>플레이스 정보와 금액 범위</td><td>정보 칸이 채워진 직후</td></tr>
-            <tr><td>몇 주 비교형 (리프팅, 필러)</td><td>시술명 + 가격·비교</td><td>시술별 설명 글 3~5편</td><td>항목당 글 3편이 오른 뒤</td></tr>
-            <tr><td>장기 치료형 (여드름, 흉터)</td><td>증상명 + 기간·단계</td><td>치료 단계 글과 홈페이지</td><td>글 8편 이상, 급하지 않음</td></tr>
-            <tr><td>급여 진료 (습진, 두드러기)</td><td>증상명 + 지역</td><td>플레이스 진료시간 안내</td><td>보통 붙이지 않습니다</td></tr>
-            <tr><td>항목을 좁히지 않은 경우</td><td>검색어가 흩어짐</td><td>주력 2~3개로 좁히기</td><td>좁히기 전에는 보류</td></tr>
+            <tr><td data-label="시술 유형">당일 결정형 (색소 레이저, 보톡스)</td><td data-label="환자가 검색하는 말">시술명 + 동·역 이름</td><td data-label="먼저 세울 채널">플레이스 정보와 금액 범위</td><td data-label="광고를 붙이는 시점">정보 칸이 채워진 직후</td></tr>
+            <tr><td data-label="시술 유형">몇 주 비교형 (리프팅, 필러)</td><td data-label="환자가 검색하는 말">시술명 + 가격·비교</td><td data-label="먼저 세울 채널">시술별 설명 글 3~5편</td><td data-label="광고를 붙이는 시점">항목당 글 3편이 오른 뒤</td></tr>
+            <tr><td data-label="시술 유형">장기 치료형 (여드름, 흉터)</td><td data-label="환자가 검색하는 말">증상명 + 기간·단계</td><td data-label="먼저 세울 채널">치료 단계 글과 홈페이지</td><td data-label="광고를 붙이는 시점">글 8편 이상, 급하지 않음</td></tr>
+            <tr><td data-label="시술 유형">급여 진료 (습진, 두드러기)</td><td data-label="환자가 검색하는 말">증상명 + 지역</td><td data-label="먼저 세울 채널">플레이스 진료시간 안내</td><td data-label="광고를 붙이는 시점">보통 붙이지 않습니다</td></tr>
+            <tr><td data-label="시술 유형">항목을 좁히지 않은 경우</td><td data-label="환자가 검색하는 말">검색어가 흩어짐</td><td data-label="먼저 세울 채널">주력 2~3개로 좁히기</td><td data-label="광고를 붙이는 시점">좁히기 전에는 보류</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -156,9 +164,9 @@
             <tr><th>단계</th><th>핵심 작업</th><th>확인 지표</th></tr>
           </thead>
           <tbody>
-            <tr><td>1~30일</td><td>홈페이지 신뢰·문의 동선 정비</td><td>문의 버튼 노출·이탈률</td></tr>
-            <tr><td>31~60일</td><td>질문형 핵심 콘텐츠 발행</td><td>검색 유입·체류시간</td></tr>
-            <tr><td>61~90일</td><td>유입 대비 문의 측정</td><td>채널별 문의 전환</td></tr>
+            <tr><td data-label="단계">1~30일</td><td data-label="핵심 작업">홈페이지 신뢰·문의 동선 정비</td><td data-label="확인 지표">문의 버튼 노출·이탈률</td></tr>
+            <tr><td data-label="단계">31~60일</td><td data-label="핵심 작업">질문형 핵심 콘텐츠 발행</td><td data-label="확인 지표">검색 유입·체류시간</td></tr>
+            <tr><td data-label="단계">61~90일</td><td data-label="핵심 작업">유입 대비 문의 측정</td><td data-label="확인 지표">채널별 문의 전환</td></tr>
           </tbody>
         </table>
       </div>
@@ -172,12 +180,12 @@
             <tr><th>비교 항목</th><th>정비를 먼저 할 때</th><th>광고를 먼저 할 때</th></tr>
           </thead>
           <tbody>
-            <tr><td>현재 상태</td><td>사이트가 없거나 3년 이상 방치됨</td><td>최근 1년 내 제작·개편, 모바일 정상</td></tr>
-            <tr><td>문의 동선</td><td>문의 수단이 1개거나 찾기 어려움</td><td>전화·폼이 모든 페이지에서 바로 보임</td></tr>
-            <tr><td>신뢰 근거</td><td>대표 소개·사례가 거의 없음</td><td>경력·사례·후기가 정리돼 있음</td></tr>
-            <tr><td>월 문의 수</td><td>월 5건 미만이거나 집계 자체가 없음</td><td>월 10건 이상이 꾸준히 들어옴</td></tr>
-            <tr><td>먼저 쓸 곳</td><td>제작·콘텐츠에 예산의 80% 이상</td><td>광고에 50~70%, 나머지는 콘텐츠</td></tr>
-            <tr><td>예상 소요</td><td>정비 4~8주 뒤 광고 시작</td><td>1~2주 내 소액 테스트 시작 가능</td></tr>
+            <tr><td data-label="비교 항목">현재 상태</td><td data-label="정비를 먼저 할 때">사이트가 없거나 3년 이상 방치됨</td><td data-label="광고를 먼저 할 때">최근 1년 내 제작·개편, 모바일 정상</td></tr>
+            <tr><td data-label="비교 항목">문의 동선</td><td data-label="정비를 먼저 할 때">문의 수단이 1개거나 찾기 어려움</td><td data-label="광고를 먼저 할 때">전화·폼이 모든 페이지에서 바로 보임</td></tr>
+            <tr><td data-label="비교 항목">신뢰 근거</td><td data-label="정비를 먼저 할 때">대표 소개·사례가 거의 없음</td><td data-label="광고를 먼저 할 때">경력·사례·후기가 정리돼 있음</td></tr>
+            <tr><td data-label="비교 항목">월 문의 수</td><td data-label="정비를 먼저 할 때">월 5건 미만이거나 집계 자체가 없음</td><td data-label="광고를 먼저 할 때">월 10건 이상이 꾸준히 들어옴</td></tr>
+            <tr><td data-label="비교 항목">먼저 쓸 곳</td><td data-label="정비를 먼저 할 때">제작·콘텐츠에 예산의 80% 이상</td><td data-label="광고를 먼저 할 때">광고에 50~70%, 나머지는 콘텐츠</td></tr>
+            <tr><td data-label="비교 항목">예상 소요</td><td data-label="정비를 먼저 할 때">정비 4~8주 뒤 광고 시작</td><td data-label="광고를 먼저 할 때">1~2주 내 소액 테스트 시작 가능</td></tr>
           </tbody>
         </table>
       </div>

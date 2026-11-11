@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -159,11 +167,11 @@
             <tr><th>확인 축</th><th>이렇다면 단일 페이지</th><th>이렇다면 다중 페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>바라는 행동 수</td><td>상담 신청 1개</td><td>상담·자료·전화 등 2개 이상</td></tr>
-            <tr><td>알릴 서비스 수</td><td>1~2개</td><td>3개 이상</td></tr>
-            <tr><td>검색 유입 필요성</td><td>광고 위주로 시작</td><td>검색으로 꾸준히 받고 싶음</td></tr>
-            <tr><td>관리 인력</td><td>대표 혼자</td><td>담당자 또는 외부 파트너 있음</td></tr>
-            <tr><td>반응 확인 시점</td><td>2~4주 안</td><td>3~6개월 이상 보고 감</td></tr>
+            <tr><td data-label="확인 축">바라는 행동 수</td><td data-label="이렇다면 단일 페이지">상담 신청 1개</td><td data-label="이렇다면 다중 페이지">상담·자료·전화 등 2개 이상</td></tr>
+            <tr><td data-label="확인 축">알릴 서비스 수</td><td data-label="이렇다면 단일 페이지">1~2개</td><td data-label="이렇다면 다중 페이지">3개 이상</td></tr>
+            <tr><td data-label="확인 축">검색 유입 필요성</td><td data-label="이렇다면 단일 페이지">광고 위주로 시작</td><td data-label="이렇다면 다중 페이지">검색으로 꾸준히 받고 싶음</td></tr>
+            <tr><td data-label="확인 축">관리 인력</td><td data-label="이렇다면 단일 페이지">대표 혼자</td><td data-label="이렇다면 다중 페이지">담당자 또는 외부 파트너 있음</td></tr>
+            <tr><td data-label="확인 축">반응 확인 시점</td><td data-label="이렇다면 단일 페이지">2~4주 안</td><td data-label="이렇다면 다중 페이지">3~6개월 이상 보고 감</td></tr>
           </tbody>
         </table>
       </div>
@@ -182,10 +190,10 @@
             <tr><th>구분</th><th>단일 페이지</th><th>다중 페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>주 목적</td><td>한 가지 행동 전환</td><td>정보 제공·검색 유입</td></tr>
-            <tr><td>검색 대응</td><td>좁음</td><td>넓음</td></tr>
-            <tr><td>제작·관리 부담</td><td>가벼움</td><td>상대적으로 큼</td></tr>
-            <tr><td>잘 맞는 상황</td><td>광고 캠페인</td><td>서비스가 여럿인 전문직</td></tr>
+            <tr><td data-label="구분">주 목적</td><td data-label="단일 페이지">한 가지 행동 전환</td><td data-label="다중 페이지">정보 제공·검색 유입</td></tr>
+            <tr><td data-label="구분">검색 대응</td><td data-label="단일 페이지">좁음</td><td data-label="다중 페이지">넓음</td></tr>
+            <tr><td data-label="구분">제작·관리 부담</td><td data-label="단일 페이지">가벼움</td><td data-label="다중 페이지">상대적으로 큼</td></tr>
+            <tr><td data-label="구분">잘 맞는 상황</td><td data-label="단일 페이지">광고 캠페인</td><td data-label="다중 페이지">서비스가 여럿인 전문직</td></tr>
           </tbody>
         </table>
       </div>
@@ -200,11 +208,11 @@
             <tr><th>항목</th><th>단일 페이지(랜딩)</th><th>다중 페이지(5~10페이지)</th></tr>
           </thead>
           <tbody>
-            <tr><td>제작 기간</td><td>보통 1~3주</td><td>보통 4~10주</td></tr>
-            <tr><td>흔한 제작비 범위</td><td>80만~300만원</td><td>300만~1,000만원</td></tr>
-            <tr><td>준비할 원고량</td><td>1,500~3,000자</td><td>8,000~2만자</td></tr>
-            <tr><td>월 관리 부담</td><td>월 1~2시간</td><td>월 4~10시간</td></tr>
-            <tr><td>성과 판단 시점</td><td>광고 시작 후 2~4주</td><td>공개 후 3~6개월</td></tr>
+            <tr><td data-label="항목">제작 기간</td><td data-label="단일 페이지(랜딩)">보통 1~3주</td><td data-label="다중 페이지(5~10페이지)">보통 4~10주</td></tr>
+            <tr><td data-label="항목">흔한 제작비 범위</td><td data-label="단일 페이지(랜딩)">80만~300만원</td><td data-label="다중 페이지(5~10페이지)">300만~1,000만원</td></tr>
+            <tr><td data-label="항목">준비할 원고량</td><td data-label="단일 페이지(랜딩)">1,500~3,000자</td><td data-label="다중 페이지(5~10페이지)">8,000~2만자</td></tr>
+            <tr><td data-label="항목">월 관리 부담</td><td data-label="단일 페이지(랜딩)">월 1~2시간</td><td data-label="다중 페이지(5~10페이지)">월 4~10시간</td></tr>
+            <tr><td data-label="항목">성과 판단 시점</td><td data-label="단일 페이지(랜딩)">광고 시작 후 2~4주</td><td data-label="다중 페이지(5~10페이지)">공개 후 3~6개월</td></tr>
           </tbody>
         </table>
       </div>

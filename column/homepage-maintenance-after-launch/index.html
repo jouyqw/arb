@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -142,11 +150,11 @@
             <tr><th>방치 기간</th><th>겉으로 보이는 증상</th><th>우선 손볼 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>1~3개월</td><td>순위 변동이 커지고 신규 유입이 조금씩 줄어듭니다</td><td>글 1~2편 추가, 문의 폼 작동 확인</td></tr>
-            <tr><td>4~6개월</td><td>방문은 비슷한데 문의 수가 눈에 띄게 줄어듭니다</td><td>문의 동선 전수 점검, 주요 페이지 문구 정비</td></tr>
-            <tr><td>7~12개월</td><td>검색 노출이 특정 키워드만 남고 좁아집니다</td><td>콘텐츠 주제 재정리, 속도·이미지 최적화</td></tr>
-            <tr><td>1~2년</td><td>정보 불일치·깨진 화면·보안 경고가 나타납니다</td><td>정보 최신화, 플러그인·인증서 정비</td></tr>
-            <tr><td>2년 이상</td><td>재방문과 브랜드 신뢰가 함께 떨어집니다</td><td>부분 리뉴얼 검토 + 관리 체계 세팅</td></tr>
+            <tr><td data-label="방치 기간">1~3개월</td><td data-label="겉으로 보이는 증상">순위 변동이 커지고 신규 유입이 조금씩 줄어듭니다</td><td data-label="우선 손볼 것">글 1~2편 추가, 문의 폼 작동 확인</td></tr>
+            <tr><td data-label="방치 기간">4~6개월</td><td data-label="겉으로 보이는 증상">방문은 비슷한데 문의 수가 눈에 띄게 줄어듭니다</td><td data-label="우선 손볼 것">문의 동선 전수 점검, 주요 페이지 문구 정비</td></tr>
+            <tr><td data-label="방치 기간">7~12개월</td><td data-label="겉으로 보이는 증상">검색 노출이 특정 키워드만 남고 좁아집니다</td><td data-label="우선 손볼 것">콘텐츠 주제 재정리, 속도·이미지 최적화</td></tr>
+            <tr><td data-label="방치 기간">1~2년</td><td data-label="겉으로 보이는 증상">정보 불일치·깨진 화면·보안 경고가 나타납니다</td><td data-label="우선 손볼 것">정보 최신화, 플러그인·인증서 정비</td></tr>
+            <tr><td data-label="방치 기간">2년 이상</td><td data-label="겉으로 보이는 증상">재방문과 브랜드 신뢰가 함께 떨어집니다</td><td data-label="우선 손볼 것">부분 리뉴얼 검토 + 관리 체계 세팅</td></tr>
           </tbody>
         </table>
       </div>
@@ -194,12 +202,12 @@
             <tr><th>구분</th><th>관리(유지보수)</th><th>리뉴얼(재제작)</th></tr>
           </thead>
           <tbody>
-            <tr><td>언제 선택하나</td><td>구조는 맞고 내용·속도만 낡았을 때</td><td>메뉴 구조나 사업 내용이 지금과 어긋날 때</td></tr>
-            <tr><td>대상 범위</td><td>글·이미지·문구·속도·정보 최신화</td><td>설계·디자인·페이지 구성 전면</td></tr>
-            <tr><td>소요 기간</td><td>건당 1일~2주, 매월 반복</td><td>보통 4~10주, 규모에 따라 더 길어짐</td></tr>
-            <tr><td>비용 성격</td><td>월 단위로 나뉘어 예측이 쉬움</td><td>한 번에 크게 들어가 예산 확보가 필요함</td></tr>
-            <tr><td>성과 체감</td><td>3~6개월에 걸쳐 완만하게 회복</td><td>오픈 직후 변화가 크지만 안정까지 시간 필요</td></tr>
-            <tr><td>미룰 때 위험</td><td>미룬 만큼 리뉴얼 시점이 앞당겨짐</td><td>준비 없이 하면 기존 순위·유입을 잃을 수 있음</td></tr>
+            <tr><td data-label="구분">언제 선택하나</td><td data-label="관리(유지보수)">구조는 맞고 내용·속도만 낡았을 때</td><td data-label="리뉴얼(재제작)">메뉴 구조나 사업 내용이 지금과 어긋날 때</td></tr>
+            <tr><td data-label="구분">대상 범위</td><td data-label="관리(유지보수)">글·이미지·문구·속도·정보 최신화</td><td data-label="리뉴얼(재제작)">설계·디자인·페이지 구성 전면</td></tr>
+            <tr><td data-label="구분">소요 기간</td><td data-label="관리(유지보수)">건당 1일~2주, 매월 반복</td><td data-label="리뉴얼(재제작)">보통 4~10주, 규모에 따라 더 길어짐</td></tr>
+            <tr><td data-label="구분">비용 성격</td><td data-label="관리(유지보수)">월 단위로 나뉘어 예측이 쉬움</td><td data-label="리뉴얼(재제작)">한 번에 크게 들어가 예산 확보가 필요함</td></tr>
+            <tr><td data-label="구분">성과 체감</td><td data-label="관리(유지보수)">3~6개월에 걸쳐 완만하게 회복</td><td data-label="리뉴얼(재제작)">오픈 직후 변화가 크지만 안정까지 시간 필요</td></tr>
+            <tr><td data-label="구분">미룰 때 위험</td><td data-label="관리(유지보수)">미룬 만큼 리뉴얼 시점이 앞당겨짐</td><td data-label="리뉴얼(재제작)">준비 없이 하면 기존 순위·유입을 잃을 수 있음</td></tr>
           </tbody>
         </table>
       </div>
@@ -209,16 +217,16 @@
       <h2>관리 비용은 어느 정도로 잡아야 할까요?</h2>
       <p>직접 관리하면 한 달에 2~4시간 정도의 사람 시간이, 외부에 맡기면 업무 범위에 따라 월 10만~50만 원대의 비용이 일반적인 범위입니다.</p>
       <p>금액은 지역과 업체, 포함 범위에 따라 달라지므로 숫자 자체보다 &quot;무엇이 포함되는지&quot;를 먼저 확인하는 것이 중요합니다. 콘텐츠 작성이 포함되는지, 단순 오류 대응만인지에 따라 같은 금액도 전혀 다른 계약이 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>관리 방식</th><th>월 비용 범위(참고)</th><th>포함되는 일</th><th>맞는 경우</th></tr>
           </thead>
           <tbody>
-            <tr><td>직접 관리</td><td>0원 + 월 2~4시간</td><td>글 등록, 정보 수정, 문의 점검</td><td>내부에 담당자를 둘 수 있을 때</td></tr>
-            <tr><td>기본 유지보수 위탁</td><td>월 10만~20만 원대</td><td>오류 대응, 백업, 보안 업데이트</td><td>사이트는 안정적이고 손만 필요할 때</td></tr>
-            <tr><td>콘텐츠 포함 관리</td><td>월 30만~50만 원대</td><td>월 2~4편 발행, 속도·정보 점검 포함</td><td>검색 유입을 계속 늘려야 할 때</td></tr>
-            <tr><td>부분 리뉴얼</td><td>건당 수십만~수백만 원</td><td>특정 페이지 재설계·재작성</td><td>특정 페이지만 성과가 나쁠 때</td></tr>
+            <tr><td data-label="관리 방식">직접 관리</td><td data-label="월 비용 범위(참고)">0원 + 월 2~4시간</td><td data-label="포함되는 일">글 등록, 정보 수정, 문의 점검</td><td data-label="맞는 경우">내부에 담당자를 둘 수 있을 때</td></tr>
+            <tr><td data-label="관리 방식">기본 유지보수 위탁</td><td data-label="월 비용 범위(참고)">월 10만~20만 원대</td><td data-label="포함되는 일">오류 대응, 백업, 보안 업데이트</td><td data-label="맞는 경우">사이트는 안정적이고 손만 필요할 때</td></tr>
+            <tr><td data-label="관리 방식">콘텐츠 포함 관리</td><td data-label="월 비용 범위(참고)">월 30만~50만 원대</td><td data-label="포함되는 일">월 2~4편 발행, 속도·정보 점검 포함</td><td data-label="맞는 경우">검색 유입을 계속 늘려야 할 때</td></tr>
+            <tr><td data-label="관리 방식">부분 리뉴얼</td><td data-label="월 비용 범위(참고)">건당 수십만~수백만 원</td><td data-label="포함되는 일">특정 페이지 재설계·재작성</td><td data-label="맞는 경우">특정 페이지만 성과가 나쁠 때</td></tr>
           </tbody>
         </table>
       </div>

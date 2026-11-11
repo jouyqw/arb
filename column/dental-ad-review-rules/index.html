@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -149,12 +157,12 @@
             <tr><th>지금 쓰고 있는 문장</th><th>심의에서 걸리는 이유</th><th>이렇게 고쳐 씁니다</th></tr>
           </thead>
           <tbody>
-            <tr><td>임플란트 100만원 → 69만원</td><td>비급여 금액을 깎아 제시한 형태라 환자 유인으로 읽힙니다</td><td>임플란트 한 개 80만~250만원대, 금액이 갈리는 변수는 재료·뼈이식 여부·보철 종류입니다</td></tr>
-            <tr><td>이번 달 10명 한정 교정 상담 무료</td><td>기간과 인원을 한정한 비급여 면제 문구입니다</td><td>교정 검진은 파노라마 촬영과 상담 40분으로 진행되고, 비용은 ○만원입니다</td></tr>
-            <tr><td>치료 전 / 치료 후 사진 두 장</td><td>촬영 조건과 개인차 안내가 없으면 효과를 오인하게 할 소지가 큽니다</td><td>파노라마와 CT로 뼈 상태와 식립 위치를 설명하고, 단계별 일정과 내원 횟수를 적습니다</td></tr>
-            <tr><td>환자분들이 안 아프다고 하십니다</td><td>치료경험담이면서 효과를 단정하는 표현입니다</td><td>국소마취를 기본으로 하고 필요 시 수면 마취를 선택할 수 있으며, 수술 시간은 ○분입니다</td></tr>
-            <tr><td>지역에서 가장 저렴하고 제일 잘하는 치과</td><td>전수 비교 자료가 없으면 근거 없는 최상급·비교 광고가 됩니다</td><td>개원 연도, 보유 장비, 사후 점검 포함 횟수처럼 확인 가능한 사실로 바꿉니다</td></tr>
-            <tr><td>환자 만족도 별점 4.9</td><td>후기를 끌어와 쓰는 형태로 다뤄집니다</td><td>총 내원 횟수와 상담 시간, 설명 자료 제공 여부를 적습니다</td></tr>
+            <tr><td data-label="지금 쓰고 있는 문장">임플란트 100만원 → 69만원</td><td data-label="심의에서 걸리는 이유">비급여 금액을 깎아 제시한 형태라 환자 유인으로 읽힙니다</td><td data-label="이렇게 고쳐 씁니다">임플란트 한 개 80만~250만원대, 금액이 갈리는 변수는 재료·뼈이식 여부·보철 종류입니다</td></tr>
+            <tr><td data-label="지금 쓰고 있는 문장">이번 달 10명 한정 교정 상담 무료</td><td data-label="심의에서 걸리는 이유">기간과 인원을 한정한 비급여 면제 문구입니다</td><td data-label="이렇게 고쳐 씁니다">교정 검진은 파노라마 촬영과 상담 40분으로 진행되고, 비용은 ○만원입니다</td></tr>
+            <tr><td data-label="지금 쓰고 있는 문장">치료 전 / 치료 후 사진 두 장</td><td data-label="심의에서 걸리는 이유">촬영 조건과 개인차 안내가 없으면 효과를 오인하게 할 소지가 큽니다</td><td data-label="이렇게 고쳐 씁니다">파노라마와 CT로 뼈 상태와 식립 위치를 설명하고, 단계별 일정과 내원 횟수를 적습니다</td></tr>
+            <tr><td data-label="지금 쓰고 있는 문장">환자분들이 안 아프다고 하십니다</td><td data-label="심의에서 걸리는 이유">치료경험담이면서 효과를 단정하는 표현입니다</td><td data-label="이렇게 고쳐 씁니다">국소마취를 기본으로 하고 필요 시 수면 마취를 선택할 수 있으며, 수술 시간은 ○분입니다</td></tr>
+            <tr><td data-label="지금 쓰고 있는 문장">지역에서 가장 저렴하고 제일 잘하는 치과</td><td data-label="심의에서 걸리는 이유">전수 비교 자료가 없으면 근거 없는 최상급·비교 광고가 됩니다</td><td data-label="이렇게 고쳐 씁니다">개원 연도, 보유 장비, 사후 점검 포함 횟수처럼 확인 가능한 사실로 바꿉니다</td></tr>
+            <tr><td data-label="지금 쓰고 있는 문장">환자 만족도 별점 4.9</td><td data-label="심의에서 걸리는 이유">후기를 끌어와 쓰는 형태로 다뤄집니다</td><td data-label="이렇게 고쳐 씁니다">총 내원 횟수와 상담 시간, 설명 자료 제공 여부를 적습니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -163,16 +171,16 @@
       <p>홈페이지 문장을 먼저 정리하고, 심의가 붙는 매체 원고를 그다음에 만듭니다. 순서를 거꾸로 하면 심의에서 고친 문장과 홈페이지 문장이 서로 달라집니다.</p>
       <p>의료기관이 직접 운영하는 홈페이지는 원칙적으로 사전심의 대상이 아니지만, 광고 금지사항은 그대로 적용됩니다. 심의 대상이 아니라는 말이 자유롭다는 뜻은 아닙니다.</p>
       <p>저는 일정을 아래 네 단계로 적어 둡니다. 심의가 붙는 매체를 쓰실 계획이면 결과 대기 <mark class="hl-mark">2~4주</mark> 를 비워 두고 역산하셔야 합니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>단계</th><th>무엇을 보는지</th><th>걸리는 시간</th><th>직접 하는 편이 나은지</th></tr>
           </thead>
           <tbody>
-            <tr><td>1. 현재 문장 수집</td><td>메인·진료 항목·블로그에서 금액·효과·후기가 든 줄을 뽑습니다</td><td>반나절~2일</td><td>직접 하셔도 됩니다</td></tr>
-            <tr><td>2. 기준으로 분류</td><td>둘 줄, 바꿀 줄, 내릴 줄로 나눕니다</td><td>3~5일</td><td>맡기는 편이 낫습니다</td></tr>
-            <tr><td>3. 문장 교체와 대체 자료</td><td>바꾼 문장을 넣고 사진·후기 자리에 대체 자료를 올립니다</td><td>2~4주</td><td>자료는 직접, 문장은 맡기는 쪽</td></tr>
-            <tr><td>4. 심의 매체 원고 접수</td><td>원고를 만들고 심의번호 표기 자리를 잡습니다</td><td>2~4주, 수정 요구 시 2주 추가</td><td>맡기는 편이 낫습니다</td></tr>
+            <tr><td data-label="단계">1. 현재 문장 수집</td><td data-label="무엇을 보는지">메인·진료 항목·블로그에서 금액·효과·후기가 든 줄을 뽑습니다</td><td data-label="걸리는 시간">반나절~2일</td><td data-label="직접 하는 편이 나은지">직접 하셔도 됩니다</td></tr>
+            <tr><td data-label="단계">2. 기준으로 분류</td><td data-label="무엇을 보는지">둘 줄, 바꿀 줄, 내릴 줄로 나눕니다</td><td data-label="걸리는 시간">3~5일</td><td data-label="직접 하는 편이 나은지">맡기는 편이 낫습니다</td></tr>
+            <tr><td data-label="단계">3. 문장 교체와 대체 자료</td><td data-label="무엇을 보는지">바꾼 문장을 넣고 사진·후기 자리에 대체 자료를 올립니다</td><td data-label="걸리는 시간">2~4주</td><td data-label="직접 하는 편이 나은지">자료는 직접, 문장은 맡기는 쪽</td></tr>
+            <tr><td data-label="단계">4. 심의 매체 원고 접수</td><td data-label="무엇을 보는지">원고를 만들고 심의번호 표기 자리를 잡습니다</td><td data-label="걸리는 시간">2~4주, 수정 요구 시 2주 추가</td><td data-label="직접 하는 편이 나은지">맡기는 편이 낫습니다</td></tr>
           </tbody>
         </table>
       </div>

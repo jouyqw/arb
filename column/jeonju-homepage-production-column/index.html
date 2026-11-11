@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -130,11 +138,11 @@
             <tr><th>작업 항목</th><th>만나서 해야 하나</th><th>그 이유</th></tr>
           </thead>
           <tbody>
-            <tr><td>사진·실적 자료 모으기</td><td>만나는 쪽이 크게 빠릅니다</td><td>어디에 무엇이 있는지 대표님도 모르는 경우가 많습니다</td></tr>
-            <tr><td>현장 촬영</td><td>필수입니다</td><td>매장과 시공 현장은 와서 찍어야 합니다</td></tr>
-            <tr><td>가격·서비스 범위 정리</td><td>만나는 쪽이 빠릅니다</td><td>말로는 나오는데 글로 적으라면 멈춥니다</td></tr>
-            <tr><td>시안 검토와 원고 교정</td><td>원격으로 충분합니다</td><td>문서로 주고받아야 기록이 남습니다</td></tr>
-            <tr><td>오픈 후 수정</td><td>계약 조건에 따릅니다</td><td>거리보다 응답 기한이 적혀 있는지가 변수입니다</td></tr>
+            <tr><td data-label="작업 항목">사진·실적 자료 모으기</td><td data-label="만나서 해야 하나">만나는 쪽이 크게 빠릅니다</td><td data-label="그 이유">어디에 무엇이 있는지 대표님도 모르는 경우가 많습니다</td></tr>
+            <tr><td data-label="작업 항목">현장 촬영</td><td data-label="만나서 해야 하나">필수입니다</td><td data-label="그 이유">매장과 시공 현장은 와서 찍어야 합니다</td></tr>
+            <tr><td data-label="작업 항목">가격·서비스 범위 정리</td><td data-label="만나서 해야 하나">만나는 쪽이 빠릅니다</td><td data-label="그 이유">말로는 나오는데 글로 적으라면 멈춥니다</td></tr>
+            <tr><td data-label="작업 항목">시안 검토와 원고 교정</td><td data-label="만나서 해야 하나">원격으로 충분합니다</td><td data-label="그 이유">문서로 주고받아야 기록이 남습니다</td></tr>
+            <tr><td data-label="작업 항목">오픈 후 수정</td><td data-label="만나서 해야 하나">계약 조건에 따릅니다</td><td data-label="그 이유">거리보다 응답 기한이 적혀 있는지가 변수입니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -158,16 +166,16 @@
       <p>한옥마을 주변은 외지 방문객 검색이, 혁신도시 쪽은 거주민 생활 검색이 많습니다. 전주는 좁은 검색어 경쟁이 덜한 대신 검색량도 적어서, 순위보다 <strong>문의 건수로 확인하는 편이 정확합니다.</strong></p>
       <h2>전주홈페이지제작 비용과 기간은 어느 정도인가요?</h2>
       <p>포함 범위에 따라 150만원대에서 1,500만원대까지 갈리고, 기간은 보통 <mark class="hl-mark">4~8주</mark>입니다. 저는 견적서에서 금액란보다 &quot;원고&quot;와 &quot;촬영&quot; 두 줄을 먼저 찾습니다. 비어 있으면 그 작업은 대표님 몫으로 남습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>금액대</th><th>보통 포함되는 범위</th><th>기간</th><th>따로 확인할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>150만~300만원대</td><td>템플릿 기반 5~10페이지, 원고와 사진은 직접 제공</td><td>3~5주</td><td>무상 수정 횟수와 이후 단가</td></tr>
-            <tr><td>400만~800만원대</td><td>맞춤 디자인 10~20페이지, 촬영 1회, 원고 일부, 글 등록 기능</td><td>5~8주</td><td>원고를 몇 페이지까지 쓰는지</td></tr>
-            <tr><td>900만~1,500만원대</td><td>예약·결제·회원 기능 개발, 다국어, 주소 체계 설계</td><td>8~14주</td><td>기능 하자 보수 기간</td></tr>
-            <tr><td>월 10만~40만원대</td><td>유지관리 — 수정 처리, 백업, 보안 업데이트</td><td>계약 기간</td><td>월 수정 건수와 응답 기한</td></tr>
+            <tr><td data-label="금액대">150만~300만원대</td><td data-label="보통 포함되는 범위">템플릿 기반 5~10페이지, 원고와 사진은 직접 제공</td><td data-label="기간">3~5주</td><td data-label="따로 확인할 것">무상 수정 횟수와 이후 단가</td></tr>
+            <tr><td data-label="금액대">400만~800만원대</td><td data-label="보통 포함되는 범위">맞춤 디자인 10~20페이지, 촬영 1회, 원고 일부, 글 등록 기능</td><td data-label="기간">5~8주</td><td data-label="따로 확인할 것">원고를 몇 페이지까지 쓰는지</td></tr>
+            <tr><td data-label="금액대">900만~1,500만원대</td><td data-label="보통 포함되는 범위">예약·결제·회원 기능 개발, 다국어, 주소 체계 설계</td><td data-label="기간">8~14주</td><td data-label="따로 확인할 것">기능 하자 보수 기간</td></tr>
+            <tr><td data-label="금액대">월 10만~40만원대</td><td data-label="보통 포함되는 범위">유지관리 — 수정 처리, 백업, 보안 업데이트</td><td data-label="기간">계약 기간</td><td data-label="따로 확인할 것">월 수정 건수와 응답 기한</td></tr>
           </tbody>
         </table>
       </div>

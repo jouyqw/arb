@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -142,12 +150,12 @@
             <tr><th>비교 축</th><th>효과 강조형 콘텐츠</th><th>정보 중심형 콘텐츠</th></tr>
           </thead>
           <tbody>
-            <tr><td>초기 클릭률</td><td>높은 편 — 자극적인 제목이 눈에 띔</td><td>보통 — 검색 의도와 맞을 때 안정적</td></tr>
-            <tr><td>의료광고 규정 위험</td><td>높음 — 과장·보장·비교 표현에 걸리기 쉬움</td><td>낮음 — 사실 설명 위주라 검수가 단순함</td></tr>
-            <tr><td>글의 수명</td><td>짧음 — 수정·삭제 요구 시 유입도 사라짐</td><td>김 — 시술 방식이 바뀌기 전까지 유지</td></tr>
-            <tr><td>상담 품질</td><td>가격·효과만 묻는 문의가 늘어남</td><td>시술을 이해한 상태로 문의가 들어옴</td></tr>
-            <tr><td>AI 검색 인용 가능성</td><td>낮음 — 근거 없는 단정은 인용되지 않음</td><td>높음 — 질문·답 구조가 그대로 인용됨</td></tr>
-            <tr><td>적합한 상황</td><td>기간이 정해진 단기 이벤트 고지</td><td>6개월 이상 꾸준히 운영할 수 있을 때</td></tr>
+            <tr><td data-label="비교 축">초기 클릭률</td><td data-label="효과 강조형 콘텐츠">높은 편 — 자극적인 제목이 눈에 띔</td><td data-label="정보 중심형 콘텐츠">보통 — 검색 의도와 맞을 때 안정적</td></tr>
+            <tr><td data-label="비교 축">의료광고 규정 위험</td><td data-label="효과 강조형 콘텐츠">높음 — 과장·보장·비교 표현에 걸리기 쉬움</td><td data-label="정보 중심형 콘텐츠">낮음 — 사실 설명 위주라 검수가 단순함</td></tr>
+            <tr><td data-label="비교 축">글의 수명</td><td data-label="효과 강조형 콘텐츠">짧음 — 수정·삭제 요구 시 유입도 사라짐</td><td data-label="정보 중심형 콘텐츠">김 — 시술 방식이 바뀌기 전까지 유지</td></tr>
+            <tr><td data-label="비교 축">상담 품질</td><td data-label="효과 강조형 콘텐츠">가격·효과만 묻는 문의가 늘어남</td><td data-label="정보 중심형 콘텐츠">시술을 이해한 상태로 문의가 들어옴</td></tr>
+            <tr><td data-label="비교 축">AI 검색 인용 가능성</td><td data-label="효과 강조형 콘텐츠">낮음 — 근거 없는 단정은 인용되지 않음</td><td data-label="정보 중심형 콘텐츠">높음 — 질문·답 구조가 그대로 인용됨</td></tr>
+            <tr><td data-label="비교 축">적합한 상황</td><td data-label="효과 강조형 콘텐츠">기간이 정해진 단기 이벤트 고지</td><td data-label="정보 중심형 콘텐츠">6개월 이상 꾸준히 운영할 수 있을 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -162,17 +170,17 @@
       <ul><li>최근 3개월 상담·전화 문의에서 나온 질문을 들은 그대로 20~30건 적습니다.</li><li>비슷한 질문끼리 묶어 주제 후보 15~25개로 줄입니다.</li><li>후보마다 &#39;이 글을 읽은 사람이 상담을 예약할 이유가 생기는가&#39;를 한 줄로 적어 봅니다.</li><li>이유를 못 적는 후보는 뒤로 미루고, 상담 직전 질문 10~12개를 첫 3개월 발행 목록으로 확정합니다.</li><li>지역명이 들어가는 주제(진료 시간, 방문 상담 안내, 주차)는 2~3편 포함합니다.</li><li>비용과 회복 기간을 다루는 주제는 범위로 답할 수 있는지 먼저 확인한 뒤 목록에 넣습니다.</li></ul>
       <p>이 목록을 건너뛰고 쓰기 시작하면, 3개월 뒤에 유입이 왜 없는지 따져 볼 근거가 남지 않습니다. 목록 만드는 데 드는 반나절이 석 달치 원고를 다시 쓰지 않게 해 줍니다.</p>
       <p>여기까지는 직접 하시는 편이 좋습니다. 상담에서 어떤 질문이 오는지는 원장님과 상담 실장님이 가장 정확히 알고, 저희가 밖에서 추측해 만든 목록보다 늘 낫습니다. 저도 이 단계에서는 질문을 받아 적는 역할만 합니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>콘텐츠 유형</th><th>목적</th><th>주의점</th><th>권장 비중</th></tr>
           </thead>
           <tbody>
-            <tr><td>시술 정보 안내</td><td>이해를 돕고 신뢰 형성</td><td>효과를 보장하는 표현은 쓰지 않습니다</td><td>30~40%</td></tr>
-            <tr><td>자주 묻는 질문</td><td>상담 전 궁금증 해소</td><td>단정적 답변 대신 일반 정보로 씁니다</td><td>20~30%</td></tr>
-            <tr><td>의료진·병원 소개</td><td>전문성과 신뢰 전달</td><td>경력의 과장·비교는 지양합니다</td><td>10~15%</td></tr>
-            <tr><td>시술 후 관리·주의사항</td><td>불안 해소와 재방문 유도</td><td>개인차가 있다는 점을 함께 적습니다</td><td>20~30%</td></tr>
-            <tr><td>진료 안내·오시는 길</td><td>지역 검색 유입 확보</td><td>진료 시간 변경 시 바로 반영합니다</td><td>5~10%</td></tr>
+            <tr><td data-label="콘텐츠 유형">시술 정보 안내</td><td data-label="목적">이해를 돕고 신뢰 형성</td><td data-label="주의점">효과를 보장하는 표현은 쓰지 않습니다</td><td data-label="권장 비중">30~40%</td></tr>
+            <tr><td data-label="콘텐츠 유형">자주 묻는 질문</td><td data-label="목적">상담 전 궁금증 해소</td><td data-label="주의점">단정적 답변 대신 일반 정보로 씁니다</td><td data-label="권장 비중">20~30%</td></tr>
+            <tr><td data-label="콘텐츠 유형">의료진·병원 소개</td><td data-label="목적">전문성과 신뢰 전달</td><td data-label="주의점">경력의 과장·비교는 지양합니다</td><td data-label="권장 비중">10~15%</td></tr>
+            <tr><td data-label="콘텐츠 유형">시술 후 관리·주의사항</td><td data-label="목적">불안 해소와 재방문 유도</td><td data-label="주의점">개인차가 있다는 점을 함께 적습니다</td><td data-label="권장 비중">20~30%</td></tr>
+            <tr><td data-label="콘텐츠 유형">진료 안내·오시는 길</td><td data-label="목적">지역 검색 유입 확보</td><td data-label="주의점">진료 시간 변경 시 바로 반영합니다</td><td data-label="권장 비중">5~10%</td></tr>
           </tbody>
         </table>
       </div>
@@ -207,10 +215,10 @@
             <tr><th>운영 기간</th><th>이 시점에 확인할 것</th><th>기대할 수 있는 상태</th></tr>
           </thead>
           <tbody>
-            <tr><td>1개월</td><td>색인 여부, 제목·설명 오류, 모바일 속도</td><td>발행한 글 대부분이 검색에 잡힘</td></tr>
-            <tr><td>3개월</td><td>어떤 질문 키워드로 들어오는지</td><td>정보성 키워드에서 유입이 시작됨</td></tr>
-            <tr><td>6개월</td><td>문의 경로 비중, 상담 시 언급되는 글</td><td>&#39;글 보고 왔다&#39;는 문의가 나타나기 시작</td></tr>
-            <tr><td>12개월</td><td>광고 대비 문의 단가, 글별 누적 유입</td><td>예산 배분을 조정할 판단 근거 확보</td></tr>
+            <tr><td data-label="운영 기간">1개월</td><td data-label="이 시점에 확인할 것">색인 여부, 제목·설명 오류, 모바일 속도</td><td data-label="기대할 수 있는 상태">발행한 글 대부분이 검색에 잡힘</td></tr>
+            <tr><td data-label="운영 기간">3개월</td><td data-label="이 시점에 확인할 것">어떤 질문 키워드로 들어오는지</td><td data-label="기대할 수 있는 상태">정보성 키워드에서 유입이 시작됨</td></tr>
+            <tr><td data-label="운영 기간">6개월</td><td data-label="이 시점에 확인할 것">문의 경로 비중, 상담 시 언급되는 글</td><td data-label="기대할 수 있는 상태">&#39;글 보고 왔다&#39;는 문의가 나타나기 시작</td></tr>
+            <tr><td data-label="운영 기간">12개월</td><td data-label="이 시점에 확인할 것">광고 대비 문의 단가, 글별 누적 유입</td><td data-label="기대할 수 있는 상태">예산 배분을 조정할 판단 근거 확보</td></tr>
           </tbody>
         </table>
       </div>

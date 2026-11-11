@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -131,16 +139,16 @@
       <p>크게 세 형태입니다. 항목별로 단가를 적는 방식, 등급 패키지로 묶는 방식, 성과에 따라 금액이 달라지는 방식입니다.</p>
       <p>형태 자체에 좋고 나쁨은 없습니다. 다만 형태마다 확인이 어려운 지점이 서로 다릅니다.</p>
       <p>패키지형은 읽기 편하지만 안에 무엇이 몇 개인지 따로 물어야 합니다. 단가형은 복잡해 보이지만 조정이 쉽습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>견적서 형태</th><th>적혀 있는 방식</th><th>확인이 어려운 지점</th><th>이 형태를 받았을 때 물을 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>항목별 단가형</td><td>콘텐츠 1편 15만원, 광고 운영 80만원 등 줄별 단가</td><td>줄이 많아 총액 관리가 어려움</td><td>줄을 빼면 금액이 그만큼 내려가는지</td></tr>
-            <tr><td>패키지 등급형</td><td>베이직·스탠다드·프리미엄 월 정액</td><td>등급 안의 수량과 범위</td><td>이 등급에 콘텐츠 몇 편, 광고비 얼마가 포함인지</td></tr>
-            <tr><td>성과 연동형</td><td>기본료 + 문의 건당 또는 매출 비율</td><td>성과의 정의와 집계 주체</td><td>무엇을 1건으로 세는지, 중복은 어떻게 처리하는지</td></tr>
-            <tr><td>혼합형</td><td>제작 일시금 + 월 운영비</td><td>일시금과 월 비용의 경계</td><td>세팅이 끝난 뒤에도 그 월 금액이 유지되는지</td></tr>
+            <tr><td data-label="견적서 형태">항목별 단가형</td><td data-label="적혀 있는 방식">콘텐츠 1편 15만원, 광고 운영 80만원 등 줄별 단가</td><td data-label="확인이 어려운 지점">줄이 많아 총액 관리가 어려움</td><td data-label="이 형태를 받았을 때 물을 것">줄을 빼면 금액이 그만큼 내려가는지</td></tr>
+            <tr><td data-label="견적서 형태">패키지 등급형</td><td data-label="적혀 있는 방식">베이직·스탠다드·프리미엄 월 정액</td><td data-label="확인이 어려운 지점">등급 안의 수량과 범위</td><td data-label="이 형태를 받았을 때 물을 것">이 등급에 콘텐츠 몇 편, 광고비 얼마가 포함인지</td></tr>
+            <tr><td data-label="견적서 형태">성과 연동형</td><td data-label="적혀 있는 방식">기본료 + 문의 건당 또는 매출 비율</td><td data-label="확인이 어려운 지점">성과의 정의와 집계 주체</td><td data-label="이 형태를 받았을 때 물을 것">무엇을 1건으로 세는지, 중복은 어떻게 처리하는지</td></tr>
+            <tr><td data-label="견적서 형태">혼합형</td><td data-label="적혀 있는 방식">제작 일시금 + 월 운영비</td><td data-label="확인이 어려운 지점">일시금과 월 비용의 경계</td><td data-label="이 형태를 받았을 때 물을 것">세팅이 끝난 뒤에도 그 월 금액이 유지되는지</td></tr>
           </tbody>
         </table>
       </div>
@@ -157,12 +165,12 @@
             <tr><th>견적서에 이렇게 적혀 있으면</th><th>이렇게 되물으십시오</th><th>답으로 확인되는 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>콘텐츠 제작 / 블로그 운영</td><td>월 몇 편이고, 1편 분량과 초안 작성자는 누구인가요</td><td>편당 단가와 우리 쪽 검토 부담</td></tr>
-            <tr><td>SEO 최적화</td><td>첫 달에 손대는 작업과 둘째 달부터의 작업을 나눠 주시겠어요</td><td>세팅 1회성인지 매월 작업인지</td></tr>
-            <tr><td>채널 통합 운영</td><td>채널별로 월 몇 건을 올리고 어디에 비중을 두시나요</td><td>실제 운영 채널 수와 분산 정도</td></tr>
-            <tr><td>리포트 제공</td><td>보고서에 문의 수와 변경 내역이 들어가나요</td><td>집계만인지 운영 판단까지인지</td></tr>
-            <tr><td>홈페이지 유지보수</td><td>월 몇 건, 몇 시간까지 포함이고 초과분 단가는 얼마인가요</td><td>추가 청구가 발생하는 기준선</td></tr>
-            <tr><td>광고 운영 대행</td><td>이 금액에 광고비가 포함인가요, 수수료만인가요</td><td>실제 매체 집행액</td></tr>
+            <tr><td data-label="견적서에 이렇게 적혀 있으면">콘텐츠 제작 / 블로그 운영</td><td data-label="이렇게 되물으십시오">월 몇 편이고, 1편 분량과 초안 작성자는 누구인가요</td><td data-label="답으로 확인되는 것">편당 단가와 우리 쪽 검토 부담</td></tr>
+            <tr><td data-label="견적서에 이렇게 적혀 있으면">SEO 최적화</td><td data-label="이렇게 되물으십시오">첫 달에 손대는 작업과 둘째 달부터의 작업을 나눠 주시겠어요</td><td data-label="답으로 확인되는 것">세팅 1회성인지 매월 작업인지</td></tr>
+            <tr><td data-label="견적서에 이렇게 적혀 있으면">채널 통합 운영</td><td data-label="이렇게 되물으십시오">채널별로 월 몇 건을 올리고 어디에 비중을 두시나요</td><td data-label="답으로 확인되는 것">실제 운영 채널 수와 분산 정도</td></tr>
+            <tr><td data-label="견적서에 이렇게 적혀 있으면">리포트 제공</td><td data-label="이렇게 되물으십시오">보고서에 문의 수와 변경 내역이 들어가나요</td><td data-label="답으로 확인되는 것">집계만인지 운영 판단까지인지</td></tr>
+            <tr><td data-label="견적서에 이렇게 적혀 있으면">홈페이지 유지보수</td><td data-label="이렇게 되물으십시오">월 몇 건, 몇 시간까지 포함이고 초과분 단가는 얼마인가요</td><td data-label="답으로 확인되는 것">추가 청구가 발생하는 기준선</td></tr>
+            <tr><td data-label="견적서에 이렇게 적혀 있으면">광고 운영 대행</td><td data-label="이렇게 되물으십시오">이 금액에 광고비가 포함인가요, 수수료만인가요</td><td data-label="답으로 확인되는 것">실제 매체 집행액</td></tr>
           </tbody>
         </table>
       </div>
@@ -180,16 +188,16 @@
       <h2>금액대별로 보통 어디까지 포함되나요?</h2>
       <p>지역 사업자와 전문직 사무소 기준으로, 월 100만원 전후에서는 한 채널 관리, 300만원 전후에서는 광고와 콘텐츠 병행, 600만원 이상에서는 전담 인력이 붙는 구조가 흔합니다.</p>
       <p>아래 범위는 업종과 지역 경쟁도에 따라 달라지므로 절대 기준은 아닙니다. 다만 받은 견적이 어느 칸에 들어가는지를 가늠해 보는 데는 쓸 수 있습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>월 금액대</th><th>보통 포함되는 범위</th><th>기대하기 어려운 것</th><th>이 금액대에서 확인할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>월 100만원 이하</td><td>한 채널 관리 또는 콘텐츠 2~4편</td><td>광고 운영과 콘텐츠 동시 진행</td><td>광고비가 이 금액 안에 포함인지</td></tr>
-            <tr><td>월 150만~300만원</td><td>광고 운영 + 콘텐츠 4~8편, 월 1회 보고</td><td>홈페이지 구조 개편 같은 큰 작업</td><td>광고비 비중과 콘텐츠 편수의 균형</td></tr>
-            <tr><td>월 300만~600만원</td><td>광고·콘텐츠·지도·홈페이지 수정 병행</td><td>영상 제작 등 별도 비용 작업</td><td>담당자가 몇 개 계정을 겸임하는지</td></tr>
-            <tr><td>월 600만원 이상</td><td>전담 인력, 주 단위 소통, 분기 전략 점검</td><td>-</td><td>제안한 사람과 실제 운영자가 같은지</td></tr>
+            <tr><td data-label="월 금액대">월 100만원 이하</td><td data-label="보통 포함되는 범위">한 채널 관리 또는 콘텐츠 2~4편</td><td data-label="기대하기 어려운 것">광고 운영과 콘텐츠 동시 진행</td><td data-label="이 금액대에서 확인할 것">광고비가 이 금액 안에 포함인지</td></tr>
+            <tr><td data-label="월 금액대">월 150만~300만원</td><td data-label="보통 포함되는 범위">광고 운영 + 콘텐츠 4~8편, 월 1회 보고</td><td data-label="기대하기 어려운 것">홈페이지 구조 개편 같은 큰 작업</td><td data-label="이 금액대에서 확인할 것">광고비 비중과 콘텐츠 편수의 균형</td></tr>
+            <tr><td data-label="월 금액대">월 300만~600만원</td><td data-label="보통 포함되는 범위">광고·콘텐츠·지도·홈페이지 수정 병행</td><td data-label="기대하기 어려운 것">영상 제작 등 별도 비용 작업</td><td data-label="이 금액대에서 확인할 것">담당자가 몇 개 계정을 겸임하는지</td></tr>
+            <tr><td data-label="월 금액대">월 600만원 이상</td><td data-label="보통 포함되는 범위">전담 인력, 주 단위 소통, 분기 전략 점검</td><td data-label="기대하기 어려운 것">-</td><td data-label="이 금액대에서 확인할 것">제안한 사람과 실제 운영자가 같은지</td></tr>
           </tbody>
         </table>
       </div>

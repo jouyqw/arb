@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -134,9 +142,9 @@
             <tr><th>구분</th><th>노리기 어려운 키워드</th><th>현실적인 키워드</th></tr>
           </thead>
           <tbody>
-            <tr><td>범위</td><td>서울 세무사</td><td>강남 양도세 세무사</td></tr>
-            <tr><td>의도</td><td>막연함</td><td>상황·목적이 뚜렷</td></tr>
-            <tr><td>경쟁</td><td>매우 높음</td><td>상대적으로 낮음</td></tr>
+            <tr><td data-label="구분">범위</td><td data-label="노리기 어려운 키워드">서울 세무사</td><td data-label="현실적인 키워드">강남 양도세 세무사</td></tr>
+            <tr><td data-label="구분">의도</td><td data-label="노리기 어려운 키워드">막연함</td><td data-label="현실적인 키워드">상황·목적이 뚜렷</td></tr>
+            <tr><td data-label="구분">경쟁</td><td data-label="노리기 어려운 키워드">매우 높음</td><td data-label="현실적인 키워드">상대적으로 낮음</td></tr>
           </tbody>
         </table>
       </div>
@@ -177,12 +185,12 @@
             <tr><th>비교 항목</th><th>네이버 플레이스</th><th>홈페이지·칼럼</th></tr>
           </thead>
           <tbody>
-            <tr><td>주로 잡는 검색</td><td>&quot;강남 세무사&quot; 같은 지역·위치 검색</td><td>&quot;양도세 신고 기한&quot; 같은 상황·질문 검색</td></tr>
-            <tr><td>먼저 손볼 상황</td><td>전화·지도 문의가 대부분일 때</td><td>여러 곳을 비교한 뒤 연락이 올 때</td></tr>
-            <tr><td>초기 작업 기간</td><td>정보 정리·사진 등록에 1~2주</td><td>구조 점검과 초기 글 5~10편에 1~3개월</td></tr>
-            <tr><td>효과가 보이는 시점</td><td>빠르면 2~4주</td><td>보통 3~6개월</td></tr>
-            <tr><td>쌓이는 자산</td><td>후기·저장 수(플랫폼에 귀속)</td><td>글과 주소(사무소에 귀속)</td></tr>
-            <tr><td>약한 부분</td><td>전문성·절차를 길게 설명하기 어려움</td><td>초기에 노출량이 적음</td></tr>
+            <tr><td data-label="비교 항목">주로 잡는 검색</td><td data-label="네이버 플레이스">&quot;강남 세무사&quot; 같은 지역·위치 검색</td><td data-label="홈페이지·칼럼">&quot;양도세 신고 기한&quot; 같은 상황·질문 검색</td></tr>
+            <tr><td data-label="비교 항목">먼저 손볼 상황</td><td data-label="네이버 플레이스">전화·지도 문의가 대부분일 때</td><td data-label="홈페이지·칼럼">여러 곳을 비교한 뒤 연락이 올 때</td></tr>
+            <tr><td data-label="비교 항목">초기 작업 기간</td><td data-label="네이버 플레이스">정보 정리·사진 등록에 1~2주</td><td data-label="홈페이지·칼럼">구조 점검과 초기 글 5~10편에 1~3개월</td></tr>
+            <tr><td data-label="비교 항목">효과가 보이는 시점</td><td data-label="네이버 플레이스">빠르면 2~4주</td><td data-label="홈페이지·칼럼">보통 3~6개월</td></tr>
+            <tr><td data-label="비교 항목">쌓이는 자산</td><td data-label="네이버 플레이스">후기·저장 수(플랫폼에 귀속)</td><td data-label="홈페이지·칼럼">글과 주소(사무소에 귀속)</td></tr>
+            <tr><td data-label="비교 항목">약한 부분</td><td data-label="네이버 플레이스">전문성·절차를 길게 설명하기 어려움</td><td data-label="홈페이지·칼럼">초기에 노출량이 적음</td></tr>
           </tbody>
         </table>
       </div>
@@ -212,10 +220,10 @@
             <tr><th>시점</th><th>확인할 숫자</th><th>이 시점에 판단하지 말아야 할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>1개월</td><td>발행 글 수, 색인 여부, 플레이스 정보 일치</td><td>순위·문의 건수 (아직 판단 불가)</td></tr>
-            <tr><td>3개월</td><td>검색 유입 방문자 수, 첫 문의 경로</td><td>매출 기여도</td></tr>
-            <tr><td>6개월</td><td>월 문의 건수, 문의→상담 전환율</td><td>채널 전면 교체</td></tr>
-            <tr><td>12개월</td><td>분야별 수임 건수, 문의당 비용</td><td>—</td></tr>
+            <tr><td data-label="시점">1개월</td><td data-label="확인할 숫자">발행 글 수, 색인 여부, 플레이스 정보 일치</td><td data-label="이 시점에 판단하지 말아야 할 것">순위·문의 건수 (아직 판단 불가)</td></tr>
+            <tr><td data-label="시점">3개월</td><td data-label="확인할 숫자">검색 유입 방문자 수, 첫 문의 경로</td><td data-label="이 시점에 판단하지 말아야 할 것">매출 기여도</td></tr>
+            <tr><td data-label="시점">6개월</td><td data-label="확인할 숫자">월 문의 건수, 문의→상담 전환율</td><td data-label="이 시점에 판단하지 말아야 할 것">채널 전면 교체</td></tr>
+            <tr><td data-label="시점">12개월</td><td data-label="확인할 숫자">분야별 수임 건수, 문의당 비용</td><td data-label="이 시점에 판단하지 말아야 할 것">—</td></tr>
           </tbody>
         </table>
       </div>

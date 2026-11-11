@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -133,17 +141,17 @@
       <p>검색 유입이 많은 홈페이지일수록 이 간격이 벌어집니다. 방문자는 자기 문제를 다루는 한 페이지만 보고 떠나기 때문입니다.</p>
       <p>이 배치를 그대로 두면 유입이 늘어도 문의는 잘 늘지 않습니다. 광고비를 더 쓰면서 판단 근거는 숨겨 둔 상태가 되는 셈입니다.</p>
       <p>아래 표는 제가 작업할 때 쓰는 배치 기준입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>위치</th><th>방문자의 상태</th><th>넣으면 좋은 것</th><th>분량 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>첫 화면</td><td>여기가 맞는 곳인지 확인 중</td><td>분야 한 줄 + 경력 연차</td><td>1~2줄, 40자 안</td></tr>
-            <tr><td>서비스 상세</td><td>맡길지 판단 중</td><td>해당 분야 관련 자격·경험</td><td>2~4항목</td></tr>
-            <tr><td>문의 직전</td><td>결정 직전에 망설임</td><td>상담 방식, 응대 기준</td><td>2~3줄</td></tr>
-            <tr><td>소개 페이지</td><td>이미 관심이 있는 상태</td><td>전체 이력과 배경</td><td>제한 없음</td></tr>
-            <tr><td>칼럼 하단</td><td>글을 읽고 작성자를 확인 중</td><td>글쓴이 소개 + 소개 페이지 링크</td><td>3~4줄</td></tr>
+            <tr><td data-label="위치">첫 화면</td><td data-label="방문자의 상태">여기가 맞는 곳인지 확인 중</td><td data-label="넣으면 좋은 것">분야 한 줄 + 경력 연차</td><td data-label="분량 기준">1~2줄, 40자 안</td></tr>
+            <tr><td data-label="위치">서비스 상세</td><td data-label="방문자의 상태">맡길지 판단 중</td><td data-label="넣으면 좋은 것">해당 분야 관련 자격·경험</td><td data-label="분량 기준">2~4항목</td></tr>
+            <tr><td data-label="위치">문의 직전</td><td data-label="방문자의 상태">결정 직전에 망설임</td><td data-label="넣으면 좋은 것">상담 방식, 응대 기준</td><td data-label="분량 기준">2~3줄</td></tr>
+            <tr><td data-label="위치">소개 페이지</td><td data-label="방문자의 상태">이미 관심이 있는 상태</td><td data-label="넣으면 좋은 것">전체 이력과 배경</td><td data-label="분량 기준">제한 없음</td></tr>
+            <tr><td data-label="위치">칼럼 하단</td><td data-label="방문자의 상태">글을 읽고 작성자를 확인 중</td><td data-label="넣으면 좋은 것">글쓴이 소개 + 소개 페이지 링크</td><td data-label="분량 기준">3~4줄</td></tr>
           </tbody>
         </table>
       </div>
@@ -164,18 +172,18 @@
       <p>상담에서 수상 이력을 첫 화면에 크게 넣고 싶다는 말씀을 자주 듣는데, 저는 대개 경험 수치와 자리를 바꾸자고 말씀드립니다.</p>
       <p>병원 쪽 상담에서는 장비와 학회 이력을 앞세우려는 경우가 많고, 법무·세무 사무소에서는 자격과 수상 목록을 길게 두려는 경우가 많습니다. 어느 쪽이든 방문자가 먼저 찾는 것은 &quot;내 상황을 다뤄 본 적이 있는가&quot;입니다.</p>
       <p>아래 표는 어떤 항목을 어디에 두고 무엇을 주의해야 하는지 한 번에 비교한 것입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>항목</th><th>신뢰 기여도</th><th>권장 위치</th><th>주의할 점</th></tr>
           </thead>
           <tbody>
-            <tr><td>경험 수치(연차·취급 건수)</td><td>높음 — 판단 근거로 바로 쓰임</td><td>첫 화면, 서비스 상세 상단</td><td>집계 기준과 기준 시점을 함께 적어야 합니다</td></tr>
-            <tr><td>분야 관련 자격</td><td>높음 — 업무 수행의 최소 조건</td><td>첫 화면 한 줄 + 서비스 상세</td><td>분야와 무관한 자격까지 넣으면 초점이 흐려집니다</td></tr>
-            <tr><td>수상 이력</td><td>중간 — 주최·기준을 밝힐 때만</td><td>소개 페이지, 서비스 상세 하단</td><td>주최·연도·심사 기준이 없으면 거의 읽히지 않습니다</td></tr>
-            <tr><td>언론 보도·기고</td><td>중간 — 주제가 맞을 때</td><td>소개 페이지, 칼럼 하단</td><td>매체명만 나열하면 광고성으로 보일 수 있습니다</td></tr>
-            <tr><td>자격증 스캔 이미지</td><td>낮음 — 보조 자료</td><td>소개 페이지 하단</td><td>단독 게시는 검색·모바일 모두 불리합니다</td></tr>
-            <tr><td>단체·협회 가입 이력</td><td>낮음 — 배경 정보</td><td>소개 페이지 하단</td><td>가입만으로 전문성을 뜻하지 않으니 활동 내용을 함께 적습니다</td></tr>
+            <tr><td data-label="항목">경험 수치(연차·취급 건수)</td><td data-label="신뢰 기여도">높음 — 판단 근거로 바로 쓰임</td><td data-label="권장 위치">첫 화면, 서비스 상세 상단</td><td data-label="주의할 점">집계 기준과 기준 시점을 함께 적어야 합니다</td></tr>
+            <tr><td data-label="항목">분야 관련 자격</td><td data-label="신뢰 기여도">높음 — 업무 수행의 최소 조건</td><td data-label="권장 위치">첫 화면 한 줄 + 서비스 상세</td><td data-label="주의할 점">분야와 무관한 자격까지 넣으면 초점이 흐려집니다</td></tr>
+            <tr><td data-label="항목">수상 이력</td><td data-label="신뢰 기여도">중간 — 주최·기준을 밝힐 때만</td><td data-label="권장 위치">소개 페이지, 서비스 상세 하단</td><td data-label="주의할 점">주최·연도·심사 기준이 없으면 거의 읽히지 않습니다</td></tr>
+            <tr><td data-label="항목">언론 보도·기고</td><td data-label="신뢰 기여도">중간 — 주제가 맞을 때</td><td data-label="권장 위치">소개 페이지, 칼럼 하단</td><td data-label="주의할 점">매체명만 나열하면 광고성으로 보일 수 있습니다</td></tr>
+            <tr><td data-label="항목">자격증 스캔 이미지</td><td data-label="신뢰 기여도">낮음 — 보조 자료</td><td data-label="권장 위치">소개 페이지 하단</td><td data-label="주의할 점">단독 게시는 검색·모바일 모두 불리합니다</td></tr>
+            <tr><td data-label="항목">단체·협회 가입 이력</td><td data-label="신뢰 기여도">낮음 — 배경 정보</td><td data-label="권장 위치">소개 페이지 하단</td><td data-label="주의할 점">가입만으로 전문성을 뜻하지 않으니 활동 내용을 함께 적습니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -212,18 +220,18 @@
       <p>효과가 가장 빠른 두 작업은 자체 인력으로 1~2일 안에 끝나고, 외주가 필요한 작업까지 포함하면 보통 3~6주와 50만~500만원 범위에서 정리됩니다.</p>
       <p>비용은 업체 규모와 수정 범위에 따라 차이가 크므로, 아래 범위는 견적을 비교할 때 기준선으로만 참고하시면 됩니다.</p>
       <p>저는 금액보다 순서를 먼저 봅니다. 1순위 두 항목을 건너뛰고 소개 페이지 개편부터 하면 비용은 가장 많이 들고, 효과 확인은 두세 달 뒤로 밀립니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>작업</th><th>예상 기간</th><th>외주 시 비용 범위</th><th>우선순위</th></tr>
           </thead>
           <tbody>
-            <tr><td>상위 3개 페이지에 신뢰 한 줄 추가</td><td>1~2일</td><td>자체 작업 시 0원</td><td>1순위</td></tr>
-            <tr><td>문의 폼 위 응대 기준 문구</td><td>반일~1일</td><td>자체 작업 시 0원</td><td>1순위</td></tr>
-            <tr><td>자격·수상 이력 설명 문구 정리</td><td>3~5일</td><td>20만~60만원</td><td>2순위</td></tr>
-            <tr><td>구조화 데이터 적용·검사</td><td>1~3일</td><td>10만~40만원</td><td>3순위</td></tr>
-            <tr><td>인물·상담 공간 사진 촬영</td><td>촬영 반일 + 보정 3~5일</td><td>30만~150만원</td><td>3순위</td></tr>
-            <tr><td>소개 페이지 전면 개편</td><td>2~4주</td><td>80만~300만원</td><td>4순위</td></tr>
+            <tr><td data-label="작업">상위 3개 페이지에 신뢰 한 줄 추가</td><td data-label="예상 기간">1~2일</td><td data-label="외주 시 비용 범위">자체 작업 시 0원</td><td data-label="우선순위">1순위</td></tr>
+            <tr><td data-label="작업">문의 폼 위 응대 기준 문구</td><td data-label="예상 기간">반일~1일</td><td data-label="외주 시 비용 범위">자체 작업 시 0원</td><td data-label="우선순위">1순위</td></tr>
+            <tr><td data-label="작업">자격·수상 이력 설명 문구 정리</td><td data-label="예상 기간">3~5일</td><td data-label="외주 시 비용 범위">20만~60만원</td><td data-label="우선순위">2순위</td></tr>
+            <tr><td data-label="작업">구조화 데이터 적용·검사</td><td data-label="예상 기간">1~3일</td><td data-label="외주 시 비용 범위">10만~40만원</td><td data-label="우선순위">3순위</td></tr>
+            <tr><td data-label="작업">인물·상담 공간 사진 촬영</td><td data-label="예상 기간">촬영 반일 + 보정 3~5일</td><td data-label="외주 시 비용 범위">30만~150만원</td><td data-label="우선순위">3순위</td></tr>
+            <tr><td data-label="작업">소개 페이지 전면 개편</td><td data-label="예상 기간">2~4주</td><td data-label="외주 시 비용 범위">80만~300만원</td><td data-label="우선순위">4순위</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -151,10 +159,10 @@
             <tr><th>점검할 곳</th><th>확인 내용</th><th>우선순위</th></tr>
           </thead>
           <tbody>
-            <tr><td>공식 홈페이지</td><td>푸터·소개·문의 페이지의 주소와 전화가 모두 같은지</td><td>가장 먼저</td></tr>
-            <tr><td>지도 업체 등록</td><td>주소·영업시간·업종 분류가 현재와 맞는지</td><td>높음</td></tr>
-            <tr><td>업종 디렉터리</td><td>예전에 등록해 둔 곳에 옛 정보가 남았는지</td><td>중간</td></tr>
-            <tr><td>과거 홍보물</td><td>종료된 서비스를 소개한 글이 남아 있는지</td><td>중간</td></tr>
+            <tr><td data-label="점검할 곳">공식 홈페이지</td><td data-label="확인 내용">푸터·소개·문의 페이지의 주소와 전화가 모두 같은지</td><td data-label="우선순위">가장 먼저</td></tr>
+            <tr><td data-label="점검할 곳">지도 업체 등록</td><td data-label="확인 내용">주소·영업시간·업종 분류가 현재와 맞는지</td><td data-label="우선순위">높음</td></tr>
+            <tr><td data-label="점검할 곳">업종 디렉터리</td><td data-label="확인 내용">예전에 등록해 둔 곳에 옛 정보가 남았는지</td><td data-label="우선순위">중간</td></tr>
+            <tr><td data-label="점검할 곳">과거 홍보물</td><td data-label="확인 내용">종료된 서비스를 소개한 글이 남아 있는지</td><td data-label="우선순위">중간</td></tr>
           </tbody>
         </table>
       </div>
@@ -165,15 +173,15 @@
       <p>세 가지로 나뉩니다. 바로 고칠 수 있는 곳, 요청하고 기다려야 하는 곳, 외부에서 통제하기 어려운 곳입니다.</p>
       <p>저는 상담에서 이 세 칸을 먼저 그려 드립니다. 통제하기 어려운 영역을 붙들고 있느라 정작 오늘 고칠 수 있는 곳을 미루는 경우가 많기 때문입니다.</p>
       <p>정정 요청이 필요한 곳은 처리에 보통 3~14일이 걸립니다. 요청일과 담당 창구를 함께 적어 두면 재촉할 때 근거가 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>구분</th><th>해당하는 곳</th><th>처리 방법과 기간</th><th>먼저 할 일</th></tr>
           </thead>
           <tbody>
-            <tr><td>바로 고칠 수 있음</td><td>공식 홈페이지, 자사 블로그, 직접 운영하는 SNS 소개란</td><td>당일~3일 안에 직접 수정 가능</td><td>오늘 처리 — 여기부터 손대는 것이 가장 효율적입니다</td></tr>
-            <tr><td>요청해야 함</td><td>지도 업체 등록, 업종 디렉터리, 제휴사 소개 페이지</td><td>정정 요청 후 보통 3~14일, 일부는 4주 이상</td><td>이번 주 안에 요청서 발송, 요청일 기록</td></tr>
-            <tr><td>통제하기 어려움</td><td>타인의 블로그·카페 글, 과거 언론 기사, 후기 게시물</td><td>정정이 어렵거나 응답이 없을 수 있음</td><td>정확한 최신 설명을 새로 늘려 비중을 바꾸는 방향</td></tr>
+            <tr><td data-label="구분">바로 고칠 수 있음</td><td data-label="해당하는 곳">공식 홈페이지, 자사 블로그, 직접 운영하는 SNS 소개란</td><td data-label="처리 방법과 기간">당일~3일 안에 직접 수정 가능</td><td data-label="먼저 할 일">오늘 처리 — 여기부터 손대는 것이 가장 효율적입니다</td></tr>
+            <tr><td data-label="구분">요청해야 함</td><td data-label="해당하는 곳">지도 업체 등록, 업종 디렉터리, 제휴사 소개 페이지</td><td data-label="처리 방법과 기간">정정 요청 후 보통 3~14일, 일부는 4주 이상</td><td data-label="먼저 할 일">이번 주 안에 요청서 발송, 요청일 기록</td></tr>
+            <tr><td data-label="구분">통제하기 어려움</td><td data-label="해당하는 곳">타인의 블로그·카페 글, 과거 언론 기사, 후기 게시물</td><td data-label="처리 방법과 기간">정정이 어렵거나 응답이 없을 수 있음</td><td data-label="먼저 할 일">정확한 최신 설명을 새로 늘려 비중을 바꾸는 방향</td></tr>
           </tbody>
         </table>
       </div>
@@ -206,10 +214,10 @@
             <tr><th>시기</th><th>할 일</th><th>결과물</th></tr>
           </thead>
           <tbody>
-            <tr><td>1주차</td><td>AI에 질문 5~8개를 던져 틀린 답 기록, 기준값 5개 항목 확정</td><td>현황 캡처 묶음과 기준값 한 장</td></tr>
-            <tr><td>2주차</td><td>홈페이지·자사 채널 직접 수정, 이미지와 첨부 파일까지 점검</td><td>직접 통제 가능한 곳 정리 완료</td></tr>
-            <tr><td>3주차</td><td>지도 등록 수정, 디렉터리 5~10곳에 정정 요청 발송</td><td>요청 목록과 요청일 기록표</td></tr>
-            <tr><td>4주차</td><td>1주차와 같은 질문을 다시 던져 변화 확인, 미응답처 재요청</td><td>변화 비교표와 남은 과제 목록</td></tr>
+            <tr><td data-label="시기">1주차</td><td data-label="할 일">AI에 질문 5~8개를 던져 틀린 답 기록, 기준값 5개 항목 확정</td><td data-label="결과물">현황 캡처 묶음과 기준값 한 장</td></tr>
+            <tr><td data-label="시기">2주차</td><td data-label="할 일">홈페이지·자사 채널 직접 수정, 이미지와 첨부 파일까지 점검</td><td data-label="결과물">직접 통제 가능한 곳 정리 완료</td></tr>
+            <tr><td data-label="시기">3주차</td><td data-label="할 일">지도 등록 수정, 디렉터리 5~10곳에 정정 요청 발송</td><td data-label="결과물">요청 목록과 요청일 기록표</td></tr>
+            <tr><td data-label="시기">4주차</td><td data-label="할 일">1주차와 같은 질문을 다시 던져 변화 확인, 미응답처 재요청</td><td data-label="결과물">변화 비교표와 남은 과제 목록</td></tr>
           </tbody>
         </table>
       </div>
@@ -224,12 +232,12 @@
             <tr><th>비교 항목</th><th>직접 정리</th><th>외부에 맡기기</th></tr>
           </thead>
           <tbody>
-            <tr><td>적합한 상황</td><td>등록처 10곳 미만, 담당자가 주 3~4시간 확보 가능</td><td>등록처 10곳 이상, 스키마·개발 수정이 함께 필요</td></tr>
-            <tr><td>드는 비용</td><td>직접 인건비 외 추가 비용 없음</td><td>단발 정리 30만~150만원, 월 운영 30만~80만원 선</td></tr>
-            <tr><td>걸리는 시간</td><td>전체 8~15시간, 4주에 나눠 진행</td><td>자료 전달 후 2~3주, 담당자는 확인만</td></tr>
-            <tr><td>강점</td><td>어디에 무엇이 등록됐는지 내부에 남음</td><td>누락된 등록처를 찾아내는 속도가 빠름</td></tr>
-            <tr><td>약점</td><td>잊은 등록처를 스스로 찾기 어려움</td><td>기준값 확정은 결국 내부에서 해야 함</td></tr>
-            <tr><td>이럴 때 선택</td><td>이사·번호 변경 한 건만 반영하면 될 때</td><td>상호 변경, 법인 전환처럼 전면 정리가 필요할 때</td></tr>
+            <tr><td data-label="비교 항목">적합한 상황</td><td data-label="직접 정리">등록처 10곳 미만, 담당자가 주 3~4시간 확보 가능</td><td data-label="외부에 맡기기">등록처 10곳 이상, 스키마·개발 수정이 함께 필요</td></tr>
+            <tr><td data-label="비교 항목">드는 비용</td><td data-label="직접 정리">직접 인건비 외 추가 비용 없음</td><td data-label="외부에 맡기기">단발 정리 30만~150만원, 월 운영 30만~80만원 선</td></tr>
+            <tr><td data-label="비교 항목">걸리는 시간</td><td data-label="직접 정리">전체 8~15시간, 4주에 나눠 진행</td><td data-label="외부에 맡기기">자료 전달 후 2~3주, 담당자는 확인만</td></tr>
+            <tr><td data-label="비교 항목">강점</td><td data-label="직접 정리">어디에 무엇이 등록됐는지 내부에 남음</td><td data-label="외부에 맡기기">누락된 등록처를 찾아내는 속도가 빠름</td></tr>
+            <tr><td data-label="비교 항목">약점</td><td data-label="직접 정리">잊은 등록처를 스스로 찾기 어려움</td><td data-label="외부에 맡기기">기준값 확정은 결국 내부에서 해야 함</td></tr>
+            <tr><td data-label="비교 항목">이럴 때 선택</td><td data-label="직접 정리">이사·번호 변경 한 건만 반영하면 될 때</td><td data-label="외부에 맡기기">상호 변경, 법인 전환처럼 전면 정리가 필요할 때</td></tr>
           </tbody>
         </table>
       </div>

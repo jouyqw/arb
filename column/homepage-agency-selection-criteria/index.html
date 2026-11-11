@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -149,10 +157,10 @@
             <tr><th>견적대</th><th>보통 포함되는 범위</th><th>별도 비용이 되기 쉬운 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>300만원 안팎</td><td>템플릿 기반 5~7페이지, 기본 문의 폼, 모바일 대응</td><td>원고 작성, 사진 촬영, 검색 기본 세팅</td></tr>
-            <tr><td>400만~600만원</td><td>반맞춤 디자인 10페이지 내외, 칼럼·게시판 기능, 기본 SEO 세팅</td><td>콘텐츠 기획, 예약·결제 연동, 촬영</td></tr>
-            <tr><td>700만~1,000만원</td><td>맞춤 디자인, 원고 기획 참여, 구조화 데이터·속도 최적화</td><td>영상 제작, 외부 시스템 연동, 월 운영 대행</td></tr>
-            <tr><td>1,000만원 이상</td><td>설계·브랜딩부터, 다지점·다국어, 사내 시스템 연동</td><td>장기 운영은 대부분 별도 계약</td></tr>
+            <tr><td data-label="견적대">300만원 안팎</td><td data-label="보통 포함되는 범위">템플릿 기반 5~7페이지, 기본 문의 폼, 모바일 대응</td><td data-label="별도 비용이 되기 쉬운 것">원고 작성, 사진 촬영, 검색 기본 세팅</td></tr>
+            <tr><td data-label="견적대">400만~600만원</td><td data-label="보통 포함되는 범위">반맞춤 디자인 10페이지 내외, 칼럼·게시판 기능, 기본 SEO 세팅</td><td data-label="별도 비용이 되기 쉬운 것">콘텐츠 기획, 예약·결제 연동, 촬영</td></tr>
+            <tr><td data-label="견적대">700만~1,000만원</td><td data-label="보통 포함되는 범위">맞춤 디자인, 원고 기획 참여, 구조화 데이터·속도 최적화</td><td data-label="별도 비용이 되기 쉬운 것">영상 제작, 외부 시스템 연동, 월 운영 대행</td></tr>
+            <tr><td data-label="견적대">1,000만원 이상</td><td data-label="보통 포함되는 범위">설계·브랜딩부터, 다지점·다국어, 사내 시스템 연동</td><td data-label="별도 비용이 되기 쉬운 것">장기 운영은 대부분 별도 계약</td></tr>
           </tbody>
         </table>
       </div>
@@ -169,12 +177,12 @@
             <tr><th>조항</th><th>계약서에서 확인할 내용</th><th>비어 있을 때 생기는 일</th></tr>
           </thead>
           <tbody>
-            <tr><td>소유권·저작권</td><td>완성물의 소유권과 사용 권한이 발주처에 귀속되는지</td><td>수정·이전 때마다 동의를 받아야 합니다</td></tr>
-            <tr><td>하자보수</td><td>검수 완료일부터 몇 개월간 오류 수정이 무상인지</td><td>오류인지 변경인지로 다툼이 생깁니다</td></tr>
-            <tr><td>수정 범위</td><td>디자인 시안 수정 횟수와 검수 기간 중 텍스트 수정 범위</td><td>시안 단계부터 추가 비용이 붙습니다</td></tr>
-            <tr><td>일정·지연</td><td>단계별 납기와, 자료 제공이 늦을 때의 일정 재산정 기준</td><td>지연 책임을 서로 떠넘기게 됩니다</td></tr>
-            <tr><td>대금 지급</td><td>착수금·중도금·잔금 비율과 각각의 지급 시점</td><td>잔금 시점이 모호해 검수가 늘어집니다</td></tr>
-            <tr><td>이관·해지</td><td>계약 종료 시 소스·계정·데이터를 넘기는 절차와 기한</td><td>업체를 바꾸는 데 비용과 시간이 듭니다</td></tr>
+            <tr><td data-label="조항">소유권·저작권</td><td data-label="계약서에서 확인할 내용">완성물의 소유권과 사용 권한이 발주처에 귀속되는지</td><td data-label="비어 있을 때 생기는 일">수정·이전 때마다 동의를 받아야 합니다</td></tr>
+            <tr><td data-label="조항">하자보수</td><td data-label="계약서에서 확인할 내용">검수 완료일부터 몇 개월간 오류 수정이 무상인지</td><td data-label="비어 있을 때 생기는 일">오류인지 변경인지로 다툼이 생깁니다</td></tr>
+            <tr><td data-label="조항">수정 범위</td><td data-label="계약서에서 확인할 내용">디자인 시안 수정 횟수와 검수 기간 중 텍스트 수정 범위</td><td data-label="비어 있을 때 생기는 일">시안 단계부터 추가 비용이 붙습니다</td></tr>
+            <tr><td data-label="조항">일정·지연</td><td data-label="계약서에서 확인할 내용">단계별 납기와, 자료 제공이 늦을 때의 일정 재산정 기준</td><td data-label="비어 있을 때 생기는 일">지연 책임을 서로 떠넘기게 됩니다</td></tr>
+            <tr><td data-label="조항">대금 지급</td><td data-label="계약서에서 확인할 내용">착수금·중도금·잔금 비율과 각각의 지급 시점</td><td data-label="비어 있을 때 생기는 일">잔금 시점이 모호해 검수가 늘어집니다</td></tr>
+            <tr><td data-label="조항">이관·해지</td><td data-label="계약서에서 확인할 내용">계약 종료 시 소스·계정·데이터를 넘기는 절차와 기한</td><td data-label="비어 있을 때 생기는 일">업체를 바꾸는 데 비용과 시간이 듭니다</td></tr>
           </tbody>
         </table>
       </div>

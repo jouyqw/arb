@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -127,17 +135,17 @@
       <p>두 견적서에 똑같이 &#39;홈페이지 제작 일식&#39;이라고만 적혀 있으면, 이 차이는 계약서 어디에도 드러나지 않습니다. 제작이 한창일 때 &quot;그건 범위 밖입니다&quot;라는 말을 듣는 지점이 바로 여기입니다.</p>
       <p>그래서 저는 각 견적을 같은 다섯 칸에 옮겨 적는 일부터 합니다. 빈칸이 어디인지 보이면 금액이 왜 다른지도 대체로 설명됩니다.</p>
       <p>항목을 나눠 보면 값을 올리는 요인이 비교적 분명하게 갈립니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>항목</th><th>하는 일</th><th>가장 저렴한 방식</th><th>값이 올라가는 지점</th></tr>
           </thead>
           <tbody>
-            <tr><td>디자인</td><td>화면 구조와 시각 요소를 정함</td><td>기성 템플릿에 로고·색상만 교체</td><td>처음부터 새로 그리는 페이지가 늘어날 때</td></tr>
-            <tr><td>퍼블리싱</td><td>디자인을 브라우저에서 열리는 코드로 옮김</td><td>PC 화면 한 가지만 대응</td><td>모바일·태블릿 각각 대응, 움직임 효과가 들어갈 때</td></tr>
-            <tr><td>기능 개발</td><td>입력·저장·연동이 필요한 동작을 만듦</td><td>문의 폼과 게시판 정도</td><td>회원, 결제, 실시간 예약, 외부 시스템 연동</td></tr>
-            <tr><td>콘텐츠</td><td>안에 들어갈 글·사진·도식 제작</td><td>고객사가 직접 전달</td><td>원고 대필, 현장 촬영, 도식·인포그래픽 제작</td></tr>
-            <tr><td>유지보수</td><td>발행 이후 수정·보안·백업</td><td>하자보수 기간만 무상</td><td>월 단위 수정·콘텐츠 발행·리포트 포함</td></tr>
+            <tr><td data-label="항목">디자인</td><td data-label="하는 일">화면 구조와 시각 요소를 정함</td><td data-label="가장 저렴한 방식">기성 템플릿에 로고·색상만 교체</td><td data-label="값이 올라가는 지점">처음부터 새로 그리는 페이지가 늘어날 때</td></tr>
+            <tr><td data-label="항목">퍼블리싱</td><td data-label="하는 일">디자인을 브라우저에서 열리는 코드로 옮김</td><td data-label="가장 저렴한 방식">PC 화면 한 가지만 대응</td><td data-label="값이 올라가는 지점">모바일·태블릿 각각 대응, 움직임 효과가 들어갈 때</td></tr>
+            <tr><td data-label="항목">기능 개발</td><td data-label="하는 일">입력·저장·연동이 필요한 동작을 만듦</td><td data-label="가장 저렴한 방식">문의 폼과 게시판 정도</td><td data-label="값이 올라가는 지점">회원, 결제, 실시간 예약, 외부 시스템 연동</td></tr>
+            <tr><td data-label="항목">콘텐츠</td><td data-label="하는 일">안에 들어갈 글·사진·도식 제작</td><td data-label="가장 저렴한 방식">고객사가 직접 전달</td><td data-label="값이 올라가는 지점">원고 대필, 현장 촬영, 도식·인포그래픽 제작</td></tr>
+            <tr><td data-label="항목">유지보수</td><td data-label="하는 일">발행 이후 수정·보안·백업</td><td data-label="가장 저렴한 방식">하자보수 기간만 무상</td><td data-label="값이 올라가는 지점">월 단위 수정·콘텐츠 발행·리포트 포함</td></tr>
           </tbody>
         </table>
       </div>
@@ -172,16 +180,16 @@
       <h2>금액대별 홈페이지제작비용에는 무엇이 포함되고 무엇이 빠지나요?</h2>
       <p>크게 네 구간으로 나뉩니다. 200만원 이하는 템플릿과 퍼블리싱, 300만~800만원은 부분 맞춤, 1,000만~2,000만원은 전체 맞춤에 콘텐츠와 기능까지, 그 이상은 시스템 연동이 들어간 경우입니다.</p>
       <p>아래 금액은 저희가 전문직·지역 사업자 홈페이지에서 흔히 보는 구간이며, 업종·지역·요구 기능에 따라 달라질 수 있습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>금액대</th><th>보통 포함되는 것</th><th>보통 빠지는 것</th><th>제작 기간</th><th>어울리는 경우</th></tr>
           </thead>
           <tbody>
-            <tr><td>200만원 이하</td><td>기성 템플릿 적용, 5~8페이지, 문의 폼, 기본 모바일 대응</td><td>맞춤 디자인, 원고 작성, 촬영, 검색 노출 세팅</td><td>2~4주</td><td>우선 온라인에 자리부터 만들어 두려는 신규 개업</td></tr>
-            <tr><td>300만~800만원</td><td>메인·주요 서브 맞춤 디자인, 8~15페이지, 칼럼·게시판 구조, 기본 검색 세팅</td><td>전 페이지 맞춤, 현장 촬영, 다국어, 예약·결제</td><td>4~8주</td><td>검색 유입과 문의 전환을 함께 노리는 대부분의 전문직</td></tr>
-            <tr><td>1,000만~2,000만원</td><td>전 페이지 맞춤 디자인, 원고 작성, 현장 촬영, 상담·예약 기능, 초기 콘텐츠</td><td>대규모 시스템 연동, 자체 앱 개발</td><td>8~16주</td><td>지점이 여러 곳이거나 업무·진료 분야가 많은 경우</td></tr>
-            <tr><td>2,000만원 이상</td><td>브랜드 작업, 다국어, 회원·결제, 기존 시스템 연동, 전담 인력 배정</td><td>요구 범위에 따라 달라 별도 협의</td><td>3~6개월</td><td>온라인에서 예약과 결제까지 끝나야 하는 구조</td></tr>
+            <tr><td data-label="금액대">200만원 이하</td><td data-label="보통 포함되는 것">기성 템플릿 적용, 5~8페이지, 문의 폼, 기본 모바일 대응</td><td data-label="보통 빠지는 것">맞춤 디자인, 원고 작성, 촬영, 검색 노출 세팅</td><td data-label="제작 기간">2~4주</td><td data-label="어울리는 경우">우선 온라인에 자리부터 만들어 두려는 신규 개업</td></tr>
+            <tr><td data-label="금액대">300만~800만원</td><td data-label="보통 포함되는 것">메인·주요 서브 맞춤 디자인, 8~15페이지, 칼럼·게시판 구조, 기본 검색 세팅</td><td data-label="보통 빠지는 것">전 페이지 맞춤, 현장 촬영, 다국어, 예약·결제</td><td data-label="제작 기간">4~8주</td><td data-label="어울리는 경우">검색 유입과 문의 전환을 함께 노리는 대부분의 전문직</td></tr>
+            <tr><td data-label="금액대">1,000만~2,000만원</td><td data-label="보통 포함되는 것">전 페이지 맞춤 디자인, 원고 작성, 현장 촬영, 상담·예약 기능, 초기 콘텐츠</td><td data-label="보통 빠지는 것">대규모 시스템 연동, 자체 앱 개발</td><td data-label="제작 기간">8~16주</td><td data-label="어울리는 경우">지점이 여러 곳이거나 업무·진료 분야가 많은 경우</td></tr>
+            <tr><td data-label="금액대">2,000만원 이상</td><td data-label="보통 포함되는 것">브랜드 작업, 다국어, 회원·결제, 기존 시스템 연동, 전담 인력 배정</td><td data-label="보통 빠지는 것">요구 범위에 따라 달라 별도 협의</td><td data-label="제작 기간">3~6개월</td><td data-label="어울리는 경우">온라인에서 예약과 결제까지 끝나야 하는 구조</td></tr>
           </tbody>
         </table>
       </div>

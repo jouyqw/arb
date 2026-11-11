@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -143,11 +151,11 @@
             <tr><th>태그</th><th>권장 길이·형식</th><th>빠졌을 때 생기는 일</th></tr>
           </thead>
           <tbody>
-            <tr><td>title</td><td>18~48자, 핵심 키워드 앞쪽 배치</td><td>검색 결과 제목이 본문에서 임의로 잘려 나옵니다</td></tr>
-            <tr><td>description</td><td>70~160자, 글의 답을 요약</td><td>설명문이 자동 발췌돼 클릭률이 떨어집니다</td></tr>
-            <tr><td>canonical</td><td>절대경로 1개만</td><td>중복 URL로 평가가 나뉩니다</td></tr>
-            <tr><td>Open Graph</td><td>og:title·og:description·og:image</td><td>카카오톡·블로그 공유 시 미리보기가 비어 보입니다</td></tr>
-            <tr><td>robots 메타</td><td>index, follow</td><td>noindex가 남아 있으면 색인 자체가 막힙니다</td></tr>
+            <tr><td data-label="태그">title</td><td data-label="권장 길이·형식">18~48자, 핵심 키워드 앞쪽 배치</td><td data-label="빠졌을 때 생기는 일">검색 결과 제목이 본문에서 임의로 잘려 나옵니다</td></tr>
+            <tr><td data-label="태그">description</td><td data-label="권장 길이·형식">70~160자, 글의 답을 요약</td><td data-label="빠졌을 때 생기는 일">설명문이 자동 발췌돼 클릭률이 떨어집니다</td></tr>
+            <tr><td data-label="태그">canonical</td><td data-label="권장 길이·형식">절대경로 1개만</td><td data-label="빠졌을 때 생기는 일">중복 URL로 평가가 나뉩니다</td></tr>
+            <tr><td data-label="태그">Open Graph</td><td data-label="권장 길이·형식">og:title·og:description·og:image</td><td data-label="빠졌을 때 생기는 일">카카오톡·블로그 공유 시 미리보기가 비어 보입니다</td></tr>
+            <tr><td data-label="태그">robots 메타</td><td data-label="권장 길이·형식">index, follow</td><td data-label="빠졌을 때 생기는 일">noindex가 남아 있으면 색인 자체가 막힙니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -168,11 +176,11 @@
             <tr><th>비교 축</th><th>구글 서치콘솔</th><th>네이버 서치어드바이저</th></tr>
           </thead>
           <tbody>
-            <tr><td>주력 제출 방식</td><td>사이트맵 제출 + URL 검사</td><td>사이트맵 제출 + 웹페이지 수집 요청</td></tr>
-            <tr><td>개별 URL 요청</td><td>URL 검사 도구에서 건별 요청</td><td>수집 요청 하루 50건 한도(계정 상황에 따라 다름)</td></tr>
-            <tr><td>자동화</td><td>Indexing API는 채용·라이브 콘텐츠 위주</td><td>수집 요청 API로 발행 직후 자동 제출 가능</td></tr>
-            <tr><td>평균 색인 기간</td><td>보통 1~7일</td><td>보통 3~14일</td></tr>
-            <tr><td>먼저 할 일</td><td>소유권 확인 → 사이트맵 제출</td><td>사이트 등록 → 웹마스터 도구 진단 통과</td></tr>
+            <tr><td data-label="비교 축">주력 제출 방식</td><td data-label="구글 서치콘솔">사이트맵 제출 + URL 검사</td><td data-label="네이버 서치어드바이저">사이트맵 제출 + 웹페이지 수집 요청</td></tr>
+            <tr><td data-label="비교 축">개별 URL 요청</td><td data-label="구글 서치콘솔">URL 검사 도구에서 건별 요청</td><td data-label="네이버 서치어드바이저">수집 요청 하루 50건 한도(계정 상황에 따라 다름)</td></tr>
+            <tr><td data-label="비교 축">자동화</td><td data-label="구글 서치콘솔">Indexing API는 채용·라이브 콘텐츠 위주</td><td data-label="네이버 서치어드바이저">수집 요청 API로 발행 직후 자동 제출 가능</td></tr>
+            <tr><td data-label="비교 축">평균 색인 기간</td><td data-label="구글 서치콘솔">보통 1~7일</td><td data-label="네이버 서치어드바이저">보통 3~14일</td></tr>
+            <tr><td data-label="비교 축">먼저 할 일</td><td data-label="구글 서치콘솔">소유권 확인 → 사이트맵 제출</td><td data-label="네이버 서치어드바이저">사이트 등록 → 웹마스터 도구 진단 통과</td></tr>
           </tbody>
         </table>
       </div>

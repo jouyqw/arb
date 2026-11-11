@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -144,11 +152,11 @@
             <tr><th>증상</th><th>가장 먼저 의심할 지점</th><th>확인 방법</th></tr>
           </thead>
           <tbody>
-            <tr><td>방문은 있는데 몇 초 만에 나감</td><td>첫 화면 메시지</td><td>3초 테스트로 무엇을 파는 곳인지 물어보기</td></tr>
-            <tr><td>끝까지 읽지만 문의는 없음</td><td>신뢰 요소 부족</td><td>후기·사례·담당자 소개가 있는지 세어 보기</td></tr>
-            <tr><td>문의 양식까지 갔다가 이탈</td><td>입력 항목 수</td><td>본인 휴대폰으로 처음부터 끝까지 입력해 보기</td></tr>
-            <tr><td>PC는 문의가 오는데 모바일만 없음</td><td>모바일 화면 구성</td><td>세로 화면에서 버튼 위치와 글씨 크기 확인</td></tr>
-            <tr><td>문의는 오는데 전부 엉뚱한 내용</td><td>유입 검색어·광고 문구</td><td>들어온 검색어와 페이지 첫 문장 대조</td></tr>
+            <tr><td data-label="증상">방문은 있는데 몇 초 만에 나감</td><td data-label="가장 먼저 의심할 지점">첫 화면 메시지</td><td data-label="확인 방법">3초 테스트로 무엇을 파는 곳인지 물어보기</td></tr>
+            <tr><td data-label="증상">끝까지 읽지만 문의는 없음</td><td data-label="가장 먼저 의심할 지점">신뢰 요소 부족</td><td data-label="확인 방법">후기·사례·담당자 소개가 있는지 세어 보기</td></tr>
+            <tr><td data-label="증상">문의 양식까지 갔다가 이탈</td><td data-label="가장 먼저 의심할 지점">입력 항목 수</td><td data-label="확인 방법">본인 휴대폰으로 처음부터 끝까지 입력해 보기</td></tr>
+            <tr><td data-label="증상">PC는 문의가 오는데 모바일만 없음</td><td data-label="가장 먼저 의심할 지점">모바일 화면 구성</td><td data-label="확인 방법">세로 화면에서 버튼 위치와 글씨 크기 확인</td></tr>
+            <tr><td data-label="증상">문의는 오는데 전부 엉뚱한 내용</td><td data-label="가장 먼저 의심할 지점">유입 검색어·광고 문구</td><td data-label="확인 방법">들어온 검색어와 페이지 첫 문장 대조</td></tr>
           </tbody>
         </table>
       </div>
@@ -170,10 +178,10 @@
             <tr><th>점검 항목</th><th>전환을 막는 상태</th><th>개선 방향</th></tr>
           </thead>
           <tbody>
-            <tr><td>첫 화면</td><td>무엇을 하는 곳인지 불명확</td><td>한 문장으로 대상·가치 제시</td></tr>
-            <tr><td>신뢰 요소</td><td>후기·실적 없음</td><td>사례·후기·담당자 소개 배치</td></tr>
-            <tr><td>문의 버튼</td><td>한 곳에만, 애매한 문구</td><td>반복 배치·행동형 문구</td></tr>
-            <tr><td>입력 양식</td><td>항목이 지나치게 많음</td><td>필수 항목만 남겨 단계 축소</td></tr>
+            <tr><td data-label="점검 항목">첫 화면</td><td data-label="전환을 막는 상태">무엇을 하는 곳인지 불명확</td><td data-label="개선 방향">한 문장으로 대상·가치 제시</td></tr>
+            <tr><td data-label="점검 항목">신뢰 요소</td><td data-label="전환을 막는 상태">후기·실적 없음</td><td data-label="개선 방향">사례·후기·담당자 소개 배치</td></tr>
+            <tr><td data-label="점검 항목">문의 버튼</td><td data-label="전환을 막는 상태">한 곳에만, 애매한 문구</td><td data-label="개선 방향">반복 배치·행동형 문구</td></tr>
+            <tr><td data-label="점검 항목">입력 양식</td><td data-label="전환을 막는 상태">항목이 지나치게 많음</td><td data-label="개선 방향">필수 항목만 남겨 단계 축소</td></tr>
           </tbody>
         </table>
       </div>
@@ -197,12 +205,12 @@
             <tr><th>비교 기준</th><th>랜딩페이지 1장</th><th>홈페이지 전체 개편</th></tr>
           </thead>
           <tbody>
-            <tr><td>이럴 때 고릅니다</td><td>광고를 돌리는 중, 1~2개월 안에 문의가 필요할 때</td><td>검색 유입을 6개월 이상 쌓아갈 때</td></tr>
-            <tr><td>보통 걸리는 기간</td><td>1~3주</td><td>4~10주</td></tr>
-            <tr><td>비용 범위</td><td>100만~400만원</td><td>300만~1,500만원</td></tr>
-            <tr><td>수정 부담</td><td>문구·배치를 며칠 안에 바꿀 수 있음</td><td>구조를 건드리면 여러 페이지가 함께 움직임</td></tr>
-            <tr><td>효과가 보이는 시점</td><td>광고를 돌리면 1~2주 안에 반응 확인</td><td>검색 노출이 자리 잡는 데 보통 3~6개월</td></tr>
-            <tr><td>한계</td><td>검색으로는 잘 발견되지 않음</td><td>지금 당장의 문의를 늘리는 데는 느림</td></tr>
+            <tr><td data-label="비교 기준">이럴 때 고릅니다</td><td data-label="랜딩페이지 1장">광고를 돌리는 중, 1~2개월 안에 문의가 필요할 때</td><td data-label="홈페이지 전체 개편">검색 유입을 6개월 이상 쌓아갈 때</td></tr>
+            <tr><td data-label="비교 기준">보통 걸리는 기간</td><td data-label="랜딩페이지 1장">1~3주</td><td data-label="홈페이지 전체 개편">4~10주</td></tr>
+            <tr><td data-label="비교 기준">비용 범위</td><td data-label="랜딩페이지 1장">100만~400만원</td><td data-label="홈페이지 전체 개편">300만~1,500만원</td></tr>
+            <tr><td data-label="비교 기준">수정 부담</td><td data-label="랜딩페이지 1장">문구·배치를 며칠 안에 바꿀 수 있음</td><td data-label="홈페이지 전체 개편">구조를 건드리면 여러 페이지가 함께 움직임</td></tr>
+            <tr><td data-label="비교 기준">효과가 보이는 시점</td><td data-label="랜딩페이지 1장">광고를 돌리면 1~2주 안에 반응 확인</td><td data-label="홈페이지 전체 개편">검색 노출이 자리 잡는 데 보통 3~6개월</td></tr>
+            <tr><td data-label="비교 기준">한계</td><td data-label="랜딩페이지 1장">검색으로는 잘 발견되지 않음</td><td data-label="홈페이지 전체 개편">지금 당장의 문의를 늘리는 데는 느림</td></tr>
           </tbody>
         </table>
       </div>
@@ -217,11 +225,11 @@
             <tr><th>작업 범위</th><th>보통 걸리는 기간</th><th>비용 범위</th></tr>
           </thead>
           <tbody>
-            <tr><td>첫 화면 문구·버튼 정리</td><td>3일~2주</td><td>30만~100만원</td></tr>
-            <tr><td>문의 양식 축소·2단계 전환</td><td>3일~2주</td><td>20만~80만원</td></tr>
-            <tr><td>후기·사례 섹션 추가</td><td>1~3주</td><td>50만~200만원</td></tr>
-            <tr><td>모바일 화면 전면 정리</td><td>1~3주</td><td>80만~300만원</td></tr>
-            <tr><td>랜딩페이지 신규 제작</td><td>2~5주</td><td>150만~500만원</td></tr>
+            <tr><td data-label="작업 범위">첫 화면 문구·버튼 정리</td><td data-label="보통 걸리는 기간">3일~2주</td><td data-label="비용 범위">30만~100만원</td></tr>
+            <tr><td data-label="작업 범위">문의 양식 축소·2단계 전환</td><td data-label="보통 걸리는 기간">3일~2주</td><td data-label="비용 범위">20만~80만원</td></tr>
+            <tr><td data-label="작업 범위">후기·사례 섹션 추가</td><td data-label="보통 걸리는 기간">1~3주</td><td data-label="비용 범위">50만~200만원</td></tr>
+            <tr><td data-label="작업 범위">모바일 화면 전면 정리</td><td data-label="보통 걸리는 기간">1~3주</td><td data-label="비용 범위">80만~300만원</td></tr>
+            <tr><td data-label="작업 범위">랜딩페이지 신규 제작</td><td data-label="보통 걸리는 기간">2~5주</td><td data-label="비용 범위">150만~500만원</td></tr>
           </tbody>
         </table>
       </div>

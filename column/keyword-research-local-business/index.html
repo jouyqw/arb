@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -148,11 +156,11 @@
             <tr><th>확인할 곳</th><th>무엇을 얻나요</th><th>걸리는 시간</th></tr>
           </thead>
           <tbody>
-            <tr><td>최근 3~6개월 상담·문의 기록</td><td>고객이 실제로 쓴 단어와 말투, 반복되는 질문 5~10개</td><td>1~2시간</td></tr>
-            <tr><td>검색창 자동완성</td><td>업종명 뒤에 붙는 말, 지역명과의 조합 후보</td><td>20~30분</td></tr>
-            <tr><td>검색 결과 아래 연관 검색어</td><td>함께 검색되는 주변 주제, 다음 칼럼 소재</td><td>20~30분</td></tr>
-            <tr><td>네이버 검색광고 키워드 도구(무료)</td><td>월간 검색수 대략치와 경쟁 정도 참고값</td><td>30~60분</td></tr>
-            <tr><td>구글 서치콘솔 검색어 보고서</td><td>이미 우리 홈페이지가 노출된 실제 검색어</td><td>30분</td></tr>
+            <tr><td data-label="확인할 곳">최근 3~6개월 상담·문의 기록</td><td data-label="무엇을 얻나요">고객이 실제로 쓴 단어와 말투, 반복되는 질문 5~10개</td><td data-label="걸리는 시간">1~2시간</td></tr>
+            <tr><td data-label="확인할 곳">검색창 자동완성</td><td data-label="무엇을 얻나요">업종명 뒤에 붙는 말, 지역명과의 조합 후보</td><td data-label="걸리는 시간">20~30분</td></tr>
+            <tr><td data-label="확인할 곳">검색 결과 아래 연관 검색어</td><td data-label="무엇을 얻나요">함께 검색되는 주변 주제, 다음 칼럼 소재</td><td data-label="걸리는 시간">20~30분</td></tr>
+            <tr><td data-label="확인할 곳">네이버 검색광고 키워드 도구(무료)</td><td data-label="무엇을 얻나요">월간 검색수 대략치와 경쟁 정도 참고값</td><td data-label="걸리는 시간">30~60분</td></tr>
+            <tr><td data-label="확인할 곳">구글 서치콘솔 검색어 보고서</td><td data-label="무엇을 얻나요">이미 우리 홈페이지가 노출된 실제 검색어</td><td data-label="걸리는 시간">30분</td></tr>
           </tbody>
         </table>
       </div>
@@ -166,13 +174,13 @@
             <tr><th>구분</th><th>넓은 키워드</th><th>구체적 키워드</th></tr>
           </thead>
           <tbody>
-            <tr><td>예시</td><td>인테리어</td><td>전주 상가 인테리어 비용</td></tr>
-            <tr><td>검색량</td><td>많음</td><td>적음</td></tr>
-            <tr><td>경쟁</td><td>치열</td><td>상대적으로 낮음</td></tr>
-            <tr><td>문의 전환</td><td>낮은 편</td><td>높은 편</td></tr>
-            <tr><td>노출까지 걸리는 기간</td><td>6개월 이상 보는 편</td><td>2주~3개월</td></tr>
-            <tr><td>배치할 자리</td><td>메인·서비스 소개 페이지</td><td>칼럼·사례·FAQ 페이지</td></tr>
-            <tr><td>먼저 잡을 시점</td><td>콘텐츠 20편 이상 쌓인 뒤</td><td>시작 단계부터</td></tr>
+            <tr><td data-label="구분">예시</td><td data-label="넓은 키워드">인테리어</td><td data-label="구체적 키워드">전주 상가 인테리어 비용</td></tr>
+            <tr><td data-label="구분">검색량</td><td data-label="넓은 키워드">많음</td><td data-label="구체적 키워드">적음</td></tr>
+            <tr><td data-label="구분">경쟁</td><td data-label="넓은 키워드">치열</td><td data-label="구체적 키워드">상대적으로 낮음</td></tr>
+            <tr><td data-label="구분">문의 전환</td><td data-label="넓은 키워드">낮은 편</td><td data-label="구체적 키워드">높은 편</td></tr>
+            <tr><td data-label="구분">노출까지 걸리는 기간</td><td data-label="넓은 키워드">6개월 이상 보는 편</td><td data-label="구체적 키워드">2주~3개월</td></tr>
+            <tr><td data-label="구분">배치할 자리</td><td data-label="넓은 키워드">메인·서비스 소개 페이지</td><td data-label="구체적 키워드">칼럼·사례·FAQ 페이지</td></tr>
+            <tr><td data-label="구분">먼저 잡을 시점</td><td data-label="넓은 키워드">콘텐츠 20편 이상 쌓인 뒤</td><td data-label="구체적 키워드">시작 단계부터</td></tr>
           </tbody>
         </table>
       </div>
@@ -197,12 +205,12 @@
             <tr><th>판단 항목</th><th>먼저 잡을 키워드</th><th>나중으로 미룰 키워드</th></tr>
           </thead>
           <tbody>
-            <tr><td>검색한 사람의 상태</td><td>비용·후기·상담을 찾는 단계</td><td>용어 뜻만 알아보는 단계</td></tr>
-            <tr><td>지역 범위</td><td>우리가 실제로 방문·시공하는 지역</td><td>출장이 어려운 먼 지역</td></tr>
-            <tr><td>검색 결과 첫 화면</td><td>광고와 대형 업체가 적고 블로그·업체 글이 보임</td><td>광고 5개 이상, 포털 서비스가 화면을 채움</td></tr>
-            <tr><td>쓸 내용</td><td>사례·견적·시공 사진이 이미 있음</td><td>직접 경험이 없어 일반론만 가능</td></tr>
-            <tr><td>월간 검색수(참고)</td><td>50~1,000회 사이</td><td>10회 미만 또는 1만 회 이상</td></tr>
-            <tr><td>문의 기록</td><td>상담에서 같은 표현이 2회 이상 나옴</td><td>한 번도 들은 적 없는 표현</td></tr>
+            <tr><td data-label="판단 항목">검색한 사람의 상태</td><td data-label="먼저 잡을 키워드">비용·후기·상담을 찾는 단계</td><td data-label="나중으로 미룰 키워드">용어 뜻만 알아보는 단계</td></tr>
+            <tr><td data-label="판단 항목">지역 범위</td><td data-label="먼저 잡을 키워드">우리가 실제로 방문·시공하는 지역</td><td data-label="나중으로 미룰 키워드">출장이 어려운 먼 지역</td></tr>
+            <tr><td data-label="판단 항목">검색 결과 첫 화면</td><td data-label="먼저 잡을 키워드">광고와 대형 업체가 적고 블로그·업체 글이 보임</td><td data-label="나중으로 미룰 키워드">광고 5개 이상, 포털 서비스가 화면을 채움</td></tr>
+            <tr><td data-label="판단 항목">쓸 내용</td><td data-label="먼저 잡을 키워드">사례·견적·시공 사진이 이미 있음</td><td data-label="나중으로 미룰 키워드">직접 경험이 없어 일반론만 가능</td></tr>
+            <tr><td data-label="판단 항목">월간 검색수(참고)</td><td data-label="먼저 잡을 키워드">50~1,000회 사이</td><td data-label="나중으로 미룰 키워드">10회 미만 또는 1만 회 이상</td></tr>
+            <tr><td data-label="판단 항목">문의 기록</td><td data-label="먼저 잡을 키워드">상담에서 같은 표현이 2회 이상 나옴</td><td data-label="나중으로 미룰 키워드">한 번도 들은 적 없는 표현</td></tr>
           </tbody>
         </table>
       </div>

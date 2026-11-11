@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -131,17 +139,17 @@
       <p>중심 상권과 아파트 밀집지가 서로 반대 방향으로 붙어 있어서 갈립니다. 익산은 영등동·부송동·모현동과 익산역 축으로 모이고, 군산은 수송동·나운동·조촌동 축으로 모입니다.</p>
       <p>두 축 사이는 차로 30~40분이고, 중간에 환자를 끌어올 만한 밀집지가 거의 없습니다. 그래서 &#39;익산과 군산 사이&#39;를 노리는 광고는 걸 자리가 없습니다.</p>
       <p>저는 상담에서 이 표를 펼쳐 놓고 어느 칸이 우리 병원 이야기인지 먼저 표시하게 합니다. 아래 금액과 기간은 지역 치과 기준으로 흔히 갈리는 범위이니, 실제 숫자로 바꿔 쓰시면 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>확인할 것</th><th>익산 쪽</th><th>군산 쪽</th><th>광고에서 바꿀 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>환자가 모이는 축</td><td>영등동·부송동·모현동, 익산역 주변</td><td>수송동·나운동·조촌동</td><td>동 이름 키워드를 축별로 따로 담습니다</td></tr>
-            <tr><td>검색창에 치는 말</td><td>익산치과, 영등동치과, 익산역치과</td><td>군산치과, 수송동치과, 나운동치과</td><td>같은 그룹에 두 시 지명을 섞지 않습니다</td></tr>
-            <tr><td>상대 시에서 넘어오는 비중</td><td>내원 100건 중 몇 건인지 세어 확인</td><td>같은 방식으로 세어 확인</td><td>10건 미만이면 그룹을 나누고 예산을 낮춥니다</td></tr>
-            <tr><td>내원 반경 감각</td><td>일반 진료 10~15분, 임플란트·교정 20~40분</td><td>동일하게 적용</td><td>반경 밖 지역은 노출에서 제외합니다</td></tr>
-            <tr><td>플레이스 등록</td><td>사업장 1곳당 1개</td><td>사업장 1곳당 1개</td><td>없는 지점을 만들지 않습니다</td></tr>
+            <tr><td data-label="확인할 것">환자가 모이는 축</td><td data-label="익산 쪽">영등동·부송동·모현동, 익산역 주변</td><td data-label="군산 쪽">수송동·나운동·조촌동</td><td data-label="광고에서 바꿀 것">동 이름 키워드를 축별로 따로 담습니다</td></tr>
+            <tr><td data-label="확인할 것">검색창에 치는 말</td><td data-label="익산 쪽">익산치과, 영등동치과, 익산역치과</td><td data-label="군산 쪽">군산치과, 수송동치과, 나운동치과</td><td data-label="광고에서 바꿀 것">같은 그룹에 두 시 지명을 섞지 않습니다</td></tr>
+            <tr><td data-label="확인할 것">상대 시에서 넘어오는 비중</td><td data-label="익산 쪽">내원 100건 중 몇 건인지 세어 확인</td><td data-label="군산 쪽">같은 방식으로 세어 확인</td><td data-label="광고에서 바꿀 것">10건 미만이면 그룹을 나누고 예산을 낮춥니다</td></tr>
+            <tr><td data-label="확인할 것">내원 반경 감각</td><td data-label="익산 쪽">일반 진료 10~15분, 임플란트·교정 20~40분</td><td data-label="군산 쪽">동일하게 적용</td><td data-label="광고에서 바꿀 것">반경 밖 지역은 노출에서 제외합니다</td></tr>
+            <tr><td data-label="확인할 것">플레이스 등록</td><td data-label="익산 쪽">사업장 1곳당 1개</td><td data-label="군산 쪽">사업장 1곳당 1개</td><td data-label="광고에서 바꿀 것">없는 지점을 만들지 않습니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -157,10 +165,10 @@
             <tr><th>매체</th><th>끊을 수 있는 단위</th><th>실무에서 쓰는 방식</th></tr>
           </thead>
           <tbody>
-            <tr><td>네이버 검색광고</td><td>광고그룹별 시·군·구 지정</td><td>익산용·군산용 그룹을 분리하고 예산을 따로 잡습니다</td></tr>
-            <tr><td>네이버 플레이스광고</td><td>사업장 위치 기준 노출</td><td>지점이 없는 시에는 만들 수 없습니다. 정보 항목과 사진을 채우는 쪽으로 씁니다</td></tr>
-            <tr><td>구글 애즈</td><td>사업장 기준 반경(km)과 지역 제외</td><td>내원 반경대로 반경을 걸고, 반경 밖 행정구역은 제외합니다</td></tr>
-            <tr><td>홈페이지 페이지 구성</td><td>페이지 단위</td><td>지점이 1곳이면 나누지 않고, 오는 길 안내만 방향별로 둡니다</td></tr>
+            <tr><td data-label="매체">네이버 검색광고</td><td data-label="끊을 수 있는 단위">광고그룹별 시·군·구 지정</td><td data-label="실무에서 쓰는 방식">익산용·군산용 그룹을 분리하고 예산을 따로 잡습니다</td></tr>
+            <tr><td data-label="매체">네이버 플레이스광고</td><td data-label="끊을 수 있는 단위">사업장 위치 기준 노출</td><td data-label="실무에서 쓰는 방식">지점이 없는 시에는 만들 수 없습니다. 정보 항목과 사진을 채우는 쪽으로 씁니다</td></tr>
+            <tr><td data-label="매체">구글 애즈</td><td data-label="끊을 수 있는 단위">사업장 기준 반경(km)과 지역 제외</td><td data-label="실무에서 쓰는 방식">내원 반경대로 반경을 걸고, 반경 밖 행정구역은 제외합니다</td></tr>
+            <tr><td data-label="매체">홈페이지 페이지 구성</td><td data-label="끊을 수 있는 단위">페이지 단위</td><td data-label="실무에서 쓰는 방식">지점이 1곳이면 나누지 않고, 오는 길 안내만 방향별로 둡니다</td></tr>
           </tbody>
         </table>
       </div>

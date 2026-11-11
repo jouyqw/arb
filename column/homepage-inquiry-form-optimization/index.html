@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -136,10 +144,10 @@
             <tr><th>전체 항목 수</th><th>체감 입력 시간</th><th>대체로 맞는 경우</th></tr>
           </thead>
           <tbody>
-            <tr><td>2~3개</td><td>15초 이내</td><td>광고 유입 랜딩, 단가가 명확한 상품</td></tr>
-            <tr><td>3~4개</td><td>30초 안팎</td><td>대부분의 상담형 업종 기본값</td></tr>
-            <tr><td>5~6개</td><td>1분 안팎</td><td>견적 범위가 넓어 사전 구분이 필요한 경우</td></tr>
-            <tr><td>7개 이상</td><td>1분 초과</td><td>이미 신뢰가 쌓인 재방문·회원 전용 신청</td></tr>
+            <tr><td data-label="전체 항목 수">2~3개</td><td data-label="체감 입력 시간">15초 이내</td><td data-label="대체로 맞는 경우">광고 유입 랜딩, 단가가 명확한 상품</td></tr>
+            <tr><td data-label="전체 항목 수">3~4개</td><td data-label="체감 입력 시간">30초 안팎</td><td data-label="대체로 맞는 경우">대부분의 상담형 업종 기본값</td></tr>
+            <tr><td data-label="전체 항목 수">5~6개</td><td data-label="체감 입력 시간">1분 안팎</td><td data-label="대체로 맞는 경우">견적 범위가 넓어 사전 구분이 필요한 경우</td></tr>
+            <tr><td data-label="전체 항목 수">7개 이상</td><td data-label="체감 입력 시간">1분 초과</td><td data-label="대체로 맞는 경우">이미 신뢰가 쌓인 재방문·회원 전용 신청</td></tr>
           </tbody>
         </table>
       </div>
@@ -159,10 +167,10 @@
             <tr><th>구분</th><th>항목 많은 폼</th><th>항목 적은 폼</th></tr>
           </thead>
           <tbody>
-            <tr><td>입력 부담</td><td>큼</td><td>작음</td></tr>
-            <tr><td>이탈률</td><td>높은 편</td><td>낮은 편</td></tr>
-            <tr><td>문의 수</td><td>적어지기 쉬움</td><td>늘어나기 쉬움</td></tr>
-            <tr><td>부족한 정보</td><td>거의 없음</td><td>상담에서 보완</td></tr>
+            <tr><td data-label="구분">입력 부담</td><td data-label="항목 많은 폼">큼</td><td data-label="항목 적은 폼">작음</td></tr>
+            <tr><td data-label="구분">이탈률</td><td data-label="항목 많은 폼">높은 편</td><td data-label="항목 적은 폼">낮은 편</td></tr>
+            <tr><td data-label="구분">문의 수</td><td data-label="항목 많은 폼">적어지기 쉬움</td><td data-label="항목 적은 폼">늘어나기 쉬움</td></tr>
+            <tr><td data-label="구분">부족한 정보</td><td data-label="항목 많은 폼">거의 없음</td><td data-label="항목 적은 폼">상담에서 보완</td></tr>
           </tbody>
         </table>
       </div>
@@ -176,12 +184,12 @@
             <tr><th>판단 기준</th><th>단축 폼(3~4개, 1단계)</th><th>2단계 폼(1단계 2개 + 2단계 3~4개)</th></tr>
           </thead>
           <tbody>
-            <tr><td>맞는 상황</td><td>문의 수 자체가 부족할 때</td><td>문의는 오지만 상담 대상이 안 맞을 때</td></tr>
-            <tr><td>일 문의량 기준</td><td>하루 0~3건</td><td>하루 5건 이상, 선별이 필요할 때</td></tr>
-            <tr><td>구축 기간</td><td>3일~1주</td><td>1~3주</td></tr>
-            <tr><td>비용 범위</td><td>20만~80만원</td><td>50만~200만원</td></tr>
-            <tr><td>장점</td><td>만들기 쉽고 이탈이 가장 적음</td><td>연락처를 먼저 확보하고 정보도 받음</td></tr>
-            <tr><td>주의할 점</td><td>상담 전 정보가 거의 없음</td><td>2단계가 길어지면 이탈이 다시 늘어남</td></tr>
+            <tr><td data-label="판단 기준">맞는 상황</td><td data-label="단축 폼(3~4개, 1단계)">문의 수 자체가 부족할 때</td><td data-label="2단계 폼(1단계 2개 + 2단계 3~4개)">문의는 오지만 상담 대상이 안 맞을 때</td></tr>
+            <tr><td data-label="판단 기준">일 문의량 기준</td><td data-label="단축 폼(3~4개, 1단계)">하루 0~3건</td><td data-label="2단계 폼(1단계 2개 + 2단계 3~4개)">하루 5건 이상, 선별이 필요할 때</td></tr>
+            <tr><td data-label="판단 기준">구축 기간</td><td data-label="단축 폼(3~4개, 1단계)">3일~1주</td><td data-label="2단계 폼(1단계 2개 + 2단계 3~4개)">1~3주</td></tr>
+            <tr><td data-label="판단 기준">비용 범위</td><td data-label="단축 폼(3~4개, 1단계)">20만~80만원</td><td data-label="2단계 폼(1단계 2개 + 2단계 3~4개)">50만~200만원</td></tr>
+            <tr><td data-label="판단 기준">장점</td><td data-label="단축 폼(3~4개, 1단계)">만들기 쉽고 이탈이 가장 적음</td><td data-label="2단계 폼(1단계 2개 + 2단계 3~4개)">연락처를 먼저 확보하고 정보도 받음</td></tr>
+            <tr><td data-label="판단 기준">주의할 점</td><td data-label="단축 폼(3~4개, 1단계)">상담 전 정보가 거의 없음</td><td data-label="2단계 폼(1단계 2개 + 2단계 3~4개)">2단계가 길어지면 이탈이 다시 늘어남</td></tr>
           </tbody>
         </table>
       </div>

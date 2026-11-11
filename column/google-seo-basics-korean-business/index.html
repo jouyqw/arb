@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -134,12 +142,12 @@
             <tr><th>비교 축</th><th>네이버</th><th>구글</th></tr>
           </thead>
           <tbody>
-            <tr><td>평가 단위</td><td>블로그·플레이스 등 채널 단위</td><td>홈페이지 페이지 단위</td></tr>
-            <tr><td>주로 잡히는 시점</td><td>지역 검색·즉시 결정 단계</td><td>정보 탐색·업체 비교 단계</td></tr>
-            <tr><td>효과 체감 시점</td><td>보통 1~2개월</td><td>보통 3~6개월</td></tr>
-            <tr><td>콘텐츠 수명</td><td>최신 글 위주, 밀리면 노출이 줄어듦</td><td>잘 만든 페이지 1개가 1~3년 작동</td></tr>
-            <tr><td>필수 등록처</td><td>네이버 서치어드바이저</td><td>구글 서치콘솔</td></tr>
-            <tr><td>먼저 챙길 업종</td><td>음식점·미용·지역 생활 서비스</td><td>전문직·B2B·검토 기간이 긴 업종</td></tr>
+            <tr><td data-label="비교 축">평가 단위</td><td data-label="네이버">블로그·플레이스 등 채널 단위</td><td data-label="구글">홈페이지 페이지 단위</td></tr>
+            <tr><td data-label="비교 축">주로 잡히는 시점</td><td data-label="네이버">지역 검색·즉시 결정 단계</td><td data-label="구글">정보 탐색·업체 비교 단계</td></tr>
+            <tr><td data-label="비교 축">효과 체감 시점</td><td data-label="네이버">보통 1~2개월</td><td data-label="구글">보통 3~6개월</td></tr>
+            <tr><td data-label="비교 축">콘텐츠 수명</td><td data-label="네이버">최신 글 위주, 밀리면 노출이 줄어듦</td><td data-label="구글">잘 만든 페이지 1개가 1~3년 작동</td></tr>
+            <tr><td data-label="비교 축">필수 등록처</td><td data-label="네이버">네이버 서치어드바이저</td><td data-label="구글">구글 서치콘솔</td></tr>
+            <tr><td data-label="비교 축">먼저 챙길 업종</td><td data-label="네이버">음식점·미용·지역 생활 서비스</td><td data-label="구글">전문직·B2B·검토 기간이 긴 업종</td></tr>
           </tbody>
         </table>
       </div>
@@ -158,17 +166,17 @@
       <p>문의로 바로 이어지는 페이지부터 손봅니다. 서비스 소개 페이지 → 가격·절차 페이지 → 사례 페이지 → 칼럼 순서가 일반적입니다.</p>
       <p>홈 화면부터 완벽하게 고치려다 6개월이 지나가는 경우가 많습니다. 문의 버튼이 붙어 있는 페이지 3~5개를 먼저 정리하는 편이 회수가 빠릅니다.</p>
       <p>그래서 저는 홈 화면 디자인 이야기가 먼저 나오면 한 번 말려 봅니다. 홈은 브랜드 검색으로 들어오는 자리라 순위 영향이 가장 적은데 손은 가장 많이 가고, 여기에 두 달을 쓰면 정작 문의를 받는 페이지 다섯 개가 그대로 남습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>페이지 유형</th><th>손보는 순서</th><th>작업 시간(1개 기준)</th><th>기대 효과</th></tr>
           </thead>
           <tbody>
-            <tr><td>서비스 소개</td><td>1순위</td><td>2~4시간</td><td>핵심 검색어 노출과 문의 전환이 함께 움직입니다</td></tr>
-            <tr><td>가격·절차 안내</td><td>2순위</td><td>2~3시간</td><td>&quot;비용&quot;, &quot;절차&quot; 검색을 잡아 비교 단계 고객이 들어옵니다</td></tr>
-            <tr><td>사례·후기</td><td>3순위</td><td>1~2시간</td><td>신뢰 신호가 쌓여 체류 시간과 재방문이 늘어납니다</td></tr>
-            <tr><td>칼럼·블로그</td><td>4순위</td><td>3~5시간</td><td>3~6개월 뒤부터 긴 검색어 유입이 누적됩니다</td></tr>
-            <tr><td>회사 소개</td><td>5순위</td><td>1시간</td><td>직접 유입은 적지만 브랜드 검색에서 신뢰를 보완합니다</td></tr>
+            <tr><td data-label="페이지 유형">서비스 소개</td><td data-label="손보는 순서">1순위</td><td data-label="작업 시간(1개 기준)">2~4시간</td><td data-label="기대 효과">핵심 검색어 노출과 문의 전환이 함께 움직입니다</td></tr>
+            <tr><td data-label="페이지 유형">가격·절차 안내</td><td data-label="손보는 순서">2순위</td><td data-label="작업 시간(1개 기준)">2~3시간</td><td data-label="기대 효과">&quot;비용&quot;, &quot;절차&quot; 검색을 잡아 비교 단계 고객이 들어옵니다</td></tr>
+            <tr><td data-label="페이지 유형">사례·후기</td><td data-label="손보는 순서">3순위</td><td data-label="작업 시간(1개 기준)">1~2시간</td><td data-label="기대 효과">신뢰 신호가 쌓여 체류 시간과 재방문이 늘어납니다</td></tr>
+            <tr><td data-label="페이지 유형">칼럼·블로그</td><td data-label="손보는 순서">4순위</td><td data-label="작업 시간(1개 기준)">3~5시간</td><td data-label="기대 효과">3~6개월 뒤부터 긴 검색어 유입이 누적됩니다</td></tr>
+            <tr><td data-label="페이지 유형">회사 소개</td><td data-label="손보는 순서">5순위</td><td data-label="작업 시간(1개 기준)">1시간</td><td data-label="기대 효과">직접 유입은 적지만 브랜드 검색에서 신뢰를 보완합니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -207,17 +215,17 @@
       <h2>비용은 어느 정도로 잡아야 하나요?</h2>
       <p>직접 하면 서치콘솔 등록과 제목 정비는 비용 없이 시간만 들이면 됩니다. 외주로 맡길 경우 초기 구조 개선은 100만~300만원, 콘텐츠는 1편당 10만~30만원 선에서 제안받는 경우가 많습니다.</p>
       <p>금액은 페이지 수, 업종 경쟁도, 기존 사이트 상태에 따라 크게 달라집니다. 아래는 예산을 나눠 볼 때 참고할 수 있는 대략적인 범위이며, 저는 견적을 비교하는 기준선으로만 쓰시길 권합니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>항목</th><th>직접 할 때</th><th>외주 비용 범위(월 또는 건당)</th><th>권장 시점</th></tr>
           </thead>
           <tbody>
-            <tr><td>서치콘솔·사이트맵 세팅</td><td>1~2시간</td><td>건당 10만~30만원</td><td>가장 먼저</td></tr>
-            <tr><td>제목·설명 전면 정비</td><td>페이지당 20~30분</td><td>건당 50만~150만원</td><td>1개월 차</td></tr>
-            <tr><td>모바일 속도 개선</td><td>난이도 높음</td><td>건당 50만~200만원</td><td>1~2개월 차</td></tr>
-            <tr><td>칼럼 콘텐츠 제작</td><td>1편당 3~5시간</td><td>1편당 10만~30만원</td><td>2개월 차부터 매월</td></tr>
-            <tr><td>월 운영·리포트</td><td>월 2~3시간</td><td>월 50만~200만원</td><td>3개월 차 이후</td></tr>
+            <tr><td data-label="항목">서치콘솔·사이트맵 세팅</td><td data-label="직접 할 때">1~2시간</td><td data-label="외주 비용 범위(월 또는 건당)">건당 10만~30만원</td><td data-label="권장 시점">가장 먼저</td></tr>
+            <tr><td data-label="항목">제목·설명 전면 정비</td><td data-label="직접 할 때">페이지당 20~30분</td><td data-label="외주 비용 범위(월 또는 건당)">건당 50만~150만원</td><td data-label="권장 시점">1개월 차</td></tr>
+            <tr><td data-label="항목">모바일 속도 개선</td><td data-label="직접 할 때">난이도 높음</td><td data-label="외주 비용 범위(월 또는 건당)">건당 50만~200만원</td><td data-label="권장 시점">1~2개월 차</td></tr>
+            <tr><td data-label="항목">칼럼 콘텐츠 제작</td><td data-label="직접 할 때">1편당 3~5시간</td><td data-label="외주 비용 범위(월 또는 건당)">1편당 10만~30만원</td><td data-label="권장 시점">2개월 차부터 매월</td></tr>
+            <tr><td data-label="항목">월 운영·리포트</td><td data-label="직접 할 때">월 2~3시간</td><td data-label="외주 비용 범위(월 또는 건당)">월 50만~200만원</td><td data-label="권장 시점">3개월 차 이후</td></tr>
           </tbody>
         </table>
       </div>
@@ -236,12 +244,12 @@
             <tr><th>비교 축</th><th>검색광고</th><th>구글 SEO</th></tr>
           </thead>
           <tbody>
-            <tr><td>첫 문의까지</td><td>당일~3일</td><td>보통 3~6개월</td></tr>
-            <tr><td>비용 성격</td><td>매월 나가는 소모성 지출</td><td>초기 투자 후 누적되는 자산</td></tr>
-            <tr><td>중단 시</td><td>노출이 즉시 0에 수렴</td><td>기존 페이지는 계속 노출 유지</td></tr>
-            <tr><td>적합한 상황</td><td>신규 오픈·성수기·단기 프로모션</td><td>검토 기간이 길고 반복 문의가 있는 업종</td></tr>
-            <tr><td>초기 3개월 배분</td><td>예산의 60~70%</td><td>예산의 30~40%</td></tr>
-            <tr><td>12개월 차 배분</td><td>예산의 30~50%</td><td>예산의 50~70%</td></tr>
+            <tr><td data-label="비교 축">첫 문의까지</td><td data-label="검색광고">당일~3일</td><td data-label="구글 SEO">보통 3~6개월</td></tr>
+            <tr><td data-label="비교 축">비용 성격</td><td data-label="검색광고">매월 나가는 소모성 지출</td><td data-label="구글 SEO">초기 투자 후 누적되는 자산</td></tr>
+            <tr><td data-label="비교 축">중단 시</td><td data-label="검색광고">노출이 즉시 0에 수렴</td><td data-label="구글 SEO">기존 페이지는 계속 노출 유지</td></tr>
+            <tr><td data-label="비교 축">적합한 상황</td><td data-label="검색광고">신규 오픈·성수기·단기 프로모션</td><td data-label="구글 SEO">검토 기간이 길고 반복 문의가 있는 업종</td></tr>
+            <tr><td data-label="비교 축">초기 3개월 배분</td><td data-label="검색광고">예산의 60~70%</td><td data-label="구글 SEO">예산의 30~40%</td></tr>
+            <tr><td data-label="비교 축">12개월 차 배분</td><td data-label="검색광고">예산의 30~50%</td><td data-label="구글 SEO">예산의 50~70%</td></tr>
           </tbody>
         </table>
       </div>

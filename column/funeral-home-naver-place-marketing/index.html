@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -138,12 +146,12 @@
             <tr><th>점검 항목</th><th>확인 내용</th><th>자주 발견되는 문제</th></tr>
           </thead>
           <tbody>
-            <tr><td>상호명</td><td>실제 간판과 검색 등록명이 일치해야 합니다</td><td>법인명과 시설명이 섞여 채널마다 다르게 표기됨</td></tr>
-            <tr><td>대표 전화</td><td>바로 상담 가능한 번호를 등록해야 합니다</td><td>광고용 번호나 해지된 번호가 남아 있음</td></tr>
-            <tr><td>주소</td><td>지도 위치와 주차장 안내가 정확해야 합니다</td><td>지번 주소와 도로명 주소가 혼용되고 층수 누락</td></tr>
-            <tr><td>사진</td><td>빈소, 접객실, 주차장, 외관 사진을 정리해야 합니다</td><td>사진 5장 미만, 촬영 시점이 3년 이상 지남</td></tr>
-            <tr><td>홈페이지 링크</td><td>상세 안내 페이지로 자연스럽게 연결해야 합니다</td><td>폐쇄된 도메인이나 블로그 주소가 등록됨</td></tr>
-            <tr><td>운영 정보</td><td>24시간 운영이면 세 채널 모두 24시간으로 맞춥니다</td><td>영업시간이 09~18시로 등록되어 야간 문의가 끊김</td></tr>
+            <tr><td data-label="점검 항목">상호명</td><td data-label="확인 내용">실제 간판과 검색 등록명이 일치해야 합니다</td><td data-label="자주 발견되는 문제">법인명과 시설명이 섞여 채널마다 다르게 표기됨</td></tr>
+            <tr><td data-label="점검 항목">대표 전화</td><td data-label="확인 내용">바로 상담 가능한 번호를 등록해야 합니다</td><td data-label="자주 발견되는 문제">광고용 번호나 해지된 번호가 남아 있음</td></tr>
+            <tr><td data-label="점검 항목">주소</td><td data-label="확인 내용">지도 위치와 주차장 안내가 정확해야 합니다</td><td data-label="자주 발견되는 문제">지번 주소와 도로명 주소가 혼용되고 층수 누락</td></tr>
+            <tr><td data-label="점검 항목">사진</td><td data-label="확인 내용">빈소, 접객실, 주차장, 외관 사진을 정리해야 합니다</td><td data-label="자주 발견되는 문제">사진 5장 미만, 촬영 시점이 3년 이상 지남</td></tr>
+            <tr><td data-label="점검 항목">홈페이지 링크</td><td data-label="확인 내용">상세 안내 페이지로 자연스럽게 연결해야 합니다</td><td data-label="자주 발견되는 문제">폐쇄된 도메인이나 블로그 주소가 등록됨</td></tr>
+            <tr><td data-label="점검 항목">운영 정보</td><td data-label="확인 내용">24시간 운영이면 세 채널 모두 24시간으로 맞춥니다</td><td data-label="자주 발견되는 문제">영업시간이 09~18시로 등록되어 야간 문의가 끊김</td></tr>
           </tbody>
         </table>
       </div>
@@ -160,10 +168,10 @@
             <tr><th>정보</th><th>왜 중요한가</th><th>숫자로 적을 항목</th></tr>
           </thead>
           <tbody>
-            <tr><td>시설 안내</td><td>고객이 방문 전 규모와 환경을 판단합니다</td><td>빈소 수, 접객실 좌석 수, 안치실 규모</td></tr>
-            <tr><td>장례 절차</td><td>처음 이용하는 고객의 불안을 줄여줍니다</td><td>임종부터 발인까지 3일 흐름을 4~6단계로</td></tr>
-            <tr><td>주차 안내</td><td>방문객이 많은 업종이라 필수 정보입니다</td><td>주차 대수, 인근 추가 주차장까지 거리</td></tr>
-            <tr><td>전화 상담</td><td>빠른 결정이 필요한 고객을 놓치지 않습니다</td><td>대표번호 1개, 24시간 응대 여부</td></tr>
+            <tr><td data-label="정보">시설 안내</td><td data-label="왜 중요한가">고객이 방문 전 규모와 환경을 판단합니다</td><td data-label="숫자로 적을 항목">빈소 수, 접객실 좌석 수, 안치실 규모</td></tr>
+            <tr><td data-label="정보">장례 절차</td><td data-label="왜 중요한가">처음 이용하는 고객의 불안을 줄여줍니다</td><td data-label="숫자로 적을 항목">임종부터 발인까지 3일 흐름을 4~6단계로</td></tr>
+            <tr><td data-label="정보">주차 안내</td><td data-label="왜 중요한가">방문객이 많은 업종이라 필수 정보입니다</td><td data-label="숫자로 적을 항목">주차 대수, 인근 추가 주차장까지 거리</td></tr>
+            <tr><td data-label="정보">전화 상담</td><td data-label="왜 중요한가">빠른 결정이 필요한 고객을 놓치지 않습니다</td><td data-label="숫자로 적을 항목">대표번호 1개, 24시간 응대 여부</td></tr>
           </tbody>
         </table>
       </div>
@@ -179,13 +187,13 @@
             <tr><th>비교 기준</th><th>네이버 플레이스</th><th>홈페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>주로 쓰이는 순간</td><td>지도에서 후보를 찾는 첫 5초</td><td>두세 곳을 비교하는 1~3분</td></tr>
-            <tr><td>담기 좋은 내용</td><td>위치, 대표번호, 사진, 영업 정보</td><td>시설 상세, 장례 절차, 비용 구성, FAQ</td></tr>
-            <tr><td>준비 기간</td><td>정보 정리 1~2일, 사진 촬영 포함 1~2주</td><td>보완 2~4주, 신규 제작 4~8주</td></tr>
-            <tr><td>비용 범위</td><td>등록은 무료, 사진 촬영 시 30만~150만원</td><td>보완 100만~400만원, 신규 300만~1,500만원</td></tr>
-            <tr><td>변화가 보이는 시점</td><td>보통 2주~2개월</td><td>보통 3~6개월</td></tr>
-            <tr><td>한계</td><td>설명 공간이 좁아 비교 근거를 남기기 어려움</td><td>검색에서 발견되기까지 시간이 더 걸림</td></tr>
-            <tr><td>먼저 할 상황</td><td>지도 검색에서 아예 보이지 않을 때</td><td>통화는 오는데 방문 상담으로 이어지지 않을 때</td></tr>
+            <tr><td data-label="비교 기준">주로 쓰이는 순간</td><td data-label="네이버 플레이스">지도에서 후보를 찾는 첫 5초</td><td data-label="홈페이지">두세 곳을 비교하는 1~3분</td></tr>
+            <tr><td data-label="비교 기준">담기 좋은 내용</td><td data-label="네이버 플레이스">위치, 대표번호, 사진, 영업 정보</td><td data-label="홈페이지">시설 상세, 장례 절차, 비용 구성, FAQ</td></tr>
+            <tr><td data-label="비교 기준">준비 기간</td><td data-label="네이버 플레이스">정보 정리 1~2일, 사진 촬영 포함 1~2주</td><td data-label="홈페이지">보완 2~4주, 신규 제작 4~8주</td></tr>
+            <tr><td data-label="비교 기준">비용 범위</td><td data-label="네이버 플레이스">등록은 무료, 사진 촬영 시 30만~150만원</td><td data-label="홈페이지">보완 100만~400만원, 신규 300만~1,500만원</td></tr>
+            <tr><td data-label="비교 기준">변화가 보이는 시점</td><td data-label="네이버 플레이스">보통 2주~2개월</td><td data-label="홈페이지">보통 3~6개월</td></tr>
+            <tr><td data-label="비교 기준">한계</td><td data-label="네이버 플레이스">설명 공간이 좁아 비교 근거를 남기기 어려움</td><td data-label="홈페이지">검색에서 발견되기까지 시간이 더 걸림</td></tr>
+            <tr><td data-label="비교 기준">먼저 할 상황</td><td data-label="네이버 플레이스">지도 검색에서 아예 보이지 않을 때</td><td data-label="홈페이지">통화는 오는데 방문 상담으로 이어지지 않을 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -219,12 +227,12 @@
             <tr><th>시기</th><th>해야 할 일</th><th>확인 지표</th></tr>
           </thead>
           <tbody>
-            <tr><td>1주차</td><td>상호·주소·전화번호·운영 정보 세 채널 통일</td><td>불일치 항목 0건</td></tr>
-            <tr><td>2~3주차</td><td>사진 촬영과 교체, 플레이스 20장 이상 확보</td><td>등록 사진 수와 촬영 시점 1년 이내</td></tr>
-            <tr><td>4~6주차</td><td>홈페이지 시설·절차·주차 안내 상세화</td><td>첫 화면에서 전화 버튼까지 2회 터치 이내</td></tr>
-            <tr><td>2~3개월차</td><td>지역별 안내 페이지와 절차 설명 글 작성</td><td>검색엔진에 색인된 페이지 수 증가</td></tr>
-            <tr><td>3~6개월차</td><td>유입 경로 분석과 응대 문안 보완</td><td>월 통화 건수, 길찾기 클릭 수</td></tr>
-            <tr><td>분기 1회</td><td>정보 재점검과 사진 최신화</td><td>변경 필요 항목 0건 유지</td></tr>
+            <tr><td data-label="시기">1주차</td><td data-label="해야 할 일">상호·주소·전화번호·운영 정보 세 채널 통일</td><td data-label="확인 지표">불일치 항목 0건</td></tr>
+            <tr><td data-label="시기">2~3주차</td><td data-label="해야 할 일">사진 촬영과 교체, 플레이스 20장 이상 확보</td><td data-label="확인 지표">등록 사진 수와 촬영 시점 1년 이내</td></tr>
+            <tr><td data-label="시기">4~6주차</td><td data-label="해야 할 일">홈페이지 시설·절차·주차 안내 상세화</td><td data-label="확인 지표">첫 화면에서 전화 버튼까지 2회 터치 이내</td></tr>
+            <tr><td data-label="시기">2~3개월차</td><td data-label="해야 할 일">지역별 안내 페이지와 절차 설명 글 작성</td><td data-label="확인 지표">검색엔진에 색인된 페이지 수 증가</td></tr>
+            <tr><td data-label="시기">3~6개월차</td><td data-label="해야 할 일">유입 경로 분석과 응대 문안 보완</td><td data-label="확인 지표">월 통화 건수, 길찾기 클릭 수</td></tr>
+            <tr><td data-label="시기">분기 1회</td><td data-label="해야 할 일">정보 재점검과 사진 최신화</td><td data-label="확인 지표">변경 필요 항목 0건 유지</td></tr>
           </tbody>
         </table>
       </div>

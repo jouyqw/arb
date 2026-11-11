@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -137,11 +145,11 @@
             <tr><th>고객이 찾는 정보</th><th>홈페이지에 필요한 구성</th></tr>
           </thead>
           <tbody>
-            <tr><td>위치</td><td>지도, 주차 정보, 대중교통 안내</td></tr>
-            <tr><td>시설</td><td>빈소, 접객실, 주차장, 편의시설 사진</td></tr>
-            <tr><td>비용</td><td>기본 이용 안내와 상담 연결</td></tr>
-            <tr><td>절차</td><td>장례 진행 과정 설명</td></tr>
-            <tr><td>연락처</td><td>전화 상담 버튼과 대표 번호</td></tr>
+            <tr><td data-label="고객이 찾는 정보">위치</td><td data-label="홈페이지에 필요한 구성">지도, 주차 정보, 대중교통 안내</td></tr>
+            <tr><td data-label="고객이 찾는 정보">시설</td><td data-label="홈페이지에 필요한 구성">빈소, 접객실, 주차장, 편의시설 사진</td></tr>
+            <tr><td data-label="고객이 찾는 정보">비용</td><td data-label="홈페이지에 필요한 구성">기본 이용 안내와 상담 연결</td></tr>
+            <tr><td data-label="고객이 찾는 정보">절차</td><td data-label="홈페이지에 필요한 구성">장례 진행 과정 설명</td></tr>
+            <tr><td data-label="고객이 찾는 정보">연락처</td><td data-label="홈페이지에 필요한 구성">전화 상담 버튼과 대표 번호</td></tr>
           </tbody>
         </table>
       </div>
@@ -161,17 +169,17 @@
       <p>특히 지역 검색 노출도 중요합니다. 예를 들어 부천 장례식장, 인천 장례식장, 수원 장례식장처럼 지역명과 함께 검색하는 경우가 많기 때문입니다.</p>
       <p>그래서 키워드는 &#39;지역명 + 장례식장&#39;을 축으로 8~15개 정도를 먼저 정리합니다. 시·군·구 단위뿐 아니라 동 단위, 인근 대형 병원명, &#39;장례식장 비용&#39;, &#39;빈소 예약&#39;처럼 목적이 붙은 조합까지 포함합니다.</p>
       <p>정리한 키워드는 한 개당 페이지 하나를 원칙으로 배치합니다. 한 페이지에 지역명을 여러 개 나열하면 어느 검색어에도 뚜렷하게 잡히지 않는 경우가 많습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>검색 경로</th><th>주로 보는 정보</th><th>먼저 손볼 항목</th><th>변화가 보이는 기간</th></tr>
           </thead>
           <tbody>
-            <tr><td>네이버 플레이스</td><td>거리, 전화번호, 사진, 방문자 리뷰</td><td>업체 정보 정확도와 사진 20장 이상 확보</td><td>2주~2개월</td></tr>
-            <tr><td>네이버 통합검색</td><td>블로그·카페 글, 지역명 조합</td><td>지역별 안내 페이지와 절차 설명 글</td><td>2~4개월</td></tr>
-            <tr><td>구글 검색</td><td>홈페이지 본문, 구조화 정보</td><td>페이지별 고유 URL과 제목·설명 정리</td><td>1~3개월</td></tr>
-            <tr><td>구글 지도</td><td>위치, 영업시간, 사진</td><td>구글 비즈니스 프로필 등록과 정보 일치</td><td>2주~2개월</td></tr>
-            <tr><td>병원 연계·소개</td><td>시설 실물과 응대</td><td>현장 사진과 24시간 응대 체계</td><td>즉시~1개월</td></tr>
+            <tr><td data-label="검색 경로">네이버 플레이스</td><td data-label="주로 보는 정보">거리, 전화번호, 사진, 방문자 리뷰</td><td data-label="먼저 손볼 항목">업체 정보 정확도와 사진 20장 이상 확보</td><td data-label="변화가 보이는 기간">2주~2개월</td></tr>
+            <tr><td data-label="검색 경로">네이버 통합검색</td><td data-label="주로 보는 정보">블로그·카페 글, 지역명 조합</td><td data-label="먼저 손볼 항목">지역별 안내 페이지와 절차 설명 글</td><td data-label="변화가 보이는 기간">2~4개월</td></tr>
+            <tr><td data-label="검색 경로">구글 검색</td><td data-label="주로 보는 정보">홈페이지 본문, 구조화 정보</td><td data-label="먼저 손볼 항목">페이지별 고유 URL과 제목·설명 정리</td><td data-label="변화가 보이는 기간">1~3개월</td></tr>
+            <tr><td data-label="검색 경로">구글 지도</td><td data-label="주로 보는 정보">위치, 영업시간, 사진</td><td data-label="먼저 손볼 항목">구글 비즈니스 프로필 등록과 정보 일치</td><td data-label="변화가 보이는 기간">2주~2개월</td></tr>
+            <tr><td data-label="검색 경로">병원 연계·소개</td><td data-label="주로 보는 정보">시설 실물과 응대</td><td data-label="먼저 손볼 항목">현장 사진과 24시간 응대 체계</td><td data-label="변화가 보이는 기간">즉시~1개월</td></tr>
           </tbody>
         </table>
       </div>
@@ -193,12 +201,12 @@
             <tr><th>판단 기준</th><th>기존 홈페이지 보완</th><th>새로 제작</th></tr>
           </thead>
           <tbody>
-            <tr><td>적합한 상황</td><td>모바일에서 정상 표시되고 페이지별 URL이 있는 경우</td><td>PC 전용이거나 한 페이지 안에서 내용만 바뀌는 경우</td></tr>
-            <tr><td>주요 작업</td><td>정보 구조 재배치, 사진 교체, 전화 버튼 추가</td><td>구조 설계부터 페이지 신규 구축</td></tr>
-            <tr><td>소요 기간</td><td>보통 2~4주</td><td>보통 4~8주</td></tr>
-            <tr><td>비용 범위</td><td>보통 100만~400만원</td><td>보통 300만~1,500만원</td></tr>
-            <tr><td>검색 노출 영향</td><td>기존 색인을 유지해 변동 폭이 작음</td><td>주소 변경 시 2~3개월 조정 구간 발생</td></tr>
-            <tr><td>주의할 점</td><td>낡은 디자인이 그대로 남을 수 있음</td><td>이전 주소에서 새 주소로 이동 처리 필요</td></tr>
+            <tr><td data-label="판단 기준">적합한 상황</td><td data-label="기존 홈페이지 보완">모바일에서 정상 표시되고 페이지별 URL이 있는 경우</td><td data-label="새로 제작">PC 전용이거나 한 페이지 안에서 내용만 바뀌는 경우</td></tr>
+            <tr><td data-label="판단 기준">주요 작업</td><td data-label="기존 홈페이지 보완">정보 구조 재배치, 사진 교체, 전화 버튼 추가</td><td data-label="새로 제작">구조 설계부터 페이지 신규 구축</td></tr>
+            <tr><td data-label="판단 기준">소요 기간</td><td data-label="기존 홈페이지 보완">보통 2~4주</td><td data-label="새로 제작">보통 4~8주</td></tr>
+            <tr><td data-label="판단 기준">비용 범위</td><td data-label="기존 홈페이지 보완">보통 100만~400만원</td><td data-label="새로 제작">보통 300만~1,500만원</td></tr>
+            <tr><td data-label="판단 기준">검색 노출 영향</td><td data-label="기존 홈페이지 보완">기존 색인을 유지해 변동 폭이 작음</td><td data-label="새로 제작">주소 변경 시 2~3개월 조정 구간 발생</td></tr>
+            <tr><td data-label="판단 기준">주의할 점</td><td data-label="기존 홈페이지 보완">낡은 디자인이 그대로 남을 수 있음</td><td data-label="새로 제작">이전 주소에서 새 주소로 이동 처리 필요</td></tr>
           </tbody>
         </table>
       </div>
@@ -222,11 +230,11 @@
             <tr><th>시기</th><th>해야 할 일</th><th>확인 지표</th></tr>
           </thead>
           <tbody>
-            <tr><td>1~2주차</td><td>위치·시설·비용·절차·연락처 다섯 항목 정리</td><td>첫 화면에서 전화 버튼까지 2회 터치 이내</td></tr>
-            <tr><td>3~4주차</td><td>사진 촬영·교체, 플레이스 정보 통일</td><td>세 채널의 상호·주소·전화번호 일치</td></tr>
-            <tr><td>2~3개월차</td><td>지역별 안내 페이지와 절차 설명 글 작성</td><td>색인된 페이지 수 증가</td></tr>
-            <tr><td>3~6개월차</td><td>문의 유입 경로 분석과 문안 보완</td><td>월 통화 건수, 길찾기 클릭 수</td></tr>
-            <tr><td>분기 1회</td><td>정보 재점검과 사진 최신화</td><td>변경 항목 0건 유지</td></tr>
+            <tr><td data-label="시기">1~2주차</td><td data-label="해야 할 일">위치·시설·비용·절차·연락처 다섯 항목 정리</td><td data-label="확인 지표">첫 화면에서 전화 버튼까지 2회 터치 이내</td></tr>
+            <tr><td data-label="시기">3~4주차</td><td data-label="해야 할 일">사진 촬영·교체, 플레이스 정보 통일</td><td data-label="확인 지표">세 채널의 상호·주소·전화번호 일치</td></tr>
+            <tr><td data-label="시기">2~3개월차</td><td data-label="해야 할 일">지역별 안내 페이지와 절차 설명 글 작성</td><td data-label="확인 지표">색인된 페이지 수 증가</td></tr>
+            <tr><td data-label="시기">3~6개월차</td><td data-label="해야 할 일">문의 유입 경로 분석과 문안 보완</td><td data-label="확인 지표">월 통화 건수, 길찾기 클릭 수</td></tr>
+            <tr><td data-label="시기">분기 1회</td><td data-label="해야 할 일">정보 재점검과 사진 최신화</td><td data-label="확인 지표">변경 항목 0건 유지</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -146,13 +154,13 @@
             <tr><th>비교 항목</th><th>사업주 노무관리 자문</th><th>근로자 사건 대리</th></tr>
           </thead>
           <tbody>
-            <tr><td>주 고객</td><td>직원 5~100명 규모 사업장 대표·인사담당</td><td>부당해고·산재·임금체불을 겪는 개인</td></tr>
-            <tr><td>대표 검색어</td><td>&quot;취업규칙 변경 절차&quot;, &quot;5인 이상 사업장 연차&quot;</td><td>&quot;부당해고 구제신청 기간&quot;, &quot;산재 요양급여 신청&quot;</td></tr>
-            <tr><td>수익 구조</td><td>월 고문료 형태의 반복 수입</td><td>사건 단위 수임, 건당 금액이 큼</td></tr>
-            <tr><td>의사결정 속도</td><td>느린 편(며칠~몇 주 비교 후 연락)</td><td>빠른 편(기한이 걸려 있어 당일 연락도 많음)</td></tr>
-            <tr><td>필요한 콘텐츠</td><td>법 개정 해설, 규정 점검 체크리스트</td><td>절차 안내, 기한 정리, 각색된 사례</td></tr>
-            <tr><td>우선 문의 수단</td><td>이메일·상담 폼(자료 비교형)</td><td>전화·카카오(즉시 연결형)</td></tr>
-            <tr><td>성과가 보이는 시점</td><td>보통 6~12개월(계약이 쌓이는 속도)</td><td>보통 3~6개월(문의가 먼저 늘어남)</td></tr>
+            <tr><td data-label="비교 항목">주 고객</td><td data-label="사업주 노무관리 자문">직원 5~100명 규모 사업장 대표·인사담당</td><td data-label="근로자 사건 대리">부당해고·산재·임금체불을 겪는 개인</td></tr>
+            <tr><td data-label="비교 항목">대표 검색어</td><td data-label="사업주 노무관리 자문">&quot;취업규칙 변경 절차&quot;, &quot;5인 이상 사업장 연차&quot;</td><td data-label="근로자 사건 대리">&quot;부당해고 구제신청 기간&quot;, &quot;산재 요양급여 신청&quot;</td></tr>
+            <tr><td data-label="비교 항목">수익 구조</td><td data-label="사업주 노무관리 자문">월 고문료 형태의 반복 수입</td><td data-label="근로자 사건 대리">사건 단위 수임, 건당 금액이 큼</td></tr>
+            <tr><td data-label="비교 항목">의사결정 속도</td><td data-label="사업주 노무관리 자문">느린 편(며칠~몇 주 비교 후 연락)</td><td data-label="근로자 사건 대리">빠른 편(기한이 걸려 있어 당일 연락도 많음)</td></tr>
+            <tr><td data-label="비교 항목">필요한 콘텐츠</td><td data-label="사업주 노무관리 자문">법 개정 해설, 규정 점검 체크리스트</td><td data-label="근로자 사건 대리">절차 안내, 기한 정리, 각색된 사례</td></tr>
+            <tr><td data-label="비교 항목">우선 문의 수단</td><td data-label="사업주 노무관리 자문">이메일·상담 폼(자료 비교형)</td><td data-label="근로자 사건 대리">전화·카카오(즉시 연결형)</td></tr>
+            <tr><td data-label="비교 항목">성과가 보이는 시점</td><td data-label="사업주 노무관리 자문">보통 6~12개월(계약이 쌓이는 속도)</td><td data-label="근로자 사건 대리">보통 3~6개월(문의가 먼저 늘어남)</td></tr>
           </tbody>
         </table>
       </div>
@@ -177,12 +185,12 @@
             <tr><th>구분</th><th>기본형(템플릿 기반)</th><th>맞춤형(분야 페이지 포함)</th></tr>
           </thead>
           <tbody>
-            <tr><td>비용 범위</td><td>대략 200만~500만원</td><td>대략 500만~1,500만원</td></tr>
-            <tr><td>제작 기간</td><td>보통 3~5주</td><td>보통 6~10주</td></tr>
-            <tr><td>페이지 수</td><td>5~8개</td><td>12~25개(분야·사례 페이지 포함)</td></tr>
-            <tr><td>원고</td><td>사무소가 직접 작성하는 경우가 많음</td><td>인터뷰 후 대필하는 경우가 많음</td></tr>
-            <tr><td>검색 대응</td><td>기본 설정 수준</td><td>키워드별 페이지 설계까지 포함</td></tr>
-            <tr><td>이런 경우에 적합</td><td>개업 초기, 명함 역할이 우선일 때</td><td>검색 유입과 상담 전환을 같이 노릴 때</td></tr>
+            <tr><td data-label="구분">비용 범위</td><td data-label="기본형(템플릿 기반)">대략 200만~500만원</td><td data-label="맞춤형(분야 페이지 포함)">대략 500만~1,500만원</td></tr>
+            <tr><td data-label="구분">제작 기간</td><td data-label="기본형(템플릿 기반)">보통 3~5주</td><td data-label="맞춤형(분야 페이지 포함)">보통 6~10주</td></tr>
+            <tr><td data-label="구분">페이지 수</td><td data-label="기본형(템플릿 기반)">5~8개</td><td data-label="맞춤형(분야 페이지 포함)">12~25개(분야·사례 페이지 포함)</td></tr>
+            <tr><td data-label="구분">원고</td><td data-label="기본형(템플릿 기반)">사무소가 직접 작성하는 경우가 많음</td><td data-label="맞춤형(분야 페이지 포함)">인터뷰 후 대필하는 경우가 많음</td></tr>
+            <tr><td data-label="구분">검색 대응</td><td data-label="기본형(템플릿 기반)">기본 설정 수준</td><td data-label="맞춤형(분야 페이지 포함)">키워드별 페이지 설계까지 포함</td></tr>
+            <tr><td data-label="구분">이런 경우에 적합</td><td data-label="기본형(템플릿 기반)">개업 초기, 명함 역할이 우선일 때</td><td data-label="맞춤형(분야 페이지 포함)">검색 유입과 상담 전환을 같이 노릴 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -219,10 +227,10 @@
             <tr><th>시점</th><th>확인할 숫자</th><th>이 시점에 판단하지 말아야 할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>1개월</td><td>발행 글 수, 검색 색인 여부, 문의 수단 작동 확인</td><td>순위와 문의 건수(아직 판단 불가)</td></tr>
-            <tr><td>3개월</td><td>검색 유입 방문자 수, 첫 문의가 들어온 경로</td><td>매출 기여도</td></tr>
-            <tr><td>6개월</td><td>월 문의 건수, 주력 분야 문의 비율, 문의→상담 전환율</td><td>채널 전면 교체</td></tr>
-            <tr><td>12개월</td><td>분야별 수임·자문 계약 건수, 문의당 비용</td><td>—</td></tr>
+            <tr><td data-label="시점">1개월</td><td data-label="확인할 숫자">발행 글 수, 검색 색인 여부, 문의 수단 작동 확인</td><td data-label="이 시점에 판단하지 말아야 할 것">순위와 문의 건수(아직 판단 불가)</td></tr>
+            <tr><td data-label="시점">3개월</td><td data-label="확인할 숫자">검색 유입 방문자 수, 첫 문의가 들어온 경로</td><td data-label="이 시점에 판단하지 말아야 할 것">매출 기여도</td></tr>
+            <tr><td data-label="시점">6개월</td><td data-label="확인할 숫자">월 문의 건수, 주력 분야 문의 비율, 문의→상담 전환율</td><td data-label="이 시점에 판단하지 말아야 할 것">채널 전면 교체</td></tr>
+            <tr><td data-label="시점">12개월</td><td data-label="확인할 숫자">분야별 수임·자문 계약 건수, 문의당 비용</td><td data-label="이 시점에 판단하지 말아야 할 것">—</td></tr>
           </tbody>
         </table>
       </div>

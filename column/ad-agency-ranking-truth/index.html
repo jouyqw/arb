@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -130,16 +138,16 @@
       <p>크게 네 가지 경로로 만들어집니다. 홍보 목적의 기사형 콘텐츠, 협회·기관의 수상 목록, 개인·매체의 큐레이션 글, 그리고 플랫폼의 리뷰 집계입니다.</p>
       <p>이 중 어떤 경로인지에 따라 읽는 법이 달라집니다. 기사형 콘텐츠는 집행 여부가 반영될 수 있고, 리뷰 집계는 리뷰를 남길 수 있는 고객층만 반영됩니다.</p>
       <p>어느 쪽이든 &quot;우리 업종, 우리 예산대에서 일을 잘하는가&quot;는 들어가 있지 않습니다. 순위 콘텐츠가 다루는 축이 아니기 때문입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>순위 콘텐츠 유형</th><th>만들어지는 방식</th><th>주로 반영되는 것</th><th>어떻게 읽으면 되나</th></tr>
           </thead>
           <tbody>
-            <tr><td>기사형 홍보 콘텐츠</td><td>업체가 제공한 자료를 매체가 정리</td><td>업체의 홍보 활동 여부</td><td>후보 이름만 메모하고 넘어갑니다</td></tr>
-            <tr><td>협회·기관 수상 목록</td><td>신청한 업체 중에서 심사</td><td>신청 여부와 제출 서류의 완성도</td><td>심사 기준이 공개돼 있으면 참고</td></tr>
-            <tr><td>블로그·매체 큐레이션</td><td>작성자가 임의 기준으로 선정</td><td>작성자의 취재 범위와 제휴 관계</td><td>선정 기준 문단이 있는지부터 확인</td></tr>
-            <tr><td>플랫폼 리뷰 집계</td><td>고객 후기와 거래 건수 기반</td><td>리뷰를 남기는 소액·단기 거래 비중</td><td>건수보다 후기 본문 내용을 읽습니다</td></tr>
+            <tr><td data-label="순위 콘텐츠 유형">기사형 홍보 콘텐츠</td><td data-label="만들어지는 방식">업체가 제공한 자료를 매체가 정리</td><td data-label="주로 반영되는 것">업체의 홍보 활동 여부</td><td data-label="어떻게 읽으면 되나">후보 이름만 메모하고 넘어갑니다</td></tr>
+            <tr><td data-label="순위 콘텐츠 유형">협회·기관 수상 목록</td><td data-label="만들어지는 방식">신청한 업체 중에서 심사</td><td data-label="주로 반영되는 것">신청 여부와 제출 서류의 완성도</td><td data-label="어떻게 읽으면 되나">심사 기준이 공개돼 있으면 참고</td></tr>
+            <tr><td data-label="순위 콘텐츠 유형">블로그·매체 큐레이션</td><td data-label="만들어지는 방식">작성자가 임의 기준으로 선정</td><td data-label="주로 반영되는 것">작성자의 취재 범위와 제휴 관계</td><td data-label="어떻게 읽으면 되나">선정 기준 문단이 있는지부터 확인</td></tr>
+            <tr><td data-label="순위 콘텐츠 유형">플랫폼 리뷰 집계</td><td data-label="만들어지는 방식">고객 후기와 거래 건수 기반</td><td data-label="주로 반영되는 것">리뷰를 남기는 소액·단기 거래 비중</td><td data-label="어떻게 읽으면 되나">건수보다 후기 본문 내용을 읽습니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -148,16 +156,16 @@
       <p>큰 대행사 입장에서 월 광고비 수백만원대 계정은 작은 계정에 속합니다. 이 경우 경력이 짧은 담당자가 여러 계정을 함께 맡는 구조가 되기 쉽습니다.</p>
       <p>반대로 1인 대행사는 소통은 빠르지만, 담당자가 아프거나 일이 몰리면 그 달의 운영이 통째로 밀립니다.</p>
       <p>그래서 규모는 좋고 나쁨의 문제가 아니라 <strong>우리 예산과 업무량에 맞는지의 문제</strong>입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>대행사 규모</th><th>잘 맞는 월 광고비대</th><th>장점</th><th>미리 확인할 점</th></tr>
           </thead>
           <tbody>
-            <tr><td>대형(수십 명 이상)</td><td>월 1,000만원 이상</td><td>매체 대응력, 인력 공백 시 대체 가능</td><td>우리 계정의 담당자 연차와 겸임 개수</td></tr>
-            <tr><td>중형(10~30명대)</td><td>월 300만~1,000만원</td><td>업종별 팀이 나뉘어 있는 경우가 많음</td><td>제안한 사람과 실제 운영자가 같은지</td></tr>
-            <tr><td>소형(5명 내외)</td><td>월 100만~500만원</td><td>대표가 직접 관여해 반영이 빠름</td><td>동시에 맡고 있는 고객사 수</td></tr>
-            <tr><td>1인·프리랜서</td><td>월 300만원 이하</td><td>비용 부담이 낮고 소통이 직접적</td><td>휴가·질병 시 대체 운영 방법</td></tr>
+            <tr><td data-label="대행사 규모">대형(수십 명 이상)</td><td data-label="잘 맞는 월 광고비대">월 1,000만원 이상</td><td data-label="장점">매체 대응력, 인력 공백 시 대체 가능</td><td data-label="미리 확인할 점">우리 계정의 담당자 연차와 겸임 개수</td></tr>
+            <tr><td data-label="대행사 규모">중형(10~30명대)</td><td data-label="잘 맞는 월 광고비대">월 300만~1,000만원</td><td data-label="장점">업종별 팀이 나뉘어 있는 경우가 많음</td><td data-label="미리 확인할 점">제안한 사람과 실제 운영자가 같은지</td></tr>
+            <tr><td data-label="대행사 규모">소형(5명 내외)</td><td data-label="잘 맞는 월 광고비대">월 100만~500만원</td><td data-label="장점">대표가 직접 관여해 반영이 빠름</td><td data-label="미리 확인할 점">동시에 맡고 있는 고객사 수</td></tr>
+            <tr><td data-label="대행사 규모">1인·프리랜서</td><td data-label="잘 맞는 월 광고비대">월 300만원 이하</td><td data-label="장점">비용 부담이 낮고 소통이 직접적</td><td data-label="미리 확인할 점">휴가·질병 시 대체 운영 방법</td></tr>
           </tbody>
         </table>
       </div>
@@ -191,16 +199,16 @@
       <p>첫 주에는 순위 목록이든 소개든 관계없이 후보를 3곳으로 좁힙니다. 5곳이 넘으면 비교가 흐려지고 결정이 계속 미뤄집니다.</p>
       <p>둘째 주에는 세 곳에 <strong>똑같은 질문 5개</strong>를 던집니다. 질문이 같아야 답의 차이가 보입니다.</p>
       <p>셋째 주에는 제안받은 초기 3개월 계획을 나란히 놓고, 첫 달에 무엇을 세팅하는지 비교합니다. 첫 달 계획이 구체적인 곳이 대체로 이후도 구체적입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>단계</th><th>기간</th><th>하는 일</th><th>다음으로 넘어가는 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>1단계</td><td>1주차</td><td>후보 3곳으로 압축, 각 사 홈페이지·사례 확인</td><td>세 곳의 규모대가 우리 예산과 맞는가</td></tr>
-            <tr><td>2단계</td><td>2주차</td><td>동일한 질문 5개를 세 곳에 똑같이 전달</td><td>담당자·업종·보고 항목에 답이 왔는가</td></tr>
-            <tr><td>3단계</td><td>3주차</td><td>초기 3개월 계획서와 견적 항목 비교</td><td>첫 달에 할 일이 항목으로 적혀 있는가</td></tr>
-            <tr><td>계약</td><td>3~4주차</td><td>금액 구조·보고 항목·해지 조건 문서화</td><td>구두 약속이 계약서 문장으로 옮겨졌는가</td></tr>
+            <tr><td data-label="단계">1단계</td><td data-label="기간">1주차</td><td data-label="하는 일">후보 3곳으로 압축, 각 사 홈페이지·사례 확인</td><td data-label="다음으로 넘어가는 기준">세 곳의 규모대가 우리 예산과 맞는가</td></tr>
+            <tr><td data-label="단계">2단계</td><td data-label="기간">2주차</td><td data-label="하는 일">동일한 질문 5개를 세 곳에 똑같이 전달</td><td data-label="다음으로 넘어가는 기준">담당자·업종·보고 항목에 답이 왔는가</td></tr>
+            <tr><td data-label="단계">3단계</td><td data-label="기간">3주차</td><td data-label="하는 일">초기 3개월 계획서와 견적 항목 비교</td><td data-label="다음으로 넘어가는 기준">첫 달에 할 일이 항목으로 적혀 있는가</td></tr>
+            <tr><td data-label="단계">계약</td><td data-label="기간">3~4주차</td><td data-label="하는 일">금액 구조·보고 항목·해지 조건 문서화</td><td data-label="다음으로 넘어가는 기준">구두 약속이 계약서 문장으로 옮겨졌는가</td></tr>
           </tbody>
         </table>
       </div>

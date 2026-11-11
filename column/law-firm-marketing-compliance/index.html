@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -154,12 +162,12 @@
             <tr><th>필수 항목</th><th>담아야 할 내용</th><th>자주 빠지는 부분</th></tr>
           </thead>
           <tbody>
-            <tr><td>구성원 이력</td><td>자격 취득 시점, 주요 담당 업무 분야, 경력 연차</td><td>이력 갱신이 1~2년씩 밀려 현재와 어긋남</td></tr>
-            <tr><td>업무 분야</td><td>분야별 사건 유형과 진행 단계 설명</td><td>분야 이름만 나열하고 설명이 없음</td></tr>
-            <tr><td>상담 절차</td><td>예약 방법, 상담 소요 시간(보통 30~60분), 준비 서류</td><td>연락처만 있고 절차와 소요 시간이 없음</td></tr>
-            <tr><td>비용 안내</td><td>산정 기준과 구성 항목, 추가 비용이 생기는 조건</td><td>&#39;상담 후 결정&#39;만 적혀 문의 전 이탈이 늘어남</td></tr>
-            <tr><td>접근 정보</td><td>주소, 대표 연락 수단, 상담 가능 시간대</td><td>지도만 있고 대중교통·주차 안내가 없음</td></tr>
-            <tr><td>면책 안내</td><td>일반적 정보이며 개별 사건의 결과가 아님을 명시</td><td>칼럼 페이지에만 있고 업무 분야 페이지에는 없음</td></tr>
+            <tr><td data-label="필수 항목">구성원 이력</td><td data-label="담아야 할 내용">자격 취득 시점, 주요 담당 업무 분야, 경력 연차</td><td data-label="자주 빠지는 부분">이력 갱신이 1~2년씩 밀려 현재와 어긋남</td></tr>
+            <tr><td data-label="필수 항목">업무 분야</td><td data-label="담아야 할 내용">분야별 사건 유형과 진행 단계 설명</td><td data-label="자주 빠지는 부분">분야 이름만 나열하고 설명이 없음</td></tr>
+            <tr><td data-label="필수 항목">상담 절차</td><td data-label="담아야 할 내용">예약 방법, 상담 소요 시간(보통 30~60분), 준비 서류</td><td data-label="자주 빠지는 부분">연락처만 있고 절차와 소요 시간이 없음</td></tr>
+            <tr><td data-label="필수 항목">비용 안내</td><td data-label="담아야 할 내용">산정 기준과 구성 항목, 추가 비용이 생기는 조건</td><td data-label="자주 빠지는 부분">&#39;상담 후 결정&#39;만 적혀 문의 전 이탈이 늘어남</td></tr>
+            <tr><td data-label="필수 항목">접근 정보</td><td data-label="담아야 할 내용">주소, 대표 연락 수단, 상담 가능 시간대</td><td data-label="자주 빠지는 부분">지도만 있고 대중교통·주차 안내가 없음</td></tr>
+            <tr><td data-label="필수 항목">면책 안내</td><td data-label="담아야 할 내용">일반적 정보이며 개별 사건의 결과가 아님을 명시</td><td data-label="자주 빠지는 부분">칼럼 페이지에만 있고 업무 분야 페이지에는 없음</td></tr>
           </tbody>
         </table>
       </div>
@@ -177,10 +185,10 @@
             <tr><th>구분</th><th>위험한 접근</th><th>권장 접근</th></tr>
           </thead>
           <tbody>
-            <tr><td>메시지</td><td>성과 확언 중심 강조</td><td>절차·준비 정보 제공</td></tr>
-            <tr><td>표현</td><td>최상급·유일성·결과 약속</td><td>사실 기반 설명</td></tr>
-            <tr><td>콘텐츠</td><td>단발성 광고 문구</td><td>분야별 칼럼 축적</td></tr>
-            <tr><td>신뢰</td><td>과장으로 기대 유발</td><td>정확한 안내로 신뢰 형성</td></tr>
+            <tr><td data-label="구분">메시지</td><td data-label="위험한 접근">성과 확언 중심 강조</td><td data-label="권장 접근">절차·준비 정보 제공</td></tr>
+            <tr><td data-label="구분">표현</td><td data-label="위험한 접근">최상급·유일성·결과 약속</td><td data-label="권장 접근">사실 기반 설명</td></tr>
+            <tr><td data-label="구분">콘텐츠</td><td data-label="위험한 접근">단발성 광고 문구</td><td data-label="권장 접근">분야별 칼럼 축적</td></tr>
+            <tr><td data-label="구분">신뢰</td><td data-label="위험한 접근">과장으로 기대 유발</td><td data-label="권장 접근">정확한 안내로 신뢰 형성</td></tr>
           </tbody>
         </table>
       </div>
@@ -202,11 +210,11 @@
             <tr><th>채널</th><th>위험이 생기는 지점</th><th>권장 운영 방식</th></tr>
           </thead>
           <tbody>
-            <tr><td>자체 홈페이지</td><td>메인 상단 한 줄에 과장이 남는 경우</td><td>설명형 문구 + 면책 안내를 기본 템플릿으로 고정</td></tr>
-            <tr><td>칼럼·블로그</td><td>제목만 자극적으로 뽑는 경우</td><td>질문형 제목과 정보형 본문, 편당 2,500자 이상</td></tr>
-            <tr><td>검색 광고</td><td>글자 수 제한 때문에 단정형 문구만 남음</td><td>분야명과 절차 안내 위주로 구성, 소재는 월 1회 점검</td></tr>
-            <tr><td>영상·숏폼</td><td>자막과 발화가 대본과 달라짐</td><td>대본을 문서로 사전 확정하고 자막까지 함께 검수</td></tr>
-            <tr><td>외부 플랫폼</td><td>플랫폼이 임의로 붙이는 순위·비교 표기</td><td>표기 방식 확인, 수정 불가하면 노출 항목 축소</td></tr>
+            <tr><td data-label="채널">자체 홈페이지</td><td data-label="위험이 생기는 지점">메인 상단 한 줄에 과장이 남는 경우</td><td data-label="권장 운영 방식">설명형 문구 + 면책 안내를 기본 템플릿으로 고정</td></tr>
+            <tr><td data-label="채널">칼럼·블로그</td><td data-label="위험이 생기는 지점">제목만 자극적으로 뽑는 경우</td><td data-label="권장 운영 방식">질문형 제목과 정보형 본문, 편당 2,500자 이상</td></tr>
+            <tr><td data-label="채널">검색 광고</td><td data-label="위험이 생기는 지점">글자 수 제한 때문에 단정형 문구만 남음</td><td data-label="권장 운영 방식">분야명과 절차 안내 위주로 구성, 소재는 월 1회 점검</td></tr>
+            <tr><td data-label="채널">영상·숏폼</td><td data-label="위험이 생기는 지점">자막과 발화가 대본과 달라짐</td><td data-label="권장 운영 방식">대본을 문서로 사전 확정하고 자막까지 함께 검수</td></tr>
+            <tr><td data-label="채널">외부 플랫폼</td><td data-label="위험이 생기는 지점">플랫폼이 임의로 붙이는 순위·비교 표기</td><td data-label="권장 운영 방식">표기 방식 확인, 수정 불가하면 노출 항목 축소</td></tr>
           </tbody>
         </table>
       </div>
@@ -222,12 +230,12 @@
             <tr><th>비교 축</th><th>직접 운영</th><th>대행 위탁</th></tr>
           </thead>
           <tbody>
-            <tr><td>적합한 경우</td><td>글을 쓸 내부 인력이 있고 발행 속도를 조절해도 되는 경우</td><td>분야별 구조와 발행 속도를 빠르게 갖추고 싶은 경우</td></tr>
-            <tr><td>규정 위험</td><td>내부 검토라 낮지만 판단 기준이 사람마다 흔들릴 수 있음</td><td>외부 문구가 섞여 위험이 있으나 승인 절차로 통제 가능</td></tr>
-            <tr><td>초기 소요 시간</td><td>구조 설계와 학습에 1~3개월</td><td>착수 후 2~6주 내 기본 구조 확보</td></tr>
-            <tr><td>비용 성격</td><td>인건비와 시간이 주된 비용</td><td>제작비와 월 운영비로 나뉘는 고정 지출</td></tr>
-            <tr><td>지속성</td><td>담당자가 바뀌면 중단되기 쉬움</td><td>계약이 끝나도 자산이 남도록 소유 조건을 명시해야 함</td></tr>
-            <tr><td>최종 승인</td><td>사무소 내부에서 즉시 처리</td><td>발행 전 승인 단계를 계약서에 넣어야 함</td></tr>
+            <tr><td data-label="비교 축">적합한 경우</td><td data-label="직접 운영">글을 쓸 내부 인력이 있고 발행 속도를 조절해도 되는 경우</td><td data-label="대행 위탁">분야별 구조와 발행 속도를 빠르게 갖추고 싶은 경우</td></tr>
+            <tr><td data-label="비교 축">규정 위험</td><td data-label="직접 운영">내부 검토라 낮지만 판단 기준이 사람마다 흔들릴 수 있음</td><td data-label="대행 위탁">외부 문구가 섞여 위험이 있으나 승인 절차로 통제 가능</td></tr>
+            <tr><td data-label="비교 축">초기 소요 시간</td><td data-label="직접 운영">구조 설계와 학습에 1~3개월</td><td data-label="대행 위탁">착수 후 2~6주 내 기본 구조 확보</td></tr>
+            <tr><td data-label="비교 축">비용 성격</td><td data-label="직접 운영">인건비와 시간이 주된 비용</td><td data-label="대행 위탁">제작비와 월 운영비로 나뉘는 고정 지출</td></tr>
+            <tr><td data-label="비교 축">지속성</td><td data-label="직접 운영">담당자가 바뀌면 중단되기 쉬움</td><td data-label="대행 위탁">계약이 끝나도 자산이 남도록 소유 조건을 명시해야 함</td></tr>
+            <tr><td data-label="비교 축">최종 승인</td><td data-label="직접 운영">사무소 내부에서 즉시 처리</td><td data-label="대행 위탁">발행 전 승인 단계를 계약서에 넣어야 함</td></tr>
           </tbody>
         </table>
       </div>

@@ -36,7 +36,7 @@
     .top-actions .primary{background:linear-gradient(100deg,#3D8BFF 0%,#66D0FF 100%);color:#fff;box-shadow:0 8px 22px rgba(61,139,255,.34)}
     .top-actions .ghost{border:1px solid rgba(255,255,255,.24);color:#DCE4F0}
     h2{font-size:25px;line-height:1.34;margin:44px 0 14px;letter-spacing:-.02em}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,13 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.top{padding:26px 0 42px;margin-bottom:34px}p,li{font-size:16px}h2{font-size:22px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.cta{padding:24px}}
+    @media(max-width:560px){.top{padding:26px 0 42px;margin-bottom:34px}p,li{font-size:16px}h2{font-size:22px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.cta{padding:24px}
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
 </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -129,9 +135,9 @@
             <tr><th>유형</th><th>증상</th><th>필요한 작업</th></tr>
           </thead>
           <tbody>
-            <tr><td>아무도 안 온다</td><td>방문자 수 자체가 하루 한 자릿수</td><td>검색 노출 구조. 디자인을 고쳐도 변화 없음</td></tr>
-            <tr><td>오는데 바로 나간다</td><td>방문은 있는데 체류 시간이 10초 이하</td><td>첫 화면 메시지와 로딩 속도</td></tr>
-            <tr><td>보는데 문의를 안 한다</td><td>여러 페이지를 보는데 문의 폼까지 안 감</td><td>신뢰 근거 배치와 문의 동선</td></tr>
+            <tr><td data-label="유형">아무도 안 온다</td><td data-label="증상">방문자 수 자체가 하루 한 자릿수</td><td data-label="필요한 작업">검색 노출 구조. 디자인을 고쳐도 변화 없음</td></tr>
+            <tr><td data-label="유형">오는데 바로 나간다</td><td data-label="증상">방문은 있는데 체류 시간이 10초 이하</td><td data-label="필요한 작업">첫 화면 메시지와 로딩 속도</td></tr>
+            <tr><td data-label="유형">보는데 문의를 안 한다</td><td data-label="증상">여러 페이지를 보는데 문의 폼까지 안 감</td><td data-label="필요한 작업">신뢰 근거 배치와 문의 동선</td></tr>
           </tbody>
         </table>
       </div>
@@ -147,10 +153,10 @@
             <tr><th>구분</th><th>한 장형</th><th>여러 장형</th></tr>
           </thead>
           <tbody>
-            <tr><td>제작 기간</td><td>짧음</td><td>김</td></tr>
-            <tr><td>노릴 수 있는 키워드</td><td>사실상 1~2개</td><td>페이지 수만큼</td></tr>
-            <tr><td>광고 착지 페이지</td><td>전부 같은 곳</td><td>캠페인별로 분리 가능</td></tr>
-            <tr><td>적합한 경우</td><td>단일 서비스, 브랜드 소개, 이벤트</td><td>여러 서비스·업종·지역을 다루는 사업</td></tr>
+            <tr><td data-label="구분">제작 기간</td><td data-label="한 장형">짧음</td><td data-label="여러 장형">김</td></tr>
+            <tr><td data-label="구분">노릴 수 있는 키워드</td><td data-label="한 장형">사실상 1~2개</td><td data-label="여러 장형">페이지 수만큼</td></tr>
+            <tr><td data-label="구분">광고 착지 페이지</td><td data-label="한 장형">전부 같은 곳</td><td data-label="여러 장형">캠페인별로 분리 가능</td></tr>
+            <tr><td data-label="구분">적합한 경우</td><td data-label="한 장형">단일 서비스, 브랜드 소개, 이벤트</td><td data-label="여러 장형">여러 서비스·업종·지역을 다루는 사업</td></tr>
           </tbody>
         </table>
       </div>

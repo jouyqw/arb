@@ -36,7 +36,7 @@
     .top-actions .primary{background:linear-gradient(100deg,#3D8BFF 0%,#66D0FF 100%);color:#fff;box-shadow:0 8px 22px rgba(61,139,255,.34)}
     .top-actions .ghost{border:1px solid rgba(255,255,255,.24);color:#DCE4F0}
     h2{font-size:25px;line-height:1.34;margin:44px 0 14px;letter-spacing:-.02em}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,13 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.top{padding:26px 0 42px;margin-bottom:34px}p,li{font-size:16px}h2{font-size:22px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.cta{padding:24px}}
+    @media(max-width:560px){.top{padding:26px 0 42px;margin-bottom:34px}p,li{font-size:16px}h2{font-size:22px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.cta{padding:24px}
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
 </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -129,11 +135,11 @@
             <tr><th>구분</th><th>기존 SEO</th><th>GEO(AI 검색 최적화)</th></tr>
           </thead>
           <tbody>
-            <tr><td>목표</td><td>검색 결과에서 위에 올라가기</td><td>AI 답변에 근거로 인용되기</td></tr>
-            <tr><td>경쟁 단위</td><td>키워드</td><td>질문 전체</td></tr>
-            <tr><td>평가하는 쪽</td><td>검색엔진 알고리즘</td><td>언어 모델의 요약·인용 판단</td></tr>
-            <tr><td>유리한 글</td><td>키워드가 잘 배치된 글</td><td>질문에 바로 답하고 근거가 분명한 글</td></tr>
-            <tr><td>광고로 대체</td><td>가능(검색광고)</td><td>불가능</td></tr>
+            <tr><td data-label="구분">목표</td><td data-label="기존 SEO">검색 결과에서 위에 올라가기</td><td data-label="GEO(AI 검색 최적화)">AI 답변에 근거로 인용되기</td></tr>
+            <tr><td data-label="구분">경쟁 단위</td><td data-label="기존 SEO">키워드</td><td data-label="GEO(AI 검색 최적화)">질문 전체</td></tr>
+            <tr><td data-label="구분">평가하는 쪽</td><td data-label="기존 SEO">검색엔진 알고리즘</td><td data-label="GEO(AI 검색 최적화)">언어 모델의 요약·인용 판단</td></tr>
+            <tr><td data-label="구분">유리한 글</td><td data-label="기존 SEO">키워드가 잘 배치된 글</td><td data-label="GEO(AI 검색 최적화)">질문에 바로 답하고 근거가 분명한 글</td></tr>
+            <tr><td data-label="구분">광고로 대체</td><td data-label="기존 SEO">가능(검색광고)</td><td data-label="GEO(AI 검색 최적화)">불가능</td></tr>
           </tbody>
         </table>
       </div>

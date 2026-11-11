@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -131,16 +139,16 @@
       <h2>업종별 홈페이지 기능은 실제로 얼마나 다른가요?</h2>
       <p>업종마다 사람들이 보고 판단하는 지점이 달라서, 들어가야 하는 기능 자체가 달라집니다. 병원은 예약과 문구 관리, 법률은 글이 쌓이는 구조, 물류는 견적 폼, 관광은 예약 연동입니다.</p>
       <p>표로 정리해 두었습니다. 우리 업종 줄만 보시고, 거기 적힌 기능이 견적서에 들어가 있는지 확인하시면 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>업종</th><th>견적을 올리는 핵심 기능</th><th>자주 빠지는 것</th><th>제작 기간</th></tr>
           </thead>
           <tbody>
-            <tr><td>병원·의원</td><td>진료과목별 페이지, 예약·상담 폼, 심의 대상 문구 관리</td><td>문구를 관리자에서 직접 못 고치는 구조</td><td>6~10주</td></tr>
-            <tr><td>법률사무소</td><td>분야별 상담 페이지, 칼럼 분류·목록 구조, 구성원 소개</td><td>글이 쌓일 자리와 분류 체계를 안 만듦</td><td>6~10주</td></tr>
-            <tr><td>물류·운송</td><td>취급 품목·권역 표, 중량·구간을 받는 견적 폼, 보유 차량·창고 현황</td><td>문의 폼이 이름·연락처·내용 3칸뿐</td><td>4~8주</td></tr>
-            <tr><td>관광·숙박</td><td>객실·상품 목록, 예약 엔진 연동, 다국어, 교통·지도 안내</td><td>예약 연동 비용과 수수료를 제작비에 넣지 않음</td><td>6~12주</td></tr>
+            <tr><td data-label="업종">병원·의원</td><td data-label="견적을 올리는 핵심 기능">진료과목별 페이지, 예약·상담 폼, 심의 대상 문구 관리</td><td data-label="자주 빠지는 것">문구를 관리자에서 직접 못 고치는 구조</td><td data-label="제작 기간">6~10주</td></tr>
+            <tr><td data-label="업종">법률사무소</td><td data-label="견적을 올리는 핵심 기능">분야별 상담 페이지, 칼럼 분류·목록 구조, 구성원 소개</td><td data-label="자주 빠지는 것">글이 쌓일 자리와 분류 체계를 안 만듦</td><td data-label="제작 기간">6~10주</td></tr>
+            <tr><td data-label="업종">물류·운송</td><td data-label="견적을 올리는 핵심 기능">취급 품목·권역 표, 중량·구간을 받는 견적 폼, 보유 차량·창고 현황</td><td data-label="자주 빠지는 것">문의 폼이 이름·연락처·내용 3칸뿐</td><td data-label="제작 기간">4~8주</td></tr>
+            <tr><td data-label="업종">관광·숙박</td><td data-label="견적을 올리는 핵심 기능">객실·상품 목록, 예약 엔진 연동, 다국어, 교통·지도 안내</td><td data-label="자주 빠지는 것">예약 연동 비용과 수수료를 제작비에 넣지 않음</td><td data-label="제작 기간">6~12주</td></tr>
           </tbody>
         </table>
       </div>
@@ -168,16 +176,16 @@
       <p>다국어도 같은 기준으로 봅니다. 해외 문의가 실제로 들어오는지 먼저 확인하시고, 들어온다면 번역만 얹는 방식과 해당 언어 기준으로 다시 쓰는 방식 중 어느 쪽인지 견적에서 구분하십시오.</p>
       <h2>금액대별로 무엇이 포함되나요?</h2>
       <p>200만원대부터 2,000만원대까지 네 구간으로 갈립니다. 페이지 수보다 기능과 촬영, 관리자 범위가 구간을 결정합니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>금액대</th><th>보통 포함되는 범위</th><th>제작 기간</th><th>업종별로 더 확인할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>200만~400만원대</td><td>템플릿 기반 5~10페이지, 소개·서비스·문의 폼</td><td>3~5주</td><td>페이지 추가 단가, 모바일 화면 별도 확인 여부</td></tr>
-            <tr><td>500만~900만원대</td><td>맞춤 반응형 10~20페이지, 촬영 1회, 검색 기본 설정</td><td>5~8주</td><td>병원은 문구 수정 권한, 법률은 칼럼 분류 구조</td></tr>
-            <tr><td>1,000만~2,000만원대</td><td>예약·견적 시스템, 다국어, 관리자 기능 확장</td><td>8~14주</td><td>관광은 예약 수수료, 물류는 견적 폼 항목 설계</td></tr>
-            <tr><td>월 10만~30만원대</td><td>유지보수 — 수정 요청, 백업, 보안 업데이트, 리포트</td><td>계약 기간</td><td>월 수정 건수와 응답 기한이 숫자로 적혀 있는지</td></tr>
+            <tr><td data-label="금액대">200만~400만원대</td><td data-label="보통 포함되는 범위">템플릿 기반 5~10페이지, 소개·서비스·문의 폼</td><td data-label="제작 기간">3~5주</td><td data-label="업종별로 더 확인할 것">페이지 추가 단가, 모바일 화면 별도 확인 여부</td></tr>
+            <tr><td data-label="금액대">500만~900만원대</td><td data-label="보통 포함되는 범위">맞춤 반응형 10~20페이지, 촬영 1회, 검색 기본 설정</td><td data-label="제작 기간">5~8주</td><td data-label="업종별로 더 확인할 것">병원은 문구 수정 권한, 법률은 칼럼 분류 구조</td></tr>
+            <tr><td data-label="금액대">1,000만~2,000만원대</td><td data-label="보통 포함되는 범위">예약·견적 시스템, 다국어, 관리자 기능 확장</td><td data-label="제작 기간">8~14주</td><td data-label="업종별로 더 확인할 것">관광은 예약 수수료, 물류는 견적 폼 항목 설계</td></tr>
+            <tr><td data-label="금액대">월 10만~30만원대</td><td data-label="보통 포함되는 범위">유지보수 — 수정 요청, 백업, 보안 업데이트, 리포트</td><td data-label="제작 기간">계약 기간</td><td data-label="업종별로 더 확인할 것">월 수정 건수와 응답 기한이 숫자로 적혀 있는지</td></tr>
           </tbody>
         </table>
       </div>

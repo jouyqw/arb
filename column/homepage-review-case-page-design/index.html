@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -146,14 +154,14 @@
             <tr><th>구분</th><th>후기</th><th>사례</th></tr>
           </thead>
           <tbody>
-            <tr><td>목적</td><td>빠른 신뢰 형성</td><td>문제 해결 과정 설명</td></tr>
-            <tr><td>길이</td><td>짧게 여러 개</td><td>길게 소수 정예</td></tr>
-            <tr><td>핵심</td><td>진정성·구체성</td><td>상황→해결→결과의 맥락</td></tr>
-            <tr><td>배치</td><td>전환 지점 주변</td><td>독립 상세 페이지</td></tr>
-            <tr><td>권장 분량</td><td>3~5문장 / 100~250자</td><td>800~1,500자 + 이미지 2~4장</td></tr>
-            <tr><td>적정 개수</td><td>메인·상담 페이지에 3~6개</td><td>전체 3~5편으로 시작</td></tr>
-            <tr><td>제작 소요</td><td>수집 후 반영까지 1~3일</td><td>1편당 자료 정리 포함 3~7일</td></tr>
-            <tr><td>검색 유입</td><td>거의 기대하지 않음</td><td>키워드별 상세 페이지로 유입 가능</td></tr>
+            <tr><td data-label="구분">목적</td><td data-label="후기">빠른 신뢰 형성</td><td data-label="사례">문제 해결 과정 설명</td></tr>
+            <tr><td data-label="구분">길이</td><td data-label="후기">짧게 여러 개</td><td data-label="사례">길게 소수 정예</td></tr>
+            <tr><td data-label="구분">핵심</td><td data-label="후기">진정성·구체성</td><td data-label="사례">상황→해결→결과의 맥락</td></tr>
+            <tr><td data-label="구분">배치</td><td data-label="후기">전환 지점 주변</td><td data-label="사례">독립 상세 페이지</td></tr>
+            <tr><td data-label="구분">권장 분량</td><td data-label="후기">3~5문장 / 100~250자</td><td data-label="사례">800~1,500자 + 이미지 2~4장</td></tr>
+            <tr><td data-label="구분">적정 개수</td><td data-label="후기">메인·상담 페이지에 3~6개</td><td data-label="사례">전체 3~5편으로 시작</td></tr>
+            <tr><td data-label="구분">제작 소요</td><td data-label="후기">수집 후 반영까지 1~3일</td><td data-label="사례">1편당 자료 정리 포함 3~7일</td></tr>
+            <tr><td data-label="구분">검색 유입</td><td data-label="후기">거의 기대하지 않음</td><td data-label="사례">키워드별 상세 페이지로 유입 가능</td></tr>
           </tbody>
         </table>
       </div>
@@ -203,15 +211,15 @@
       <p>외부에 맡기는 경우 사례 1편당 20~60만 원, 사진 촬영을 포함하면 50~150만 원 범위에서 견적이 나오는 편입니다.</p>
       <p>금액 차이는 취재 여부, 촬영 여부, 디자인 작업 범위에서 갈립니다.</p>
       <p>처음에는 직접 1~2편을 써 보고 형식이 잡힌 뒤 외부에 맡기는 순서가 비용 대비 효율이 좋습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>방식</th><th>1편당 기간</th><th>1편당 비용 범위</th><th>이런 경우에 맞습니다</th></tr>
           </thead>
           <tbody>
-            <tr><td>직접 작성</td><td>3~7일</td><td>0원(내부 인력 시간)</td><td>사례 3편 이하, 형식을 잡아 가는 초기</td></tr>
-            <tr><td>작성만 외주</td><td>5~10일</td><td>20~60만 원</td><td>자료는 있는데 글 쓸 시간이 없는 경우</td></tr>
-            <tr><td>취재·촬영 포함 외주</td><td>2~4주</td><td>50~150만 원</td><td>단가가 높고 사례가 핵심 자산인 서비스</td></tr>
+            <tr><td data-label="방식">직접 작성</td><td data-label="1편당 기간">3~7일</td><td data-label="1편당 비용 범위">0원(내부 인력 시간)</td><td data-label="이런 경우에 맞습니다">사례 3편 이하, 형식을 잡아 가는 초기</td></tr>
+            <tr><td data-label="방식">작성만 외주</td><td data-label="1편당 기간">5~10일</td><td data-label="1편당 비용 범위">20~60만 원</td><td data-label="이런 경우에 맞습니다">자료는 있는데 글 쓸 시간이 없는 경우</td></tr>
+            <tr><td data-label="방식">취재·촬영 포함 외주</td><td data-label="1편당 기간">2~4주</td><td data-label="1편당 비용 범위">50~150만 원</td><td data-label="이런 경우에 맞습니다">단가가 높고 사례가 핵심 자산인 서비스</td></tr>
           </tbody>
         </table>
       </div>

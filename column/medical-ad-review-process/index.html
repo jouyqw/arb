@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -131,12 +139,12 @@
             <tr><th>매체</th><th>사전심의</th><th>실무에서 먼저 볼 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>병원 자체 홈페이지</td><td>대부분 대상 아님</td><td>금지 표현 규정은 그대로 적용됨</td></tr>
-            <tr><td>포털 검색광고·배너</td><td>대상</td><td>소재 문구 단위로 심의번호가 필요함</td></tr>
-            <tr><td>SNS·앱 등 인터넷 매체</td><td>매체 규모에 따라 갈림</td><td>이용자 수 기준을 넘는 매체인지 확인</td></tr>
-            <tr><td>신문·잡지·인터넷신문</td><td>대상</td><td>기사처럼 보이는 형식도 광고로 봄</td></tr>
-            <tr><td>전단·현수막·벽보·전광판</td><td>대상</td><td>인쇄 발주 전에 접수해야 함</td></tr>
-            <tr><td>플레이스 기본 정보</td><td>보통 대상 아님</td><td>할인·이벤트 문구를 넣으면 성격이 달라짐</td></tr>
+            <tr><td data-label="매체">병원 자체 홈페이지</td><td data-label="사전심의">대부분 대상 아님</td><td data-label="실무에서 먼저 볼 것">금지 표현 규정은 그대로 적용됨</td></tr>
+            <tr><td data-label="매체">포털 검색광고·배너</td><td data-label="사전심의">대상</td><td data-label="실무에서 먼저 볼 것">소재 문구 단위로 심의번호가 필요함</td></tr>
+            <tr><td data-label="매체">SNS·앱 등 인터넷 매체</td><td data-label="사전심의">매체 규모에 따라 갈림</td><td data-label="실무에서 먼저 볼 것">이용자 수 기준을 넘는 매체인지 확인</td></tr>
+            <tr><td data-label="매체">신문·잡지·인터넷신문</td><td data-label="사전심의">대상</td><td data-label="실무에서 먼저 볼 것">기사처럼 보이는 형식도 광고로 봄</td></tr>
+            <tr><td data-label="매체">전단·현수막·벽보·전광판</td><td data-label="사전심의">대상</td><td data-label="실무에서 먼저 볼 것">인쇄 발주 전에 접수해야 함</td></tr>
+            <tr><td data-label="매체">플레이스 기본 정보</td><td data-label="사전심의">보통 대상 아님</td><td data-label="실무에서 먼저 볼 것">할인·이벤트 문구를 넣으면 성격이 달라짐</td></tr>
           </tbody>
         </table>
       </div>
@@ -158,10 +166,10 @@
             <tr><th>진료과</th><th>자주 막히는 지점</th><th>접수 전에 정리할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>치과</td><td>임플란트·교정 금액에 붙은 기간 한정, 할인 표기</td><td>가격 고지와 할인 유인을 분리해 다시 씀</td></tr>
-            <tr><td>피부과·성형외과</td><td>시술 전후 사진, 효과를 단정한 문장</td><td>동일 조건 촬영, 개인차·부작용 설명, 서면 동의서</td></tr>
-            <tr><td>한의원</td><td>한약 효능 단정, 체중 감량 같은 수치 제시</td><td>근거를 댈 수 없는 수치는 빼고 진료 과정으로 바꿈</td></tr>
-            <tr><td>모든 과 공통</td><td>전문의가 아닌데 전문과목을 표시한 경우</td><td>간판·홈페이지·광고의 과목 표기 방식을 함께 맞춤</td></tr>
+            <tr><td data-label="진료과">치과</td><td data-label="자주 막히는 지점">임플란트·교정 금액에 붙은 기간 한정, 할인 표기</td><td data-label="접수 전에 정리할 것">가격 고지와 할인 유인을 분리해 다시 씀</td></tr>
+            <tr><td data-label="진료과">피부과·성형외과</td><td data-label="자주 막히는 지점">시술 전후 사진, 효과를 단정한 문장</td><td data-label="접수 전에 정리할 것">동일 조건 촬영, 개인차·부작용 설명, 서면 동의서</td></tr>
+            <tr><td data-label="진료과">한의원</td><td data-label="자주 막히는 지점">한약 효능 단정, 체중 감량 같은 수치 제시</td><td data-label="접수 전에 정리할 것">근거를 댈 수 없는 수치는 빼고 진료 과정으로 바꿈</td></tr>
+            <tr><td data-label="진료과">모든 과 공통</td><td data-label="자주 막히는 지점">전문의가 아닌데 전문과목을 표시한 경우</td><td data-label="접수 전에 정리할 것">간판·홈페이지·광고의 과목 표기 방식을 함께 맞춤</td></tr>
           </tbody>
         </table>
       </div>

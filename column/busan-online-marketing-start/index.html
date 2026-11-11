@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -127,16 +135,16 @@
       <h2>부산 업체와 수도권 업체 중 어디가 맞을까요?</h2>
       <p>촬영·실측·서류를 자주 주고받아야 하는 업종이면 부산 업체가 낫고, 검색 구조와 사이트를 크게 손봐야 하는 일이면 지역보다 같은 작업을 반복해 본 경험을 먼저 보셔야 합니다.</p>
       <p>저는 부산 쪽 상담에서 &quot;가까운 데가 낫지 않겠느냐&quot;는 말을 자주 듣습니다. 가까운 것이 실제로 줄여 주는 작업은 분명히 있는데, 그게 모든 업종에서 같은 크기로 작동하지는 않습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>우리 상황</th><th>부산 업체가 나은 점</th><th>원격·수도권 업체가 나은 점</th><th>제가 보는 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>촬영·실측·서류를 자주 주고받는다</td><td>같은 날 방문해 자료를 한 번에 모은다</td><td>일정 조율에 1~2주가 더 붙는다</td><td>부산 업체 쪽</td></tr>
-            <tr><td>생활권·상권 이름을 페이지에 써야 한다</td><td>동·역 이름의 실제 체감 범위를 안다</td><td>자료로만 판단해 범위가 넓어진다</td><td>부산 업체 쪽</td></tr>
-            <tr><td>검색 구조와 사이트를 크게 손봐야 한다</td><td>업체마다 역량 차이가 큰 구간이다</td><td>같은 작업을 반복해 본 곳이 많다</td><td>지역보다 작업 사례</td></tr>
-            <tr><td>광고 심의·규정이 걸리는 업종이다</td><td>지역 심의 일정을 겪어 봤는지 확인</td><td>같은 업종 경험을 찾기 쉽다</td><td>지역보다 업종 경험</td></tr>
+            <tr><td data-label="우리 상황">촬영·실측·서류를 자주 주고받는다</td><td data-label="부산 업체가 나은 점">같은 날 방문해 자료를 한 번에 모은다</td><td data-label="원격·수도권 업체가 나은 점">일정 조율에 1~2주가 더 붙는다</td><td data-label="제가 보는 기준">부산 업체 쪽</td></tr>
+            <tr><td data-label="우리 상황">생활권·상권 이름을 페이지에 써야 한다</td><td data-label="부산 업체가 나은 점">동·역 이름의 실제 체감 범위를 안다</td><td data-label="원격·수도권 업체가 나은 점">자료로만 판단해 범위가 넓어진다</td><td data-label="제가 보는 기준">부산 업체 쪽</td></tr>
+            <tr><td data-label="우리 상황">검색 구조와 사이트를 크게 손봐야 한다</td><td data-label="부산 업체가 나은 점">업체마다 역량 차이가 큰 구간이다</td><td data-label="원격·수도권 업체가 나은 점">같은 작업을 반복해 본 곳이 많다</td><td data-label="제가 보는 기준">지역보다 작업 사례</td></tr>
+            <tr><td data-label="우리 상황">광고 심의·규정이 걸리는 업종이다</td><td data-label="부산 업체가 나은 점">지역 심의 일정을 겪어 봤는지 확인</td><td data-label="원격·수도권 업체가 나은 점">같은 업종 경험을 찾기 쉽다</td><td data-label="제가 보는 기준">지역보다 업종 경험</td></tr>
           </tbody>
         </table>
       </div>
@@ -158,10 +166,10 @@
             <tr><th>월 비용 구간</th><th>보통 포함되는 범위</th><th>빠져 있기 쉬운 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>월 30만~60만원대</td><td>지도·플레이스 정보 관리, 원고 월 2~4편</td><td>광고 운영, 홈페이지 수정, 문의 기록 정리</td></tr>
-            <tr><td>월 60만~120만원대</td><td>원고 월 4~8편, 홈페이지 부분 수정, 월 보고</td><td>광고비 자체, 촬영, 랜딩페이지 신규 제작</td></tr>
-            <tr><td>월 120만~250만원대</td><td>원고와 광고 운영, 페이지 수정, 격주 보고</td><td>광고비, 영상, 지점별 페이지 분리</td></tr>
-            <tr><td>광고비 구분이 없는 견적</td><td>수수료와 광고비가 한 줄로 묶여 있음</td><td>실제 광고에 들어간 금액과 비율</td></tr>
+            <tr><td data-label="월 비용 구간">월 30만~60만원대</td><td data-label="보통 포함되는 범위">지도·플레이스 정보 관리, 원고 월 2~4편</td><td data-label="빠져 있기 쉬운 것">광고 운영, 홈페이지 수정, 문의 기록 정리</td></tr>
+            <tr><td data-label="월 비용 구간">월 60만~120만원대</td><td data-label="보통 포함되는 범위">원고 월 4~8편, 홈페이지 부분 수정, 월 보고</td><td data-label="빠져 있기 쉬운 것">광고비 자체, 촬영, 랜딩페이지 신규 제작</td></tr>
+            <tr><td data-label="월 비용 구간">월 120만~250만원대</td><td data-label="보통 포함되는 범위">원고와 광고 운영, 페이지 수정, 격주 보고</td><td data-label="빠져 있기 쉬운 것">광고비, 영상, 지점별 페이지 분리</td></tr>
+            <tr><td data-label="월 비용 구간">광고비 구분이 없는 견적</td><td data-label="보통 포함되는 범위">수수료와 광고비가 한 줄로 묶여 있음</td><td data-label="빠져 있기 쉬운 것">실제 광고에 들어간 금액과 비율</td></tr>
           </tbody>
         </table>
       </div>

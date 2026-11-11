@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -141,13 +149,13 @@
             <tr><th>항목</th><th>순위에 주는 영향</th><th>작업 시점</th></tr>
           </thead>
           <tbody>
-            <tr><td>주 카테고리</td><td>큼 — 잡히는 검색어 자체가 바뀜</td><td>가장 먼저</td></tr>
-            <tr><td>업체명·주소·전화 일치</td><td>큼 — 어긋나면 다른 작업이 묻힘</td><td>첫 주 안에</td></tr>
-            <tr><td>서비스·제품 항목</td><td>중간 — 세부 검색어와 매칭</td><td>첫 주 안에</td></tr>
-            <tr><td>영업시간·부가 속성</td><td>작음 — 비어 있으면 불리</td><td>첫 주 안에</td></tr>
-            <tr><td>리뷰 수와 최신성</td><td>큼 — 대신 시간이 걸림</td><td>매달 계속</td></tr>
-            <tr><td>사진</td><td>작음 — 클릭·전화에 영향</td><td>매달 3~5장</td></tr>
-            <tr><td>게시물·질문과 답변</td><td>작음 — 관리되고 있다는 신호</td><td>여유 있을 때</td></tr>
+            <tr><td data-label="항목">주 카테고리</td><td data-label="순위에 주는 영향">큼 — 잡히는 검색어 자체가 바뀜</td><td data-label="작업 시점">가장 먼저</td></tr>
+            <tr><td data-label="항목">업체명·주소·전화 일치</td><td data-label="순위에 주는 영향">큼 — 어긋나면 다른 작업이 묻힘</td><td data-label="작업 시점">첫 주 안에</td></tr>
+            <tr><td data-label="항목">서비스·제품 항목</td><td data-label="순위에 주는 영향">중간 — 세부 검색어와 매칭</td><td data-label="작업 시점">첫 주 안에</td></tr>
+            <tr><td data-label="항목">영업시간·부가 속성</td><td data-label="순위에 주는 영향">작음 — 비어 있으면 불리</td><td data-label="작업 시점">첫 주 안에</td></tr>
+            <tr><td data-label="항목">리뷰 수와 최신성</td><td data-label="순위에 주는 영향">큼 — 대신 시간이 걸림</td><td data-label="작업 시점">매달 계속</td></tr>
+            <tr><td data-label="항목">사진</td><td data-label="순위에 주는 영향">작음 — 클릭·전화에 영향</td><td data-label="작업 시점">매달 3~5장</td></tr>
+            <tr><td data-label="항목">게시물·질문과 답변</td><td data-label="순위에 주는 영향">작음 — 관리되고 있다는 신호</td><td data-label="작업 시점">여유 있을 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -170,11 +178,11 @@
             <tr><th>비교 기준</th><th>넓은 카테고리 (예: 치과)</th><th>좁은 카테고리 (예: 치과교정과)</th></tr>
           </thead>
           <tbody>
-            <tr><td>잡히는 검색어</td><td>일반 검색어 위주로 넓게</td><td>특정 시술·품목 검색어 위주</td></tr>
-            <tr><td>경쟁 강도</td><td>높음 — 같은 지역 업체가 전부 경쟁</td><td>낮음 — 후보군 자체가 좁음</td></tr>
-            <tr><td>월 검색량</td><td>많지만 문의 전환은 낮은 편</td><td>적지만 문의로 이어지는 비율이 높음</td></tr>
-            <tr><td>맞는 경우</td><td>동네 단골 중심, 업무 범위가 고른 곳</td><td>특정 업무가 매출 절반 이상인 곳</td></tr>
-            <tr><td>판단 기준</td><td>상위 다섯 곳 중 셋 이상이 이 카테고리</td><td>주력 업무가 상호·간판에 드러남</td></tr>
+            <tr><td data-label="비교 기준">잡히는 검색어</td><td data-label="넓은 카테고리 (예: 치과)">일반 검색어 위주로 넓게</td><td data-label="좁은 카테고리 (예: 치과교정과)">특정 시술·품목 검색어 위주</td></tr>
+            <tr><td data-label="비교 기준">경쟁 강도</td><td data-label="넓은 카테고리 (예: 치과)">높음 — 같은 지역 업체가 전부 경쟁</td><td data-label="좁은 카테고리 (예: 치과교정과)">낮음 — 후보군 자체가 좁음</td></tr>
+            <tr><td data-label="비교 기준">월 검색량</td><td data-label="넓은 카테고리 (예: 치과)">많지만 문의 전환은 낮은 편</td><td data-label="좁은 카테고리 (예: 치과교정과)">적지만 문의로 이어지는 비율이 높음</td></tr>
+            <tr><td data-label="비교 기준">맞는 경우</td><td data-label="넓은 카테고리 (예: 치과)">동네 단골 중심, 업무 범위가 고른 곳</td><td data-label="좁은 카테고리 (예: 치과교정과)">특정 업무가 매출 절반 이상인 곳</td></tr>
+            <tr><td data-label="비교 기준">판단 기준</td><td data-label="넓은 카테고리 (예: 치과)">상위 다섯 곳 중 셋 이상이 이 카테고리</td><td data-label="좁은 카테고리 (예: 치과교정과)">주력 업무가 상호·간판에 드러남</td></tr>
           </tbody>
         </table>
       </div>
@@ -207,11 +215,11 @@
             <tr><th>비교 기준</th><th>직접 관리</th><th>대행 맡기기</th></tr>
           </thead>
           <tbody>
-            <tr><td>초기 세팅 부담</td><td>첫 2주 4~6시간, 학습 시간 별도</td><td>맡기면 1~2주 안에 정리됨</td></tr>
-            <tr><td>매달 드는 시간</td><td>리뷰 답글·사진 포함 1~2시간</td><td>확인과 소재 전달에 30분 내외</td></tr>
-            <tr><td>비용</td><td>직접 쓰는 시간 외 추가 비용 없음</td><td>월 단위 관리비가 붙음 (업체별 차이 큼)</td></tr>
-            <tr><td>리뷰 대응 속도</td><td>현장 사정을 알아 답글이 구체적</td><td>내용 확인 과정에서 하루 이틀 지연</td></tr>
-            <tr><td>맞는 경우</td><td>1인·소규모, 사장님이 직접 응대</td><td>지점 2곳 이상, 응대 인력이 따로 없음</td></tr>
+            <tr><td data-label="비교 기준">초기 세팅 부담</td><td data-label="직접 관리">첫 2주 4~6시간, 학습 시간 별도</td><td data-label="대행 맡기기">맡기면 1~2주 안에 정리됨</td></tr>
+            <tr><td data-label="비교 기준">매달 드는 시간</td><td data-label="직접 관리">리뷰 답글·사진 포함 1~2시간</td><td data-label="대행 맡기기">확인과 소재 전달에 30분 내외</td></tr>
+            <tr><td data-label="비교 기준">비용</td><td data-label="직접 관리">직접 쓰는 시간 외 추가 비용 없음</td><td data-label="대행 맡기기">월 단위 관리비가 붙음 (업체별 차이 큼)</td></tr>
+            <tr><td data-label="비교 기준">리뷰 대응 속도</td><td data-label="직접 관리">현장 사정을 알아 답글이 구체적</td><td data-label="대행 맡기기">내용 확인 과정에서 하루 이틀 지연</td></tr>
+            <tr><td data-label="비교 기준">맞는 경우</td><td data-label="직접 관리">1인·소규모, 사장님이 직접 응대</td><td data-label="대행 맡기기">지점 2곳 이상, 응대 인력이 따로 없음</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -129,16 +137,16 @@
       <p>특히 초등·중등 학부모는 성적 자체보다 아이가 학원에서 어떻게 지내는지를 먼저 묻습니다. 출결 연락은 언제 오는지, 숙제를 안 해 가면 어떻게 되는지 같은 일상적인 질문입니다.</p>
       <p>이 질문에 대한 답이 홈페이지 어디에도 없으면 학부모는 전화로 물어야 합니다. 제가 본 대부분의 경우, 학부모는 그 전화를 걸기 전에 다른 학원을 먼저 봅니다.</p>
       <p>반대로 “주 2회 수업, 매회 30분 클리닉, 결석 시 당일 보강” 처럼 운영 규칙이 문장으로 적혀 있으면 그 문장 자체가 신뢰 자료가 됩니다. 아래 표는 학부모가 학원을 고르는 네 단계와, 각 단계에서 학원이 미리 준비해 둘 것을 정리한 것입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>단계</th><th>학부모가 하는 일</th><th>학원이 준비해 둘 것</th><th>보통 걸리는 시간</th></tr>
           </thead>
           <tbody>
-            <tr><td>1. 탐색</td><td>지역명과 과목으로 검색해 3~5곳을 추립니다</td><td>검색에 걸리는 기본 정보와 위치·과목 표기</td><td>하루 이내</td></tr>
-            <tr><td>2. 확인</td><td>홈페이지와 후기에서 운영 방식을 살핍니다</td><td>커리큘럼·반 편성·관리 규칙을 글로 정리</td><td>1~3일</td></tr>
-            <tr><td>3. 문의</td><td>1~2곳에만 전화하거나 문의를 남깁니다</td><td>상담 절차와 연락 가능 시간 안내</td><td>당일</td></tr>
-            <tr><td>4. 결정</td><td>상담과 체험 수업을 거쳐 등록을 정합니다</td><td>상담 기록과 첫 달 관리 계획 공유</td><td>3일~2주</td></tr>
+            <tr><td data-label="단계">1. 탐색</td><td data-label="학부모가 하는 일">지역명과 과목으로 검색해 3~5곳을 추립니다</td><td data-label="학원이 준비해 둘 것">검색에 걸리는 기본 정보와 위치·과목 표기</td><td data-label="보통 걸리는 시간">하루 이내</td></tr>
+            <tr><td data-label="단계">2. 확인</td><td data-label="학부모가 하는 일">홈페이지와 후기에서 운영 방식을 살핍니다</td><td data-label="학원이 준비해 둘 것">커리큘럼·반 편성·관리 규칙을 글로 정리</td><td data-label="보통 걸리는 시간">1~3일</td></tr>
+            <tr><td data-label="단계">3. 문의</td><td data-label="학부모가 하는 일">1~2곳에만 전화하거나 문의를 남깁니다</td><td data-label="학원이 준비해 둘 것">상담 절차와 연락 가능 시간 안내</td><td data-label="보통 걸리는 시간">당일</td></tr>
+            <tr><td data-label="단계">4. 결정</td><td data-label="학부모가 하는 일">상담과 체험 수업을 거쳐 등록을 정합니다</td><td data-label="학원이 준비해 둘 것">상담 기록과 첫 달 관리 계획 공유</td><td data-label="보통 걸리는 시간">3일~2주</td></tr>
           </tbody>
         </table>
       </div>
@@ -159,10 +167,10 @@
             <tr><th>항목</th><th>피해야 할 표현</th><th>권하는 방향</th></tr>
           </thead>
           <tbody>
-            <tr><td>성적</td><td>성적 향상을 단정적으로 약속</td><td>관리 방식과 과정 설명</td></tr>
-            <tr><td>후기</td><td>지어낸 듯한 극찬</td><td>실제 경험 위주의 솔직한 후기</td></tr>
-            <tr><td>강사</td><td>이름만 나열</td><td>지도 방식과 역할 소개</td></tr>
-            <tr><td>비용</td><td>숨김</td><td>상담 안내와 함께 투명하게</td></tr>
+            <tr><td data-label="항목">성적</td><td data-label="피해야 할 표현">성적 향상을 단정적으로 약속</td><td data-label="권하는 방향">관리 방식과 과정 설명</td></tr>
+            <tr><td data-label="항목">후기</td><td data-label="피해야 할 표현">지어낸 듯한 극찬</td><td data-label="권하는 방향">실제 경험 위주의 솔직한 후기</td></tr>
+            <tr><td data-label="항목">강사</td><td data-label="피해야 할 표현">이름만 나열</td><td data-label="권하는 방향">지도 방식과 역할 소개</td></tr>
+            <tr><td data-label="항목">비용</td><td data-label="피해야 할 표현">숨김</td><td data-label="권하는 방향">상담 안내와 함께 투명하게</td></tr>
           </tbody>
         </table>
       </div>
@@ -175,12 +183,12 @@
             <tr><th>비교 축</th><th>블로그·SNS 중심</th><th>홈페이지 중심</th></tr>
           </thead>
           <tbody>
-            <tr><td>처음 효과</td><td>글 몇 편만으로 유입이 생겨 빠른 편</td><td>정비에 2~6주가 걸려 느린 편</td></tr>
-            <tr><td>정보의 정리</td><td>글이 흩어져 학부모가 모아 보기 어렵습니다</td><td>커리큘럼과 상담 안내가 한곳에 모입니다</td></tr>
-            <tr><td>신뢰 형성</td><td>글쓴이의 인상에 좌우됩니다</td><td>운영 규칙이 기준으로 남습니다</td></tr>
-            <tr><td>유지 부담</td><td>주 1~2편을 계속 써야 합니다</td><td>학기마다 한 번 정도 갱신합니다</td></tr>
-            <tr><td>광고와의 연결</td><td>도착 페이지가 글이라 이탈이 큽니다</td><td>상담 신청까지 한 화면에서 이어집니다</td></tr>
-            <tr><td>이럴 때 맞습니다</td><td>원장이 직접 쓸 시간이 있는 소규모 학원</td><td>광고를 함께 돌리거나 경쟁이 치열한 지역</td></tr>
+            <tr><td data-label="비교 축">처음 효과</td><td data-label="블로그·SNS 중심">글 몇 편만으로 유입이 생겨 빠른 편</td><td data-label="홈페이지 중심">정비에 2~6주가 걸려 느린 편</td></tr>
+            <tr><td data-label="비교 축">정보의 정리</td><td data-label="블로그·SNS 중심">글이 흩어져 학부모가 모아 보기 어렵습니다</td><td data-label="홈페이지 중심">커리큘럼과 상담 안내가 한곳에 모입니다</td></tr>
+            <tr><td data-label="비교 축">신뢰 형성</td><td data-label="블로그·SNS 중심">글쓴이의 인상에 좌우됩니다</td><td data-label="홈페이지 중심">운영 규칙이 기준으로 남습니다</td></tr>
+            <tr><td data-label="비교 축">유지 부담</td><td data-label="블로그·SNS 중심">주 1~2편을 계속 써야 합니다</td><td data-label="홈페이지 중심">학기마다 한 번 정도 갱신합니다</td></tr>
+            <tr><td data-label="비교 축">광고와의 연결</td><td data-label="블로그·SNS 중심">도착 페이지가 글이라 이탈이 큽니다</td><td data-label="홈페이지 중심">상담 신청까지 한 화면에서 이어집니다</td></tr>
+            <tr><td data-label="비교 축">이럴 때 맞습니다</td><td data-label="블로그·SNS 중심">원장이 직접 쓸 시간이 있는 소규모 학원</td><td data-label="홈페이지 중심">광고를 함께 돌리거나 경쟁이 치열한 지역</td></tr>
           </tbody>
         </table>
       </div>
@@ -199,11 +207,11 @@
             <tr><th>학원 유형</th><th>학부모가 먼저 확인하는 것</th><th>우선 보강할 곳</th></tr>
           </thead>
           <tbody>
-            <tr><td>입시·보습</td><td>반 편성 기준과 진도·테스트 관리</td><td>커리큘럼 페이지와 관리 규칙</td></tr>
-            <tr><td>영어·어학</td><td>레벨 테스트 방식과 수업 구성</td><td>레벨 체계 설명과 주간 수업표</td></tr>
-            <tr><td>예체능</td><td>강사 경력과 연습 공간·장비</td><td>강사 소개와 시설 사진</td></tr>
-            <tr><td>유아·초등 돌봄</td><td>안전 관리와 연락 방식</td><td>출결·귀가 안내와 소통 창구</td></tr>
-            <tr><td>과학·코딩 등 특화</td><td>수업 결과물과 장비 수준</td><td>수업 사례와 결과물 소개</td></tr>
+            <tr><td data-label="학원 유형">입시·보습</td><td data-label="학부모가 먼저 확인하는 것">반 편성 기준과 진도·테스트 관리</td><td data-label="우선 보강할 곳">커리큘럼 페이지와 관리 규칙</td></tr>
+            <tr><td data-label="학원 유형">영어·어학</td><td data-label="학부모가 먼저 확인하는 것">레벨 테스트 방식과 수업 구성</td><td data-label="우선 보강할 곳">레벨 체계 설명과 주간 수업표</td></tr>
+            <tr><td data-label="학원 유형">예체능</td><td data-label="학부모가 먼저 확인하는 것">강사 경력과 연습 공간·장비</td><td data-label="우선 보강할 곳">강사 소개와 시설 사진</td></tr>
+            <tr><td data-label="학원 유형">유아·초등 돌봄</td><td data-label="학부모가 먼저 확인하는 것">안전 관리와 연락 방식</td><td data-label="우선 보강할 곳">출결·귀가 안내와 소통 창구</td></tr>
+            <tr><td data-label="학원 유형">과학·코딩 등 특화</td><td data-label="학부모가 먼저 확인하는 것">수업 결과물과 장비 수준</td><td data-label="우선 보강할 곳">수업 사례와 결과물 소개</td></tr>
           </tbody>
         </table>
       </div>

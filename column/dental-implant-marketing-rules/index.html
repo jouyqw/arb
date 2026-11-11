@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -130,17 +138,17 @@
       <p>숫자가 아니라 그 숫자에 무엇이 들어 있는지입니다. 같은 100만원도 보철까지 포함인지, 식립까지인지에 따라 환자가 치르는 총액이 두 배 가까이 달라집니다.</p>
       <p>제가 치과 쪽 상담에서 자주 보는 경우는 금액 한 줄만 크게 적혀 있고 포함 범위가 없는 페이지입니다. 그러면 문의가 전부 &quot;그 금액이 전부인가요&quot; 한 줄로 들어오고, 상담 시간이 가격 확인에 다 쓰입니다.</p>
       <p>아래 표는 제가 상담 자리에서 펼쳐 놓고 칸을 채우게 하는 기준입니다. 금액은 지역과 재료에 따라 움직이니 실제 금액으로 바꿔 쓰시면 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>환자가 묻는 금액 구간</th><th>보통 포함되는 범위</th><th>별도로 더 드는 경우</th><th>페이지에 적어 둘 문장</th></tr>
           </thead>
           <tbody>
-            <tr><td>한 개 80만~150만원대</td><td>진단, 식립, 지대주, 기본 보철</td><td>뼈이식, 상악 부위 추가 수술, 수면 마취</td><td>재료 제조사와 보철 종류, 사후 점검 기간을 함께 적습니다</td></tr>
-            <tr><td>한 개 150만~250만원대</td><td>재료 선택, 보철 종류 선택, 정기 점검 일정</td><td>여러 개를 연결하거나 교정을 함께 하는 경우</td><td>금액이 올라가는 이유를 재료와 공정 기준으로 적습니다</td></tr>
-            <tr><td>뼈이식이 붙는 경우 추가 20만~80만원대</td><td>이식재 비용과 추가 내원 1~2회</td><td>이식량이 많아 단계를 나누면 기간이 늘어남</td><td>이식이 필요한 판단 기준과 늘어나는 기간을 적습니다</td></tr>
-            <tr><td>65세 이상 건강보험 적용</td><td>부분 무치악에서 평생 2개까지, 본인부담 30%</td><td>3개째부터는 비급여, 틀니와 중복 적용 제한</td><td>적용 조건과 본인부담 비율을 숫자로 적습니다</td></tr>
-            <tr><td>&quot;검진 후 결정&quot;만 적힌 경우</td><td>없음 — 환자가 가져가는 정보가 0</td><td>비교 후보에서 먼저 빠짐</td><td>최소~최대 범위와 갈리는 변수 세 가지만이라도 적습니다</td></tr>
+            <tr><td data-label="환자가 묻는 금액 구간">한 개 80만~150만원대</td><td data-label="보통 포함되는 범위">진단, 식립, 지대주, 기본 보철</td><td data-label="별도로 더 드는 경우">뼈이식, 상악 부위 추가 수술, 수면 마취</td><td data-label="페이지에 적어 둘 문장">재료 제조사와 보철 종류, 사후 점검 기간을 함께 적습니다</td></tr>
+            <tr><td data-label="환자가 묻는 금액 구간">한 개 150만~250만원대</td><td data-label="보통 포함되는 범위">재료 선택, 보철 종류 선택, 정기 점검 일정</td><td data-label="별도로 더 드는 경우">여러 개를 연결하거나 교정을 함께 하는 경우</td><td data-label="페이지에 적어 둘 문장">금액이 올라가는 이유를 재료와 공정 기준으로 적습니다</td></tr>
+            <tr><td data-label="환자가 묻는 금액 구간">뼈이식이 붙는 경우 추가 20만~80만원대</td><td data-label="보통 포함되는 범위">이식재 비용과 추가 내원 1~2회</td><td data-label="별도로 더 드는 경우">이식량이 많아 단계를 나누면 기간이 늘어남</td><td data-label="페이지에 적어 둘 문장">이식이 필요한 판단 기준과 늘어나는 기간을 적습니다</td></tr>
+            <tr><td data-label="환자가 묻는 금액 구간">65세 이상 건강보험 적용</td><td data-label="보통 포함되는 범위">부분 무치악에서 평생 2개까지, 본인부담 30%</td><td data-label="별도로 더 드는 경우">3개째부터는 비급여, 틀니와 중복 적용 제한</td><td data-label="페이지에 적어 둘 문장">적용 조건과 본인부담 비율을 숫자로 적습니다</td></tr>
+            <tr><td data-label="환자가 묻는 금액 구간">&quot;검진 후 결정&quot;만 적힌 경우</td><td data-label="보통 포함되는 범위">없음 — 환자가 가져가는 정보가 0</td><td data-label="별도로 더 드는 경우">비교 후보에서 먼저 빠짐</td><td data-label="페이지에 적어 둘 문장">최소~최대 범위와 갈리는 변수 세 가지만이라도 적습니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -161,11 +169,11 @@
             <tr><th>올리고 싶어지는 자료</th><th>그대로 쓰기 어려운 이유</th><th>대신 쓸 수 있는 형태</th></tr>
           </thead>
           <tbody>
-            <tr><td>치료 전후 입안 비교 사진</td><td>치료 효과를 오인하게 할 소지가 큰 형태로 다뤄집니다</td><td>파노라마·CT로 뼈 상태와 식립 위치를 설명하는 자료</td></tr>
-            <tr><td>식립 수술 장면 영상</td><td>직접적인 시술 행위 노출은 광고 금지 유형에 들어갑니다</td><td>수술 당일 준비물, 소요 시간, 회복 일정 안내</td></tr>
-            <tr><td>환자 후기와 치료 경험담</td><td>치료경험담은 원칙적으로 금지됩니다</td><td>진료 단계별 안내와 총 내원 횟수 설명</td></tr>
-            <tr><td>&quot;이번 달 ○건 한정 할인&quot;</td><td>비급여 할인은 환자 유인으로 해석될 소지가 있습니다</td><td>포함 범위를 밝힌 금액 구간 안내</td></tr>
-            <tr><td>&quot;통증 없는 시술&quot; 같은 단정</td><td>효과를 단정하는 표현으로 읽힙니다</td><td>사용하는 마취 방식과 회복 기간을 사실로 설명</td></tr>
+            <tr><td data-label="올리고 싶어지는 자료">치료 전후 입안 비교 사진</td><td data-label="그대로 쓰기 어려운 이유">치료 효과를 오인하게 할 소지가 큰 형태로 다뤄집니다</td><td data-label="대신 쓸 수 있는 형태">파노라마·CT로 뼈 상태와 식립 위치를 설명하는 자료</td></tr>
+            <tr><td data-label="올리고 싶어지는 자료">식립 수술 장면 영상</td><td data-label="그대로 쓰기 어려운 이유">직접적인 시술 행위 노출은 광고 금지 유형에 들어갑니다</td><td data-label="대신 쓸 수 있는 형태">수술 당일 준비물, 소요 시간, 회복 일정 안내</td></tr>
+            <tr><td data-label="올리고 싶어지는 자료">환자 후기와 치료 경험담</td><td data-label="그대로 쓰기 어려운 이유">치료경험담은 원칙적으로 금지됩니다</td><td data-label="대신 쓸 수 있는 형태">진료 단계별 안내와 총 내원 횟수 설명</td></tr>
+            <tr><td data-label="올리고 싶어지는 자료">&quot;이번 달 ○건 한정 할인&quot;</td><td data-label="그대로 쓰기 어려운 이유">비급여 할인은 환자 유인으로 해석될 소지가 있습니다</td><td data-label="대신 쓸 수 있는 형태">포함 범위를 밝힌 금액 구간 안내</td></tr>
+            <tr><td data-label="올리고 싶어지는 자료">&quot;통증 없는 시술&quot; 같은 단정</td><td data-label="그대로 쓰기 어려운 이유">효과를 단정하는 표현으로 읽힙니다</td><td data-label="대신 쓸 수 있는 형태">사용하는 마취 방식과 회복 기간을 사실로 설명</td></tr>
           </tbody>
         </table>
       </div>

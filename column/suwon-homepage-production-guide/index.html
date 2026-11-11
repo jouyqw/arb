@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -130,13 +138,13 @@
             <tr><th>견적 항목</th><th>비어 있으면 생기는 일</th><th>되물을 질문</th></tr>
           </thead>
           <tbody>
-            <tr><td>기획·페이지 구성</td><td>페이지 수가 중간에 늘어 추가 견적이 붙습니다</td><td>몇 페이지까지가 계약 범위인가요</td></tr>
-            <tr><td>디자인 시안</td><td>시안 수정이 2회를 넘으면 건당 비용이 생깁니다</td><td>시안을 몇 개 보여 주고 수정은 몇 회까지인가요</td></tr>
-            <tr><td>퍼블리싱·모바일 대응</td><td>PC만 맞고 모바일에서 줄이 깨집니다</td><td>휴대폰·태블릿까지 확인해 주시나요</td></tr>
-            <tr><td>기능 개발</td><td>예약·결제·회원은 거의 별도 항목입니다</td><td>문의 폼 외에 어떤 기능이 포함인가요</td></tr>
-            <tr><td>원고 작성</td><td>페이지가 비어 오픈이 2~4주 밀립니다</td><td>원고를 몇 페이지까지 써 주시나요</td></tr>
-            <tr><td>사진 촬영</td><td>무료 이미지로 채워 동종 업체와 똑같아집니다</td><td>촬영 몇 회, 보정 몇 컷인가요</td></tr>
-            <tr><td>검색 기본 설정</td><td>페이지 제목이 회사 이름 하나로 전부 같아집니다</td><td>등록까지인가요, 페이지별 작성까지인가요</td></tr>
+            <tr><td data-label="견적 항목">기획·페이지 구성</td><td data-label="비어 있으면 생기는 일">페이지 수가 중간에 늘어 추가 견적이 붙습니다</td><td data-label="되물을 질문">몇 페이지까지가 계약 범위인가요</td></tr>
+            <tr><td data-label="견적 항목">디자인 시안</td><td data-label="비어 있으면 생기는 일">시안 수정이 2회를 넘으면 건당 비용이 생깁니다</td><td data-label="되물을 질문">시안을 몇 개 보여 주고 수정은 몇 회까지인가요</td></tr>
+            <tr><td data-label="견적 항목">퍼블리싱·모바일 대응</td><td data-label="비어 있으면 생기는 일">PC만 맞고 모바일에서 줄이 깨집니다</td><td data-label="되물을 질문">휴대폰·태블릿까지 확인해 주시나요</td></tr>
+            <tr><td data-label="견적 항목">기능 개발</td><td data-label="비어 있으면 생기는 일">예약·결제·회원은 거의 별도 항목입니다</td><td data-label="되물을 질문">문의 폼 외에 어떤 기능이 포함인가요</td></tr>
+            <tr><td data-label="견적 항목">원고 작성</td><td data-label="비어 있으면 생기는 일">페이지가 비어 오픈이 2~4주 밀립니다</td><td data-label="되물을 질문">원고를 몇 페이지까지 써 주시나요</td></tr>
+            <tr><td data-label="견적 항목">사진 촬영</td><td data-label="비어 있으면 생기는 일">무료 이미지로 채워 동종 업체와 똑같아집니다</td><td data-label="되물을 질문">촬영 몇 회, 보정 몇 컷인가요</td></tr>
+            <tr><td data-label="견적 항목">검색 기본 설정</td><td data-label="비어 있으면 생기는 일">페이지 제목이 회사 이름 하나로 전부 같아집니다</td><td data-label="되물을 질문">등록까지인가요, 페이지별 작성까지인가요</td></tr>
           </tbody>
         </table>
       </div>
@@ -165,16 +173,16 @@
       <h2>금액대별로 포함 범위는 어디까지 갈리나요?</h2>
       <p>소개형 사이트는 300만원대부터, 기능이 붙으면 1,200만원대까지 흔히 갈립니다. 기간은 보통 <mark class="hl-mark">4~8주</mark>이고, 기능 개발이 들어가면 10주를 넘기기도 합니다.</p>
       <p>아래 표는 제가 수도권 상담에서 실제로 되물어 온 기준으로 묶은 것입니다. 금액은 지역보다 포함 범위를 따라갑니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>금액대</th><th>보통 포함되는 범위</th><th>빠지기 쉬운 것</th><th>같이 보는 유지보수</th></tr>
           </thead>
           <tbody>
-            <tr><td>300만~500만원대</td><td>템플릿 기반 5~10페이지, 문의 폼, 모바일 대응</td><td>원고 작성, 촬영, 페이지별 검색 설정</td><td>월 10만~20만원대</td></tr>
-            <tr><td>600만~900만원대</td><td>맞춤 디자인 10~20페이지, 촬영 1회, 원고 일부, 글 등록 기능</td><td>구조화 데이터, 주소 체계 설계, 색인 확인 보고</td><td>월 20만~35만원대</td></tr>
-            <tr><td>1,000만~1,200만원 이상</td><td>예약·결제·회원 등 기능 개발, 다국어, 관리자 기능</td><td>기능 하자 보수 기간, 추후 기능 추가 단가</td><td>월 35만~50만원대</td></tr>
-            <tr><td>별도 운영 계약</td><td>칼럼 월 2~4편, 키워드 운영, 월간 보고</td><td>유지보수와 묶어 적는 경우가 많습니다</td><td>범위에 따라 별도</td></tr>
+            <tr><td data-label="금액대">300만~500만원대</td><td data-label="보통 포함되는 범위">템플릿 기반 5~10페이지, 문의 폼, 모바일 대응</td><td data-label="빠지기 쉬운 것">원고 작성, 촬영, 페이지별 검색 설정</td><td data-label="같이 보는 유지보수">월 10만~20만원대</td></tr>
+            <tr><td data-label="금액대">600만~900만원대</td><td data-label="보통 포함되는 범위">맞춤 디자인 10~20페이지, 촬영 1회, 원고 일부, 글 등록 기능</td><td data-label="빠지기 쉬운 것">구조화 데이터, 주소 체계 설계, 색인 확인 보고</td><td data-label="같이 보는 유지보수">월 20만~35만원대</td></tr>
+            <tr><td data-label="금액대">1,000만~1,200만원 이상</td><td data-label="보통 포함되는 범위">예약·결제·회원 등 기능 개발, 다국어, 관리자 기능</td><td data-label="빠지기 쉬운 것">기능 하자 보수 기간, 추후 기능 추가 단가</td><td data-label="같이 보는 유지보수">월 35만~50만원대</td></tr>
+            <tr><td data-label="금액대">별도 운영 계약</td><td data-label="보통 포함되는 범위">칼럼 월 2~4편, 키워드 운영, 월간 보고</td><td data-label="빠지기 쉬운 것">유지보수와 묶어 적는 경우가 많습니다</td><td data-label="같이 보는 유지보수">범위에 따라 별도</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -146,9 +154,9 @@
             <tr><th>방식</th><th>흩어진 글</th><th>주제 클러스터</th></tr>
           </thead>
           <tbody>
-            <tr><td>전문성 신호</td><td>약함</td><td>무리 전체가 함께 강화</td></tr>
-            <tr><td>이용자 동선</td><td>끊김</td><td>관련 글로 자연스럽게 이동</td></tr>
-            <tr><td>상위노출</td><td>개별 경쟁</td><td>축이 되는 주제로 축적</td></tr>
+            <tr><td data-label="방식">전문성 신호</td><td data-label="흩어진 글">약함</td><td data-label="주제 클러스터">무리 전체가 함께 강화</td></tr>
+            <tr><td data-label="방식">이용자 동선</td><td data-label="흩어진 글">끊김</td><td data-label="주제 클러스터">관련 글로 자연스럽게 이동</td></tr>
+            <tr><td data-label="방식">상위노출</td><td data-label="흩어진 글">개별 경쟁</td><td data-label="주제 클러스터">축이 되는 주제로 축적</td></tr>
           </tbody>
         </table>
       </div>
@@ -172,12 +180,12 @@
             <tr><th>구분</th><th>기둥 글</th><th>세부 글</th></tr>
           </thead>
           <tbody>
-            <tr><td>다루는 범위</td><td>주제 전체를 개괄</td><td>질문 하나를 깊게</td></tr>
-            <tr><td>권장 분량</td><td>3,000자 이상</td><td>1,500~2,500자</td></tr>
-            <tr><td>노리는 검색어</td><td>짧고 경쟁이 센 대표 검색어</td><td>길고 구체적인 질문형 검색어</td></tr>
-            <tr><td>편수 기준</td><td>핵심 주제당 1편</td><td>기둥 1편당 6~12편</td></tr>
-            <tr><td>내부링크 방향</td><td>세부 글 목록을 모두 연결</td><td>기둥으로 돌아가는 링크 1개 이상</td></tr>
-            <tr><td>갱신 주기</td><td>3개월마다 점검</td><td>6~12개월마다 점검</td></tr>
+            <tr><td data-label="구분">다루는 범위</td><td data-label="기둥 글">주제 전체를 개괄</td><td data-label="세부 글">질문 하나를 깊게</td></tr>
+            <tr><td data-label="구분">권장 분량</td><td data-label="기둥 글">3,000자 이상</td><td data-label="세부 글">1,500~2,500자</td></tr>
+            <tr><td data-label="구분">노리는 검색어</td><td data-label="기둥 글">짧고 경쟁이 센 대표 검색어</td><td data-label="세부 글">길고 구체적인 질문형 검색어</td></tr>
+            <tr><td data-label="구분">편수 기준</td><td data-label="기둥 글">핵심 주제당 1편</td><td data-label="세부 글">기둥 1편당 6~12편</td></tr>
+            <tr><td data-label="구분">내부링크 방향</td><td data-label="기둥 글">세부 글 목록을 모두 연결</td><td data-label="세부 글">기둥으로 돌아가는 링크 1개 이상</td></tr>
+            <tr><td data-label="구분">갱신 주기</td><td data-label="기둥 글">3개월마다 점검</td><td data-label="세부 글">6~12개월마다 점검</td></tr>
           </tbody>
         </table>
       </div>
@@ -219,12 +227,12 @@
             <tr><th>지금 상황</th><th>새 글 쓰기</th><th>기존 글 보강</th></tr>
           </thead>
           <tbody>
-            <tr><td>기둥 글이 아직 없다</td><td>기둥 글 1편부터</td><td>나중에</td></tr>
-            <tr><td>세부 글이 5편 미만</td><td>권장</td><td>나중에</td></tr>
-            <tr><td>세부 글 10편 이상인데 순위 정체</td><td>나중에</td><td>권장</td></tr>
-            <tr><td>노출은 되는데 클릭이 적다</td><td>나중에</td><td>제목·요약 손보기</td></tr>
-            <tr><td>1년 넘은 글이 절반 이상</td><td>나중에</td><td>갱신 먼저</td></tr>
-            <tr><td>상담 질문인데 글이 없는 주제</td><td>권장</td><td>나중에</td></tr>
+            <tr><td data-label="지금 상황">기둥 글이 아직 없다</td><td data-label="새 글 쓰기">기둥 글 1편부터</td><td data-label="기존 글 보강">나중에</td></tr>
+            <tr><td data-label="지금 상황">세부 글이 5편 미만</td><td data-label="새 글 쓰기">권장</td><td data-label="기존 글 보강">나중에</td></tr>
+            <tr><td data-label="지금 상황">세부 글 10편 이상인데 순위 정체</td><td data-label="새 글 쓰기">나중에</td><td data-label="기존 글 보강">권장</td></tr>
+            <tr><td data-label="지금 상황">노출은 되는데 클릭이 적다</td><td data-label="새 글 쓰기">나중에</td><td data-label="기존 글 보강">제목·요약 손보기</td></tr>
+            <tr><td data-label="지금 상황">1년 넘은 글이 절반 이상</td><td data-label="새 글 쓰기">나중에</td><td data-label="기존 글 보강">갱신 먼저</td></tr>
+            <tr><td data-label="지금 상황">상담 질문인데 글이 없는 주제</td><td data-label="새 글 쓰기">권장</td><td data-label="기존 글 보강">나중에</td></tr>
           </tbody>
         </table>
       </div>

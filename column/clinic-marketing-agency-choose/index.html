@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -130,11 +138,11 @@
             <tr><th>항목</th><th>비어 있을 때 생기는 일</th><th>계약서에 넣을 내용</th></tr>
           </thead>
           <tbody>
-            <tr><td>계약 기간·자동 갱신</td><td>그만둘 생각이었는데 다음 기간이 이미 시작됨</td><td>갱신 거절 통보 기한을 날짜 수와 방법으로 명시</td></tr>
-            <tr><td>산출물 소유권</td><td>홈페이지와 원고를 그대로 쓸 수 있는지 불분명</td><td>홈페이지·계정·원고를 항목별로 구분해 기재</td></tr>
-            <tr><td>보고 주기·자료</td><td>요약만 남아 다음 담당자가 이어받지 못함</td><td>주기와 함께 받을 자료 항목을 열거</td></tr>
-            <tr><td>중도 해지</td><td>해지 의사를 전해도 정산 기준이 없어 멈춤</td><td>사유, 통보 기한, 선납금 정산 방식</td></tr>
-            <tr><td>의료 분야 추가 항목</td><td>심의와 개인정보 처리 책임이 겹침</td><td>원고 검수 주체와 위탁 범위를 분리 기재</td></tr>
+            <tr><td data-label="항목">계약 기간·자동 갱신</td><td data-label="비어 있을 때 생기는 일">그만둘 생각이었는데 다음 기간이 이미 시작됨</td><td data-label="계약서에 넣을 내용">갱신 거절 통보 기한을 날짜 수와 방법으로 명시</td></tr>
+            <tr><td data-label="항목">산출물 소유권</td><td data-label="비어 있을 때 생기는 일">홈페이지와 원고를 그대로 쓸 수 있는지 불분명</td><td data-label="계약서에 넣을 내용">홈페이지·계정·원고를 항목별로 구분해 기재</td></tr>
+            <tr><td data-label="항목">보고 주기·자료</td><td data-label="비어 있을 때 생기는 일">요약만 남아 다음 담당자가 이어받지 못함</td><td data-label="계약서에 넣을 내용">주기와 함께 받을 자료 항목을 열거</td></tr>
+            <tr><td data-label="항목">중도 해지</td><td data-label="비어 있을 때 생기는 일">해지 의사를 전해도 정산 기준이 없어 멈춤</td><td data-label="계약서에 넣을 내용">사유, 통보 기한, 선납금 정산 방식</td></tr>
+            <tr><td data-label="항목">의료 분야 추가 항목</td><td data-label="비어 있을 때 생기는 일">심의와 개인정보 처리 책임이 겹침</td><td data-label="계약서에 넣을 내용">원고 검수 주체와 위탁 범위를 분리 기재</td></tr>
           </tbody>
         </table>
       </div>
@@ -165,11 +173,11 @@
             <tr><th>받는 자료</th><th>왜 필요한가</th><th>없을 때 생기는 공백</th></tr>
           </thead>
           <tbody>
-            <tr><td>작성한 원고 목록과 주소</td><td>무엇이 어디에 올라갔는지 확인</td><td>글이 어느 채널에 남았는지 모름</td></tr>
-            <tr><td>수정한 페이지 기록</td><td>사이트 변경 이력 파악</td><td>문제가 생긴 시점을 추적 못 함</td></tr>
-            <tr><td>집행액과 유입 수</td><td>예산 배분 판단의 근거</td><td>다음 달 금액을 감으로 정함</td></tr>
-            <tr><td>문의 건수와 유입 경로</td><td>어디서 문의가 오는지 구분</td><td>채널별 비중을 못 정함</td></tr>
-            <tr><td>다음 기간 작업 계획</td><td>일정과 기대치 조정</td><td>매달 같은 보고가 반복됨</td></tr>
+            <tr><td data-label="받는 자료">작성한 원고 목록과 주소</td><td data-label="왜 필요한가">무엇이 어디에 올라갔는지 확인</td><td data-label="없을 때 생기는 공백">글이 어느 채널에 남았는지 모름</td></tr>
+            <tr><td data-label="받는 자료">수정한 페이지 기록</td><td data-label="왜 필요한가">사이트 변경 이력 파악</td><td data-label="없을 때 생기는 공백">문제가 생긴 시점을 추적 못 함</td></tr>
+            <tr><td data-label="받는 자료">집행액과 유입 수</td><td data-label="왜 필요한가">예산 배분 판단의 근거</td><td data-label="없을 때 생기는 공백">다음 달 금액을 감으로 정함</td></tr>
+            <tr><td data-label="받는 자료">문의 건수와 유입 경로</td><td data-label="왜 필요한가">어디서 문의가 오는지 구분</td><td data-label="없을 때 생기는 공백">채널별 비중을 못 정함</td></tr>
+            <tr><td data-label="받는 자료">다음 기간 작업 계획</td><td data-label="왜 필요한가">일정과 기대치 조정</td><td data-label="없을 때 생기는 공백">매달 같은 보고가 반복됨</td></tr>
           </tbody>
         </table>
       </div>

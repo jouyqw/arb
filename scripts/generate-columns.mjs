@@ -124,13 +124,25 @@ const renderBlock = (block) => {
   }
 
   if (block?.type === 'table') {
-    return `<div class="table-wrap">
+    // 2026-11-10 모바일에서 표가 깨지고 있었다.
+    //
+    // table{min-width:560px} 에 @media(max-width:560px){} 이 붙어 있어서
+    // 좁은 화면에서 표를 **쥐어짰다**. 4칸 이상 표가 118편인데, 360px 폭에서 다섯 칸을
+    // 밀어 넣으면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려간다.
+    // 가로 스크롤보다 나쁘다 — 읽을 수가 없다.
+    //
+    // 그래서 좁은 화면에서는 줄을 카드로 세운다. 각 칸이 "항목: 값" 한 줄이 되게.
+    // 그러려면 칸마다 자기 머리글을 들고 있어야 해서 data-label 을 붙인다.
+    // 4칸 미만이면 그냥 표로 두는 편이 읽기 쉬우니 카드로 만들지 않는다.
+    const wide = (block.headers || []).length >= 4;
+    const cls = wide ? 'table-wrap stackable' : 'table-wrap';
+    return `<div class="${cls}">
         <table>
           <thead>
             <tr>${block.headers.map((header) => `<th>${esc(header)}</th>`).join('')}</tr>
           </thead>
           <tbody>
-            ${block.rows.map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join('')}</tr>`).join('\n            ')}
+            ${block.rows.map((row) => `<tr>${row.map((cell, ci) => `<td data-label="${esc(block.headers[ci] ?? '')}">${esc(cell)}</td>`).join('')}</tr>`).join('\n            ')}
           </tbody>
         </table>
       </div>`;
@@ -261,7 +273,7 @@ const articleTemplate = (post) => {
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -329,7 +341,15 @@ const articleTemplate = (post) => {
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -507,7 +527,7 @@ const serviceStyle = `
     .top-actions .primary{background:linear-gradient(100deg,#3D8BFF 0%,#66D0FF 100%);color:#fff;box-shadow:0 8px 22px rgba(61,139,255,.34)}
     .top-actions .ghost{border:1px solid rgba(255,255,255,.24);color:#DCE4F0}
     h2{font-size:25px;line-height:1.34;margin:44px 0 14px;letter-spacing:-.02em}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -566,7 +586,13 @@ const serviceStyle = `
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.top{padding:26px 0 42px;margin-bottom:34px}p,li{font-size:16px}h2{font-size:22px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.cta{padding:24px}}
+    @media(max-width:560px){.top{padding:26px 0 42px;margin-bottom:34px}p,li{font-size:16px}h2{font-size:22px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.cta{padding:24px}
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
 `;
 
 const serviceTemplate = (svc) => {

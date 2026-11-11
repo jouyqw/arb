@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -138,14 +146,14 @@
             <tr><th>항목</th><th>홈페이지 내 칼럼</th><th>외부 블로그</th></tr>
           </thead>
           <tbody>
-            <tr><td>초기 노출 속도</td><td>느립니다</td><td>빠릅니다</td></tr>
-            <tr><td>평가 축적</td><td>내 도메인에</td><td>플랫폼에</td></tr>
-            <tr><td>형식 자유도</td><td>높습니다</td><td>제한이 있습니다</td></tr>
-            <tr><td>운영 중단 시</td><td>글이 남습니다</td><td>정책 변경 영향을 받습니다</td></tr>
-            <tr><td>문의 연결</td><td>바로 이어집니다</td><td>한 단계 더 거칩니다</td></tr>
-            <tr><td>첫 노출까지</td><td>보통 3~6개월</td><td>보통 1~2주</td></tr>
-            <tr><td>한 편 작성 시간</td><td>2~4시간</td><td>40분~1시간</td></tr>
-            <tr><td>권장 발행 주기</td><td>월 2~4편</td><td>주 1~3편</td></tr>
+            <tr><td data-label="항목">초기 노출 속도</td><td data-label="홈페이지 내 칼럼">느립니다</td><td data-label="외부 블로그">빠릅니다</td></tr>
+            <tr><td data-label="항목">평가 축적</td><td data-label="홈페이지 내 칼럼">내 도메인에</td><td data-label="외부 블로그">플랫폼에</td></tr>
+            <tr><td data-label="항목">형식 자유도</td><td data-label="홈페이지 내 칼럼">높습니다</td><td data-label="외부 블로그">제한이 있습니다</td></tr>
+            <tr><td data-label="항목">운영 중단 시</td><td data-label="홈페이지 내 칼럼">글이 남습니다</td><td data-label="외부 블로그">정책 변경 영향을 받습니다</td></tr>
+            <tr><td data-label="항목">문의 연결</td><td data-label="홈페이지 내 칼럼">바로 이어집니다</td><td data-label="외부 블로그">한 단계 더 거칩니다</td></tr>
+            <tr><td data-label="항목">첫 노출까지</td><td data-label="홈페이지 내 칼럼">보통 3~6개월</td><td data-label="외부 블로그">보통 1~2주</td></tr>
+            <tr><td data-label="항목">한 편 작성 시간</td><td data-label="홈페이지 내 칼럼">2~4시간</td><td data-label="외부 블로그">40분~1시간</td></tr>
+            <tr><td data-label="항목">권장 발행 주기</td><td data-label="홈페이지 내 칼럼">월 2~4편</td><td data-label="외부 블로그">주 1~3편</td></tr>
           </tbody>
         </table>
       </div>
@@ -159,12 +167,12 @@
             <tr><th>지금 상황</th><th>먼저 할 곳</th><th>그렇게 보는 이유</th></tr>
           </thead>
           <tbody>
-            <tr><td>개업 6개월 미만, 당장 문의가 급함</td><td>외부 블로그</td><td>노출까지 1~2주면 되고, 홈페이지는 3~6개월이 걸립니다</td></tr>
-            <tr><td>홈페이지는 있는데 검색 유입이 거의 없음</td><td>홈페이지 칼럼</td><td>도메인에 주제 신호가 아직 하나도 쌓이지 않은 상태입니다</td></tr>
-            <tr><td>블로그 글이 100편 넘고 반응 좋은 주제가 있음</td><td>홈페이지로 확장</td><td>검증된 주제를 깊게 다시 쓰면 성공 확률이 높습니다</td></tr>
-            <tr><td>상담 단가가 높고 검토 기간이 긴 업종</td><td>홈페이지 칼럼</td><td>고객이 계약 전 회사 사이트에서 근거를 확인합니다</td></tr>
-            <tr><td>시즌·이벤트 상품 비중이 큼</td><td>외부 블로그</td><td>유효 기간이 짧아 자산으로 남기 어렵습니다</td></tr>
-            <tr><td>담당자 1명이 주 1편 정도만 쓸 수 있음</td><td>홈페이지 칼럼</td><td>편수가 적을수록 자산이 남는 쪽에 몰아야 합니다</td></tr>
+            <tr><td data-label="지금 상황">개업 6개월 미만, 당장 문의가 급함</td><td data-label="먼저 할 곳">외부 블로그</td><td data-label="그렇게 보는 이유">노출까지 1~2주면 되고, 홈페이지는 3~6개월이 걸립니다</td></tr>
+            <tr><td data-label="지금 상황">홈페이지는 있는데 검색 유입이 거의 없음</td><td data-label="먼저 할 곳">홈페이지 칼럼</td><td data-label="그렇게 보는 이유">도메인에 주제 신호가 아직 하나도 쌓이지 않은 상태입니다</td></tr>
+            <tr><td data-label="지금 상황">블로그 글이 100편 넘고 반응 좋은 주제가 있음</td><td data-label="먼저 할 곳">홈페이지로 확장</td><td data-label="그렇게 보는 이유">검증된 주제를 깊게 다시 쓰면 성공 확률이 높습니다</td></tr>
+            <tr><td data-label="지금 상황">상담 단가가 높고 검토 기간이 긴 업종</td><td data-label="먼저 할 곳">홈페이지 칼럼</td><td data-label="그렇게 보는 이유">고객이 계약 전 회사 사이트에서 근거를 확인합니다</td></tr>
+            <tr><td data-label="지금 상황">시즌·이벤트 상품 비중이 큼</td><td data-label="먼저 할 곳">외부 블로그</td><td data-label="그렇게 보는 이유">유효 기간이 짧아 자산으로 남기 어렵습니다</td></tr>
+            <tr><td data-label="지금 상황">담당자 1명이 주 1편 정도만 쓸 수 있음</td><td data-label="먼저 할 곳">홈페이지 칼럼</td><td data-label="그렇게 보는 이유">편수가 적을수록 자산이 남는 쪽에 몰아야 합니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -223,10 +231,10 @@
             <tr><th>시점</th><th>확인할 것</th><th>안 되면 손볼 곳</th></tr>
           </thead>
           <tbody>
-            <tr><td>발행 직후 ~ 3일</td><td>검색엔진에 색인되었는지</td><td>사이트맵 등록, 색인 요청</td></tr>
-            <tr><td>4주</td><td>어떤 검색어로 노출되는지</td><td>제목과 첫 문단의 표현</td></tr>
-            <tr><td>12주</td><td>유입 수와 문의 경로</td><td>글 끝의 문의 연결, 내부 링크</td></tr>
-            <tr><td>6개월</td><td>내용이 아직 맞는지</td><td>금액·절차·기준 수정 후 재발행</td></tr>
+            <tr><td data-label="시점">발행 직후 ~ 3일</td><td data-label="확인할 것">검색엔진에 색인되었는지</td><td data-label="안 되면 손볼 곳">사이트맵 등록, 색인 요청</td></tr>
+            <tr><td data-label="시점">4주</td><td data-label="확인할 것">어떤 검색어로 노출되는지</td><td data-label="안 되면 손볼 곳">제목과 첫 문단의 표현</td></tr>
+            <tr><td data-label="시점">12주</td><td data-label="확인할 것">유입 수와 문의 경로</td><td data-label="안 되면 손볼 곳">글 끝의 문의 연결, 내부 링크</td></tr>
+            <tr><td data-label="시점">6개월</td><td data-label="확인할 것">내용이 아직 맞는지</td><td data-label="안 되면 손볼 곳">금액·절차·기준 수정 후 재발행</td></tr>
           </tbody>
         </table>
       </div>

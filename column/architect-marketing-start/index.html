@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -144,12 +152,12 @@
             <tr><th>항목</th><th>왜 넣는가</th><th>적는 방식</th></tr>
           </thead>
           <tbody>
-            <tr><td>소재지·용도지역</td><td>건축주가 자기 땅과 조건을 맞춰 봅니다</td><td>시군구까지. 번지는 빼도 됩니다</td></tr>
-            <tr><td>대지면적·연면적</td><td>가장 먼저 확인하는 숫자입니다</td><td>㎡와 평을 함께 표기</td></tr>
-            <tr><td>용도·층수·구조</td><td>인허가 난이도를 가늠하는 기준입니다</td><td>단독주택 / 지상 2층 / 목구조</td></tr>
-            <tr><td>설계 기간</td><td>일정 계획이 서야 상담으로 넘어옵니다</td><td>인허가 포함 개월 수</td></tr>
-            <tr><td>공사 기간</td><td>전체 일정의 감을 잡게 해 줍니다</td><td>착공~준공 개월 수</td></tr>
-            <tr><td>이 프로젝트의 과제</td><td>실력이 드러나는 유일한 칸입니다</td><td>사선제한, 협소 대지 등 2~3줄</td></tr>
+            <tr><td data-label="항목">소재지·용도지역</td><td data-label="왜 넣는가">건축주가 자기 땅과 조건을 맞춰 봅니다</td><td data-label="적는 방식">시군구까지. 번지는 빼도 됩니다</td></tr>
+            <tr><td data-label="항목">대지면적·연면적</td><td data-label="왜 넣는가">가장 먼저 확인하는 숫자입니다</td><td data-label="적는 방식">㎡와 평을 함께 표기</td></tr>
+            <tr><td data-label="항목">용도·층수·구조</td><td data-label="왜 넣는가">인허가 난이도를 가늠하는 기준입니다</td><td data-label="적는 방식">단독주택 / 지상 2층 / 목구조</td></tr>
+            <tr><td data-label="항목">설계 기간</td><td data-label="왜 넣는가">일정 계획이 서야 상담으로 넘어옵니다</td><td data-label="적는 방식">인허가 포함 개월 수</td></tr>
+            <tr><td data-label="항목">공사 기간</td><td data-label="왜 넣는가">전체 일정의 감을 잡게 해 줍니다</td><td data-label="적는 방식">착공~준공 개월 수</td></tr>
+            <tr><td data-label="항목">이 프로젝트의 과제</td><td data-label="왜 넣는가">실력이 드러나는 유일한 칸입니다</td><td data-label="적는 방식">사선제한, 협소 대지 등 2~3줄</td></tr>
           </tbody>
         </table>
       </div>
@@ -167,16 +175,16 @@
       <p>그래서 감리 페이지는 홍보 글보다 <strong>업무 범위와 절차를 정리한 안내문</strong>에 가깝게 쓰는 편이 반응이 좋습니다.</p>
       <p>설계 페이지와 감리 페이지를 하나로 합치면, 두 검색어 모두에서 애매한 페이지가 됩니다.</p>
       <p>저는 &quot;설계·감리·인허가 종합&quot; 같은 제목의 한 페이지를 자주 봅니다. 이 페이지는 세 검색어 어디에서도 자기 자리를 못 잡습니다. 나누는 작업은 반나절이면 끝나는데, 미루면 그 사이에 쓴 글이 전부 이 애매한 페이지로 연결되어 나중에 링크까지 다시 손봐야 합니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>구분</th><th>찾는 사람</th><th>검색 시점</th><th>페이지에 담을 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>설계</td><td>건축주 본인</td><td>토지 계약 직후</td><td>유사 조건 사례, 가설계 안내</td></tr>
-            <tr><td>감리</td><td>건축주·시공사</td><td>착공 직전</td><td>업무 범위, 절차, 보고 방식</td></tr>
-            <tr><td>인허가 대행</td><td>건축주·중개 관계자</td><td>사업 검토 단계</td><td>필요 서류, 소요 기간</td></tr>
-            <tr><td>리모델링·용도변경</td><td>건물주</td><td>임대 계획 시점</td><td>가능 여부 판단 기준</td></tr>
+            <tr><td data-label="구분">설계</td><td data-label="찾는 사람">건축주 본인</td><td data-label="검색 시점">토지 계약 직후</td><td data-label="페이지에 담을 것">유사 조건 사례, 가설계 안내</td></tr>
+            <tr><td data-label="구분">감리</td><td data-label="찾는 사람">건축주·시공사</td><td data-label="검색 시점">착공 직전</td><td data-label="페이지에 담을 것">업무 범위, 절차, 보고 방식</td></tr>
+            <tr><td data-label="구분">인허가 대행</td><td data-label="찾는 사람">건축주·중개 관계자</td><td data-label="검색 시점">사업 검토 단계</td><td data-label="페이지에 담을 것">필요 서류, 소요 기간</td></tr>
+            <tr><td data-label="구분">리모델링·용도변경</td><td data-label="찾는 사람">건물주</td><td data-label="검색 시점">임대 계획 시점</td><td data-label="페이지에 담을 것">가능 여부 판단 기준</td></tr>
           </tbody>
         </table>
       </div>

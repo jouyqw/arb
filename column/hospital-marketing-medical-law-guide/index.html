@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -133,10 +141,10 @@
             <tr><th>위험한 접근</th><th>왜 문제인가</th><th>안전한 대안</th></tr>
           </thead>
           <tbody>
-            <tr><td>환자 치료 경험담</td><td>오인·유인 소지</td><td>질환·시술의 일반 정보 설명</td></tr>
-            <tr><td>효과 보장 문구</td><td>단정적 표현 규제</td><td>적응증과 한계 함께 안내</td></tr>
-            <tr><td>최상급·순위 표현</td><td>객관적 근거 부족</td><td>진료 철학·과정 소개</td></tr>
-            <tr><td>전후 비교 강조</td><td>오해 유발 가능</td><td>시술 원리와 주의사항 설명</td></tr>
+            <tr><td data-label="위험한 접근">환자 치료 경험담</td><td data-label="왜 문제인가">오인·유인 소지</td><td data-label="안전한 대안">질환·시술의 일반 정보 설명</td></tr>
+            <tr><td data-label="위험한 접근">효과 보장 문구</td><td data-label="왜 문제인가">단정적 표현 규제</td><td data-label="안전한 대안">적응증과 한계 함께 안내</td></tr>
+            <tr><td data-label="위험한 접근">최상급·순위 표현</td><td data-label="왜 문제인가">객관적 근거 부족</td><td data-label="안전한 대안">진료 철학·과정 소개</td></tr>
+            <tr><td data-label="위험한 접근">전후 비교 강조</td><td data-label="왜 문제인가">오해 유발 가능</td><td data-label="안전한 대안">시술 원리와 주의사항 설명</td></tr>
           </tbody>
         </table>
       </div>
@@ -163,13 +171,13 @@
             <tr><th>비교 항목</th><th>효과 강조형 콘텐츠</th><th>정보 제공형 콘텐츠</th></tr>
           </thead>
           <tbody>
-            <tr><td>규정 위험</td><td>단정·최상급·경험담으로 번지기 쉬워 높습니다</td><td>사실 설명 중심이라 낮은 편입니다</td></tr>
-            <tr><td>성과가 보이는 시점</td><td>광고와 붙이면 보통 1~2주 안에 반응이 옵니다</td><td>보통 2~4개월 뒤부터 검색 유입이 붙습니다</td></tr>
-            <tr><td>멈췄을 때</td><td>노출과 문의가 함께 사라집니다</td><td>검색에 남아 유입이 이어집니다</td></tr>
-            <tr><td>문의 품질</td><td>가격·이벤트 문의가 섞이는 경우가 많습니다</td><td>진료 이해도가 높은 문의가 들어오는 편입니다</td></tr>
-            <tr><td>검수 부담</td><td>문장마다 근거와 표현을 다시 봐야 합니다</td><td>금지 단어 점검만으로 대체로 정리됩니다</td></tr>
-            <tr><td>이런 상황에 맞습니다</td><td>신규 진료 항목 안내처럼 알릴 일이 분명할 때</td><td>장기 신뢰와 검색 접점을 쌓으려 할 때</td></tr>
-            <tr><td>권장 비중</td><td>전체 콘텐츠의 20~30% 이내</td><td>전체 콘텐츠의 70~80%</td></tr>
+            <tr><td data-label="비교 항목">규정 위험</td><td data-label="효과 강조형 콘텐츠">단정·최상급·경험담으로 번지기 쉬워 높습니다</td><td data-label="정보 제공형 콘텐츠">사실 설명 중심이라 낮은 편입니다</td></tr>
+            <tr><td data-label="비교 항목">성과가 보이는 시점</td><td data-label="효과 강조형 콘텐츠">광고와 붙이면 보통 1~2주 안에 반응이 옵니다</td><td data-label="정보 제공형 콘텐츠">보통 2~4개월 뒤부터 검색 유입이 붙습니다</td></tr>
+            <tr><td data-label="비교 항목">멈췄을 때</td><td data-label="효과 강조형 콘텐츠">노출과 문의가 함께 사라집니다</td><td data-label="정보 제공형 콘텐츠">검색에 남아 유입이 이어집니다</td></tr>
+            <tr><td data-label="비교 항목">문의 품질</td><td data-label="효과 강조형 콘텐츠">가격·이벤트 문의가 섞이는 경우가 많습니다</td><td data-label="정보 제공형 콘텐츠">진료 이해도가 높은 문의가 들어오는 편입니다</td></tr>
+            <tr><td data-label="비교 항목">검수 부담</td><td data-label="효과 강조형 콘텐츠">문장마다 근거와 표현을 다시 봐야 합니다</td><td data-label="정보 제공형 콘텐츠">금지 단어 점검만으로 대체로 정리됩니다</td></tr>
+            <tr><td data-label="비교 항목">이런 상황에 맞습니다</td><td data-label="효과 강조형 콘텐츠">신규 진료 항목 안내처럼 알릴 일이 분명할 때</td><td data-label="정보 제공형 콘텐츠">장기 신뢰와 검색 접점을 쌓으려 할 때</td></tr>
+            <tr><td data-label="비교 항목">권장 비중</td><td data-label="효과 강조형 콘텐츠">전체 콘텐츠의 20~30% 이내</td><td data-label="정보 제공형 콘텐츠">전체 콘텐츠의 70~80%</td></tr>
           </tbody>
         </table>
       </div>
@@ -209,10 +217,10 @@
             <tr><th>판단할 것</th><th>확인 방법</th><th>대략의 소요</th></tr>
           </thead>
           <tbody>
-            <tr><td>심의 대상 매체인가</td><td>매체사에 심의 필요 여부와 접수 절차를 직접 확인</td><td>문의 후 1~3일</td></tr>
-            <tr><td>심의 신청 준비</td><td>광고 시안, 문구, 근거 자료, 신청 서류 정리</td><td>1~2주</td></tr>
-            <tr><td>심의 결과 확인</td><td>심의기관 접수 후 결과 통보 대기</td><td>보통 2~6주</td></tr>
-            <tr><td>홈페이지 칼럼</td><td>심의보다 제56조 금지 표현 자체 검수에 집중</td><td>글당 5~15분</td></tr>
+            <tr><td data-label="판단할 것">심의 대상 매체인가</td><td data-label="확인 방법">매체사에 심의 필요 여부와 접수 절차를 직접 확인</td><td data-label="대략의 소요">문의 후 1~3일</td></tr>
+            <tr><td data-label="판단할 것">심의 신청 준비</td><td data-label="확인 방법">광고 시안, 문구, 근거 자료, 신청 서류 정리</td><td data-label="대략의 소요">1~2주</td></tr>
+            <tr><td data-label="판단할 것">심의 결과 확인</td><td data-label="확인 방법">심의기관 접수 후 결과 통보 대기</td><td data-label="대략의 소요">보통 2~6주</td></tr>
+            <tr><td data-label="판단할 것">홈페이지 칼럼</td><td data-label="확인 방법">심의보다 제56조 금지 표현 자체 검수에 집중</td><td data-label="대략의 소요">글당 5~15분</td></tr>
           </tbody>
         </table>
       </div>

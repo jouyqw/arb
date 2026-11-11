@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -144,12 +152,12 @@
             <tr><th>구간</th><th>흔한 방식</th><th>전환에 유리한 방식</th></tr>
           </thead>
           <tbody>
-            <tr><td>첫 문장</td><td>추상적 인사말</td><td>다루는 고객·문제를 명시</td></tr>
-            <tr><td>본문</td><td>연혁 나열</td><td>일하는 방식·사람 소개</td></tr>
-            <tr><td>마무리</td><td>연락처만 표기</td><td>자연스러운 문의 유도</td></tr>
-            <tr><td>사람</td><td>대표 사진 한 장</td><td>담당자 3~6명 실명·역할 표기</td></tr>
-            <tr><td>사례</td><td>로고만 나열</td><td>분야별 5~8건, 맡은 범위까지 설명</td></tr>
-            <tr><td>증빙</td><td>출처 없는 수상 문구</td><td>사업자정보·소재지 등 확인 가능한 정보</td></tr>
+            <tr><td data-label="구간">첫 문장</td><td data-label="흔한 방식">추상적 인사말</td><td data-label="전환에 유리한 방식">다루는 고객·문제를 명시</td></tr>
+            <tr><td data-label="구간">본문</td><td data-label="흔한 방식">연혁 나열</td><td data-label="전환에 유리한 방식">일하는 방식·사람 소개</td></tr>
+            <tr><td data-label="구간">마무리</td><td data-label="흔한 방식">연락처만 표기</td><td data-label="전환에 유리한 방식">자연스러운 문의 유도</td></tr>
+            <tr><td data-label="구간">사람</td><td data-label="흔한 방식">대표 사진 한 장</td><td data-label="전환에 유리한 방식">담당자 3~6명 실명·역할 표기</td></tr>
+            <tr><td data-label="구간">사례</td><td data-label="흔한 방식">로고만 나열</td><td data-label="전환에 유리한 방식">분야별 5~8건, 맡은 범위까지 설명</td></tr>
+            <tr><td data-label="구간">증빙</td><td data-label="흔한 방식">출처 없는 수상 문구</td><td data-label="전환에 유리한 방식">사업자정보·소재지 등 확인 가능한 정보</td></tr>
           </tbody>
         </table>
       </div>
@@ -170,13 +178,13 @@
             <tr><th>비교 항목</th><th>부분 보완</th><th>전면 개편</th></tr>
           </thead>
           <tbody>
-            <tr><td>적합한 상황</td><td>점검 미충족 3개 이하</td><td>점검 미충족 5개 이상</td></tr>
-            <tr><td>손대는 범위</td><td>문장·담당자 정보·사례 갱신</td><td>페이지 구조·화면·사진·문장 전체</td></tr>
-            <tr><td>보통 걸리는 기간</td><td>1~2주</td><td>4~8주</td></tr>
-            <tr><td>대략적인 비용 범위</td><td>30~100만원 선</td><td>150~500만원 선</td></tr>
-            <tr><td>사진 촬영</td><td>기존 사진 활용</td><td>별도 촬영 50~150만원 추가</td></tr>
-            <tr><td>기대할 수 있는 변화</td><td>정보 불일치로 인한 이탈 감소</td><td>읽는 순서 자체가 문의로 이어짐</td></tr>
-            <tr><td>확인 시점</td><td>수정 후 4~6주 뒤 문의 내용 비교</td><td>공개 후 8~12주 뒤 문의 내용 비교</td></tr>
+            <tr><td data-label="비교 항목">적합한 상황</td><td data-label="부분 보완">점검 미충족 3개 이하</td><td data-label="전면 개편">점검 미충족 5개 이상</td></tr>
+            <tr><td data-label="비교 항목">손대는 범위</td><td data-label="부분 보완">문장·담당자 정보·사례 갱신</td><td data-label="전면 개편">페이지 구조·화면·사진·문장 전체</td></tr>
+            <tr><td data-label="비교 항목">보통 걸리는 기간</td><td data-label="부분 보완">1~2주</td><td data-label="전면 개편">4~8주</td></tr>
+            <tr><td data-label="비교 항목">대략적인 비용 범위</td><td data-label="부분 보완">30~100만원 선</td><td data-label="전면 개편">150~500만원 선</td></tr>
+            <tr><td data-label="비교 항목">사진 촬영</td><td data-label="부분 보완">기존 사진 활용</td><td data-label="전면 개편">별도 촬영 50~150만원 추가</td></tr>
+            <tr><td data-label="비교 항목">기대할 수 있는 변화</td><td data-label="부분 보완">정보 불일치로 인한 이탈 감소</td><td data-label="전면 개편">읽는 순서 자체가 문의로 이어짐</td></tr>
+            <tr><td data-label="비교 항목">확인 시점</td><td data-label="부분 보완">수정 후 4~6주 뒤 문의 내용 비교</td><td data-label="전면 개편">공개 후 8~12주 뒤 문의 내용 비교</td></tr>
           </tbody>
         </table>
       </div>

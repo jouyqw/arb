@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -136,17 +144,17 @@
       <p>기본 정보가 비어 있으면, 아무리 실력이 좋아도 검색에서 밀립니다. 저희 쪽에서 보면 이 상태로 집행한 광고비는 대부분 다시 써야 하는 돈이 됩니다.</p>
       <p>점심시간과 공휴일 휴무 누락도 잦습니다. 헛걸음한 보호자가 그대로 낮은 평점을 남기면, 그 한 건을 희석하는 데 다시 몇 달이 걸립니다.</p>
       <p>네 단계를 기간과 비용 감각으로 옮기면 아래 표와 같습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>순서</th><th>할 일</th><th>걸리는 기간</th><th>비용 범위</th><th>이 단계를 건너뛰면</th></tr>
           </thead>
           <tbody>
-            <tr><td>① 지역 정보</td><td>플레이스 위치·진료시간·과목·야간 진료 표기 정비</td><td>1~3일</td><td>직접 하면 0원</td><td>검색되어도 비교 대상에서 빠집니다</td></tr>
-            <tr><td>② 사진</td><td>외관·대기실·진료실·장비·의료진 촬영 후 교체</td><td>1~2주</td><td>자체 촬영 0원 / 촬영 의뢰 30~80만원</td><td>정보는 맞아도 선택까지 이어지지 않습니다</td></tr>
-            <tr><td>③ 후기</td><td>진료 후 후기 안내 동선 만들기, 문의 응답 정리</td><td>4~8주 누적</td><td>0원(운영 시간만 들어감)</td><td>첫인상을 만들 근거가 남지 않습니다</td></tr>
-            <tr><td>④ 홈페이지</td><td>진료 방향·의료진·진료 과목 설명 페이지 구성</td><td>2~5주</td><td>규모에 따라 150~800만원</td><td>상세 설명이 필요한 진료 문의가 줄어듭니다</td></tr>
-            <tr><td>⑤ 광고</td><td>지역·키워드 한정 소액 집행 후 반응 확인</td><td>2~4주 단위</td><td>월 30~80만원부터</td><td>기본기 없이 예산만 커집니다</td></tr>
+            <tr><td data-label="순서">① 지역 정보</td><td data-label="할 일">플레이스 위치·진료시간·과목·야간 진료 표기 정비</td><td data-label="걸리는 기간">1~3일</td><td data-label="비용 범위">직접 하면 0원</td><td data-label="이 단계를 건너뛰면">검색되어도 비교 대상에서 빠집니다</td></tr>
+            <tr><td data-label="순서">② 사진</td><td data-label="할 일">외관·대기실·진료실·장비·의료진 촬영 후 교체</td><td data-label="걸리는 기간">1~2주</td><td data-label="비용 범위">자체 촬영 0원 / 촬영 의뢰 30~80만원</td><td data-label="이 단계를 건너뛰면">정보는 맞아도 선택까지 이어지지 않습니다</td></tr>
+            <tr><td data-label="순서">③ 후기</td><td data-label="할 일">진료 후 후기 안내 동선 만들기, 문의 응답 정리</td><td data-label="걸리는 기간">4~8주 누적</td><td data-label="비용 범위">0원(운영 시간만 들어감)</td><td data-label="이 단계를 건너뛰면">첫인상을 만들 근거가 남지 않습니다</td></tr>
+            <tr><td data-label="순서">④ 홈페이지</td><td data-label="할 일">진료 방향·의료진·진료 과목 설명 페이지 구성</td><td data-label="걸리는 기간">2~5주</td><td data-label="비용 범위">규모에 따라 150~800만원</td><td data-label="이 단계를 건너뛰면">상세 설명이 필요한 진료 문의가 줄어듭니다</td></tr>
+            <tr><td data-label="순서">⑤ 광고</td><td data-label="할 일">지역·키워드 한정 소액 집행 후 반응 확인</td><td data-label="걸리는 기간">2~4주 단위</td><td data-label="비용 범위">월 30~80만원부터</td><td data-label="이 단계를 건너뛰면">기본기 없이 예산만 커집니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -167,13 +175,13 @@
             <tr><th>비교 축</th><th>플레이스만 운영</th><th>홈페이지를 함께 운영</th></tr>
           </thead>
           <tbody>
-            <tr><td>초기 비용</td><td>0원</td><td>150~800만원(규모·페이지 수에 따라)</td></tr>
-            <tr><td>준비 기간</td><td>1~2주</td><td>2~5주</td></tr>
-            <tr><td>담을 수 있는 정보</td><td>위치·시간·과목·사진 중심</td><td>진료 방향, 의료진 이력, 진료 과정, 준비물 안내까지</td></tr>
-            <tr><td>잘 맞는 병원</td><td>예방접종·건강검진 등 일반 진료 비중이 높은 곳</td><td>수술, 만성질환 관리, 치과·안과 등 설명이 필요한 진료가 있는 곳</td></tr>
-            <tr><td>문의 성격</td><td>위치와 시간 확인 문의가 많음</td><td>증상과 진료 가능 여부를 묻는 문의가 늘어남</td></tr>
-            <tr><td>검색 확장성</td><td>지도 검색 위주</td><td>증상·질환 키워드 콘텐츠로 넓힐 수 있음</td></tr>
-            <tr><td>추천 시점</td><td>개원 직후~6개월</td><td>지역 정보와 후기가 자리 잡은 뒤</td></tr>
+            <tr><td data-label="비교 축">초기 비용</td><td data-label="플레이스만 운영">0원</td><td data-label="홈페이지를 함께 운영">150~800만원(규모·페이지 수에 따라)</td></tr>
+            <tr><td data-label="비교 축">준비 기간</td><td data-label="플레이스만 운영">1~2주</td><td data-label="홈페이지를 함께 운영">2~5주</td></tr>
+            <tr><td data-label="비교 축">담을 수 있는 정보</td><td data-label="플레이스만 운영">위치·시간·과목·사진 중심</td><td data-label="홈페이지를 함께 운영">진료 방향, 의료진 이력, 진료 과정, 준비물 안내까지</td></tr>
+            <tr><td data-label="비교 축">잘 맞는 병원</td><td data-label="플레이스만 운영">예방접종·건강검진 등 일반 진료 비중이 높은 곳</td><td data-label="홈페이지를 함께 운영">수술, 만성질환 관리, 치과·안과 등 설명이 필요한 진료가 있는 곳</td></tr>
+            <tr><td data-label="비교 축">문의 성격</td><td data-label="플레이스만 운영">위치와 시간 확인 문의가 많음</td><td data-label="홈페이지를 함께 운영">증상과 진료 가능 여부를 묻는 문의가 늘어남</td></tr>
+            <tr><td data-label="비교 축">검색 확장성</td><td data-label="플레이스만 운영">지도 검색 위주</td><td data-label="홈페이지를 함께 운영">증상·질환 키워드 콘텐츠로 넓힐 수 있음</td></tr>
+            <tr><td data-label="비교 축">추천 시점</td><td data-label="플레이스만 운영">개원 직후~6개월</td><td data-label="홈페이지를 함께 운영">지역 정보와 후기가 자리 잡은 뒤</td></tr>
           </tbody>
         </table>
       </div>
@@ -206,15 +214,15 @@
       <h2>3개월 실행 순서는 어떻게 짜면 될까요?</h2>
       <p>1개월 차에는 정보와 사진, 2개월 차에는 후기와 콘텐츠, 3개월 차에는 홈페이지와 소액 광고 순으로 배치합니다.</p>
       <p>한 번에 다 하려 하면 원장님과 직원 모두 지쳐서 중간에 멈추는 경우가 많습니다. 아래 표를 기준 삼아, 병원 상황에 맞게 한 달씩 미루거나 당기면 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>시기</th><th>핵심 작업</th><th>걸리는 시간</th><th>확인할 숫자</th></tr>
           </thead>
           <tbody>
-            <tr><td>1개월 차</td><td>플레이스 정보 정비, 사진 촬영·교체, 예약 창구 정리</td><td>주 2~3시간</td><td>플레이스 조회수, 길찾기 클릭</td></tr>
-            <tr><td>2개월 차</td><td>후기 안내 동선 적용, 자주 받는 질문 글 3~5편 작성</td><td>주 2~4시간</td><td>신규 후기 수, 문의 건수</td></tr>
-            <tr><td>3개월 차</td><td>홈페이지 제작 또는 개편, 지역 한정 소액 광고 집행</td><td>주 3~5시간</td><td>문의 1건당 비용, 신규 보호자 수</td></tr>
+            <tr><td data-label="시기">1개월 차</td><td data-label="핵심 작업">플레이스 정보 정비, 사진 촬영·교체, 예약 창구 정리</td><td data-label="걸리는 시간">주 2~3시간</td><td data-label="확인할 숫자">플레이스 조회수, 길찾기 클릭</td></tr>
+            <tr><td data-label="시기">2개월 차</td><td data-label="핵심 작업">후기 안내 동선 적용, 자주 받는 질문 글 3~5편 작성</td><td data-label="걸리는 시간">주 2~4시간</td><td data-label="확인할 숫자">신규 후기 수, 문의 건수</td></tr>
+            <tr><td data-label="시기">3개월 차</td><td data-label="핵심 작업">홈페이지 제작 또는 개편, 지역 한정 소액 광고 집행</td><td data-label="걸리는 시간">주 3~5시간</td><td data-label="확인할 숫자">문의 1건당 비용, 신규 보호자 수</td></tr>
           </tbody>
         </table>
       </div>

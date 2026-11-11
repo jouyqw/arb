@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -144,10 +152,10 @@
             <tr><th>종류</th><th>방문자의 속마음</th><th>해당하는 요소</th></tr>
           </thead>
           <tbody>
-            <tr><td>실재 증거</td><td>진짜 있는 곳인가</td><td>사무실 실사, 주소와 약도, 사업자등록번호, 대표 실명과 얼굴</td></tr>
-            <tr><td>능력 증거</td><td>이 일을 해봤나</td><td>자격·등록번호, 경력 연차, 취급 분야, 사례 건수, 칼럼</td></tr>
-            <tr><td>타인 증거</td><td>남들은 어땠나</td><td>후기, 상담 사례, 언론·기관 언급, 거래처 목록</td></tr>
-            <tr><td>안전 증거</td><td>연락해도 괜찮나</td><td>비용 기준, 상담 절차 안내, 개인정보 처리 방침, 응답 시간 안내</td></tr>
+            <tr><td data-label="종류">실재 증거</td><td data-label="방문자의 속마음">진짜 있는 곳인가</td><td data-label="해당하는 요소">사무실 실사, 주소와 약도, 사업자등록번호, 대표 실명과 얼굴</td></tr>
+            <tr><td data-label="종류">능력 증거</td><td data-label="방문자의 속마음">이 일을 해봤나</td><td data-label="해당하는 요소">자격·등록번호, 경력 연차, 취급 분야, 사례 건수, 칼럼</td></tr>
+            <tr><td data-label="종류">타인 증거</td><td data-label="방문자의 속마음">남들은 어땠나</td><td data-label="해당하는 요소">후기, 상담 사례, 언론·기관 언급, 거래처 목록</td></tr>
+            <tr><td data-label="종류">안전 증거</td><td data-label="방문자의 속마음">연락해도 괜찮나</td><td data-label="해당하는 요소">비용 기준, 상담 절차 안내, 개인정보 처리 방침, 응답 시간 안내</td></tr>
           </tbody>
         </table>
       </div>
@@ -177,11 +185,11 @@
             <tr><th>업종</th><th>가장 큰 걱정</th><th>앞으로 당길 요소</th></tr>
           </thead>
           <tbody>
-            <tr><td>병원·의원</td><td>누가 진료하나</td><td>원장 약력과 얼굴, 진료 분야, 장비·시설 실사</td></tr>
-            <tr><td>법무법인·세무사</td><td>이 사건을 다뤄봤나</td><td>등록번호, 취급 분야, 유사 사건 진행 경험</td></tr>
-            <tr><td>인테리어·시공</td><td>돈 떼이지 않나</td><td>시공 사례, 계약·하자보수 조건, 사업자 정보</td></tr>
-            <tr><td>이사·청소·수리</td><td>얼마이고 언제 오나</td><td>비용 기준표, 가능 일정, 실제 작업 사진</td></tr>
-            <tr><td>학원·교습소</td><td>믿고 맡겨도 되나</td><td>강사진 실명과 경력, 운영 기간, 학부모 후기</td></tr>
+            <tr><td data-label="업종">병원·의원</td><td data-label="가장 큰 걱정">누가 진료하나</td><td data-label="앞으로 당길 요소">원장 약력과 얼굴, 진료 분야, 장비·시설 실사</td></tr>
+            <tr><td data-label="업종">법무법인·세무사</td><td data-label="가장 큰 걱정">이 사건을 다뤄봤나</td><td data-label="앞으로 당길 요소">등록번호, 취급 분야, 유사 사건 진행 경험</td></tr>
+            <tr><td data-label="업종">인테리어·시공</td><td data-label="가장 큰 걱정">돈 떼이지 않나</td><td data-label="앞으로 당길 요소">시공 사례, 계약·하자보수 조건, 사업자 정보</td></tr>
+            <tr><td data-label="업종">이사·청소·수리</td><td data-label="가장 큰 걱정">얼마이고 언제 오나</td><td data-label="앞으로 당길 요소">비용 기준표, 가능 일정, 실제 작업 사진</td></tr>
+            <tr><td data-label="업종">학원·교습소</td><td data-label="가장 큰 걱정">믿고 맡겨도 되나</td><td data-label="앞으로 당길 요소">강사진 실명과 경력, 운영 기간, 학부모 후기</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -158,13 +166,13 @@
             <tr><th>흔한 첫 화면</th><th>개선 방향</th></tr>
           </thead>
           <tbody>
-            <tr><td>추상적 슬로건</td><td>무엇을 해결하는지 구체적으로</td></tr>
-            <tr><td>연락처가 숨어 있음</td><td>문의 버튼을 눈에 띄게</td></tr>
-            <tr><td>무거운 배경 영상</td><td>빠르게 뜨는 핵심 메시지</td></tr>
-            <tr><td>회사 자랑 위주</td><td>고객 입장의 이점 중심</td></tr>
-            <tr><td>메뉴가 9개 이상 펼쳐짐</td><td>핵심 5개 이하로 줄이고 나머지는 하위로</td></tr>
-            <tr><td>이미지 안에 글자를 넣음</td><td>텍스트로 작성해 검색·AI가 읽게</td></tr>
-            <tr><td>버튼 문구가 &#39;자세히 보기&#39;</td><td>&#39;무료 상담 신청&#39;처럼 다음 행동을 명시</td></tr>
+            <tr><td data-label="흔한 첫 화면">추상적 슬로건</td><td data-label="개선 방향">무엇을 해결하는지 구체적으로</td></tr>
+            <tr><td data-label="흔한 첫 화면">연락처가 숨어 있음</td><td data-label="개선 방향">문의 버튼을 눈에 띄게</td></tr>
+            <tr><td data-label="흔한 첫 화면">무거운 배경 영상</td><td data-label="개선 방향">빠르게 뜨는 핵심 메시지</td></tr>
+            <tr><td data-label="흔한 첫 화면">회사 자랑 위주</td><td data-label="개선 방향">고객 입장의 이점 중심</td></tr>
+            <tr><td data-label="흔한 첫 화면">메뉴가 9개 이상 펼쳐짐</td><td data-label="개선 방향">핵심 5개 이하로 줄이고 나머지는 하위로</td></tr>
+            <tr><td data-label="흔한 첫 화면">이미지 안에 글자를 넣음</td><td data-label="개선 방향">텍스트로 작성해 검색·AI가 읽게</td></tr>
+            <tr><td data-label="흔한 첫 화면">버튼 문구가 &#39;자세히 보기&#39;</td><td data-label="개선 방향">&#39;무료 상담 신청&#39;처럼 다음 행동을 명시</td></tr>
           </tbody>
         </table>
       </div>
@@ -191,12 +199,12 @@
             <tr><th>판단 기준</th><th>첫 화면만 손보기</th><th>전체 리뉴얼</th></tr>
           </thead>
           <tbody>
-            <tr><td>어울리는 상황</td><td>메뉴·하위 페이지는 쓸 만한데 첫인상만 흐릿할 때</td><td>속도·모바일 대응·정보 구조까지 함께 문제일 때</td></tr>
-            <tr><td>보통 걸리는 기간</td><td>1~3주</td><td>6~10주</td></tr>
-            <tr><td>대략의 비용 범위</td><td>50만~300만원 선</td><td>300만~1,500만원 선</td></tr>
-            <tr><td>손대는 범위</td><td>헤드라인·버튼·신뢰 요소·상단 이미지</td><td>정보 구조, 전체 페이지, 모바일 레이아웃, 속도</td></tr>
-            <tr><td>변화가 보이는 시점</td><td>보통 2~4주 안에 문의율 변화로</td><td>보통 2~3개월 뒤 유입과 문의가 함께</td></tr>
-            <tr><td>주의할 점</td><td>하위 페이지가 첫 화면 수준을 못 따라가면 이탈이 아래로 밀립니다</td><td>주소(URL)가 바뀌면 검색 유입이 한동안 줄 수 있어 이전 처리가 필요합니다</td></tr>
+            <tr><td data-label="판단 기준">어울리는 상황</td><td data-label="첫 화면만 손보기">메뉴·하위 페이지는 쓸 만한데 첫인상만 흐릿할 때</td><td data-label="전체 리뉴얼">속도·모바일 대응·정보 구조까지 함께 문제일 때</td></tr>
+            <tr><td data-label="판단 기준">보통 걸리는 기간</td><td data-label="첫 화면만 손보기">1~3주</td><td data-label="전체 리뉴얼">6~10주</td></tr>
+            <tr><td data-label="판단 기준">대략의 비용 범위</td><td data-label="첫 화면만 손보기">50만~300만원 선</td><td data-label="전체 리뉴얼">300만~1,500만원 선</td></tr>
+            <tr><td data-label="판단 기준">손대는 범위</td><td data-label="첫 화면만 손보기">헤드라인·버튼·신뢰 요소·상단 이미지</td><td data-label="전체 리뉴얼">정보 구조, 전체 페이지, 모바일 레이아웃, 속도</td></tr>
+            <tr><td data-label="판단 기준">변화가 보이는 시점</td><td data-label="첫 화면만 손보기">보통 2~4주 안에 문의율 변화로</td><td data-label="전체 리뉴얼">보통 2~3개월 뒤 유입과 문의가 함께</td></tr>
+            <tr><td data-label="판단 기준">주의할 점</td><td data-label="첫 화면만 손보기">하위 페이지가 첫 화면 수준을 못 따라가면 이탈이 아래로 밀립니다</td><td data-label="전체 리뉴얼">주소(URL)가 바뀌면 검색 유입이 한동안 줄 수 있어 이전 처리가 필요합니다</td></tr>
           </tbody>
         </table>
       </div>

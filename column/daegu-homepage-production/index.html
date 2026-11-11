@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -126,17 +134,17 @@
       <p>이 중에서 첫 두 개가 결정적입니다. 모바일 대응이 없고 수정할 권한도 없으면 사실상 선택지가 하나로 줄어듭니다.</p>
       <p>저는 반대쪽 경우도 자주 봅니다. 10년 가까이 된 사이트인데 모바일이 되고 관리자에서 글을 쓸 수 있으면, 디자인만 바꾸고 구조를 그대로 쓰는 쪽이 나은 경우가 있습니다.</p>
       <p>대구 쪽 상담에서 특히 자주 보이는 상태는 <span class="hl-accent">사이트는 돌아가는데 만든 업체와 연락이 끊긴 경우</span>입니다. 이때는 사이트의 상태보다 권한 확인이 먼저입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>점검 항목</th><th>확인 방법</th><th>이 상태면 살리는 쪽</th><th>이 상태면 새로 하는 쪽</th></tr>
           </thead>
           <tbody>
-            <tr><td>모바일 대응</td><td>휴대폰으로 열어 확대 없이 읽히는지</td><td>글자와 버튼이 손가락으로 눌릴 크기</td><td>좌우로 밀어야 보이거나 확대해야 읽힘</td></tr>
-            <tr><td>수정 권한</td><td>관리자 로그인과 소스 파일 보유 여부</td><td>관리자에서 글·사진을 직접 바꿀 수 있음</td><td>로그인 정보가 없고 파일도 받은 적 없음</td></tr>
-            <tr><td>주소 체계</td><td>페이지 주소가 규칙적으로 붙어 있는지</td><td>주소를 그대로 두고 내용만 교체 가능</td><td>주소가 숫자·물음표로 뒤섞여 정리 필요</td></tr>
-            <tr><td>쌓인 콘텐츠</td><td>검색으로 들어오는 글이 몇 편인지</td><td>검색 유입이 있는 글이 20편 이상</td><td>회사 소개 몇 장이 전부</td></tr>
-            <tr><td>보안·속도</td><td>https 적용과 모바일 로딩 체감</td><td>https가 걸려 있고 3초 안에 열림</td><td>경고 문구가 뜨거나 5초 넘게 걸림</td></tr>
+            <tr><td data-label="점검 항목">모바일 대응</td><td data-label="확인 방법">휴대폰으로 열어 확대 없이 읽히는지</td><td data-label="이 상태면 살리는 쪽">글자와 버튼이 손가락으로 눌릴 크기</td><td data-label="이 상태면 새로 하는 쪽">좌우로 밀어야 보이거나 확대해야 읽힘</td></tr>
+            <tr><td data-label="점검 항목">수정 권한</td><td data-label="확인 방법">관리자 로그인과 소스 파일 보유 여부</td><td data-label="이 상태면 살리는 쪽">관리자에서 글·사진을 직접 바꿀 수 있음</td><td data-label="이 상태면 새로 하는 쪽">로그인 정보가 없고 파일도 받은 적 없음</td></tr>
+            <tr><td data-label="점검 항목">주소 체계</td><td data-label="확인 방법">페이지 주소가 규칙적으로 붙어 있는지</td><td data-label="이 상태면 살리는 쪽">주소를 그대로 두고 내용만 교체 가능</td><td data-label="이 상태면 새로 하는 쪽">주소가 숫자·물음표로 뒤섞여 정리 필요</td></tr>
+            <tr><td data-label="점검 항목">쌓인 콘텐츠</td><td data-label="확인 방법">검색으로 들어오는 글이 몇 편인지</td><td data-label="이 상태면 살리는 쪽">검색 유입이 있는 글이 20편 이상</td><td data-label="이 상태면 새로 하는 쪽">회사 소개 몇 장이 전부</td></tr>
+            <tr><td data-label="점검 항목">보안·속도</td><td data-label="확인 방법">https 적용과 모바일 로딩 체감</td><td data-label="이 상태면 살리는 쪽">https가 걸려 있고 3초 안에 열림</td><td data-label="이 상태면 새로 하는 쪽">경고 문구가 뜨거나 5초 넘게 걸림</td></tr>
           </tbody>
         </table>
       </div>
@@ -163,16 +171,16 @@
       <p>같은 사이트를 두고도 부분 보수와 전면 재제작은 금액이 열 배 가까이 갈립니다. 범위를 먼저 정해야 하는 이유가 여기 있습니다.</p>
       <p>저는 견적서에서 네 가지를 봅니다. 기존 콘텐츠 이전을 누가 하는지, 사진 촬영이 포함되는지, 주소 연결 작업이 들어 있는지, 그리고 제작 후 수정 처리 조건입니다.</p>
       <p>특히 콘텐츠 이전은 금액 차이가 크게 나는 항목입니다. 글이 50편이면 옮기고 정리하는 작업만으로도 적지 않은 시간이 듭니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>선택</th><th>보통 포함되는 범위</th><th>금액대</th><th>기간</th></tr>
           </thead>
           <tbody>
-            <tr><td>부분 보수</td><td>문구·사진 교체, 문의 동선 정리, 모바일 버튼 보완</td><td>50만~300만원대</td><td>1~3주</td></tr>
-            <tr><td>디자인 교체 리뉴얼</td><td>화면 재설계, 기존 글 이전, 주소 체계 유지</td><td>300만~700만원대</td><td>4~8주</td></tr>
-            <tr><td>전면 재제작</td><td>구조 재설계, 관리자 기능, 촬영, 주소 연결 작업</td><td>600만~1,500만원대</td><td>8~14주</td></tr>
-            <tr><td>제작 후 유지관리</td><td>월 수정 요청, 백업, 보안 업데이트, 콘텐츠 작성</td><td>월 10만~30만원대</td><td>계약 기간</td></tr>
+            <tr><td data-label="선택">부분 보수</td><td data-label="보통 포함되는 범위">문구·사진 교체, 문의 동선 정리, 모바일 버튼 보완</td><td data-label="금액대">50만~300만원대</td><td data-label="기간">1~3주</td></tr>
+            <tr><td data-label="선택">디자인 교체 리뉴얼</td><td data-label="보통 포함되는 범위">화면 재설계, 기존 글 이전, 주소 체계 유지</td><td data-label="금액대">300만~700만원대</td><td data-label="기간">4~8주</td></tr>
+            <tr><td data-label="선택">전면 재제작</td><td data-label="보통 포함되는 범위">구조 재설계, 관리자 기능, 촬영, 주소 연결 작업</td><td data-label="금액대">600만~1,500만원대</td><td data-label="기간">8~14주</td></tr>
+            <tr><td data-label="선택">제작 후 유지관리</td><td data-label="보통 포함되는 범위">월 수정 요청, 백업, 보안 업데이트, 콘텐츠 작성</td><td data-label="금액대">월 10만~30만원대</td><td data-label="기간">계약 기간</td></tr>
           </tbody>
         </table>
       </div>

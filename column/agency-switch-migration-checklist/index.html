@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -130,21 +138,21 @@
       <h2>홈페이지 이전에서 넘겨받을 항목은 모두 몇 가지인가요?</h2>
       <p>실무에서 쓰는 목록은 보통 8~10줄입니다. 아래 표를 그대로 메일에 붙여 요청하시면 빠진 항목을 찾기 쉽습니다.</p>
       <p>표에서 특히 봐야 할 칸은 세 번째입니다. 못 받았을 때 생기는 일을 미리 알고 있으면, 어느 항목에 시간을 더 쓸지 판단이 섭니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>넘겨받을 항목</th><th>어디서 확인하나</th><th>못 받으면 생기는 일</th><th>받는 데 걸리는 시간</th></tr>
           </thead>
           <tbody>
-            <tr><td>도메인 관리권</td><td>후이즈 조회의 등록자 정보</td><td>주소를 새로 만들어야 하고 검색 이력 승계가 어려움</td><td>기관이전 5~10일</td></tr>
-            <tr><td>호스팅 계정</td><td>호스팅사 관리 페이지 접속 가능 여부</td><td>파일을 내려받을 수 없어 화면을 보고 다시 만들게 됨</td><td>1~3일</td></tr>
-            <tr><td>홈페이지 소스 파일</td><td>압축 파일로 전달받아 열어 보기</td><td>재제작 비용이 발생하고 기간이 4~8주 늘어남</td><td>1주 이내</td></tr>
-            <tr><td>데이터베이스 백업</td><td>문의 내역·게시글이 담긴 덤프 파일</td><td>그동안 받은 문의 기록과 게시글이 사라짐</td><td>1~3일</td></tr>
-            <tr><td>콘텐츠·사진 원본</td><td>글 원고 파일과 촬영 원본 이미지</td><td>저해상도 이미지만 남아 리뉴얼 때 재촬영 필요</td><td>1주 이내</td></tr>
-            <tr><td>광고 계정 권한</td><td>로그인해서 관리자 목록 확인</td><td>과거 집행 데이터 없이 광고를 처음부터 다시 학습</td><td>1~2일</td></tr>
-            <tr><td>서치콘솔·서치어드바이저</td><td>소유자 권한에 우리 계정이 있는지</td><td>검색 노출 변화를 추적할 수 없어 원인 분석 불가</td><td>즉시~1일</td></tr>
-            <tr><td>애널리틱스 소유자 권한</td><td>속성 설정의 사용자 관리 화면</td><td>누적 방문·문의 데이터가 끊기고 비교 기준이 사라짐</td><td>즉시~1일</td></tr>
-            <tr><td>플레이스·비즈니스 프로필</td><td>대표 관리자 계정이 누구인지</td><td>업체 정보 수정과 리뷰 대응을 직접 못 하게 됨</td><td>1~7일</td></tr>
+            <tr><td data-label="넘겨받을 항목">도메인 관리권</td><td data-label="어디서 확인하나">후이즈 조회의 등록자 정보</td><td data-label="못 받으면 생기는 일">주소를 새로 만들어야 하고 검색 이력 승계가 어려움</td><td data-label="받는 데 걸리는 시간">기관이전 5~10일</td></tr>
+            <tr><td data-label="넘겨받을 항목">호스팅 계정</td><td data-label="어디서 확인하나">호스팅사 관리 페이지 접속 가능 여부</td><td data-label="못 받으면 생기는 일">파일을 내려받을 수 없어 화면을 보고 다시 만들게 됨</td><td data-label="받는 데 걸리는 시간">1~3일</td></tr>
+            <tr><td data-label="넘겨받을 항목">홈페이지 소스 파일</td><td data-label="어디서 확인하나">압축 파일로 전달받아 열어 보기</td><td data-label="못 받으면 생기는 일">재제작 비용이 발생하고 기간이 4~8주 늘어남</td><td data-label="받는 데 걸리는 시간">1주 이내</td></tr>
+            <tr><td data-label="넘겨받을 항목">데이터베이스 백업</td><td data-label="어디서 확인하나">문의 내역·게시글이 담긴 덤프 파일</td><td data-label="못 받으면 생기는 일">그동안 받은 문의 기록과 게시글이 사라짐</td><td data-label="받는 데 걸리는 시간">1~3일</td></tr>
+            <tr><td data-label="넘겨받을 항목">콘텐츠·사진 원본</td><td data-label="어디서 확인하나">글 원고 파일과 촬영 원본 이미지</td><td data-label="못 받으면 생기는 일">저해상도 이미지만 남아 리뉴얼 때 재촬영 필요</td><td data-label="받는 데 걸리는 시간">1주 이내</td></tr>
+            <tr><td data-label="넘겨받을 항목">광고 계정 권한</td><td data-label="어디서 확인하나">로그인해서 관리자 목록 확인</td><td data-label="못 받으면 생기는 일">과거 집행 데이터 없이 광고를 처음부터 다시 학습</td><td data-label="받는 데 걸리는 시간">1~2일</td></tr>
+            <tr><td data-label="넘겨받을 항목">서치콘솔·서치어드바이저</td><td data-label="어디서 확인하나">소유자 권한에 우리 계정이 있는지</td><td data-label="못 받으면 생기는 일">검색 노출 변화를 추적할 수 없어 원인 분석 불가</td><td data-label="받는 데 걸리는 시간">즉시~1일</td></tr>
+            <tr><td data-label="넘겨받을 항목">애널리틱스 소유자 권한</td><td data-label="어디서 확인하나">속성 설정의 사용자 관리 화면</td><td data-label="못 받으면 생기는 일">누적 방문·문의 데이터가 끊기고 비교 기준이 사라짐</td><td data-label="받는 데 걸리는 시간">즉시~1일</td></tr>
+            <tr><td data-label="넘겨받을 항목">플레이스·비즈니스 프로필</td><td data-label="어디서 확인하나">대표 관리자 계정이 누구인지</td><td data-label="못 받으면 생기는 일">업체 정보 수정과 리뷰 대응을 직접 못 하게 됨</td><td data-label="받는 데 걸리는 시간">1~7일</td></tr>
           </tbody>
         </table>
       </div>
@@ -153,16 +161,16 @@
       <p>화면에 보이는 것을 그대로 다시 띄울 수 있는 수준까지입니다. HTML·CSS·이미지 파일만으로는 부족하고, 게시판이나 문의 폼이 있다면 데이터베이스 백업도 함께 받아야 합니다.</p>
       <p>다만 홈페이지를 만든 방식에 따라 받을 수 있는 범위가 달라집니다. 임대형 빌더로 만든 경우에는 애초에 넘겨줄 소스가 없는 구조인 경우도 있습니다.</p>
       <p>이 경우 업체가 안 주는 게 아니라 못 주는 것이므로, 다투기보다 글과 사진 원본을 최대한 확보하는 쪽으로 방향을 바꾸는 편이 빠릅니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>홈페이지 만든 방식</th><th>넘겨받을 수 있는 것</th><th>넘겨받기 어려운 것</th><th>현실적인 선택</th></tr>
           </thead>
           <tbody>
-            <tr><td>자체 제작(직접 코딩)</td><td>전체 소스와 DB 백업</td><td>특별히 없음</td><td>그대로 새 서버로 이전</td></tr>
-            <tr><td>워드프레스 등 공개 CMS</td><td>테마·플러그인 포함 전체 파일과 DB</td><td>유료 테마 라이선스</td><td>이전 후 라이선스만 새로 구매</td></tr>
-            <tr><td>국내 빌더형 서비스</td><td>글·이미지 등 콘텐츠</td><td>레이아웃과 기능 소스</td><td>콘텐츠만 옮기고 디자인은 새로</td></tr>
-            <tr><td>대행사 자체 솔루션</td><td>콘텐츠, 경우에 따라 템플릿</td><td>솔루션 코드 전체</td><td>계약서의 권리 귀속 조항 먼저 확인</td></tr>
+            <tr><td data-label="홈페이지 만든 방식">자체 제작(직접 코딩)</td><td data-label="넘겨받을 수 있는 것">전체 소스와 DB 백업</td><td data-label="넘겨받기 어려운 것">특별히 없음</td><td data-label="현실적인 선택">그대로 새 서버로 이전</td></tr>
+            <tr><td data-label="홈페이지 만든 방식">워드프레스 등 공개 CMS</td><td data-label="넘겨받을 수 있는 것">테마·플러그인 포함 전체 파일과 DB</td><td data-label="넘겨받기 어려운 것">유료 테마 라이선스</td><td data-label="현실적인 선택">이전 후 라이선스만 새로 구매</td></tr>
+            <tr><td data-label="홈페이지 만든 방식">국내 빌더형 서비스</td><td data-label="넘겨받을 수 있는 것">글·이미지 등 콘텐츠</td><td data-label="넘겨받기 어려운 것">레이아웃과 기능 소스</td><td data-label="현실적인 선택">콘텐츠만 옮기고 디자인은 새로</td></tr>
+            <tr><td data-label="홈페이지 만든 방식">대행사 자체 솔루션</td><td data-label="넘겨받을 수 있는 것">콘텐츠, 경우에 따라 템플릿</td><td data-label="넘겨받기 어려운 것">솔루션 코드 전체</td><td data-label="현실적인 선택">계약서의 권리 귀속 조항 먼저 확인</td></tr>
           </tbody>
         </table>
       </div>

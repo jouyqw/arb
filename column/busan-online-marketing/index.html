@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -149,12 +157,12 @@
             <tr><th>지금 상태</th><th>광고를 켜도 될까</th><th>그 전에 할 일</th></tr>
           </thead>
           <tbody>
-            <tr><td>플레이스 정보 칸에 빈 항목이 있다</td><td>아직 이릅니다</td><td>휴무·주차·마감 시간·사진 채우기 (1~2주)</td></tr>
-            <tr><td>지도 노출은 있는데 전화가 없다</td><td>아직 이릅니다</td><td>취급 항목 표기를 손님 말로 바꾸고 사진 교체</td></tr>
-            <tr><td>첫 화면에 금액 범위와 문의 창구가 없다</td><td>아직 이릅니다</td><td>첫 화면과 주력 품목 1~2개 정비 (2~3주)</td></tr>
-            <tr><td>문의는 오는데 어디서 왔는지 기록이 없다</td><td>켜도 판단이 안 됩니다</td><td>통화 기록, 문의 폼, 유입 경로 질문 한 줄 추가</td></tr>
-            <tr><td>자연 유입 문의가 주 1~3건 들어온다</td><td>켤 시점입니다</td><td>키워드 10~20개로 2~4주 테스트</td></tr>
-            <tr><td>성수기가 4주 안으로 다가왔다</td><td>덜 준비됐어도 켭니다</td><td>랜딩을 한 장으로 좁히고 전화 버튼만 남기기</td></tr>
+            <tr><td data-label="지금 상태">플레이스 정보 칸에 빈 항목이 있다</td><td data-label="광고를 켜도 될까">아직 이릅니다</td><td data-label="그 전에 할 일">휴무·주차·마감 시간·사진 채우기 (1~2주)</td></tr>
+            <tr><td data-label="지금 상태">지도 노출은 있는데 전화가 없다</td><td data-label="광고를 켜도 될까">아직 이릅니다</td><td data-label="그 전에 할 일">취급 항목 표기를 손님 말로 바꾸고 사진 교체</td></tr>
+            <tr><td data-label="지금 상태">첫 화면에 금액 범위와 문의 창구가 없다</td><td data-label="광고를 켜도 될까">아직 이릅니다</td><td data-label="그 전에 할 일">첫 화면과 주력 품목 1~2개 정비 (2~3주)</td></tr>
+            <tr><td data-label="지금 상태">문의는 오는데 어디서 왔는지 기록이 없다</td><td data-label="광고를 켜도 될까">켜도 판단이 안 됩니다</td><td data-label="그 전에 할 일">통화 기록, 문의 폼, 유입 경로 질문 한 줄 추가</td></tr>
+            <tr><td data-label="지금 상태">자연 유입 문의가 주 1~3건 들어온다</td><td data-label="광고를 켜도 될까">켤 시점입니다</td><td data-label="그 전에 할 일">키워드 10~20개로 2~4주 테스트</td></tr>
+            <tr><td data-label="지금 상태">성수기가 4주 안으로 다가왔다</td><td data-label="광고를 켜도 될까">덜 준비됐어도 켭니다</td><td data-label="그 전에 할 일">랜딩을 한 장으로 좁히고 전화 버튼만 남기기</td></tr>
           </tbody>
         </table>
       </div>
@@ -167,16 +175,16 @@
       <p>비중을 바꾸는 시점은 느낌이 아니라 숫자로 정합니다. 저는 두 달 연속 같은 방향이 나올 때만 조정합니다. 한 달 결과로 움직이면 계절 요인과 구분이 되지 않습니다.</p>
       <h2>업종에 따라 순서가 달라지는 부분은 어디인가요?</h2>
       <p>손님이 우리를 찾는 방식에 따라 지도와 페이지 중 어디에 먼저 힘을 주는지가 달라집니다. 당일에 와서 바로 쓰는 업종은 지도에서 거의 결판이 나고, 견적을 비교하는 업종은 읽을 페이지가 있어야 남습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>손님이 찾는 방식</th><th>이런 업종</th><th>먼저 세울 것</th><th>광고를 붙이는 시점</th></tr>
           </thead>
           <tbody>
-            <tr><td>당일에 와서 바로 쓴다</td><td>음식점·미용실·정비소·세탁</td><td>플레이스 정보와 내부 사진</td><td>정보 칸이 다 채워진 직후</td></tr>
-            <tr><td>견적을 받아 비교한다</td><td>인테리어·이사·청소·시공</td><td>금액 범위와 시공 사례 페이지</td><td>사례 5~10건이 올라간 뒤</td></tr>
-            <tr><td>예약하고 상담을 받는다</td><td>병원·학원·법무·세무</td><td>절차·기간 설명과 예약 창구</td><td>원고 8~12편이 쌓인 뒤</td></tr>
-            <tr><td>급해서 전화로 바로 부른다</td><td>출장 수리·설비·열쇠·긴급</td><td>전화 버튼과 대응 가능 지역 표기</td><td>1단계가 끝나면 바로</td></tr>
+            <tr><td data-label="손님이 찾는 방식">당일에 와서 바로 쓴다</td><td data-label="이런 업종">음식점·미용실·정비소·세탁</td><td data-label="먼저 세울 것">플레이스 정보와 내부 사진</td><td data-label="광고를 붙이는 시점">정보 칸이 다 채워진 직후</td></tr>
+            <tr><td data-label="손님이 찾는 방식">견적을 받아 비교한다</td><td data-label="이런 업종">인테리어·이사·청소·시공</td><td data-label="먼저 세울 것">금액 범위와 시공 사례 페이지</td><td data-label="광고를 붙이는 시점">사례 5~10건이 올라간 뒤</td></tr>
+            <tr><td data-label="손님이 찾는 방식">예약하고 상담을 받는다</td><td data-label="이런 업종">병원·학원·법무·세무</td><td data-label="먼저 세울 것">절차·기간 설명과 예약 창구</td><td data-label="광고를 붙이는 시점">원고 8~12편이 쌓인 뒤</td></tr>
+            <tr><td data-label="손님이 찾는 방식">급해서 전화로 바로 부른다</td><td data-label="이런 업종">출장 수리·설비·열쇠·긴급</td><td data-label="먼저 세울 것">전화 버튼과 대응 가능 지역 표기</td><td data-label="광고를 붙이는 시점">1단계가 끝나면 바로</td></tr>
           </tbody>
         </table>
       </div>

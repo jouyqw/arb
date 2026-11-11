@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -132,13 +140,13 @@
             <tr><th>비교 축</th><th>워드프레스</th><th>국내 빌더(카페24·아임웹 등)</th></tr>
           </thead>
           <tbody>
-            <tr><td>소유 형태</td><td>사이트 파일과 데이터베이스를 직접 보유</td><td>플랫폼 계정 안에서 사용하는 임대형</td></tr>
-            <tr><td>초기 비용</td><td>제작 300만~1,000만원대, 호스팅 월 1만~10만원대</td><td>디자인·세팅 100만~500만원대, 월 사용료 1만~10만원대</td></tr>
-            <tr><td>업데이트·보안</td><td>본체와 플러그인 업데이트를 누군가 맡아야 함</td><td>플랫폼이 처리</td></tr>
-            <tr><td>고칠 수 있는 범위</td><td>화면과 기능, 필요하면 코드까지</td><td>플랫폼이 열어 둔 기능까지</td></tr>
-            <tr><td>옮길 때</td><td>호스팅만 바꿔 사이트를 그대로 이동</td><td>글·상품은 내보내기, 디자인과 주소는 다시 제작</td></tr>
-            <tr><td>검색 설정 제어</td><td>제목·설명·주소 구조·구조화 데이터까지 직접</td><td>플랜이 제공하는 설정 범위 안에서</td></tr>
-            <tr><td>제작 기간</td><td>4~10주</td><td>2~5주</td></tr>
+            <tr><td data-label="비교 축">소유 형태</td><td data-label="워드프레스">사이트 파일과 데이터베이스를 직접 보유</td><td data-label="국내 빌더(카페24·아임웹 등)">플랫폼 계정 안에서 사용하는 임대형</td></tr>
+            <tr><td data-label="비교 축">초기 비용</td><td data-label="워드프레스">제작 300만~1,000만원대, 호스팅 월 1만~10만원대</td><td data-label="국내 빌더(카페24·아임웹 등)">디자인·세팅 100만~500만원대, 월 사용료 1만~10만원대</td></tr>
+            <tr><td data-label="비교 축">업데이트·보안</td><td data-label="워드프레스">본체와 플러그인 업데이트를 누군가 맡아야 함</td><td data-label="국내 빌더(카페24·아임웹 등)">플랫폼이 처리</td></tr>
+            <tr><td data-label="비교 축">고칠 수 있는 범위</td><td data-label="워드프레스">화면과 기능, 필요하면 코드까지</td><td data-label="국내 빌더(카페24·아임웹 등)">플랫폼이 열어 둔 기능까지</td></tr>
+            <tr><td data-label="비교 축">옮길 때</td><td data-label="워드프레스">호스팅만 바꿔 사이트를 그대로 이동</td><td data-label="국내 빌더(카페24·아임웹 등)">글·상품은 내보내기, 디자인과 주소는 다시 제작</td></tr>
+            <tr><td data-label="비교 축">검색 설정 제어</td><td data-label="워드프레스">제목·설명·주소 구조·구조화 데이터까지 직접</td><td data-label="국내 빌더(카페24·아임웹 등)">플랜이 제공하는 설정 범위 안에서</td></tr>
+            <tr><td data-label="비교 축">제작 기간</td><td data-label="워드프레스">4~10주</td><td data-label="국내 빌더(카페24·아임웹 등)">2~5주</td></tr>
           </tbody>
         </table>
       </div>
@@ -165,11 +173,11 @@
             <tr><th>비용 항목</th><th>워드프레스에서 흔한 범위</th><th>국내 빌더에서 흔한 범위</th></tr>
           </thead>
           <tbody>
-            <tr><td>초기 구축</td><td>300만~1,000만원대, 기능이 붙으면 그 이상</td><td>100만~500만원대</td></tr>
-            <tr><td>월 고정비</td><td>호스팅 1만~10만원대 + 유료 플러그인 연 갱신</td><td>월 사용료 1만~10만원대</td></tr>
-            <tr><td>유지관리</td><td>업데이트·백업을 맡기면 월 10만~30만원대</td><td>플랫폼 기본 포함, 콘텐츠 작업은 별도</td></tr>
-            <tr><td>기능 추가</td><td>개발이나 플러그인 비용이 건당 발생</td><td>상위 플랜 또는 유료 앱 월 요금</td></tr>
-            <tr><td>그만둘 때</td><td>호스팅만 옮기면 사이트를 계속 쓸 수 있음</td><td>사이트는 닫히고 내보낸 데이터만 남음</td></tr>
+            <tr><td data-label="비용 항목">초기 구축</td><td data-label="워드프레스에서 흔한 범위">300만~1,000만원대, 기능이 붙으면 그 이상</td><td data-label="국내 빌더에서 흔한 범위">100만~500만원대</td></tr>
+            <tr><td data-label="비용 항목">월 고정비</td><td data-label="워드프레스에서 흔한 범위">호스팅 1만~10만원대 + 유료 플러그인 연 갱신</td><td data-label="국내 빌더에서 흔한 범위">월 사용료 1만~10만원대</td></tr>
+            <tr><td data-label="비용 항목">유지관리</td><td data-label="워드프레스에서 흔한 범위">업데이트·백업을 맡기면 월 10만~30만원대</td><td data-label="국내 빌더에서 흔한 범위">플랫폼 기본 포함, 콘텐츠 작업은 별도</td></tr>
+            <tr><td data-label="비용 항목">기능 추가</td><td data-label="워드프레스에서 흔한 범위">개발이나 플러그인 비용이 건당 발생</td><td data-label="국내 빌더에서 흔한 범위">상위 플랜 또는 유료 앱 월 요금</td></tr>
+            <tr><td data-label="비용 항목">그만둘 때</td><td data-label="워드프레스에서 흔한 범위">호스팅만 옮기면 사이트를 계속 쓸 수 있음</td><td data-label="국내 빌더에서 흔한 범위">사이트는 닫히고 내보낸 데이터만 남음</td></tr>
           </tbody>
         </table>
       </div>

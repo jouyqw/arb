@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -133,16 +141,16 @@
       <p>지역 범위는 사무소가 있는 구 단위부터 잡고, 물건이 몰려 있는 인접 지역으로 넓히는 순서가 안전합니다. &quot;서울&quot;만 단독으로 쓰면 경쟁이 크고 의뢰 의도도 흐려집니다.</p>
       <p>이 목록을 고르는 일은 직접 하셔도 충분합니다. 어떤 의뢰가 실제로 수임까지 갔는지는 사무소 안에서 가장 잘 아시기 때문입니다. 다만 목적과 지역 조합이 20개를 넘어 우선순위가 안 잡힐 때는 배정표만 한 번 맡겨 받아 두는 편이 빠릅니다.</p>
       <div class="infographic"><div class="infographic-h">감정평가 의뢰가 생기는 대표 상황</div><div class="ig-grid"><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M12 3v18M5 8h14'/><path d='M5 8l-2 6h4zM19 8l-2 6h4z'/></svg></span><div><b>보상 감정</b><span class="t">토지·건물 보상 불복, 재감정 목적</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M6 3h9l4 4v14H6z'/><path d='M14 3v5h5M9 13h7M9 17h5'/></svg></span><div><b>경매·담보</b><span class="t">경매 참고, 담보 설정 목적의 평가</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z'/><path d='M9 12l2 2 4-4'/></svg></span><div><b>상속·증여</b><span class="t">세무 신고를 위한 재산 평가</span></div></div><div class="ig-item"><span class="ig-ic"><svg viewBox='0 0 24 24' width='21' height='21' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z'/><circle cx='12' cy='11' r='2.2'/></svg></span><div><b>지역 결합</b><span class="t">&quot;지역 + 목적&quot;으로 검색 의도를 좁힙니다.</span></div></div></div></div><p class="figure-note">▲ 목적별로 키워드와 콘텐츠를 나눕니다</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>의뢰 목적</th><th>검색에 쓰이는 말</th><th>의뢰인의 일정 압박</th><th>가장 먼저 만들 콘텐츠</th></tr>
           </thead>
           <tbody>
-            <tr><td>보상 감정</td><td>보상금 불복, 재감정, 수용 재결과 지역명이 함께 붙는 말</td><td>협의·재결 일정에 묶여 급한 편</td><td>이의 절차 안내 + 준비 서류 목록</td></tr>
-            <tr><td>경매·담보</td><td>경매 감정가, 담보 감정처럼 금액 판단이 목적인 말</td><td>입찰일·대출 실행일에 맞춰 매우 급함</td><td>처리 기간과 필요한 자료를 밝힌 짧은 안내</td></tr>
-            <tr><td>상속·증여</td><td>상속 재산 평가, 증여 시가 감정 같은 세무 목적 말</td><td>상속 6개월·증여 3개월 신고 기한에 묶임</td><td>세무 일정과 함께 읽히는 절차 설명</td></tr>
-            <tr><td>임대료·소송</td><td>임대료 감정, 소송 감정 등 분쟁 상황을 담은 말</td><td>재판·조정 일정에 따라 다름</td><td>법원 감정과 사감정의 차이 설명</td></tr>
+            <tr><td data-label="의뢰 목적">보상 감정</td><td data-label="검색에 쓰이는 말">보상금 불복, 재감정, 수용 재결과 지역명이 함께 붙는 말</td><td data-label="의뢰인의 일정 압박">협의·재결 일정에 묶여 급한 편</td><td data-label="가장 먼저 만들 콘텐츠">이의 절차 안내 + 준비 서류 목록</td></tr>
+            <tr><td data-label="의뢰 목적">경매·담보</td><td data-label="검색에 쓰이는 말">경매 감정가, 담보 감정처럼 금액 판단이 목적인 말</td><td data-label="의뢰인의 일정 압박">입찰일·대출 실행일에 맞춰 매우 급함</td><td data-label="가장 먼저 만들 콘텐츠">처리 기간과 필요한 자료를 밝힌 짧은 안내</td></tr>
+            <tr><td data-label="의뢰 목적">상속·증여</td><td data-label="검색에 쓰이는 말">상속 재산 평가, 증여 시가 감정 같은 세무 목적 말</td><td data-label="의뢰인의 일정 압박">상속 6개월·증여 3개월 신고 기한에 묶임</td><td data-label="가장 먼저 만들 콘텐츠">세무 일정과 함께 읽히는 절차 설명</td></tr>
+            <tr><td data-label="의뢰 목적">임대료·소송</td><td data-label="검색에 쓰이는 말">임대료 감정, 소송 감정 등 분쟁 상황을 담은 말</td><td data-label="의뢰인의 일정 압박">재판·조정 일정에 따라 다름</td><td data-label="가장 먼저 만들 콘텐츠">법원 감정과 사감정의 차이 설명</td></tr>
           </tbody>
         </table>
       </div>
@@ -185,11 +193,11 @@
             <tr><th>비교 축</th><th>홈페이지 칼럼</th><th>네이버 블로그</th></tr>
           </thead>
           <tbody>
-            <tr><td>잘 맞는 의뢰인</td><td>구글·AI 검색으로 절차와 근거를 찾아보는 쪽</td><td>네이버에서 지역과 함께 훑어보는 쪽</td></tr>
-            <tr><td>자리 잡는 기간</td><td>보통 1~3개월</td><td>보통 2주~2개월</td></tr>
-            <tr><td>글 한 편에 드는 품</td><td>2~4시간(자료·절차 정리 포함)</td><td>1~2시간</td></tr>
-            <tr><td>남는 자산</td><td>사무소 도메인에 그대로 쌓임</td><td>플랫폼 정책 변화에 영향을 받음</td></tr>
-            <tr><td>먼저 권하는 경우</td><td>보상·소송처럼 설명이 긴 목적</td><td>경매·담보처럼 일정이 급한 목적</td></tr>
+            <tr><td data-label="비교 축">잘 맞는 의뢰인</td><td data-label="홈페이지 칼럼">구글·AI 검색으로 절차와 근거를 찾아보는 쪽</td><td data-label="네이버 블로그">네이버에서 지역과 함께 훑어보는 쪽</td></tr>
+            <tr><td data-label="비교 축">자리 잡는 기간</td><td data-label="홈페이지 칼럼">보통 1~3개월</td><td data-label="네이버 블로그">보통 2주~2개월</td></tr>
+            <tr><td data-label="비교 축">글 한 편에 드는 품</td><td data-label="홈페이지 칼럼">2~4시간(자료·절차 정리 포함)</td><td data-label="네이버 블로그">1~2시간</td></tr>
+            <tr><td data-label="비교 축">남는 자산</td><td data-label="홈페이지 칼럼">사무소 도메인에 그대로 쌓임</td><td data-label="네이버 블로그">플랫폼 정책 변화에 영향을 받음</td></tr>
+            <tr><td data-label="비교 축">먼저 권하는 경우</td><td data-label="홈페이지 칼럼">보상·소송처럼 설명이 긴 목적</td><td data-label="네이버 블로그">경매·담보처럼 일정이 급한 목적</td></tr>
           </tbody>
         </table>
       </div>

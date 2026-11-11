@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -130,31 +138,31 @@
             <tr><th>단계</th><th>자동화 내용</th><th>확인할 점</th></tr>
           </thead>
           <tbody>
-            <tr><td>주제 입력</td><td>제목, 키워드, 사이트 선택</td><td>검색 의도가 분명해야 합니다</td></tr>
-            <tr><td>본문 생성</td><td>요약, 문단, 표 작성</td><td>전문용어를 줄입니다</td></tr>
-            <tr><td>사이트 반영</td><td>HTML 또는 JSON 저장</td><td>기존 디자인과 맞춰야 합니다</td></tr>
-            <tr><td>배포</td><td>GitHub 푸시, Cloudflare 배포</td><td>배포 후 URL을 확인합니다</td></tr>
-            <tr><td>목록·사이트맵 갱신</td><td>목록 페이지 카드 추가, sitemap.xml 재생성</td><td>새 URL이 실제로 목록에 보이는지 확인합니다</td></tr>
-            <tr><td>검수</td><td>금지 표현 검사, 글자 수 확인</td><td>과장 표현과 사실관계는 사람이 봅니다</td></tr>
+            <tr><td data-label="단계">주제 입력</td><td data-label="자동화 내용">제목, 키워드, 사이트 선택</td><td data-label="확인할 점">검색 의도가 분명해야 합니다</td></tr>
+            <tr><td data-label="단계">본문 생성</td><td data-label="자동화 내용">요약, 문단, 표 작성</td><td data-label="확인할 점">전문용어를 줄입니다</td></tr>
+            <tr><td data-label="단계">사이트 반영</td><td data-label="자동화 내용">HTML 또는 JSON 저장</td><td data-label="확인할 점">기존 디자인과 맞춰야 합니다</td></tr>
+            <tr><td data-label="단계">배포</td><td data-label="자동화 내용">GitHub 푸시, Cloudflare 배포</td><td data-label="확인할 점">배포 후 URL을 확인합니다</td></tr>
+            <tr><td data-label="단계">목록·사이트맵 갱신</td><td data-label="자동화 내용">목록 페이지 카드 추가, sitemap.xml 재생성</td><td data-label="확인할 점">새 URL이 실제로 목록에 보이는지 확인합니다</td></tr>
+            <tr><td data-label="단계">검수</td><td data-label="자동화 내용">금지 표현 검사, 글자 수 확인</td><td data-label="확인할 점">과장 표현과 사실관계는 사람이 봅니다</td></tr>
           </tbody>
         </table>
       </div>
       <h2>직접 쓰기와 자동화 중 무엇을 고르면 되나요?</h2>
       <p>월 2편 이하로 쓰고 글마다 내용이 크게 다르면 직접 쓰는 편이 낫고, 월 4편 이상을 6개월 넘게 이어갈 계획이면 자동화가 유리합니다. 기준은 글의 품질이 아니라 &#39;같은 작업을 몇 번 반복하느냐&#39;입니다.</p>
       <p>중간 지점도 있습니다. 생성은 자동으로 하되 발행은 사람이 누르는 &#39;부분 자동화&#39;가 소상공인에게 가장 많이 맞는 형태입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>비교 축</th><th>직접 작성</th><th>부분 자동화(검수 후 발행)</th><th>전체 자동화(생성 즉시 발행)</th></tr>
           </thead>
           <tbody>
-            <tr><td>편당 소요 시간</td><td>100~140분</td><td>10~20분</td><td>1~3분</td></tr>
-            <tr><td>초기 구축 기간</td><td>없음</td><td>2~4주</td><td>3~6주</td></tr>
-            <tr><td>적합한 발행량</td><td>월 1~2편</td><td>월 4~12편</td><td>월 20편 이상</td></tr>
-            <tr><td>표현 사고 위험</td><td>낮음</td><td>낮음</td><td>검사 규칙에 없는 표현은 통과될 수 있음</td></tr>
-            <tr><td>법률·의료·금융 적합도</td><td>적합</td><td>적합</td><td>권하지 않음</td></tr>
-            <tr><td>운영에 필요한 사람</td><td>글 쓰는 사람 1명</td><td>확인만 하는 담당자 1명</td><td>규칙을 관리할 담당자 필요</td></tr>
-            <tr><td>추천 상황</td><td>메뉴·공지 위주 사이트</td><td>상담형 업종 대부분</td><td>지역·제품 페이지 대량 운영</td></tr>
+            <tr><td data-label="비교 축">편당 소요 시간</td><td data-label="직접 작성">100~140분</td><td data-label="부분 자동화(검수 후 발행)">10~20분</td><td data-label="전체 자동화(생성 즉시 발행)">1~3분</td></tr>
+            <tr><td data-label="비교 축">초기 구축 기간</td><td data-label="직접 작성">없음</td><td data-label="부분 자동화(검수 후 발행)">2~4주</td><td data-label="전체 자동화(생성 즉시 발행)">3~6주</td></tr>
+            <tr><td data-label="비교 축">적합한 발행량</td><td data-label="직접 작성">월 1~2편</td><td data-label="부분 자동화(검수 후 발행)">월 4~12편</td><td data-label="전체 자동화(생성 즉시 발행)">월 20편 이상</td></tr>
+            <tr><td data-label="비교 축">표현 사고 위험</td><td data-label="직접 작성">낮음</td><td data-label="부분 자동화(검수 후 발행)">낮음</td><td data-label="전체 자동화(생성 즉시 발행)">검사 규칙에 없는 표현은 통과될 수 있음</td></tr>
+            <tr><td data-label="비교 축">법률·의료·금융 적합도</td><td data-label="직접 작성">적합</td><td data-label="부분 자동화(검수 후 발행)">적합</td><td data-label="전체 자동화(생성 즉시 발행)">권하지 않음</td></tr>
+            <tr><td data-label="비교 축">운영에 필요한 사람</td><td data-label="직접 작성">글 쓰는 사람 1명</td><td data-label="부분 자동화(검수 후 발행)">확인만 하는 담당자 1명</td><td data-label="전체 자동화(생성 즉시 발행)">규칙을 관리할 담당자 필요</td></tr>
+            <tr><td data-label="비교 축">추천 상황</td><td data-label="직접 작성">메뉴·공지 위주 사이트</td><td data-label="부분 자동화(검수 후 발행)">상담형 업종 대부분</td><td data-label="전체 자동화(생성 즉시 발행)">지역·제품 페이지 대량 운영</td></tr>
           </tbody>
         </table>
       </div>
@@ -176,11 +184,11 @@
             <tr><th>비교 축</th><th>HTML 파일로 저장</th><th>JSON + 템플릿 렌더</th></tr>
           </thead>
           <tbody>
-            <tr><td>디자인 한 번에 바꾸기</td><td>파일 수만큼 수정 필요</td><td>템플릿 한 곳만 수정</td></tr>
-            <tr><td>글 한 편 수정 난이도</td><td>쉬움(파일 열어 바로 수정)</td><td>구조를 알아야 함</td></tr>
-            <tr><td>글이 100편을 넘었을 때</td><td>관리 부담이 커짐</td><td>부담이 거의 늘지 않음</td></tr>
-            <tr><td>검색엔진 인식</td><td>차이 없음</td><td>차이 없음</td></tr>
-            <tr><td>맞는 상황</td><td>페이지마다 구성이 다를 때</td><td>칼럼처럼 형식이 반복될 때</td></tr>
+            <tr><td data-label="비교 축">디자인 한 번에 바꾸기</td><td data-label="HTML 파일로 저장">파일 수만큼 수정 필요</td><td data-label="JSON + 템플릿 렌더">템플릿 한 곳만 수정</td></tr>
+            <tr><td data-label="비교 축">글 한 편 수정 난이도</td><td data-label="HTML 파일로 저장">쉬움(파일 열어 바로 수정)</td><td data-label="JSON + 템플릿 렌더">구조를 알아야 함</td></tr>
+            <tr><td data-label="비교 축">글이 100편을 넘었을 때</td><td data-label="HTML 파일로 저장">관리 부담이 커짐</td><td data-label="JSON + 템플릿 렌더">부담이 거의 늘지 않음</td></tr>
+            <tr><td data-label="비교 축">검색엔진 인식</td><td data-label="HTML 파일로 저장">차이 없음</td><td data-label="JSON + 템플릿 렌더">차이 없음</td></tr>
+            <tr><td data-label="비교 축">맞는 상황</td><td data-label="HTML 파일로 저장">페이지마다 구성이 다를 때</td><td data-label="JSON + 템플릿 렌더">칼럼처럼 형식이 반복될 때</td></tr>
           </tbody>
         </table>
       </div>

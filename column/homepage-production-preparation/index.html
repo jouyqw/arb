@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -131,10 +139,10 @@
             <tr><th>자료 준비 상태</th><th>5~10페이지 예상 기간</th><th>흔히 생기는 지연</th></tr>
           </thead>
           <tbody>
-            <tr><td>계약 전에 원고·사진이 모여 있다</td><td>3~5주</td><td>수정 요청 조율 정도</td></tr>
-            <tr><td>계약 후 1~2주 안에 모아 보낸다</td><td>5~8주</td><td>일부 페이지 원고 대기</td></tr>
-            <tr><td>원고 작성을 업체에 맡긴다</td><td>6~10주</td><td>인터뷰 일정, 검수 회차 추가</td></tr>
-            <tr><td>제작하면서 그때그때 보낸다</td><td>8~16주</td><td>레이아웃 재작업, 수정 회차 소진</td></tr>
+            <tr><td data-label="자료 준비 상태">계약 전에 원고·사진이 모여 있다</td><td data-label="5~10페이지 예상 기간">3~5주</td><td data-label="흔히 생기는 지연">수정 요청 조율 정도</td></tr>
+            <tr><td data-label="자료 준비 상태">계약 후 1~2주 안에 모아 보낸다</td><td data-label="5~10페이지 예상 기간">5~8주</td><td data-label="흔히 생기는 지연">일부 페이지 원고 대기</td></tr>
+            <tr><td data-label="자료 준비 상태">원고 작성을 업체에 맡긴다</td><td data-label="5~10페이지 예상 기간">6~10주</td><td data-label="흔히 생기는 지연">인터뷰 일정, 검수 회차 추가</td></tr>
+            <tr><td data-label="자료 준비 상태">제작하면서 그때그때 보낸다</td><td data-label="5~10페이지 예상 기간">8~16주</td><td data-label="흔히 생기는 지연">레이아웃 재작업, 수정 회차 소진</td></tr>
           </tbody>
         </table>
       </div>
@@ -142,16 +150,16 @@
       <h2>맡기기 전에 준비해 둘 자료는 무엇인가요?</h2>
       <p>네 가지입니다. 원고, 사진, 사업자·계정 정보, 레퍼런스입니다. 이 네 개가 모이면 나머지는 업체 쪽 일정 문제로 넘어갑니다.</p>
       <p>중요한 건 완성도가 아니라 형태입니다. 어떤 형태로 넘기면 업체가 바로 쓸 수 있는지만 알면 준비 시간이 크게 줄어듭니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>준비 항목</th><th>어느 형태로</th><th>걸리는 시간</th><th>없을 때 생기는 일</th></tr>
           </thead>
           <tbody>
-            <tr><td>원고</td><td>페이지별 핵심 3줄 + 기존 소개서·블로그 글</td><td>1~2주</td><td>가안으로 디자인을 확정해 뒤에 레이아웃 재작업</td></tr>
-            <tr><td>사진</td><td>가로 사진 20~40장, 압축 안 된 원본</td><td>반일~2일</td><td>스톡 사진으로 채워 첫 화면 신뢰가 떨어짐</td></tr>
-            <tr><td>사업자·계정 정보</td><td>사업자등록증, 도메인·호스팅 계정</td><td>1~3일</td><td>오픈 직전 도메인 연결이 막혀 공개가 밀림</td></tr>
-            <tr><td>레퍼런스</td><td>사이트 3~5개 + 좋았던 이유 한 줄</td><td>1~2시간</td><td>디자인 시안 회차가 2~3회 늘어남</td></tr>
+            <tr><td data-label="준비 항목">원고</td><td data-label="어느 형태로">페이지별 핵심 3줄 + 기존 소개서·블로그 글</td><td data-label="걸리는 시간">1~2주</td><td data-label="없을 때 생기는 일">가안으로 디자인을 확정해 뒤에 레이아웃 재작업</td></tr>
+            <tr><td data-label="준비 항목">사진</td><td data-label="어느 형태로">가로 사진 20~40장, 압축 안 된 원본</td><td data-label="걸리는 시간">반일~2일</td><td data-label="없을 때 생기는 일">스톡 사진으로 채워 첫 화면 신뢰가 떨어짐</td></tr>
+            <tr><td data-label="준비 항목">사업자·계정 정보</td><td data-label="어느 형태로">사업자등록증, 도메인·호스팅 계정</td><td data-label="걸리는 시간">1~3일</td><td data-label="없을 때 생기는 일">오픈 직전 도메인 연결이 막혀 공개가 밀림</td></tr>
+            <tr><td data-label="준비 항목">레퍼런스</td><td data-label="어느 형태로">사이트 3~5개 + 좋았던 이유 한 줄</td><td data-label="걸리는 시간">1~2시간</td><td data-label="없을 때 생기는 일">디자인 시안 회차가 2~3회 늘어남</td></tr>
           </tbody>
         </table>
       </div>

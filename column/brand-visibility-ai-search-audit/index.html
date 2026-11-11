@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -152,11 +160,11 @@
             <tr><th>증상</th><th>가능한 원인</th><th>점검 방향</th></tr>
           </thead>
           <tbody>
-            <tr><td>관련 답변에 전혀 없음</td><td>콘텐츠 부재</td><td>고객 질문 기반 글 작성</td></tr>
-            <tr><td>엉뚱하게 인용됨</td><td>정보 불명확</td><td>질문형 구조로 재정리</td></tr>
-            <tr><td>경쟁사만 언급됨</td><td>근거 부족</td><td>사실·출처 보강</td></tr>
-            <tr><td>회사명이 다르게 표기됨</td><td>명칭 표기 불일치</td><td>전 페이지 상호·서비스명 통일</td></tr>
-            <tr><td>검색에도 페이지가 없음</td><td>수집 차단</td><td>robots.txt·noindex·sitemap 확인</td></tr>
+            <tr><td data-label="증상">관련 답변에 전혀 없음</td><td data-label="가능한 원인">콘텐츠 부재</td><td data-label="점검 방향">고객 질문 기반 글 작성</td></tr>
+            <tr><td data-label="증상">엉뚱하게 인용됨</td><td data-label="가능한 원인">정보 불명확</td><td data-label="점검 방향">질문형 구조로 재정리</td></tr>
+            <tr><td data-label="증상">경쟁사만 언급됨</td><td data-label="가능한 원인">근거 부족</td><td data-label="점검 방향">사실·출처 보강</td></tr>
+            <tr><td data-label="증상">회사명이 다르게 표기됨</td><td data-label="가능한 원인">명칭 표기 불일치</td><td data-label="점검 방향">전 페이지 상호·서비스명 통일</td></tr>
+            <tr><td data-label="증상">검색에도 페이지가 없음</td><td data-label="가능한 원인">수집 차단</td><td data-label="점검 방향">robots.txt·noindex·sitemap 확인</td></tr>
           </tbody>
         </table>
       </div>
@@ -189,11 +197,11 @@
             <tr><th>비교 항목</th><th>직접 제작</th><th>외주 제작</th></tr>
           </thead>
           <tbody>
-            <tr><td>초기 비용</td><td>담당자 인건비 외 추가 비용은 거의 없음</td><td>편당 10만~30만원, 월 단위 운영은 월 50만~300만원 선의 제안이 흔함</td></tr>
-            <tr><td>첫 글까지 걸리는 시간</td><td>1~2주(담당자 학습 기간 포함)</td><td>계약 후 2~4주(기획·톤 조율 포함)</td></tr>
-            <tr><td>내용의 정확성</td><td>실무를 알아 구체적인 기준과 사례를 쓰기 쉬움</td><td>자료 전달이 부족하면 일반론에 머물 수 있음</td></tr>
-            <tr><td>지속성</td><td>담당자 업무가 바빠지면 발행이 멈추기 쉬움</td><td>계약 기간 동안 발행 주기가 유지되는 편</td></tr>
-            <tr><td>권하는 경우</td><td>월 2편 이상을 3개월 넘게 쓸 사람이 있을 때</td><td>발행이 3개월 이상 멈춘 적이 있을 때</td></tr>
+            <tr><td data-label="비교 항목">초기 비용</td><td data-label="직접 제작">담당자 인건비 외 추가 비용은 거의 없음</td><td data-label="외주 제작">편당 10만~30만원, 월 단위 운영은 월 50만~300만원 선의 제안이 흔함</td></tr>
+            <tr><td data-label="비교 항목">첫 글까지 걸리는 시간</td><td data-label="직접 제작">1~2주(담당자 학습 기간 포함)</td><td data-label="외주 제작">계약 후 2~4주(기획·톤 조율 포함)</td></tr>
+            <tr><td data-label="비교 항목">내용의 정확성</td><td data-label="직접 제작">실무를 알아 구체적인 기준과 사례를 쓰기 쉬움</td><td data-label="외주 제작">자료 전달이 부족하면 일반론에 머물 수 있음</td></tr>
+            <tr><td data-label="비교 항목">지속성</td><td data-label="직접 제작">담당자 업무가 바빠지면 발행이 멈추기 쉬움</td><td data-label="외주 제작">계약 기간 동안 발행 주기가 유지되는 편</td></tr>
+            <tr><td data-label="비교 항목">권하는 경우</td><td data-label="직접 제작">월 2편 이상을 3개월 넘게 쓸 사람이 있을 때</td><td data-label="외주 제작">발행이 3개월 이상 멈춘 적이 있을 때</td></tr>
           </tbody>
         </table>
       </div>

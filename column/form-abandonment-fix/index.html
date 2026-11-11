@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -135,10 +143,10 @@
             <tr><th>구간</th><th>무엇을 보는가</th><th>여기가 문제면 흔한 원인</th></tr>
           </thead>
           <tbody>
-            <tr><td>도달</td><td>폼 영역까지 스크롤한 사람 수</td><td>폼이 너무 아래, 상단에 문의 버튼 없음</td></tr>
-            <tr><td>시작</td><td>첫 칸에 한 글자라도 입력한 사람 수</td><td>항목 수가 한눈에 부담스러움, 필수 표시가 많음</td></tr>
-            <tr><td>진행</td><td>중간에 멈춘 사람과 멈춘 칸</td><td>특정 항목에서 손이 멈춤(상세 내용·동의·첨부)</td></tr>
-            <tr><td>제출</td><td>버튼을 눌렀는데 완료되지 않은 수</td><td>검증 오류, 캡차 실패, 전송 오류</td></tr>
+            <tr><td data-label="구간">도달</td><td data-label="무엇을 보는가">폼 영역까지 스크롤한 사람 수</td><td data-label="여기가 문제면 흔한 원인">폼이 너무 아래, 상단에 문의 버튼 없음</td></tr>
+            <tr><td data-label="구간">시작</td><td data-label="무엇을 보는가">첫 칸에 한 글자라도 입력한 사람 수</td><td data-label="여기가 문제면 흔한 원인">항목 수가 한눈에 부담스러움, 필수 표시가 많음</td></tr>
+            <tr><td data-label="구간">진행</td><td data-label="무엇을 보는가">중간에 멈춘 사람과 멈춘 칸</td><td data-label="여기가 문제면 흔한 원인">특정 항목에서 손이 멈춤(상세 내용·동의·첨부)</td></tr>
+            <tr><td data-label="구간">제출</td><td data-label="무엇을 보는가">버튼을 눌렀는데 완료되지 않은 수</td><td data-label="여기가 문제면 흔한 원인">검증 오류, 캡차 실패, 전송 오류</td></tr>
           </tbody>
         </table>
       </div>
@@ -197,13 +205,13 @@
             <tr><th>우선순위</th><th>조치</th><th>판단 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>1</td><td>제출 실패 원인 제거</td><td>버튼 클릭 수와 접수 건수의 차이가 있는가</td></tr>
-            <tr><td>2</td><td>오류 메시지 위치 수정</td><td>오류가 해당 칸 옆에 보이는가</td></tr>
-            <tr><td>3</td><td>동의·첨부 정리</td><td>필수 체크가 두 개 이상인가</td></tr>
-            <tr><td>4</td><td>상세 내용 안내 문구 추가</td><td>빈칸에 예시가 있는가</td></tr>
-            <tr><td>5</td><td>모바일 키보드·자동완성</td><td>연락처에서 숫자 키보드가 뜨는가</td></tr>
-            <tr><td>6</td><td>폼 위치·진입 버튼</td><td>폼까지 내려온 비율이 낮은가</td></tr>
-            <tr><td>7</td><td>항목 수 조정</td><td>위 항목을 다 하고도 시작률이 낮은가</td></tr>
+            <tr><td data-label="우선순위">1</td><td data-label="조치">제출 실패 원인 제거</td><td data-label="판단 기준">버튼 클릭 수와 접수 건수의 차이가 있는가</td></tr>
+            <tr><td data-label="우선순위">2</td><td data-label="조치">오류 메시지 위치 수정</td><td data-label="판단 기준">오류가 해당 칸 옆에 보이는가</td></tr>
+            <tr><td data-label="우선순위">3</td><td data-label="조치">동의·첨부 정리</td><td data-label="판단 기준">필수 체크가 두 개 이상인가</td></tr>
+            <tr><td data-label="우선순위">4</td><td data-label="조치">상세 내용 안내 문구 추가</td><td data-label="판단 기준">빈칸에 예시가 있는가</td></tr>
+            <tr><td data-label="우선순위">5</td><td data-label="조치">모바일 키보드·자동완성</td><td data-label="판단 기준">연락처에서 숫자 키보드가 뜨는가</td></tr>
+            <tr><td data-label="우선순위">6</td><td data-label="조치">폼 위치·진입 버튼</td><td data-label="판단 기준">폼까지 내려온 비율이 낮은가</td></tr>
+            <tr><td data-label="우선순위">7</td><td data-label="조치">항목 수 조정</td><td data-label="판단 기준">위 항목을 다 하고도 시작률이 낮은가</td></tr>
           </tbody>
         </table>
       </div>

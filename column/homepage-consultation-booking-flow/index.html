@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -140,10 +148,10 @@
             <tr><th>예약까지 걸리는 단계</th><th>체감 소요 시간</th><th>대체로 맞는 경우</th></tr>
           </thead>
           <tbody>
-            <tr><td>1단계(같은 화면에서 제출)</td><td>20초 이내</td><td>광고 유입 랜딩, 단일 서비스</td></tr>
-            <tr><td>2~3단계(버튼 → 예약 화면)</td><td>40~60초</td><td>대부분의 상담형 업종 기본값</td></tr>
-            <tr><td>4단계(구분 선택이 끼는 경우)</td><td>1~2분</td><td>지점·과목·담당자를 먼저 골라야 할 때</td></tr>
-            <tr><td>5단계 이상(로그인·결제 포함)</td><td>2분 초과</td><td>이미 거래 중인 회원 전용 신청</td></tr>
+            <tr><td data-label="예약까지 걸리는 단계">1단계(같은 화면에서 제출)</td><td data-label="체감 소요 시간">20초 이내</td><td data-label="대체로 맞는 경우">광고 유입 랜딩, 단일 서비스</td></tr>
+            <tr><td data-label="예약까지 걸리는 단계">2~3단계(버튼 → 예약 화면)</td><td data-label="체감 소요 시간">40~60초</td><td data-label="대체로 맞는 경우">대부분의 상담형 업종 기본값</td></tr>
+            <tr><td data-label="예약까지 걸리는 단계">4단계(구분 선택이 끼는 경우)</td><td data-label="체감 소요 시간">1~2분</td><td data-label="대체로 맞는 경우">지점·과목·담당자를 먼저 골라야 할 때</td></tr>
+            <tr><td data-label="예약까지 걸리는 단계">5단계 이상(로그인·결제 포함)</td><td data-label="체감 소요 시간">2분 초과</td><td data-label="대체로 맞는 경우">이미 거래 중인 회원 전용 신청</td></tr>
           </tbody>
         </table>
       </div>
@@ -159,12 +167,12 @@
             <tr><th>흔한 실수</th><th>개선 방향</th></tr>
           </thead>
           <tbody>
-            <tr><td>모든 항목을 필수로 받음</td><td>연락처 등 최소 항목만 필수로</td></tr>
-            <tr><td>예약 버튼이 하단에만 있음</td><td>주요 화면마다 눈에 띄게 배치</td></tr>
-            <tr><td>접수 후 아무 안내 없음</td><td>접수 완료와 다음 단계 즉시 안내</td></tr>
-            <tr><td>영업시간·비용 정보 부재</td><td>예약 전 궁금증을 먼저 해소</td></tr>
-            <tr><td>예약 전 회원가입·로그인 요구</td><td>비회원 예약을 기본 경로로 제공</td></tr>
-            <tr><td>달력에서 빈 시간을 알 수 없음</td><td>가능한 시간대만 골라 보여 주기</td></tr>
+            <tr><td data-label="흔한 실수">모든 항목을 필수로 받음</td><td data-label="개선 방향">연락처 등 최소 항목만 필수로</td></tr>
+            <tr><td data-label="흔한 실수">예약 버튼이 하단에만 있음</td><td data-label="개선 방향">주요 화면마다 눈에 띄게 배치</td></tr>
+            <tr><td data-label="흔한 실수">접수 후 아무 안내 없음</td><td data-label="개선 방향">접수 완료와 다음 단계 즉시 안내</td></tr>
+            <tr><td data-label="흔한 실수">영업시간·비용 정보 부재</td><td data-label="개선 방향">예약 전 궁금증을 먼저 해소</td></tr>
+            <tr><td data-label="흔한 실수">예약 전 회원가입·로그인 요구</td><td data-label="개선 방향">비회원 예약을 기본 경로로 제공</td></tr>
+            <tr><td data-label="흔한 실수">달력에서 빈 시간을 알 수 없음</td><td data-label="개선 방향">가능한 시간대만 골라 보여 주기</td></tr>
           </tbody>
         </table>
       </div>
@@ -185,14 +193,14 @@
             <tr><th>판단 기준</th><th>폼·예약 캘린더를 주력으로</th><th>전화·메신저를 주력으로</th></tr>
           </thead>
           <tbody>
-            <tr><td>맞는 상황</td><td>방문 시간을 미리 정해야 할 때</td><td>상담 내용이 사람마다 크게 다를 때</td></tr>
-            <tr><td>업종 예</td><td>병원·학원·시술·스튜디오</td><td>시공·법률·세무·맞춤 제작</td></tr>
-            <tr><td>유입 시간대</td><td>저녁·주말 유입이 많을 때</td><td>영업시간 내 유입이 대부분일 때</td></tr>
-            <tr><td>응대 인력</td><td>전화 받을 사람이 부족할 때</td><td>바로 받아 줄 담당자가 있을 때</td></tr>
-            <tr><td>구축 기간</td><td>1~4주</td><td>3일~1주</td></tr>
-            <tr><td>비용 범위</td><td>50만~400만원</td><td>0~50만원</td></tr>
-            <tr><td>장점</td><td>일정이 겹치지 않고 기록이 남음</td><td>문턱이 가장 낮고 즉시 연결됨</td></tr>
-            <tr><td>주의할 점</td><td>단계가 길어지면 이탈이 늘어남</td><td>못 받은 전화는 문의가 사라짐</td></tr>
+            <tr><td data-label="판단 기준">맞는 상황</td><td data-label="폼·예약 캘린더를 주력으로">방문 시간을 미리 정해야 할 때</td><td data-label="전화·메신저를 주력으로">상담 내용이 사람마다 크게 다를 때</td></tr>
+            <tr><td data-label="판단 기준">업종 예</td><td data-label="폼·예약 캘린더를 주력으로">병원·학원·시술·스튜디오</td><td data-label="전화·메신저를 주력으로">시공·법률·세무·맞춤 제작</td></tr>
+            <tr><td data-label="판단 기준">유입 시간대</td><td data-label="폼·예약 캘린더를 주력으로">저녁·주말 유입이 많을 때</td><td data-label="전화·메신저를 주력으로">영업시간 내 유입이 대부분일 때</td></tr>
+            <tr><td data-label="판단 기준">응대 인력</td><td data-label="폼·예약 캘린더를 주력으로">전화 받을 사람이 부족할 때</td><td data-label="전화·메신저를 주력으로">바로 받아 줄 담당자가 있을 때</td></tr>
+            <tr><td data-label="판단 기준">구축 기간</td><td data-label="폼·예약 캘린더를 주력으로">1~4주</td><td data-label="전화·메신저를 주력으로">3일~1주</td></tr>
+            <tr><td data-label="판단 기준">비용 범위</td><td data-label="폼·예약 캘린더를 주력으로">50만~400만원</td><td data-label="전화·메신저를 주력으로">0~50만원</td></tr>
+            <tr><td data-label="판단 기준">장점</td><td data-label="폼·예약 캘린더를 주력으로">일정이 겹치지 않고 기록이 남음</td><td data-label="전화·메신저를 주력으로">문턱이 가장 낮고 즉시 연결됨</td></tr>
+            <tr><td data-label="판단 기준">주의할 점</td><td data-label="폼·예약 캘린더를 주력으로">단계가 길어지면 이탈이 늘어남</td><td data-label="전화·메신저를 주력으로">못 받은 전화는 문의가 사라짐</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -135,10 +143,10 @@
             <tr><th>업종</th><th>주로 적용되는 기준</th><th>대행사에게 물어볼 질문</th></tr>
           </thead>
           <tbody>
-            <tr><td>의료기관</td><td>의료법상 의료광고 심의·표현 제한</td><td>사전심의 대상 여부와 신청 절차, 소요 기간을 설명할 수 있는지</td></tr>
-            <tr><td>법무법인·변호사</td><td>변호사법 및 협회 광고 규정</td><td>사건 결과·승소율 표현을 어디까지 쓸 수 있다고 보는지</td></tr>
-            <tr><td>세무·회계·노무</td><td>소속 협회의 광고·홍보 기준</td><td>수임료 비교·순위 표현을 어떻게 다루는지</td></tr>
-            <tr><td>공통</td><td>표시광고법상 과장·기만 표시 금지</td><td>후기·사례 사용 시 동의 절차를 문서로 남기는지</td></tr>
+            <tr><td data-label="업종">의료기관</td><td data-label="주로 적용되는 기준">의료법상 의료광고 심의·표현 제한</td><td data-label="대행사에게 물어볼 질문">사전심의 대상 여부와 신청 절차, 소요 기간을 설명할 수 있는지</td></tr>
+            <tr><td data-label="업종">법무법인·변호사</td><td data-label="주로 적용되는 기준">변호사법 및 협회 광고 규정</td><td data-label="대행사에게 물어볼 질문">사건 결과·승소율 표현을 어디까지 쓸 수 있다고 보는지</td></tr>
+            <tr><td data-label="업종">세무·회계·노무</td><td data-label="주로 적용되는 기준">소속 협회의 광고·홍보 기준</td><td data-label="대행사에게 물어볼 질문">수임료 비교·순위 표현을 어떻게 다루는지</td></tr>
+            <tr><td data-label="업종">공통</td><td data-label="주로 적용되는 기준">표시광고법상 과장·기만 표시 금지</td><td data-label="대행사에게 물어볼 질문">후기·사례 사용 시 동의 절차를 문서로 남기는지</td></tr>
           </tbody>
         </table>
       </div>
@@ -174,13 +182,13 @@
             <tr><th>비교 항목</th><th>A안 — 광고 운영 중심</th><th>B안 — 자산 축적 중심</th></tr>
           </thead>
           <tbody>
-            <tr><td>월 비용 구성</td><td>운영 수수료 + 광고 집행액(집행액 비중이 큼)</td><td>제작·콘텐츠 운영비 중심, 광고는 소액 병행</td></tr>
-            <tr><td>매달 나오는 산출물</td><td>광고 소재 몇 종, 집행 리포트</td><td>칼럼·사례 콘텐츠 2~4편, 홈페이지 수정 2~4회</td></tr>
-            <tr><td>반응이 보이는 시점</td><td>보통 2~4주</td><td>보통 3~6개월</td></tr>
-            <tr><td>비용을 멈추면</td><td>1~2주 안에 유입이 줄어듦</td><td>이미 쌓인 콘텐츠는 계속 검색에 노출됨</td></tr>
-            <tr><td>끝난 뒤 남는 것</td><td>집행 기록과 데이터</td><td>홈페이지·콘텐츠 등 내 명의 자산</td></tr>
-            <tr><td>이런 경우에 맞습니다</td><td>당장 3개월 안에 문의를 늘려야 할 때</td><td>1년 이상 운영하며 소개·재방문을 늘리고 싶을 때</td></tr>
-            <tr><td>함께 확인할 것</td><td>문의당 비용과 키워드별 성과</td><td>콘텐츠 품질, 검수 절차, 저작권 귀속</td></tr>
+            <tr><td data-label="비교 항목">월 비용 구성</td><td data-label="A안 — 광고 운영 중심">운영 수수료 + 광고 집행액(집행액 비중이 큼)</td><td data-label="B안 — 자산 축적 중심">제작·콘텐츠 운영비 중심, 광고는 소액 병행</td></tr>
+            <tr><td data-label="비교 항목">매달 나오는 산출물</td><td data-label="A안 — 광고 운영 중심">광고 소재 몇 종, 집행 리포트</td><td data-label="B안 — 자산 축적 중심">칼럼·사례 콘텐츠 2~4편, 홈페이지 수정 2~4회</td></tr>
+            <tr><td data-label="비교 항목">반응이 보이는 시점</td><td data-label="A안 — 광고 운영 중심">보통 2~4주</td><td data-label="B안 — 자산 축적 중심">보통 3~6개월</td></tr>
+            <tr><td data-label="비교 항목">비용을 멈추면</td><td data-label="A안 — 광고 운영 중심">1~2주 안에 유입이 줄어듦</td><td data-label="B안 — 자산 축적 중심">이미 쌓인 콘텐츠는 계속 검색에 노출됨</td></tr>
+            <tr><td data-label="비교 항목">끝난 뒤 남는 것</td><td data-label="A안 — 광고 운영 중심">집행 기록과 데이터</td><td data-label="B안 — 자산 축적 중심">홈페이지·콘텐츠 등 내 명의 자산</td></tr>
+            <tr><td data-label="비교 항목">이런 경우에 맞습니다</td><td data-label="A안 — 광고 운영 중심">당장 3개월 안에 문의를 늘려야 할 때</td><td data-label="B안 — 자산 축적 중심">1년 이상 운영하며 소개·재방문을 늘리고 싶을 때</td></tr>
+            <tr><td data-label="비교 항목">함께 확인할 것</td><td data-label="A안 — 광고 운영 중심">문의당 비용과 키워드별 성과</td><td data-label="B안 — 자산 축적 중심">콘텐츠 품질, 검수 절차, 저작권 귀속</td></tr>
           </tbody>
         </table>
       </div>

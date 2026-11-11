@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -134,10 +142,10 @@
             <tr><th>질문 유형</th><th>예시</th><th>인용 시 효과</th></tr>
           </thead>
           <tbody>
-            <tr><td>정의형</td><td>GEO가 뭔가요</td><td>인지도에 도움, 문의는 적음</td></tr>
-            <tr><td>방법형</td><td>어떻게 하나요</td><td>중간. 실행 정보가 있으면 유리</td></tr>
-            <tr><td>비교형</td><td>A와 B 중 어디가 나은가요</td><td>결정 직전이라 유입 가치가 큼</td></tr>
-            <tr><td>적합형</td><td>우리 같은 곳은 뭐가 맞나요</td><td>가장 전환에 가까움</td></tr>
+            <tr><td data-label="질문 유형">정의형</td><td data-label="예시">GEO가 뭔가요</td><td data-label="인용 시 효과">인지도에 도움, 문의는 적음</td></tr>
+            <tr><td data-label="질문 유형">방법형</td><td data-label="예시">어떻게 하나요</td><td data-label="인용 시 효과">중간. 실행 정보가 있으면 유리</td></tr>
+            <tr><td data-label="질문 유형">비교형</td><td data-label="예시">A와 B 중 어디가 나은가요</td><td data-label="인용 시 효과">결정 직전이라 유입 가치가 큼</td></tr>
+            <tr><td data-label="질문 유형">적합형</td><td data-label="예시">우리 같은 곳은 뭐가 맞나요</td><td data-label="인용 시 효과">가장 전환에 가까움</td></tr>
           </tbody>
         </table>
       </div>
@@ -155,19 +163,19 @@
       <p>가격만 나열한 표는 인용될 때 &quot;어디가 싸다&quot;로만 쓰입니다. 그러면 가격이 가장 낮은 쪽이 유리해지고, 우리가 왜 그 금액인지는 답변에 남지 않습니다.</p>
       <p>반면 조건을 축으로 잡은 표는 AI가 사용자 상황에 대입해서 쓸 수 있습니다. 질문한 사람의 예산과 인력이 답변에 그대로 반영되기 때문에 우리 문서가 근거로 들어갑니다.</p>
       <p>아래는 &#39;콘텐츠를 내부에서 직접 운영할지, 외부에 맡길지&#39;를 하나의 표로 끝낸 예시입니다. 업종에 맞게 축과 숫자만 바꿔 쓰시면 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>판단 축</th><th>내부에서 직접 운영</th><th>외부에 맡김</th><th>이렇게 고르세요</th></tr>
           </thead>
           <tbody>
-            <tr><td>월 비용</td><td>담당자 인건비 외 추가 비용은 월 0~50만원 수준</td><td>용역비 월 50~300만원대가 흔한 범위</td><td>추가 집행 여력이 월 50만원 미만이면 내부부터</td></tr>
-            <tr><td>필요한 인력</td><td>글 쓸 사람이 주 5~10시간을 낼 수 있어야 가능</td><td>내부 담당자는 검수에 주 1~2시간</td><td>사내에 글 쓸 사람이 없으면 위탁</td></tr>
-            <tr><td>시작 속도</td><td>기준을 익히는 데 1~2개월</td><td>보통 2~4주 안에 발행 시작</td><td>3개월 안에 결과를 봐야 하면 위탁</td></tr>
-            <tr><td>남는 자산</td><td>노하우와 판단 기준이 내부에 축적됨</td><td>계약이 끝나면 운영 감각이 함께 빠짐</td><td>장기적으로 내부화할 계획이면 내부 또는 혼합</td></tr>
-            <tr><td>품질 변동</td><td>담당자 역량에 따라 편차가 큼</td><td>형식은 표준화되지만 업종 이해는 낮게 시작</td><td>전문 용어가 많은 분야면 내부 감수 절차를 계약에 넣기</td></tr>
-            <tr><td>규제 대응</td><td>업종 규정을 아는 사람이 직접 쓰므로 안전</td><td>의료·법률 등은 별도 감수 합의가 필요</td><td>심의·표시 규제가 있는 업종이면 감수 주체를 문서로 정하기</td></tr>
-            <tr><td>적합한 경우</td><td>업종 지식이 깊고 시간이 있는 1~3인 조직</td><td>문의 처리와 실무에 시간을 다 써야 하는 조직</td><td>두 조건이 섞이면 기획은 내부, 집필은 외부로 나누기</td></tr>
+            <tr><td data-label="판단 축">월 비용</td><td data-label="내부에서 직접 운영">담당자 인건비 외 추가 비용은 월 0~50만원 수준</td><td data-label="외부에 맡김">용역비 월 50~300만원대가 흔한 범위</td><td data-label="이렇게 고르세요">추가 집행 여력이 월 50만원 미만이면 내부부터</td></tr>
+            <tr><td data-label="판단 축">필요한 인력</td><td data-label="내부에서 직접 운영">글 쓸 사람이 주 5~10시간을 낼 수 있어야 가능</td><td data-label="외부에 맡김">내부 담당자는 검수에 주 1~2시간</td><td data-label="이렇게 고르세요">사내에 글 쓸 사람이 없으면 위탁</td></tr>
+            <tr><td data-label="판단 축">시작 속도</td><td data-label="내부에서 직접 운영">기준을 익히는 데 1~2개월</td><td data-label="외부에 맡김">보통 2~4주 안에 발행 시작</td><td data-label="이렇게 고르세요">3개월 안에 결과를 봐야 하면 위탁</td></tr>
+            <tr><td data-label="판단 축">남는 자산</td><td data-label="내부에서 직접 운영">노하우와 판단 기준이 내부에 축적됨</td><td data-label="외부에 맡김">계약이 끝나면 운영 감각이 함께 빠짐</td><td data-label="이렇게 고르세요">장기적으로 내부화할 계획이면 내부 또는 혼합</td></tr>
+            <tr><td data-label="판단 축">품질 변동</td><td data-label="내부에서 직접 운영">담당자 역량에 따라 편차가 큼</td><td data-label="외부에 맡김">형식은 표준화되지만 업종 이해는 낮게 시작</td><td data-label="이렇게 고르세요">전문 용어가 많은 분야면 내부 감수 절차를 계약에 넣기</td></tr>
+            <tr><td data-label="판단 축">규제 대응</td><td data-label="내부에서 직접 운영">업종 규정을 아는 사람이 직접 쓰므로 안전</td><td data-label="외부에 맡김">의료·법률 등은 별도 감수 합의가 필요</td><td data-label="이렇게 고르세요">심의·표시 규제가 있는 업종이면 감수 주체를 문서로 정하기</td></tr>
+            <tr><td data-label="판단 축">적합한 경우</td><td data-label="내부에서 직접 운영">업종 지식이 깊고 시간이 있는 1~3인 조직</td><td data-label="외부에 맡김">문의 처리와 실무에 시간을 다 써야 하는 조직</td><td data-label="이렇게 고르세요">두 조건이 섞이면 기획은 내부, 집필은 외부로 나누기</td></tr>
           </tbody>
         </table>
       </div>
@@ -205,11 +213,11 @@
             <tr><th>점검 항목</th><th>주기</th><th>무엇을 보는가</th></tr>
           </thead>
           <tbody>
-            <tr><td>고정 질문 10개의 AI 답변</td><td>월 1회</td><td>우리 이름이나 문서가 언급되는 횟수가 늘고 있는지</td></tr>
-            <tr><td>답변 속 사실 오류</td><td>월 1회</td><td>지역·서비스 범위·금액대가 틀리게 나오면 해당 페이지를 먼저 수정</td></tr>
-            <tr><td>표와 숫자의 최신성</td><td>3~6개월</td><td>적어 둔 금액대·기간이 현재 기준과 어긋나지 않는지</td></tr>
-            <tr><td>해당 글의 유입 대비 문의</td><td>월 1회</td><td>방문 수보다 문의 1건당 방문 수를 봅니다</td></tr>
-            <tr><td>같은 질문을 다루는 다른 문서</td><td>6개월</td><td>더 자세한 문서가 생겼다면 우리 글에 빠진 조건을 보강</td></tr>
+            <tr><td data-label="점검 항목">고정 질문 10개의 AI 답변</td><td data-label="주기">월 1회</td><td data-label="무엇을 보는가">우리 이름이나 문서가 언급되는 횟수가 늘고 있는지</td></tr>
+            <tr><td data-label="점검 항목">답변 속 사실 오류</td><td data-label="주기">월 1회</td><td data-label="무엇을 보는가">지역·서비스 범위·금액대가 틀리게 나오면 해당 페이지를 먼저 수정</td></tr>
+            <tr><td data-label="점검 항목">표와 숫자의 최신성</td><td data-label="주기">3~6개월</td><td data-label="무엇을 보는가">적어 둔 금액대·기간이 현재 기준과 어긋나지 않는지</td></tr>
+            <tr><td data-label="점검 항목">해당 글의 유입 대비 문의</td><td data-label="주기">월 1회</td><td data-label="무엇을 보는가">방문 수보다 문의 1건당 방문 수를 봅니다</td></tr>
+            <tr><td data-label="점검 항목">같은 질문을 다루는 다른 문서</td><td data-label="주기">6개월</td><td data-label="무엇을 보는가">더 자세한 문서가 생겼다면 우리 글에 빠진 조건을 보강</td></tr>
           </tbody>
         </table>
       </div>

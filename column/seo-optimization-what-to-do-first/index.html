@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -125,16 +133,16 @@
       <h2>SEO최적화는 결국 어떤 작업들로 나뉘나요?</h2>
       <p>세 갈래입니다. 검색엔진이 우리 사이트를 제대로 읽게 만드는 기술 점검, 읽을 내용을 만드는 콘텐츠, 그리고 밖에서 우리를 언급하게 만드는 외부 신호입니다.</p>
       <p>저는 견적서를 받아 오시면 항목을 이 세 칸으로 나눠 적어 봅니다. 한 칸이 비어 있으면 그 칸이 나중에 발목을 잡는 자리입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>작업 갈래</th><th>실제로 하는 일</th><th>걸리는 기간</th><th>빠지면 생기는 일</th></tr>
           </thead>
           <tbody>
-            <tr><td>기술 점검</td><td>수집 설정, 주소 정리, 속도, 구조화 데이터, 모바일 처리</td><td>처음 2~4주, 이후 월 1회 재점검</td><td>글을 아무리 써도 검색엔진이 수집하지 않거나 중복으로 본다</td></tr>
-            <tr><td>콘텐츠</td><td>키워드 지도 작성, 서비스 페이지 보강, 칼럼 작성, 기존 글 수정</td><td>3개월 이상 누적, 효과는 6주부터</td><td>순위를 올릴 페이지 자체가 없어 점검 효과가 숫자로 안 나온다</td></tr>
-            <tr><td>외부 신호</td><td>플레이스·비즈니스 프로필 정비, 업종 디렉터리 등록, 언급 확보</td><td>3개월째 이후 소량씩</td><td>경쟁이 심한 검색어에서 마지막 한 칸이 밀린다</td></tr>
-            <tr><td>측정</td><td>서치콘솔·서치어드바이저 연결, 유입과 문의 연결 확인</td><td>첫 2주 안에 세팅</td><td>무엇이 효과였는지 못 가려 다음 달 판단을 감으로 한다</td></tr>
+            <tr><td data-label="작업 갈래">기술 점검</td><td data-label="실제로 하는 일">수집 설정, 주소 정리, 속도, 구조화 데이터, 모바일 처리</td><td data-label="걸리는 기간">처음 2~4주, 이후 월 1회 재점검</td><td data-label="빠지면 생기는 일">글을 아무리 써도 검색엔진이 수집하지 않거나 중복으로 본다</td></tr>
+            <tr><td data-label="작업 갈래">콘텐츠</td><td data-label="실제로 하는 일">키워드 지도 작성, 서비스 페이지 보강, 칼럼 작성, 기존 글 수정</td><td data-label="걸리는 기간">3개월 이상 누적, 효과는 6주부터</td><td data-label="빠지면 생기는 일">순위를 올릴 페이지 자체가 없어 점검 효과가 숫자로 안 나온다</td></tr>
+            <tr><td data-label="작업 갈래">외부 신호</td><td data-label="실제로 하는 일">플레이스·비즈니스 프로필 정비, 업종 디렉터리 등록, 언급 확보</td><td data-label="걸리는 기간">3개월째 이후 소량씩</td><td data-label="빠지면 생기는 일">경쟁이 심한 검색어에서 마지막 한 칸이 밀린다</td></tr>
+            <tr><td data-label="작업 갈래">측정</td><td data-label="실제로 하는 일">서치콘솔·서치어드바이저 연결, 유입과 문의 연결 확인</td><td data-label="걸리는 기간">첫 2주 안에 세팅</td><td data-label="빠지면 생기는 일">무엇이 효과였는지 못 가려 다음 달 판단을 감으로 한다</td></tr>
           </tbody>
         </table>
       </div>
@@ -167,11 +175,11 @@
             <tr><th>기간</th><th>주로 하는 작업</th><th>받아야 할 산출물</th></tr>
           </thead>
           <tbody>
-            <tr><td>1~2주</td><td>측정 도구 연결, 수집·중복 점검, 현재 상태 기록</td><td>점검 목록과 우선순위, 시작 시점 순위·유입 기록</td></tr>
-            <tr><td>3~4주</td><td>급한 기술 항목 수정, 키워드 지도 작성</td><td>수정 완료 목록, 검색어와 페이지를 짝지은 표</td></tr>
-            <tr><td>2~3개월</td><td>서비스 페이지 보강, 칼럼 작성 시작, 내부링크 연결</td><td>월별 작성 목록, 수집 여부 확인 결과</td></tr>
-            <tr><td>3~4개월</td><td>외부 채널 정비, 속도 재점검, 노출 검색어 확인</td><td>서치콘솔 검색어 변화, 등록처 목록</td></tr>
-            <tr><td>5~6개월</td><td>기존 글 수정, 클릭률 낮은 제목 교체</td><td>수정 전후 비교, 문의 유입 경로 보고</td></tr>
+            <tr><td data-label="기간">1~2주</td><td data-label="주로 하는 작업">측정 도구 연결, 수집·중복 점검, 현재 상태 기록</td><td data-label="받아야 할 산출물">점검 목록과 우선순위, 시작 시점 순위·유입 기록</td></tr>
+            <tr><td data-label="기간">3~4주</td><td data-label="주로 하는 작업">급한 기술 항목 수정, 키워드 지도 작성</td><td data-label="받아야 할 산출물">수정 완료 목록, 검색어와 페이지를 짝지은 표</td></tr>
+            <tr><td data-label="기간">2~3개월</td><td data-label="주로 하는 작업">서비스 페이지 보강, 칼럼 작성 시작, 내부링크 연결</td><td data-label="받아야 할 산출물">월별 작성 목록, 수집 여부 확인 결과</td></tr>
+            <tr><td data-label="기간">3~4개월</td><td data-label="주로 하는 작업">외부 채널 정비, 속도 재점검, 노출 검색어 확인</td><td data-label="받아야 할 산출물">서치콘솔 검색어 변화, 등록처 목록</td></tr>
+            <tr><td data-label="기간">5~6개월</td><td data-label="주로 하는 작업">기존 글 수정, 클릭률 낮은 제목 교체</td><td data-label="받아야 할 산출물">수정 전후 비교, 문의 유입 경로 보고</td></tr>
           </tbody>
         </table>
       </div>
@@ -185,10 +193,10 @@
             <tr><th>월 금액대</th><th>보통 포함되는 범위</th><th>따로 확인할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>월 50만~100만원대</td><td>월 2~4편 작성, 순위·유입 보고</td><td>기술 수정을 직접 해 주는지, 아니면 알려만 주는지</td></tr>
-            <tr><td>월 100만~200만원대</td><td>월 4~8편, 기술 점검과 수정, 키워드 지도 관리</td><td>서비스 페이지 수정이 포함인지, 수정 횟수 제한</td></tr>
-            <tr><td>월 200만~300만원대</td><td>콘텐츠 기획·작성, 기술 작업, 외부 채널 정비, 월 미팅</td><td>담당자가 몇 곳을 같이 맡는지</td></tr>
-            <tr><td>초기 1회 점검만</td><td>전체 점검 보고서와 수정 가이드</td><td>수정은 누가 하는지, 재점검이 포함인지</td></tr>
+            <tr><td data-label="월 금액대">월 50만~100만원대</td><td data-label="보통 포함되는 범위">월 2~4편 작성, 순위·유입 보고</td><td data-label="따로 확인할 것">기술 수정을 직접 해 주는지, 아니면 알려만 주는지</td></tr>
+            <tr><td data-label="월 금액대">월 100만~200만원대</td><td data-label="보통 포함되는 범위">월 4~8편, 기술 점검과 수정, 키워드 지도 관리</td><td data-label="따로 확인할 것">서비스 페이지 수정이 포함인지, 수정 횟수 제한</td></tr>
+            <tr><td data-label="월 금액대">월 200만~300만원대</td><td data-label="보통 포함되는 범위">콘텐츠 기획·작성, 기술 작업, 외부 채널 정비, 월 미팅</td><td data-label="따로 확인할 것">담당자가 몇 곳을 같이 맡는지</td></tr>
+            <tr><td data-label="월 금액대">초기 1회 점검만</td><td data-label="보통 포함되는 범위">전체 점검 보고서와 수정 가이드</td><td data-label="따로 확인할 것">수정은 누가 하는지, 재점검이 포함인지</td></tr>
           </tbody>
         </table>
       </div>

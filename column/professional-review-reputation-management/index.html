@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -151,12 +159,12 @@
             <tr><th>상황</th><th>위험한 활용</th><th>비교적 안전한 활용</th></tr>
           </thead>
           <tbody>
-            <tr><td>치료·시술 결과</td><td>&quot;완치됐어요&quot;, &quot;통증이 사라졌습니다&quot;를 대표 문구로 내세우기</td><td>&quot;검사 결과를 그림으로 설명해 줘서 이해가 됐다&quot;처럼 과정에 대한 후기 사용</td></tr>
-            <tr><td>사건 결과</td><td>&quot;승소했습니다&quot;, &quot;무죄 받았어요&quot;를 성과 사례처럼 배치</td><td>&quot;진행 상황을 단계마다 알려 줘서 불안이 줄었다&quot;처럼 응대에 대한 후기 사용</td></tr>
-            <tr><td>비용 언급</td><td>&quot;여기가 제일 저렴해요&quot; 같은 가격 비교 후기 강조</td><td>&quot;비용 항목을 미리 표로 알려 줘서 예상과 차이가 없었다&quot;처럼 설명 방식에 대한 후기</td></tr>
-            <tr><td>전후 비교</td><td>동일 조건 표기 없이 전후 사진을 후기와 함께 노출</td><td>규정에 맞는 범위에서 설명 자료로만 쓰고, 후기는 별도로 분리</td></tr>
-            <tr><td>후기 수집 방식</td><td>대가·할인·경품을 조건으로 후기를 요청</td><td>진료·상담 종료 안내에 후기 링크만 함께 전달</td></tr>
-            <tr><td>후기 정리</td><td>부정 후기만 골라 내리고 좋은 후기만 남기기</td><td>부정 후기는 답글과 개선으로 응대하고 그대로 두기</td></tr>
+            <tr><td data-label="상황">치료·시술 결과</td><td data-label="위험한 활용">&quot;완치됐어요&quot;, &quot;통증이 사라졌습니다&quot;를 대표 문구로 내세우기</td><td data-label="비교적 안전한 활용">&quot;검사 결과를 그림으로 설명해 줘서 이해가 됐다&quot;처럼 과정에 대한 후기 사용</td></tr>
+            <tr><td data-label="상황">사건 결과</td><td data-label="위험한 활용">&quot;승소했습니다&quot;, &quot;무죄 받았어요&quot;를 성과 사례처럼 배치</td><td data-label="비교적 안전한 활용">&quot;진행 상황을 단계마다 알려 줘서 불안이 줄었다&quot;처럼 응대에 대한 후기 사용</td></tr>
+            <tr><td data-label="상황">비용 언급</td><td data-label="위험한 활용">&quot;여기가 제일 저렴해요&quot; 같은 가격 비교 후기 강조</td><td data-label="비교적 안전한 활용">&quot;비용 항목을 미리 표로 알려 줘서 예상과 차이가 없었다&quot;처럼 설명 방식에 대한 후기</td></tr>
+            <tr><td data-label="상황">전후 비교</td><td data-label="위험한 활용">동일 조건 표기 없이 전후 사진을 후기와 함께 노출</td><td data-label="비교적 안전한 활용">규정에 맞는 범위에서 설명 자료로만 쓰고, 후기는 별도로 분리</td></tr>
+            <tr><td data-label="상황">후기 수집 방식</td><td data-label="위험한 활용">대가·할인·경품을 조건으로 후기를 요청</td><td data-label="비교적 안전한 활용">진료·상담 종료 안내에 후기 링크만 함께 전달</td></tr>
+            <tr><td data-label="상황">후기 정리</td><td data-label="위험한 활용">부정 후기만 골라 내리고 좋은 후기만 남기기</td><td data-label="비교적 안전한 활용">부정 후기는 답글과 개선으로 응대하고 그대로 두기</td></tr>
           </tbody>
         </table>
       </div>
@@ -189,12 +197,12 @@
             <tr><th>비교 항목</th><th>내부에서 직접</th><th>외부 대행 활용</th></tr>
           </thead>
           <tbody>
-            <tr><td>사실 확인 정확도</td><td>상담 기록을 바로 확인해 높음</td><td>내부 확인 절차 없이는 어긋날 위험</td></tr>
-            <tr><td>응대 속도</td><td>담당자가 바쁘면 며칠씩 밀리기 쉬움</td><td>모니터링 체계가 있으면 1~2일 안 초안 가능</td></tr>
-            <tr><td>규정 검토</td><td>담당자 경험에 따라 편차가 큼</td><td>심의·표현 기준을 반복 검토한 경험 활용</td></tr>
-            <tr><td>월 비용</td><td>추가 지출은 적지만 담당자 시간 2~6시간/주 소요</td><td>범위에 따라 보통 월 30~150만원 선에서 제안</td></tr>
-            <tr><td>적합한 경우</td><td>후기 10~30건, 응대 담당자가 정해져 있을 때</td><td>채널 3개 이상, 후기 30건 이상이거나 부정 후기 이슈가 있을 때</td></tr>
-            <tr><td>가장 흔한 실패</td><td>바빠서 답글이 끊기고 통로가 방치됨</td><td>내부 확인 없이 일반적인 문구만 반복됨</td></tr>
+            <tr><td data-label="비교 항목">사실 확인 정확도</td><td data-label="내부에서 직접">상담 기록을 바로 확인해 높음</td><td data-label="외부 대행 활용">내부 확인 절차 없이는 어긋날 위험</td></tr>
+            <tr><td data-label="비교 항목">응대 속도</td><td data-label="내부에서 직접">담당자가 바쁘면 며칠씩 밀리기 쉬움</td><td data-label="외부 대행 활용">모니터링 체계가 있으면 1~2일 안 초안 가능</td></tr>
+            <tr><td data-label="비교 항목">규정 검토</td><td data-label="내부에서 직접">담당자 경험에 따라 편차가 큼</td><td data-label="외부 대행 활용">심의·표현 기준을 반복 검토한 경험 활용</td></tr>
+            <tr><td data-label="비교 항목">월 비용</td><td data-label="내부에서 직접">추가 지출은 적지만 담당자 시간 2~6시간/주 소요</td><td data-label="외부 대행 활용">범위에 따라 보통 월 30~150만원 선에서 제안</td></tr>
+            <tr><td data-label="비교 항목">적합한 경우</td><td data-label="내부에서 직접">후기 10~30건, 응대 담당자가 정해져 있을 때</td><td data-label="외부 대행 활용">채널 3개 이상, 후기 30건 이상이거나 부정 후기 이슈가 있을 때</td></tr>
+            <tr><td data-label="비교 항목">가장 흔한 실패</td><td data-label="내부에서 직접">바빠서 답글이 끊기고 통로가 방치됨</td><td data-label="외부 대행 활용">내부 확인 없이 일반적인 문구만 반복됨</td></tr>
           </tbody>
         </table>
       </div>
@@ -203,17 +211,17 @@
       <p>첫 진단은 반나절, 기준과 통로 정비는 2~4주, 검색 결과의 인상이 달라지는 체감은 보통 3~6개월로 잡는 편이 현실적입니다.</p>
       <p>후기는 광고처럼 예산을 늘려 바로 당길 수 있는 영역이 아니어서, 기간을 짧게 잡으면 무리한 방법으로 새기 쉽습니다.</p>
       <p>아래 범위는 업종·채널 수·기존 후기 수에 따라 달라지니, 우리 상황에 맞춰 조정해 보시길 권합니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>단계</th><th>하는 일</th><th>기간</th><th>비용 범위</th></tr>
           </thead>
           <tbody>
-            <tr><td>1. 현황 진단</td><td>키워드 3~5개 검색, 후기 수·평점·지적 내용 기록</td><td>반나절~2일</td><td>내부 인력으로 가능</td></tr>
-            <tr><td>2. 표현 기준 정리</td><td>금지 표현·답글 원칙 한 장 문서화, 기존 페이지 점검</td><td>3~7일</td><td>내부 또는 검토 자문 비용</td></tr>
-            <tr><td>3. 수집 통로 정비</td><td>안내 문구·링크·QR 준비, 응대 종료 절차에 연결</td><td>1~2주</td><td>제작 범위에 따라 상이</td></tr>
-            <tr><td>4. 후기 정리 페이지</td><td>여러 채널 후기를 홈페이지 한곳에 모아 보이게 구성</td><td>1~3주</td><td>홈페이지 작업 범위에 포함</td></tr>
-            <tr><td>5. 상시 모니터링·응대</td><td>채널 확인, 답글 작성, 반복 지적 정리</td><td>매월 지속</td><td>대행 시 보통 월 30~150만원 선</td></tr>
+            <tr><td data-label="단계">1. 현황 진단</td><td data-label="하는 일">키워드 3~5개 검색, 후기 수·평점·지적 내용 기록</td><td data-label="기간">반나절~2일</td><td data-label="비용 범위">내부 인력으로 가능</td></tr>
+            <tr><td data-label="단계">2. 표현 기준 정리</td><td data-label="하는 일">금지 표현·답글 원칙 한 장 문서화, 기존 페이지 점검</td><td data-label="기간">3~7일</td><td data-label="비용 범위">내부 또는 검토 자문 비용</td></tr>
+            <tr><td data-label="단계">3. 수집 통로 정비</td><td data-label="하는 일">안내 문구·링크·QR 준비, 응대 종료 절차에 연결</td><td data-label="기간">1~2주</td><td data-label="비용 범위">제작 범위에 따라 상이</td></tr>
+            <tr><td data-label="단계">4. 후기 정리 페이지</td><td data-label="하는 일">여러 채널 후기를 홈페이지 한곳에 모아 보이게 구성</td><td data-label="기간">1~3주</td><td data-label="비용 범위">홈페이지 작업 범위에 포함</td></tr>
+            <tr><td data-label="단계">5. 상시 모니터링·응대</td><td data-label="하는 일">채널 확인, 답글 작성, 반복 지적 정리</td><td data-label="기간">매월 지속</td><td data-label="비용 범위">대행 시 보통 월 30~150만원 선</td></tr>
           </tbody>
         </table>
       </div>

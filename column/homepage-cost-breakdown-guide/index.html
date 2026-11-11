@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -133,11 +141,11 @@
             <tr><th>항목</th><th>무엇을 하나</th><th>비용에 주는 영향</th></tr>
           </thead>
           <tbody>
-            <tr><td>기획</td><td>고객·목표·구조 설계</td><td>문의 전환의 토대라 소홀히 하면 손해</td></tr>
-            <tr><td>디자인</td><td>화면·브랜드 시각화</td><td>페이지 수와 맞춤 정도에 따라 변동</td></tr>
-            <tr><td>개발</td><td>기능·반응형 구현</td><td>예약·결제 등 기능이 늘면 상승</td></tr>
-            <tr><td>콘텐츠</td><td>글·이미지·칼럼</td><td>직접 쓰는지 맡기는지에 따라 차이</td></tr>
-            <tr><td>유지관리</td><td>수정·보안·백업</td><td>월 단위 운영비로 별도 책정</td></tr>
+            <tr><td data-label="항목">기획</td><td data-label="무엇을 하나">고객·목표·구조 설계</td><td data-label="비용에 주는 영향">문의 전환의 토대라 소홀히 하면 손해</td></tr>
+            <tr><td data-label="항목">디자인</td><td data-label="무엇을 하나">화면·브랜드 시각화</td><td data-label="비용에 주는 영향">페이지 수와 맞춤 정도에 따라 변동</td></tr>
+            <tr><td data-label="항목">개발</td><td data-label="무엇을 하나">기능·반응형 구현</td><td data-label="비용에 주는 영향">예약·결제 등 기능이 늘면 상승</td></tr>
+            <tr><td data-label="항목">콘텐츠</td><td data-label="무엇을 하나">글·이미지·칼럼</td><td data-label="비용에 주는 영향">직접 쓰는지 맡기는지에 따라 차이</td></tr>
+            <tr><td data-label="항목">유지관리</td><td data-label="무엇을 하나">수정·보안·백업</td><td data-label="비용에 주는 영향">월 단위 운영비로 별도 책정</td></tr>
           </tbody>
         </table>
       </div>
@@ -146,17 +154,17 @@
       <h2>금액 구간별로 실제 무엇이 포함되나요?</h2>
       <p>시장에서 흔히 보이는 구간은 100만 원 미만의 템플릿 적용형, 300만~700만 원대의 반맞춤형, 1,000만 원 이상의 맞춤 설계형으로 나뉩니다.</p>
       <p>아래 금액은 업체와 지역, 페이지 수에 따라 달라지는 참고 범위입니다. 금액 자체보다 그 구간에서 무엇이 빠지는지를 보는 쪽이 판단에 도움이 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>금액 구간(참고)</th><th>보통 포함되는 것</th><th>대개 빠지는 것</th><th>맞는 경우</th></tr>
           </thead>
           <tbody>
-            <tr><td>100만 원 미만</td><td>기성 템플릿 적용, 페이지 3~5개, 기본 반응형</td><td>기획 회의, 콘텐츠 작성, 유지관리</td><td>사업 초기에 최소한의 소개 공간만 필요할 때</td></tr>
-            <tr><td>150만~300만 원대</td><td>템플릿 변형, 로고·색 반영, 문의 폼 1개</td><td>전환 동선 설계, 칼럼 작성, 월 관리</td><td>명함 대신 쓸 소개 사이트가 목적일 때</td></tr>
-            <tr><td>300만~700만 원대</td><td>기획 1~2회, 부분 맞춤 디자인, 페이지 6~12개</td><td>장기 콘텐츠 발행, 고급 기능 개발</td><td>검색 유입과 문의를 함께 노릴 때</td></tr>
-            <tr><td>700만~1,500만 원대</td><td>전체 맞춤 설계, 전환 동선, 초기 콘텐츠 5~10편</td><td>지속 운영 대행(별도 계약이 일반적)</td><td>전문직·병원처럼 신뢰 증명이 필요할 때</td></tr>
-            <tr><td>1,500만 원 이상</td><td>예약·결제·회원 등 기능 개발, 다국어·연동</td><td>정해진 범위 밖의 기능(추가 견적 대상)</td><td>홈페이지 자체가 업무 시스템일 때</td></tr>
+            <tr><td data-label="금액 구간(참고)">100만 원 미만</td><td data-label="보통 포함되는 것">기성 템플릿 적용, 페이지 3~5개, 기본 반응형</td><td data-label="대개 빠지는 것">기획 회의, 콘텐츠 작성, 유지관리</td><td data-label="맞는 경우">사업 초기에 최소한의 소개 공간만 필요할 때</td></tr>
+            <tr><td data-label="금액 구간(참고)">150만~300만 원대</td><td data-label="보통 포함되는 것">템플릿 변형, 로고·색 반영, 문의 폼 1개</td><td data-label="대개 빠지는 것">전환 동선 설계, 칼럼 작성, 월 관리</td><td data-label="맞는 경우">명함 대신 쓸 소개 사이트가 목적일 때</td></tr>
+            <tr><td data-label="금액 구간(참고)">300만~700만 원대</td><td data-label="보통 포함되는 것">기획 1~2회, 부분 맞춤 디자인, 페이지 6~12개</td><td data-label="대개 빠지는 것">장기 콘텐츠 발행, 고급 기능 개발</td><td data-label="맞는 경우">검색 유입과 문의를 함께 노릴 때</td></tr>
+            <tr><td data-label="금액 구간(참고)">700만~1,500만 원대</td><td data-label="보통 포함되는 것">전체 맞춤 설계, 전환 동선, 초기 콘텐츠 5~10편</td><td data-label="대개 빠지는 것">지속 운영 대행(별도 계약이 일반적)</td><td data-label="맞는 경우">전문직·병원처럼 신뢰 증명이 필요할 때</td></tr>
+            <tr><td data-label="금액 구간(참고)">1,500만 원 이상</td><td data-label="보통 포함되는 것">예약·결제·회원 등 기능 개발, 다국어·연동</td><td data-label="대개 빠지는 것">정해진 범위 밖의 기능(추가 견적 대상)</td><td data-label="맞는 경우">홈페이지 자체가 업무 시스템일 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -184,14 +192,14 @@
             <tr><th>비교 축</th><th>기성 템플릿</th><th>맞춤 제작</th></tr>
           </thead>
           <tbody>
-            <tr><td>초기 비용(참고)</td><td>100만 원 미만~300만 원대</td><td>700만 원대 이상이 일반적</td></tr>
-            <tr><td>제작 기간</td><td>보통 1~3주</td><td>보통 6~10주, 규모에 따라 더 김</td></tr>
-            <tr><td>문의 동선 설계</td><td>템플릿이 준 구조를 그대로 사용</td><td>업종별 질문 순서에 맞춰 직접 설계</td></tr>
-            <tr><td>페이지 확장</td><td>정해진 형태 안에서만 추가</td><td>필요한 만큼 구조를 늘릴 수 있음</td></tr>
-            <tr><td>콘텐츠 반영</td><td>짧은 소개문 중심</td><td>칼럼·사례·FAQ까지 담는 구조</td></tr>
-            <tr><td>수정 자유도</td><td>레이아웃 변경에 제약이 있음</td><td>화면 단위로 조정 가능</td></tr>
-            <tr><td>적합한 목적</td><td>회사·서비스 소개, 연락처 안내</td><td>검색 유입과 상담 전환을 함께 노릴 때</td></tr>
-            <tr><td>3년 관점 총비용</td><td>초기엔 낮지만 재제작 시점이 빠름</td><td>초기엔 높지만 부분 개선으로 오래 씀</td></tr>
+            <tr><td data-label="비교 축">초기 비용(참고)</td><td data-label="기성 템플릿">100만 원 미만~300만 원대</td><td data-label="맞춤 제작">700만 원대 이상이 일반적</td></tr>
+            <tr><td data-label="비교 축">제작 기간</td><td data-label="기성 템플릿">보통 1~3주</td><td data-label="맞춤 제작">보통 6~10주, 규모에 따라 더 김</td></tr>
+            <tr><td data-label="비교 축">문의 동선 설계</td><td data-label="기성 템플릿">템플릿이 준 구조를 그대로 사용</td><td data-label="맞춤 제작">업종별 질문 순서에 맞춰 직접 설계</td></tr>
+            <tr><td data-label="비교 축">페이지 확장</td><td data-label="기성 템플릿">정해진 형태 안에서만 추가</td><td data-label="맞춤 제작">필요한 만큼 구조를 늘릴 수 있음</td></tr>
+            <tr><td data-label="비교 축">콘텐츠 반영</td><td data-label="기성 템플릿">짧은 소개문 중심</td><td data-label="맞춤 제작">칼럼·사례·FAQ까지 담는 구조</td></tr>
+            <tr><td data-label="비교 축">수정 자유도</td><td data-label="기성 템플릿">레이아웃 변경에 제약이 있음</td><td data-label="맞춤 제작">화면 단위로 조정 가능</td></tr>
+            <tr><td data-label="비교 축">적합한 목적</td><td data-label="기성 템플릿">회사·서비스 소개, 연락처 안내</td><td data-label="맞춤 제작">검색 유입과 상담 전환을 함께 노릴 때</td></tr>
+            <tr><td data-label="비교 축">3년 관점 총비용</td><td data-label="기성 템플릿">초기엔 낮지만 재제작 시점이 빠름</td><td data-label="맞춤 제작">초기엔 높지만 부분 개선으로 오래 씀</td></tr>
           </tbody>
         </table>
       </div>

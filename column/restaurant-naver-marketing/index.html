@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -132,17 +140,17 @@
       <p>특히 임시 휴무, 브레이크 타임, 마지막 주문 시간은 누락이 잦습니다. 이 세 가지가 비어 있으면 헛걸음한 손님이 그대로 낮은 평점으로 남기는 일이 생깁니다.</p>
       <p>이 단계는 사장님이 직접 하시는 편이 빠릅니다. 실제 영업 사정을 아는 사람이 고쳐야 정확하고, 대행을 붙여도 확인은 결국 매장에서 해야 합니다.</p>
       <p>여기까지 맞췄으면 다음은 사진입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>단계</th><th>걸리는 기간</th><th>무엇을 하나요</th><th>비용 감각</th></tr>
           </thead>
           <tbody>
-            <tr><td>1단계 · 기본 정보</td><td>1~2일</td><td>영업시간·브레이크 타임·위치·전화번호·메뉴 가격을 실제와 맞춥니다</td><td>추가 비용 없음</td></tr>
-            <tr><td>2단계 · 사진 정리</td><td>3일~1주</td><td>대표 메뉴 10장 이상, 내부·외관 5장 이상으로 교체합니다</td><td>직접 촬영 0원 / 촬영 의뢰 15~50만원</td></tr>
-            <tr><td>3단계 · 리뷰 응대</td><td>상시(주 1~2회)</td><td>새로 달린 리뷰에 3일 안에 답글을 남깁니다</td><td>추가 비용 없음</td></tr>
-            <tr><td>4단계 · 소식 갱신</td><td>2주에 1회</td><td>신메뉴·휴무·이벤트를 플레이스 소식에 올립니다</td><td>추가 비용 없음</td></tr>
-            <tr><td>5단계 · 광고 추가</td><td>1~4단계 이후</td><td>플레이스 광고나 파워링크를 소액으로 테스트합니다</td><td>월 10~50만원부터</td></tr>
+            <tr><td data-label="단계">1단계 · 기본 정보</td><td data-label="걸리는 기간">1~2일</td><td data-label="무엇을 하나요">영업시간·브레이크 타임·위치·전화번호·메뉴 가격을 실제와 맞춥니다</td><td data-label="비용 감각">추가 비용 없음</td></tr>
+            <tr><td data-label="단계">2단계 · 사진 정리</td><td data-label="걸리는 기간">3일~1주</td><td data-label="무엇을 하나요">대표 메뉴 10장 이상, 내부·외관 5장 이상으로 교체합니다</td><td data-label="비용 감각">직접 촬영 0원 / 촬영 의뢰 15~50만원</td></tr>
+            <tr><td data-label="단계">3단계 · 리뷰 응대</td><td data-label="걸리는 기간">상시(주 1~2회)</td><td data-label="무엇을 하나요">새로 달린 리뷰에 3일 안에 답글을 남깁니다</td><td data-label="비용 감각">추가 비용 없음</td></tr>
+            <tr><td data-label="단계">4단계 · 소식 갱신</td><td data-label="걸리는 기간">2주에 1회</td><td data-label="무엇을 하나요">신메뉴·휴무·이벤트를 플레이스 소식에 올립니다</td><td data-label="비용 감각">추가 비용 없음</td></tr>
+            <tr><td data-label="단계">5단계 · 광고 추가</td><td data-label="걸리는 기간">1~4단계 이후</td><td data-label="무엇을 하나요">플레이스 광고나 파워링크를 소액으로 테스트합니다</td><td data-label="비용 감각">월 10~50만원부터</td></tr>
           </tbody>
         </table>
       </div>
@@ -163,11 +171,11 @@
             <tr><th>찍을 장면</th><th>권장 장수</th><th>판단 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>대표 메뉴 단독 컷</td><td>메뉴당 2~3장</td><td>1인분 실제 제공 양이 그대로 보이는지</td></tr>
-            <tr><td>상차림 전체 컷</td><td>2~4장</td><td>반찬·공기밥까지 포함해 한 상이 어떻게 나오는지</td></tr>
-            <tr><td>매장 내부</td><td>3~5장</td><td>좌석 형태, 테이블 간격, 단체석 여부가 보이는지</td></tr>
-            <tr><td>입구·외관</td><td>2~3장</td><td>간판과 주변 건물이 함께 보여 찾아오기 쉬운지</td></tr>
-            <tr><td>메뉴판</td><td>1~2장</td><td>가격이 글자로 읽히고 현재 가격과 같은지</td></tr>
+            <tr><td data-label="찍을 장면">대표 메뉴 단독 컷</td><td data-label="권장 장수">메뉴당 2~3장</td><td data-label="판단 기준">1인분 실제 제공 양이 그대로 보이는지</td></tr>
+            <tr><td data-label="찍을 장면">상차림 전체 컷</td><td data-label="권장 장수">2~4장</td><td data-label="판단 기준">반찬·공기밥까지 포함해 한 상이 어떻게 나오는지</td></tr>
+            <tr><td data-label="찍을 장면">매장 내부</td><td data-label="권장 장수">3~5장</td><td data-label="판단 기준">좌석 형태, 테이블 간격, 단체석 여부가 보이는지</td></tr>
+            <tr><td data-label="찍을 장면">입구·외관</td><td data-label="권장 장수">2~3장</td><td data-label="판단 기준">간판과 주변 건물이 함께 보여 찾아오기 쉬운지</td></tr>
+            <tr><td data-label="찍을 장면">메뉴판</td><td data-label="권장 장수">1~2장</td><td data-label="판단 기준">가격이 글자로 읽히고 현재 가격과 같은지</td></tr>
           </tbody>
         </table>
       </div>
@@ -198,11 +206,11 @@
             <tr><th>비교 축</th><th>플레이스 정비를 먼저 하는 경우</th><th>광고를 먼저 늘리는 경우</th></tr>
           </thead>
           <tbody>
-            <tr><td>초기 비용</td><td>대부분 0원, 촬영을 맡기면 15~50만원</td><td>월 10~50만원이 바로 나갑니다</td></tr>
-            <tr><td>반응이 보이는 시점</td><td>보통 2주~2개월 뒤부터 서서히</td><td>며칠 안에 노출과 클릭은 늘어납니다</td></tr>
-            <tr><td>클릭 이후 방문 전환</td><td>정보와 사진이 받쳐 주어 이어지기 쉽습니다</td><td>볼 것이 부족하면 클릭에서 끊기기 쉽습니다</td></tr>
-            <tr><td>예산을 멈췄을 때</td><td>정리된 정보와 리뷰는 그대로 남습니다</td><td>노출이 함께 사라져 원점으로 돌아갑니다</td></tr>
-            <tr><td>이런 경우에 맞습니다</td><td>개업 6개월 이내, 리뷰 30개 미만인 가게</td><td>기본기가 갖춰졌고 신메뉴·시즌 수요를 노릴 때</td></tr>
+            <tr><td data-label="비교 축">초기 비용</td><td data-label="플레이스 정비를 먼저 하는 경우">대부분 0원, 촬영을 맡기면 15~50만원</td><td data-label="광고를 먼저 늘리는 경우">월 10~50만원이 바로 나갑니다</td></tr>
+            <tr><td data-label="비교 축">반응이 보이는 시점</td><td data-label="플레이스 정비를 먼저 하는 경우">보통 2주~2개월 뒤부터 서서히</td><td data-label="광고를 먼저 늘리는 경우">며칠 안에 노출과 클릭은 늘어납니다</td></tr>
+            <tr><td data-label="비교 축">클릭 이후 방문 전환</td><td data-label="플레이스 정비를 먼저 하는 경우">정보와 사진이 받쳐 주어 이어지기 쉽습니다</td><td data-label="광고를 먼저 늘리는 경우">볼 것이 부족하면 클릭에서 끊기기 쉽습니다</td></tr>
+            <tr><td data-label="비교 축">예산을 멈췄을 때</td><td data-label="플레이스 정비를 먼저 하는 경우">정리된 정보와 리뷰는 그대로 남습니다</td><td data-label="광고를 먼저 늘리는 경우">노출이 함께 사라져 원점으로 돌아갑니다</td></tr>
+            <tr><td data-label="비교 축">이런 경우에 맞습니다</td><td data-label="플레이스 정비를 먼저 하는 경우">개업 6개월 이내, 리뷰 30개 미만인 가게</td><td data-label="광고를 먼저 늘리는 경우">기본기가 갖춰졌고 신메뉴·시즌 수요를 노릴 때</td></tr>
           </tbody>
         </table>
       </div>

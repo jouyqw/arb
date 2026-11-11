@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -139,10 +147,10 @@
             <tr><th>첫 응답까지 걸린 시간</th><th>상대가 받는 인상</th><th>권장 대응</th></tr>
           </thead>
           <tbody>
-            <tr><td>10~30분 이내</td><td>지금 바로 챙겨주는 곳</td><td>영업시간 내 문의의 기본 목표로 삼습니다</td></tr>
-            <tr><td>30분~3시간</td><td>무난하지만 비교 대상 중 하나</td><td>접수 확인 안내만이라도 먼저 보냅니다</td></tr>
-            <tr><td>3~24시간</td><td>이미 다른 곳과 이야기가 진행 중</td><td>문자보다 전화로 직접 재연결을 시도합니다</td></tr>
-            <tr><td>24시간 초과</td><td>연락이 닿아도 되돌리기 어려움</td><td>새 제안을 담은 회수용 문구로 접근합니다</td></tr>
+            <tr><td data-label="첫 응답까지 걸린 시간">10~30분 이내</td><td data-label="상대가 받는 인상">지금 바로 챙겨주는 곳</td><td data-label="권장 대응">영업시간 내 문의의 기본 목표로 삼습니다</td></tr>
+            <tr><td data-label="첫 응답까지 걸린 시간">30분~3시간</td><td data-label="상대가 받는 인상">무난하지만 비교 대상 중 하나</td><td data-label="권장 대응">접수 확인 안내만이라도 먼저 보냅니다</td></tr>
+            <tr><td data-label="첫 응답까지 걸린 시간">3~24시간</td><td data-label="상대가 받는 인상">이미 다른 곳과 이야기가 진행 중</td><td data-label="권장 대응">문자보다 전화로 직접 재연결을 시도합니다</td></tr>
+            <tr><td data-label="첫 응답까지 걸린 시간">24시간 초과</td><td data-label="상대가 받는 인상">연락이 닿아도 되돌리기 어려움</td><td data-label="권장 대응">새 제안을 담은 회수용 문구로 접근합니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -162,9 +170,9 @@
             <tr><th>항목</th><th>권장</th><th>이유</th></tr>
           </thead>
           <tbody>
-            <tr><td>필수 입력</td><td>연락처 + 간단한 상황</td><td>응대에 꼭 필요한 최소한만</td></tr>
-            <tr><td>선택 입력</td><td>희망 시간대</td><td>연결 성공률을 높임</td></tr>
-            <tr><td>피할 것</td><td>과도한 개인정보 요구</td><td>문의 포기의 흔한 원인</td></tr>
+            <tr><td data-label="항목">필수 입력</td><td data-label="권장">연락처 + 간단한 상황</td><td data-label="이유">응대에 꼭 필요한 최소한만</td></tr>
+            <tr><td data-label="항목">선택 입력</td><td data-label="권장">희망 시간대</td><td data-label="이유">연결 성공률을 높임</td></tr>
+            <tr><td data-label="항목">피할 것</td><td data-label="권장">과도한 개인정보 요구</td><td data-label="이유">문의 포기의 흔한 원인</td></tr>
           </tbody>
         </table>
       </div>
@@ -192,11 +200,11 @@
             <tr><th>비교 축</th><th>전화 문의</th><th>온라인 폼 문의</th></tr>
           </thead>
           <tbody>
-            <tr><td>문의한 사람의 상태</td><td>지금 바로 확인하고 싶은 급한 마음</td><td>여러 곳을 비교하며 남겨 두는 단계</td></tr>
-            <tr><td>전환을 가르는 지점</td><td>받는 순간의 응대 태도와 정확함</td><td>첫 응답 속도와 다음 안내의 명확함</td></tr>
-            <tr><td>놓쳤을 때 회수 방법</td><td>부재중 기록을 보고 당일 안에 콜백</td><td>문자·메일 접수 안내 후 통화 시도</td></tr>
-            <tr><td>홈페이지 배치</td><td>상단 고정 영역과 모바일 하단 버튼</td><td>본문 중간과 페이지 끝 두 곳</td></tr>
-            <tr><td>먼저 챙겨야 하는 경우</td><td>상담 인력이 상시 대기하는 조직</td><td>야간·주말 문의 비중이 높은 업종</td></tr>
+            <tr><td data-label="비교 축">문의한 사람의 상태</td><td data-label="전화 문의">지금 바로 확인하고 싶은 급한 마음</td><td data-label="온라인 폼 문의">여러 곳을 비교하며 남겨 두는 단계</td></tr>
+            <tr><td data-label="비교 축">전환을 가르는 지점</td><td data-label="전화 문의">받는 순간의 응대 태도와 정확함</td><td data-label="온라인 폼 문의">첫 응답 속도와 다음 안내의 명확함</td></tr>
+            <tr><td data-label="비교 축">놓쳤을 때 회수 방법</td><td data-label="전화 문의">부재중 기록을 보고 당일 안에 콜백</td><td data-label="온라인 폼 문의">문자·메일 접수 안내 후 통화 시도</td></tr>
+            <tr><td data-label="비교 축">홈페이지 배치</td><td data-label="전화 문의">상단 고정 영역과 모바일 하단 버튼</td><td data-label="온라인 폼 문의">본문 중간과 페이지 끝 두 곳</td></tr>
+            <tr><td data-label="비교 축">먼저 챙겨야 하는 경우</td><td data-label="전화 문의">상담 인력이 상시 대기하는 조직</td><td data-label="온라인 폼 문의">야간·주말 문의 비중이 높은 업종</td></tr>
           </tbody>
         </table>
       </div>
@@ -219,10 +227,10 @@
             <tr><th>작업 범위</th><th>보통 걸리는 기간</th><th>비용 범위</th></tr>
           </thead>
           <tbody>
-            <tr><td>자동 접수 안내 문자·메일 연결</td><td>3일~1주</td><td>20만~60만원</td></tr>
-            <tr><td>문의 기록 시트·담당자 알림 정리</td><td>1~2주</td><td>30만~80만원</td></tr>
-            <tr><td>전화·폼·메신저 창구 통합</td><td>2~4주</td><td>80만~200만원</td></tr>
-            <tr><td>미응답 재연결 자동화까지</td><td>3~6주</td><td>150만~300만원</td></tr>
+            <tr><td data-label="작업 범위">자동 접수 안내 문자·메일 연결</td><td data-label="보통 걸리는 기간">3일~1주</td><td data-label="비용 범위">20만~60만원</td></tr>
+            <tr><td data-label="작업 범위">문의 기록 시트·담당자 알림 정리</td><td data-label="보통 걸리는 기간">1~2주</td><td data-label="비용 범위">30만~80만원</td></tr>
+            <tr><td data-label="작업 범위">전화·폼·메신저 창구 통합</td><td data-label="보통 걸리는 기간">2~4주</td><td data-label="비용 범위">80만~200만원</td></tr>
+            <tr><td data-label="작업 범위">미응답 재연결 자동화까지</td><td data-label="보통 걸리는 기간">3~6주</td><td data-label="비용 범위">150만~300만원</td></tr>
           </tbody>
         </table>
       </div>

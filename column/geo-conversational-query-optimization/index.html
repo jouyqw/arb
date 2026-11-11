@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -162,13 +170,13 @@
             <tr><th>판단 항목</th><th>큰 키워드 1개에 집중</th><th>상황별 질문 여러 개(권장)</th></tr>
           </thead>
           <tbody>
-            <tr><td>예시</td><td>&quot;세무사&quot;, &quot;홈페이지제작&quot;</td><td>&quot;개업 1개월 1인 사업자 기장&quot;</td></tr>
-            <tr><td>경쟁 강도</td><td>상위권이 이미 굳어 있음</td><td>겹치는 글이 적어 진입 여지가 있음</td></tr>
-            <tr><td>1편당 기대 유입</td><td>성공하면 크지만 편차가 큼</td><td>편당 적지만 10~15편 쌓이면 합산됨</td></tr>
-            <tr><td>변화가 보이는 시점</td><td>보통 6개월 이상</td><td>보통 2~3개월</td></tr>
-            <tr><td>문의로 이어지는 정도</td><td>정보 탐색 단계 방문이 섞임</td><td>고민이 또렷해 상담으로 이어지기 쉬움</td></tr>
-            <tr><td>제작 난이도</td><td>자료 조사에 편당 3~5시간</td><td>상담 경험만으로 편당 1~2시간</td></tr>
-            <tr><td>적합한 경우</td><td>이미 글이 30편 이상 쌓인 곳</td><td>글이 10편 미만인 곳, 신규 개업</td></tr>
+            <tr><td data-label="판단 항목">예시</td><td data-label="큰 키워드 1개에 집중">&quot;세무사&quot;, &quot;홈페이지제작&quot;</td><td data-label="상황별 질문 여러 개(권장)">&quot;개업 1개월 1인 사업자 기장&quot;</td></tr>
+            <tr><td data-label="판단 항목">경쟁 강도</td><td data-label="큰 키워드 1개에 집중">상위권이 이미 굳어 있음</td><td data-label="상황별 질문 여러 개(권장)">겹치는 글이 적어 진입 여지가 있음</td></tr>
+            <tr><td data-label="판단 항목">1편당 기대 유입</td><td data-label="큰 키워드 1개에 집중">성공하면 크지만 편차가 큼</td><td data-label="상황별 질문 여러 개(권장)">편당 적지만 10~15편 쌓이면 합산됨</td></tr>
+            <tr><td data-label="판단 항목">변화가 보이는 시점</td><td data-label="큰 키워드 1개에 집중">보통 6개월 이상</td><td data-label="상황별 질문 여러 개(권장)">보통 2~3개월</td></tr>
+            <tr><td data-label="판단 항목">문의로 이어지는 정도</td><td data-label="큰 키워드 1개에 집중">정보 탐색 단계 방문이 섞임</td><td data-label="상황별 질문 여러 개(권장)">고민이 또렷해 상담으로 이어지기 쉬움</td></tr>
+            <tr><td data-label="판단 항목">제작 난이도</td><td data-label="큰 키워드 1개에 집중">자료 조사에 편당 3~5시간</td><td data-label="상황별 질문 여러 개(권장)">상담 경험만으로 편당 1~2시간</td></tr>
+            <tr><td data-label="판단 항목">적합한 경우</td><td data-label="큰 키워드 1개에 집중">이미 글이 30편 이상 쌓인 곳</td><td data-label="상황별 질문 여러 개(권장)">글이 10편 미만인 곳, 신규 개업</td></tr>
           </tbody>
         </table>
       </div>
@@ -178,10 +186,10 @@
             <tr><th>구분</th><th>기존 검색</th><th>AI 대화형 질의</th></tr>
           </thead>
           <tbody>
-            <tr><td>검색 형태</td><td>짧은 키워드</td><td>상황이 담긴 문장</td></tr>
-            <tr><td>유리한 소제목</td><td>명사구</td><td>질문형 문장</td></tr>
-            <tr><td>본문 순서</td><td>결론이 뒤</td><td>답부터 먼저</td></tr>
-            <tr><td>콘텐츠 폭</td><td>핵심어 집중</td><td>상황별로 넓게</td></tr>
+            <tr><td data-label="구분">검색 형태</td><td data-label="기존 검색">짧은 키워드</td><td data-label="AI 대화형 질의">상황이 담긴 문장</td></tr>
+            <tr><td data-label="구분">유리한 소제목</td><td data-label="기존 검색">명사구</td><td data-label="AI 대화형 질의">질문형 문장</td></tr>
+            <tr><td data-label="구분">본문 순서</td><td data-label="기존 검색">결론이 뒤</td><td data-label="AI 대화형 질의">답부터 먼저</td></tr>
+            <tr><td data-label="구분">콘텐츠 폭</td><td data-label="기존 검색">핵심어 집중</td><td data-label="AI 대화형 질의">상황별로 넓게</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -149,10 +157,10 @@
             <tr><th>문의 경로</th><th>이런 답이 돌아옵니다</th><th>이 칸이 크면 먼저 할 일</th></tr>
           </thead>
           <tbody>
-            <tr><td>순수 소개</td><td>&quot;○○님이 여기로 가 보라고 해서요&quot;</td><td>소개한 분이 보내기 쉬운 주소 한 장 만들기</td></tr>
-            <tr><td>소개 후 검색 확인</td><td>&quot;이름 듣고 검색해 봤습니다&quot;</td><td>상호·대표자 검색 결과와 전문가 소개 페이지 정비</td></tr>
-            <tr><td>검색 유입</td><td>&quot;지역 이름으로 검색하다 봤습니다&quot;</td><td>지역·상황 키워드 콘텐츠를 늘려 유입 확대</td></tr>
-            <tr><td>기타·재문의</td><td>&quot;예전에 맡겼던 곳이라서요&quot;</td><td>기존 고객 대상 안내와 후속 서비스 정리</td></tr>
+            <tr><td data-label="문의 경로">순수 소개</td><td data-label="이런 답이 돌아옵니다">&quot;○○님이 여기로 가 보라고 해서요&quot;</td><td data-label="이 칸이 크면 먼저 할 일">소개한 분이 보내기 쉬운 주소 한 장 만들기</td></tr>
+            <tr><td data-label="문의 경로">소개 후 검색 확인</td><td data-label="이런 답이 돌아옵니다">&quot;이름 듣고 검색해 봤습니다&quot;</td><td data-label="이 칸이 크면 먼저 할 일">상호·대표자 검색 결과와 전문가 소개 페이지 정비</td></tr>
+            <tr><td data-label="문의 경로">검색 유입</td><td data-label="이런 답이 돌아옵니다">&quot;지역 이름으로 검색하다 봤습니다&quot;</td><td data-label="이 칸이 크면 먼저 할 일">지역·상황 키워드 콘텐츠를 늘려 유입 확대</td></tr>
+            <tr><td data-label="문의 경로">기타·재문의</td><td data-label="이런 답이 돌아옵니다">&quot;예전에 맡겼던 곳이라서요&quot;</td><td data-label="이 칸이 크면 먼저 할 일">기존 고객 대상 안내와 후속 서비스 정리</td></tr>
           </tbody>
         </table>
       </div>
@@ -165,16 +173,16 @@
       <p>이 구간은 검색량이 적어 보이지만, 소개받은 사람이 반드시 지나가는 자리입니다.</p>
       <p>그다음이 지역 + 업종 키워드입니다. 경쟁이 있어 보통 3~6개월이 걸립니다.</p>
       <p>마지막이 고민과 상황으로 검색하는 키워드입니다. 칼럼이 쌓여야 잡히는 구간입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>단계</th><th>대략 기간</th><th>하는 일</th><th>볼 지표</th></tr>
           </thead>
           <tbody>
-            <tr><td>1. 검색 확인 구간</td><td>1~2개월</td><td>홈페이지 정비, 전문가 소개, 지도 등록 정보 일치</td><td>상호 검색 노출수, 색인 페이지 수</td></tr>
-            <tr><td>2. 지역 키워드</td><td>3~6개월</td><td>지역+업종 페이지, 지역 검색 정보 관리</td><td>지역 키워드 노출수, 지도 조회·통화</td></tr>
-            <tr><td>3. 상황 키워드</td><td>6개월~</td><td>상담에서 자주 받는 질문을 칼럼으로 발행</td><td>칼럼 유입, 검색 경로 문의 건수</td></tr>
-            <tr><td>4. 정비·재작성</td><td>상시</td><td>순위가 애매한 글 보완, 내부링크 연결</td><td>평균 순위, 클릭률</td></tr>
+            <tr><td data-label="단계">1. 검색 확인 구간</td><td data-label="대략 기간">1~2개월</td><td data-label="하는 일">홈페이지 정비, 전문가 소개, 지도 등록 정보 일치</td><td data-label="볼 지표">상호 검색 노출수, 색인 페이지 수</td></tr>
+            <tr><td data-label="단계">2. 지역 키워드</td><td data-label="대략 기간">3~6개월</td><td data-label="하는 일">지역+업종 페이지, 지역 검색 정보 관리</td><td data-label="볼 지표">지역 키워드 노출수, 지도 조회·통화</td></tr>
+            <tr><td data-label="단계">3. 상황 키워드</td><td data-label="대략 기간">6개월~</td><td data-label="하는 일">상담에서 자주 받는 질문을 칼럼으로 발행</td><td data-label="볼 지표">칼럼 유입, 검색 경로 문의 건수</td></tr>
+            <tr><td data-label="단계">4. 정비·재작성</td><td data-label="대략 기간">상시</td><td data-label="하는 일">순위가 애매한 글 보완, 내부링크 연결</td><td data-label="볼 지표">평균 순위, 클릭률</td></tr>
           </tbody>
         </table>
       </div>

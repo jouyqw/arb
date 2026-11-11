@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -134,12 +142,12 @@
             <tr><th>항목</th><th>반응형이면 대개 해결되는 부분</th><th>따로 챙기지 않으면 남는 문제</th></tr>
           </thead>
           <tbody>
-            <tr><td>화면 배치</td><td>폭에 맞춰 단이 내려오고 메뉴가 접힌다</td><td>접힌 메뉴 안에 중요한 항목이 묻힌다</td></tr>
-            <tr><td>이미지</td><td>폭에 맞게 줄여서 보여 준다</td><td>원본 용량 그대로 내려와 로딩이 느려진다</td></tr>
-            <tr><td>표</td><td>표 자체는 페이지에 그대로 들어간다</td><td>칸이 많으면 화면 밖으로 삐져나간다</td></tr>
-            <tr><td>입력 폼</td><td>입력칸 너비가 화면에 맞춰진다</td><td>터치 영역이 작고 키보드 종류가 맞지 않는다</td></tr>
-            <tr><td>지도·영상 삽입물</td><td>바깥 틀의 너비는 맞춰진다</td><td>안쪽 내용이 잘리거나 가로로 밀린다</td></tr>
-            <tr><td>전화·예약 버튼</td><td>자리가 함께 아래로 내려온다</td><td>스크롤하면 사라져 누를 자리가 없어진다</td></tr>
+            <tr><td data-label="항목">화면 배치</td><td data-label="반응형이면 대개 해결되는 부분">폭에 맞춰 단이 내려오고 메뉴가 접힌다</td><td data-label="따로 챙기지 않으면 남는 문제">접힌 메뉴 안에 중요한 항목이 묻힌다</td></tr>
+            <tr><td data-label="항목">이미지</td><td data-label="반응형이면 대개 해결되는 부분">폭에 맞게 줄여서 보여 준다</td><td data-label="따로 챙기지 않으면 남는 문제">원본 용량 그대로 내려와 로딩이 느려진다</td></tr>
+            <tr><td data-label="항목">표</td><td data-label="반응형이면 대개 해결되는 부분">표 자체는 페이지에 그대로 들어간다</td><td data-label="따로 챙기지 않으면 남는 문제">칸이 많으면 화면 밖으로 삐져나간다</td></tr>
+            <tr><td data-label="항목">입력 폼</td><td data-label="반응형이면 대개 해결되는 부분">입력칸 너비가 화면에 맞춰진다</td><td data-label="따로 챙기지 않으면 남는 문제">터치 영역이 작고 키보드 종류가 맞지 않는다</td></tr>
+            <tr><td data-label="항목">지도·영상 삽입물</td><td data-label="반응형이면 대개 해결되는 부분">바깥 틀의 너비는 맞춰진다</td><td data-label="따로 챙기지 않으면 남는 문제">안쪽 내용이 잘리거나 가로로 밀린다</td></tr>
+            <tr><td data-label="항목">전화·예약 버튼</td><td data-label="반응형이면 대개 해결되는 부분">자리가 함께 아래로 내려온다</td><td data-label="따로 챙기지 않으면 남는 문제">스크롤하면 사라져 누를 자리가 없어진다</td></tr>
           </tbody>
         </table>
       </div>
@@ -154,9 +162,9 @@
             <tr><th>방식</th><th>이럴 때 맞음</th><th>감수해야 할 점</th></tr>
           </thead>
           <tbody>
-            <tr><td>반응형</td><td>PC와 모바일에 같은 내용을 보여 줄 때</td><td>복잡한 표와 기능이 많으면 모바일 화면이 길어진다</td></tr>
-            <tr><td>적응형</td><td>화면 크기별로 배치를 크게 다르게 짜야 할 때</td><td>정해 둔 폭을 벗어난 기기에서 어색해진다</td></tr>
-            <tr><td>모바일 별도 주소</td><td>모바일에서 쓰는 기능이 PC와 아예 다를 때</td><td>같은 내용을 두 번 고쳐야 하고 주소 관리가 늘어난다</td></tr>
+            <tr><td data-label="방식">반응형</td><td data-label="이럴 때 맞음">PC와 모바일에 같은 내용을 보여 줄 때</td><td data-label="감수해야 할 점">복잡한 표와 기능이 많으면 모바일 화면이 길어진다</td></tr>
+            <tr><td data-label="방식">적응형</td><td data-label="이럴 때 맞음">화면 크기별로 배치를 크게 다르게 짜야 할 때</td><td data-label="감수해야 할 점">정해 둔 폭을 벗어난 기기에서 어색해진다</td></tr>
+            <tr><td data-label="방식">모바일 별도 주소</td><td data-label="이럴 때 맞음">모바일에서 쓰는 기능이 PC와 아예 다를 때</td><td data-label="감수해야 할 점">같은 내용을 두 번 고쳐야 하고 주소 관리가 늘어난다</td></tr>
           </tbody>
         </table>
       </div>
@@ -177,10 +185,10 @@
             <tr><th>금액대</th><th>보통 포함되는 범위</th><th>따로 확인할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>100만~300만원대</td><td>템플릿 기반 반응형, 폭에 맞춘 자동 축소</td><td>표와 폼을 모바일용으로 다시 짜 주는지</td></tr>
-            <tr><td>300만~800만원대</td><td>모바일·태블릿·PC 폭별 디자인과 이미지 최적화</td><td>검수 기기 목록과 수정 횟수</td></tr>
-            <tr><td>800만~2,000만원대</td><td>기기별 검수 리포트, 속도 기준, 확대·글자 크기 대응까지</td><td>통과 기준을 숫자로 적어 두는지</td></tr>
-            <tr><td>오픈 후 유지보수</td><td>깨짐 수정과 브라우저 변경 대응</td><td>무상 기간과 월 수정 건수</td></tr>
+            <tr><td data-label="금액대">100만~300만원대</td><td data-label="보통 포함되는 범위">템플릿 기반 반응형, 폭에 맞춘 자동 축소</td><td data-label="따로 확인할 것">표와 폼을 모바일용으로 다시 짜 주는지</td></tr>
+            <tr><td data-label="금액대">300만~800만원대</td><td data-label="보통 포함되는 범위">모바일·태블릿·PC 폭별 디자인과 이미지 최적화</td><td data-label="따로 확인할 것">검수 기기 목록과 수정 횟수</td></tr>
+            <tr><td data-label="금액대">800만~2,000만원대</td><td data-label="보통 포함되는 범위">기기별 검수 리포트, 속도 기준, 확대·글자 크기 대응까지</td><td data-label="따로 확인할 것">통과 기준을 숫자로 적어 두는지</td></tr>
+            <tr><td data-label="금액대">오픈 후 유지보수</td><td data-label="보통 포함되는 범위">깨짐 수정과 브라우저 변경 대응</td><td data-label="따로 확인할 것">무상 기간과 월 수정 건수</td></tr>
           </tbody>
         </table>
       </div>

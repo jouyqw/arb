@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -130,12 +138,12 @@
             <tr><th>비교 항목</th><th>소개 중심 홈페이지</th><th>칼럼 중심 홈페이지</th></tr>
           </thead>
           <tbody>
-            <tr><td>첫 방문 경로</td><td>상호명이나 변호사 이름 직접 검색</td><td>사건명·절차·비용 질문 검색</td></tr>
-            <tr><td>페이지 수</td><td>5~8쪽에서 거의 고정</td><td>매달 2~4편씩 늘어남</td></tr>
-            <tr><td>성과가 보이는 시점</td><td>공개 직후부터 일정한 수준</td><td>보통 3~6개월 지나며 올라감</td></tr>
-            <tr><td>초기 제작비</td><td>300만~700만원 수준</td><td>제작비에 원고 비용이 더 붙음</td></tr>
-            <tr><td>매달 들어가는 일</td><td>사실상 없음</td><td>원고 검수에 월 2~4시간</td></tr>
-            <tr><td>어울리는 경우</td><td>소개 경로가 이미 충분한 경우</td><td>신규 분야를 새로 알려야 하는 경우</td></tr>
+            <tr><td data-label="비교 항목">첫 방문 경로</td><td data-label="소개 중심 홈페이지">상호명이나 변호사 이름 직접 검색</td><td data-label="칼럼 중심 홈페이지">사건명·절차·비용 질문 검색</td></tr>
+            <tr><td data-label="비교 항목">페이지 수</td><td data-label="소개 중심 홈페이지">5~8쪽에서 거의 고정</td><td data-label="칼럼 중심 홈페이지">매달 2~4편씩 늘어남</td></tr>
+            <tr><td data-label="비교 항목">성과가 보이는 시점</td><td data-label="소개 중심 홈페이지">공개 직후부터 일정한 수준</td><td data-label="칼럼 중심 홈페이지">보통 3~6개월 지나며 올라감</td></tr>
+            <tr><td data-label="비교 항목">초기 제작비</td><td data-label="소개 중심 홈페이지">300만~700만원 수준</td><td data-label="칼럼 중심 홈페이지">제작비에 원고 비용이 더 붙음</td></tr>
+            <tr><td data-label="비교 항목">매달 들어가는 일</td><td data-label="소개 중심 홈페이지">사실상 없음</td><td data-label="칼럼 중심 홈페이지">원고 검수에 월 2~4시간</td></tr>
+            <tr><td data-label="비교 항목">어울리는 경우</td><td data-label="소개 중심 홈페이지">소개 경로가 이미 충분한 경우</td><td data-label="칼럼 중심 홈페이지">신규 분야를 새로 알려야 하는 경우</td></tr>
           </tbody>
         </table>
       </div>
@@ -152,10 +160,10 @@
             <tr><th>구성</th><th>역할</th><th>예시</th></tr>
           </thead>
           <tbody>
-            <tr><td>분야별 칼럼</td><td>검색 유입</td><td>형사조사 전 준비자료</td></tr>
-            <tr><td>상담 전 체크리스트</td><td>문의 전환</td><td>이혼 재산분할 자료</td></tr>
-            <tr><td>표와 요약</td><td>가독성 향상</td><td>소송 전 확인사항</td></tr>
-            <tr><td>상담 버튼</td><td>행동 연결</td><td>전화, 카카오톡, 예약</td></tr>
+            <tr><td data-label="구성">분야별 칼럼</td><td data-label="역할">검색 유입</td><td data-label="예시">형사조사 전 준비자료</td></tr>
+            <tr><td data-label="구성">상담 전 체크리스트</td><td data-label="역할">문의 전환</td><td data-label="예시">이혼 재산분할 자료</td></tr>
+            <tr><td data-label="구성">표와 요약</td><td data-label="역할">가독성 향상</td><td data-label="예시">소송 전 확인사항</td></tr>
+            <tr><td data-label="구성">상담 버튼</td><td data-label="역할">행동 연결</td><td data-label="예시">전화, 카카오톡, 예약</td></tr>
           </tbody>
         </table>
       </div>
@@ -172,11 +180,11 @@
             <tr><th>항목</th><th>비용 범위</th><th>무엇이 들어가는가</th></tr>
           </thead>
           <tbody>
-            <tr><td>홈페이지 신규 제작</td><td>300만~1,500만원</td><td>기획, 디자인, 반응형 작업, 칼럼 게시 기능</td></tr>
-            <tr><td>기존 사이트에 칼럼 기능 추가</td><td>100만~400만원</td><td>목록·상세 페이지, 분야 분류, 구조화 데이터</td></tr>
-            <tr><td>칼럼 원고를 외부에 맡길 때</td><td>편당 15만~40만원</td><td>자료 정리, 초고, 검수 의견 반영</td></tr>
-            <tr><td>유지·관리</td><td>월 10만~50만원</td><td>호스팅, 백업, 오류 수정, 보안 업데이트</td></tr>
-            <tr><td>성과 확인용 분석 설정</td><td>20만~60만원(1회)</td><td>검색 유입 도구 연결, 문의 경로 측정</td></tr>
+            <tr><td data-label="항목">홈페이지 신규 제작</td><td data-label="비용 범위">300만~1,500만원</td><td data-label="무엇이 들어가는가">기획, 디자인, 반응형 작업, 칼럼 게시 기능</td></tr>
+            <tr><td data-label="항목">기존 사이트에 칼럼 기능 추가</td><td data-label="비용 범위">100만~400만원</td><td data-label="무엇이 들어가는가">목록·상세 페이지, 분야 분류, 구조화 데이터</td></tr>
+            <tr><td data-label="항목">칼럼 원고를 외부에 맡길 때</td><td data-label="비용 범위">편당 15만~40만원</td><td data-label="무엇이 들어가는가">자료 정리, 초고, 검수 의견 반영</td></tr>
+            <tr><td data-label="항목">유지·관리</td><td data-label="비용 범위">월 10만~50만원</td><td data-label="무엇이 들어가는가">호스팅, 백업, 오류 수정, 보안 업데이트</td></tr>
+            <tr><td data-label="항목">성과 확인용 분석 설정</td><td data-label="비용 범위">20만~60만원(1회)</td><td data-label="무엇이 들어가는가">검색 유입 도구 연결, 문의 경로 측정</td></tr>
           </tbody>
         </table>
       </div>

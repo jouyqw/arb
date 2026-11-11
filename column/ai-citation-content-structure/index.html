@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -133,12 +141,12 @@
             <tr><th>비교 축</th><th>기존 SEO</th><th>AI 검색(GEO)</th></tr>
           </thead>
           <tbody>
-            <tr><td>노출 형태</td><td>링크 목록 10개 중 한 자리</td><td>요약 답변 한 편과 출처 표기</td></tr>
-            <tr><td>성과 기준</td><td>검색 순위와 클릭 수</td><td>인용 여부와 브랜드 언급 횟수</td></tr>
-            <tr><td>유리한 본문 분량</td><td>1,000~2,000자로도 가능</td><td>3,000자 이상이 유리한 편</td></tr>
-            <tr><td>소제목 방식</td><td>명사형 키워드 배치</td><td>사람들이 실제로 쓰는 질문 문장</td></tr>
-            <tr><td>변화가 보이는 시점</td><td>보통 2~8주</td><td>보통 4~12주</td></tr>
-            <tr><td>먼저 손댈 곳</td><td>키워드 선정과 내부 링크</td><td>글의 구조 정비와 근거 표기</td></tr>
+            <tr><td data-label="비교 축">노출 형태</td><td data-label="기존 SEO">링크 목록 10개 중 한 자리</td><td data-label="AI 검색(GEO)">요약 답변 한 편과 출처 표기</td></tr>
+            <tr><td data-label="비교 축">성과 기준</td><td data-label="기존 SEO">검색 순위와 클릭 수</td><td data-label="AI 검색(GEO)">인용 여부와 브랜드 언급 횟수</td></tr>
+            <tr><td data-label="비교 축">유리한 본문 분량</td><td data-label="기존 SEO">1,000~2,000자로도 가능</td><td data-label="AI 검색(GEO)">3,000자 이상이 유리한 편</td></tr>
+            <tr><td data-label="비교 축">소제목 방식</td><td data-label="기존 SEO">명사형 키워드 배치</td><td data-label="AI 검색(GEO)">사람들이 실제로 쓰는 질문 문장</td></tr>
+            <tr><td data-label="비교 축">변화가 보이는 시점</td><td data-label="기존 SEO">보통 2~8주</td><td data-label="AI 검색(GEO)">보통 4~12주</td></tr>
+            <tr><td data-label="비교 축">먼저 손댈 곳</td><td data-label="기존 SEO">키워드 선정과 내부 링크</td><td data-label="AI 검색(GEO)">글의 구조 정비와 근거 표기</td></tr>
           </tbody>
         </table>
       </div>
@@ -161,12 +169,12 @@
             <tr><th>요소</th><th>일반 글</th><th>AI 인용에 유리한 글</th></tr>
           </thead>
           <tbody>
-            <tr><td>소제목</td><td>명사형 제목</td><td>실제 검색 질문형</td></tr>
-            <tr><td>첫 문장</td><td>배경 설명</td><td>질문에 대한 직접 답변</td></tr>
-            <tr><td>근거</td><td>본문에 흩어짐</td><td>표·목록으로 구조화</td></tr>
-            <tr><td>신뢰</td><td>주장 위주</td><td>수치·출처 명시</td></tr>
-            <tr><td>용어</td><td>그냥 사용</td><td>처음 쓸 때 괄호로 정의</td></tr>
-            <tr><td>마무리</td><td>인사말로 끝냄</td><td>FAQ 4~6문항으로 질문을 회수</td></tr>
+            <tr><td data-label="요소">소제목</td><td data-label="일반 글">명사형 제목</td><td data-label="AI 인용에 유리한 글">실제 검색 질문형</td></tr>
+            <tr><td data-label="요소">첫 문장</td><td data-label="일반 글">배경 설명</td><td data-label="AI 인용에 유리한 글">질문에 대한 직접 답변</td></tr>
+            <tr><td data-label="요소">근거</td><td data-label="일반 글">본문에 흩어짐</td><td data-label="AI 인용에 유리한 글">표·목록으로 구조화</td></tr>
+            <tr><td data-label="요소">신뢰</td><td data-label="일반 글">주장 위주</td><td data-label="AI 인용에 유리한 글">수치·출처 명시</td></tr>
+            <tr><td data-label="요소">용어</td><td data-label="일반 글">그냥 사용</td><td data-label="AI 인용에 유리한 글">처음 쓸 때 괄호로 정의</td></tr>
+            <tr><td data-label="요소">마무리</td><td data-label="일반 글">인사말로 끝냄</td><td data-label="AI 인용에 유리한 글">FAQ 4~6문항으로 질문을 회수</td></tr>
           </tbody>
         </table>
       </div>
@@ -182,12 +190,12 @@
             <tr><th>상황</th><th>새로 쓰기</th><th>기존 글 보강</th></tr>
           </thead>
           <tbody>
-            <tr><td>주제는 맞고 본문이 1,500자 미만</td><td>권하지 않습니다</td><td>여기부터 시작합니다</td></tr>
-            <tr><td>겨냥한 질문이 검색 수요와 어긋남</td><td>새 글이 빠릅니다</td><td>제목 수정만으로는 한계</td></tr>
-            <tr><td>이미 인용이 한두 번 관찰됨</td><td>순서를 뒤로 미룹니다</td><td>표·FAQ를 더해 강화합니다</td></tr>
-            <tr><td>한 편에 드는 작업 시간</td><td>보통 4~8시간</td><td>보통 1~3시간</td></tr>
-            <tr><td>주소와 누적 신호</td><td>새 주소가 생깁니다</td><td>기존 주소를 유지합니다</td></tr>
-            <tr><td>한 달에 처리 가능한 편수</td><td>3~5편</td><td>8~15편</td></tr>
+            <tr><td data-label="상황">주제는 맞고 본문이 1,500자 미만</td><td data-label="새로 쓰기">권하지 않습니다</td><td data-label="기존 글 보강">여기부터 시작합니다</td></tr>
+            <tr><td data-label="상황">겨냥한 질문이 검색 수요와 어긋남</td><td data-label="새로 쓰기">새 글이 빠릅니다</td><td data-label="기존 글 보강">제목 수정만으로는 한계</td></tr>
+            <tr><td data-label="상황">이미 인용이 한두 번 관찰됨</td><td data-label="새로 쓰기">순서를 뒤로 미룹니다</td><td data-label="기존 글 보강">표·FAQ를 더해 강화합니다</td></tr>
+            <tr><td data-label="상황">한 편에 드는 작업 시간</td><td data-label="새로 쓰기">보통 4~8시간</td><td data-label="기존 글 보강">보통 1~3시간</td></tr>
+            <tr><td data-label="상황">주소와 누적 신호</td><td data-label="새로 쓰기">새 주소가 생깁니다</td><td data-label="기존 글 보강">기존 주소를 유지합니다</td></tr>
+            <tr><td data-label="상황">한 달에 처리 가능한 편수</td><td data-label="새로 쓰기">3~5편</td><td data-label="기존 글 보강">8~15편</td></tr>
           </tbody>
         </table>
       </div>

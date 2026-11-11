@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -136,12 +144,12 @@
             <tr><th>자주 올라가 있는 문장</th><th>걸리는 이유</th><th>바꿔 쓰는 형태</th></tr>
           </thead>
           <tbody>
-            <tr><td>통증 없이 끝나는 시술입니다</td><td>결과를 확정해 효과를 오인하게 할 소지</td><td>마취 방식과 시술 시간, 당일 주의사항을 단계로 적습니다</td></tr>
-            <tr><td>대구에서 가장 많이 시행한 병원</td><td>전체를 비교한 근거 자료가 필요한 최상급</td><td>개원 연도와 진료 분야, 보유 장비를 사실로 적습니다</td></tr>
-            <tr><td>일반 병원과 다른 치료 방식</td><td>비교 대상을 암시하는 표현으로 읽힙니다</td><td>검사 항목과 진료 단계, 소요 기간을 그대로 설명합니다</td></tr>
-            <tr><td>환자분들이 만족한 후기 모음</td><td>치료경험담을 광고에 옮겨 둔 형태</td><td>진료 단계별 안내와 총 내원 횟수, 회복 일정으로 대체합니다</td></tr>
-            <tr><td>이번 달 한정 ○○ 이벤트</td><td>비급여 할인이 환자 유인으로 해석될 소지</td><td>비급여 금액 범위와 포함·별도 항목을 상시로 고지합니다</td></tr>
-            <tr><td>검진 후 상담으로 안내드립니다</td><td>규정 문제는 없지만 환자가 가져갈 정보가 없습니다</td><td>최소~최대 금액 범위와 금액이 갈리는 변수 세 가지를 적습니다</td></tr>
+            <tr><td data-label="자주 올라가 있는 문장">통증 없이 끝나는 시술입니다</td><td data-label="걸리는 이유">결과를 확정해 효과를 오인하게 할 소지</td><td data-label="바꿔 쓰는 형태">마취 방식과 시술 시간, 당일 주의사항을 단계로 적습니다</td></tr>
+            <tr><td data-label="자주 올라가 있는 문장">대구에서 가장 많이 시행한 병원</td><td data-label="걸리는 이유">전체를 비교한 근거 자료가 필요한 최상급</td><td data-label="바꿔 쓰는 형태">개원 연도와 진료 분야, 보유 장비를 사실로 적습니다</td></tr>
+            <tr><td data-label="자주 올라가 있는 문장">일반 병원과 다른 치료 방식</td><td data-label="걸리는 이유">비교 대상을 암시하는 표현으로 읽힙니다</td><td data-label="바꿔 쓰는 형태">검사 항목과 진료 단계, 소요 기간을 그대로 설명합니다</td></tr>
+            <tr><td data-label="자주 올라가 있는 문장">환자분들이 만족한 후기 모음</td><td data-label="걸리는 이유">치료경험담을 광고에 옮겨 둔 형태</td><td data-label="바꿔 쓰는 형태">진료 단계별 안내와 총 내원 횟수, 회복 일정으로 대체합니다</td></tr>
+            <tr><td data-label="자주 올라가 있는 문장">이번 달 한정 ○○ 이벤트</td><td data-label="걸리는 이유">비급여 할인이 환자 유인으로 해석될 소지</td><td data-label="바꿔 쓰는 형태">비급여 금액 범위와 포함·별도 항목을 상시로 고지합니다</td></tr>
+            <tr><td data-label="자주 올라가 있는 문장">검진 후 상담으로 안내드립니다</td><td data-label="걸리는 이유">규정 문제는 없지만 환자가 가져갈 정보가 없습니다</td><td data-label="바꿔 쓰는 형태">최소~최대 금액 범위와 금액이 갈리는 변수 세 가지를 적습니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -150,17 +158,17 @@
       <p>다릅니다. 병원이 직접 운영하는 홈페이지는 통상 사전심의 대상이 아니고, 이용자가 많은 매체에 싣는 광고는 심의 대상입니다. 다만 광고 금지 규정은 네 경로 모두에 똑같이 적용됩니다.</p>
       <p>제가 상담에서 자주 보는 사고는 원고 하나를 네 곳에 그대로 복사하는 데서 시작합니다. 홈페이지 기준으로 쓴 문장이 광고 소재로 넘어가면서 심의를 거치지 않고 노출되는 경우입니다.</p>
       <p>그래서 저는 원고를 쓰기 전에 어디에 올릴 것인지를 문서 맨 윗줄에 적어 둡니다. <mark class="hl-mark">경로 표시 한 줄</mark>이 나중에 2~4주를 아껴 줍니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>환자가 들어오는 경로</th><th>사전심의 관계</th><th>특히 조심할 것</th><th>여기서 쓸 수 있는 형태</th></tr>
           </thead>
           <tbody>
-            <tr><td>병원 홈페이지·진료과목 페이지</td><td>통상 대상이 아니지만 금지 규정은 적용</td><td>오래전 원고에 남은 효과 단정 문장</td><td>검사·진료 단계, 소요 기간, 비급여 금액 범위</td></tr>
-            <tr><td>네이버 플레이스·지도 정보</td><td>정보 항목 등록이라 심의와 별개</td><td>소개글에 섞여 들어가는 최상급 표현</td><td>진료시간, 휴진일, 주차, 접수 마감 시간, 실제 사진</td></tr>
-            <tr><td>블로그·칼럼 콘텐츠</td><td>광고로 읽히는 소재는 규정이 그대로 적용</td><td>환자 후기 형식, 기사처럼 보이게 쓴 구성</td><td>증상 설명, 검사 기준, 내원 전 준비물 안내</td></tr>
-            <tr><td>검색광고·배너 소재</td><td>매체 기준에 따라 심의 대상이 됩니다</td><td>심의 없이 문구만 바꿔 바로 올리는 운영</td><td>심의받은 문구 그대로, 심의번호 표기 포함</td></tr>
-            <tr><td>지역 신문·현수막·교통수단 광고</td><td>사전심의 대상으로 다뤄집니다</td><td>집행 일정을 먼저 잡고 소재를 나중에 만드는 순서</td><td>심의 완료 소재, 유효기간 안에서만 재사용</td></tr>
+            <tr><td data-label="환자가 들어오는 경로">병원 홈페이지·진료과목 페이지</td><td data-label="사전심의 관계">통상 대상이 아니지만 금지 규정은 적용</td><td data-label="특히 조심할 것">오래전 원고에 남은 효과 단정 문장</td><td data-label="여기서 쓸 수 있는 형태">검사·진료 단계, 소요 기간, 비급여 금액 범위</td></tr>
+            <tr><td data-label="환자가 들어오는 경로">네이버 플레이스·지도 정보</td><td data-label="사전심의 관계">정보 항목 등록이라 심의와 별개</td><td data-label="특히 조심할 것">소개글에 섞여 들어가는 최상급 표현</td><td data-label="여기서 쓸 수 있는 형태">진료시간, 휴진일, 주차, 접수 마감 시간, 실제 사진</td></tr>
+            <tr><td data-label="환자가 들어오는 경로">블로그·칼럼 콘텐츠</td><td data-label="사전심의 관계">광고로 읽히는 소재는 규정이 그대로 적용</td><td data-label="특히 조심할 것">환자 후기 형식, 기사처럼 보이게 쓴 구성</td><td data-label="여기서 쓸 수 있는 형태">증상 설명, 검사 기준, 내원 전 준비물 안내</td></tr>
+            <tr><td data-label="환자가 들어오는 경로">검색광고·배너 소재</td><td data-label="사전심의 관계">매체 기준에 따라 심의 대상이 됩니다</td><td data-label="특히 조심할 것">심의 없이 문구만 바꿔 바로 올리는 운영</td><td data-label="여기서 쓸 수 있는 형태">심의받은 문구 그대로, 심의번호 표기 포함</td></tr>
+            <tr><td data-label="환자가 들어오는 경로">지역 신문·현수막·교통수단 광고</td><td data-label="사전심의 관계">사전심의 대상으로 다뤄집니다</td><td data-label="특히 조심할 것">집행 일정을 먼저 잡고 소재를 나중에 만드는 순서</td><td data-label="여기서 쓸 수 있는 형태">심의 완료 소재, 유효기간 안에서만 재사용</td></tr>
           </tbody>
         </table>
       </div>

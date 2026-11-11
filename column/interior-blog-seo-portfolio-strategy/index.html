@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -123,11 +131,11 @@
             <tr><th>항목</th><th>작성 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>제목</td><td>실제 공간과 작업 내용을 간결하게 표현</td></tr>
-            <tr><td>사진</td><td>게시 권한과 실제 촬영 내용을 확인</td></tr>
-            <tr><td>공사 범위</td><td>직접 수행한 업무와 제외된 업무를 구분</td></tr>
-            <tr><td>비용·일정</td><td>사례별 조건과 변동 가능성을 안내</td></tr>
-            <tr><td>상담 안내</td><td>연락 방법과 준비 자료를 명확하게 안내</td></tr>
+            <tr><td data-label="항목">제목</td><td data-label="작성 기준">실제 공간과 작업 내용을 간결하게 표현</td></tr>
+            <tr><td data-label="항목">사진</td><td data-label="작성 기준">게시 권한과 실제 촬영 내용을 확인</td></tr>
+            <tr><td data-label="항목">공사 범위</td><td data-label="작성 기준">직접 수행한 업무와 제외된 업무를 구분</td></tr>
+            <tr><td data-label="항목">비용·일정</td><td data-label="작성 기준">사례별 조건과 변동 가능성을 안내</td></tr>
+            <tr><td data-label="항목">상담 안내</td><td data-label="작성 기준">연락 방법과 준비 자료를 명확하게 안내</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -139,16 +147,16 @@
       <p>처음부터 &quot;서울&quot;이나 &quot;전국&quot;으로 벌리면 경쟁은 세고 의뢰 의도는 흐려져, 유입은 늘어도 상담으로 이어지지 않습니다.</p>
       <p>상담에서 &quot;서울 전체로 가 주세요&quot;라는 요청을 자주 받습니다. 저는 그때 첫 3개월만 구 1곳으로 좁혀 보자고 말씀드립니다. 범위를 넓게 잡으면 같은 예산으로 쓰는 글이 전부 얇아지고, 어느 지역에서도 자리를 못 잡은 채 반년이 지나갑니다.</p>
       <p>아래 표에서 자기 사무소가 어느 줄에 해당하는지만 정하면 첫 3개월 범위는 결정됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>지역 범위</th><th>이런 사무소에 맞습니다</th><th>경쟁 정도</th><th>자리 잡기까지 대략</th></tr>
           </thead>
           <tbody>
-            <tr><td>동·역세권 단위 (예: 역삼동, 서초역)</td><td>개업 1년 이내, 도보·차량 10분권 의뢰가 대부분인 곳</td><td>낮음</td><td>1~3개월</td></tr>
-            <tr><td>구 단위 (예: 강남구, 마포구)</td><td>구 안에서 인지도를 먼저 만들고 싶은 대부분의 사무소</td><td>중간</td><td>3~6개월</td></tr>
-            <tr><td>생활권 묶음 (예: 강남·서초·송파)</td><td>구 단위에서 이미 문의가 꾸준히 들어오는 사무소</td><td>높음</td><td>6개월 이상</td></tr>
-            <tr><td>서울 전체·전국</td><td>분야가 특수하거나 원격 상담이 가능한 사무소</td><td>매우 높음</td><td>1년 이상 보는 편이 현실적</td></tr>
+            <tr><td data-label="지역 범위">동·역세권 단위 (예: 역삼동, 서초역)</td><td data-label="이런 사무소에 맞습니다">개업 1년 이내, 도보·차량 10분권 의뢰가 대부분인 곳</td><td data-label="경쟁 정도">낮음</td><td data-label="자리 잡기까지 대략">1~3개월</td></tr>
+            <tr><td data-label="지역 범위">구 단위 (예: 강남구, 마포구)</td><td data-label="이런 사무소에 맞습니다">구 안에서 인지도를 먼저 만들고 싶은 대부분의 사무소</td><td data-label="경쟁 정도">중간</td><td data-label="자리 잡기까지 대략">3~6개월</td></tr>
+            <tr><td data-label="지역 범위">생활권 묶음 (예: 강남·서초·송파)</td><td data-label="이런 사무소에 맞습니다">구 단위에서 이미 문의가 꾸준히 들어오는 사무소</td><td data-label="경쟁 정도">높음</td><td data-label="자리 잡기까지 대략">6개월 이상</td></tr>
+            <tr><td data-label="지역 범위">서울 전체·전국</td><td data-label="이런 사무소에 맞습니다">분야가 특수하거나 원격 상담이 가능한 사무소</td><td data-label="경쟁 정도">매우 높음</td><td data-label="자리 잡기까지 대략">1년 이상 보는 편이 현실적</td></tr>
           </tbody>
         </table>
       </div>
@@ -205,12 +213,12 @@
             <tr><th>비교 항목</th><th>네이버</th><th>구글</th></tr>
           </thead>
           <tbody>
-            <tr><td>먼저 보는 것</td><td>플레이스 정보, 블로그 글, 지역 후기 같은 활동량</td><td>홈페이지 구조와 내용의 깊이, 외부 신뢰 신호</td></tr>
-            <tr><td>핵심 자산</td><td>플레이스 등록 정보와 꾸준한 지역 글</td><td>사무소 도메인에 쌓이는 안내 페이지와 칼럼</td></tr>
-            <tr><td>반응 속도</td><td>비교적 빠른 편 (수주~2개월)</td><td>느린 편 (2~6개월)</td></tr>
-            <tr><td>먼저 손댈 일</td><td>상호·주소·전화 통일과 플레이스 소개글 정비</td><td>분야별 안내 페이지 4~6개 제작</td></tr>
-            <tr><td>이 분야라면 먼저</td><td>방문 상담 비중이 큰 세무·노무·의원</td><td>설명이 길고 검토가 필요한 법률·특허·컨설팅</td></tr>
-            <tr><td>약점</td><td>글을 멈추면 노출이 빨리 식는 편</td><td>초반 3개월은 변화가 거의 보이지 않음</td></tr>
+            <tr><td data-label="비교 항목">먼저 보는 것</td><td data-label="네이버">플레이스 정보, 블로그 글, 지역 후기 같은 활동량</td><td data-label="구글">홈페이지 구조와 내용의 깊이, 외부 신뢰 신호</td></tr>
+            <tr><td data-label="비교 항목">핵심 자산</td><td data-label="네이버">플레이스 등록 정보와 꾸준한 지역 글</td><td data-label="구글">사무소 도메인에 쌓이는 안내 페이지와 칼럼</td></tr>
+            <tr><td data-label="비교 항목">반응 속도</td><td data-label="네이버">비교적 빠른 편 (수주~2개월)</td><td data-label="구글">느린 편 (2~6개월)</td></tr>
+            <tr><td data-label="비교 항목">먼저 손댈 일</td><td data-label="네이버">상호·주소·전화 통일과 플레이스 소개글 정비</td><td data-label="구글">분야별 안내 페이지 4~6개 제작</td></tr>
+            <tr><td data-label="비교 항목">이 분야라면 먼저</td><td data-label="네이버">방문 상담 비중이 큰 세무·노무·의원</td><td data-label="구글">설명이 길고 검토가 필요한 법률·특허·컨설팅</td></tr>
+            <tr><td data-label="비교 항목">약점</td><td data-label="네이버">글을 멈추면 노출이 빨리 식는 편</td><td data-label="구글">초반 3개월은 변화가 거의 보이지 않음</td></tr>
           </tbody>
         </table>
       </div>
@@ -225,11 +233,11 @@
             <tr><th>기간</th><th>할 일</th><th>이때까지 끝났다고 보는 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>1~2주차</td><td>상호·주소·전화 통일, 플레이스 정보 정비</td><td>3개 채널의 정보가 글자 단위까지 동일함</td></tr>
-            <tr><td>3~4주차</td><td>오시는 길 페이지 1개, 분야별 안내 페이지 2개 작성</td><td>지하철 출구·도보 시간·주차가 글로 설명됨</td></tr>
-            <tr><td>5~8주차</td><td>지역+분야 질문형 글 4~6편 작성</td><td>모든 소제목이 질문이고 바로 아래 답이 있음</td></tr>
-            <tr><td>9~10주차</td><td>후기 3건 이상 확보, 상담 동선 점검</td><td>어느 페이지에서든 2번 이내 클릭으로 문의 가능</td></tr>
-            <tr><td>11~12주차</td><td>유입 키워드 확인 후 소액 광고 테스트</td><td>유입 키워드와 문의 경로가 표로 정리됨</td></tr>
+            <tr><td data-label="기간">1~2주차</td><td data-label="할 일">상호·주소·전화 통일, 플레이스 정보 정비</td><td data-label="이때까지 끝났다고 보는 기준">3개 채널의 정보가 글자 단위까지 동일함</td></tr>
+            <tr><td data-label="기간">3~4주차</td><td data-label="할 일">오시는 길 페이지 1개, 분야별 안내 페이지 2개 작성</td><td data-label="이때까지 끝났다고 보는 기준">지하철 출구·도보 시간·주차가 글로 설명됨</td></tr>
+            <tr><td data-label="기간">5~8주차</td><td data-label="할 일">지역+분야 질문형 글 4~6편 작성</td><td data-label="이때까지 끝났다고 보는 기준">모든 소제목이 질문이고 바로 아래 답이 있음</td></tr>
+            <tr><td data-label="기간">9~10주차</td><td data-label="할 일">후기 3건 이상 확보, 상담 동선 점검</td><td data-label="이때까지 끝났다고 보는 기준">어느 페이지에서든 2번 이내 클릭으로 문의 가능</td></tr>
+            <tr><td data-label="기간">11~12주차</td><td data-label="할 일">유입 키워드 확인 후 소액 광고 테스트</td><td data-label="이때까지 끝났다고 보는 기준">유입 키워드와 문의 경로가 표로 정리됨</td></tr>
           </tbody>
         </table>
       </div>

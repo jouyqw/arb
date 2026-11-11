@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -140,12 +148,12 @@
             <tr><th>비교 항목</th><th>자사 콘텐츠 보강부터</th><th>외부 언급 늘리기부터</th></tr>
           </thead>
           <tbody>
-            <tr><td>적합한 상황</td><td>글이 10편 미만이거나 서비스 설명이 애매할 때</td><td>글은 20편 이상인데 밖에서 언급이 거의 없을 때</td></tr>
-            <tr><td>초기 작업량</td><td>1편당 1~3시간, 월 2~4편 기준</td><td>채널 1곳당 20~40분, 첫 달에 5~10곳</td></tr>
-            <tr><td>효과가 보이는 시점</td><td>보통 2~4개월</td><td>보통 3~6개월</td></tr>
-            <tr><td>직접 하기 난이도</td><td>글쓰기 부담이 크지만 통제는 쉬움</td><td>작업은 단순하지만 반영 시점을 통제 못 함</td></tr>
-            <tr><td>잘못되면 생기는 일</td><td>글은 많은데 인용은 안 됨</td><td>언급은 있는데 정보가 서로 어긋남</td></tr>
-            <tr><td>권장 순서</td><td>1순위 — 원본을 먼저 고정</td><td>2순위 — 원본이 정리된 뒤 확장</td></tr>
+            <tr><td data-label="비교 항목">적합한 상황</td><td data-label="자사 콘텐츠 보강부터">글이 10편 미만이거나 서비스 설명이 애매할 때</td><td data-label="외부 언급 늘리기부터">글은 20편 이상인데 밖에서 언급이 거의 없을 때</td></tr>
+            <tr><td data-label="비교 항목">초기 작업량</td><td data-label="자사 콘텐츠 보강부터">1편당 1~3시간, 월 2~4편 기준</td><td data-label="외부 언급 늘리기부터">채널 1곳당 20~40분, 첫 달에 5~10곳</td></tr>
+            <tr><td data-label="비교 항목">효과가 보이는 시점</td><td data-label="자사 콘텐츠 보강부터">보통 2~4개월</td><td data-label="외부 언급 늘리기부터">보통 3~6개월</td></tr>
+            <tr><td data-label="비교 항목">직접 하기 난이도</td><td data-label="자사 콘텐츠 보강부터">글쓰기 부담이 크지만 통제는 쉬움</td><td data-label="외부 언급 늘리기부터">작업은 단순하지만 반영 시점을 통제 못 함</td></tr>
+            <tr><td data-label="비교 항목">잘못되면 생기는 일</td><td data-label="자사 콘텐츠 보강부터">글은 많은데 인용은 안 됨</td><td data-label="외부 언급 늘리기부터">언급은 있는데 정보가 서로 어긋남</td></tr>
+            <tr><td data-label="비교 항목">권장 순서</td><td data-label="자사 콘텐츠 보강부터">1순위 — 원본을 먼저 고정</td><td data-label="외부 언급 늘리기부터">2순위 — 원본이 정리된 뒤 확장</td></tr>
           </tbody>
         </table>
       </div>
@@ -169,11 +177,11 @@
             <tr><th>점검 항목</th><th>확인 내용</th><th>어긋날 때 조치</th></tr>
           </thead>
           <tbody>
-            <tr><td>상호·주소</td><td>모든 채널에서 동일한지</td><td>사업자등록증 표기를 기준으로 통일</td></tr>
-            <tr><td>대표 서비스</td><td>무엇을 하는 곳인지 명확한지</td><td>한 문장 소개문을 정해 전 채널에 같게 적용</td></tr>
-            <tr><td>외부 언급</td><td>매체·디렉터리·후기에 노출되는지</td><td>노출이 없는 유형부터 1~2곳 추가</td></tr>
-            <tr><td>최신성</td><td>오래된 정보가 남아 있지 않은지</td><td>옛 주소·번호·종료 서비스는 수정 또는 삭제 요청</td></tr>
-            <tr><td>연락 창구</td><td>전화·문의 경로가 실제로 연결되는지</td><td>끊긴 번호와 링크를 현재 창구로 교체</td></tr>
+            <tr><td data-label="점검 항목">상호·주소</td><td data-label="확인 내용">모든 채널에서 동일한지</td><td data-label="어긋날 때 조치">사업자등록증 표기를 기준으로 통일</td></tr>
+            <tr><td data-label="점검 항목">대표 서비스</td><td data-label="확인 내용">무엇을 하는 곳인지 명확한지</td><td data-label="어긋날 때 조치">한 문장 소개문을 정해 전 채널에 같게 적용</td></tr>
+            <tr><td data-label="점검 항목">외부 언급</td><td data-label="확인 내용">매체·디렉터리·후기에 노출되는지</td><td data-label="어긋날 때 조치">노출이 없는 유형부터 1~2곳 추가</td></tr>
+            <tr><td data-label="점검 항목">최신성</td><td data-label="확인 내용">오래된 정보가 남아 있지 않은지</td><td data-label="어긋날 때 조치">옛 주소·번호·종료 서비스는 수정 또는 삭제 요청</td></tr>
+            <tr><td data-label="점검 항목">연락 창구</td><td data-label="확인 내용">전화·문의 경로가 실제로 연결되는지</td><td data-label="어긋날 때 조치">끊긴 번호와 링크를 현재 창구로 교체</td></tr>
           </tbody>
         </table>
       </div>
@@ -197,16 +205,16 @@
       <p>채널 정리 자체는 대부분 비용이 거의 들지 않고, 사람 손으로 첫 달 5~10시간 정도를 잡으면 시작할 수 있습니다.</p>
       <p>돈이 드는 쪽은 언급을 만드는 작업이 아니라 콘텐츠를 만들고 유지하는 작업입니다.</p>
       <p>아래 범위는 업종과 지역, 경쟁 상황에 따라 달라지므로 판단 기준으로만 참고하시면 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>작업</th><th>직접 할 때 드는 시간</th><th>외부에 맡길 때 비용 범위</th><th>효과 확인 시점</th></tr>
           </thead>
           <tbody>
-            <tr><td>채널 정보 통일</td><td>첫 달 5~10시간, 이후 월 30분</td><td>대체로 별도 비용 없음</td><td>1~2개월</td></tr>
-            <tr><td>디렉터리·플레이스 정비</td><td>곳당 20~40분</td><td>무료~연 10만원대 유료 등록이 섞임</td><td>1~3개월</td></tr>
-            <tr><td>후기 요청 체계 만들기</td><td>초기 3~5시간, 이후 응대 시간</td><td>문구·안내물 제작 수준에 따라 다름</td><td>2~4개월</td></tr>
-            <tr><td>자사 콘텐츠 보강</td><td>1편당 1~3시간</td><td>월 단위 대행 계약이 일반적</td><td>2~6개월</td></tr>
+            <tr><td data-label="작업">채널 정보 통일</td><td data-label="직접 할 때 드는 시간">첫 달 5~10시간, 이후 월 30분</td><td data-label="외부에 맡길 때 비용 범위">대체로 별도 비용 없음</td><td data-label="효과 확인 시점">1~2개월</td></tr>
+            <tr><td data-label="작업">디렉터리·플레이스 정비</td><td data-label="직접 할 때 드는 시간">곳당 20~40분</td><td data-label="외부에 맡길 때 비용 범위">무료~연 10만원대 유료 등록이 섞임</td><td data-label="효과 확인 시점">1~3개월</td></tr>
+            <tr><td data-label="작업">후기 요청 체계 만들기</td><td data-label="직접 할 때 드는 시간">초기 3~5시간, 이후 응대 시간</td><td data-label="외부에 맡길 때 비용 범위">문구·안내물 제작 수준에 따라 다름</td><td data-label="효과 확인 시점">2~4개월</td></tr>
+            <tr><td data-label="작업">자사 콘텐츠 보강</td><td data-label="직접 할 때 드는 시간">1편당 1~3시간</td><td data-label="외부에 맡길 때 비용 범위">월 단위 대행 계약이 일반적</td><td data-label="효과 확인 시점">2~6개월</td></tr>
           </tbody>
         </table>
       </div>

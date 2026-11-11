@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -134,11 +142,11 @@
             <tr><th>서치콘솔에 뜨는 사유</th><th>실제 원인</th><th>조치</th></tr>
           </thead>
           <tbody>
-            <tr><td>&#39;noindex&#39; 태그에 의해 제외됨</td><td>페이지가 색인 거부를 스스로 선언</td><td>meta robots 와 X-Robots-Tag 헤더 확인</td></tr>
-            <tr><td>robots.txt에 의해 차단됨</td><td>크롤러 접근 자체를 막음</td><td>Disallow 규칙 수정</td></tr>
-            <tr><td>리디렉션이 포함된 페이지</td><td>제출한 주소가 다른 주소로 넘어감</td><td>사이트맵·canonical 을 최종 주소로</td></tr>
-            <tr><td>크롤링됨 - 현재 색인 생성 안 됨</td><td>내용이 얕거나 중복으로 판단</td><td>본문 보강, 중복 페이지 정리</td></tr>
-            <tr><td>발견됨 - 현재 색인 생성 안 됨</td><td>대기 중이거나 우선순위 낮음</td><td>내부링크 보강 후 기다림</td></tr>
+            <tr><td data-label="서치콘솔에 뜨는 사유">&#39;noindex&#39; 태그에 의해 제외됨</td><td data-label="실제 원인">페이지가 색인 거부를 스스로 선언</td><td data-label="조치">meta robots 와 X-Robots-Tag 헤더 확인</td></tr>
+            <tr><td data-label="서치콘솔에 뜨는 사유">robots.txt에 의해 차단됨</td><td data-label="실제 원인">크롤러 접근 자체를 막음</td><td data-label="조치">Disallow 규칙 수정</td></tr>
+            <tr><td data-label="서치콘솔에 뜨는 사유">리디렉션이 포함된 페이지</td><td data-label="실제 원인">제출한 주소가 다른 주소로 넘어감</td><td data-label="조치">사이트맵·canonical 을 최종 주소로</td></tr>
+            <tr><td data-label="서치콘솔에 뜨는 사유">크롤링됨 - 현재 색인 생성 안 됨</td><td data-label="실제 원인">내용이 얕거나 중복으로 판단</td><td data-label="조치">본문 보강, 중복 페이지 정리</td></tr>
+            <tr><td data-label="서치콘솔에 뜨는 사유">발견됨 - 현재 색인 생성 안 됨</td><td data-label="실제 원인">대기 중이거나 우선순위 낮음</td><td data-label="조치">내부링크 보강 후 기다림</td></tr>
           </tbody>
         </table>
       </div>
@@ -173,11 +181,11 @@
             <tr><th>비교 축</th><th>구글 서치콘솔</th><th>네이버 서치어드바이저</th></tr>
           </thead>
           <tbody>
-            <tr><td>소유권 확인 방법</td><td>HTML 파일 업로드·메타 태그·DNS</td><td>HTML 파일 업로드·메타 태그</td></tr>
-            <tr><td>개별 주소 요청</td><td>URL 검사에서 건별 색인 요청</td><td>웹페이지 수집 요청(계정별 일일 한도 있음)</td></tr>
-            <tr><td>원인 진단 화면</td><td>색인 생성 범위·URL 검사 사유 문구</td><td>웹마스터 도구 진단·수집 현황</td></tr>
-            <tr><td>평균 색인 기간</td><td>보통 1~7일</td><td>보통 3~14일</td></tr>
-            <tr><td>먼저 하기 좋은 업종</td><td>정보성 검색·전국 단위·해외 노출</td><td>지역 업종·서비스업·상호 검색 비중이 큰 곳</td></tr>
+            <tr><td data-label="비교 축">소유권 확인 방법</td><td data-label="구글 서치콘솔">HTML 파일 업로드·메타 태그·DNS</td><td data-label="네이버 서치어드바이저">HTML 파일 업로드·메타 태그</td></tr>
+            <tr><td data-label="비교 축">개별 주소 요청</td><td data-label="구글 서치콘솔">URL 검사에서 건별 색인 요청</td><td data-label="네이버 서치어드바이저">웹페이지 수집 요청(계정별 일일 한도 있음)</td></tr>
+            <tr><td data-label="비교 축">원인 진단 화면</td><td data-label="구글 서치콘솔">색인 생성 범위·URL 검사 사유 문구</td><td data-label="네이버 서치어드바이저">웹마스터 도구 진단·수집 현황</td></tr>
+            <tr><td data-label="비교 축">평균 색인 기간</td><td data-label="구글 서치콘솔">보통 1~7일</td><td data-label="네이버 서치어드바이저">보통 3~14일</td></tr>
+            <tr><td data-label="비교 축">먼저 하기 좋은 업종</td><td data-label="구글 서치콘솔">정보성 검색·전국 단위·해외 노출</td><td data-label="네이버 서치어드바이저">지역 업종·서비스업·상호 검색 비중이 큰 곳</td></tr>
           </tbody>
         </table>
       </div>
@@ -198,11 +206,11 @@
             <tr><th>비교 축</th><th>직접 점검</th><th>제작업체·대행사에 의뢰</th></tr>
           </thead>
           <tbody>
-            <tr><td>맞는 상황</td><td>워드프레스 체크박스·robots.txt 한 줄 수정</td><td>서버 헤더·배포 설정·대량 리디렉션 정리</td></tr>
-            <tr><td>필요한 것</td><td>서치콘솔 계정과 관리자 권한</td><td>소스·서버 접근 권한을 가진 담당자</td></tr>
-            <tr><td>걸리는 시간</td><td>점검 20~30분, 수정 10분 내외</td><td>협의 포함 2~5영업일</td></tr>
-            <tr><td>비용</td><td>없음</td><td>제작사 하자 처리면 무상, 별건 점검·수정 의뢰는 보통 20~80만 원 선에서 견적이 나옵니다</td></tr>
-            <tr><td>위험</td><td>헤더 문제를 놓쳐 원인을 못 찾을 수 있음</td><td>설명 없이 설정만 바뀌면 다음에 또 모름</td></tr>
+            <tr><td data-label="비교 축">맞는 상황</td><td data-label="직접 점검">워드프레스 체크박스·robots.txt 한 줄 수정</td><td data-label="제작업체·대행사에 의뢰">서버 헤더·배포 설정·대량 리디렉션 정리</td></tr>
+            <tr><td data-label="비교 축">필요한 것</td><td data-label="직접 점검">서치콘솔 계정과 관리자 권한</td><td data-label="제작업체·대행사에 의뢰">소스·서버 접근 권한을 가진 담당자</td></tr>
+            <tr><td data-label="비교 축">걸리는 시간</td><td data-label="직접 점검">점검 20~30분, 수정 10분 내외</td><td data-label="제작업체·대행사에 의뢰">협의 포함 2~5영업일</td></tr>
+            <tr><td data-label="비교 축">비용</td><td data-label="직접 점검">없음</td><td data-label="제작업체·대행사에 의뢰">제작사 하자 처리면 무상, 별건 점검·수정 의뢰는 보통 20~80만 원 선에서 견적이 나옵니다</td></tr>
+            <tr><td data-label="비교 축">위험</td><td data-label="직접 점검">헤더 문제를 놓쳐 원인을 못 찾을 수 있음</td><td data-label="제작업체·대행사에 의뢰">설명 없이 설정만 바뀌면 다음에 또 모름</td></tr>
           </tbody>
         </table>
       </div>

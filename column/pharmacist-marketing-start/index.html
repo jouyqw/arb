@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -134,10 +142,10 @@
             <tr><th>구분</th><th>병원·의원</th><th>약국·건강 상담</th></tr>
           </thead>
           <tbody>
-            <tr><td>주로 적용되는 규정</td><td>의료법의 의료광고 조항</td><td>약사법의 의약품 광고 제한, 식품·건강기능식품 표시광고 규정</td></tr>
-            <tr><td>사전심의</td><td>매체·형태에 따라 대상이 됨</td><td>의료광고 심의 대상 아님. 다만 품목 광고는 별도 자율심의가 걸릴 수 있음</td></tr>
-            <tr><td>가장 자주 걸리는 축</td><td>치료 효과 단정, 환자 후기 활용</td><td>의약품 효능 표현, 식품의 질병 연결, 가격 유인</td></tr>
-            <tr><td>표현을 점검할 시점</td><td>원고 단계에서 심의 기준으로 확인</td><td>원고 단계에서 자체 기준을 만들어 확인</td></tr>
+            <tr><td data-label="구분">주로 적용되는 규정</td><td data-label="병원·의원">의료법의 의료광고 조항</td><td data-label="약국·건강 상담">약사법의 의약품 광고 제한, 식품·건강기능식품 표시광고 규정</td></tr>
+            <tr><td data-label="구분">사전심의</td><td data-label="병원·의원">매체·형태에 따라 대상이 됨</td><td data-label="약국·건강 상담">의료광고 심의 대상 아님. 다만 품목 광고는 별도 자율심의가 걸릴 수 있음</td></tr>
+            <tr><td data-label="구분">가장 자주 걸리는 축</td><td data-label="병원·의원">치료 효과 단정, 환자 후기 활용</td><td data-label="약국·건강 상담">의약품 효능 표현, 식품의 질병 연결, 가격 유인</td></tr>
+            <tr><td data-label="구분">표현을 점검할 시점</td><td data-label="병원·의원">원고 단계에서 심의 기준으로 확인</td><td data-label="약국·건강 상담">원고 단계에서 자체 기준을 만들어 확인</td></tr>
           </tbody>
         </table>
       </div>
@@ -154,11 +162,11 @@
             <tr><th>피해야 할 표현</th><th>왜 문제가 되나</th><th>대신 쓸 수 있는 형태</th></tr>
           </thead>
           <tbody>
-            <tr><td>특효가 있다, 확실히 낫는다</td><td>효능을 단정하는 표현</td><td>복용 시 확인해야 할 점을 안내하는 문장</td></tr>
-            <tr><td>면역력을 높여 감염을 막아 줍니다</td><td>식품을 질병 예방과 연결</td><td>제품에 허용된 기능성 문구 범위 안에서만 표기</td></tr>
-            <tr><td>조제비 할인, 방문 시 사은품 증정</td><td>구매·조제를 유인하는 성격</td><td>운영 시간, 대기 시간, 상담 가능 범위 안내</td></tr>
-            <tr><td>지역에서 가장 잘한다는 식의 문구</td><td>검증이 어려운 최상급 표현</td><td>몇 년째 운영 중인지, 어떤 상담이 많은지 사실로 기술</td></tr>
-            <tr><td>손님 후기: 먹고 바로 좋아졌어요</td><td>체험 형식의 효능 표현</td><td>자주 받는 질문과 답변 형식으로 전환</td></tr>
+            <tr><td data-label="피해야 할 표현">특효가 있다, 확실히 낫는다</td><td data-label="왜 문제가 되나">효능을 단정하는 표현</td><td data-label="대신 쓸 수 있는 형태">복용 시 확인해야 할 점을 안내하는 문장</td></tr>
+            <tr><td data-label="피해야 할 표현">면역력을 높여 감염을 막아 줍니다</td><td data-label="왜 문제가 되나">식품을 질병 예방과 연결</td><td data-label="대신 쓸 수 있는 형태">제품에 허용된 기능성 문구 범위 안에서만 표기</td></tr>
+            <tr><td data-label="피해야 할 표현">조제비 할인, 방문 시 사은품 증정</td><td data-label="왜 문제가 되나">구매·조제를 유인하는 성격</td><td data-label="대신 쓸 수 있는 형태">운영 시간, 대기 시간, 상담 가능 범위 안내</td></tr>
+            <tr><td data-label="피해야 할 표현">지역에서 가장 잘한다는 식의 문구</td><td data-label="왜 문제가 되나">검증이 어려운 최상급 표현</td><td data-label="대신 쓸 수 있는 형태">몇 년째 운영 중인지, 어떤 상담이 많은지 사실로 기술</td></tr>
+            <tr><td data-label="피해야 할 표현">손님 후기: 먹고 바로 좋아졌어요</td><td data-label="왜 문제가 되나">체험 형식의 효능 표현</td><td data-label="대신 쓸 수 있는 형태">자주 받는 질문과 답변 형식으로 전환</td></tr>
           </tbody>
         </table>
       </div>
@@ -206,12 +214,12 @@
             <tr><th>비교 축</th><th>직접 운영</th><th>대행 위탁</th></tr>
           </thead>
           <tbody>
-            <tr><td>주당 필요 시간</td><td>3~5시간</td><td>1시간 내외 (소재 전달과 검수)</td></tr>
-            <tr><td>월 비용 범위</td><td>0~30만원</td><td>50~150만원 (범위에 따라)</td></tr>
-            <tr><td>표현 규정 판단</td><td>약국이 직접, 기준 문서 필수</td><td>대행이 초안, 게시 전 약국 검수 필수</td></tr>
-            <tr><td>초기 3개월 진행 속도</td><td>느리지만 기준이 몸에 남음</td><td>빠르지만 소재 공급이 끊기면 멈춤</td></tr>
-            <tr><td>적합한 경우</td><td>1인 약국, 질문 소재가 많고 시간이 있는 곳</td><td>조제 건수가 많아 손이 비지 않는 곳</td></tr>
-            <tr><td>중단 시 남는 것</td><td>쌓인 글과 기준이 그대로 남음</td><td>계약 조건에 따라 원고 소유 확인 필요</td></tr>
+            <tr><td data-label="비교 축">주당 필요 시간</td><td data-label="직접 운영">3~5시간</td><td data-label="대행 위탁">1시간 내외 (소재 전달과 검수)</td></tr>
+            <tr><td data-label="비교 축">월 비용 범위</td><td data-label="직접 운영">0~30만원</td><td data-label="대행 위탁">50~150만원 (범위에 따라)</td></tr>
+            <tr><td data-label="비교 축">표현 규정 판단</td><td data-label="직접 운영">약국이 직접, 기준 문서 필수</td><td data-label="대행 위탁">대행이 초안, 게시 전 약국 검수 필수</td></tr>
+            <tr><td data-label="비교 축">초기 3개월 진행 속도</td><td data-label="직접 운영">느리지만 기준이 몸에 남음</td><td data-label="대행 위탁">빠르지만 소재 공급이 끊기면 멈춤</td></tr>
+            <tr><td data-label="비교 축">적합한 경우</td><td data-label="직접 운영">1인 약국, 질문 소재가 많고 시간이 있는 곳</td><td data-label="대행 위탁">조제 건수가 많아 손이 비지 않는 곳</td></tr>
+            <tr><td data-label="비교 축">중단 시 남는 것</td><td data-label="직접 운영">쌓인 글과 기준이 그대로 남음</td><td data-label="대행 위탁">계약 조건에 따라 원고 소유 확인 필요</td></tr>
           </tbody>
         </table>
       </div>
@@ -229,11 +237,11 @@
             <tr><th>확인 항목</th><th>확인 주기</th><th>판단 기준</th></tr>
           </thead>
           <tbody>
-            <tr><td>지역 검색 조회·길찾기</td><td>주 1회</td><td>정보 갱신 후 2~6주 안에 움직이는가</td></tr>
-            <tr><td>홈페이지 색인 수</td><td>월 1회</td><td>쓴 글이 검색에 등록되고 있는가</td></tr>
-            <tr><td>검색어 구성</td><td>월 1회</td><td>상호명 외에 상담 질문형 검색어가 늘고 있는가</td></tr>
-            <tr><td>문의·전화 건수</td><td>월 1회</td><td>숫자보다 어떤 질문이 늘었는지를 봄</td></tr>
-            <tr><td>표현 점검</td><td>분기 1회</td><td>규정 개정 이후 걸리는 문구가 남아 있지 않은가</td></tr>
+            <tr><td data-label="확인 항목">지역 검색 조회·길찾기</td><td data-label="확인 주기">주 1회</td><td data-label="판단 기준">정보 갱신 후 2~6주 안에 움직이는가</td></tr>
+            <tr><td data-label="확인 항목">홈페이지 색인 수</td><td data-label="확인 주기">월 1회</td><td data-label="판단 기준">쓴 글이 검색에 등록되고 있는가</td></tr>
+            <tr><td data-label="확인 항목">검색어 구성</td><td data-label="확인 주기">월 1회</td><td data-label="판단 기준">상호명 외에 상담 질문형 검색어가 늘고 있는가</td></tr>
+            <tr><td data-label="확인 항목">문의·전화 건수</td><td data-label="확인 주기">월 1회</td><td data-label="판단 기준">숫자보다 어떤 질문이 늘었는지를 봄</td></tr>
+            <tr><td data-label="확인 항목">표현 점검</td><td data-label="확인 주기">분기 1회</td><td data-label="판단 기준">규정 개정 이후 걸리는 문구가 남아 있지 않은가</td></tr>
           </tbody>
         </table>
       </div>

@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -123,16 +131,16 @@
       <h2>세무사상담 문의는 실제로 어떤 경로로 들어오나요?</h2>
       <p>크게 네 경로입니다. 검색으로 들어온 글, 플레이스, 검색광고, 그리고 기존 거래처 소개입니다. 이 중 기장처럼 1년 이상 이어지는 계약은 <strong>글을 읽고 들어온 문의에서 수임률이 가장 높게 나옵니다.</strong></p>
       <p>글을 읽고 연락한 사람은 &quot;이 사무소가 내 상황을 안다&quot;는 판단을 한 번 끝낸 상태로 전화를 걸기 때문입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>경로</th><th>연락하는 사람의 상태</th><th>자리 잡는 기간</th><th>제 판단</th></tr>
           </thead>
           <tbody>
-            <tr><td>칼럼·상담 글 검색</td><td>자기 상황을 검색해 읽고 들어옴</td><td>3~6개월</td><td>기장 수임은 여기부터 만듭니다</td></tr>
-            <tr><td>네이버 플레이스</td><td>가까운 사무실을 찾는 중</td><td>2~6주</td><td>정보 통일만 해도 효과가 납니다</td></tr>
-            <tr><td>검색광고</td><td>여러 곳을 동시에 비교 중</td><td>당일</td><td>받아 줄 페이지가 생긴 뒤에 켭니다</td></tr>
-            <tr><td>거래처 소개</td><td>이미 신뢰를 넘겨받은 상태</td><td>해당 없음</td><td>가장 좋지만 양을 조절할 수 없습니다</td></tr>
+            <tr><td data-label="경로">칼럼·상담 글 검색</td><td data-label="연락하는 사람의 상태">자기 상황을 검색해 읽고 들어옴</td><td data-label="자리 잡는 기간">3~6개월</td><td data-label="제 판단">기장 수임은 여기부터 만듭니다</td></tr>
+            <tr><td data-label="경로">네이버 플레이스</td><td data-label="연락하는 사람의 상태">가까운 사무실을 찾는 중</td><td data-label="자리 잡는 기간">2~6주</td><td data-label="제 판단">정보 통일만 해도 효과가 납니다</td></tr>
+            <tr><td data-label="경로">검색광고</td><td data-label="연락하는 사람의 상태">여러 곳을 동시에 비교 중</td><td data-label="자리 잡는 기간">당일</td><td data-label="제 판단">받아 줄 페이지가 생긴 뒤에 켭니다</td></tr>
+            <tr><td data-label="경로">거래처 소개</td><td data-label="연락하는 사람의 상태">이미 신뢰를 넘겨받은 상태</td><td data-label="자리 잡는 기간">해당 없음</td><td data-label="제 판단">가장 좋지만 양을 조절할 수 없습니다</td></tr>
           </tbody>
         </table>
       </div>

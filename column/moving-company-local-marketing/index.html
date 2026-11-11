@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -138,11 +146,11 @@
             <tr><th>방문자의 질문</th><th>정보가 없을 때</th><th>정보가 있을 때</th></tr>
           </thead>
           <tbody>
-            <tr><td>얼마인가요</td><td>다른 곳과 가격만 비교</td><td>조건에 따른 범위로 이해</td></tr>
-            <tr><td>뭘 해 주나요</td><td>다 해 주겠지 하고 기대</td><td>포함·미포함이 명확</td></tr>
-            <tr><td>문제 생기면요</td><td>불안해서 이탈</td><td>처리 기준을 보고 안심</td></tr>
-            <tr><td>믿을 만한가요</td><td>후기 개수로 판단</td><td>실제 작업 사례로 판단</td></tr>
-            <tr><td>언제 되나요</td><td>전화로 물어봐야 함</td><td>가능 일정과 마감 기준을 확인</td></tr>
+            <tr><td data-label="방문자의 질문">얼마인가요</td><td data-label="정보가 없을 때">다른 곳과 가격만 비교</td><td data-label="정보가 있을 때">조건에 따른 범위로 이해</td></tr>
+            <tr><td data-label="방문자의 질문">뭘 해 주나요</td><td data-label="정보가 없을 때">다 해 주겠지 하고 기대</td><td data-label="정보가 있을 때">포함·미포함이 명확</td></tr>
+            <tr><td data-label="방문자의 질문">문제 생기면요</td><td data-label="정보가 없을 때">불안해서 이탈</td><td data-label="정보가 있을 때">처리 기준을 보고 안심</td></tr>
+            <tr><td data-label="방문자의 질문">믿을 만한가요</td><td data-label="정보가 없을 때">후기 개수로 판단</td><td data-label="정보가 있을 때">실제 작업 사례로 판단</td></tr>
+            <tr><td data-label="방문자의 질문">언제 되나요</td><td data-label="정보가 없을 때">전화로 물어봐야 함</td><td data-label="정보가 있을 때">가능 일정과 마감 기준을 확인</td></tr>
           </tbody>
         </table>
       </div>
@@ -155,18 +163,18 @@
       <p>엘리베이터 유무, 사다리차 필요 여부, 짐의 양, 폐기물 처리처럼 실제로 금액을 좌우하는 항목이 여기에 해당합니다.</p>
       <p>이 대화는 상담에서 거의 매번 나옵니다. 적을지 말지를 몇 달 미루는 경우를 자주 봤고, 그 몇 달치 문의는 전부 가격만 묻는 문의로 흘러갑니다.</p>
       <p>아래 표는 같은 견적 페이지를 세 가지 방식으로 적었을 때 무엇이 달라지는지를 정리한 것입니다. 어느 쪽을 고를지 한 번에 판단하실 수 있습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>비교 기준</th><th>금액을 아예 적지 않음</th><th>낮은 금액만 크게 강조</th><th>구간과 조건을 함께 공개</th></tr>
           </thead>
           <tbody>
-            <tr><td>문의 건수</td><td>적게 들어옴</td><td>가장 많이 들어옴</td><td>중간 수준으로 들어옴</td></tr>
-            <tr><td>문의의 성격</td><td>&quot;얼마예요&quot;가 첫마디</td><td>&quot;그 가격에 되나요&quot;가 첫마디</td><td>&quot;저희 조건은 이런데요&quot;가 첫마디</td></tr>
-            <tr><td>통화 시간</td><td>건당 10분 이상 설명 필요</td><td>금액 조정 실랑이로 길어짐</td><td>건당 3~5분으로 짧아짐</td></tr>
-            <tr><td>현장 견적 후 이탈</td><td>기대와 달라 이탈이 생김</td><td>금액이 올라가 이탈이 많음</td><td>미리 밝혀 이탈이 적음</td></tr>
-            <tr><td>계약까지 남는 비율</td><td>낮음</td><td>가장 낮음</td><td>가장 높음</td></tr>
-            <tr><td>이럴 때 권합니다</td><td>단가 편차가 극단적인 특수 작업</td><td>권하지 않습니다</td><td>이사·입주청소 대부분의 경우</td></tr>
+            <tr><td data-label="비교 기준">문의 건수</td><td data-label="금액을 아예 적지 않음">적게 들어옴</td><td data-label="낮은 금액만 크게 강조">가장 많이 들어옴</td><td data-label="구간과 조건을 함께 공개">중간 수준으로 들어옴</td></tr>
+            <tr><td data-label="비교 기준">문의의 성격</td><td data-label="금액을 아예 적지 않음">&quot;얼마예요&quot;가 첫마디</td><td data-label="낮은 금액만 크게 강조">&quot;그 가격에 되나요&quot;가 첫마디</td><td data-label="구간과 조건을 함께 공개">&quot;저희 조건은 이런데요&quot;가 첫마디</td></tr>
+            <tr><td data-label="비교 기준">통화 시간</td><td data-label="금액을 아예 적지 않음">건당 10분 이상 설명 필요</td><td data-label="낮은 금액만 크게 강조">금액 조정 실랑이로 길어짐</td><td data-label="구간과 조건을 함께 공개">건당 3~5분으로 짧아짐</td></tr>
+            <tr><td data-label="비교 기준">현장 견적 후 이탈</td><td data-label="금액을 아예 적지 않음">기대와 달라 이탈이 생김</td><td data-label="낮은 금액만 크게 강조">금액이 올라가 이탈이 많음</td><td data-label="구간과 조건을 함께 공개">미리 밝혀 이탈이 적음</td></tr>
+            <tr><td data-label="비교 기준">계약까지 남는 비율</td><td data-label="금액을 아예 적지 않음">낮음</td><td data-label="낮은 금액만 크게 강조">가장 낮음</td><td data-label="구간과 조건을 함께 공개">가장 높음</td></tr>
+            <tr><td data-label="비교 기준">이럴 때 권합니다</td><td data-label="금액을 아예 적지 않음">단가 편차가 극단적인 특수 작업</td><td data-label="낮은 금액만 크게 강조">권하지 않습니다</td><td data-label="구간과 조건을 함께 공개">이사·입주청소 대부분의 경우</td></tr>
           </tbody>
         </table>
       </div>
@@ -190,17 +198,17 @@
       <p>이런 질문에 답하는 글을 지역명과 함께 만들어 두면, 검색 유입과 계약률이 동시에 올라갑니다.</p>
       <p>상담하다 보면 &quot;그런 걸 누가 검색하냐&quot;고 하시는데, 실제 검색 데이터를 뽑아 보면 꾸준히 나옵니다.</p>
       <p>검색어를 따로 조사하지 않아도 됩니다. 2주 동안 걸려 온 전화의 첫 문장만 그대로 받아 적으면, 보통 20~30건에서 반복되는 표현이 5~7개로 좁혀집니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>검색어 유형</th><th>예시</th><th>방문자의 상태</th><th>우선순위</th></tr>
           </thead>
           <tbody>
-            <tr><td>지역 + 업종</td><td>○○동 이사업체</td><td>아직 여러 곳을 훑는 단계</td><td>낮음 — 경쟁이 심함</td></tr>
-            <tr><td>비용 확인형</td><td>원룸 포장이사 비용</td><td>예산을 잡는 단계</td><td>높음 — 금액표로 답할 수 있음</td></tr>
-            <tr><td>절차·시기형</td><td>입주청소 며칠 전에 하나요</td><td>날짜를 정하려는 단계</td><td>가장 높음 — 실행이 임박함</td></tr>
-            <tr><td>걱정 해소형</td><td>이사 중 파손되면 보상되나요</td><td>업체를 고르는 마지막 단계</td><td>높음 — 계약 직전</td></tr>
-            <tr><td>비교형</td><td>포장이사 반포장 차이</td><td>무엇을 살지 정하는 단계</td><td>중간 — 상담으로 이어짐</td></tr>
+            <tr><td data-label="검색어 유형">지역 + 업종</td><td data-label="예시">○○동 이사업체</td><td data-label="방문자의 상태">아직 여러 곳을 훑는 단계</td><td data-label="우선순위">낮음 — 경쟁이 심함</td></tr>
+            <tr><td data-label="검색어 유형">비용 확인형</td><td data-label="예시">원룸 포장이사 비용</td><td data-label="방문자의 상태">예산을 잡는 단계</td><td data-label="우선순위">높음 — 금액표로 답할 수 있음</td></tr>
+            <tr><td data-label="검색어 유형">절차·시기형</td><td data-label="예시">입주청소 며칠 전에 하나요</td><td data-label="방문자의 상태">날짜를 정하려는 단계</td><td data-label="우선순위">가장 높음 — 실행이 임박함</td></tr>
+            <tr><td data-label="검색어 유형">걱정 해소형</td><td data-label="예시">이사 중 파손되면 보상되나요</td><td data-label="방문자의 상태">업체를 고르는 마지막 단계</td><td data-label="우선순위">높음 — 계약 직전</td></tr>
+            <tr><td data-label="검색어 유형">비교형</td><td data-label="예시">포장이사 반포장 차이</td><td data-label="방문자의 상태">무엇을 살지 정하는 단계</td><td data-label="우선순위">중간 — 상담으로 이어짐</td></tr>
           </tbody>
         </table>
       </div>
@@ -216,12 +224,12 @@
             <tr><th>비교 기준</th><th>비교 견적 플랫폼</th><th>우리 홈페이지 유입</th></tr>
           </thead>
           <tbody>
-            <tr><td>반응 속도</td><td>등록 직후부터 문의가 들어옴</td><td>보통 3~6개월 차부터 움직임</td></tr>
-            <tr><td>건당 비용</td><td>문의마다 수수료나 광고비가 발생</td><td>글이 쌓인 뒤에는 추가 비용이 거의 없음</td></tr>
-            <tr><td>경쟁 구도</td><td>같은 문의를 여러 업체가 동시에 받음</td><td>우리를 지목해서 들어옴</td></tr>
-            <tr><td>계약률</td><td>낮은 편 — 가격으로 걸러짐</td><td>높은 편 — 조건을 보고 옴</td></tr>
-            <tr><td>규칙 변화</td><td>수수료·노출 기준이 바뀌면 바로 영향</td><td>우리 자산이라 덜 흔들림</td></tr>
-            <tr><td>이럴 때 비중을 둡니다</td><td>비수기 일감이 비었을 때</td><td>성수기 대비를 미리 할 때</td></tr>
+            <tr><td data-label="비교 기준">반응 속도</td><td data-label="비교 견적 플랫폼">등록 직후부터 문의가 들어옴</td><td data-label="우리 홈페이지 유입">보통 3~6개월 차부터 움직임</td></tr>
+            <tr><td data-label="비교 기준">건당 비용</td><td data-label="비교 견적 플랫폼">문의마다 수수료나 광고비가 발생</td><td data-label="우리 홈페이지 유입">글이 쌓인 뒤에는 추가 비용이 거의 없음</td></tr>
+            <tr><td data-label="비교 기준">경쟁 구도</td><td data-label="비교 견적 플랫폼">같은 문의를 여러 업체가 동시에 받음</td><td data-label="우리 홈페이지 유입">우리를 지목해서 들어옴</td></tr>
+            <tr><td data-label="비교 기준">계약률</td><td data-label="비교 견적 플랫폼">낮은 편 — 가격으로 걸러짐</td><td data-label="우리 홈페이지 유입">높은 편 — 조건을 보고 옴</td></tr>
+            <tr><td data-label="비교 기준">규칙 변화</td><td data-label="비교 견적 플랫폼">수수료·노출 기준이 바뀌면 바로 영향</td><td data-label="우리 홈페이지 유입">우리 자산이라 덜 흔들림</td></tr>
+            <tr><td data-label="비교 기준">이럴 때 비중을 둡니다</td><td data-label="비교 견적 플랫폼">비수기 일감이 비었을 때</td><td data-label="우리 홈페이지 유입">성수기 대비를 미리 할 때</td></tr>
           </tbody>
         </table>
       </div>

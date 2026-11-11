@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -143,12 +151,12 @@
             <tr><th>비교 축</th><th>회사 소개형 제목</th><th>검색 의도형 제목</th></tr>
           </thead>
           <tbody>
-            <tr><td>예시</td><td>○○세무회계 서비스 안내</td><td>법인 설립 첫해 세무 신고는 무엇부터 하나요?</td></tr>
-            <tr><td>검색 유입</td><td>업체명을 이미 아는 사람만</td><td>문제를 검색하는 신규 방문자</td></tr>
-            <tr><td>AI 답변 인용</td><td>인용할 문장이 거의 없음</td><td>질문과 답이 짝지어져 인용 여지가 있음</td></tr>
-            <tr><td>작성 난이도</td><td>낮음</td><td>중간 — 실제 상담 내용이 필요함</td></tr>
-            <tr><td>적합한 페이지</td><td>소개·연혁 등 고정 페이지</td><td>칼럼·FAQ 등 누적 페이지</td></tr>
-            <tr><td>권장 편수</td><td>1~3개면 충분</td><td>월 2~6편으로 계속 누적</td></tr>
+            <tr><td data-label="비교 축">예시</td><td data-label="회사 소개형 제목">○○세무회계 서비스 안내</td><td data-label="검색 의도형 제목">법인 설립 첫해 세무 신고는 무엇부터 하나요?</td></tr>
+            <tr><td data-label="비교 축">검색 유입</td><td data-label="회사 소개형 제목">업체명을 이미 아는 사람만</td><td data-label="검색 의도형 제목">문제를 검색하는 신규 방문자</td></tr>
+            <tr><td data-label="비교 축">AI 답변 인용</td><td data-label="회사 소개형 제목">인용할 문장이 거의 없음</td><td data-label="검색 의도형 제목">질문과 답이 짝지어져 인용 여지가 있음</td></tr>
+            <tr><td data-label="비교 축">작성 난이도</td><td data-label="회사 소개형 제목">낮음</td><td data-label="검색 의도형 제목">중간 — 실제 상담 내용이 필요함</td></tr>
+            <tr><td data-label="비교 축">적합한 페이지</td><td data-label="회사 소개형 제목">소개·연혁 등 고정 페이지</td><td data-label="검색 의도형 제목">칼럼·FAQ 등 누적 페이지</td></tr>
+            <tr><td data-label="비교 축">권장 편수</td><td data-label="회사 소개형 제목">1~3개면 충분</td><td data-label="검색 의도형 제목">월 2~6편으로 계속 누적</td></tr>
           </tbody>
         </table>
       </div>
@@ -180,12 +188,12 @@
             <tr><th>비교 축</th><th>네이버 중심</th><th>구글·AI 검색 중심</th></tr>
           </thead>
           <tbody>
-            <tr><td>핵심 자산</td><td>플레이스 등록, 후기, 블로그</td><td>홈페이지 칼럼, 구조화 데이터</td></tr>
-            <tr><td>효과가 보이는 시점</td><td>등록·후기 확보 후 1~2개월</td><td>발행 후 2~6개월</td></tr>
-            <tr><td>유리한 업종</td><td>병원·치과·한의원 등 방문 진료</td><td>법률·세무·노무 등 상담 비교형</td></tr>
-            <tr><td>필요한 작업량</td><td>지속적인 후기·소식 관리</td><td>월 2~6편의 칼럼 누적</td></tr>
-            <tr><td>홈페이지 의존도</td><td>낮음 — 플레이스가 관문</td><td>높음 — 본문 품질이 그대로 반영</td></tr>
-            <tr><td>먼저 손댈 기준</td><td>지역명 검색 문의가 많을 때</td><td>질문형 검색 문의가 많을 때</td></tr>
+            <tr><td data-label="비교 축">핵심 자산</td><td data-label="네이버 중심">플레이스 등록, 후기, 블로그</td><td data-label="구글·AI 검색 중심">홈페이지 칼럼, 구조화 데이터</td></tr>
+            <tr><td data-label="비교 축">효과가 보이는 시점</td><td data-label="네이버 중심">등록·후기 확보 후 1~2개월</td><td data-label="구글·AI 검색 중심">발행 후 2~6개월</td></tr>
+            <tr><td data-label="비교 축">유리한 업종</td><td data-label="네이버 중심">병원·치과·한의원 등 방문 진료</td><td data-label="구글·AI 검색 중심">법률·세무·노무 등 상담 비교형</td></tr>
+            <tr><td data-label="비교 축">필요한 작업량</td><td data-label="네이버 중심">지속적인 후기·소식 관리</td><td data-label="구글·AI 검색 중심">월 2~6편의 칼럼 누적</td></tr>
+            <tr><td data-label="비교 축">홈페이지 의존도</td><td data-label="네이버 중심">낮음 — 플레이스가 관문</td><td data-label="구글·AI 검색 중심">높음 — 본문 품질이 그대로 반영</td></tr>
+            <tr><td data-label="비교 축">먼저 손댈 기준</td><td data-label="네이버 중심">지역명 검색 문의가 많을 때</td><td data-label="구글·AI 검색 중심">질문형 검색 문의가 많을 때</td></tr>
           </tbody>
         </table>
       </div>
@@ -204,11 +212,11 @@
             <tr><th>항목</th><th>직접 할 때 드는 시간</th><th>외주 비용 범위(월)</th></tr>
           </thead>
           <tbody>
-            <tr><td>URL·색인 구조 정리</td><td>초기 10~20시간</td><td>50만~300만원(1회성)</td></tr>
-            <tr><td>칼럼 작성</td><td>편당 2~4시간</td><td>편당 15만~50만원</td></tr>
-            <tr><td>플레이스·프로필 관리</td><td>월 2~4시간</td><td>20만~60만원</td></tr>
-            <tr><td>색인 요청·점검</td><td>편당 10~20분</td><td>구조 정리에 포함되는 경우 많음</td></tr>
-            <tr><td>성과 확인·주제 조정</td><td>월 2~3시간</td><td>10만~40만원</td></tr>
+            <tr><td data-label="항목">URL·색인 구조 정리</td><td data-label="직접 할 때 드는 시간">초기 10~20시간</td><td data-label="외주 비용 범위(월)">50만~300만원(1회성)</td></tr>
+            <tr><td data-label="항목">칼럼 작성</td><td data-label="직접 할 때 드는 시간">편당 2~4시간</td><td data-label="외주 비용 범위(월)">편당 15만~50만원</td></tr>
+            <tr><td data-label="항목">플레이스·프로필 관리</td><td data-label="직접 할 때 드는 시간">월 2~4시간</td><td data-label="외주 비용 범위(월)">20만~60만원</td></tr>
+            <tr><td data-label="항목">색인 요청·점검</td><td data-label="직접 할 때 드는 시간">편당 10~20분</td><td data-label="외주 비용 범위(월)">구조 정리에 포함되는 경우 많음</td></tr>
+            <tr><td data-label="항목">성과 확인·주제 조정</td><td data-label="직접 할 때 드는 시간">월 2~3시간</td><td data-label="외주 비용 범위(월)">10만~40만원</td></tr>
           </tbody>
         </table>
       </div>

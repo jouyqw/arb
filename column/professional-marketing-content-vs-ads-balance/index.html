@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -153,17 +161,17 @@
       <h2>광고와 콘텐츠, 무엇을 먼저 고를지 한 표로 보면?</h2>
       <p>지금 상황이 아래 표의 어느 줄에 해당하는지만 찾으시면, 먼저 손댈 축이 정해집니다.</p>
       <p>두 줄 이상에 걸친다면, 기간이 짧은 쪽을 먼저 처리하고 긴 쪽을 병행하시면 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>이런 상황이라면</th><th>먼저 고를 축</th><th>그 이유</th><th>권하는 기간</th></tr>
           </thead>
           <tbody>
-            <tr><td>3개월 안에 문의 수를 늘려야 한다</td><td>광고</td><td>집행 당일부터 노출이 시작됩니다</td><td>1~3개월 집중</td></tr>
-            <tr><td>새 분야나 새 지역을 막 열었다</td><td>광고</td><td>수요가 있는지부터 확인해야 합니다</td><td>2~4주 검증</td></tr>
-            <tr><td>문의는 오는데 계약으로 이어지지 않는다</td><td>콘텐츠</td><td>선택의 근거가 될 설명이 부족합니다</td><td>3~6개월 축적</td></tr>
-            <tr><td>매달 광고비가 부담으로 느껴진다</td><td>콘텐츠</td><td>광고 의존도를 낮추는 것이 먼저입니다</td><td>6개월 이상</td></tr>
-            <tr><td>경쟁 키워드 클릭 단가가 계속 오른다</td><td>콘텐츠</td><td>단가와 무관한 유입 경로가 필요합니다</td><td>6~12개월</td></tr>
+            <tr><td data-label="이런 상황이라면">3개월 안에 문의 수를 늘려야 한다</td><td data-label="먼저 고를 축">광고</td><td data-label="그 이유">집행 당일부터 노출이 시작됩니다</td><td data-label="권하는 기간">1~3개월 집중</td></tr>
+            <tr><td data-label="이런 상황이라면">새 분야나 새 지역을 막 열었다</td><td data-label="먼저 고를 축">광고</td><td data-label="그 이유">수요가 있는지부터 확인해야 합니다</td><td data-label="권하는 기간">2~4주 검증</td></tr>
+            <tr><td data-label="이런 상황이라면">문의는 오는데 계약으로 이어지지 않는다</td><td data-label="먼저 고를 축">콘텐츠</td><td data-label="그 이유">선택의 근거가 될 설명이 부족합니다</td><td data-label="권하는 기간">3~6개월 축적</td></tr>
+            <tr><td data-label="이런 상황이라면">매달 광고비가 부담으로 느껴진다</td><td data-label="먼저 고를 축">콘텐츠</td><td data-label="그 이유">광고 의존도를 낮추는 것이 먼저입니다</td><td data-label="권하는 기간">6개월 이상</td></tr>
+            <tr><td data-label="이런 상황이라면">경쟁 키워드 클릭 단가가 계속 오른다</td><td data-label="먼저 고를 축">콘텐츠</td><td data-label="그 이유">단가와 무관한 유입 경로가 필요합니다</td><td data-label="권하는 기간">6~12개월</td></tr>
           </tbody>
         </table>
       </div>
@@ -174,15 +182,15 @@
       <p>반응이 확인되면, 그 주제로 콘텐츠를 만들어 검색 노출의 뿌리를 내립니다.</p>
       <p>월 예산이 50만원 미만이면 광고와 콘텐츠를 동시에 제대로 굴리기 어렵습니다. 이때는 한 축을 6주 정도 먼저 돌리고 교대하는 방식이 낫습니다.</p>
       <p>저는 이 구간에서 항목을 늘리지 마시라고 말씀드립니다. 적은 예산을 네다섯 갈래로 쪼개면 어느 쪽도 판단할 만한 숫자가 안 모이고, 결국 6개월 뒤에 아무것도 결정하지 못한 채 다시 시작하게 됩니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>월 예산 구간</th><th>광고 운영</th><th>콘텐츠 분량</th><th>이때 볼 지표</th></tr>
           </thead>
           <tbody>
-            <tr><td>50만원 이하</td><td>키워드 2~3개만 소액 집행</td><td>월 1~2편, 직접 작성 위주</td><td>문의 수, 검색 유입 수</td></tr>
-            <tr><td>50~150만원</td><td>문의로 이어진 키워드만 확대</td><td>월 2~4편, 질문형 제목</td><td>문의당 비용, 유입 상위 키워드</td></tr>
-            <tr><td>150~300만원</td><td>지역·분야별로 나눠 운영</td><td>월 4편 이상 + 기존 글 보강</td><td>전환율, 재방문 비율</td></tr>
+            <tr><td data-label="월 예산 구간">50만원 이하</td><td data-label="광고 운영">키워드 2~3개만 소액 집행</td><td data-label="콘텐츠 분량">월 1~2편, 직접 작성 위주</td><td data-label="이때 볼 지표">문의 수, 검색 유입 수</td></tr>
+            <tr><td data-label="월 예산 구간">50~150만원</td><td data-label="광고 운영">문의로 이어진 키워드만 확대</td><td data-label="콘텐츠 분량">월 2~4편, 질문형 제목</td><td data-label="이때 볼 지표">문의당 비용, 유입 상위 키워드</td></tr>
+            <tr><td data-label="월 예산 구간">150~300만원</td><td data-label="광고 운영">지역·분야별로 나눠 운영</td><td data-label="콘텐츠 분량">월 4편 이상 + 기존 글 보강</td><td data-label="이때 볼 지표">전환율, 재방문 비율</td></tr>
           </tbody>
         </table>
       </div>
@@ -195,9 +203,9 @@
             <tr><th>단계</th><th>광고</th><th>콘텐츠</th></tr>
           </thead>
           <tbody>
-            <tr><td>시작기</td><td>핵심 키워드 소액 검증</td><td>반응 좋은 주제 1~2개 작성</td></tr>
-            <tr><td>성장기</td><td>전환 좋은 키워드 확대</td><td>질문형 칼럼을 꾸준히 축적</td></tr>
-            <tr><td>안정기</td><td>비용 효율 위주로 축소</td><td>검색·AI 인용으로 유입 유지</td></tr>
+            <tr><td data-label="단계">시작기</td><td data-label="광고">핵심 키워드 소액 검증</td><td data-label="콘텐츠">반응 좋은 주제 1~2개 작성</td></tr>
+            <tr><td data-label="단계">성장기</td><td data-label="광고">전환 좋은 키워드 확대</td><td data-label="콘텐츠">질문형 칼럼을 꾸준히 축적</td></tr>
+            <tr><td data-label="단계">안정기</td><td data-label="광고">비용 효율 위주로 축소</td><td data-label="콘텐츠">검색·AI 인용으로 유입 유지</td></tr>
           </tbody>
         </table>
       </div>
@@ -230,16 +238,16 @@
       <p>저는 이 지점에서 콘텐츠를 접는 결정을 여러 번 봤습니다. 발행 두 달 된 글을 광고와 같은 &#39;문의당 비용&#39;으로 재면 당연히 나쁜 숫자가 나오고, 그 숫자를 근거로 멈추게 됩니다. 그러면 가장 효과가 나오기 직전인 3~6개월 구간을 눈앞에서 버리는 셈입니다.</p>
       <p>확인 주기는 광고는 주 단위, 콘텐츠는 월 단위가 적당합니다. 콘텐츠를 주 단위로 보면 숫자가 흔들려 판단을 흐립니다.</p>
       <p>아래 표의 네 줄만 매달 같은 자리에 적어 두시면, 다음 달 예산을 어디로 옮길지 판단이 쉬워집니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>보는 항목</th><th>광고</th><th>콘텐츠</th><th>확인 주기</th></tr>
           </thead>
           <tbody>
-            <tr><td>유입</td><td>클릭 수와 클릭당 비용</td><td>검색 유입 수와 유입 키워드 수</td><td>주 1회 / 월 1회</td></tr>
-            <tr><td>반응</td><td>문의 전환율</td><td>체류 시간과 스크롤 깊이</td><td>월 1회</td></tr>
-            <tr><td>비용</td><td>문의 1건당 광고비</td><td>글 1편당 제작비와 누적 유입</td><td>월 1회</td></tr>
-            <tr><td>지속성</td><td>집행 중단 시 즉시 0</td><td>발행 후 6~12개월 유입 유지</td><td>분기 1회</td></tr>
+            <tr><td data-label="보는 항목">유입</td><td data-label="광고">클릭 수와 클릭당 비용</td><td data-label="콘텐츠">검색 유입 수와 유입 키워드 수</td><td data-label="확인 주기">주 1회 / 월 1회</td></tr>
+            <tr><td data-label="보는 항목">반응</td><td data-label="광고">문의 전환율</td><td data-label="콘텐츠">체류 시간과 스크롤 깊이</td><td data-label="확인 주기">월 1회</td></tr>
+            <tr><td data-label="보는 항목">비용</td><td data-label="광고">문의 1건당 광고비</td><td data-label="콘텐츠">글 1편당 제작비와 누적 유입</td><td data-label="확인 주기">월 1회</td></tr>
+            <tr><td data-label="보는 항목">지속성</td><td data-label="광고">집행 중단 시 즉시 0</td><td data-label="콘텐츠">발행 후 6~12개월 유입 유지</td><td data-label="확인 주기">분기 1회</td></tr>
           </tbody>
         </table>
       </div>

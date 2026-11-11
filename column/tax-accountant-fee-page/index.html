@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -123,16 +131,16 @@
       <p>적는 쪽입니다. 다만 숫자 하나로 적지 말고, 범위와 그 범위가 갈리는 기준을 같이 적습니다.</p>
       <p>비용 페이지를 열어 보는 사람은 이미 두세 곳을 비교하며 후보를 줄이는 단계입니다.</p>
       <p><strong>찾는 것은 싼 곳이 아니라 &#39;내 경우에는 얼마쯤이겠구나&#39;라는 감각입니다.</strong> 그 감각을 만들어 주지 못하면 비교 대상에서 빠집니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>표기 방식</th><th>문의 수</th><th>문의의 성격</th><th>제 판단</th></tr>
           </thead>
           <tbody>
-            <tr><td>금액을 전혀 적지 않음</td><td>줄어듭니다</td><td>금액 확인 전화가 먼저 옵니다</td><td>권하지 않습니다</td></tr>
-            <tr><td>단일 금액 하나만 적음</td><td>늘어납니다</td><td>금액만 비교하는 문의가 섞입니다</td><td>조건부로 씁니다</td></tr>
-            <tr><td>범위와 기준을 함께 적음</td><td>유지되거나 늘어납니다</td><td>자기 상황을 적어 문의합니다</td><td>기본으로 씁니다</td></tr>
-            <tr><td>견적 문의만 받음</td><td>가장 적습니다</td><td>소개를 받은 사람만 남습니다</td><td>소개 비중이 높을 때만</td></tr>
+            <tr><td data-label="표기 방식">금액을 전혀 적지 않음</td><td data-label="문의 수">줄어듭니다</td><td data-label="문의의 성격">금액 확인 전화가 먼저 옵니다</td><td data-label="제 판단">권하지 않습니다</td></tr>
+            <tr><td data-label="표기 방식">단일 금액 하나만 적음</td><td data-label="문의 수">늘어납니다</td><td data-label="문의의 성격">금액만 비교하는 문의가 섞입니다</td><td data-label="제 판단">조건부로 씁니다</td></tr>
+            <tr><td data-label="표기 방식">범위와 기준을 함께 적음</td><td data-label="문의 수">유지되거나 늘어납니다</td><td data-label="문의의 성격">자기 상황을 적어 문의합니다</td><td data-label="제 판단">기본으로 씁니다</td></tr>
+            <tr><td data-label="표기 방식">견적 문의만 받음</td><td data-label="문의 수">가장 적습니다</td><td data-label="문의의 성격">소개를 받은 사람만 남습니다</td><td data-label="제 판단">소개 비중이 높을 때만</td></tr>
           </tbody>
         </table>
       </div>
@@ -156,9 +164,9 @@
             <tr><th>기장료 구간(월)</th><th>흔히 포함되는 범위</th><th>따로 청구되는 항목</th></tr>
           </thead>
           <tbody>
-            <tr><td>10만원 전후</td><td>간편장부 기장, 부가세·원천세 신고</td><td>종합소득세 조정료, 4대보험 취득·상실</td></tr>
-            <tr><td>15만~20만원대</td><td>복식부기 기장, 급여대장 작성</td><td>법인세·소득세 조정료, 경정청구</td></tr>
-            <tr><td>25만~40만원대</td><td>월별 손익 보고, 증빙 수취 대행</td><td>세무조사 대응, 상속·증여 상담</td></tr>
+            <tr><td data-label="기장료 구간(월)">10만원 전후</td><td data-label="흔히 포함되는 범위">간편장부 기장, 부가세·원천세 신고</td><td data-label="따로 청구되는 항목">종합소득세 조정료, 4대보험 취득·상실</td></tr>
+            <tr><td data-label="기장료 구간(월)">15만~20만원대</td><td data-label="흔히 포함되는 범위">복식부기 기장, 급여대장 작성</td><td data-label="따로 청구되는 항목">법인세·소득세 조정료, 경정청구</td></tr>
+            <tr><td data-label="기장료 구간(월)">25만~40만원대</td><td data-label="흔히 포함되는 범위">월별 손익 보고, 증빙 수취 대행</td><td data-label="따로 청구되는 항목">세무조사 대응, 상속·증여 상담</td></tr>
           </tbody>
         </table>
       </div>

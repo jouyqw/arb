@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -138,11 +146,11 @@
             <tr><th>준비할 것</th><th>성수기에서 거꾸로 센 시점</th><th>그 시점인 이유</th></tr>
           </thead>
           <tbody>
-            <tr><td>검색용 칼럼(신규)</td><td>10~12주 전</td><td>색인과 순위 안착에 시간이 필요합니다</td></tr>
-            <tr><td>작년 글 갱신</td><td>4~6주 전</td><td>이미 색인된 주소라 반영이 비교적 빠릅니다</td></tr>
-            <tr><td>상담 안내·랜딩 페이지</td><td>3~4주 전</td><td>유입이 늘기 전에 받을 자리를 먼저 만듭니다</td></tr>
-            <tr><td>검색광고 소재</td><td>1~2주 전</td><td>게재하면 바로 노출되므로 미리 만들 필요가 적습니다</td></tr>
-            <tr><td>플레이스 소식·SNS</td><td>성수기 중</td><td>그 시점의 내용이라야 반응이 옵니다</td></tr>
+            <tr><td data-label="준비할 것">검색용 칼럼(신규)</td><td data-label="성수기에서 거꾸로 센 시점">10~12주 전</td><td data-label="그 시점인 이유">색인과 순위 안착에 시간이 필요합니다</td></tr>
+            <tr><td data-label="준비할 것">작년 글 갱신</td><td data-label="성수기에서 거꾸로 센 시점">4~6주 전</td><td data-label="그 시점인 이유">이미 색인된 주소라 반영이 비교적 빠릅니다</td></tr>
+            <tr><td data-label="준비할 것">상담 안내·랜딩 페이지</td><td data-label="성수기에서 거꾸로 센 시점">3~4주 전</td><td data-label="그 시점인 이유">유입이 늘기 전에 받을 자리를 먼저 만듭니다</td></tr>
+            <tr><td data-label="준비할 것">검색광고 소재</td><td data-label="성수기에서 거꾸로 센 시점">1~2주 전</td><td data-label="그 시점인 이유">게재하면 바로 노출되므로 미리 만들 필요가 적습니다</td></tr>
+            <tr><td data-label="준비할 것">플레이스 소식·SNS</td><td data-label="성수기에서 거꾸로 센 시점">성수기 중</td><td data-label="그 시점인 이유">그 시점의 내용이라야 반응이 옵니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -164,11 +172,11 @@
             <tr><th>업종</th><th>문의가 느는 시기(흔한 경우)</th><th>글을 올려 두는 시점</th></tr>
           </thead>
           <tbody>
-            <tr><td>세무·회계</td><td>1월, 5월</td><td>10~11월, 2~3월</td></tr>
-            <tr><td>이사·청소</td><td>2~3월, 9~10월</td><td>12월, 7월</td></tr>
-            <tr><td>학원·교습소</td><td>12~2월, 6~7월</td><td>9~10월, 3~4월</td></tr>
-            <tr><td>인테리어·리모델링</td><td>3~5월, 9~10월</td><td>12~1월, 6~7월</td></tr>
-            <tr><td>노무·인사</td><td>연초 임금 개정기, 정산 시기</td><td>성수기 3개월 전</td></tr>
+            <tr><td data-label="업종">세무·회계</td><td data-label="문의가 느는 시기(흔한 경우)">1월, 5월</td><td data-label="글을 올려 두는 시점">10~11월, 2~3월</td></tr>
+            <tr><td data-label="업종">이사·청소</td><td data-label="문의가 느는 시기(흔한 경우)">2~3월, 9~10월</td><td data-label="글을 올려 두는 시점">12월, 7월</td></tr>
+            <tr><td data-label="업종">학원·교습소</td><td data-label="문의가 느는 시기(흔한 경우)">12~2월, 6~7월</td><td data-label="글을 올려 두는 시점">9~10월, 3~4월</td></tr>
+            <tr><td data-label="업종">인테리어·리모델링</td><td data-label="문의가 느는 시기(흔한 경우)">3~5월, 9~10월</td><td data-label="글을 올려 두는 시점">12~1월, 6~7월</td></tr>
+            <tr><td data-label="업종">노무·인사</td><td data-label="문의가 느는 시기(흔한 경우)">연초 임금 개정기, 정산 시기</td><td data-label="글을 올려 두는 시점">성수기 3개월 전</td></tr>
           </tbody>
         </table>
       </div>
@@ -199,17 +207,17 @@
       <p>분기 점검에서 밀린 주제를 지우지 않고 계속 다음 달로 넘기면 달력이 석 달쯤 뒤부터 쓸 수 없게 됩니다. 저는 두 번 밀린 주제는 그해에서 뺍니다.</p>
       <h2>직접 하는 편이 나은 일과 맡기는 편이 나은 일은 어떻게 나누나요?</h2>
       <p>그 일이 매달 반복되는지, 그리고 틀렸을 때 되돌릴 수 있는지로 나눕니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>하는 일</th><th>직접 하셔도 되는 경우</th><th>맡기는 편이 나은 경우</th><th>그렇게 나누는 이유</th></tr>
           </thead>
           <tbody>
-            <tr><td>월별 문의 수 집계</td><td>업무가 한 종류고 지점이 한 곳</td><td>지점이나 업무가 여러 개로 섞여 있음</td><td>분류 기준이 어긋나면 기준점부터 틀립니다</td></tr>
-            <tr><td>달력 칸 채우기</td><td>성수기가 한두 번으로 뚜렷함</td><td>업무별로 성수기가 서로 다름</td><td>달력을 여러 장 겹쳐 봐야 합니다</td></tr>
-            <tr><td>작년 글 갱신</td><td>연도·금액·사례만 고치면 되는 글</td><td>제도가 바뀌어 구조를 다시 짜야 하는 글</td><td>사실 확인이 필요한 범위가 다릅니다</td></tr>
-            <tr><td>신규 칼럼 작성</td><td>월 1편이고 쓸 사람이 정해져 있음</td><td>월 3편 이상을 1년 유지해야 함</td><td>분량보다 꾸준함이 먼저 끊깁니다</td></tr>
-            <tr><td>색인·노출 확인</td><td>서치콘솔을 이미 쓰고 있음</td><td>등록조차 되어 있지 않음</td><td>설치와 소유 확인이 한 번은 필요합니다</td></tr>
+            <tr><td data-label="하는 일">월별 문의 수 집계</td><td data-label="직접 하셔도 되는 경우">업무가 한 종류고 지점이 한 곳</td><td data-label="맡기는 편이 나은 경우">지점이나 업무가 여러 개로 섞여 있음</td><td data-label="그렇게 나누는 이유">분류 기준이 어긋나면 기준점부터 틀립니다</td></tr>
+            <tr><td data-label="하는 일">달력 칸 채우기</td><td data-label="직접 하셔도 되는 경우">성수기가 한두 번으로 뚜렷함</td><td data-label="맡기는 편이 나은 경우">업무별로 성수기가 서로 다름</td><td data-label="그렇게 나누는 이유">달력을 여러 장 겹쳐 봐야 합니다</td></tr>
+            <tr><td data-label="하는 일">작년 글 갱신</td><td data-label="직접 하셔도 되는 경우">연도·금액·사례만 고치면 되는 글</td><td data-label="맡기는 편이 나은 경우">제도가 바뀌어 구조를 다시 짜야 하는 글</td><td data-label="그렇게 나누는 이유">사실 확인이 필요한 범위가 다릅니다</td></tr>
+            <tr><td data-label="하는 일">신규 칼럼 작성</td><td data-label="직접 하셔도 되는 경우">월 1편이고 쓸 사람이 정해져 있음</td><td data-label="맡기는 편이 나은 경우">월 3편 이상을 1년 유지해야 함</td><td data-label="그렇게 나누는 이유">분량보다 꾸준함이 먼저 끊깁니다</td></tr>
+            <tr><td data-label="하는 일">색인·노출 확인</td><td data-label="직접 하셔도 되는 경우">서치콘솔을 이미 쓰고 있음</td><td data-label="맡기는 편이 나은 경우">등록조차 되어 있지 않음</td><td data-label="그렇게 나누는 이유">설치와 소유 확인이 한 번은 필요합니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -238,11 +246,11 @@
             <tr><th>자주 보이는 증상</th><th>대개의 원인</th><th>다음 해 조정</th></tr>
           </thead>
           <tbody>
-            <tr><td>성수기가 끝날 무렵 노출이 오른다</td><td>작성 시점이 늦었습니다</td><td>거꾸로 세는 기간을 4주 늘립니다</td></tr>
-            <tr><td>노출은 느는데 문의가 없다</td><td>검색 의도와 글 내용이 어긋납니다</td><td>주제를 문의로 이어지는 질문으로 바꿉니다</td></tr>
-            <tr><td>작년 글이 올해는 보이지 않는다</td><td>갱신 없이 그대로 두었습니다</td><td>성수기 6주 전 갱신을 캘린더에 고정합니다</td></tr>
-            <tr><td>성수기에 전화를 놓친다</td><td>응대 준비가 캘린더에 없습니다</td><td>직전 2주 점검을 항목으로 넣습니다</td></tr>
-            <tr><td>비수기에 발행이 끊긴다</td><td>몰아쓰기로 편성했습니다</td><td>달마다 최소 편수를 정해 둡니다</td></tr>
+            <tr><td data-label="자주 보이는 증상">성수기가 끝날 무렵 노출이 오른다</td><td data-label="대개의 원인">작성 시점이 늦었습니다</td><td data-label="다음 해 조정">거꾸로 세는 기간을 4주 늘립니다</td></tr>
+            <tr><td data-label="자주 보이는 증상">노출은 느는데 문의가 없다</td><td data-label="대개의 원인">검색 의도와 글 내용이 어긋납니다</td><td data-label="다음 해 조정">주제를 문의로 이어지는 질문으로 바꿉니다</td></tr>
+            <tr><td data-label="자주 보이는 증상">작년 글이 올해는 보이지 않는다</td><td data-label="대개의 원인">갱신 없이 그대로 두었습니다</td><td data-label="다음 해 조정">성수기 6주 전 갱신을 캘린더에 고정합니다</td></tr>
+            <tr><td data-label="자주 보이는 증상">성수기에 전화를 놓친다</td><td data-label="대개의 원인">응대 준비가 캘린더에 없습니다</td><td data-label="다음 해 조정">직전 2주 점검을 항목으로 넣습니다</td></tr>
+            <tr><td data-label="자주 보이는 증상">비수기에 발행이 끊긴다</td><td data-label="대개의 원인">몰아쓰기로 편성했습니다</td><td data-label="다음 해 조정">달마다 최소 편수를 정해 둡니다</td></tr>
           </tbody>
         </table>
       </div>

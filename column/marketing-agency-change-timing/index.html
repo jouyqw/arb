@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -136,10 +144,10 @@
             <tr><th>작업</th><th>판단 시점</th><th>볼 지표</th></tr>
           </thead>
           <tbody>
-            <tr><td>검색광고</td><td>2~4주</td><td>노출, 클릭, 문의 단가</td></tr>
-            <tr><td>홈페이지 개선</td><td>1~2개월</td><td>이탈률, 문의 전환율</td></tr>
-            <tr><td>검색 콘텐츠</td><td>4~6개월</td><td>색인 수, 노출수, 평균 순위</td></tr>
-            <tr><td>지역 노출 관리</td><td>2~3개월</td><td>지도 조회, 길찾기, 통화</td></tr>
+            <tr><td data-label="작업">검색광고</td><td data-label="판단 시점">2~4주</td><td data-label="볼 지표">노출, 클릭, 문의 단가</td></tr>
+            <tr><td data-label="작업">홈페이지 개선</td><td data-label="판단 시점">1~2개월</td><td data-label="볼 지표">이탈률, 문의 전환율</td></tr>
+            <tr><td data-label="작업">검색 콘텐츠</td><td data-label="판단 시점">4~6개월</td><td data-label="볼 지표">색인 수, 노출수, 평균 순위</td></tr>
+            <tr><td data-label="작업">지역 노출 관리</td><td data-label="판단 시점">2~3개월</td><td data-label="볼 지표">지도 조회, 길찾기, 통화</td></tr>
           </tbody>
         </table>
       </div>
@@ -168,13 +176,13 @@
             <tr><th>항목</th><th>교체가 맞는 상황</th><th>기다리거나 조정이 맞는 상황</th></tr>
           </thead>
           <tbody>
-            <tr><td>작업 내역</td><td>두 달 이상 새 산출물이 없다</td><td>산출물은 나오는데 성과가 아직 없다</td></tr>
-            <tr><td>계정 권한</td><td>요청해도 계정을 넘겨주지 않는다</td><td>권한은 있고 데이터도 볼 수 있다</td></tr>
-            <tr><td>계약 범위</td><td>계약 범위 자체를 이행하지 않는다</td><td>기대와 계약 범위가 어긋나 있다</td></tr>
-            <tr><td>규정 준수</td><td>업종 광고 기준 위반 표현을 계속 쓴다</td><td>지적하면 다음 달에 수정된다</td></tr>
-            <tr><td>소통</td><td>질문에 2주 넘게 답이 없다</td><td>답은 오지만 설명이 불친절하다</td></tr>
-            <tr><td>경과 기간</td><td>광고 3개월·콘텐츠 7개월이 지났다</td><td>광고 1개월·콘텐츠 3개월 차다</td></tr>
-            <tr><td>예상 손실</td><td>지금 끊는 편이 손해가 작다</td><td>쌓인 색인·데이터가 아까운 수준이다</td></tr>
+            <tr><td data-label="항목">작업 내역</td><td data-label="교체가 맞는 상황">두 달 이상 새 산출물이 없다</td><td data-label="기다리거나 조정이 맞는 상황">산출물은 나오는데 성과가 아직 없다</td></tr>
+            <tr><td data-label="항목">계정 권한</td><td data-label="교체가 맞는 상황">요청해도 계정을 넘겨주지 않는다</td><td data-label="기다리거나 조정이 맞는 상황">권한은 있고 데이터도 볼 수 있다</td></tr>
+            <tr><td data-label="항목">계약 범위</td><td data-label="교체가 맞는 상황">계약 범위 자체를 이행하지 않는다</td><td data-label="기다리거나 조정이 맞는 상황">기대와 계약 범위가 어긋나 있다</td></tr>
+            <tr><td data-label="항목">규정 준수</td><td data-label="교체가 맞는 상황">업종 광고 기준 위반 표현을 계속 쓴다</td><td data-label="기다리거나 조정이 맞는 상황">지적하면 다음 달에 수정된다</td></tr>
+            <tr><td data-label="항목">소통</td><td data-label="교체가 맞는 상황">질문에 2주 넘게 답이 없다</td><td data-label="기다리거나 조정이 맞는 상황">답은 오지만 설명이 불친절하다</td></tr>
+            <tr><td data-label="항목">경과 기간</td><td data-label="교체가 맞는 상황">광고 3개월·콘텐츠 7개월이 지났다</td><td data-label="기다리거나 조정이 맞는 상황">광고 1개월·콘텐츠 3개월 차다</td></tr>
+            <tr><td data-label="항목">예상 손실</td><td data-label="교체가 맞는 상황">지금 끊는 편이 손해가 작다</td><td data-label="기다리거나 조정이 맞는 상황">쌓인 색인·데이터가 아까운 수준이다</td></tr>
           </tbody>
         </table>
       </div>

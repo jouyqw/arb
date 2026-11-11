@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -140,11 +148,11 @@
             <tr><th>비교 항목</th><th>도메인 속성</th><th>URL 접두어 속성</th></tr>
           </thead>
           <tbody>
-            <tr><td>수집 범위</td><td>www·비www, http·https, 하위 도메인까지 한 곳에</td><td>입력한 주소 형태 하나만</td></tr>
-            <tr><td>소유 확인 방법</td><td>DNS에 TXT 레코드 추가 (도메인 등록처 접속 필요)</td><td>HTML 파일, 메타 태그, 애널리틱스 등 중 택1</td></tr>
-            <tr><td>걸리는 시간</td><td>DNS 반영까지 10~30분, 길면 하루</td><td>대체로 5분 안에 끝남</td></tr>
-            <tr><td>이럴 때 고릅니다</td><td>사이트 전체 유입을 한 화면에서 보고 싶을 때</td><td>특정 하위 폴더나 서브도메인만 따로 볼 때</td></tr>
-            <tr><td>첫 주 권장</td><td>기본값으로 이쪽을 권합니다</td><td>DNS 권한이 없을 때 임시로</td></tr>
+            <tr><td data-label="비교 항목">수집 범위</td><td data-label="도메인 속성">www·비www, http·https, 하위 도메인까지 한 곳에</td><td data-label="URL 접두어 속성">입력한 주소 형태 하나만</td></tr>
+            <tr><td data-label="비교 항목">소유 확인 방법</td><td data-label="도메인 속성">DNS에 TXT 레코드 추가 (도메인 등록처 접속 필요)</td><td data-label="URL 접두어 속성">HTML 파일, 메타 태그, 애널리틱스 등 중 택1</td></tr>
+            <tr><td data-label="비교 항목">걸리는 시간</td><td data-label="도메인 속성">DNS 반영까지 10~30분, 길면 하루</td><td data-label="URL 접두어 속성">대체로 5분 안에 끝남</td></tr>
+            <tr><td data-label="비교 항목">이럴 때 고릅니다</td><td data-label="도메인 속성">사이트 전체 유입을 한 화면에서 보고 싶을 때</td><td data-label="URL 접두어 속성">특정 하위 폴더나 서브도메인만 따로 볼 때</td></tr>
+            <tr><td data-label="비교 항목">첫 주 권장</td><td data-label="도메인 속성">기본값으로 이쪽을 권합니다</td><td data-label="URL 접두어 속성">DNS 권한이 없을 때 임시로</td></tr>
           </tbody>
         </table>
       </div>
@@ -164,11 +172,11 @@
             <tr><th>제외 사유</th><th>무엇을 뜻하나</th><th>첫 주 대응</th></tr>
           </thead>
           <tbody>
-            <tr><td>발견됨 - 현재 색인이 생성되지 않음</td><td>주소는 알지만 아직 방문 전</td><td>기다립니다. 새 사이트에 흔합니다</td></tr>
-            <tr><td>크롤링됨 - 현재 색인이 생성되지 않음</td><td>방문했지만 실을지 보류 중</td><td>내용이 얇은 페이지인지 봅니다</td></tr>
-            <tr><td>대체 페이지(적절한 표준 태그 포함)</td><td>비슷한 페이지의 대표가 따로 있음</td><td>의도한 것이면 그대로 둡니다</td></tr>
-            <tr><td>noindex 태그에 의해 제외됨</td><td>페이지가 스스로 색인을 거부</td><td>의도치 않았다면 바로 고칩니다</td></tr>
-            <tr><td>찾을 수 없음(404)</td><td>존재하지 않는 주소</td><td>내부 링크 오타인지 확인합니다</td></tr>
+            <tr><td data-label="제외 사유">발견됨 - 현재 색인이 생성되지 않음</td><td data-label="무엇을 뜻하나">주소는 알지만 아직 방문 전</td><td data-label="첫 주 대응">기다립니다. 새 사이트에 흔합니다</td></tr>
+            <tr><td data-label="제외 사유">크롤링됨 - 현재 색인이 생성되지 않음</td><td data-label="무엇을 뜻하나">방문했지만 실을지 보류 중</td><td data-label="첫 주 대응">내용이 얇은 페이지인지 봅니다</td></tr>
+            <tr><td data-label="제외 사유">대체 페이지(적절한 표준 태그 포함)</td><td data-label="무엇을 뜻하나">비슷한 페이지의 대표가 따로 있음</td><td data-label="첫 주 대응">의도한 것이면 그대로 둡니다</td></tr>
+            <tr><td data-label="제외 사유">noindex 태그에 의해 제외됨</td><td data-label="무엇을 뜻하나">페이지가 스스로 색인을 거부</td><td data-label="첫 주 대응">의도치 않았다면 바로 고칩니다</td></tr>
+            <tr><td data-label="제외 사유">찾을 수 없음(404)</td><td data-label="무엇을 뜻하나">존재하지 않는 주소</td><td data-label="첫 주 대응">내부 링크 오타인지 확인합니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -187,10 +195,10 @@
             <tr><th>지표</th><th>무엇을 뜻하나</th><th>첫 주에 오해하기 쉬운 점</th></tr>
           </thead>
           <tbody>
-            <tr><td>노출수</td><td>검색 결과에 우리 페이지가 보인 횟수</td><td>첫 페이지만 세는 것이 아니라 뒷페이지 노출도 포함됩니다</td></tr>
-            <tr><td>클릭수</td><td>그 결과를 눌러 들어온 횟수</td><td>초기에 0이 이어지는 것은 흔한 일입니다</td></tr>
-            <tr><td>CTR</td><td>클릭수를 노출수로 나눈 값</td><td>노출이 적을 때는 클릭 한 번에 수치가 크게 튑니다</td></tr>
-            <tr><td>평균 게재순위</td><td>노출된 순간들의 평균 순위</td><td>직접 검색했을 때 보이는 화면 순위와 다릅니다</td></tr>
+            <tr><td data-label="지표">노출수</td><td data-label="무엇을 뜻하나">검색 결과에 우리 페이지가 보인 횟수</td><td data-label="첫 주에 오해하기 쉬운 점">첫 페이지만 세는 것이 아니라 뒷페이지 노출도 포함됩니다</td></tr>
+            <tr><td data-label="지표">클릭수</td><td data-label="무엇을 뜻하나">그 결과를 눌러 들어온 횟수</td><td data-label="첫 주에 오해하기 쉬운 점">초기에 0이 이어지는 것은 흔한 일입니다</td></tr>
+            <tr><td data-label="지표">CTR</td><td data-label="무엇을 뜻하나">클릭수를 노출수로 나눈 값</td><td data-label="첫 주에 오해하기 쉬운 점">노출이 적을 때는 클릭 한 번에 수치가 크게 튑니다</td></tr>
+            <tr><td data-label="지표">평균 게재순위</td><td data-label="무엇을 뜻하나">노출된 순간들의 평균 순위</td><td data-label="첫 주에 오해하기 쉬운 점">직접 검색했을 때 보이는 화면 순위와 다릅니다</td></tr>
           </tbody>
         </table>
       </div>

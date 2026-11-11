@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -150,9 +158,9 @@
             <tr><th>구성</th><th>권장</th><th>피할 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>소제목</td><td>질문형으로 작성</td><td>모호한 명사구</td></tr>
-            <tr><td>첫 문단</td><td>핵심 답을 먼저</td><td>배경 설명부터 길게</td></tr>
-            <tr><td>뒷 문단</td><td>근거·예외 보강</td><td>결론을 맨 끝에 숨김</td></tr>
+            <tr><td data-label="구성">소제목</td><td data-label="권장">질문형으로 작성</td><td data-label="피할 것">모호한 명사구</td></tr>
+            <tr><td data-label="구성">첫 문단</td><td data-label="권장">핵심 답을 먼저</td><td data-label="피할 것">배경 설명부터 길게</td></tr>
+            <tr><td data-label="구성">뒷 문단</td><td data-label="권장">근거·예외 보강</td><td data-label="피할 것">결론을 맨 끝에 숨김</td></tr>
           </tbody>
         </table>
       </div>
@@ -163,13 +171,13 @@
             <tr><th>비교 항목</th><th>줄글형(도입부터)</th><th>답부터형(권장)</th></tr>
           </thead>
           <tbody>
-            <tr><td>소제목 형태</td><td>&#39;콘텐츠 전략&#39; 같은 명사구</td><td>&#39;비용은 얼마인가요?&#39; 같은 질문문</td></tr>
-            <tr><td>결론 위치</td><td>문단 끝 또는 글 맨 아래</td><td>소제목 바로 아래 첫 문장</td></tr>
-            <tr><td>한 문단 길이</td><td>5~8문장, 400자 이상도 흔함</td><td>2~4문장, 공백 포함 150~300자</td></tr>
-            <tr><td>조각으로 잘랐을 때</td><td>앞뒤 문맥이 없으면 뜻이 끊김</td><td>문단 하나만 읽어도 답이 됨</td></tr>
-            <tr><td>사람 독자의 체감</td><td>끝까지 읽어야 답을 얻음</td><td>3초 안에 답을 확인함</td></tr>
-            <tr><td>고쳐 쓰는 품</td><td>구조를 새로 짜야 함</td><td>문장 순서 이동 30~60분</td></tr>
-            <tr><td>적합한 글</td><td>사례 수기, 브랜드 이야기</td><td>비용·절차·기준을 묻는 정보성 글</td></tr>
+            <tr><td data-label="비교 항목">소제목 형태</td><td data-label="줄글형(도입부터)">&#39;콘텐츠 전략&#39; 같은 명사구</td><td data-label="답부터형(권장)">&#39;비용은 얼마인가요?&#39; 같은 질문문</td></tr>
+            <tr><td data-label="비교 항목">결론 위치</td><td data-label="줄글형(도입부터)">문단 끝 또는 글 맨 아래</td><td data-label="답부터형(권장)">소제목 바로 아래 첫 문장</td></tr>
+            <tr><td data-label="비교 항목">한 문단 길이</td><td data-label="줄글형(도입부터)">5~8문장, 400자 이상도 흔함</td><td data-label="답부터형(권장)">2~4문장, 공백 포함 150~300자</td></tr>
+            <tr><td data-label="비교 항목">조각으로 잘랐을 때</td><td data-label="줄글형(도입부터)">앞뒤 문맥이 없으면 뜻이 끊김</td><td data-label="답부터형(권장)">문단 하나만 읽어도 답이 됨</td></tr>
+            <tr><td data-label="비교 항목">사람 독자의 체감</td><td data-label="줄글형(도입부터)">끝까지 읽어야 답을 얻음</td><td data-label="답부터형(권장)">3초 안에 답을 확인함</td></tr>
+            <tr><td data-label="비교 항목">고쳐 쓰는 품</td><td data-label="줄글형(도입부터)">구조를 새로 짜야 함</td><td data-label="답부터형(권장)">문장 순서 이동 30~60분</td></tr>
+            <tr><td data-label="비교 항목">적합한 글</td><td data-label="줄글형(도입부터)">사례 수기, 브랜드 이야기</td><td data-label="답부터형(권장)">비용·절차·기준을 묻는 정보성 글</td></tr>
           </tbody>
         </table>
       </div>
@@ -214,10 +222,10 @@
             <tr><th>판단 기준</th><th>먼저 손볼 글</th><th>나중에 손볼 글</th></tr>
           </thead>
           <tbody>
-            <tr><td>질문과의 거리</td><td>상담에서 실제로 받는 질문을 다룬 글</td><td>회사 소식·행사 안내</td></tr>
-            <tr><td>현재 유입</td><td>검색 유입이 조금이라도 있는 글</td><td>1년간 유입이 사실상 없는 글</td></tr>
-            <tr><td>정보의 수명</td><td>비용·절차처럼 오래 쓰이는 내용</td><td>특정 시즌에만 유효한 내용</td></tr>
-            <tr><td>고치는 난이도</td><td>내용은 충분한데 순서만 어긋난 글</td><td>사실 확인부터 다시 해야 하는 글</td></tr>
+            <tr><td data-label="판단 기준">질문과의 거리</td><td data-label="먼저 손볼 글">상담에서 실제로 받는 질문을 다룬 글</td><td data-label="나중에 손볼 글">회사 소식·행사 안내</td></tr>
+            <tr><td data-label="판단 기준">현재 유입</td><td data-label="먼저 손볼 글">검색 유입이 조금이라도 있는 글</td><td data-label="나중에 손볼 글">1년간 유입이 사실상 없는 글</td></tr>
+            <tr><td data-label="판단 기준">정보의 수명</td><td data-label="먼저 손볼 글">비용·절차처럼 오래 쓰이는 내용</td><td data-label="나중에 손볼 글">특정 시즌에만 유효한 내용</td></tr>
+            <tr><td data-label="판단 기준">고치는 난이도</td><td data-label="먼저 손볼 글">내용은 충분한데 순서만 어긋난 글</td><td data-label="나중에 손볼 글">사실 확인부터 다시 해야 하는 글</td></tr>
           </tbody>
         </table>
       </div>

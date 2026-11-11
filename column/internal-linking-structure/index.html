@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -139,16 +147,16 @@
       <p>기둥은 보통 서너 개면 충분합니다. 처음부터 열 개를 만들면 각 기둥에 붙는 글이 두세 편밖에 안 되어 구조가 힘을 받지 못합니다.</p>
       <p>기둥 하나에 세부 글 5~12편이 붙는 정도가 관리하기 좋은 크기입니다. 15편을 넘어가면 그 안에서 다시 둘로 쪼개는 시점으로 봅니다.</p>
       <p>여기까지 정리되면 다음은 각 주제의 기둥 글을 무엇으로 삼을지 고르는 일입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>구조</th><th>링크 방향</th><th>적합한 시점</th><th>생기는 문제</th></tr>
           </thead>
           <tbody>
-            <tr><td>시간순 나열</td><td>새 글 → 직전 글</td><td>글 10편 이하</td><td>오래된 글이 고립됨</td></tr>
-            <tr><td>허브-세부 구조</td><td>기둥 글 ↔ 세부 글</td><td>글 30편 이상</td><td>기둥 선정에 초기 시간 필요</td></tr>
-            <tr><td>전부 서로 연결</td><td>모든 글끼리</td><td>권하지 않음</td><td>중요도 신호가 흐려짐</td></tr>
-            <tr><td>자동 관련글만</td><td>시스템이 하단 배치</td><td>보조 수단으로만</td><td>본문 문맥과 어긋남</td></tr>
+            <tr><td data-label="구조">시간순 나열</td><td data-label="링크 방향">새 글 → 직전 글</td><td data-label="적합한 시점">글 10편 이하</td><td data-label="생기는 문제">오래된 글이 고립됨</td></tr>
+            <tr><td data-label="구조">허브-세부 구조</td><td data-label="링크 방향">기둥 글 ↔ 세부 글</td><td data-label="적합한 시점">글 30편 이상</td><td data-label="생기는 문제">기둥 선정에 초기 시간 필요</td></tr>
+            <tr><td data-label="구조">전부 서로 연결</td><td data-label="링크 방향">모든 글끼리</td><td data-label="적합한 시점">권하지 않음</td><td data-label="생기는 문제">중요도 신호가 흐려짐</td></tr>
+            <tr><td data-label="구조">자동 관련글만</td><td data-label="링크 방향">시스템이 하단 배치</td><td data-label="적합한 시점">보조 수단으로만</td><td data-label="생기는 문제">본문 문맥과 어긋남</td></tr>
           </tbody>
         </table>
       </div>
@@ -158,16 +166,16 @@
       <p>저는 후보를 고를 때 세 가지를 봅니다. 최근 3개월 노출수가 같은 주제 글 중 상위인지, 본문이 3,000자 이상으로 개괄이 가능한지, 특정 지역이나 특정 업종에 너무 치우치지 않았는지입니다.</p>
       <p>마땅한 후보가 없다면 기둥 글을 한 편 새로 쓰는 편이 낫습니다. 다만 발행 직후에는 링크를 받을 글이 적으므로, 같은 주제 세부 글 3~5편에서 링크를 먼저 걸어 주고 시작합니다.</p>
       <p>이 순서를 거꾸로 해서 기둥만 먼저 발행하고 링크는 나중에 붙이면, 그 글이 석 달쯤 묻혀 있다가 다시 손보게 됩니다. 원고 한 편을 두 번 쓰는 셈입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>선택지</th><th>드는 시간</th><th>적합한 상황</th><th>주의할 점</th></tr>
           </thead>
           <tbody>
-            <tr><td>기존 글을 기둥으로 승격</td><td>2~4시간</td><td>해당 주제 글이 이미 5편 이상 있음</td><td>세부 글과 겹치는 내용을 정리해야 함</td></tr>
-            <tr><td>기둥 글을 새로 작성</td><td>6~10시간</td><td>주제는 있으나 개괄 글이 없음</td><td>발행 직후에는 링크를 받을 글이 적음</td></tr>
-            <tr><td>카테고리 페이지로 임시 대체</td><td>1시간 내외</td><td>구조만 먼저 잡아 두고 싶을 때</td><td>본문이 없어 인용·평가 신호가 약함</td></tr>
-            <tr><td>기둥 없이 그대로 운영</td><td>0시간</td><td>전체 글이 10편 이하</td><td>30편을 넘으면 결국 다시 손봐야 함</td></tr>
+            <tr><td data-label="선택지">기존 글을 기둥으로 승격</td><td data-label="드는 시간">2~4시간</td><td data-label="적합한 상황">해당 주제 글이 이미 5편 이상 있음</td><td data-label="주의할 점">세부 글과 겹치는 내용을 정리해야 함</td></tr>
+            <tr><td data-label="선택지">기둥 글을 새로 작성</td><td data-label="드는 시간">6~10시간</td><td data-label="적합한 상황">주제는 있으나 개괄 글이 없음</td><td data-label="주의할 점">발행 직후에는 링크를 받을 글이 적음</td></tr>
+            <tr><td data-label="선택지">카테고리 페이지로 임시 대체</td><td data-label="드는 시간">1시간 내외</td><td data-label="적합한 상황">구조만 먼저 잡아 두고 싶을 때</td><td data-label="주의할 점">본문이 없어 인용·평가 신호가 약함</td></tr>
+            <tr><td data-label="선택지">기둥 없이 그대로 운영</td><td data-label="드는 시간">0시간</td><td data-label="적합한 상황">전체 글이 10편 이하</td><td data-label="주의할 점">30편을 넘으면 결국 다시 손봐야 함</td></tr>
           </tbody>
         </table>
       </div>
@@ -218,17 +226,17 @@
       <p>점검 주기는 분기에 한 번이면 충분합니다. 그보다 자주 손대면 변화를 판단할 데이터가 쌓이지 않습니다.</p>
       <p>효과는 보통 4~8주 사이에 나타나기 시작합니다. 색인 속도가 먼저 빨라지고, 기둥 글의 노출수가 그다음에 움직이는 순서인 경우가 많습니다.</p>
       <p>다만 이 순서는 발행 주기가 유지되고 글 자체의 품질에 문제가 없을 때의 이야기입니다. 내부링크만 고쳐서 순위가 올라가는 경우는 원래 내용이 충분한데 발견이 안 되고 있던 글에서 주로 나타납니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>점검 항목</th><th>확인 방법</th><th>양호 기준</th><th>손봐야 할 신호</th></tr>
           </thead>
           <tbody>
-            <tr><td>고립된 글 비율</td><td>사이트맵 주소별 본문 언급 횟수</td><td>전체의 10% 이하</td><td>20%를 넘음</td></tr>
-            <tr><td>한 편당 본문 링크 수</td><td>글을 열어 직접 세기</td><td>3~5개</td><td>0개이거나 8개 이상</td></tr>
-            <tr><td>기둥 글 유입 비중</td><td>애널리틱스 페이지별 세션</td><td>상위 5개 중 2개 이상이 기둥 글</td><td>기둥 글이 10위권 밖</td></tr>
-            <tr><td>색인 누락</td><td>서치콘솔 페이지 색인 보고서</td><td>&#39;검색됨, 미색인&#39; 5편 이하</td><td>발행 후 4주 넘게 미색인</td></tr>
-            <tr><td>깨진 링크</td><td>주소 변경·삭제 글 확인</td><td>0건</td><td>1건이라도 방치 중</td></tr>
+            <tr><td data-label="점검 항목">고립된 글 비율</td><td data-label="확인 방법">사이트맵 주소별 본문 언급 횟수</td><td data-label="양호 기준">전체의 10% 이하</td><td data-label="손봐야 할 신호">20%를 넘음</td></tr>
+            <tr><td data-label="점검 항목">한 편당 본문 링크 수</td><td data-label="확인 방법">글을 열어 직접 세기</td><td data-label="양호 기준">3~5개</td><td data-label="손봐야 할 신호">0개이거나 8개 이상</td></tr>
+            <tr><td data-label="점검 항목">기둥 글 유입 비중</td><td data-label="확인 방법">애널리틱스 페이지별 세션</td><td data-label="양호 기준">상위 5개 중 2개 이상이 기둥 글</td><td data-label="손봐야 할 신호">기둥 글이 10위권 밖</td></tr>
+            <tr><td data-label="점검 항목">색인 누락</td><td data-label="확인 방법">서치콘솔 페이지 색인 보고서</td><td data-label="양호 기준">&#39;검색됨, 미색인&#39; 5편 이하</td><td data-label="손봐야 할 신호">발행 후 4주 넘게 미색인</td></tr>
+            <tr><td data-label="점검 항목">깨진 링크</td><td data-label="확인 방법">주소 변경·삭제 글 확인</td><td data-label="양호 기준">0건</td><td data-label="손봐야 할 신호">1건이라도 방치 중</td></tr>
           </tbody>
         </table>
       </div>

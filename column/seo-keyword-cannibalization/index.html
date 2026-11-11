@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -140,12 +148,12 @@
             <tr><th>증상</th><th>확인 방법</th><th>해석</th></tr>
           </thead>
           <tbody>
-            <tr><td>한 검색어에 여러 URL</td><td>검색어 → 페이지 탭</td><td>대표 페이지가 흔들리는 중</td></tr>
-            <tr><td>대표 URL이 계속 바뀜</td><td>기간별 비교</td><td>전형적인 중복 신호</td></tr>
-            <tr><td>전체 노출은 느는데 순위 정체</td><td>3개월 추이</td><td>힘이 분산되고 있음</td></tr>
-            <tr><td>제목이 거의 같은 글</td><td>사이트 내 검색</td><td>통합 대상</td></tr>
-            <tr><td>평균 게재순위가 8~20위에 몰림</td><td>검색어별 평균 순위</td><td>어느 글도 1페이지를 못 잡는 상태</td></tr>
-            <tr><td>클릭수는 그대로인데 노출만 증가</td><td>6개월 클릭률 추이</td><td>중복 글이 노출만 나눠 갖는 중</td></tr>
+            <tr><td data-label="증상">한 검색어에 여러 URL</td><td data-label="확인 방법">검색어 → 페이지 탭</td><td data-label="해석">대표 페이지가 흔들리는 중</td></tr>
+            <tr><td data-label="증상">대표 URL이 계속 바뀜</td><td data-label="확인 방법">기간별 비교</td><td data-label="해석">전형적인 중복 신호</td></tr>
+            <tr><td data-label="증상">전체 노출은 느는데 순위 정체</td><td data-label="확인 방법">3개월 추이</td><td data-label="해석">힘이 분산되고 있음</td></tr>
+            <tr><td data-label="증상">제목이 거의 같은 글</td><td data-label="확인 방법">사이트 내 검색</td><td data-label="해석">통합 대상</td></tr>
+            <tr><td data-label="증상">평균 게재순위가 8~20위에 몰림</td><td data-label="확인 방법">검색어별 평균 순위</td><td data-label="해석">어느 글도 1페이지를 못 잡는 상태</td></tr>
+            <tr><td data-label="증상">클릭수는 그대로인데 노출만 증가</td><td data-label="확인 방법">6개월 클릭률 추이</td><td data-label="해석">중복 글이 노출만 나눠 갖는 중</td></tr>
           </tbody>
         </table>
       </div>
@@ -177,13 +185,13 @@
             <tr><th>판단 축</th><th>통합을 고르는 경우</th><th>차별화를 고르는 경우</th></tr>
           </thead>
           <tbody>
-            <tr><td>검색 의도</td><td>두 글이 같은 질문에 답한다</td><td>질문이 다르다(비용 vs 절차 vs 후기)</td></tr>
-            <tr><td>본문 겹침 정도</td><td>문단의 절반 이상이 비슷하다</td><td>겹치는 부분이 3분의 1 이하다</td></tr>
-            <tr><td>각 글의 성과</td><td>한쪽이 노출·클릭 모두 압도적</td><td>둘 다 각자 다른 검색어로 유입이 있다</td></tr>
-            <tr><td>외부 링크</td><td>링크가 한쪽에만 몰려 있다</td><td>양쪽 모두에 링크가 있다</td></tr>
-            <tr><td>글 분량</td><td>합쳐도 6,000자를 넘지 않는다</td><td>합치면 1만 자가 넘어 읽기 어려워진다</td></tr>
-            <tr><td>드는 시간</td><td>글당 1~2시간</td><td>글당 3~5시간(사실상 재작성)</td></tr>
-            <tr><td>결과가 보이는 시기</td><td>보통 4~8주</td><td>보통 8~12주</td></tr>
+            <tr><td data-label="판단 축">검색 의도</td><td data-label="통합을 고르는 경우">두 글이 같은 질문에 답한다</td><td data-label="차별화를 고르는 경우">질문이 다르다(비용 vs 절차 vs 후기)</td></tr>
+            <tr><td data-label="판단 축">본문 겹침 정도</td><td data-label="통합을 고르는 경우">문단의 절반 이상이 비슷하다</td><td data-label="차별화를 고르는 경우">겹치는 부분이 3분의 1 이하다</td></tr>
+            <tr><td data-label="판단 축">각 글의 성과</td><td data-label="통합을 고르는 경우">한쪽이 노출·클릭 모두 압도적</td><td data-label="차별화를 고르는 경우">둘 다 각자 다른 검색어로 유입이 있다</td></tr>
+            <tr><td data-label="판단 축">외부 링크</td><td data-label="통합을 고르는 경우">링크가 한쪽에만 몰려 있다</td><td data-label="차별화를 고르는 경우">양쪽 모두에 링크가 있다</td></tr>
+            <tr><td data-label="판단 축">글 분량</td><td data-label="통합을 고르는 경우">합쳐도 6,000자를 넘지 않는다</td><td data-label="차별화를 고르는 경우">합치면 1만 자가 넘어 읽기 어려워진다</td></tr>
+            <tr><td data-label="판단 축">드는 시간</td><td data-label="통합을 고르는 경우">글당 1~2시간</td><td data-label="차별화를 고르는 경우">글당 3~5시간(사실상 재작성)</td></tr>
+            <tr><td data-label="판단 축">결과가 보이는 시기</td><td data-label="통합을 고르는 경우">보통 4~8주</td><td data-label="차별화를 고르는 경우">보통 8~12주</td></tr>
           </tbody>
         </table>
       </div>

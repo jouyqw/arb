@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -127,18 +135,18 @@
       <p>저는 상담에서 세 가지를 먼저 여쭙습니다. 주문이 어디서 들어오는지, 재구매가 있는 상품인지, 그리고 상품 수가 몇 개인지입니다.</p>
       <p>상품이 10개 아래이고 재구매가 거의 없다면 자체몰을 만들 이유가 아직 적습니다. 들어올 사람이 없는 집을 먼저 짓는 셈이 됩니다.</p>
       <p>반대로 재구매가 30%를 넘고 고객이 우리 상호로 검색해 들어오는 단계라면, 그 고객을 플랫폼에 두는 것이 손해입니다. 다시 팔 수 있는 연락 수단이 우리 쪽에 남지 않습니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>구분</th><th>스마트스토어</th><th>임대형 쇼핑몰(카페24 등)</th><th>독립몰(자체 구축)</th></tr>
           </thead>
           <tbody>
-            <tr><td>초기 구축비</td><td>사실상 없음</td><td>100만~500만원대(디자인·세팅)</td><td>1,000만~5,000만원대</td></tr>
-            <tr><td>월 고정비</td><td>없음</td><td>월 5만~20만원대(테마·부가앱 포함)</td><td>서버·유지관리 월 20만~100만원대</td></tr>
-            <tr><td>수수료 구조</td><td>결제수수료 + 매출연동 수수료</td><td>결제수수료(PG) 중심</td><td>결제수수료(PG) 중심</td></tr>
-            <tr><td>확장성</td><td>플랫폼이 허용한 범위까지</td><td>부가앱·소스 수정으로 상당 부분 가능</td><td>필요한 기능을 직접 만듦</td></tr>
-            <tr><td>이전 가능성</td><td>상품·주문 내보내기 가능, 리뷰는 못 가져감</td><td>상품·회원 데이터 이관 가능</td><td>데이터를 전부 보유</td></tr>
-            <tr><td>맞는 단계</td><td>시작 ~ 월 거래액 3,000만원대</td><td>월 3,000만원 ~ 수억원대</td><td>자체 물류·구독·해외 판매 같은 요건</td></tr>
+            <tr><td data-label="구분">초기 구축비</td><td data-label="스마트스토어">사실상 없음</td><td data-label="임대형 쇼핑몰(카페24 등)">100만~500만원대(디자인·세팅)</td><td data-label="독립몰(자체 구축)">1,000만~5,000만원대</td></tr>
+            <tr><td data-label="구분">월 고정비</td><td data-label="스마트스토어">없음</td><td data-label="임대형 쇼핑몰(카페24 등)">월 5만~20만원대(테마·부가앱 포함)</td><td data-label="독립몰(자체 구축)">서버·유지관리 월 20만~100만원대</td></tr>
+            <tr><td data-label="구분">수수료 구조</td><td data-label="스마트스토어">결제수수료 + 매출연동 수수료</td><td data-label="임대형 쇼핑몰(카페24 등)">결제수수료(PG) 중심</td><td data-label="독립몰(자체 구축)">결제수수료(PG) 중심</td></tr>
+            <tr><td data-label="구분">확장성</td><td data-label="스마트스토어">플랫폼이 허용한 범위까지</td><td data-label="임대형 쇼핑몰(카페24 등)">부가앱·소스 수정으로 상당 부분 가능</td><td data-label="독립몰(자체 구축)">필요한 기능을 직접 만듦</td></tr>
+            <tr><td data-label="구분">이전 가능성</td><td data-label="스마트스토어">상품·주문 내보내기 가능, 리뷰는 못 가져감</td><td data-label="임대형 쇼핑몰(카페24 등)">상품·회원 데이터 이관 가능</td><td data-label="독립몰(자체 구축)">데이터를 전부 보유</td></tr>
+            <tr><td data-label="구분">맞는 단계</td><td data-label="스마트스토어">시작 ~ 월 거래액 3,000만원대</td><td data-label="임대형 쇼핑몰(카페24 등)">월 3,000만원 ~ 수억원대</td><td data-label="독립몰(자체 구축)">자체 물류·구독·해외 판매 같은 요건</td></tr>
           </tbody>
         </table>
       </div>
@@ -155,10 +163,10 @@
             <tr><th>월 거래액</th><th>제가 권하는 구성</th><th>이 단계에서 할 일</th></tr>
           </thead>
           <tbody>
-            <tr><td>1,000만원 미만</td><td>스마트스토어 단독</td><td>상품 상세와 리뷰 쌓기, 검색어 정리</td></tr>
-            <tr><td>1,000만~3,000만원</td><td>스마트스토어 + 간단한 브랜드 소개 사이트</td><td>재구매 고객 연락 수단 확보, 상세페이지 개선</td></tr>
-            <tr><td>3,000만~1억원</td><td>스마트스토어 + 임대형 자체몰 병행</td><td>회원 등급·쿠폰 설계, 자체몰 유입 실험</td></tr>
-            <tr><td>1억원 이상</td><td>자체몰 주력 + 스마트스토어는 유입 채널</td><td>물류·CS 체계, 데이터 분석 환경</td></tr>
+            <tr><td data-label="월 거래액">1,000만원 미만</td><td data-label="제가 권하는 구성">스마트스토어 단독</td><td data-label="이 단계에서 할 일">상품 상세와 리뷰 쌓기, 검색어 정리</td></tr>
+            <tr><td data-label="월 거래액">1,000만~3,000만원</td><td data-label="제가 권하는 구성">스마트스토어 + 간단한 브랜드 소개 사이트</td><td data-label="이 단계에서 할 일">재구매 고객 연락 수단 확보, 상세페이지 개선</td></tr>
+            <tr><td data-label="월 거래액">3,000만~1억원</td><td data-label="제가 권하는 구성">스마트스토어 + 임대형 자체몰 병행</td><td data-label="이 단계에서 할 일">회원 등급·쿠폰 설계, 자체몰 유입 실험</td></tr>
+            <tr><td data-label="월 거래액">1억원 이상</td><td data-label="제가 권하는 구성">자체몰 주력 + 스마트스토어는 유입 채널</td><td data-label="이 단계에서 할 일">물류·CS 체계, 데이터 분석 환경</td></tr>
           </tbody>
         </table>
       </div>

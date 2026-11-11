@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -135,18 +143,18 @@
       <p>정해진 주기가 있는 것은 아니지만, 사실이 바뀔 만한 글부터 우선순위를 두는 것이 현실적입니다. 가격·제도처럼 변동이 잦은 글은 자주, 원리를 다룬 글은 가끔 점검하는 식으로 나눕니다.</p>
       <p>저희가 운영을 맡은 곳에서도 조회가 많은 상위 몇 개 글만 꾸준히 관리해 효과를 봤습니다. 모든 글을 매번 손대려다 지치기보다, 중요한 글을 골라 유지하는 편이 오래갑니다.</p>
       <p>글이 30편이라면 분기마다 전부 보는 것이 아니라, 아래 표의 기준으로 이번 분기에 볼 5~8편만 정하는 식입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>콘텐츠 유형</th><th>예시</th><th>권장 점검 주기</th><th>한 번에 드는 시간</th></tr>
           </thead>
           <tbody>
-            <tr><td>가격·견적</td><td>제작비, 광고비 단가, 패키지 구성</td><td>분기 1회 또는 단가 변동 즉시</td><td>20~30분</td></tr>
-            <tr><td>법·제도·규정</td><td>광고 심의, 표시광고 기준, 업종 규제</td><td>개정 발표 시점마다</td><td>30~40분</td></tr>
-            <tr><td>통계·시장 수치</td><td>이용률, 점유율, 연도별 추이</td><td>반기 1회 또는 새 자료 발표 시</td><td>20~30분</td></tr>
-            <tr><td>도구·플랫폼 사용법</td><td>관리자 화면 경로, 기능 이름</td><td>반기 1회</td><td>15~25분</td></tr>
-            <tr><td>개념·원리 설명</td><td>GEO와 SEO의 차이, 구조 설계 원칙</td><td>연 1~2회</td><td>15~20분</td></tr>
-            <tr><td>회사 소개·연혁</td><td>실적 수치, 담당자, 연락처</td><td>연 1회 + 변경 발생 시</td><td>10~15분</td></tr>
+            <tr><td data-label="콘텐츠 유형">가격·견적</td><td data-label="예시">제작비, 광고비 단가, 패키지 구성</td><td data-label="권장 점검 주기">분기 1회 또는 단가 변동 즉시</td><td data-label="한 번에 드는 시간">20~30분</td></tr>
+            <tr><td data-label="콘텐츠 유형">법·제도·규정</td><td data-label="예시">광고 심의, 표시광고 기준, 업종 규제</td><td data-label="권장 점검 주기">개정 발표 시점마다</td><td data-label="한 번에 드는 시간">30~40분</td></tr>
+            <tr><td data-label="콘텐츠 유형">통계·시장 수치</td><td data-label="예시">이용률, 점유율, 연도별 추이</td><td data-label="권장 점검 주기">반기 1회 또는 새 자료 발표 시</td><td data-label="한 번에 드는 시간">20~30분</td></tr>
+            <tr><td data-label="콘텐츠 유형">도구·플랫폼 사용법</td><td data-label="예시">관리자 화면 경로, 기능 이름</td><td data-label="권장 점검 주기">반기 1회</td><td data-label="한 번에 드는 시간">15~25분</td></tr>
+            <tr><td data-label="콘텐츠 유형">개념·원리 설명</td><td data-label="예시">GEO와 SEO의 차이, 구조 설계 원칙</td><td data-label="권장 점검 주기">연 1~2회</td><td data-label="한 번에 드는 시간">15~20분</td></tr>
+            <tr><td data-label="콘텐츠 유형">회사 소개·연혁</td><td data-label="예시">실적 수치, 담당자, 연락처</td><td data-label="권장 점검 주기">연 1회 + 변경 발생 시</td><td data-label="한 번에 드는 시간">10~15분</td></tr>
           </tbody>
         </table>
       </div>
@@ -165,12 +173,12 @@
             <tr><th>판단 기준</th><th>새 글을 쓰는 게 나은 경우</th><th>기존 글을 갱신하는 게 나은 경우</th></tr>
           </thead>
           <tbody>
-            <tr><td>주제 상태</td><td>아직 다루지 않은 질문이 남아 있을 때</td><td>다룬 주제인데 수치·제도가 바뀌었을 때</td></tr>
-            <tr><td>현재 성과</td><td>해당 주제로 들어오는 유입이 거의 없을 때</td><td>이미 유입·인용이 있는데 정보가 낡았을 때</td></tr>
-            <tr><td>드는 시간</td><td>기획·집필 포함 3~6시간</td><td>확인·수정 포함 20~40분</td></tr>
-            <tr><td>효과가 보이는 시점</td><td>보통 2~3개월 뒤부터</td><td>재수집 후 2~6주 안에 보이는 경우가 많음</td></tr>
-            <tr><td>실패했을 때 손실</td><td>노출이 안 붙으면 투입 시간이 그대로 손실</td><td>손실은 작고, 최소한 오류는 줄어듦</td></tr>
-            <tr><td>먼저 할 것</td><td>글이 10편 미만이라 다룰 주제가 넓을 때</td><td>글이 20편을 넘고 낡은 수치가 보이기 시작할 때</td></tr>
+            <tr><td data-label="판단 기준">주제 상태</td><td data-label="새 글을 쓰는 게 나은 경우">아직 다루지 않은 질문이 남아 있을 때</td><td data-label="기존 글을 갱신하는 게 나은 경우">다룬 주제인데 수치·제도가 바뀌었을 때</td></tr>
+            <tr><td data-label="판단 기준">현재 성과</td><td data-label="새 글을 쓰는 게 나은 경우">해당 주제로 들어오는 유입이 거의 없을 때</td><td data-label="기존 글을 갱신하는 게 나은 경우">이미 유입·인용이 있는데 정보가 낡았을 때</td></tr>
+            <tr><td data-label="판단 기준">드는 시간</td><td data-label="새 글을 쓰는 게 나은 경우">기획·집필 포함 3~6시간</td><td data-label="기존 글을 갱신하는 게 나은 경우">확인·수정 포함 20~40분</td></tr>
+            <tr><td data-label="판단 기준">효과가 보이는 시점</td><td data-label="새 글을 쓰는 게 나은 경우">보통 2~3개월 뒤부터</td><td data-label="기존 글을 갱신하는 게 나은 경우">재수집 후 2~6주 안에 보이는 경우가 많음</td></tr>
+            <tr><td data-label="판단 기준">실패했을 때 손실</td><td data-label="새 글을 쓰는 게 나은 경우">노출이 안 붙으면 투입 시간이 그대로 손실</td><td data-label="기존 글을 갱신하는 게 나은 경우">손실은 작고, 최소한 오류는 줄어듦</td></tr>
+            <tr><td data-label="판단 기준">먼저 할 것</td><td data-label="새 글을 쓰는 게 나은 경우">글이 10편 미만이라 다룰 주제가 넓을 때</td><td data-label="기존 글을 갱신하는 게 나은 경우">글이 20편을 넘고 낡은 수치가 보이기 시작할 때</td></tr>
           </tbody>
         </table>
       </div>

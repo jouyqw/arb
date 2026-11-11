@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -142,9 +150,9 @@
             <tr><th>구조</th><th>제작 단계에서 할 일</th><th>놓쳤을 때 생기는 문제</th></tr>
           </thead>
           <tbody>
-            <tr><td>신뢰 구조</td><td>대표 소개, 사례, 절차, 후기 배치</td><td>광고를 눌러도 문의로 이어지지 않음</td></tr>
-            <tr><td>검색 구조(SEO)</td><td>키워드별 페이지, 제목 체계, 구조화 데이터</td><td>광고를 끄면 유입이 0이 됨</td></tr>
-            <tr><td>전환 동선</td><td>전화·카톡 버튼, 상담 폼, 모바일 속도</td><td>방문자가 연락 방법을 찾다 이탈</td></tr>
+            <tr><td data-label="구조">신뢰 구조</td><td data-label="제작 단계에서 할 일">대표 소개, 사례, 절차, 후기 배치</td><td data-label="놓쳤을 때 생기는 문제">광고를 눌러도 문의로 이어지지 않음</td></tr>
+            <tr><td data-label="구조">검색 구조(SEO)</td><td data-label="제작 단계에서 할 일">키워드별 페이지, 제목 체계, 구조화 데이터</td><td data-label="놓쳤을 때 생기는 문제">광고를 끄면 유입이 0이 됨</td></tr>
+            <tr><td data-label="구조">전환 동선</td><td data-label="제작 단계에서 할 일">전화·카톡 버튼, 상담 폼, 모바일 속도</td><td data-label="놓쳤을 때 생기는 문제">방문자가 연락 방법을 찾다 이탈</td></tr>
           </tbody>
         </table>
       </div>
@@ -159,11 +167,11 @@
             <tr><th>판단 항목</th><th>부분 개선으로 충분한 경우</th><th>새로 제작이 나은 경우</th></tr>
           </thead>
           <tbody>
-            <tr><td>모바일 화면</td><td>글자·버튼이 정상이고 3초 안에 첫 화면이 보임</td><td>확대해야 읽히거나 로딩이 5초 이상 걸림</td></tr>
-            <tr><td>페이지 구조</td><td>진료·업무 분야별 페이지가 이미 나뉘어 있음</td><td>소개 한 장에 모든 내용이 몰려 있음</td></tr>
-            <tr><td>수정 권한</td><td>본문·이미지를 직접 고칠 수 있음</td><td>제작사 연락 없이는 한 줄도 못 고침</td></tr>
-            <tr><td>검색 유입</td><td>광고를 끈 달에도 검색 유입이 남아 있음</td><td>광고를 끄면 유입이 거의 사라짐</td></tr>
-            <tr><td>예상 비용·기간</td><td>200만~600만 원 / 2~4주</td><td>600만~2,000만 원대 / 4~10주</td></tr>
+            <tr><td data-label="판단 항목">모바일 화면</td><td data-label="부분 개선으로 충분한 경우">글자·버튼이 정상이고 3초 안에 첫 화면이 보임</td><td data-label="새로 제작이 나은 경우">확대해야 읽히거나 로딩이 5초 이상 걸림</td></tr>
+            <tr><td data-label="판단 항목">페이지 구조</td><td data-label="부분 개선으로 충분한 경우">진료·업무 분야별 페이지가 이미 나뉘어 있음</td><td data-label="새로 제작이 나은 경우">소개 한 장에 모든 내용이 몰려 있음</td></tr>
+            <tr><td data-label="판단 항목">수정 권한</td><td data-label="부분 개선으로 충분한 경우">본문·이미지를 직접 고칠 수 있음</td><td data-label="새로 제작이 나은 경우">제작사 연락 없이는 한 줄도 못 고침</td></tr>
+            <tr><td data-label="판단 항목">검색 유입</td><td data-label="부분 개선으로 충분한 경우">광고를 끈 달에도 검색 유입이 남아 있음</td><td data-label="새로 제작이 나은 경우">광고를 끄면 유입이 거의 사라짐</td></tr>
+            <tr><td data-label="판단 항목">예상 비용·기간</td><td data-label="부분 개선으로 충분한 경우">200만~600만 원 / 2~4주</td><td data-label="새로 제작이 나은 경우">600만~2,000만 원대 / 4~10주</td></tr>
           </tbody>
         </table>
       </div>
@@ -177,11 +185,11 @@
             <tr><th>단계</th><th>보통 걸리는 기간</th><th>이 단계에서 결정되는 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>기획·구조 설계</td><td>1~2주</td><td>페이지 목록, 키워드별 페이지, 문의 동선</td></tr>
-            <tr><td>원고·사례 정리</td><td>1~3주</td><td>대표 경력, 진행 절차, 실제 사례 문구</td></tr>
-            <tr><td>디자인</td><td>1~3주</td><td>첫 화면 구성, 후기 배치, 모바일 화면</td></tr>
-            <tr><td>퍼블리싱·개발</td><td>2~4주</td><td>로딩 속도, 상담 폼, 구조화 데이터</td></tr>
-            <tr><td>검수·공개</td><td>3~7일</td><td>검색엔진 등록, 링크 오류, 전환 추적 설치</td></tr>
+            <tr><td data-label="단계">기획·구조 설계</td><td data-label="보통 걸리는 기간">1~2주</td><td data-label="이 단계에서 결정되는 것">페이지 목록, 키워드별 페이지, 문의 동선</td></tr>
+            <tr><td data-label="단계">원고·사례 정리</td><td data-label="보통 걸리는 기간">1~3주</td><td data-label="이 단계에서 결정되는 것">대표 경력, 진행 절차, 실제 사례 문구</td></tr>
+            <tr><td data-label="단계">디자인</td><td data-label="보통 걸리는 기간">1~3주</td><td data-label="이 단계에서 결정되는 것">첫 화면 구성, 후기 배치, 모바일 화면</td></tr>
+            <tr><td data-label="단계">퍼블리싱·개발</td><td data-label="보통 걸리는 기간">2~4주</td><td data-label="이 단계에서 결정되는 것">로딩 속도, 상담 폼, 구조화 데이터</td></tr>
+            <tr><td data-label="단계">검수·공개</td><td data-label="보통 걸리는 기간">3~7일</td><td data-label="이 단계에서 결정되는 것">검색엔진 등록, 링크 오류, 전환 추적 설치</td></tr>
           </tbody>
         </table>
       </div>
