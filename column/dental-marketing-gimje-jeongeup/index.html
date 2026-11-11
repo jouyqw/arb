@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -132,17 +140,17 @@
       <p>정읍도 같은 구조입니다. 수성동·상교동·연지동 쪽에 주거가 모이고, 신태인읍·태인면·고부면·입암면이 바깥에 있습니다. 바깥에서 들어오는 환자는 거리가 아니라 버스 시간으로 병원을 고릅니다.</p>
       <p>제가 상담에서 꼭 하는 질문이 &quot;가장 먼 곳에서 오시는 환자는 어디서 몇 분 걸려 오시나요&quot;입니다. 이 답이 쓸 지명의 목록이 됩니다. 검색 도구가 아니라 접수대에서 나오는 목록입니다.</p>
       <p>아래 표가 제가 지역명을 어느 자리에 쓰는지 정리한 기준입니다. 왼쪽으로 내려갈수록 검색 숫자는 작아지는데 문의로 이어지는 비중은 올라갑니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>쓰는 단위</th><th>한 달 검색 규모</th><th>쓸 자리</th><th>기대할 수 있는 것</th></tr>
           </thead>
           <tbody>
-            <tr><td>도 단위 — 전북치과</td><td>숫자는 보이지만 환자가 쓰지 않는 말</td><td>쓰지 않습니다</td><td>클릭이 와도 내원 거리 밖인 경우가 많습니다</td></tr>
-            <tr><td>시군 단위 — 김제치과</td><td>한 자릿수에서 두 자릿수 초반</td><td>홈페이지 대표 페이지 제목 1곳</td><td>자리를 잡아도 월 몇 건 수준입니다</td></tr>
-            <tr><td>읍·면·동 — 요촌동치과, 신태인치과</td><td>검색 도구에 숫자가 안 잡히는 경우가 많습니다</td><td>칼럼 제목과 오는 길 안내 문장</td><td>경쟁이 거의 없어 먼저 쓰는 쪽이 유리합니다</td></tr>
-            <tr><td>진료명+시군 — 김제임플란트, 정읍교정</td><td>시군 단위보다 적지만 의도가 분명합니다</td><td>진료 항목 페이지 제목</td><td>문의와 예약으로 이어지는 비중이 가장 높습니다</td></tr>
-            <tr><td>생활 기준어 — 김제역 앞, 시장 근처</td><td>측정이 거의 안 됩니다</td><td>주차·오는 길 안내, 플레이스 설명</td><td>지도 검색과 AI 답변에서 걸리는 문장이 됩니다</td></tr>
+            <tr><td data-label="쓰는 단위">도 단위 — 전북치과</td><td data-label="한 달 검색 규모">숫자는 보이지만 환자가 쓰지 않는 말</td><td data-label="쓸 자리">쓰지 않습니다</td><td data-label="기대할 수 있는 것">클릭이 와도 내원 거리 밖인 경우가 많습니다</td></tr>
+            <tr><td data-label="쓰는 단위">시군 단위 — 김제치과</td><td data-label="한 달 검색 규모">한 자릿수에서 두 자릿수 초반</td><td data-label="쓸 자리">홈페이지 대표 페이지 제목 1곳</td><td data-label="기대할 수 있는 것">자리를 잡아도 월 몇 건 수준입니다</td></tr>
+            <tr><td data-label="쓰는 단위">읍·면·동 — 요촌동치과, 신태인치과</td><td data-label="한 달 검색 규모">검색 도구에 숫자가 안 잡히는 경우가 많습니다</td><td data-label="쓸 자리">칼럼 제목과 오는 길 안내 문장</td><td data-label="기대할 수 있는 것">경쟁이 거의 없어 먼저 쓰는 쪽이 유리합니다</td></tr>
+            <tr><td data-label="쓰는 단위">진료명+시군 — 김제임플란트, 정읍교정</td><td data-label="한 달 검색 규모">시군 단위보다 적지만 의도가 분명합니다</td><td data-label="쓸 자리">진료 항목 페이지 제목</td><td data-label="기대할 수 있는 것">문의와 예약으로 이어지는 비중이 가장 높습니다</td></tr>
+            <tr><td data-label="쓰는 단위">생활 기준어 — 김제역 앞, 시장 근처</td><td data-label="한 달 검색 규모">측정이 거의 안 됩니다</td><td data-label="쓸 자리">주차·오는 길 안내, 플레이스 설명</td><td data-label="기대할 수 있는 것">지도 검색과 AI 답변에서 걸리는 문장이 됩니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -169,11 +177,11 @@
             <tr><th>조합 방식</th><th>제목이 이런 모양이 됩니다</th><th>이렇게 쓰는 이유</th></tr>
           </thead>
           <tbody>
-            <tr><td>지명 + 진료명</td><td>신태인에서 임플란트, 몇 번 오셔야 하나요</td><td>경쟁이 거의 없고 의도가 분명한 말을 먼저 가져갑니다</td></tr>
-            <tr><td>지명 + 오는 길</td><td>금구면에서 김제 시내 치과, 버스로 얼마나 걸릴까요</td><td>지도 검색과 AI 답변에서 인용되는 문장이 됩니다</td></tr>
-            <tr><td>진료명 + 기간</td><td>교정 치료 총 기간과 내원 횟수는 어떻게 잡히나요</td><td>큰 도시와 비교당할 때 쓰이는 기준을 우리가 먼저 적습니다</td></tr>
-            <tr><td>연령대 + 진료</td><td>어르신 틀니와 임플란트, 무엇을 기준으로 정하나요</td><td>작은 시군은 연령 구성이 달라 검색하는 말도 다릅니다</td></tr>
-            <tr><td>비용 구조</td><td>치료비가 왜 상담 후에 정해지는지 항목으로 설명드립니다</td><td>금액을 단정하지 않으면서 비교 기준을 줄 수 있습니다</td></tr>
+            <tr><td data-label="조합 방식">지명 + 진료명</td><td data-label="제목이 이런 모양이 됩니다">신태인에서 임플란트, 몇 번 오셔야 하나요</td><td data-label="이렇게 쓰는 이유">경쟁이 거의 없고 의도가 분명한 말을 먼저 가져갑니다</td></tr>
+            <tr><td data-label="조합 방식">지명 + 오는 길</td><td data-label="제목이 이런 모양이 됩니다">금구면에서 김제 시내 치과, 버스로 얼마나 걸릴까요</td><td data-label="이렇게 쓰는 이유">지도 검색과 AI 답변에서 인용되는 문장이 됩니다</td></tr>
+            <tr><td data-label="조합 방식">진료명 + 기간</td><td data-label="제목이 이런 모양이 됩니다">교정 치료 총 기간과 내원 횟수는 어떻게 잡히나요</td><td data-label="이렇게 쓰는 이유">큰 도시와 비교당할 때 쓰이는 기준을 우리가 먼저 적습니다</td></tr>
+            <tr><td data-label="조합 방식">연령대 + 진료</td><td data-label="제목이 이런 모양이 됩니다">어르신 틀니와 임플란트, 무엇을 기준으로 정하나요</td><td data-label="이렇게 쓰는 이유">작은 시군은 연령 구성이 달라 검색하는 말도 다릅니다</td></tr>
+            <tr><td data-label="조합 방식">비용 구조</td><td data-label="제목이 이런 모양이 됩니다">치료비가 왜 상담 후에 정해지는지 항목으로 설명드립니다</td><td data-label="이렇게 쓰는 이유">금액을 단정하지 않으면서 비교 기준을 줄 수 있습니다</td></tr>
           </tbody>
         </table>
       </div>
@@ -202,10 +210,10 @@
     <section class="related">
       <h2>같은 분야의 다른 칼럼</h2>
       <ul class="related-list">
+        <li><a href="../dental-marketing-jeonju/">전주치과마케팅, 서울과 같은 방식을 쓰면 무엇이 어긋날까요?</a><span>전주는 상권이 좁아 추천과 검색이 한 흐름으로 이어집니다. 전주치과마케팅에서 상호 검색 비중을 세는 방법, 환자가 확인 단계에서 보는 항목, 서울용 키워드 목록을 그대로 옮기면 예산이 새는 지점을 상담 기준으로 정리했습니다.</span></li>
         <li><a href="../dental-blog-vs-place/">치과마케팅, 블로그와 플레이스 중 어디부터 할까요?</a><span>동네 치과는 플레이스를 먼저 정리하는 쪽이 맞습니다. 진료과목의 검토 기간으로 순서를 정하는 판단표, 플레이스에서 먼저 채울 8개 항목, 블로그가 먼저 효과를 내는 세 경우와 월별 비중 배분을 상담 기준으로 정리했습니다.</span></li>
         <li><a href="../dental-ad-review-rules/">치과마케팅, 심의에서 걸리는 문장은 어떻게 고쳐 쓸까요?</a><span>치과마케팅에서 의료광고 심의 지적이 반복되는 전후 사진, 가격 표기, 환자 후기 세 가지를 정리했습니다. 걸리는 문장을 지우지 않고 바꿔 쓴 실제 예시와 공개 전 점검 순서, 대행사에 확인할 항목까지 상담 기준으로 담았습니다.</span></li>
         <li><a href="../dental-marketing-iksan-gunsan/">익산치과마케팅, 군산과 같은 광고를 돌리면 무엇이 샐까요?</a><span>익산치과마케팅을 군산과 한 묶음으로 돌릴 때 예산이 빠져나가는 지점, 네이버·구글에서 노출 범위를 시 단위로 끊는 설정 순서, 환자 거주지를 세어 반경을 정하는 방법을 상담 기준으로 정리했습니다.</span></li>
-        <li><a href="../busan-hospital-marketing-guide/">부산병원마케팅, 검색광고는 몇 번째로 붙여야 할까요?</a><span>플레이스·블로그·검색광고를 붙이는 순서와 다음 단계로 넘어가는 신호, 광고를 켜기 전 갖춰야 할 세 가지, 병원 검색광고에서 예산이 새는 네 자리, 예산을 줄일 때 떼는 순서를 부산병원마케팅 상담 기준으로 정리했습니다.</span></li>
       </ul>
       <a class="more" href="../">업종별 마케팅 칼럼 더 보기 →</a>
     </section>

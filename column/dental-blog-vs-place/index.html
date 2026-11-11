@@ -27,7 +27,7 @@
     .desc{font-size:17px;color:#667085;margin:0 0 24px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0 30px;border-top:1px solid #EAECF0;border-bottom:1px solid #EAECF0;color:#7A8594;font-size:13px}
     article{padding-top:34px}
-    p{font-size:17px;margin:0 0 22px}
+    p{font-size:17px;line-height:1.9;margin:0 0 28px;word-break:keep-all}
     strong{font-weight:900;color:#0B55D9}
     u{text-decoration-thickness:8px;text-underline-offset:-3px;text-decoration-color:#D8E5FF;text-decoration-skip-ink:none}
     /* 강조 — ::형광펜:: 과 ;;강조색;; (2026-10-10).
@@ -95,7 +95,15 @@
     .channels{margin-top:34px;padding-top:22px;border-top:1px solid #EAECF0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px;color:#8A95A3}
     .channels span{font-weight:800;color:#667085}
     .channels a{font-size:13.5px;font-weight:700}
-    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}}
+    @media(max-width:560px){.wrap{padding-top:34px}.cta{padding:24px}p,li{font-size:16px}.ig-grid{grid-template-columns:1fr}table{min-width:0}th,td{padding:12px 13px;font-size:14px}.hub{padding:18px}
+    /* 4칸 이상 표는 좁은 화면에서 줄을 카드로 세운다.
+       쥐어짜면 한 칸이 60px 남짓이라 글자가 한 자씩 끊겨 내려가 읽을 수가 없다. */
+    .stackable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .stackable tr{display:block;padding:14px 16px;border-bottom:1px solid #EAECF0}
+    .stackable tr:last-child{border-bottom:0}
+    .stackable td{display:flex;gap:10px;align-items:baseline;border:0;padding:5px 0;font-size:15px}
+    .stackable td::before{content:attr(data-label);flex:0 0 34%;font-weight:700;color:#475467;font-size:13.5px;line-height:1.55}
+    .stackable td:first-child{padding-top:0}.stackable td:last-child{padding-bottom:0}}
   </style>
 <link rel="stylesheet" href="/assets/renewal/content.css?v=20260917-1">
 </head>
@@ -125,17 +133,17 @@
       <p>충치 치료, 스케일링, 발치, 갑작스러운 통증은 검색에서 결정까지 하루를 넘기지 않습니다. 이 환자는 지금 열려 있는 곳, 가까운 곳, 주차되는 곳을 봅니다.</p>
       <p>반대로 교정과 임플란트는 <mark class="hl-mark">2주에서 2개월</mark> 동안 세 곳에서 다섯 곳을 비교합니다. 이 환자는 지도만 보고 정하지 않고 설명을 읽습니다.</p>
       <p>그래서 저는 첫 상담에서 지난 3개월 신규 환자를 진료 항목별로 세어 보게 합니다. 이 숫자 하나로 순서가 거의 정해집니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>중심 진료</th><th>결정에 걸리는 시간</th><th>먼저 할 채널</th><th>두 번째 채널 시점</th></tr>
           </thead>
           <tbody>
-            <tr><td>일반 진료·소아·검진</td><td>당일~이틀</td><td>플레이스 정보와 내부 사진</td><td>정보 칸을 채운 뒤 2~3개월</td></tr>
-            <tr><td>임플란트·교정</td><td>2주~2개월</td><td>플레이스와 블로그를 함께</td><td>플레이스를 4주 안에 끝내고</td></tr>
-            <tr><td>심미·보철</td><td>1~4주</td><td>플레이스와 사례 페이지</td><td>사례 5~10건이 올라간 뒤</td></tr>
-            <tr><td>개원 6개월 이내</td><td>진료와 무관하게 비교됨</td><td>플레이스 등록과 기본 정보</td><td>등록 직후부터 주 1편</td></tr>
-            <tr><td>역·환승 상권</td><td>당일이지만 후보가 많다</td><td>플레이스와 역명 검색어 글</td><td>플레이스 정비와 같은 달</td></tr>
+            <tr><td data-label="중심 진료">일반 진료·소아·검진</td><td data-label="결정에 걸리는 시간">당일~이틀</td><td data-label="먼저 할 채널">플레이스 정보와 내부 사진</td><td data-label="두 번째 채널 시점">정보 칸을 채운 뒤 2~3개월</td></tr>
+            <tr><td data-label="중심 진료">임플란트·교정</td><td data-label="결정에 걸리는 시간">2주~2개월</td><td data-label="먼저 할 채널">플레이스와 블로그를 함께</td><td data-label="두 번째 채널 시점">플레이스를 4주 안에 끝내고</td></tr>
+            <tr><td data-label="중심 진료">심미·보철</td><td data-label="결정에 걸리는 시간">1~4주</td><td data-label="먼저 할 채널">플레이스와 사례 페이지</td><td data-label="두 번째 채널 시점">사례 5~10건이 올라간 뒤</td></tr>
+            <tr><td data-label="중심 진료">개원 6개월 이내</td><td data-label="결정에 걸리는 시간">진료와 무관하게 비교됨</td><td data-label="먼저 할 채널">플레이스 등록과 기본 정보</td><td data-label="두 번째 채널 시점">등록 직후부터 주 1편</td></tr>
+            <tr><td data-label="중심 진료">역·환승 상권</td><td data-label="결정에 걸리는 시간">당일이지만 후보가 많다</td><td data-label="먼저 할 채널">플레이스와 역명 검색어 글</td><td data-label="두 번째 채널 시점">플레이스 정비와 같은 달</td></tr>
           </tbody>
         </table>
       </div>
@@ -162,16 +170,16 @@
       <p><span class="hl-accent">블로그도 매체 기준에 따라 의료광고 심의 대상이 될 수 있습니다.</span> 치료 전후 사진, 비급여 금액 표기, 환자 후기를 쓰실 거면 공개 전에 표현을 한 번 정리하셔야 합니다.</p>
       <h2>두 채널에 쓰는 시간과 예산은 어떻게 나누나요?</h2>
       <p>첫 달은 플레이스에 70~80%를 쓰고, 2개월째부터 글 쪽으로 옮깁니다. 플레이스는 한 번 끝내면 월 1회 점검으로 유지되고, 글은 매달 반복되는 비용이기 때문입니다.</p>
-      <div class="table-wrap">
+      <div class="table-wrap stackable">
         <table>
           <thead>
             <tr><th>기간</th><th>플레이스 비중</th><th>블로그·홈페이지 비중</th><th>이 기간에 끝낼 일</th></tr>
           </thead>
           <tbody>
-            <tr><td>1개월</td><td>70~80%</td><td>20~30%</td><td>정보 8개 칸 채우기, 내부 사진 10~20장 촬영</td></tr>
-            <tr><td>2~3개월</td><td>30~40%</td><td>60~70%</td><td>진료 항목 3~4개를 정하고 항목당 4~6편 착수</td></tr>
-            <tr><td>4~6개월</td><td>20~30%</td><td>70~80%</td><td>전화로 받은 질문을 글과 설명 칸에 반영</td></tr>
-            <tr><td>7개월 이후</td><td>월 1회 점검</td><td>유지와 정리</td><td>반응이 나온 항목으로 주제 모으고 겹치는 글 합치기</td></tr>
+            <tr><td data-label="기간">1개월</td><td data-label="플레이스 비중">70~80%</td><td data-label="블로그·홈페이지 비중">20~30%</td><td data-label="이 기간에 끝낼 일">정보 8개 칸 채우기, 내부 사진 10~20장 촬영</td></tr>
+            <tr><td data-label="기간">2~3개월</td><td data-label="플레이스 비중">30~40%</td><td data-label="블로그·홈페이지 비중">60~70%</td><td data-label="이 기간에 끝낼 일">진료 항목 3~4개를 정하고 항목당 4~6편 착수</td></tr>
+            <tr><td data-label="기간">4~6개월</td><td data-label="플레이스 비중">20~30%</td><td data-label="블로그·홈페이지 비중">70~80%</td><td data-label="이 기간에 끝낼 일">전화로 받은 질문을 글과 설명 칸에 반영</td></tr>
+            <tr><td data-label="기간">7개월 이후</td><td data-label="플레이스 비중">월 1회 점검</td><td data-label="블로그·홈페이지 비중">유지와 정리</td><td data-label="이 기간에 끝낼 일">반응이 나온 항목으로 주제 모으고 겹치는 글 합치기</td></tr>
           </tbody>
         </table>
       </div>
@@ -196,10 +204,10 @@
     <section class="related">
       <h2>같은 분야의 다른 칼럼</h2>
       <ul class="related-list">
+        <li><a href="../dental-marketing-jeonju/">전주치과마케팅, 서울과 같은 방식을 쓰면 무엇이 어긋날까요?</a><span>전주는 상권이 좁아 추천과 검색이 한 흐름으로 이어집니다. 전주치과마케팅에서 상호 검색 비중을 세는 방법, 환자가 확인 단계에서 보는 항목, 서울용 키워드 목록을 그대로 옮기면 예산이 새는 지점을 상담 기준으로 정리했습니다.</span></li>
         <li><a href="../dental-marketing-gimje-jeongeup/">김제치과마케팅, 검색량이 거의 없는 지역은 무엇으로 노출을 만들까요?</a><span>김제치과마케팅처럼 시군 이름의 검색이 월 한 자릿수인 지역에서, 읍·면·동 이름과 진료명으로 단위를 바꿔 노출을 만드는 순서와 숫자 확인 방법, 광고를 켜고 끄는 기준을 상담 기준으로 정리했습니다.</span></li>
         <li><a href="../dental-ad-review-rules/">치과마케팅, 심의에서 걸리는 문장은 어떻게 고쳐 쓸까요?</a><span>치과마케팅에서 의료광고 심의 지적이 반복되는 전후 사진, 가격 표기, 환자 후기 세 가지를 정리했습니다. 걸리는 문장을 지우지 않고 바꿔 쓴 실제 예시와 공개 전 점검 순서, 대행사에 확인할 항목까지 상담 기준으로 담았습니다.</span></li>
         <li><a href="../dental-marketing-iksan-gunsan/">익산치과마케팅, 군산과 같은 광고를 돌리면 무엇이 샐까요?</a><span>익산치과마케팅을 군산과 한 묶음으로 돌릴 때 예산이 빠져나가는 지점, 네이버·구글에서 노출 범위를 시 단위로 끊는 설정 순서, 환자 거주지를 세어 반경을 정하는 방법을 상담 기준으로 정리했습니다.</span></li>
-        <li><a href="../busan-hospital-marketing-guide/">부산병원마케팅, 검색광고는 몇 번째로 붙여야 할까요?</a><span>플레이스·블로그·검색광고를 붙이는 순서와 다음 단계로 넘어가는 신호, 광고를 켜기 전 갖춰야 할 세 가지, 병원 검색광고에서 예산이 새는 네 자리, 예산을 줄일 때 떼는 순서를 부산병원마케팅 상담 기준으로 정리했습니다.</span></li>
       </ul>
       <a class="more" href="../">업종별 마케팅 칼럼 더 보기 →</a>
     </section>
