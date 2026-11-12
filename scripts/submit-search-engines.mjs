@@ -278,7 +278,9 @@ const blocked = failedSites.filter((item) => KNOWN_BLOCKED.has(item.name));
 const real = failedSites.filter((item) => !KNOWN_BLOCKED.has(item.name));
 
 for (const item of blocked) {
-  console.log(`::warning::${item.name} — ${KNOWN_BLOCKED.get(item.name)}`);
+  // 어느 계정을 추가해야 하는지까지 적는다. 그게 없으면 경고를 봐도 할 일을 모른다.
+  const who = report.googleAccount ? ` 추가할 계정: ${report.googleAccount}` : '';
+  console.log(`::warning::${item.name} — ${KNOWN_BLOCKED.get(item.name)}${who}`);
 }
 if (real.length) {
   console.error(`색인 자동화 실패: ${real.map((item) => item.name).join(', ')}`);
