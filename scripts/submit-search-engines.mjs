@@ -48,7 +48,11 @@ const sites = [
     '/education/digital/',
     '/education/law-compliance/',
   ]],
-  ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml', '418d6647da04482596f98cc63ba7da1c'],
+  // 2026-11-12 skipScan 을 켰다. 이 호스트가 깃허브 러너 IP 의 요청을 403 으로 막는다.
+  // 로컬에서는 200 이고 브라우저로도 열리는데 CI 에서만 막힌다 — 태앤규·키자드와 같은 경우다.
+  // 사이트맵을 못 읽으니 IndexNow 로 보낼 URL 목록도 못 만든다.
+  // 구글은 자기 IP 로 직접 가져가므로 사이트맵 제출(204)은 그대로 된다.
+  ['대필마스터', 'https://xn--vk1bq2ko7hvupcze.com/', 'https://xn--vk1bq2ko7hvupcze.com/sitemap.xml', '418d6647da04482596f98cc63ba7da1c', undefined, true],
   ['예율 법률칼럼', 'https://columns.yeyul-law.com/', 'https://columns.yeyul-law.com/sitemap.xml', '628977ad229e859371ca6577bf876d14'],
   ['법무법인 예율', 'https://yeyul-law.com/', 'https://yeyul-law.com/sitemap.xml'],
 ].map(([name, siteUrl, sitemapUrl, indexNowKey, googleProperty, skipScan, priorityPaths = []]) => ({
