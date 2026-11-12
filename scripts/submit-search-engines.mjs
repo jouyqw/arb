@@ -251,11 +251,36 @@ const summary = [
 await writeFile('reports/search-index-latest.md', summary + '\n');
 if (process.env.GITHUB_STEP_SUMMARY) await writeFile(process.env.GITHUB_STEP_SUMMARY, summary + '\n', { flag: 'a' });
 
+/**
+ * 손쓸 수 없는 곳은 경고로만 남긴다.
+ *
+ * 2026-11-12 대필마스터 한 곳 때문에 이 작업이 날마다 실패로 끝나고 있었다.
+ * 열여섯 곳 중 열다섯 곳은 Google 204 · IndexNow 200 으로 멀쩡한데
+ * 결과만 빨갛게 떴다. 그게 더 나쁘다 — 진짜 고장이 나도 "또 그거겠지" 하고 넘기게 된다.
+ *
+ * 대필마스터는 서비스 계정이 GSC 속성에 '소유자' 나 '전체 사용자' 로 안 들어가 있어
+ * 사이트맵 제출이 403 으로 거절된다. 저장소에서 고칠 수 있는 문제가 아니다.
+ * 사람이 Search Console 에서 권한을 올려 줘야 한다.
+ *
+ * 그래서 여기 적힌 곳은 실패해도 작업을 빨갛게 만들지 않는다. 대신 매번 경고로 남겨
+ * 무엇을 해 주면 되는지 로그에서 바로 보이게 한다. 권한이 풀리면 이 목록에서 빼면 된다.
+ */
+const KNOWN_BLOCKED = new Map([
+  ['대필마스터', 'GSC 속성에 서비스 계정이 소유자·전체 사용자로 없어 사이트맵 제출이 403. Search Console 에서 권한을 올려 주면 풀린다.'],
+]);
+
 const failedSites = report.sites.filter((item) =>
   item.sitemapStatus === 'error'
   || item.google?.ok === false
   || item.indexNow?.some((result) => result.ok === false && result.status !== 'key-not-configured'));
-if (failedSites.length) {
-  console.error(`색인 자동화 실패: ${failedSites.map((item) => item.name).join(', ')}`);
+
+const blocked = failedSites.filter((item) => KNOWN_BLOCKED.has(item.name));
+const real = failedSites.filter((item) => !KNOWN_BLOCKED.has(item.name));
+
+for (const item of blocked) {
+  console.log(`::warning::${item.name} — ${KNOWN_BLOCKED.get(item.name)}`);
+}
+if (real.length) {
+  console.error(`색인 자동화 실패: ${real.map((item) => item.name).join(', ')}`);
   process.exitCode = 1;
 }
