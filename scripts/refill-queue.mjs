@@ -213,6 +213,23 @@ function validate(topic, date, seenTitles, seenSlugs) {
   if (typeof last !== 'string') e.push('마지막 블록이 문단이 아닙니다 (faq 뒤에 제안 문단 한 개가 와야 합니다)');
   else if ([...last].length < 80) e.push(`마지막 제안 문단이 ${[...last].length}자뿐입니다 (최소 80자)`);
 
+  /* 가독성 검사 — 2026-11-19 추가.
+   * 프롬프트에만 적어 두면 글마다 지켜지는 정도가 다르다.
+   * 긴 문단이 한 덩어리로 오면 모바일에서 그냥 넘긴다. */
+  const paras = d.body.filter((b) => typeof b === 'string');
+  const longParas = paras.filter((p) => [...p].length >= 90);
+  const broken = longParas.filter((p) => p.includes('\n'));
+  if (longParas.length >= 3 && broken.length < Math.ceil(longParas.length * 0.6)) {
+    e.push(`90자 넘는 문단 ${longParas.length}개 중 ${broken.length}개만 문장 단위로 끊겨 있습니다 (문장 끝마다 \\n 을 넣으세요)`);
+  }
+
+  // 한 문장이 길면 줄을 바꿔도 읽히지 않는다.
+  const longSent = paras.flatMap((p) => p.split(/\n|(?<=다\.)\s/))
+    .map((s) => s.trim()).filter((s) => [...s].length > 85);
+  if (longSent.length > 2) {
+    e.push(`85자 넘는 문장이 ${longSent.length}개입니다 (예: "${longSent[0].slice(0, 40)}…") — 끊어 쓰세요`);
+  }
+
   // "직접 하셔도 됩니다" 가 신뢰를 만든다. 다 맡기라는 글은 광고로 읽힌다.
   if (!/직접\s*(해|하)(도|셔도|시면|실)|혼자\s*(해|하)(도|셔도|시면|실)/.test(text)) {
     e.push('"직접 하셔도 되는 선" 을 짚은 대목이 없습니다 (전환에서 가장 크게 갈리는 한 줄입니다)');
@@ -288,6 +305,27 @@ function buildPrompt(topic, date, samples, titles, note) {
 
 중간부터 읽어도 알게 쓴다. 소제목만 훑는 사람이 절반이라
 각 heading 바로 다음 문단은 그 자리에서 결론이 되어야 한다.
+
+## 결론부터 쓰기 — 이게 제일 중요하다
+
+**모든 문단은 첫 문장이 결론이다.** 배경·전제·"~한 경우가 많습니다" 로 시작하지 마라.
+답을 먼저 놓고, 그 뒤에 왜인지를 붙인다.
+
+- 나쁨: "홈페이지 제작 비용은 업체마다 기준이 달라 일률적으로 말하기 어렵습니다. 보통…"
+- 좋음: "소규모 사업자 홈페이지는 300만~600만 원 선입니다. 이 폭이 왜 생기는지 적겠습니다."
+
+heading 도 마찬가지다. 소제목만 훑고 나가는 사람이 글의 절반을 가져간다.
+
+## 문장 단위로 끊어 쓴다 (모바일 가독성)
+
+**문단 안에서 한 문장이 끝나면 줄을 바꾼다.** 문자열 안에 \\n 을 넣으면
+렌더러가 줄바꿈으로 바꿔 준다. 문단은 2~3문장이고, 그 문장들이 각각 한 줄씩 선다.
+
+예: "견적서를 받으면 항목 수부터 봅니다.\\n항목이 세 줄이면 그 안에 무엇이 들었는지 알 수 없습니다.\\n열 줄이면 빠진 것도 같이 보입니다."
+
+- 한 문장은 **40자 안쪽**으로 짧게 끊는다. 쉼표로 이어 붙이지 마라.
+- 한 문장에 한 가지만 담는다.
+- \\n 은 문단 안에서만 쓴다. 문단과 문단은 블록을 따로 둔다.
 
 ## 먼저 읽을 것 (문체·구성·분량의 기준이다)
 ${samples.map((s) => `- data/columns.json 안의 slug "${s}" 항목`).join('\n')}
@@ -496,7 +534,14 @@ const free = bank.filter((t) => {
   const words = regionWords(t);
   if (words.length && words.every((w) => titlesSoFar.includes(w))) { dupes.push(words.join('/')); return false; }
   return true;
-}).sort((a, b) => volumeOf(b) - volumeOf(a));
+});
+
+/* 홈페이지 제작이 본업이라 그쪽 검색어를 먼저 쓴다.
+ * 검색량 순으로만 뽑으면 광고·플레이스 주제가 앞을 다 차지해서
+ * 정작 본업 키워드가 배정표 뒤에 남는다. 묶음 안에서는 검색량 순이다. */
+const HOMEPAGE_RE = /(홈페이지|웹사이트|랜딩|상세페이지|쇼핑몰|사이트)/;
+const isHomepage = (t) => HOMEPAGE_RE.test(`${t.keyword || ''} ${t.slug || ''} ${t.category || ''}`);
+free.sort((a, b) => (isHomepage(b) - isHomepage(a)) || (volumeOf(b) - volumeOf(a)));
 
 if (dupes.length) log(`이미 쓴 지역 키워드라 건너뜀 ${dupes.length}편: ${dupes.slice(0, 8).join(' · ')}`);
 

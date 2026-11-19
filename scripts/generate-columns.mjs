@@ -100,7 +100,10 @@ const renderInline = (value = '') => esc(value)
   .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
   .replace(/__(.+?)__/g, '<u>$1</u>')
   .replace(/::(.+?)::/g, '<mark class="hl-mark">$1</mark>')
-  .replace(/;;(.+?);;/g, '<span class="hl-accent">$1</span>');
+  .replace(/;;(.+?);;/g, '<span class="hl-accent">$1</span>')
+  // 문단 안의 줄바꿈은 "문장을 끊어 보여 달라"는 뜻이다. 모바일에서 이게 가독성을 가른다.
+  // 문단 자체는 한 덩어리로 두고 보이는 줄만 나눈다.
+  .replace(/\n+/g, '<br>');
 
 const renderBlock = (block) => {
   if (typeof block === 'string') return `<p>${renderInline(block)}</p>`;
@@ -597,7 +600,16 @@ const serviceStyle = `
 
 const serviceTemplate = (svc) => {
   const url = `${siteUrl}/service/${svc.slug}/`;
-  const related = (svc.relatedColumns || []).map((slug) => columnBySlug.get(slug));
+  /* relatedColumns 는 손으로 적는 목록이라 칼럼이 늘어도 그대로 멈춰 있었다.
+   * 2026-11-19: 손으로 고른 것을 앞에 두고, 그 서비스에 묶이는 칼럼을
+   * 최신순으로 뒤에 채운다. 허브가 분야 전체를 거느리는 모양이 되어야
+   * 그 분야 검색어에서 이 페이지가 대표로 잡힌다. */
+  const picked = (svc.relatedColumns || []).map((slug) => columnBySlug.get(slug)).filter(Boolean);
+  const seen = new Set(picked.map((c) => c.slug));
+  const auto = [...columns]
+    .filter((c) => !seen.has(c.slug) && hubsForColumn(c).some((h) => h?.slug === svc.slug))
+    .sort((a, b) => b.datePublished.localeCompare(a.datePublished) || a.slug.localeCompare(b.slug));
+  const related = [...picked, ...auto].slice(0, 16);
   const siblings = (svc.relatedServices || []).map((slug) => serviceBySlug.get(slug));
 
   const serviceLd = {

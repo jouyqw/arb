@@ -12,3 +12,4 @@ tmp_*.ps1
 # 보완 작업용 임시 산출물
 content/retrofit/
 notindexed.txt
+scripts/_*
