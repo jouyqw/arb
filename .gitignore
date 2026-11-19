@@ -13,3 +13,4 @@ tmp_*.ps1
 content/retrofit/
 notindexed.txt
 scripts/_*
+tmp_*
