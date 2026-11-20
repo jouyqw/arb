@@ -258,16 +258,52 @@ if (process.env.GITHUB_STEP_SUMMARY) await writeFile(process.env.GITHUB_STEP_SUM
  * 열여섯 곳 중 열다섯 곳은 Google 204 · IndexNow 200 으로 멀쩡한데
  * 결과만 빨갛게 떴다. 그게 더 나쁘다 — 진짜 고장이 나도 "또 그거겠지" 하고 넘기게 된다.
  *
- * 대필마스터는 서비스 계정이 GSC 속성에 '소유자' 나 '전체 사용자' 로 안 들어가 있어
- * 사이트맵 제출이 403 으로 거절된다. 저장소에서 고칠 수 있는 문제가 아니다.
- * 사람이 Search Console 에서 권한을 올려 줘야 한다.
- *
  * 그래서 여기 적힌 곳은 실패해도 작업을 빨갛게 만들지 않는다. 대신 매번 경고로 남겨
- * 무엇을 해 주면 되는지 로그에서 바로 보이게 한다. 권한이 풀리면 이 목록에서 빼면 된다.
+ * 무엇을 해 주면 되는지 로그에서 바로 보이게 한다. 풀리면 이 목록에서 빼면 된다.
+ *
+ * ──────────────────────────────────────────────────────────────────
+ * 2026-11-20 대필마스터 — 위에 적어 둔 진단이 틀렸다. 기록해 둔다.
+ *
+ * "서비스 계정이 GSC 속성에 없어서 403" 이라고 적어 놓고 여드레를 그렇게 믿었다.
+ * 실제로는 ;;사이트 자체가 죽어 있었다;;. 브라우저로 열어도 모든 경로가 403 이다 —
+ * 홈("/"), /service/, /404.html, robots.txt, sitemap.xml 전부.
+ * Cloudflare 뒤의 아파치가 "You don't have permission to access / on this server"
+ * 를 돌려준다. 호스팅 쪽 권한이나 .htaccess 문제로 보인다.
+ *
+ * 구글에 남아 있는 색인은 40쪽 중 4쪽뿐이다. 사이트맵 제출 권한을 올려 줘도
+ * 가져갈 문서가 없으니 아무것도 달라지지 않는다.
+ *
+ * 왜 여드레나 몰랐나 — 이 두 줄이 겹치면 죽은 사이트가 조용해진다.
+ *   skipScan: true   → 사이트맵을 읽지 않으니 403 을 볼 기회가 없다
+ *   KNOWN_BLOCKED    → 남은 실패 하나도 경고로 내려 초록불이 된다
+ * "CI 아이피만 막힌다" 는 가정이 그 사이에 검증 없이 들어가 있었다.
+ * 아래 SKIP_SCAN_VERIFIED 가 그 가정에 날짜를 붙인다.
  */
 const KNOWN_BLOCKED = new Map([
-  ['대필마스터', 'GSC 속성에 서비스 계정이 소유자·전체 사용자로 없어 사이트맵 제출이 403. Search Console 에서 권한을 올려 주면 풀린다.'],
+  ['대필마스터', '사이트 전체가 403 이다(브라우저로도 홈이 안 열린다). GSC 권한 문제가 아니라 호스팅·.htaccess 문제다. 사이트를 먼저 살려야 한다.'],
 ]);
+
+/* skipScan 은 "우리 아이피만 막히고 사이트는 멀쩡하다" 는 가정 위에 선다.
+ * 그 가정은 사람이 브라우저로 확인한 날에만 참이다. 날짜를 적어 두고
+ * 오래되면 경고한다. 가정을 공짜로 두면 대필마스터처럼 조용히 죽는다. */
+const SKIP_SCAN_VERIFIED = new Map([
+  ['대필마스터', '2026-11-20'], // 확인 결과 죽어 있었다
+  ['태앤규', '2026-11-12'],
+  ['키자드', '2026-11-12'],
+]);
+const STALE_DAYS = 21;
+
+for (const item of report.sites.filter((s) => s.skipScan)) {
+  const at = SKIP_SCAN_VERIFIED.get(item.name);
+  if (!at) {
+    console.log(`::warning::${item.name} — skipScan 인데 사람이 브라우저로 확인한 날짜가 없습니다. 홈이 열리는지 한 번 보고 SKIP_SCAN_VERIFIED 에 날짜를 적어 주세요.`);
+    continue;
+  }
+  const days = Math.floor((Date.now() - Date.parse(`${at}T00:00:00Z`)) / 86400000);
+  if (days > STALE_DAYS) {
+    console.log(`::warning::${item.name} — 브라우저로 확인한 게 ${days}일 전(${at})입니다. ${item.siteUrl} 가 지금도 열리는지 보고 날짜를 갱신해 주세요.`);
+  }
+}
 
 const failedSites = report.sites.filter((item) =>
   item.sitemapStatus === 'error'
