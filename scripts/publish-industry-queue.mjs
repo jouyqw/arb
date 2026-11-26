@@ -18,4 +18,5 @@ for(const site of Object.keys(articles)){
 if(count)fs.writeFileSync('lib/subsites/articles.mjs',`// Reviewed industry articles.\nexport const articles = ${JSON.stringify(articles,null,2)};\n`);
 if(process.env.GITHUB_OUTPUT)fs.appendFileSync(process.env.GITHUB_OUTPUT,`published=${count}\n`);
 console.log(JSON.stringify({day,published:count,underTarget:missing}));
+if(process.env.GITHUB_OUTPUT)fs.appendFileSync(process.env.GITHUB_OUTPUT,`under_target=${missing.join(',')}\n`);
 if(missing.length)console.log(`::warning::Approved queue needs replenishment: ${missing.join(', ')}`);

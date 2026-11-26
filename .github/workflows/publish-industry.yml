@@ -32,3 +32,10 @@ jobs:
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
         run: node scripts/submit-search-engines.mjs
+      - name: Report missing approved articles
+        if: always() && steps.publish.outputs.under_target != ''
+        env:
+          MISSING_SITES: ${{ steps.publish.outputs.under_target }}
+        run: |
+          echo "::error::Approved articles missing for: $MISSING_SITES"
+          exit 1
