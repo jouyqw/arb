@@ -4,6 +4,9 @@ import { mkdir, writeFile } from 'node:fs/promises';
 // 새 사이트는 siteUrl/sitemapUrl을 추가합니다. IndexNow 키는 도메인 루트에
 // 같은 이름의 txt 파일이 실제 공개된 경우에만 적습니다.
 const sites = [
+  ...['interior', 'cleaning', 'demolition', 'funeral', 'insurance', 'shortform'].map(host => [
+    `아비컴퍼니 ${host}`, `https://${host}.aubcompany.com/`, `https://${host}.aubcompany.com/sitemap.xml`
+  ]),
   ['AUB컴퍼니', 'https://aubcompany.com/', 'https://aubcompany.com/sitemap.xml', '91a7460f8c9b4e8db4f2a13d67a0c5e2'],
   // AUB 법률·생활은 구글만 한다. IndexNow 키를 일부러 비워 둔 것이니 채우지 말 것.
   // 주소가 /b/<블로그ID>/<글번호>/ 라서 네이버가 블로그 복제 사이트로 읽기 쉽다.

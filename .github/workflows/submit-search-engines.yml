@@ -6,6 +6,7 @@ on:
     paths:
       - "column/**/*.html"
       - "sitemap.xml"
+      - "lib/subsites/articles.mjs"
       - ".github/workflows/submit-search-engines.yml"
       - "scripts/submit-search-engines.mjs"
   schedule:

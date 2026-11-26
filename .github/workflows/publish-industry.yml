@@ -1,0 +1,34 @@
+name: 업종별 칼럼 하루 두 편
+on:
+  schedule:
+    - cron: '20 0,8 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: industry-columns
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: publish
+        run: node scripts/publish-industry-queue.mjs
+      - run: node scripts/check-subsites.mjs
+      - if: steps.publish.outputs.published != '0'
+        run: |
+          git config user.name 'publish-bot'
+          git config user.email 'bot@auto.local'
+          git add lib/subsites/articles.mjs
+          git commit -m 'Publish reviewed industry columns'
+          git push
+      - if: steps.publish.outputs.published != '0'
+        run: sleep 90
+      - if: steps.publish.outputs.published != '0'
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: node scripts/submit-search-engines.mjs
