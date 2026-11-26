@@ -1,0 +1,6 @@
+import {spawnSync} from 'node:child_process';
+const cli='C:/Users/c/AppData/Local/Microsoft/WinGet/Packages/Anthropic.ClaudeCode_Microsoft.Winget.Source_8wekyb3d8bbwe/claude.exe';
+const prompt=`Review every unapproved JSON in content/industry-queue against lib/subsites/articles.mjs. Read each entire article. These are marketing agency columns for business owners. Remove invented quantitative results, unsupported generalizations, fake testimonials, legal/medical/insurance product advice. Remove filler and duplicate topics. Keep at least 2400 Korean body characters with useful concrete operational guidance, short paragraphs and clearly hypothetical examples. Set approved:true ONLY after substantive editorial review and necessary corrections; otherwise leave false and add reviewNotes. Add reviewedAt ISO date and reviewNotes to every reviewed wrapper. Preserve all other files. Use only Read,Write,Edit,Glob,Grep; no shell or git. Report counts of reviewed, approved and rejected articles.`;
+const r=spawnSync(cli,['-p',prompt,'--permission-mode','acceptEdits','--allowedTools','Read,Write,Edit,Glob,Grep'],{encoding:'utf8',windowsHide:true,timeout:1800000,maxBuffer:8*1024*1024});
+if(r.status!==0)throw Error('Editorial review failed; drafts remain unpublished');
+console.log(r.stdout);
