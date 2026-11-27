@@ -203,7 +203,8 @@ async function submitGoogle(site, google) {
 let google = null;
 try { google = await googleContext(); } catch (error) { console.error(error.message); }
 
-for (const site of sites) {
+const industryHosts = new Set(['interior','cleaning','demolition','funeral','insurance','shortform'].map(h=>`${h}.aubcompany.com`));
+for (const site of sites.filter(s=>process.env.INDUSTRY_ONLY !== '1' || industryHosts.has(new URL(s.siteUrl).hostname))) {
   const item = { name: site.name, siteUrl: site.siteUrl, sitemapUrl: site.sitemapUrl };
   if (site.skipScan) {
     item.sitemapStatus = 'external-scan-skipped';
